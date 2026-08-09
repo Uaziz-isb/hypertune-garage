@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import defaultOgBanner from '../assets/images/hypertune_hero_banner_1785533542266.jpg';
 
 declare global {
   interface Window {
@@ -19,12 +20,12 @@ interface SEOProps {
 }
 
 export const SEOHead: React.FC<SEOProps> = ({
-  title = 'HyperTune Garage - Premium Automotive Workshop for PPF and Detailing',
+  title = 'HyperTune Garage | #1 Car Repair, PPF & ECU Tuning Workshop Islamabad & Rawalpindi',
   description = 'Pakistan’s top automotive workshop specializing in BMW, Mercedes, Audi, Porsche, Toyota, ECU remapping, engine overhauls & hybrid battery repair in Islamabad G-8/4 & Rawalpindi.',
   keywords = 'car workshop islamabad, auto repair rawalpindi, car detailing islamabad, paint protection film ppf islamabad, ceramic coating rawalpindi, bmw repair islamabad, mercedes garage rawalpindi, audi service center, engine overhaul islamabad, ecu tuning remapping, hybrid battery repair, 3d laser wheel alignment, car mechanic near me, hypertune garage',
   canonicalUrl,
   path = '/',
-  ogImage = '/assets/images/hypertune_hero_banner_1785533542266.jpg',
+  ogImage = defaultOgBanner,
   schema,
 }) => {
   useEffect(() => {

@@ -10,19 +10,17 @@ import ppfSedanStudio from '../assets/images/ppf_sedan_studio_1785597200101.jpg'
 import bannerDyno from '../assets/images/hypertune_banner_dyno_1785686809783.jpg';
 import bannerPpf from '../assets/images/hypertune_banner_ppf_1785686823979.jpg';
 import bannerEngine from '../assets/images/hypertune_banner_engine_1785686837582.jpg';
-import havalMaroonBefore from '../assets/images/haval_maroon_before_1786309780100.jpg';
-import havalMaroonAfter from '../assets/images/haval_maroon_after_1786309794863.jpg';
-import toyotaWhiteBefore from '../assets/images/toyota_white_before_1786309808104.jpg';
-import toyotaWhiteAfter from '../assets/images/toyota_white_after_1786309821149.jpg';
+import havalStudioBefore from '../assets/images/haval_v3_before_1786314810272.jpg';
+import havalStudioAfter from '../assets/images/haval_v3_after_1786314825379.jpg';
+import toyotaStudioBefore from '../assets/images/toyota_suv_before_1786314398782.jpg';
+import toyotaStudioAfter from '../assets/images/toyota_suv_after_1786314410092.jpg';
 
 export const images = {
   heroBanner,
-  havalStudioBefore: havalMaroonBefore,
-  havalStudioAfter: havalMaroonAfter,
-  toyotaStudioBefore: toyotaWhiteBefore,
-  toyotaStudioAfter: toyotaWhiteAfter,
-  havalPpfBefore: havalMaroonBefore,
-  havalPpfAfter: havalMaroonAfter,
+  havalStudioBefore,
+  havalStudioAfter,
+  toyotaStudioBefore,
+  toyotaStudioAfter,
   ppfHeroBanner,
   ppfFortunerStudio,
   ppfSedanStudio,

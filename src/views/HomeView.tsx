@@ -3,6 +3,7 @@ import { PageId } from '../types';
 import { servicesData } from '../data/servicesData';
 import { locationsData } from '../data/locationsData';
 import { reviewsData } from '../data/reviewsData';
+import { faqData } from '../data/faqData';
 import { images } from '../data/images';
 import { CostEstimator } from '../components/CostEstimator';
 import { BeforeAfterSlider } from '../components/BeforeAfterSlider';
@@ -92,6 +93,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   onOpenBooking,
 }) => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [openFaqId, setOpenFaqId] = useState<string>('faq-1');
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -456,16 +458,16 @@ export const HomeView: React.FC<HomeViewProps> = ({
             title="Haval H6 GT Full Body TPU Paint Protection Film (PPF)"
             beforeImage={images.havalStudioBefore}
             afterImage={images.havalStudioAfter}
-            beforeLabel="Pre-PPF OEM Paint / Factory Finish"
-            afterLabel="Full Body Self-Healing TPU Mirror Armor"
+            beforeLabel="Before PPF (Factory Maroon Finish)"
+            afterLabel="After PPF (Self-Healing Mirror Armor)"
           />
 
           <BeforeAfterSlider
-            title="Toyota Fortuner Legender 9H Ceramic Glass Coating & PPF"
+            title="Toyota Fortuner Legender TPU PPF & Ceramic Coating"
             beforeImage={images.toyotaStudioBefore}
             afterImage={images.toyotaStudioAfter}
-            beforeLabel="Pre-Detail Paint / Micro-Swirls"
-            afterLabel="Hydrophobic 9H Glass Mirror Finish"
+            beforeLabel="Before PPF (Factory OEM Paint)"
+            afterLabel="After PPF (9H Hydrophobic Mirror Gloss)"
           />
         </div>
       </section>
@@ -622,6 +624,45 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* FAQ ACCORDION */}
+      <section className="max-w-4xl mx-auto px-4 space-y-8">
+        <div className="text-center space-y-2">
+          <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
+            Clear Answers
+          </span>
+          <h2 className="text-3xl font-black text-white">Frequently Asked Questions</h2>
+        </div>
+
+        <div className="space-y-3">
+          {faqData.map((faq) => {
+            const isOpen = openFaqId === faq.id;
+            return (
+              <div
+                key={faq.id}
+                className="bg-[#0b121e] border border-slate-800 rounded-2xl overflow-hidden transition-all"
+              >
+                <button
+                  onClick={() => setOpenFaqId(isOpen ? '' : faq.id)}
+                  className="w-full p-5 text-left font-bold text-sm text-white flex items-center justify-between gap-4 hover:text-cyan-400 transition-colors"
+                >
+                  <span>{faq.question}</span>
+                  <ChevronDown
+                    className={`w-5 h-5 text-slate-400 transition-transform duration-200 ${
+                      isOpen ? 'rotate-180 text-cyan-400' : ''
+                    }`}
+                  />
+                </button>
+                {isOpen && (
+                  <div className="px-5 pb-5 text-xs text-slate-300 leading-relaxed border-t border-slate-800/80 pt-3 animate-in fade-in duration-150">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </section>
 
