@@ -1,0 +1,62 @@
+import { LocationItem } from '../types';
+import { images } from './images';
+
+export const locationsData: LocationItem[] = [
+  {
+    id: 'islamabad-g8',
+    slug: 'islamabad-workshop-g8',
+    city: 'Islamabad',
+    branchName: 'HyperTune Garage - Islamabad Flagship Hub',
+    address: 'Shop 1-G, Ground Floor, Central Ave, near Attock Petrol Pump, Block E Police Foundation, Islamabad, 44000, Pakistan',
+    area: 'Block E Police Foundation, Islamabad',
+    phone: '+92 333 0177717',
+    whatsapp: '923330177717',
+    googleMapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.215!2d73.1345365!3d33.5622113!2m3!1f0!1f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfede5eabd2d83%3A0xf3b2d99386f26b69!2sHyperTune%20Garage!5e1!3m2!1sen!2spk!4v1710000000000!5m2!1sen!2spk&maptype=satellite',
+    googleMapsDirectionsUrl: 'https://www.google.com/maps/place/HyperTune+Garage/@33.5622113,73.1345365,17z/data=!3m1!4b1!4m6!3m5!1s0x38dfede5eabd2d83:0xf3b2d99386f26b69!8m2!3d33.5622113!4d73.1345365',
+    hours: {
+      weekdays: '10:00 AM - 10:00 PM (Sat - Thu)',
+      friday: 'CLOSED (Weekly Holiday)',
+      saturday: '10:00 AM - 10:00 PM',
+      sunday: '10:00 AM - 10:00 PM',
+    },
+    workshopSpecs: [
+      'Computerized PPF CAD Plotter & Dust-Free Wrap Studio',
+      '8 Hydraulic Vehicle Lifts with Low-Profile Ramps',
+      'Italian 3D Laser Wheel Alignment Station',
+      'Dust-Free 9H Ceramic Coating & PPF Clean Room',
+      'Dedicated Automotive Electronics & ECU Lab',
+      'Air-Conditioned VIP Customer Lounge with WiFi & Espresso',
+    ],
+    landmarks: ['Near Attock Petrol Pump', 'Central Avenue', 'Block E Police Foundation'],
+    managerName: 'Engr. Tariq Mahmood (Master Tech lead)',
+    image: images.workshopIslamabad,
+  },
+  {
+    id: 'rawalpindi-i9-saddar',
+    slug: 'rawalpindi-workshop-saddar',
+    city: 'Rawalpindi',
+    branchName: 'HyperTune Garage - Rawalpindi & I-9 Branch',
+    address: 'Plot 18, Industrial Area Sector I-9/3 (Near Rawalpindi Border / Saddar Link), Islamabad/Rawalpindi',
+    area: 'Sector I-9/3 Industrial Area / Saddar Link, Rawalpindi',
+    phone: '+92 333 0177717',
+    whatsapp: '923330177717',
+    googleMapEmbedUrl: 'https://maps.google.com/maps?q=Plot+18,+Sector+I-9/3+Industrial+Area,+Islamabad&t=&z=15&ie=UTF8&iwloc=&output=embed',
+    googleMapsDirectionsUrl: 'https://www.google.com/maps/search/?api=1&query=Plot+18+Sector+I-9/3+Industrial+Area+Islamabad',
+    hours: {
+      weekdays: '10:00 AM - 10:00 PM (Sat - Thu)',
+      friday: 'CLOSED (Weekly Holiday)',
+      saturday: '10:00 AM - 10:00 PM',
+      sunday: '10:00 AM - 10:00 PM',
+    },
+    workshopSpecs: [
+      'Heavy Engine & Transmission Rebuilding Center',
+      'High-Voltage Hybrid & EV Battery Testing Lab',
+      'Heavy SUV & 4x4 Off-Road Suspension Bay',
+      'Automated Robinair R134a/R1234yf AC Station',
+      '24/7 Towing Truck Recovery Hub',
+    ],
+    landmarks: ['Near IJ Principal Road Interchange', '5 Mins from Rawalpindi Saddar & Station', 'Opposite Metro Bus I-9 Station'],
+    managerName: 'Zubair Khan (Senior Diagnostics Specialist)',
+    image: images.workshopRawalpindi,
+  },
+];
