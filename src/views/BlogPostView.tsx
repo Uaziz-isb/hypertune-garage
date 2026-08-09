@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageId } from '../types';
 import { blogData } from '../data/blogData';
+import { images } from '../data/images';
 import { ArrowLeft, Clock, Calendar, User, Share2, Wrench, ChevronRight } from 'lucide-react';
 
 interface BlogPostProps {
@@ -58,6 +59,9 @@ export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpen
             src={post.featuredImage}
             alt={post.title}
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).src = images.heroBanner;
+            }}
             className="w-full h-full object-cover"
           />
         </div>

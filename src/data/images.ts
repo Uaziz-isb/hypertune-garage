@@ -10,9 +10,19 @@ import ppfSedanStudio from '../assets/images/ppf_sedan_studio_1785597200101.jpg'
 import bannerDyno from '../assets/images/hypertune_banner_dyno_1785686809783.jpg';
 import bannerPpf from '../assets/images/hypertune_banner_ppf_1785686823979.jpg';
 import bannerEngine from '../assets/images/hypertune_banner_engine_1785686837582.jpg';
+import havalMaroonBefore from '../assets/images/haval_maroon_before_1786309780100.jpg';
+import havalMaroonAfter from '../assets/images/haval_maroon_after_1786309794863.jpg';
+import toyotaWhiteBefore from '../assets/images/toyota_white_before_1786309808104.jpg';
+import toyotaWhiteAfter from '../assets/images/toyota_white_after_1786309821149.jpg';
 
 export const images = {
   heroBanner,
+  havalStudioBefore: havalMaroonBefore,
+  havalStudioAfter: havalMaroonAfter,
+  toyotaStudioBefore: toyotaWhiteBefore,
+  toyotaStudioAfter: toyotaWhiteAfter,
+  havalPpfBefore: havalMaroonBefore,
+  havalPpfAfter: havalMaroonAfter,
   ppfHeroBanner,
   ppfFortunerStudio,
   ppfSedanStudio,
@@ -31,8 +41,8 @@ export const images = {
   // High definition automotive photography fallbacks
   ecuTuningAlt: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80',
   germanCar: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1200&q=80',
-  engineRebuild: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1200&q=80',
-  hybridBattery: 'https://images.unsplash.com/photo-1558441819-861a3e830782?auto=format&fit=crop&w=1200&q=80',
+  engineRebuild: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1200&q=80',
+  hybridBattery: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1200&q=80',
   suspension: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80',
   oilChange: 'https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=1200&q=80',
   carAc: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1200&q=80',

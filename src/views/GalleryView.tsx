@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PageId } from '../types';
 import { galleryData } from '../data/galleryData';
+import { images } from '../data/images';
 import { Sparkles, ZoomIn, X } from 'lucide-react';
 
 interface GalleryViewProps {
@@ -61,6 +62,9 @@ export const GalleryView: React.FC<GalleryViewProps> = ({ onNavigate, onOpenBook
                   src={item.image}
                   alt={item.title}
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = images.heroBanner;
+                  }}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0b121e] via-[#0b121e]/20 to-transparent" />

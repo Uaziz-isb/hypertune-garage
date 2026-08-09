@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PageId } from '../types';
 import { blogData } from '../data/blogData';
+import { images } from '../data/images';
 import { BookOpen, Clock, ArrowRight, User } from 'lucide-react';
 
 interface BlogViewProps {
@@ -32,7 +33,7 @@ export const BlogView: React.FC<BlogViewProps> = ({ onNavigate }) => {
 
       <section className="max-w-7xl mx-auto px-4 space-y-8">
         <div className="flex flex-wrap items-center justify-center gap-2">
-          {['all', 'ECU Tuning', 'Popular Brands', 'Hybrid Tech'].map((cat) => (
+          {['all', 'PPF & Paint Protection', 'ECU Tuning', 'Popular Brands', 'Hybrid Tech'].map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
@@ -60,6 +61,9 @@ export const BlogView: React.FC<BlogViewProps> = ({ onNavigate }) => {
                     src={post.featuredImage}
                     alt={post.title}
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = images.heroBanner;
+                    }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0b121e] via-transparent to-transparent" />

@@ -73,7 +73,7 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   content: string;
-  category: 'Maintenance Tips' | 'PPF & Paint Protection' | 'PPF & PPS Protection' | 'Popular Brands' | 'German Cars' | 'Hybrid Tech' | 'Buyer Guides';
+  category: 'Maintenance Tips' | 'PPF & Paint Protection' | 'PPF & PPS Protection' | 'Popular Brands' | 'German Cars' | 'Hybrid Tech' | 'Buyer Guides' | 'ECU Tuning';
   author: {
     name: string;
     role: string;
@@ -102,7 +102,7 @@ export interface ReviewItem {
 export interface GalleryItem {
   id: string;
   title: string;
-  category: 'Engine Overhaul' | 'PPF & PPS Studio' | 'German Repair' | 'Ceramic & PPF' | 'Suspension & Brakes' | 'Hybrid Battery';
+  category: 'Engine Overhaul' | 'PPF & PPS Studio' | 'German Repair' | 'Ceramic & PPF' | 'Suspension & Brakes' | 'Hybrid Battery' | 'Popular Brands Repair' | 'ECU Dyno';
   image: string;
   vehicle: string;
   description: string;
