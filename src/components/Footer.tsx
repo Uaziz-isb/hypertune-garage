@@ -228,7 +228,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
       {/* Bottom Bar & Copyright */}
       <div className="bg-[#030509] border-t border-slate-900 py-6 px-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} HyperTune Garage. Drive Better, Drive Worry-Free. • <span className="text-slate-400 font-medium">Developed & Managed by: Umair Aziz</span></p>
+          <p>© {new Date().getFullYear()} HyperTune Garage. Drive Better, Drive Worry-Free. • <span className="text-slate-400 font-medium">Developed & Managed by: Umair Aziz</span> •</p>
           <div className="flex items-center gap-4">
             <button onClick={() => onNavigate('privacy')} className="hover:text-slate-300 transition-colors">
               Privacy Policy

@@ -1,5 +1,13 @@
 import React, { useEffect } from 'react';
 
+declare global {
+  interface Window {
+    dataLayer?: any[];
+    gtag?: (...args: any[]) => void;
+    GA_MEASUREMENT_ID?: string;
+  }
+}
+
 interface SEOProps {
   title?: string;
   description?: string;
@@ -22,6 +30,33 @@ export const SEOHead: React.FC<SEOProps> = ({
   useEffect(() => {
     // Update Title
     document.title = title;
+
+    // Google Analytics (GA4) Setup
+    const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID || window.GA_MEASUREMENT_ID || 'G-PPQJEQSLVE';
+    if (gaId) {
+      let gaScript = document.getElementById('ga-gtag-script') as HTMLScriptElement | null;
+      if (!gaScript) {
+        gaScript = document.createElement('script');
+        gaScript.id = 'ga-gtag-script';
+        gaScript.async = true;
+        gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+        document.head.appendChild(gaScript);
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () {
+          // eslint-disable-next-line prefer-rest-params
+          window.dataLayer?.push(arguments);
+        };
+        window.gtag('js', new Date());
+      }
+
+      if (typeof window.gtag === 'function') {
+        window.gtag('config', gaId, {
+          page_path: path,
+          page_title: title,
+        });
+      }
+    }
 
     // Update Meta Description
     let metaDesc = document.querySelector('meta[name="description"]');
