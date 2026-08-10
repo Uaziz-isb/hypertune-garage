@@ -155,7 +155,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
               <span>Real-Time Dynamic Website Index</span>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-              HTML Site Map Directory
+              Site Map Directory
             </h1>
             <p className="text-slate-400 text-sm max-w-2xl leading-relaxed">
               Explore the complete hierarchy of HyperTune Garage. Navigate to primary views, specialized repair & tuning services, workshop locations in Islamabad & Rawalpindi, and technical blog articles.
