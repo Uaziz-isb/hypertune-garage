@@ -6,6 +6,8 @@ interface BeforeAfterProps {
   title: string;
   beforeLabel?: string;
   afterLabel?: string;
+  topBeforeTag?: string;
+  topAfterTag?: string;
 }
 
 export const BeforeAfterSlider: React.FC<BeforeAfterProps> = ({
@@ -14,6 +16,8 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = ({
   title,
   beforeLabel = 'Before Repair / Tuning',
   afterLabel = 'After HyperTune Restoration',
+  topBeforeTag = 'Before PPF',
+  topAfterTag = 'After PPF',
 }) => {
   const [sliderPos, setSliderPos] = useState(50);
   const [isHovered, setIsHovered] = useState(false);
@@ -71,11 +75,18 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = ({
           referrerPolicy="no-referrer"
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
+
+        {/* Top-Right High-Tech CSS Overlay Badge for After PPF */}
+        <div className="absolute top-4 right-4 bg-slate-950/80 backdrop-blur-md border border-cyan-500/40 text-cyan-400 font-mono font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-lg z-10 pointer-events-none flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+          <span>{topAfterTag}</span>
+        </div>
+
         <span className="absolute bottom-4 right-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-extrabold text-xs px-3.5 py-1.5 rounded-xl shadow-lg shadow-cyan-500/20 z-10 pointer-events-none">
           {afterLabel}
         </span>
 
-        {/* Before Image (Clipped width with authentic pre-restoration filter) */}
+        {/* Before Image (Clipped width) */}
         <div
           className="absolute inset-0 overflow-hidden"
           style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
@@ -84,8 +95,15 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = ({
             src={beforeImage}
             alt={beforeLabel}
             referrerPolicy="no-referrer"
-            className="absolute inset-0 w-full h-full object-cover filter brightness-[0.88] contrast-[0.95] sepia-[0.12] transition-transform duration-700 group-hover:scale-105"
+            className="absolute inset-0 w-full h-full object-cover filter brightness-[0.92] contrast-[0.98] transition-transform duration-700 group-hover:scale-105"
           />
+
+          {/* Top-Left High-Tech CSS Overlay Badge for Before PPF */}
+          <div className="absolute top-4 left-4 bg-slate-950/90 backdrop-blur-md border border-slate-700/80 text-white font-mono font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-lg z-10 pointer-events-none flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-slate-400" />
+            <span>{topBeforeTag}</span>
+          </div>
+
           <span className="absolute bottom-4 left-4 bg-slate-950/90 text-slate-300 font-extrabold text-xs px-3.5 py-1.5 rounded-xl border border-slate-700/80 shadow-lg z-10 pointer-events-none">
             {beforeLabel}
           </span>

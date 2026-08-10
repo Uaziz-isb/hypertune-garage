@@ -14,7 +14,8 @@ export type PageId =
   | 'contact'
   | 'privacy'
   | 'terms'
-  | 'warranty';
+  | 'warranty'
+  | 'sitemap';
 
 export interface ServiceItem {
   id: string;
@@ -24,7 +25,7 @@ export interface ServiceItem {
   fullDesc: string;
   subServices: string[];
   subServicePrices?: { name: string; price: string }[];
-  category: 'engine' | 'maintenance' | 'suspension' | 'transmission' | 'diagnostics' | 'protection' | 'detailing' | 'wrap' | 'body' | 'modification';
+  category: 'engine' | 'maintenance' | 'suspension' | 'transmission' | 'diagnostics' | 'protection' | 'detailing' | 'wrap' | 'body' | 'modification' | 'hybrid' | 'tuning' | 'electrical';
   icon: string;
   image: string;
   priceRange: string;

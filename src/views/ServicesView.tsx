@@ -51,24 +51,27 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate, onOpenBo
     : servicesData.filter((s) => s.category === activeTab);
 
   const categoryFilters = [
-    { id: 'all', label: 'All Services' },
+    { id: 'all', label: 'All 13 Services' },
     { id: 'protection', label: 'Paint Protection Film (PPF)' },
-    { id: 'detailing', label: 'Car Detailing' },
-    { id: 'engine', label: 'Engine Services' },
+    { id: 'detailing', label: 'Car Detailing & Ceramic' },
+    { id: 'engine', label: 'Engine Overhaul & Services' },
     { id: 'diagnostics', label: 'Inspection & Diagnostics' },
     { id: 'maintenance', label: 'Maintenance & Servicing' },
     { id: 'suspension', label: 'Brake, Suspension & Steering' },
     { id: 'transmission', label: 'Transmission & Drivetrain' },
-    { id: 'wrap', label: 'Vehicle Wrap' },
-    { id: 'body', label: 'Body Repair & Paint' },
-    { id: 'modification', label: 'Body Modification' },
+    { id: 'wrap', label: 'Vehicle Wrap & Color' },
+    { id: 'body', label: 'Body Repair & Oven Paint' },
+    { id: 'modification', label: 'Body Kit & Modification' },
+    { id: 'hybrid', label: 'Hybrid & EV Battery' },
+    { id: 'tuning', label: 'ECU Remapping & Dyno' },
+    { id: 'electrical', label: 'Car AC & Auto Electrical' },
   ];
 
   return (
     <div className="pt-32 md:pt-36 pb-16 space-y-12">
       <SEOHead
         title="Automotive Services Catalogue | HyperTune Garage Islamabad & Rawalpindi"
-        description="Explore 10 specialized automotive service categories in Islamabad & Rawalpindi: Engine Overhaul, Maintenance, Brakes, Transmission, AC Repair, Electrical, Diagnostics, Body Repair, PPF & Detailing."
+        description="Explore 13 specialized automotive service categories in Islamabad & Rawalpindi: Engine Overhaul, Maintenance, Brakes, Transmission, Hybrid Battery, ECU Tuning, AC & Electrical, Diagnostics, Body Repair, PPF & Detailing."
         canonicalUrl="https://hypertunegarage.pk/services"
       />
 
@@ -78,13 +81,13 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate, onOpenBo
         <div className="max-w-7xl mx-auto space-y-4 text-center relative z-10">
           <div className="inline-flex items-center gap-2 bg-cyan-950/60 border border-cyan-500/30 px-3.5 py-1.5 rounded-full text-cyan-400 font-bold text-xs uppercase tracking-wider">
             <ShieldCheck className="w-4 h-4 text-cyan-400" />
-            <span>10 Core Automotive Categories • Dealer-Level Standards</span>
+            <span>13 Core Automotive Service Categories • Dealer-Level Standards</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-black text-white">
             Automotive Services & Specializations
           </h1>
           <p className="text-slate-300 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
-            HyperTune Garage offers 10 comprehensive automotive service categories across Islamabad & Rawalpindi. Each service is executed by certified engineers utilizing state-of-the-art diagnostic equipment and 100% genuine OEM parts.
+            HyperTune Garage offers 13 comprehensive automotive service categories across Islamabad & Rawalpindi. Each service is executed by certified engineers utilizing state-of-the-art diagnostic equipment and 100% genuine OEM parts.
           </p>
         </div>
       </section>

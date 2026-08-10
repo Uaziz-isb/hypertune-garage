@@ -716,6 +716,212 @@ export const servicesData: ServiceItem[] = [
       ],
       keywordParagraph: 'Upgrade your vehicle with expert Car Body Modification and Body Kit Installation in Islamabad & Rawalpindi. HyperTune Garage specializes in sports car modifications, wide body kits, spoilers, front lips, side skirts, rear diffusers, carbon fiber body parts, and aggressive aerodynamic styling.',
     },
+  },
+
+  {
+    id: 'hybrid-ev-battery-services',
+    slug: 'hybrid-ev-battery-services',
+    title: 'Hybrid & EV Battery Services',
+    shortDesc: 'State-of-the-art hybrid battery diagnostic, cell balancing, reconditioning, and replacement laboratory in Islamabad & Rawalpindi for Toyota Prius, Aqua, Vezel, Insight, and Lexus hybrids.',
+    fullDesc: 'HyperTune Garage operates a dedicated Hybrid & EV Battery Diagnostics & Cell Reconditioning Laboratory serving vehicle owners across Islamabad and Rawalpindi. We perform computerized cell internal resistance testing, individual NiMH and Li-ion module balancing, high-voltage cooling fan cleaning, inverter coolant flushing, and genuine OEM cell replacements with warranty.',
+    subServices: ['Cell Balancing & Health Audit', 'Hybrid Battery Cell Replacement', 'High Voltage Cooling Fan Cleaning', 'Inverter & Converter Servicing'],
+    subServicePrices: [
+      { name: 'Cell Balancing & Health Audit', price: 'PKR 15,000' },
+      { name: 'Cell Replacement & Reconditioning', price: 'PKR 45,000 to 180,000' }
+    ],
+    category: 'hybrid',
+    icon: 'Zap',
+    image: images.hybridBattery,
+    priceRange: 'PKR 15,000 - PKR 180,000',
+    estimatedTime: '1 - 2 Days',
+    isFeatured: true,
+    symptoms: [
+      'Red Triangle of Death or Hybrid System Warning Light illuminated on dashboard',
+      'Engine running continuously with rapid battery charge level fluctuations',
+      'Reduced fuel economy (km/l dropping significantly)',
+      'High voltage cooling fan running loudly in backseat area',
+    ],
+    keyBenefits: [
+      'Computerized computerized cell charge/discharge balancing restores up to 90% capacity',
+      'Fraction of the cost compared to dealership complete battery replacement',
+      'Genuine high-grade Japanese replacement cells with performance warranty',
+      'High-voltage inverter cooling maintenance prevents catastrophic inverter failure',
+    ],
+    whyChooseUs: [
+      'Certified high-voltage hybrid electrical safety technicians',
+      'Automated multi-channel computerized battery load tester rigs',
+      'Dust-free clean cell assembly laboratory',
+      'Comprehensive warranty provided on cell reconditioning and packs',
+    ],
+    processSteps: [
+      { title: '1. Computerized Hybrid ECU Diagnostics', desc: 'Read high-voltage battery ECU error codes, block voltage deltas, and temperature sensors.' },
+      { title: '2. Battery Pack Disassembly & Safety Isolation', desc: 'Isolate high-voltage service plug and disassemble pack in clean room laboratory.' },
+      { title: '3. Individual Cell Internal Resistance Test', desc: 'Test each cell module under load to identify weak or shorted cells.' },
+      { title: '4. Module Replacement & Balance Cycle', desc: 'Replace faulty cells and perform multi-cycle automated charge/discharge balancing.' },
+      { title: '5. Cooling System Cleaning & Installation', desc: 'Clean high-voltage cooling duct fan, clear error codes, and perform road test.' },
+    ],
+    faqs: [
+      {
+        question: 'Can individual hybrid battery cells be replaced without buying a full battery?',
+        answer: 'Yes! Our diagnostic equipment identifies the exact weak cells, allowing us to replace only bad modules and balance the pack at a fraction of dealership prices.',
+      },
+      {
+        question: 'How often should hybrid battery cooling fans be cleaned?',
+        answer: 'We recommend cleaning the cooling fan and air duct every 20,000 km to prevent thermal degradation of hybrid battery cells.',
+      },
+    ],
+    seo: {
+      seoTitle: 'Hybrid Battery Repair & Cell Reconditioning Islamabad & Rawalpindi | HyperTune',
+      metaDescription: 'Expert hybrid battery repair, cell balancing, and replacement laboratory in Islamabad & Rawalpindi for Toyota, Honda, and Nissan hybrids.',
+      h1Heading: 'Hybrid Battery Diagnostic & Reconditioning Laboratory',
+      targetKeywords: [
+        'Hybrid battery repair Islamabad',
+        'Hybrid battery Rawalpindi',
+        'Prius battery repair',
+        'Aqua hybrid battery',
+        'Vezel hybrid battery',
+        'Hybrid cell balancing',
+        'Lexus hybrid battery service'
+      ],
+      keywordParagraph: 'Restore hybrid battery performance and fuel efficiency with expert Hybrid Battery Repair, Cell Balancing, and High-Voltage Diagnostics at HyperTune Garage in Islamabad & Rawalpindi.',
+    },
+  },
+
+  {
+    id: 'ecu-tuning-dyno',
+    slug: 'ecu-tuning-dyno',
+    title: 'ECU Remapping & Dyno Tuning',
+    shortDesc: 'Stage 1, Stage 2, and custom ECU remapping with 4WD Mustang Dyno validation in Islamabad & Rawalpindi. Unlock horsepower, torque, and optimized fuel economy safely.',
+    fullDesc: 'HyperTune Garage features a state-of-the-art 4WD Mustang Dyno tuning cell in Islamabad & Rawalpindi. We specialize in custom ECU remapping, TCU transmission tuning, speed limiter removal, pop & bang flame maps, and Stage 1 / Stage 2 performance upgrades for German, Japanese, and local vehicles.',
+    subServices: ['Stage 1 Custom ECU Remap', 'Stage 2 Performance Tune', '4WD Mustang Dyno Run', 'Pop & Bang / Flame Maps'],
+    subServicePrices: [
+      { name: 'Stage 1 Eco & Performance Remap', price: 'PKR 25,000 to 50,000' },
+      { name: 'Stage 2 Custom Dyno Tuning', price: 'PKR 60,000 to 120,000' }
+    ],
+    category: 'tuning',
+    icon: 'Cpu',
+    image: images.bannerDyno,
+    priceRange: 'PKR 25,000 - PKR 120,000',
+    estimatedTime: '1 Day',
+    isFeatured: true,
+    symptoms: [
+      'Sluggish throttle response and turbo lag during acceleration',
+      'Desire for additional horsepower, torque, and top-end responsiveness',
+      'Engine hesitation after installing aftermarket downpipe or exhaust',
+      'Restricted top speed governor or factory power detuning',
+    ],
+    keyBenefits: [
+      'Up to +20% to +35% horsepower and torque gains verified on 4WD Dyno',
+      'Smoother throttle delivery and reduced turbo lag',
+      'Improved highway fuel efficiency under cruising conditions',
+      'Safety parameters preserved within engine tolerance limits',
+    ],
+    whyChooseUs: [
+      '4WD Mustang Dyno tuning cell with high-velocity cooling wind fans',
+      'Licensed genuine tuning software (Alientech KESSv3, CMD Flash, HP Tuners)',
+      'Custom fuel map writing specifically calibrated for Pakistani fuel octane levels',
+      'Original factory ECU software backup maintained on cloud storage',
+    ],
+    processSteps: [
+      { title: '1. Baseline Dyno Pull & Health Audit', desc: 'Perform pre-tune diagnostic scan and baseline power pull on 4WD dyno.' },
+      { title: '2. Factory ECU Read & File Extraction', desc: 'Extract original ECU map via OBD-II port or bench mode safely.' },
+      { title: '3. Custom Map Calibration & Parameter Adjustment', desc: 'Optimize air-fuel ratios, boost pressure, ignition timing, and torque limits.' },
+      { title: '4. Flashing & Dyno Fine-Tuning', desc: 'Flash custom calibration map and monitor knock sensors, AFR, and exhaust gas temp.' },
+      { title: '5. Final Dyno Graph Printout & Road Audit', desc: 'Deliver baseline vs tuned horsepower/torque comparison graph to customer.' },
+    ],
+    faqs: [
+      {
+        question: 'Will ECU remapping damage my vehicle engine?',
+        answer: 'Our tunes keep all safety parameters and thermal limits intact. We write custom maps tailored specifically to local fuel quality to ensure maximum reliability.',
+      },
+      {
+        question: 'Can the tune be reverted back to stock factory settings?',
+        answer: 'Yes! We store a complete backup of your original stock software file and can re-flash it back at any time.',
+      },
+    ],
+    seo: {
+      seoTitle: 'ECU Remapping & Dyno Tuning Islamabad & Rawalpindi | HyperTune',
+      metaDescription: 'Professional Stage 1 & Stage 2 ECU remapping with 4WD Mustang Dyno tuning in Islamabad & Rawalpindi. Safe power gains and throttle response.',
+      h1Heading: 'ECU Remapping & 4WD Dyno Tuning Center',
+      targetKeywords: [
+        'ECU tuning Islamabad',
+        'Dyno tuning Rawalpindi',
+        'Stage 1 remapping',
+        'Stage 2 tune',
+        'Civic 1.5T tuning',
+        'BMW ECU remap',
+        'Pop and bang tune Islamabad'
+      ],
+      keywordParagraph: 'Maximize engine output and driving dynamics with custom ECU Remapping and 4WD Dyno Tuning in Islamabad & Rawalpindi at HyperTune Garage.',
+    },
+  },
+
+  {
+    id: 'car-ac-electrical',
+    slug: 'car-ac-electrical',
+    title: 'Car AC & Auto Electrical Systems',
+    shortDesc: 'Precision car AC gas recharging, compressor overhaul, cooling coil leak repair, and computerized wiring diagnostics in Islamabad & Rawalpindi for all Japanese, European, and local vehicles.',
+    fullDesc: 'HyperTune Garage provides full-service Automotive Air Conditioning & Electrical System repair in Islamabad & Rawalpindi. We utilize automated AC refrigerant recovery/recharge stations, digital leak detectors, and oscilloscope wiring analysis to solve cooling loss, compressor noise, electrical short circuits, and sensor glitches.',
+    subServices: ['AC Gas Recharging (R134a / R1234yf)', 'Compressor & Clutch Overhaul', 'Evaporator / Cooling Coil Leak Repair', 'Computerized Electrical & Wiring Trace'],
+    subServicePrices: [
+      { name: 'AC Service & Gas Top-Up', price: 'PKR 5,000 to 12,000' },
+      { name: 'Compressor & Cooling Coil Overhaul', price: 'PKR 18,000 to 45,000' }
+    ],
+    category: 'electrical',
+    icon: 'Wind',
+    image: images.bannerEngine,
+    priceRange: 'PKR 5,000 - PKR 45,000',
+    estimatedTime: '1 Day',
+    isFeatured: true,
+    symptoms: [
+      'AC blowing warm or tepid air during hot summer weather',
+      'Squealing or grinding noise when AC compressor engages',
+      'Unpleasant musty odor coming from dashboard air vents',
+      'Intermittent battery drain, blown fuses, or malfunctioning lights and windows',
+    ],
+    keyBenefits: [
+      'Ice-cold cabin cooling restored to factory sub-zero standards',
+      '100% pure high-grade R134a and R1234yf synthetic refrigerant used',
+      'Nitrogen pressure testing identifies microscopic leaks without damaging components',
+      'Professional electrical diagnosis prevents short circuit risks',
+    ],
+    whyChooseUs: [
+      'Automated digital AC recovery and recharge station',
+      'Electronic halogen leak detectors and UV dye inspection',
+      'Genuine OEM AC compressors, expansion valves, and condensers in stock',
+      'Certified auto-electricians with oscilloscope diagnostic tools',
+    ],
+    processSteps: [
+      { title: '1. Temperature & Pressure Gauge Audit', desc: 'Measure vent output temperature and high/low side system refrigerant pressures.' },
+      { title: '2. Nitrogen Pressure & UV Leak Detection', desc: 'Pressurize system with dry nitrogen gas to pinpoint evaporator or hose leaks.' },
+      { title: '3. Vacuum Evacuation & Moisture Removal', desc: 'Pull deep vacuum to boil off moisture and contaminants inside cooling lines.' },
+      { title: '4. PAG Oil & Refrigerant Automated Recharge', desc: 'Inject fresh PAG compressor oil and exact weight of pure R134a refrigerant.' },
+      { title: '5. Cabin Filter Swap & Odor Disinfection', desc: 'Swap cabin air micro-filter and perform antibacterial ozone vent treatment.' },
+    ],
+    faqs: [
+      {
+        question: 'Why is my car AC blowing warm air even after gas top-up?',
+        answer: 'A simple gas top-up will leak out if there is a pinhole leak in the cooling coil, condenser, or compressor seals. We perform nitrogen pressure testing to locate and repair the leak permanently.',
+      },
+      {
+        question: 'How long does a car AC overhaul take?',
+        answer: 'Standard AC service and gas recharge takes 1 to 2 hours. A full dashboard dashboard cooling coil replacement is completed within 1 day.',
+      },
+    ],
+    seo: {
+      seoTitle: 'Car AC Repair & Auto Electrical Islamabad & Rawalpindi | HyperTune',
+      metaDescription: 'Complete car AC gas recharging, compressor repair, cooling coil replacement, and electrical diagnostics in Islamabad & Rawalpindi.',
+      h1Heading: 'Car AC Repair & Automotive Electrical Specialist',
+      targetKeywords: [
+        'Car AC repair Islamabad',
+        'Car AC gas Rawalpindi',
+        'Car compressor repair',
+        'Cooling coil replacement',
+        'Auto electrician Islamabad',
+        'Car wiring repair Rawalpindi'
+      ],
+      keywordParagraph: 'Beat the summer heat with expert Car AC Repair, Refrigerant Gas Recharging, Compressor Overhaul, and Wiring Diagnostics in Islamabad & Rawalpindi at HyperTune Garage.',
+    },
   }
 ];
 
@@ -723,7 +929,7 @@ export const servicesData: ServiceItem[] = [
  * Helper function to match any main category slug or alias/sub-service slug
  */
 export function getServiceBySlug(slug?: string): ServiceItem {
-  if (!slug) return servicesData[2];
+  if (!slug) return servicesData[0];
   const normalized = slug.toLowerCase().trim();
 
   // Direct slug match
@@ -736,7 +942,7 @@ export function getServiceBySlug(slug?: string): ServiceItem {
   }
 
   if (normalized.includes('detailing') || normalized.includes('ceramic') || normalized.includes('polishing')) {
-    return servicesData.find((s) => s.id === 'car-detailing') || servicesData[4];
+    return servicesData.find((s) => s.id === 'car-detailing') || servicesData[1];
   }
 
   if (normalized.includes('wrap') || normalized.includes('vinyl')) {
@@ -751,12 +957,24 @@ export function getServiceBySlug(slug?: string): ServiceItem {
     return servicesData.find((s) => s.id === 'body-modification') || servicesData[9];
   }
 
-  if (normalized.includes('diagnostic') || normalized.includes('inspection') || normalized.includes('scan') || normalized.includes('electric') || normalized.includes('battery') || normalized.includes('wiring')) {
-    return servicesData.find((s) => s.id === 'inspection-diagnostics') || servicesData[6];
+  if (normalized.includes('hybrid') || normalized.includes('prius') || normalized.includes('battery')) {
+    return servicesData.find((s) => s.id === 'hybrid-ev-battery-services') || servicesData[10];
   }
 
-  if (normalized.includes('transmission') || normalized.includes('gear') || normalized.includes('cvt') || normalized.includes('clutch') || normalized.includes('ac') || normalized.includes('climate')) {
-    return servicesData.find((s) => s.id === 'transmission-drivetrain') || servicesData[3];
+  if (normalized.includes('tuning') || normalized.includes('dyno') || normalized.includes('remap') || normalized.includes('ecu')) {
+    return servicesData.find((s) => s.id === 'ecu-tuning-dyno') || servicesData[11];
+  }
+
+  if (normalized.includes('ac') || normalized.includes('air-condition') || normalized.includes('electric') || normalized.includes('wiring') || normalized.includes('compressor')) {
+    return servicesData.find((s) => s.id === 'car-ac-electrical') || servicesData[12];
+  }
+
+  if (normalized.includes('diagnostic') || normalized.includes('inspection') || normalized.includes('scan')) {
+    return servicesData.find((s) => s.id === 'inspection-diagnostics') || servicesData[3];
+  }
+
+  if (normalized.includes('transmission') || normalized.includes('gear') || normalized.includes('cvt') || normalized.includes('clutch')) {
+    return servicesData.find((s) => s.id === 'transmission-drivetrain') || servicesData[6];
   }
 
   if (normalized.includes('brake') || normalized.includes('suspension') || normalized.includes('steering') || normalized.includes('alignment')) {
@@ -764,11 +982,11 @@ export function getServiceBySlug(slug?: string): ServiceItem {
   }
 
   if (normalized.includes('maintenance') || normalized.includes('oil') || normalized.includes('periodic')) {
-    return servicesData.find((s) => s.id === 'maintenance-servicing') || servicesData[1];
+    return servicesData.find((s) => s.id === 'maintenance-servicing') || servicesData[4];
   }
 
-  if (normalized.includes('engine') || normalized.includes('tuning') || normalized.includes('overhaul') || normalized.includes('cooling') || normalized.includes('radiator') || normalized.includes('injector') || normalized.includes('exhaust')) {
-    return servicesData.find((s) => s.id === 'engine-services') || servicesData[0];
+  if (normalized.includes('engine') || normalized.includes('overhaul') || normalized.includes('cooling') || normalized.includes('radiator')) {
+    return servicesData.find((s) => s.id === 'engine-services') || servicesData[2];
   }
 
   return servicesData[0];

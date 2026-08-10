@@ -137,7 +137,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
                   className="w-full text-left px-3 py-2 rounded-lg bg-cyan-950/30 text-cyan-400 font-bold text-xs flex items-center gap-2"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>View All 24+ Services</span>
+                  <span>View All 13 Services</span>
                 </button>
                 {servicesData.map((service) => {
                   return (

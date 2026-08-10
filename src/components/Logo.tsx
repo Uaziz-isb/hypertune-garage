@@ -5,10 +5,15 @@ interface LogoProps {
   className?: string;
   variant?: 'light' | 'dark';
   onClick?: () => void;
+  scale?: number;
 }
 
-export const Logo: React.FC<LogoProps> = ({ className = '', variant = 'dark', onClick }) => {
+export const Logo: React.FC<LogoProps> = ({ className = '', variant = 'dark', onClick, scale = 1.0 }) => {
   const textColor = variant === 'dark' ? 'text-white' : 'text-slate-950';
+
+  const boxSize = Math.round(50 * scale);
+  const titleFontSize = (23 * scale).toFixed(1);
+  const subFontSize = (11 * scale).toFixed(1);
 
   return (
     <div
@@ -16,7 +21,10 @@ export const Logo: React.FC<LogoProps> = ({ className = '', variant = 'dark', on
       className={`flex items-center gap-3 font-bold tracking-tight select-none cursor-pointer ${className}`}
     >
       {/* HyperTune Garage Official Logo Mark */}
-      <div className="relative flex items-center justify-center w-[50px] h-[50px] rounded-xl bg-slate-950 border border-slate-800 shadow-md shadow-red-600/20 shrink-0 group-hover:scale-105 transition-transform overflow-hidden">
+      <div 
+        style={{ width: `${boxSize}px`, height: `${boxSize}px` }}
+        className="relative flex items-center justify-center rounded-xl bg-slate-950 border border-slate-800 shadow-md shadow-red-600/20 shrink-0 group-hover:scale-105 transition-transform overflow-hidden"
+      >
         <img
           src={hypertuneLogo}
           alt="HyperTune Garage Logo"
@@ -29,11 +37,17 @@ export const Logo: React.FC<LogoProps> = ({ className = '', variant = 'dark', on
       {/* Typography & Web Domain */}
       <div className="flex flex-col leading-none">
         <div className="flex items-center gap-1">
-          <span className={`text-[23px] font-black tracking-tight uppercase ${textColor}`}>
+          <span 
+            style={{ fontSize: `${titleFontSize}px` }}
+            className={`font-black tracking-tight uppercase ${textColor}`}
+          >
             HYPER<span className="text-red-500">TUNE</span>
           </span>
         </div>
-        <span className="text-[11px] font-bold tracking-widest text-slate-400 uppercase mt-1 flex items-center gap-1">
+        <span 
+          style={{ fontSize: `${subFontSize}px` }}
+          className="font-bold tracking-widest text-slate-400 uppercase mt-1 flex items-center gap-1"
+        >
           <span>HYPERTUNEGARAGE.PK</span>
           <span className="text-red-500">•</span>
           <span>ISLAMABAD</span>

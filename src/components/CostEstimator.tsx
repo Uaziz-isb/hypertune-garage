@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Calculator, ArrowRight, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Calculator, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { servicesData } from '../data/servicesData';
 
 interface CostEstimatorProps {
-  onBookService: (serviceId: string) => void;
+  onBookService?: (serviceId: string) => void;
 }
 
 const estimatorBrands = [
@@ -16,7 +16,7 @@ const estimatorBrands = [
   { id: 'hyundai', name: 'Hyundai / Kia' },
 ];
 
-export const CostEstimator: React.FC<CostEstimatorProps> = ({ onBookService }) => {
+export const CostEstimator: React.FC<CostEstimatorProps> = () => {
   const [selectedBrand, setSelectedBrand] = useState('toyota');
   const [selectedServiceId, setSelectedServiceId] = useState('ecu-tuning');
 
@@ -34,7 +34,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ onBookService }) =
         </div>
         <div>
           <h3 className="text-xl font-bold text-white">Instant Repair & Maintenance Cost Estimator</h3>
-          <p className="text-xs text-slate-400">Select your vehicle & required service for a transparent price range</p>
+          <p className="text-xs text-slate-400">Select your vehicle & required service to view estimated repair costs</p>
         </div>
       </div>
 
@@ -68,7 +68,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ onBookService }) =
             <label className="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">
               2. Select Required Service
             </label>
-            <div className="space-y-1.5 max-h-56 overflow-y-auto pr-1">
+            <div className="space-y-1.5 max-h-52 overflow-y-auto pr-1">
               {servicesData.map((s) => (
                 <button
                   key={s.id}
@@ -80,7 +80,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ onBookService }) =
                   }`}
                 >
                   <span className="truncate pr-2">{s.title}</span>
-                  <span className="text-cyan-400 shrink-0 font-bold">{s.priceRange.split('-')[0]}</span>
+                  <span className="text-cyan-400/80 text-[11px] shrink-0 font-semibold">{s.priceRange.split('-')[0]}</span>
                 </button>
               ))}
             </div>
@@ -93,7 +93,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ onBookService }) =
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div>
                 <span className="text-[11px] font-bold text-cyan-400 uppercase tracking-widest">
-                  Estimate Breakdown
+                  Estimated Repair Cost
                 </span>
                 <h4 className="text-lg font-black text-white">{activeService.title}</h4>
                 <p className="text-xs text-cyan-400 font-semibold mt-0.5">Vehicle: {activeBrand.name}</p>
@@ -136,13 +136,9 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ onBookService }) =
             </div>
           </div>
 
-          <button
-            onClick={() => onBookService(activeService.id)}
-            className="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 active:scale-95 transition-all"
-          >
-            <span>Lock In Estimate & Reserve Lift</span>
-            <ArrowRight className="w-4 h-4 text-slate-950" />
-          </button>
+          <div className="pt-3 border-t border-slate-800 text-[11px] text-slate-400 text-center italic">
+            * Estimated price range based on standard vehicle specs. Final quote confirmed after diagnostic evaluation.
+          </div>
         </div>
       </div>
     </div>

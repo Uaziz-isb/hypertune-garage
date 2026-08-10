@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageId } from '../types';
 import { Logo } from './Logo';
+import { servicesData } from '../data/servicesData';
 import {
   Phone,
   Mail,
@@ -64,7 +65,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
       <div className="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Col 1: Brand & Identity */}
         <div className="space-y-4">
-          <Logo variant="dark" onClick={() => onNavigate('home')} />
+          <Logo variant="dark" scale={1.05} onClick={() => onNavigate('home')} />
           <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
             HyperTune Garage is Pakistan's premier precision automotive workshop specializing in popular vehicle brands (Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval), Japanese imports, Paint Protection Film (PPF), engine rebuilding, ceramic detailing, and hybrid battery diagnostics.
           </p>
@@ -87,18 +88,18 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
                 href="https://wa.me/923330177717"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-2 py-1 rounded-lg bg-slate-900 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-400 transition-colors border border-slate-800 flex items-center gap-1 text-[11px] font-bold"
+                className="px-2 py-1 rounded-lg bg-slate-900 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/30 transition-all flex items-center gap-1 text-[11px] font-bold"
                 title="WhatsApp +92 333 0177717"
                 aria-label="WhatsApp"
               >
-                <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
-                <span className="text-emerald-400">WhatsApp</span>
+                <MessageCircle className="w-3.5 h-3.5" />
+                <span>WhatsApp</span>
               </a>
               <a
                 href="https://www.facebook.com/profile.php?id=61589327521589"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-1.5 rounded-lg bg-slate-900 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-400 transition-colors border border-slate-800 flex items-center justify-center"
+                className="p-1.5 rounded-lg bg-slate-900 hover:bg-[#1877F2] text-[#1877F2] hover:text-white border border-[#1877F2]/30 transition-all flex items-center justify-center"
                 title="Facebook"
                 aria-label="Facebook"
               >
@@ -108,7 +109,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
                 href="https://www.instagram.com/hyper.tunegarage"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-1.5 rounded-lg bg-slate-900 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-400 transition-colors border border-slate-800 flex items-center justify-center"
+                className="p-1.5 rounded-lg bg-slate-900 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-[#E4405F] hover:text-white border border-[#E4405F]/30 hover:border-transparent transition-all flex items-center justify-center"
                 title="Instagram"
                 aria-label="Instagram"
               >
@@ -118,11 +119,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
                 href="https://www.tiktok.com/@hypertune.garage"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-2 py-1 rounded-lg bg-slate-900 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-400 transition-colors border border-slate-800 flex items-center gap-1 text-[11px] font-bold"
+                className="px-2 py-1 rounded-lg bg-slate-900 hover:bg-black text-slate-200 hover:text-white border border-slate-700 hover:border-[#00F2FE] transition-all flex items-center gap-1 text-[11px] font-bold"
                 title="TikTok"
                 aria-label="TikTok"
               >
-                <Video className="w-3.5 h-3.5 text-cyan-400" />
+                <Video className="w-3.5 h-3.5 text-[#00F2FE]" />
                 <span>TikTok</span>
               </a>
             </div>
@@ -131,27 +132,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
 
         {/* Col 2: Core Services */}
         <div className="space-y-3">
-          <h4 className="text-white font-bold text-sm uppercase tracking-wider text-cyan-400">Services</h4>
+          <button
+            onClick={() => onNavigate('services')}
+            className="text-white font-bold text-sm uppercase tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1.5"
+          >
+            <span>Services</span>
+            <ChevronRight className="w-3.5 h-3.5 text-cyan-400" />
+          </button>
           <ul className="space-y-2 text-xs">
-            {[
-              { label: 'Paint Protection Film (PPF)', slug: 'paint-protection-film-ppf' },
-              { label: 'Car Detailing & Ceramic', slug: 'car-detailing' },
-              { label: 'Engine Repair & ECU Remap', slug: 'engine-services' },
-              { label: 'Computer Diagnostics & Audit', slug: 'inspection-diagnostics' },
-              { label: 'Maintenance & Servicing', slug: 'maintenance-servicing' },
-              { label: 'Brake, Suspension & Steering', slug: 'brake-suspension-steering' },
-              { label: 'Transmission & Drivetrain', slug: 'transmission-drivetrain' },
-              { label: 'Vehicle Wraps & Vinyl', slug: 'vehicle-wrap' },
-              { label: 'Body Repair & Paint', slug: 'body-repair-paint' },
-              { label: 'Body Modification & Kits', slug: 'body-modification' },
-            ].map((s) => (
+            {servicesData.map((s) => (
               <li key={s.slug}>
                 <button
                   onClick={() => onNavigate('service-detail', s.slug)}
                   className="hover:text-cyan-400 transition-colors flex items-center gap-1.5 text-left"
                 >
                   <ChevronRight className="w-3 h-3 text-cyan-400 shrink-0" />
-                  <span>{s.label}</span>
+                  <span>{s.title}</span>
                 </button>
               </li>
             ))}
@@ -160,7 +156,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
 
         {/* Col 3: Site Map Navigation */}
         <div className="space-y-3">
-          <h4 className="text-white font-bold text-sm uppercase tracking-wider text-cyan-400">Site Map</h4>
+          <button
+            onClick={() => onNavigate('sitemap')}
+            className="text-white font-bold text-sm uppercase tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1.5"
+          >
+            <span>Site Map</span>
+            <ExternalLink className="w-3.5 h-3.5 text-cyan-400" />
+          </button>
           <ul className="space-y-2 text-xs">
             {[
               { label: 'Home Page', page: 'home' as PageId },
@@ -174,6 +176,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               { label: 'Privacy Policy', page: 'privacy' as PageId },
               { label: 'Terms & Conditions', page: 'terms' as PageId },
               { label: 'Warranty Specs', page: 'warranty' as PageId },
+              { label: 'Site Map Directory', page: 'sitemap' as PageId },
             ].map((link) => (
               <li key={link.page}>
                 <button
@@ -230,6 +233,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} HyperTune Garage. Drive Better, Drive Worry-Free. • <span className="text-slate-400 font-medium">Developed & Managed by: Umair Aziz</span> •</p>
           <div className="flex items-center gap-4">
+            <button onClick={() => onNavigate('sitemap')} className="hover:text-cyan-400 text-cyan-400 font-semibold transition-colors">
+              Site Map
+            </button>
+            <span>•</span>
             <button onClick={() => onNavigate('privacy')} className="hover:text-slate-300 transition-colors">
               Privacy Policy
             </button>

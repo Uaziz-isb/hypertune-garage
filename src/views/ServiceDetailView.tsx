@@ -132,7 +132,7 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#0b121e] border border-slate-800 text-slate-300 hover:text-white font-bold text-xs transition-colors"
           >
             <ArrowLeft className="w-4 h-4 text-cyan-400" />
-            <span>View All 10 Service Categories</span>
+            <span>View All 13 Service Categories</span>
           </button>
         </div>
       </div>

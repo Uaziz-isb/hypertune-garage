@@ -42,7 +42,6 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const [activeBranch, setActiveBranch] = useState<'Islamabad' | 'Rawalpindi'>('Islamabad');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -92,7 +91,7 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Phone className="w-3.5 h-3.5 text-cyan-400" />
               <span>
-                {activeBranch === 'Islamabad' ? 'Islamabad Hub:' : 'Rawalpindi I-9 Branch:'}{' '}
+                Contact Now:{' '}
                 <strong className="text-white font-extrabold tracking-wide">
                   0333-0177717
                 </strong>
@@ -105,27 +104,27 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
 
-          {/* Right: Social Media & Branch Selector */}
+          {/* Right: Social Media */}
           <div className="flex items-center gap-3">
             {/* Social Media Links */}
-            <div className="flex items-center gap-1.5 text-slate-400">
+            <div className="flex items-center gap-2 text-slate-400">
               <span className="hidden md:inline text-[11px] text-slate-400 font-semibold mr-0.5">Follow:</span>
               <a
                 href="https://wa.me/923330177717"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-1.5 py-0.5 rounded-md bg-slate-900 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-400 transition-colors border border-slate-800/80 flex items-center gap-1 text-[11px] font-bold"
+                className="px-2 py-1 rounded-lg bg-slate-900 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/30 transition-all flex items-center gap-1 text-[11px] font-bold"
                 title="WhatsApp +92 333 0177717"
                 aria-label="WhatsApp"
               >
-                <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
-                <span className="text-[10px] font-bold text-emerald-400">WhatsApp</span>
+                <MessageCircle className="w-3.5 h-3.5" />
+                <span>WhatsApp</span>
               </a>
               <a
                 href="https://www.facebook.com/profile.php?id=61589327521589"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-1 rounded-md bg-slate-900 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-400 transition-colors border border-slate-800/80 flex items-center justify-center"
+                className="p-1.5 rounded-lg bg-slate-900 hover:bg-[#1877F2] text-[#1877F2] hover:text-white border border-[#1877F2]/30 transition-all flex items-center justify-center"
                 title="Facebook"
                 aria-label="Facebook"
               >
@@ -135,7 +134,7 @@ export const Header: React.FC<HeaderProps> = ({
                 href="https://www.instagram.com/hyper.tunegarage"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-1 rounded-md bg-slate-900 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-400 transition-colors border border-slate-800/80 flex items-center justify-center"
+                className="p-1.5 rounded-lg bg-slate-900 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-[#E4405F] hover:text-white border border-[#E4405F]/30 hover:border-transparent transition-all flex items-center justify-center"
                 title="Instagram"
                 aria-label="Instagram"
               >
@@ -145,37 +144,13 @@ export const Header: React.FC<HeaderProps> = ({
                 href="https://www.tiktok.com/@hypertune.garage"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-1.5 py-0.5 rounded-md bg-slate-900 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-400 transition-colors border border-slate-800/80 flex items-center gap-1 text-[11px] font-bold"
+                className="px-2 py-1 rounded-lg bg-slate-900 hover:bg-black text-slate-200 hover:text-white border border-slate-700 hover:border-[#00F2FE] transition-all flex items-center gap-1 text-[11px] font-bold"
                 title="TikTok"
                 aria-label="TikTok"
               >
-                <Video className="w-3.5 h-3.5 text-cyan-400" />
-                <span className="text-[10px] font-bold">TikTok</span>
+                <Video className="w-3.5 h-3.5 text-[#00F2FE]" />
+                <span>TikTok</span>
               </a>
-            </div>
-
-            {/* Branch Switcher */}
-            <div className="flex items-center bg-slate-900/90 border border-slate-800 rounded-lg p-0.5">
-              <button
-                onClick={() => setActiveBranch('Islamabad')}
-                className={`px-2.5 py-0.5 rounded-md text-[11px] font-semibold transition-all ${
-                  activeBranch === 'Islamabad'
-                    ? 'bg-cyan-500 text-slate-950 font-bold shadow-sm shadow-cyan-500/40'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                Islamabad Hub
-              </button>
-              <button
-                onClick={() => setActiveBranch('Rawalpindi')}
-                className={`px-2.5 py-0.5 rounded-md text-[11px] font-semibold transition-all ${
-                  activeBranch === 'Rawalpindi'
-                    ? 'bg-cyan-500 text-slate-950 font-bold shadow-sm shadow-cyan-500/40'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                Rawalpindi I-9
-              </button>
             </div>
           </div>
         </div>
@@ -192,7 +167,7 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between gap-4">
           {/* Logo */}
           <div onClick={() => onNavigate('home')}>
-            <Logo variant="dark" />
+            <Logo variant="dark" scale={1.1} />
           </div>
 
           {/* Desktop Nav Items */}
@@ -259,7 +234,7 @@ export const Header: React.FC<HeaderProps> = ({
                             }}
                             className="text-cyan-400 hover:text-cyan-300 font-bold flex items-center gap-1"
                           >
-                            View All 24+ Services →
+                            View All 13 Services →
                           </button>
                         </div>
                       </div>

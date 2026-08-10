@@ -25,6 +25,7 @@ import { ContactView } from './views/ContactView';
 import { PrivacyView } from './views/PrivacyView';
 import { TermsView } from './views/TermsView';
 import { WarrantyView } from './views/WarrantyView';
+import { SitemapView } from './views/SitemapView';
 
 export function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
@@ -61,7 +62,7 @@ export function App() {
     pagePath = '/about/';
   } else if (currentPage === 'services') {
     seoTitle = 'Car Repair Services & Prices | HyperTune Garage';
-    seoDesc = 'Explore 10 specialized automotive service categories in Islamabad & Rawalpindi: Engine Overhaul, Maintenance, Brakes, Transmission, AC Repair, Electrical, Diagnostics, Body Repair, PPF & Detailing.';
+    seoDesc = 'Explore 13 specialized automotive service categories in Islamabad & Rawalpindi: Engine Overhaul, Maintenance, Brakes, Transmission, Hybrid Battery, ECU Tuning, AC & Electrical, Diagnostics, Body Repair, PPF & Detailing.';
     seoKeywords = 'car repair services islamabad, automotive services rawalpindi, car servicing packages, engine overhaul cost, ppf coating price islamabad';
     pagePath = '/services/';
   } else if (currentPage === 'service-detail') {
@@ -127,6 +128,11 @@ export function App() {
     seoDesc = 'Details on HyperTune Garage 12-month / 20,000 km bumper-to-bumper repair warranty covering parts and labor across Islamabad & Rawalpindi.';
     seoKeywords = 'car repair warranty islamabad, 12 month auto warranty pakistan, hypertune warranty specs';
     pagePath = '/warranty-specs/';
+  } else if (currentPage === 'sitemap') {
+    seoTitle = 'HTML Site Map & Index Directory | HyperTune Garage Islamabad & Rawalpindi';
+    seoDesc = 'Explore the complete dynamic index of HyperTune Garage pages, specialized service categories, workshop locations in Islamabad & Rawalpindi, and technical blog articles.';
+    seoKeywords = 'hypertune garage site map, car workshop index islamabad, car repair services directory, auto repair rawalpindi pages';
+    pagePath = '/sitemap/';
   }
 
   return (
@@ -238,6 +244,12 @@ export function App() {
           <WarrantyView
             onNavigate={navigateTo}
             onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'sitemap' && (
+          <SitemapView
+            onNavigate={navigateTo}
+            onOpenBooking={handleOpenBooking}
           />
         )}
       </main>
