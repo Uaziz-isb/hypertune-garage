@@ -80,7 +80,7 @@ export function App() {
   };
 
   // Compute page SEO title, description, keywords & path
-  let seoTitle = 'HyperTune Garage | #1 Car Repair & ECU Tuning Workshop in Islamabad & Rawalpindi';
+  let seoTitle = 'HyperTune Garage - Premium Automotive Workshop in Islamabad & Rawalpindi';
   let seoDesc = 'Car repair workshop in Islamabad & Rawalpindi for Toyota, Honda, Suzuki, Hyundai, Kia & luxury imports. ECU remap, engine overhaul, PPF studio, 3D laser alignment. 12-Month warranty.';
   let seoKeywords = 'car workshop islamabad, auto repair rawalpindi, car detailing islamabad, paint protection film ppf islamabad, ceramic coating rawalpindi, bmw repair islamabad, mercedes garage rawalpindi, audi service center, engine overhaul, ecu tuning remapping, hybrid battery repair, car mechanic near me, hypertune garage';
   let pagePath = '/';

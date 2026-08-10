@@ -20,7 +20,7 @@ interface SEOProps {
 }
 
 export const SEOHead: React.FC<SEOProps> = ({
-  title = 'HyperTune Garage | #1 Car Repair, PPF & ECU Tuning Workshop Islamabad & Rawalpindi',
+  title = 'HyperTune Garage - Premium Automotive Workshop in Islamabad & Rawalpindi',
   description = 'Pakistan’s top automotive workshop specializing in BMW, Mercedes, Audi, Porsche, Toyota, ECU remapping, engine overhauls & hybrid battery repair in Islamabad G-8/4 & Rawalpindi.',
   keywords = 'car workshop islamabad, auto repair rawalpindi, car detailing islamabad, paint protection film ppf islamabad, ceramic coating rawalpindi, bmw repair islamabad, mercedes garage rawalpindi, audi service center, engine overhaul islamabad, ecu tuning remapping, hybrid battery repair, 3d laser wheel alignment, car mechanic near me, hypertune garage',
   canonicalUrl,
