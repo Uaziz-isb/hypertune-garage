@@ -31,22 +31,29 @@ export function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
   const [currentSlug, setCurrentSlug] = useState<string | undefined>(undefined);
 
-  // Handle URL hash navigation on load & hashchange
+  // Handle URL hash & pathname navigation on load & hashchange
   useEffect(() => {
-    const handleHashChange = () => {
+    const handleNavigation = () => {
+      const pathname = window.location.pathname.replace('/', '').toLowerCase();
       const hash = window.location.hash.replace('#', '').trim();
       const validPages: PageId[] = [
         'home', 'about', 'services', 'service-detail', 'locations', 'location-detail',
         'blog', 'blog-post', 'gallery', 'testimonials', 'faq', 'contact',
         'privacy', 'terms', 'warranty', 'sitemap'
       ];
-      if (validPages.includes(hash as PageId)) {
+      if (pathname === 'sitemap' || pathname === 'sitemap.html') {
+        setCurrentPage('sitemap');
+      } else if (validPages.includes(hash as PageId)) {
         setCurrentPage(hash as PageId);
       }
     };
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    handleNavigation();
+    window.addEventListener('hashchange', handleNavigation);
+    window.addEventListener('popstate', handleNavigation);
+    return () => {
+      window.removeEventListener('hashchange', handleNavigation);
+      window.removeEventListener('popstate', handleNavigation);
+    };
   }, []);
 
   // Modals state
