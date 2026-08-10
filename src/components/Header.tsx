@@ -86,14 +86,14 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Left: Contact Info */}
           <div className="flex flex-wrap items-center gap-4">
             <a
-              href="tel:+923330177717"
+              href="tel:+923315008872"
               className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors font-semibold"
             >
               <Phone className="w-3.5 h-3.5 text-cyan-400" />
               <span>
                 Contact Now:{' '}
                 <strong className="text-white font-extrabold tracking-wide">
-                  0333-0177717
+                  0331-5008872
                 </strong>
               </span>
             </a>

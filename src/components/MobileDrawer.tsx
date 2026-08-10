@@ -193,11 +193,11 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
           </div>
           <div className="grid grid-cols-2 gap-2">
             <a
-              href="tel:+923330177717"
+              href="tel:+923315008872"
               className="flex items-center justify-center gap-1.5 p-2.5 rounded-lg bg-slate-800 text-white font-bold text-xs hover:bg-slate-700"
             >
               <Phone className="w-3.5 h-3.5 text-cyan-400" />
-              <span>0333-0177717</span>
+              <span>0331-5008872</span>
             </a>
             <a
               href="https://wa.me/923330177717"

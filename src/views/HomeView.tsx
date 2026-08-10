@@ -168,7 +168,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </button>
 
               <a
-                href="https://wa.me/923315008872?text=Hi%20HyperTune%20Garage%2C%20I%20want%20to%20get%20an%20instant%20PPF%20and%20repair%20estimate."
+                href="https://wa.me/923330177717?text=Hi%20HyperTune%20Garage%2C%20I%20want%20to%20get%20an%20instant%20PPF%20and%20repair%20estimate."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm flex items-center gap-2 shadow-xl shadow-emerald-600/20 active:scale-95 transition-all"
@@ -622,12 +622,15 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     <Phone className="w-3.5 h-3.5 text-cyan-400" />
                     <span>0331-5008872</span>
                   </a>
-                  <button
-                    onClick={() => onNavigate('location-detail', loc.slug)}
-                    className="py-2.5 px-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold text-xs transition-colors"
+                  <a
+                    href={loc.googleMapsDirectionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-2.5 px-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold text-xs transition-colors flex items-center gap-1 shrink-0"
                   >
-                    Directions
-                  </button>
+                    <Navigation className="w-3.5 h-3.5 text-slate-950" />
+                    <span>Directions</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -649,7 +652,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </p>
           </div>
           <a
-            href="https://www.google.com/maps/place/HyperTune+Garage/@33.5622113,73.1345365,17z/data=!3m1!4b1!4m6!3m5!1s0x38dfede5eabd2d83:0xf3b2d99386f26b69!8m2!3d33.5622113!4d73.1345365"
+            href="https://www.google.com/maps?cid=17560337124718439273&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en&gl=PK&source=embed"
             target="_blank"
             rel="noopener noreferrer"
             className="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-xs flex items-center gap-2 shadow-lg shadow-cyan-500/20 shrink-0 transition-all active:scale-95"

@@ -340,7 +340,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
                   {loc.hours.weekdays}
                 </span>
                 <a
-                  href={`tel:${loc.whatsapp}`}
+                  href={`tel:${loc.phone}`}
                   className="text-cyan-400 hover:underline font-bold font-mono"
                 >
                   📞 {loc.phone}
@@ -432,7 +432,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
           </a>
 
           <a
-            href="tel:+923330177717"
+            href="tel:+923315008872"
             className="p-4 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs flex items-center justify-between shadow-lg transition-all active:scale-95"
           >
             <div className="flex items-center gap-2">

@@ -21,11 +21,11 @@ export const EmergencyBanner: React.FC = () => {
 
         <div className="flex items-center gap-2">
           <a
-            href="tel:+923330177717"
+            href="tel:+923315008872"
             className="px-3.5 py-1.5 rounded-lg bg-slate-950 text-cyan-400 font-extrabold text-xs flex items-center gap-1.5 shadow-md hover:bg-slate-900 transition-colors border border-cyan-400/30"
           >
             <Phone className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Emergency: 0333-0177717</span>
+            <span>Emergency: 0331-5008872</span>
           </a>
           <a
             href="https://wa.me/923330177717?text=EMERGENCY%20BREAKDOWN%3A%20I%20need%20immediate%20towing/assistance%20in%20Islamabad/Rawalpindi."

@@ -205,8 +205,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
                 <span>Islamabad Hub (Police Foundation)</span>
               </button>
               <p className="text-slate-400 leading-relaxed">Shop 1-G, Ground Floor, Central Ave, near Attock Petrol Pump, Block E Police Foundation, Islamabad, 44000</p>
-              <a href="tel:+923330177717" className="text-cyan-400 hover:underline font-bold inline-block">
-                0333-0177717
+              <a href="tel:+923315008872" className="text-cyan-400 hover:underline font-bold inline-block">
+                0331-5008872
               </a>
             </div>
 
@@ -220,8 +220,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
                 <span>Rawalpindi & I-9 Branch</span>
               </button>
               <p className="text-slate-400 leading-relaxed">Plot 18, Sector I-9/3 Industrial Area / Saddar Link</p>
-              <a href="tel:+923330177717" className="text-cyan-400 hover:underline font-bold inline-block">
-                0333-0177717
+              <a href="tel:+923315008872" className="text-cyan-400 hover:underline font-bold inline-block">
+                0331-5008872
               </a>
             </div>
           </div>

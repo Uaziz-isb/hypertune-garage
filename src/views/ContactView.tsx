@@ -51,8 +51,8 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
                 Islamabad Hub (Police Foundation):
               </span>
               <p className="text-xs text-slate-300">Shop 1-G, Ground Floor, Central Ave, near Attock Petrol Pump, Block E Police Foundation, Islamabad, 44000, Pakistan</p>
-              <a href="tel:+923330177717" className="text-base font-black text-white hover:text-cyan-400 block">
-                +92 333 0177717
+              <a href="tel:+923315008872" className="text-base font-black text-white hover:text-cyan-400 block">
+                +92 331 5008872
               </a>
             </div>
 
@@ -62,8 +62,8 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
                 Rawalpindi Branch (I-9 / Saddar):
               </span>
               <p className="text-xs text-slate-300">Plot 18, Sector I-9/3 Industrial Area</p>
-              <a href="tel:+923330177717" className="text-base font-black text-white hover:text-cyan-400 block">
-                0333-0177717
+              <a href="tel:+923315008872" className="text-base font-black text-white hover:text-cyan-400 block">
+                0331-5008872
               </a>
             </div>
 
@@ -175,7 +175,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
             </p>
           </div>
           <a
-            href="https://www.google.com/maps/place/HyperTune+Garage/@33.5622113,73.1345365,17z/data=!3m1!4b1!4m6!3m5!1s0x38dfede5eabd2d83:0xf3b2d99386f26b69!8m2!3d33.5622113!4d73.1345365"
+            href="https://www.google.com/maps?cid=17560337124718439273&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en&gl=PK&source=embed"
             target="_blank"
             rel="noopener noreferrer"
             className="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-xs flex items-center gap-2 shadow-lg shadow-cyan-500/20 shrink-0 transition-all active:scale-95"

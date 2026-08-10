@@ -70,7 +70,7 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
         provider: {
           '@type': 'AutoRepair',
           name: 'HyperTune Garage',
-          telephone: '+923330177717',
+          telephone: '+923315008872',
           address: {
             '@type': 'PostalAddress',
             streetAddress: 'Plot 42, Service Road East, Sector G-8/4',
