@@ -19,7 +19,12 @@ import {
   ExternalLink,
   Layers,
   ArrowRight,
-  Clock
+  Clock,
+  Copy,
+  Check,
+  Link,
+  Share2,
+  Code2
 } from 'lucide-react';
 
 interface SitemapViewProps {
@@ -29,6 +34,19 @@ interface SitemapViewProps {
 
 export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBooking }) => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [copiedUrl, setCopiedUrl] = useState(false);
+  const [copiedXml, setCopiedXml] = useState(false);
+  const [showXmlModal, setShowXmlModal] = useState(false);
+
+  const sitemapDirectUrl = typeof window !== 'undefined'
+    ? `${window.location.origin}${window.location.pathname}#sitemap`
+    : 'https://hypertunegarage.com/#sitemap';
+
+  const handleCopyUrl = () => {
+    navigator.clipboard.writeText(sitemapDirectUrl);
+    setCopiedUrl(true);
+    setTimeout(() => setCopiedUrl(false), 2500);
+  };
 
   // Main high-level site pages
   const mainPages: { label: string; page: PageId; desc: string; icon: React.ElementType }[] = [
@@ -45,6 +63,32 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
     { label: 'Privacy Policy', page: 'privacy', desc: 'Customer data privacy standards, security, and cookie policies.', icon: FileText },
     { label: 'Terms & Conditions', page: 'terms', desc: 'Service agreements, estimate terms, and workshop repair policies.', icon: FileText },
   ];
+
+  const xmlContent = useMemo(() => {
+    const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://hypertunegarage.com';
+    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+    xml += `  <url><loc>${baseUrl}/#sitemap</loc><priority>1.0</priority><changefreq>daily</changefreq></url>\n`;
+    mainPages.forEach(p => {
+      xml += `  <url><loc>${baseUrl}/#${p.page}</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>\n`;
+    });
+    servicesData.forEach(s => {
+      xml += `  <url><loc>${baseUrl}/#service-detail?slug=${s.slug}</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>\n`;
+    });
+    locationsData.forEach(l => {
+      xml += `  <url><loc>${baseUrl}/#location-detail?slug=${l.slug}</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>\n`;
+    });
+    blogData.forEach(b => {
+      xml += `  <url><loc>${baseUrl}/#blog-post?slug=${b.slug}</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>\n`;
+    });
+    xml += `</urlset>`;
+    return xml;
+  }, [mainPages]);
+
+  const handleCopyXml = () => {
+    navigator.clipboard.writeText(xmlContent);
+    setCopiedXml(true);
+    setTimeout(() => setCopiedXml(false), 2500);
+  };
 
   // Filter items based on search query
   const filteredMainPages = useMemo(() => {

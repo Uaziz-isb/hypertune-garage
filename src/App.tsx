@@ -31,6 +31,24 @@ export function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
   const [currentSlug, setCurrentSlug] = useState<string | undefined>(undefined);
 
+  // Handle URL hash navigation on load & hashchange
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '').trim();
+      const validPages: PageId[] = [
+        'home', 'about', 'services', 'service-detail', 'locations', 'location-detail',
+        'blog', 'blog-post', 'gallery', 'testimonials', 'faq', 'contact',
+        'privacy', 'terms', 'warranty', 'sitemap'
+      ];
+      if (validPages.includes(hash as PageId)) {
+        setCurrentPage(hash as PageId);
+      }
+    };
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   // Modals state
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -41,6 +59,11 @@ export function App() {
   const navigateTo = (page: PageId, slug?: string) => {
     setCurrentPage(page);
     setCurrentSlug(slug);
+    if (page === 'home') {
+      window.history.replaceState(null, '', window.location.pathname);
+    } else {
+      window.location.hash = page;
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
