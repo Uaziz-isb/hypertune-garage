@@ -8,7 +8,9 @@
     <!-- Performance & Preconnect Hints -->
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    
+    <!-- LCP Image Preload (Discoverable immediately from HTML) -->
+    <link rel="preload" as="image" href="/images/ppf-hero-banner.jpg" fetchpriority="high" type="image/jpeg" />
     
     <!-- Favicon & Brand Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -41,17 +43,19 @@
     <meta name="twitter:title" content="HyperTune Garage | Premier Automotive Workshop in Islamabad & Rawalpindi" />
     <meta name="twitter:description" content="Pakistan’s top automotive workshop specializing in BMW, Mercedes, Audi, Porsche, Toyota, ECU remapping, engine overhauls & hybrid battery repair." />
 
-    <!-- Non-blocking Deferred Google Analytics (GA4) Initialization -->
+    <!-- Google Analytics (GA4) - Deferred to prioritize initial paint and LCP -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PPQJEQSLVE');
+      
+      // Load GA script asynchronously after critical render
       window.addEventListener('load', function() {
-        var gaScript = document.createElement('script');
-        gaScript.async = true;
-        gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-PPQJEQSLVE';
-        document.head.appendChild(gaScript);
-        gtag('js', new Date());
-        gtag('config', 'G-PPQJEQSLVE');
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-PPQJEQSLVE';
+        document.head.appendChild(s);
       });
     </script>
   </head>

@@ -5,41 +5,30 @@ import { EmergencyBanner } from './components/EmergencyBanner';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { MobileDrawer } from './components/MobileDrawer';
 
-// Eager View for Critical LCP
+// Critical Initial View (HomeView loaded directly)
 import { HomeView } from './views/HomeView';
 
-// Code-split Lazy Views & Modals to eliminate monolithic bundling and critical request chains
-const AboutView = lazy(() => import('./views/AboutView').then((m) => ({ default: m.AboutView })));
-const ServicesView = lazy(() => import('./views/ServicesView').then((m) => ({ default: m.ServicesView })));
-const ServiceDetailView = lazy(() => import('./views/ServiceDetailView').then((m) => ({ default: m.ServiceDetailView })));
-const LocationsView = lazy(() => import('./views/LocationsView').then((m) => ({ default: m.LocationsView })));
-const LocationDetailView = lazy(() => import('./views/LocationDetailView').then((m) => ({ default: m.LocationDetailView })));
-const BlogView = lazy(() => import('./views/BlogView').then((m) => ({ default: m.BlogView })));
-const BlogPostView = lazy(() => import('./views/BlogPostView').then((m) => ({ default: m.BlogPostView })));
-const GalleryView = lazy(() => import('./views/GalleryView').then((m) => ({ default: m.GalleryView })));
-const TestimonialsView = lazy(() => import('./views/TestimonialsView').then((m) => ({ default: m.TestimonialsView })));
-const FAQView = lazy(() => import('./views/FAQView').then((m) => ({ default: m.FAQView })));
-const ContactView = lazy(() => import('./views/ContactView').then((m) => ({ default: m.ContactView })));
-const PrivacyView = lazy(() => import('./views/PrivacyView').then((m) => ({ default: m.PrivacyView })));
-const TermsView = lazy(() => import('./views/TermsView').then((m) => ({ default: m.TermsView })));
-const WarrantyView = lazy(() => import('./views/WarrantyView').then((m) => ({ default: m.WarrantyView })));
-const SitemapView = lazy(() => import('./views/SitemapView').then((m) => ({ default: m.SitemapView })));
+// Code-split secondary views & modals to optimize initial bundle size & LCP
+const AboutView = lazy(() => import('./views/AboutView').then(m => ({ default: m.AboutView })));
+const ServicesView = lazy(() => import('./views/ServicesView').then(m => ({ default: m.ServicesView })));
+const ServiceDetailView = lazy(() => import('./views/ServiceDetailView').then(m => ({ default: m.ServiceDetailView })));
+const LocationsView = lazy(() => import('./views/LocationsView').then(m => ({ default: m.LocationsView })));
+const LocationDetailView = lazy(() => import('./views/LocationDetailView').then(m => ({ default: m.LocationDetailView })));
+const BlogView = lazy(() => import('./views/BlogView').then(m => ({ default: m.BlogView })));
+const BlogPostView = lazy(() => import('./views/BlogPostView').then(m => ({ default: m.BlogPostView })));
+const GalleryView = lazy(() => import('./views/GalleryView').then(m => ({ default: m.GalleryView })));
+const TestimonialsView = lazy(() => import('./views/TestimonialsView').then(m => ({ default: m.TestimonialsView })));
+const FAQView = lazy(() => import('./views/FAQView').then(m => ({ default: m.FAQView })));
+const ContactView = lazy(() => import('./views/ContactView').then(m => ({ default: m.ContactView })));
+const PrivacyView = lazy(() => import('./views/PrivacyView').then(m => ({ default: m.PrivacyView })));
+const TermsView = lazy(() => import('./views/TermsView').then(m => ({ default: m.TermsView })));
+const WarrantyView = lazy(() => import('./views/WarrantyView').then(m => ({ default: m.WarrantyView })));
+const SitemapView = lazy(() => import('./views/SitemapView').then(m => ({ default: m.SitemapView })));
 
-const MobileDrawer = lazy(() => import('./components/MobileDrawer').then((m) => ({ default: m.MobileDrawer })));
-const BookingModal = lazy(() => import('./components/BookingModal').then((m) => ({ default: m.BookingModal })));
-const SearchModal = lazy(() => import('./components/SearchModal').then((m) => ({ default: m.SearchModal })));
-
-function RouteLoadingFallback() {
-  return (
-    <div className="min-h-[60vh] flex items-center justify-center py-24">
-      <div className="flex flex-col items-center gap-4">
-        <div className="w-10 h-10 border-2 border-cyan-500/20 border-t-cyan-400 rounded-full animate-spin" />
-        <span className="text-sm font-medium text-slate-400">Loading HyperTune Studio...</span>
-      </div>
-    </div>
-  );
-}
+const BookingModal = lazy(() => import('./components/BookingModal').then(m => ({ default: m.BookingModal })));
+const SearchModal = lazy(() => import('./components/SearchModal').then(m => ({ default: m.SearchModal })));
 
 export function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
@@ -206,7 +195,13 @@ export function App() {
             onOpenBooking={handleOpenBooking}
           />
         ) : (
-          <Suspense fallback={<RouteLoadingFallback />}>
+          <Suspense
+            fallback={
+              <div className="min-h-[70vh] flex items-center justify-center pt-32">
+                <div className="w-8 h-8 rounded-full border-2 border-cyan-500 border-t-transparent animate-spin" />
+              </div>
+            }
+          >
             {currentPage === 'about' && (
               <AboutView
                 onNavigate={navigateTo}
@@ -310,34 +305,34 @@ export function App() {
       {/* Floating Action Buttons */}
       <FloatingWhatsApp />
 
-      {/* Overlays / Modals Loaded on Demand */}
-      <Suspense fallback={null}>
-        {isMobileDrawerOpen && (
-          <MobileDrawer
-            isOpen={isMobileDrawerOpen}
-            onClose={() => setIsMobileDrawerOpen(false)}
-            currentPage={currentPage}
-            onNavigate={navigateTo}
-            onOpenBooking={() => handleOpenBooking()}
-          />
-        )}
+      {/* Overlays / Modals */}
+      <MobileDrawer
+        isOpen={isMobileDrawerOpen}
+        onClose={() => setIsMobileDrawerOpen(false)}
+        currentPage={currentPage}
+        onNavigate={navigateTo}
+        onOpenBooking={() => handleOpenBooking()}
+      />
 
-        {isBookingOpen && (
+      {isBookingOpen && (
+        <Suspense fallback={null}>
           <BookingModal
             isOpen={isBookingOpen}
             onClose={() => setIsBookingOpen(false)}
             initialServiceId={bookingServiceId}
           />
-        )}
+        </Suspense>
+      )}
 
-        {isSearchOpen && (
+      {isSearchOpen && (
+        <Suspense fallback={null}>
           <SearchModal
             isOpen={isSearchOpen}
             onClose={() => setIsSearchOpen(false)}
             onNavigate={navigateTo}
           />
-        )}
-      </Suspense>
+        </Suspense>
+      )}
     </div>
   );
 }

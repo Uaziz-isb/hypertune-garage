@@ -17,14 +17,14 @@ import toyotaStudioAfter from '../assets/images/toyota_grey_after_1786385265810.
 import aboutPpfStudio from '../assets/images/about_ppf_studio_logo_wall_1786667815467.jpg';
 
 export const images = {
-  defaultBrandLogo: logoNew,
+  defaultBrandLogo: '/images/hypertune-logo.jpg',
   aboutPpfStudio,
   heroBanner,
   havalStudioBefore,
   havalStudioAfter,
   toyotaStudioBefore,
   toyotaStudioAfter,
-  ppfHeroBanner,
+  ppfHeroBanner: '/images/ppf-hero-banner.jpg',
   ppfFortunerStudio,
   ppfSedanStudio,
   bannerDyno,
@@ -35,10 +35,10 @@ export const images = {
   ceramicDetailing,
   logoNew,
   logoOld,
-  ppfStudio: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1200&q=80',
-  ppfDetailingGarage: 'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1200&q=80',
-  sportsCarHero: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1200&q=80',
-  sportsCarShowcase: 'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1200&q=80',
+  ppfStudio: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1400&q=80',
+  ppfDetailingGarage: 'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1400&q=80',
+  sportsCarHero: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1400&q=80',
+  sportsCarShowcase: 'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1400&q=80',
   // High definition automotive photography fallbacks
   ecuTuningAlt: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80',
   germanCar: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1200&q=80',
