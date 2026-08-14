@@ -10,13 +10,7 @@ interface LocationDetailProps {
 }
 
 export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavigate, onOpenBooking }) => {
-  const normalized = (slug || '').toLowerCase();
-  const loc =
-    locationsData.find((l) => l.slug === normalized || l.id === normalized) ||
-    (normalized.includes('rawalpindi') || normalized.includes('i9') || normalized.includes('saddar')
-      ? locationsData.find((l) => l.id.includes('rawalpindi'))
-      : locationsData.find((l) => l.id.includes('islamabad'))) ||
-    locationsData[0];
+  const loc = locationsData.find((l) => l.slug === slug) || locationsData[0];
 
   return (
     <div className="pt-24 pb-16 space-y-12">

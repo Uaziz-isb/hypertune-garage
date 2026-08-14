@@ -53,7 +53,7 @@ export const locationsData: LocationItem[] = [
       'High-Voltage Hybrid & EV Battery Testing Lab',
       'Heavy SUV & 4x4 Off-Road Suspension Bay',
       'Automated Robinair R134a/R1234yf AC Station',
-      'OEM Scanner Digital Diagnostics Bay',
+      '24/7 Towing Truck Recovery Hub',
     ],
     landmarks: ['Near IJ Principal Road Interchange', '5 Mins from Rawalpindi Saddar & Station', 'Opposite Metro Bus I-9 Station'],
     managerName: 'Zubair Khan (Senior Diagnostics Specialist)',

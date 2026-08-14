@@ -11,7 +11,7 @@ export const blogData: BlogPost[] = [
     author: {
       name: 'Engr. Shahzaib Malik',
       role: 'Lead Detailing & PPF Specialist',
-      avatar: images.author1,
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
     },
     publishedDate: 'July 15, 2026',
     readTime: '6 min read',
@@ -48,7 +48,7 @@ export const blogData: BlogPost[] = [
     author: {
       name: 'Tariq Mahmood',
       role: 'Master Automotive Specialist',
-      avatar: images.author2,
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
     },
     publishedDate: 'June 28, 2026',
     readTime: '5 min read',
@@ -78,7 +78,7 @@ export const blogData: BlogPost[] = [
     author: {
       name: 'Usman Ali',
       role: 'High-Voltage Hybrid Technician',
-      avatar: images.author3,
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
     },
     publishedDate: 'May 14, 2026',
     readTime: '7 min read',
@@ -105,7 +105,7 @@ export const blogData: BlogPost[] = [
     author: {
       name: 'Engr. Hassan Raza',
       role: 'Head Calibrator & Dyno Tuner',
-      avatar: images.author4,
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
     },
     publishedDate: 'August 02, 2026',
     readTime: '8 min read',

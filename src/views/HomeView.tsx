@@ -81,7 +81,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
 }) => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -89,26 +88,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
     }, 5000);
     return () => clearInterval(timer);
   }, []);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStartX(e.touches[0].clientX);
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX === null) return;
-    const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 40) {
-      if (diff > 0) {
-        // Swiped left -> next slide
-        setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-      } else {
-        // Swiped right -> prev slide
-        setCurrentSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
-      }
-    }
-    setTouchStartX(null);
-  };
 
   const premiumIds = [
     'paint-protection-film-ppf',
@@ -127,9 +106,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
   const activeHero = heroSlides[currentSlide];
 
   return (
-    <div className="space-y-16 sm:space-y-20 pb-16">
+    <div className="space-y-20 pb-16">
       {/* HERO SECTION */}
-      <section className="relative min-h-[75vh] sm:min-h-[85vh] flex items-center pt-24 sm:pt-28 md:pt-32 pb-10 sm:pb-16 px-3 sm:px-4 bg-slate-950 overflow-hidden">
+      <section className="relative min-h-[85vh] flex items-center pt-32 md:pt-36 pb-16 px-4 bg-slate-950 overflow-hidden">
         {/* Background Image Carousel with Vignette */}
         <div className="absolute inset-0 z-0">
           {heroSlides.map((slide, idx) => (
@@ -150,32 +129,32 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <div className="absolute inset-0 z-20 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/80" />
         </div>
 
-        <div className="relative z-30 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="relative z-30 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Copy & Actions */}
-          <div className="lg:col-span-6 space-y-4 sm:space-y-6 text-center lg:text-left">
+          <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
             {/* Trust Badge */}
-            <div className="inline-flex items-center gap-2 bg-cyan-950/60 border border-cyan-500/30 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-cyan-400 font-bold text-[11px] sm:text-xs uppercase tracking-wider max-w-full">
-              <Award className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-              <span className="truncate">Pakistan’s Premier PPF & Precision Workshop</span>
+            <div className="inline-flex items-center gap-2 bg-cyan-950/60 border border-cyan-500/30 px-3.5 py-1.5 rounded-full text-cyan-400 font-bold text-xs uppercase tracking-wider">
+              <Award className="w-4 h-4 text-cyan-400" />
+              <span>Pakistan’s Premier PPF & Precision Automotive Workshop</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
               Paint Protection Film (PPF) & <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500">Detailing Studio</span>
             </h1>
 
             {/* Subhead */}
-            <p className="text-slate-300 text-sm sm:text-base md:text-lg max-w-2xl font-normal leading-relaxed mx-auto lg:mx-0">
-              Self-healing Paint Protection Film (PPF), Ceramic Coating, and mechanical repairs for Pakistan’s famous vehicle brands (Honda, Toyota, Haval, MG, Hyundai, Kia, Changan) in <strong>Islamabad Police Foundation Hub</strong> & <strong>Rawalpindi I-9</strong>.
+            <p className="text-slate-300 text-base sm:text-lg max-w-2xl font-normal leading-relaxed mx-auto lg:mx-0">
+              Self-healing Paint Protection Film (PPF), Ceramic Coating, and mechanical repairs for Pakistan’s famous vehicle brands (Honda, Nissan, Changan, MG, Toyota, Suzuki, Hyundai, Kia, Haval) in <strong>Islamabad Police Foundation Hub</strong> & <strong>Rawalpindi I-9</strong>.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 pt-2 w-full sm:w-auto">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
               <button
                 onClick={() => onOpenBooking()}
-                className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-xs sm:text-sm shadow-xl shadow-cyan-500/25 flex items-center justify-center gap-2.5 active:scale-95 transition-all"
+                className="px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-sm shadow-xl shadow-cyan-500/30 flex items-center gap-2.5 active:scale-95 transition-all"
               >
-                <Wrench className="w-4 h-4 sm:w-5 sm:h-5 text-slate-950 shrink-0" />
+                <Wrench className="w-5 h-5 text-slate-950" />
                 <span>Book Service Appointment</span>
               </button>
 
@@ -183,39 +162,35 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 href="https://wa.me/923330177717?text=Hi%20HyperTune%20Garage%2C%20I%20want%20to%20get%20an%20instant%20PPF%20and%20repair%20estimate."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xl shadow-emerald-600/20 active:scale-95 transition-all"
+                className="px-6 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm flex items-center gap-2 shadow-xl shadow-emerald-600/20 active:scale-95 transition-all"
               >
-                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                <MessageCircle className="w-5 h-5" />
                 <span>Instant WhatsApp Estimate</span>
               </a>
             </div>
 
             {/* Micro Trust Specs */}
-            <div className="pt-3 sm:pt-4 grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 text-xs text-slate-400 border-t border-slate-800/80 text-left">
-              <div className="flex items-center gap-2 bg-slate-900/40 sm:bg-transparent p-2 sm:p-0 rounded-lg sm:rounded-none">
-                <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span className="text-[11px] sm:text-xs">Self-Healing TPU (10-Yr Warranty)</span>
+            <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400 border-t border-slate-800/80">
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-cyan-400" />
+                <span>Self-Healing TPU Film (10-Yr Warranty)</span>
               </div>
-              <div className="flex items-center gap-2 bg-slate-900/40 sm:bg-transparent p-2 sm:p-0 rounded-lg sm:rounded-none">
-                <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span className="text-[11px] sm:text-xs">100% Dust-Free Studio Bay</span>
+              <div className="flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-cyan-400" />
+                <span>100% Dust-Free Studio Installation</span>
               </div>
-              <div className="flex items-center gap-2 bg-slate-900/40 sm:bg-transparent p-2 sm:p-0 rounded-lg sm:rounded-none">
-                <Star className="w-4 h-4 text-amber-400 fill-amber-400 shrink-0" />
-                <span className="text-[11px] sm:text-xs">4.9 Star Rating (340+ Reviews)</span>
+              <div className="flex items-center gap-1.5">
+                <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+                <span>4.9 Star Rating (340+ Reviews)</span>
               </div>
             </div>
           </div>
 
           {/* Right Column: Premium Interactive PPF Studio Carousel */}
           <div className="lg:col-span-6 relative">
-            <div
-              className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-cyan-500/30 shadow-2xl shadow-cyan-500/10 group touch-pan-y select-none"
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-            >
+            <div className="relative rounded-3xl overflow-hidden border border-cyan-500/30 shadow-2xl shadow-cyan-500/10 group">
               {/* Animated Slide Container */}
-              <div className="relative h-[250px] xs:h-[290px] sm:h-[370px] md:h-[430px] w-full bg-slate-950">
+              <div className="relative h-[360px] sm:h-[430px] w-full bg-slate-950">
                 {heroSlides.map((slide, idx) => (
                   <img
                     key={slide.title + idx}
@@ -238,55 +213,54 @@ export const HomeView: React.FC<HomeViewProps> = ({
               {/* Slider Controls (Prev / Next Arrows & Timer Bar) */}
               <button
                 onClick={() => setCurrentSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1))}
-                className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-950/80 border border-slate-700 text-white flex items-center justify-center hover:bg-cyan-500 hover:text-slate-950 hover:border-cyan-400 transition-all z-20"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-950/70 border border-slate-700 text-white flex items-center justify-center opacity-75 hover:opacity-100 hover:bg-cyan-500 hover:text-slate-950 hover:border-cyan-400 transition-all z-20"
                 aria-label="Previous Slide"
               >
-                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+                <ChevronLeft className="w-5 h-5" />
               </button>
 
               <button
                 onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
-                className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-950/80 border border-slate-700 text-white flex items-center justify-center hover:bg-cyan-500 hover:text-slate-950 hover:border-cyan-400 transition-all z-20"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-950/70 border border-slate-700 text-white flex items-center justify-center opacity-75 hover:opacity-100 hover:bg-cyan-500 hover:text-slate-950 hover:border-cyan-400 transition-all z-20"
                 aria-label="Next Slide"
               >
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                <ChevronRight className="w-5 h-5" />
               </button>
 
               {/* Floating Slide Details Box */}
-              <div className="absolute bottom-2.5 sm:bottom-4 left-2.5 sm:left-4 right-2.5 sm:right-4 bg-slate-950/90 backdrop-blur-md p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-slate-800 space-y-2 sm:space-y-3 shadow-2xl z-20">
-                <div className="flex items-center justify-between gap-2 sm:gap-3">
-                  <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-black shrink-0">
-                      <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />
+              <div className="absolute bottom-4 left-4 right-4 bg-slate-950/90 backdrop-blur-md p-4 rounded-2xl border border-slate-800 space-y-3 shadow-2xl z-20">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-black shrink-0">
+                      <ShieldCheck className="w-5 h-5" />
                     </div>
-                    <div className="min-w-0">
-                      <h4 className="text-white font-extrabold text-xs sm:text-sm leading-tight truncate">{activeHero.title}</h4>
-                      <p className="text-slate-300 text-[11px] sm:text-xs mt-0.5 truncate">{activeHero.tagline}</p>
+                    <div>
+                      <h4 className="text-white font-extrabold text-sm leading-tight">{activeHero.title}</h4>
+                      <p className="text-slate-300 text-xs mt-0.5">{activeHero.tagline}</p>
                     </div>
                   </div>
-                  <span className="hidden xs:inline-flex bg-cyan-500 text-slate-950 font-extrabold text-[9px] sm:text-[10px] uppercase px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg shrink-0">
+                  <span className="hidden sm:inline-flex bg-cyan-500 text-slate-950 font-extrabold text-[10px] uppercase px-2.5 py-1 rounded-lg shrink-0">
                     {activeHero.badge}
                   </span>
                 </div>
 
                 {/* Dots & Auto-rotation Progress Bar */}
-                <div className="flex items-center justify-between pt-1 border-t border-slate-800/80">
+                <div className="flex items-center justify-between pt-1 border-t border-slate-800">
                   <div className="flex items-center gap-1.5">
                     {heroSlides.map((_, idx) => (
                       <button
                         key={idx}
                         onClick={() => setCurrentSlide(idx)}
-                        className={`h-1.5 sm:h-2 rounded-full transition-all ${
-                          idx === currentSlide ? 'w-5 sm:w-6 bg-cyan-400' : 'w-1.5 sm:w-2 bg-slate-700 hover:bg-slate-500'
+                        className={`h-2 rounded-full transition-all ${
+                          idx === currentSlide ? 'w-6 bg-cyan-400' : 'w-2 bg-slate-700 hover:bg-slate-500'
                         }`}
                         aria-label={`Go to slide ${idx + 1}`}
                       />
                     ))}
                   </div>
-                  <span className="text-[9px] sm:text-[10px] text-cyan-400 font-extrabold tracking-wider uppercase flex items-center gap-1">
-                    <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3 animate-spin" style={{ animationDuration: '5s' }} />
-                    <span className="hidden xs:inline">Auto-Rotating</span>
-                    <span>(5s)</span>
+                  <span className="text-[10px] text-cyan-400 font-extrabold tracking-wider uppercase flex items-center gap-1">
+                    <Clock className="w-3 h-3 animate-spin" style={{ animationDuration: '5s' }} />
+                    Auto-Rotating (5s)
                   </span>
                 </div>
               </div>
@@ -417,8 +391,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     src={service.image}
                     alt={service.title}
                     referrerPolicy="no-referrer"
-                    loading="lazy"
-                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0b121e] via-transparent to-transparent" />
@@ -584,7 +556,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { step: '01', title: 'Book Appointment', desc: 'Reserve online or via WhatsApp. Priority slot booking with zero wait time upon workshop arrival.' },
+            { step: '01', title: 'Book Appointment', desc: 'Reserve online or via WhatsApp. Flatbed towing pickup available across Islamabad & Rawalpindi.' },
             { step: '02', title: 'Computer Diagnostic', desc: 'Our master technicians execute an OEM scanner health audit and create an itemized estimate.' },
             { step: '03', title: 'Video Approval', desc: 'Receive HD video proof of worn parts. Work only starts upon your explicit digital authorization.' },
             { step: '04', title: 'Road Test & Warranty', desc: 'High-speed highway verification test, final cleaning, and delivery with 12-Month Written Warranty.' },
@@ -615,8 +587,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   src={loc.image}
                   alt={loc.branchName}
                   referrerPolicy="no-referrer"
-                  loading="lazy"
-                  decoding="async"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-[#05080e]/40" />

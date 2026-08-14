@@ -43,7 +43,7 @@ export const initialGoogleBusinessData: GoogleBusinessData = {
     {
       id: "g-rev-1",
       authorName: "Usman Tariq",
-      authorPhoto: "/images/avatars/author-1.webp",
+      authorPhoto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80",
       rating: 5,
       relativeTimeText: "2 days ago",
       text: "Got full body TPU Paint Protection Film (PPF) and Paint Protection System (PPS) hydrophobic armor done on my Porsche 911 GT3 at HyperTune Garage Islamabad. The glass mirror clarity and self-healing capability are remarkable. Zero bubbles, flawless edge tucking in their dust-free clean studio. Engr. Shahzaib and team are true professionals!",
@@ -55,7 +55,7 @@ export const initialGoogleBusinessData: GoogleBusinessData = {
     {
       id: "g-rev-2",
       authorName: "Dr. Hammad Chaudhry",
-      authorPhoto: "/images/avatars/author-2.webp",
+      authorPhoto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
       rating: 5,
       relativeTimeText: "5 days ago",
       text: "HyperTune Garage solved a complex drivetrain error on my BMW 530i that two major workshops in Rawalpindi failed to diagnose. Their BMW ISTA scanner identified a faulty sensor, replaced it with original OEM parts, and applied front-end PPF. Transparent video inspection updates sent directly to my WhatsApp. Unmatched service quality in Pakistan!",
@@ -67,7 +67,7 @@ export const initialGoogleBusinessData: GoogleBusinessData = {
     {
       id: "g-rev-3",
       authorName: "Saad Alvi",
-      authorPhoto: "/images/avatars/author-3.webp",
+      authorPhoto: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=120&q=80",
       rating: 5,
       relativeTimeText: "1 week ago",
       text: "Applied self-healing Paint Protection Film (PPF) and 9H Ceramic PPS topcoat on my new Honda Civic RS. Gravel stone chips on Islamabad Highway leave absolutely zero marks now! Their CAD computer plotter pre-cuts the film so no knives ever touch your car's factory paint. 10/10 recommendation!",
@@ -79,7 +79,7 @@ export const initialGoogleBusinessData: GoogleBusinessData = {
     {
       id: "g-rev-4",
       authorName: "Malik Shehryar Khan",
-      authorPhoto: "/images/avatars/author-4.webp",
+      authorPhoto: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=120&q=80",
       rating: 5,
       relativeTimeText: "2 weeks ago",
       text: "Brought my Toyota Land Cruiser V8 to HyperTune Garage for full body heavy-duty PPF & PPS armor. Off-road driving around Murree & Hazara leaves zero scratches now. The hydrophobic water beading is incredible. Excellent customer lounge with live video monitoring of the workshop bay.",
@@ -91,7 +91,7 @@ export const initialGoogleBusinessData: GoogleBusinessData = {
     {
       id: "g-rev-5",
       authorName: "Zainab Raza",
-      authorPhoto: "/images/avatars/author-5.webp",
+      authorPhoto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80",
       rating: 5,
       relativeTimeText: "3 weeks ago",
       text: "Outstanding interior detailing and PPS ceramic coating for my Audi A4. The workshop is immaculate, staff is courteous, and pricing is extremely honest compared to local dealerships. Will definitely return for routine maintenance!",
@@ -141,30 +141,18 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
   };
 
   useEffect(() => {
-    // Completely out of critical rendering path: only sync when browser is idle after 8 seconds
-    let idleId: number;
-    let timeoutId: NodeJS.Timeout;
+    // Non-blocking deferred sync after initial paint
+    const timeout = setTimeout(() => {
+      fetchReviews();
+    }, 2500);
 
-    const scheduleSync = () => {
-      if ('requestIdleCallback' in window) {
-        idleId = (window as any).requestIdleCallback(() => fetchReviews(), { timeout: 10000 });
-      } else {
-        timeoutId = setTimeout(() => fetchReviews(), 8000);
-      }
-    };
-
-    scheduleSync();
-
-    // Background sync every 5 minutes (300s)
+    // Periodic background sync every 60 seconds
     const interval = setInterval(() => {
       fetchReviews();
-    }, 300000);
+    }, 60000);
 
     return () => {
-      if (idleId && 'cancelIdleCallback' in window) {
-        (window as any).cancelIdleCallback(idleId);
-      }
-      if (timeoutId) clearTimeout(timeoutId);
+      clearTimeout(timeout);
       clearInterval(interval);
     };
   }, []);
@@ -355,13 +343,6 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
                     src={review.authorPhoto}
                     alt={review.authorName}
                     referrerPolicy="no-referrer"
-                    loading="lazy"
-                    decoding="async"
-                    onError={(e) => {
-                      const target = e.currentTarget as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = '/images/avatars/author-1.webp';
-                    }}
                     className="w-11 h-11 rounded-full object-cover border-2 border-slate-700 shrink-0"
                   />
                   <div>

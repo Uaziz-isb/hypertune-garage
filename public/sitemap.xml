@@ -2,197 +2,140 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://hypertunegarage.pk/</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/about</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#about</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/services</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#services</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/locations</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#locations</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/gallery</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://hypertunegarage.pk/testimonials</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://hypertunegarage.pk/blog</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#blog</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/faq</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#gallery</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/contact</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#testimonials</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/warranty-specs</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#faq</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/privacy-policy</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#contact</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hypertunegarage.pk/#privacy</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/terms-conditions</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#terms</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/sitemap</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://hypertunegarage.pk/#warranty</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
-  <!-- Service Detail Pages -->
+
+  <!-- Service Details -->
   <url>
-    <loc>https://hypertunegarage.pk/services/paint-protection-film-ppf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://hypertunegarage.pk/services/car-detailing</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#service-detail?slug=paint-protection-film-ppf</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/services/engine-services</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#service-detail?slug=pps-paint-protection-system</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/services/inspection-diagnostics</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#service-detail?slug=detailing-ceramic-coating</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/services/maintenance-servicing</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#service-detail?slug=ecu-tuning-remap</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/services/brake-suspension-steering</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#service-detail?slug=body-kits-customization</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/services/transmission-drivetrain</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#service-detail?slug=german-car-mechanics</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/services/vehicle-wrap</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#service-detail?slug=suspension-brakes-wheels</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
+
+  <!-- Locations -->
   <url>
-    <loc>https://hypertunegarage.pk/services/body-repair-paint</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://hypertunegarage.pk/services/body-modification</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://hypertunegarage.pk/services/hybrid-ev-battery-services</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://hypertunegarage.pk/services/ecu-tuning-dyno</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://hypertunegarage.pk/services/car-ac-electrical</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- Workshop Location Pages -->
-  <url>
-    <loc>https://hypertunegarage.pk/locations/islamabad-workshop-g8</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#location-detail?slug=islamabad-workshop-g8</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hypertunegarage.pk/locations/rawalpindi-workshop-saddar</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#location-detail?slug=rawalpindi-workshop-i9</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
-  <!-- Blog Article Pages -->
+
+  <!-- Blog Posts -->
   <url>
-    <loc>https://hypertunegarage.pk/blog/ppf-pps-paint-protection-guide-pakistan</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://hypertunegarage.pk/#blog-post?slug=ppf-pps-paint-protection-guide-pakistan</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://hypertunegarage.pk/blog/car-maintenance-pakistan-summer-heat</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://hypertunegarage.pk/blog/prius-aqua-vezel-hybrid-battery-guide</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://hypertunegarage.pk/blog/ecu-remapping-stage-1-2-guide-pakistan</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.7</priority>
   </url>
 </urlset>

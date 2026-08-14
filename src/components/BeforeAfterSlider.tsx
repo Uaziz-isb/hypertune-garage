@@ -26,6 +26,20 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = ({
     setSliderPos(Number(e.target.value));
   };
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const pos = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setSliderPos(pos);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.touches[0].clientX - rect.left;
+    const pos = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setSliderPos(pos);
+  };
+
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
@@ -40,17 +54,18 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = ({
         className="relative w-full h-80 sm:h-[400px] rounded-2xl overflow-hidden cursor-ew-resize select-none border border-slate-800 shadow-2xl group"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        onMouseMove={handleMouseMove}
+        onTouchMove={handleTouchMove}
       >
-        {/* Invisible Range Input Overlay for 100% Reliable Dragging & Zero Forced Reflows */}
+        {/* Invisible Range Input Overlay for 100% Reliable Dragging */}
         <input
           type="range"
           min="0"
           max="100"
           value={sliderPos}
           onChange={handleSliderChange}
-          onInput={handleSliderChange}
           aria-label={title}
-          className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30 touch-none"
+          className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30"
         />
 
         {/* After Image (Full width background) */}
@@ -58,8 +73,6 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = ({
           src={afterImage}
           alt={afterLabel}
           referrerPolicy="no-referrer"
-          loading="lazy"
-          decoding="async"
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
 
@@ -82,8 +95,6 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = ({
             src={beforeImage}
             alt={beforeLabel}
             referrerPolicy="no-referrer"
-            loading="lazy"
-            decoding="async"
             className="absolute inset-0 w-full h-full object-cover filter brightness-[0.92] contrast-[0.98] transition-transform duration-700 group-hover:scale-105"
           />
 
