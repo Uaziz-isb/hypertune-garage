@@ -202,7 +202,7 @@ const defaultReviewsPayload = {
     {
       id: "g-rev-1",
       authorName: "Usman Tariq",
-      authorPhoto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80",
+      authorPhoto: "/images/avatars/author-1.webp",
       rating: 5,
       relativeTimeText: "2 days ago",
       text: "Got full body TPU Paint Protection Film (PPF) done on my Porsche 911 GT3 at HyperTune Garage Islamabad. The glass mirror clarity and self-healing capability are remarkable. Zero bubbles, flawless edge tucking in their dust-free clean studio. Engr. Shahzaib and team are true professionals!",
@@ -214,7 +214,7 @@ const defaultReviewsPayload = {
     {
       id: "g-rev-2",
       authorName: "Dr. Hammad Chaudhry",
-      authorPhoto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
+      authorPhoto: "/images/avatars/author-2.webp",
       rating: 5,
       relativeTimeText: "5 days ago",
       text: "HyperTune Garage solved a complex drivetrain error on my BMW 530i that two major workshops in Rawalpindi failed to diagnose. Their BMW ISTA scanner identified a faulty sensor, replaced it with original OEM parts, and applied front-end PPF. Transparent video inspection updates sent directly to my WhatsApp. Unmatched service quality in Pakistan!",
@@ -226,7 +226,7 @@ const defaultReviewsPayload = {
     {
       id: "g-rev-3",
       authorName: "Saad Alvi",
-      authorPhoto: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=120&q=80",
+      authorPhoto: "/images/avatars/author-3.webp",
       rating: 5,
       relativeTimeText: "1 week ago",
       text: "Applied self-healing Paint Protection Film (PPF) and 9H Ceramic topcoat on my new Honda Civic RS. Gravel stone chips on Islamabad Highway leave absolutely zero marks now! Their CAD computer plotter pre-cuts the film so no knives ever touch your car's factory paint. 10/10 recommendation!",
@@ -238,7 +238,7 @@ const defaultReviewsPayload = {
     {
       id: "g-rev-4",
       authorName: "Malik Shehryar Khan",
-      authorPhoto: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=120&q=80",
+      authorPhoto: "/images/avatars/author-4.webp",
       rating: 5,
       relativeTimeText: "2 weeks ago",
       text: "Brought my Toyota Land Cruiser V8 to HyperTune Garage for full body heavy-duty PPF armor. Off-road driving around Murree & Hazara leaves zero scratches now. The hydrophobic water beading is incredible. Excellent customer lounge with live video monitoring of the workshop bay.",
@@ -250,7 +250,7 @@ const defaultReviewsPayload = {
     {
       id: "g-rev-5",
       authorName: "Zainab Raza",
-      authorPhoto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80",
+      authorPhoto: "/images/avatars/author-5.webp",
       rating: 5,
       relativeTimeText: "3 weeks ago",
       text: "Outstanding interior detailing and ceramic coating for my Audi A4. The workshop is immaculate, staff is courteous, and pricing is extremely honest compared to local dealerships. Will definitely return for routine maintenance!",
