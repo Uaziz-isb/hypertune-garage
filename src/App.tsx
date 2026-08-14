@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageId } from './types';
 import { SEOHead } from './components/SEOHead';
 import { EmergencyBanner } from './components/EmergencyBanner';
@@ -6,29 +6,26 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { MobileDrawer } from './components/MobileDrawer';
+import { BookingModal } from './components/BookingModal';
+import { SearchModal } from './components/SearchModal';
 
-// Critical Initial View (HomeView loaded directly)
+// Views
 import { HomeView } from './views/HomeView';
-
-// Code-split secondary views & modals to optimize initial bundle size & LCP
-const AboutView = lazy(() => import('./views/AboutView').then(m => ({ default: m.AboutView })));
-const ServicesView = lazy(() => import('./views/ServicesView').then(m => ({ default: m.ServicesView })));
-const ServiceDetailView = lazy(() => import('./views/ServiceDetailView').then(m => ({ default: m.ServiceDetailView })));
-const LocationsView = lazy(() => import('./views/LocationsView').then(m => ({ default: m.LocationsView })));
-const LocationDetailView = lazy(() => import('./views/LocationDetailView').then(m => ({ default: m.LocationDetailView })));
-const BlogView = lazy(() => import('./views/BlogView').then(m => ({ default: m.BlogView })));
-const BlogPostView = lazy(() => import('./views/BlogPostView').then(m => ({ default: m.BlogPostView })));
-const GalleryView = lazy(() => import('./views/GalleryView').then(m => ({ default: m.GalleryView })));
-const TestimonialsView = lazy(() => import('./views/TestimonialsView').then(m => ({ default: m.TestimonialsView })));
-const FAQView = lazy(() => import('./views/FAQView').then(m => ({ default: m.FAQView })));
-const ContactView = lazy(() => import('./views/ContactView').then(m => ({ default: m.ContactView })));
-const PrivacyView = lazy(() => import('./views/PrivacyView').then(m => ({ default: m.PrivacyView })));
-const TermsView = lazy(() => import('./views/TermsView').then(m => ({ default: m.TermsView })));
-const WarrantyView = lazy(() => import('./views/WarrantyView').then(m => ({ default: m.WarrantyView })));
-const SitemapView = lazy(() => import('./views/SitemapView').then(m => ({ default: m.SitemapView })));
-
-const BookingModal = lazy(() => import('./components/BookingModal').then(m => ({ default: m.BookingModal })));
-const SearchModal = lazy(() => import('./components/SearchModal').then(m => ({ default: m.SearchModal })));
+import { AboutView } from './views/AboutView';
+import { ServicesView } from './views/ServicesView';
+import { ServiceDetailView } from './views/ServiceDetailView';
+import { LocationsView } from './views/LocationsView';
+import { LocationDetailView } from './views/LocationDetailView';
+import { BlogView } from './views/BlogView';
+import { BlogPostView } from './views/BlogPostView';
+import { GalleryView } from './views/GalleryView';
+import { TestimonialsView } from './views/TestimonialsView';
+import { FAQView } from './views/FAQView';
+import { ContactView } from './views/ContactView';
+import { PrivacyView } from './views/PrivacyView';
+import { TermsView } from './views/TermsView';
+import { WarrantyView } from './views/WarrantyView';
+import { SitemapView } from './views/SitemapView';
 
 export function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
@@ -143,7 +140,7 @@ export function App() {
     pagePath = '/faq/';
   } else if (currentPage === 'contact') {
     seoTitle = 'Contact Us | HyperTune Garage Islamabad & Rawalpindi';
-    seoDesc = 'Get in touch with HyperTune Garage in Islamabad & Rawalpindi. Call +92 331 5008872, message on WhatsApp, or book an online repair slot.';
+    seoDesc = 'Get in touch with HyperTune Garage in Islamabad & Rawalpindi. Call +92 300 1234567, message on WhatsApp, or book an online repair slot.';
     seoKeywords = 'contact hypertune garage, car workshop phone number islamabad, book car service rawalpindi';
     pagePath = '/contact/';
   } else if (currentPage === 'privacy') {
@@ -189,110 +186,101 @@ export function App() {
 
       {/* Main View Router */}
       <main className="flex-grow">
-        {currentPage === 'home' ? (
+        {currentPage === 'home' && (
           <HomeView
             onNavigate={navigateTo}
             onOpenBooking={handleOpenBooking}
           />
-        ) : (
-          <Suspense
-            fallback={
-              <div className="min-h-[70vh] flex items-center justify-center pt-32">
-                <div className="w-8 h-8 rounded-full border-2 border-cyan-500 border-t-transparent animate-spin" />
-              </div>
-            }
-          >
-            {currentPage === 'about' && (
-              <AboutView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'services' && (
-              <ServicesView
-                onNavigate={navigateTo}
-                onOpenBooking={handleOpenBooking}
-              />
-            )}
-            {currentPage === 'service-detail' && (
-              <ServiceDetailView
-                slug={currentSlug}
-                onNavigate={navigateTo}
-                onOpenBooking={handleOpenBooking}
-              />
-            )}
-            {currentPage === 'locations' && (
-              <LocationsView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'location-detail' && (
-              <LocationDetailView
-                slug={currentSlug}
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'blog' && (
-              <BlogView onNavigate={navigateTo} />
-            )}
-            {currentPage === 'blog-post' && (
-              <BlogPostView
-                slug={currentSlug}
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'gallery' && (
-              <GalleryView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'testimonials' && (
-              <TestimonialsView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'faq' && (
-              <FAQView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'contact' && (
-              <ContactView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'privacy' && (
-              <PrivacyView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'terms' && (
-              <TermsView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'warranty' && (
-              <WarrantyView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'sitemap' && (
-              <SitemapView
-                onNavigate={navigateTo}
-                onOpenBooking={handleOpenBooking}
-              />
-            )}
-          </Suspense>
+        )}
+        {currentPage === 'about' && (
+          <AboutView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'services' && (
+          <ServicesView
+            onNavigate={navigateTo}
+            onOpenBooking={handleOpenBooking}
+          />
+        )}
+        {currentPage === 'service-detail' && (
+          <ServiceDetailView
+            slug={currentSlug}
+            onNavigate={navigateTo}
+            onOpenBooking={handleOpenBooking}
+          />
+        )}
+        {currentPage === 'locations' && (
+          <LocationsView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'location-detail' && (
+          <LocationDetailView
+            slug={currentSlug}
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'blog' && (
+          <BlogView onNavigate={navigateTo} />
+        )}
+        {currentPage === 'blog-post' && (
+          <BlogPostView
+            slug={currentSlug}
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'gallery' && (
+          <GalleryView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'testimonials' && (
+          <TestimonialsView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'faq' && (
+          <FAQView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'contact' && (
+          <ContactView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'privacy' && (
+          <PrivacyView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'terms' && (
+          <TermsView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'warranty' && (
+          <WarrantyView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'sitemap' && (
+          <SitemapView
+            onNavigate={navigateTo}
+            onOpenBooking={handleOpenBooking}
+          />
         )}
       </main>
 
@@ -314,25 +302,17 @@ export function App() {
         onOpenBooking={() => handleOpenBooking()}
       />
 
-      {isBookingOpen && (
-        <Suspense fallback={null}>
-          <BookingModal
-            isOpen={isBookingOpen}
-            onClose={() => setIsBookingOpen(false)}
-            initialServiceId={bookingServiceId}
-          />
-        </Suspense>
-      )}
+      <BookingModal
+        isOpen={isBookingOpen}
+        onClose={() => setIsBookingOpen(false)}
+        initialServiceId={bookingServiceId}
+      />
 
-      {isSearchOpen && (
-        <Suspense fallback={null}>
-          <SearchModal
-            isOpen={isSearchOpen}
-            onClose={() => setIsSearchOpen(false)}
-            onNavigate={navigateTo}
-          />
-        </Suspense>
-      )}
+      <SearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        onNavigate={navigateTo}
+      />
     </div>
   );
 }

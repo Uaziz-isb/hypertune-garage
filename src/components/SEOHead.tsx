@@ -124,7 +124,7 @@ export const SEOHead: React.FC<SEOProps> = ({
       image: ogImage,
       '@id': targetCanonicalUrl,
       url: targetCanonicalUrl,
-      telephone: '+923315008872',
+      telephone: '+923001234567',
       priceRange: '$$$',
       address: {
         '@type': 'PostalAddress',

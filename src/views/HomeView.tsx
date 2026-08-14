@@ -62,10 +62,22 @@ const heroSlides = [
     badge: "HyperTune Garage Vehicle Armor",
   },
   {
+    image: images.bannerDyno,
+    title: "HyperTune Garage Dyno & ECU Remap Laboratory",
+    tagline: "Live Sensor Telemetry • Custom Stage 1/2 Performance ECU Calibration",
+    badge: "HyperTune Garage ECU & Tuning Lab",
+  },
+  {
     image: images.ppfSedanStudio,
     title: "HyperTune Garage Hydrophobic Ceramic Shielding",
     tagline: "9H Nano-Ceramic Barrier • Paint Correction & Mirror Gloss Finish",
     badge: "HyperTune Garage Ceramic Studio",
+  },
+  {
+    image: images.bannerEngine,
+    title: "HyperTune Garage Master Engine Rebuild Lab",
+    tagline: "0.001mm Tolerance Measuring • Dust-Free Overhaul & Gearbox Restorations",
+    badge: "HyperTune Garage Engine Lab",
   },
   {
     image: images.heroBanner,
@@ -117,9 +129,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
               src={slide.image}
               alt={slide.title}
               referrerPolicy="no-referrer"
-              loading={idx === 0 ? 'eager' : 'lazy'}
-              decoding={idx === 0 ? 'sync' : 'async'}
-              fetchPriority={idx === 0 ? 'high' : 'low'}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 scale-105 ${
                 idx === currentSlide ? 'opacity-40 z-10' : 'opacity-0 z-0'
               }`}
@@ -197,9 +206,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     src={slide.image}
                     alt={slide.title}
                     referrerPolicy="no-referrer"
-                    loading={idx === 0 ? 'eager' : 'lazy'}
-                    decoding={idx === 0 ? 'sync' : 'async'}
-                    fetchPriority={idx === 0 ? 'high' : 'low'}
                     className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
                       idx === currentSlide
                         ? 'opacity-100 scale-100'
