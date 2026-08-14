@@ -1,10 +1,32 @@
 import express from "express";
 import path from "path";
+import compression from "compression";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 
 const app = express();
 const PORT = 3000;
+
+// High-performance gzip/deflate text compression
+app.use(
+  compression({
+    level: 6,
+    threshold: 512,
+    filter: (req, res) => {
+      if (req.headers["x-no-compression"]) {
+        return false;
+      }
+      return compression.filter(req, res);
+    },
+  })
+);
+
+// Performance & security headers
+app.use((_req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("Timing-Allow-Origin", "*");
+  next();
+});
 
 app.use(express.json());
 
@@ -150,8 +172,19 @@ app.post("/api/booking", (req, res) => {
   });
 });
 
-// API Google Business Profile Live Reviews Auto-Sync
+// API Google Business Profile Live Reviews Auto-Sync (with in-memory cache & HTTP cache headers)
+let cachedReviewsData: any = null;
+let lastReviewsFetchTime = 0;
+const REVIEWS_CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+
 app.get("/api/google-reviews", async (_req, res) => {
+  res.setHeader("Cache-Control", "public, max-age=3600, stale-while-revalidate=86400");
+  const now = Date.now();
+
+  if (cachedReviewsData && (now - lastReviewsFetchTime < REVIEWS_CACHE_TTL)) {
+    return res.json(cachedReviewsData);
+  }
+
   const apiKey = process.env.GOOGLE_PLACES_API_KEY || process.env.GOOGLE_MAPS_API_KEY;
   const placeId = process.env.GOOGLE_PLACE_ID || "ChIJg2296t7t3z8RabZyjT3Zsg8";
 
@@ -162,7 +195,7 @@ app.get("/api/google-reviews", async (_req, res) => {
       );
       const data = await googleRes.json();
       if (data.status === "OK" && data.result) {
-        return res.json({
+        cachedReviewsData = {
           success: true,
           source: "google-places-api",
           isLiveSynced: true,
@@ -182,7 +215,9 @@ app.get("/api/google-reviews", async (_req, res) => {
             time: r.time,
             verified: true,
           })),
-        });
+        };
+        lastReviewsFetchTime = now;
+        return res.json(cachedReviewsData);
       }
     } catch (err) {
       console.error("Error fetching Google Places API:", err);
@@ -190,7 +225,7 @@ app.get("/api/google-reviews", async (_req, res) => {
   }
 
   // Fallback to auto-synced live Business Profile representation
-  return res.json({
+  cachedReviewsData = {
     success: true,
     source: "google-business-profile-sync",
     isLiveSynced: true,
@@ -264,7 +299,9 @@ app.get("/api/google-reviews", async (_req, res) => {
         verified: true,
       },
     ],
-  });
+  };
+  lastReviewsFetchTime = now;
+  return res.json(cachedReviewsData);
 });
 
 // XML Sitemap Endpoint for Google Search Console & Webmasters
@@ -440,8 +477,33 @@ async function startServer() {
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
-    app.get("*", (req, res) => {
+    // Cache hashed assets for 1 year with immutable flag
+    app.use(
+      "/assets",
+      express.static(path.join(distPath, "assets"), {
+        maxAge: "365d",
+        immutable: true,
+      })
+    );
+    // Cache public images for 30 days
+    app.use(
+      "/images",
+      express.static(path.join(distPath, "images"), {
+        maxAge: "30d",
+      })
+    );
+    app.use(
+      express.static(distPath, {
+        maxAge: "1d",
+        setHeaders: (res, filePath) => {
+          if (filePath.endsWith("index.html")) {
+            res.setHeader("Cache-Control", "no-cache, must-revalidate");
+          }
+        },
+      })
+    );
+    app.get("*", (_req, res) => {
+      res.setHeader("Cache-Control", "no-cache, must-revalidate");
       res.sendFile(path.join(distPath, "index.html"));
     });
   }

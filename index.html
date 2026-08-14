@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HyperTune Garage - Premium Automotive Workshop in Islamabad & Rawalpindi</title>
+
+    <!-- Performance & Preconnect Hints -->
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    
+    <!-- LCP Image Preload (Discoverable immediately from HTML) -->
+    <link rel="preload" as="image" href="/images/ppf-hero-banner.jpg" fetchpriority="high" type="image/jpeg" />
     
     <!-- Favicon & Brand Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -13,7 +20,7 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Pakistan’s premier automotive workshop specializing in BMW, Mercedes, Audi, Porsche, Toyota, Honda, ECU remapping, engine overhauls, hybrid battery repair & PPF in Islamabad G-8/4 & Rawalpindi." />
+    <meta name="description" content="Pakistan’s premier automotive workshop specializing in BMW, Mercedes, Audi, Porsche, Toyota, Honda, ECU remapping, engine overhauls, hybrid battery repair & PPF in Islamabad & Rawalpindi." />
     <meta name="keywords" content="car workshop islamabad, auto repair rawalpindi, car detailing islamabad, paint protection film ppf islamabad, ceramic coating rawalpindi, bmw repair islamabad, mercedes garage rawalpindi, audi service center, engine overhaul islamabad, ecu tuning remapping, hybrid battery repair, 3d laser wheel alignment, car mechanic near me, hypertune garage" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://hypertunegarage.pk/" />
@@ -36,13 +43,20 @@
     <meta name="twitter:title" content="HyperTune Garage | Premier Automotive Workshop in Islamabad & Rawalpindi" />
     <meta name="twitter:description" content="Pakistan’s top automotive workshop specializing in BMW, Mercedes, Audi, Porsche, Toyota, ECU remapping, engine overhauls & hybrid battery repair." />
 
-    <!-- Google Analytics (GA4) Tag Setup -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PPQJEQSLVE"></script>
+    <!-- Google Analytics (GA4) - Deferred to prioritize initial paint and LCP -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-PPQJEQSLVE');
+      
+      // Load GA script asynchronously after critical render
+      window.addEventListener('load', function() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-PPQJEQSLVE';
+        document.head.appendChild(s);
+      });
     </script>
   </head>
   <body>

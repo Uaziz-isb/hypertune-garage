@@ -82,17 +82,17 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
         </div>
 
         <div className="lg:col-span-6 relative">
-          <div className="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl relative group">
+          <div className="rounded-3xl overflow-hidden border border-cyan-500/30 shadow-2xl relative group">
             <img
-              src={images.heroBanner}
-              alt="HyperTune Garage Workshop Facilities Islamabad"
+              src={images.aboutPpfStudio}
+              alt="HyperTune Garage PPF and Detailing Studio Cleanroom Islamabad"
               referrerPolicy="no-referrer"
               className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent pointer-events-none" />
             <div className="absolute bottom-4 left-4 bg-slate-900/90 border border-slate-700/80 backdrop-blur-md px-4 py-2 rounded-xl text-xs font-semibold text-cyan-400 flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5 text-cyan-400" />
-              Islamabad Police Foundation Hub & Workshop Facility
+              HyperTune Garage • PPF & Ceramic Detailing Studio Cleanroom
             </div>
           </div>
         </div>
