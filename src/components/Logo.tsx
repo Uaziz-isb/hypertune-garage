@@ -1,4 +1,5 @@
 import React from 'react';
+import { images } from '../data/images';
 
 interface LogoProps {
   className?: string;
@@ -25,7 +26,7 @@ export const Logo: React.FC<LogoProps> = ({ className = '', variant = 'dark', on
         className="relative flex items-center justify-center rounded-xl bg-slate-950 border border-slate-800 shadow-md shadow-red-600/20 shrink-0 group-hover:scale-105 transition-transform overflow-hidden"
       >
         <img
-          src="/images/hypertune_logo.jpg"
+          src={images.defaultBrandLogo}
           alt="HyperTune Garage Logo"
           width={50}
           height={50}

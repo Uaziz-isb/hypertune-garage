@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
+import { images } from '../data/images';
 
-const defaultOgBanner = '/images/hypertune_hero_banner_1785533542266.jpg';
+const defaultOgBanner = images.heroBanner;
 
 declare global {
   interface Window {

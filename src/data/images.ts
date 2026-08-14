@@ -1,22 +1,40 @@
+import heroBanner from '../assets/images/hypertune_hero_banner_1785533542266.jpg';
+import ecuTuning from '../assets/images/hypertune_ecu_tuning_1785533556122.jpg';
+import engineOverhaul from '../assets/images/hypertune_engine_overhaul_1785533568562.jpg';
+import ceramicDetailing from '../assets/images/hypertune_ceramic_detailing_1785533581788.jpg';
+import logoNew from '../assets/images/hypertune_logo_new_1785539043513.jpg';
+import logoOld from '../assets/images/hypertune_logo_1785535380171.jpg';
+import ppfHeroBanner from '../assets/images/ppf_hero_banner_1785597040377.jpg';
+import ppfFortunerStudio from '../assets/images/ppf_fortuner_studio_1785597187309.jpg';
+import ppfSedanStudio from '../assets/images/ppf_sedan_studio_1785597200101.jpg';
+import bannerDyno from '../assets/images/hypertune_banner_dyno_1785686809783.jpg';
+import bannerPpf from '../assets/images/hypertune_banner_ppf_1785686823979.jpg';
+import bannerEngine from '../assets/images/hypertune_banner_engine_1785686837582.jpg';
+import havalStudioBefore from '../assets/images/haval_maroon_before_1786385237615.jpg';
+import havalStudioAfter from '../assets/images/haval_maroon_after_1786383981252.jpg';
+import toyotaStudioBefore from '../assets/images/toyota_grey_before_1786385251436.jpg';
+import toyotaStudioAfter from '../assets/images/toyota_grey_after_1786385265810.jpg';
+import aboutPpfStudio from '../assets/images/about_ppf_studio_logo_wall_1786667815467.jpg';
+
 export const images = {
-  defaultBrandLogo: '/images/hypertune_logo.jpg',
-  aboutPpfStudio: '/images/about_ppf_studio_logo_wall_1786667815467.jpg',
-  heroBanner: '/images/hypertune_hero_banner_1785533542266.jpg',
-  havalStudioBefore: '/images/haval_maroon_before_1786385237615.jpg',
-  havalStudioAfter: '/images/haval_maroon_after_1786383981252.jpg',
-  toyotaStudioBefore: '/images/toyota_grey_before_1786385251436.jpg',
-  toyotaStudioAfter: '/images/toyota_grey_after_1786385265810.jpg',
-  ppfHeroBanner: '/images/ppf_hero_banner.jpg',
-  ppfFortunerStudio: '/images/ppf_fortuner_studio_1785597187309.jpg',
-  ppfSedanStudio: '/images/ppf_sedan_studio_1785597200101.jpg',
-  bannerDyno: '/images/hypertune_banner_dyno_1785686809783.jpg',
-  bannerPpf: '/images/hypertune_banner_ppf_1785686823979.jpg',
-  bannerEngine: '/images/hypertune_banner_engine_1785686837582.jpg',
-  ecuTuning: '/images/hypertune_ecu_tuning_1785533556122.jpg',
-  engineOverhaul: '/images/hypertune_engine_overhaul_1785533568562.jpg',
-  ceramicDetailing: '/images/hypertune_ceramic_detailing_1785533581788.jpg',
-  logoNew: '/images/hypertune_logo.jpg',
-  logoOld: '/images/hypertune_logo_1785535380171.jpg',
+  defaultBrandLogo: logoNew,
+  aboutPpfStudio,
+  heroBanner,
+  havalStudioBefore,
+  havalStudioAfter,
+  toyotaStudioBefore,
+  toyotaStudioAfter,
+  ppfHeroBanner,
+  ppfFortunerStudio,
+  ppfSedanStudio,
+  bannerDyno,
+  bannerPpf,
+  bannerEngine,
+  ecuTuning,
+  engineOverhaul,
+  ceramicDetailing,
+  logoNew,
+  logoOld,
   ppfStudio: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1200&q=80',
   ppfDetailingGarage: 'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1200&q=80',
   sportsCarHero: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1200&q=80',

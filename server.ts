@@ -24,7 +24,7 @@ function getAIClient() {
 app.get("/api/health", (_req, res) => {
   res.json({
     status: "ok",
-    workshop: "AutoExtreme Pakistan - Islamabad & Lahore Studio",
+    workshop: "HyperTune Garage - Islamabad & Rawalpindi",
     timestamp: new Date().toISOString(),
   });
 });
@@ -41,7 +41,7 @@ app.post("/api/ai-diagnostic", async (req, res) => {
     const client = getAIClient();
 
     if (client) {
-      const prompt = `You are the Lead Customization & Technical Lead at AutoExtreme.pk (AutoExtreme Pakistan), Pakistan's top car detailing, body kit, PPF, and custom tuning studio in Islamabad & Lahore.
+      const prompt = `You are the Lead Master Technician & Service Director at HyperTune Garage, premier automotive performance, PPF, detailing, and maintenance workshop in Islamabad & Rawalpindi, Pakistan.
 Analyze the following vehicle issue and provide a structured professional diagnosis:
 - Vehicle: ${year || "N/A"} ${vehicleMake || "Car"} ${vehicleModel || ""}
 - Reported Symptoms: ${symptoms || "None provided"}
@@ -53,7 +53,7 @@ Return a helpful JSON object with the following fields:
   "urgencyLevel": "High" | "Medium" | "Low",
   "estimatedTimeHours": "1 - 3 hours",
   "recommendedServices": ["service 1", "service 2"],
-  "diagnosticAdvice": "Professional summary paragraph explaining the problem, potential causes in Pakistani driving conditions (heat, fuel, dust), and why visiting AutoExtreme.pk for specialized scanning/customization is recommended.",
+  "diagnosticAdvice": "Professional summary paragraph explaining the problem, potential causes in Pakistani driving conditions (heat, fuel quality, road conditions), and why visiting HyperTune Garage for digital diagnostics is recommended.",
   "safetyWarning": "Optional safety note if driving is unsafe"
 }`;
 
@@ -95,7 +95,7 @@ Return a helpful JSON object with the following fields:
           isGerman ? "German Vehicle Systems Health Check" : "3D Laser Wheel Alignment & Fitment Inspection",
           "Comprehensive Multi-Point Safety Audit",
         ],
-        diagnosticAdvice: `Based on your reported details for your ${vehicleMake || "vehicle"}, our AutoExtreme master specialists recommend a computerized diagnostic scan and fitment check at our ${isGerman ? "G-8/4 Islamabad" : "Gulberg III Lahore"} studio.`,
+        diagnosticAdvice: `Based on your reported details for your ${vehicleMake || "vehicle"}, our HyperTune master specialists recommend a computerized diagnostic scan and fitment check at our ${isGerman ? "Islamabad Police Foundation Hub" : "Rawalpindi I-9 Hub"}.`,
         safetyWarning: symptoms?.toLowerCase().includes("brake") || symptoms?.toLowerCase().includes("overheat")
           ? "CRITICAL: Braking or overheating issues require immediate attention to prevent engine block damage or brake line failure."
           : null,
@@ -126,7 +126,7 @@ app.post("/api/booking", (req, res) => {
     `Phone: ${phone}\n` +
     `Vehicle: ${year || ""} ${vehicleMake} ${vehicleModel || ""}\n` +
     `Service: ${service}\n` +
-    `Branch: ${location || "Islamabad G-8/4 Studio"}\n` +
+    `Branch: ${location || "Islamabad Police Foundation Hub"}\n` +
     `Preferred Date/Time: ${date || "Earliest"} at ${time || "Morning"}\n` +
     `Notes: ${notes || "None"}`
   );
