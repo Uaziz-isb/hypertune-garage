@@ -14,8 +14,11 @@ import havalStudioBefore from '../assets/images/haval_maroon_before_178638523761
 import havalStudioAfter from '../assets/images/haval_maroon_after_1786383981252.jpg';
 import toyotaStudioBefore from '../assets/images/toyota_grey_before_1786385251436.jpg';
 import toyotaStudioAfter from '../assets/images/toyota_grey_after_1786385265810.jpg';
+import aboutPpfStudio from '../assets/images/about_ppf_studio_logo_wall_1786667815467.jpg';
 
 export const images = {
+  defaultBrandLogo: logoNew,
+  aboutPpfStudio,
   heroBanner,
   havalStudioBefore,
   havalStudioAfter,

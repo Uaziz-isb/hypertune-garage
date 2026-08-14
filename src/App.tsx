@@ -140,7 +140,7 @@ export function App() {
     pagePath = '/faq/';
   } else if (currentPage === 'contact') {
     seoTitle = 'Contact Us | HyperTune Garage Islamabad & Rawalpindi';
-    seoDesc = 'Get in touch with HyperTune Garage in Islamabad & Rawalpindi. Call +92 300 1234567, message on WhatsApp, or book an online repair slot.';
+    seoDesc = 'Get in touch with HyperTune Garage in Islamabad & Rawalpindi. Call +92 331 5008872, message on WhatsApp, or book an online repair slot.';
     seoKeywords = 'contact hypertune garage, car workshop phone number islamabad, book car service rawalpindi';
     pagePath = '/contact/';
   } else if (currentPage === 'privacy') {
