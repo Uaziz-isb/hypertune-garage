@@ -474,7 +474,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
             </div>
             <div>
               <h2 className="text-xl font-extrabold text-white">Direct Booking & Support Portals</h2>
-              <p className="text-xs text-slate-400">Instant shortcuts to schedule appointments, request estimates, or get emergency roadside assistance</p>
+              <p className="text-xs text-slate-400">Instant shortcuts to schedule appointments, request estimates, or get expert technical guidance</p>
             </div>
           </div>
 
@@ -505,11 +505,11 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
 
             <a
               href="tel:+923315008872"
-              className="p-4 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs flex items-center justify-between shadow-lg transition-all active:scale-95"
+              className="p-4 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-between shadow-lg transition-all active:scale-95"
             >
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                <span>24/7 Towing Recovery</span>
+                <span>Direct Workshop Hotline</span>
               </div>
               <ExternalLink className="w-4 h-4" />
             </a>

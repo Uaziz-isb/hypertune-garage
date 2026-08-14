@@ -62,8 +62,8 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
       a: "Our Islamabad and Rawalpindi hubs operate Saturday through Thursday from 10:00 AM to 10:00 PM. Friday is our dedicated weekly off for deep studio maintenance and equipment calibration."
     },
     {
-      q: "Do you offer roadside towing or breakdown recovery in Islamabad/Rawalpindi?",
-      a: "Yes! We provide 24/7 flatbed hydraulic tow truck recovery across Islamabad, Rawalpindi, Murree Express Highway, and Motorway (M2/M1) exits. Call our emergency hotline at 0331-5008872 for rapid vehicle pickup."
+      q: "Do you offer vehicle pick-up and delivery in Islamabad/Rawalpindi?",
+      a: "Yes! We provide scheduled executive concierge vehicle pick-up and drop-off services across Islamabad and Rawalpindi. Call our customer hotline at 0331-5008872 to arrange convenient vehicle transport."
     },
     {
       q: "Can I receive video updates and live progress of my car's repair?",
@@ -107,7 +107,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
           </h1>
 
           <p className="text-slate-300 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-            Connect directly with our master engineers in Islamabad & Rawalpindi for service inquiries, PPF consultations, OEM diagnostics, or emergency towing recovery.
+            Connect directly with our master engineers in Islamabad & Rawalpindi for service inquiries, PPF consultations, OEM diagnostics, and priority workshop scheduling.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2 text-xs font-semibold text-slate-300">
@@ -176,20 +176,20 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
             <p className="text-xs text-slate-400">Corporate fleet inquiries & billing details.</p>
           </a>
 
-          {/* Card 4: Emergency Towing */}
-          <a
-            href="tel:+923315008872"
-            className="group bg-gradient-to-br from-red-950/40 to-slate-900 border border-red-500/30 hover:border-red-500/60 rounded-2xl p-5 space-y-3 transition-all duration-300 shadow-lg hover:-translate-y-1 block"
+          {/* Card 4: VIP Concierge Desk */}
+          <button
+            onClick={() => onOpenBooking()}
+            className="group bg-gradient-to-br from-cyan-950/40 to-slate-900 border border-cyan-500/30 hover:border-cyan-500/60 rounded-2xl p-5 space-y-3 transition-all duration-300 shadow-lg hover:-translate-y-1 block text-left w-full"
           >
-            <div className="w-10 h-10 rounded-xl bg-red-500/20 border border-red-500/30 flex items-center justify-center text-red-400 group-hover:scale-110 transition-transform">
-              <Truck className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+              <Calendar className="w-5 h-5" />
             </div>
             <div>
-              <span className="text-xs text-red-300 font-bold block uppercase tracking-wider">24/7 Roadside Towing</span>
-              <p className="text-base font-black text-white group-hover:text-red-300 transition-colors">0331-5008872</p>
+              <span className="text-xs text-cyan-300 font-bold block uppercase tracking-wider">VIP Booking Desk</span>
+              <p className="text-base font-black text-white group-hover:text-cyan-300 transition-colors">Book Online</p>
             </div>
-            <p className="text-xs text-slate-400">Flatbed recovery in Islamabad & Rawalpindi.</p>
-          </a>
+            <p className="text-xs text-slate-400">Reserve priority slot with 0-min waiting time.</p>
+          </button>
         </div>
       </section>
 
@@ -369,7 +369,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
                   >
                     <option value="Islamabad Police Foundation Hub">Islamabad Hub (Police Foundation)</option>
                     <option value="Rawalpindi I-9 Hub">Rawalpindi Hub (Sector I-9/3)</option>
-                    <option value="Roadside Towing / Breakdown Pickup">Roadside Towing / Emergency Pickup</option>
+                    <option value="Executive Concierge Pickup">Executive Concierge Valet Pickup</option>
                   </select>
                 </div>
               </div>

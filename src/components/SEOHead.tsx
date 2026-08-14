@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import defaultOgBanner from '../assets/images/hypertune_hero_banner_1785533542266.jpg';
+import defaultOgBanner from '../assets/images/hypertune_hero_banner_1785533542266.webp';
 
 declare global {
   interface Window {

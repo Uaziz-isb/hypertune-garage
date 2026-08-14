@@ -11,7 +11,11 @@ interface BlogPostProps {
 }
 
 export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpenBooking }) => {
-  const post = blogData.find((b) => b.slug === slug) || blogData[0];
+  const normalized = (slug || '').toLowerCase();
+  const post =
+    blogData.find((b) => b.slug === normalized || b.id === normalized) ||
+    blogData.find((b) => normalized && (b.slug.includes(normalized) || b.id.includes(normalized))) ||
+    blogData[0];
 
   return (
     <div className="pt-24 pb-16 space-y-12">

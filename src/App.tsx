@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { PageId } from './types';
 import { SEOHead } from './components/SEOHead';
-import { EmergencyBanner } from './components/EmergencyBanner';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
@@ -34,17 +33,25 @@ export function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
   const [currentSlug, setCurrentSlug] = useState<string | undefined>(undefined);
 
-  // Handle URL pathname and hash navigation on load, popstate, & hashchange
+  // Handle URL pathname, search params, and hash navigation on load, popstate, & hashchange
   useEffect(() => {
     const handleNavigation = () => {
       const pathSegments = window.location.pathname
         .toLowerCase()
         .split('/')
         .filter(Boolean);
-      const hash = window.location.hash.replace('#', '').trim();
+
+      const rawHash = window.location.hash.replace(/^#/, '').trim();
+      const hashQuestionIndex = rawHash.indexOf('?');
+      const hash = (hashQuestionIndex !== -1 ? rawHash.substring(0, hashQuestionIndex) : rawHash).toLowerCase();
+
+      const searchParams = new URLSearchParams(window.location.search);
+      const hashParams = hashQuestionIndex !== -1 ? new URLSearchParams(rawHash.substring(hashQuestionIndex)) : null;
+
+      const querySlug = searchParams.get('slug') || searchParams.get('id') || hashParams?.get('slug') || hashParams?.get('id') || undefined;
 
       const mainSegment = pathSegments[0] || '';
-      const subSegment = pathSegments[1] || '';
+      const subSegment = pathSegments[1] || querySlug || '';
 
       const validPages: PageId[] = [
         'home', 'about', 'services', 'service-detail', 'locations', 'location-detail',
@@ -52,32 +59,35 @@ export function App() {
         'privacy', 'terms', 'warranty', 'sitemap'
       ];
 
-      if (mainSegment === 'contact' || hash === 'contact') {
+      if (mainSegment === 'contact' || mainSegment === 'contact-us' || hash === 'contact' || hash === 'contact-us') {
         setCurrentPage('contact');
         setCurrentSlug(undefined);
-      } else if (mainSegment === 'about' || hash === 'about') {
+      } else if (mainSegment === 'about' || mainSegment === 'about-us' || hash === 'about' || hash === 'about-us') {
         setCurrentPage('about');
         setCurrentSlug(undefined);
-      } else if (mainSegment === 'services' || hash === 'services') {
-        if (subSegment) {
+      } else if (mainSegment === 'services' || mainSegment === 'service' || mainSegment === 'service-detail' || hash === 'services' || hash.startsWith('service')) {
+        const targetSlug = subSegment || (hash.includes('/') ? hash.split('/')[1] : undefined);
+        if (targetSlug && targetSlug !== 'services') {
           setCurrentPage('service-detail');
-          setCurrentSlug(subSegment);
+          setCurrentSlug(targetSlug);
         } else {
           setCurrentPage('services');
           setCurrentSlug(undefined);
         }
-      } else if (mainSegment === 'locations' || hash === 'locations') {
-        if (subSegment) {
+      } else if (mainSegment === 'locations' || mainSegment === 'location' || mainSegment === 'location-detail' || hash === 'locations' || hash.startsWith('location')) {
+        const targetSlug = subSegment || (hash.includes('/') ? hash.split('/')[1] : undefined);
+        if (targetSlug && targetSlug !== 'locations') {
           setCurrentPage('location-detail');
-          setCurrentSlug(subSegment);
+          setCurrentSlug(targetSlug);
         } else {
           setCurrentPage('locations');
           setCurrentSlug(undefined);
         }
-      } else if (mainSegment === 'blog' || hash === 'blog') {
-        if (subSegment) {
+      } else if (mainSegment === 'blog' || mainSegment === 'blogs' || mainSegment === 'blog-post' || hash === 'blog' || hash.startsWith('blog')) {
+        const targetSlug = subSegment || (hash.includes('/') ? hash.split('/')[1] : undefined);
+        if (targetSlug && targetSlug !== 'blog') {
           setCurrentPage('blog-post');
-          setCurrentSlug(subSegment);
+          setCurrentSlug(targetSlug);
         } else {
           setCurrentPage('blog');
           setCurrentSlug(undefined);
@@ -85,22 +95,22 @@ export function App() {
       } else if (mainSegment === 'gallery' || hash === 'gallery') {
         setCurrentPage('gallery');
         setCurrentSlug(undefined);
-      } else if (mainSegment === 'testimonials' || hash === 'testimonials') {
+      } else if (mainSegment === 'testimonials' || mainSegment === 'reviews' || hash === 'testimonials' || hash === 'reviews') {
         setCurrentPage('testimonials');
         setCurrentSlug(undefined);
-      } else if (mainSegment === 'faq' || hash === 'faq') {
+      } else if (mainSegment === 'faq' || mainSegment === 'faqs' || hash === 'faq' || hash === 'faqs') {
         setCurrentPage('faq');
         setCurrentSlug(undefined);
-      } else if (mainSegment === 'privacy' || mainSegment === 'privacy-policy' || hash === 'privacy') {
+      } else if (mainSegment === 'privacy' || mainSegment === 'privacy-policy' || hash === 'privacy' || hash === 'privacy-policy') {
         setCurrentPage('privacy');
         setCurrentSlug(undefined);
-      } else if (mainSegment === 'terms' || mainSegment === 'terms-conditions' || hash === 'terms') {
+      } else if (mainSegment === 'terms' || mainSegment === 'terms-conditions' || mainSegment === 'terms-of-service' || hash === 'terms' || hash === 'terms-conditions') {
         setCurrentPage('terms');
         setCurrentSlug(undefined);
-      } else if (mainSegment === 'warranty' || mainSegment === 'warranty-specs' || hash === 'warranty') {
+      } else if (mainSegment === 'warranty' || mainSegment === 'warranty-specs' || hash === 'warranty' || hash === 'warranty-specs') {
         setCurrentPage('warranty');
         setCurrentSlug(undefined);
-      } else if (mainSegment === 'sitemap' || mainSegment === 'sitemap.html' || hash === 'sitemap') {
+      } else if (mainSegment === 'sitemap' || mainSegment === 'sitemap.html' || hash === 'sitemap' || hash === 'site-map') {
         setCurrentPage('sitemap');
         setCurrentSlug(undefined);
       } else if (validPages.includes(hash as PageId)) {
@@ -258,9 +268,6 @@ export function App() {
 
       {/* Fixed Sticky Header Suite */}
       <div className="fixed top-0 left-0 right-0 z-40">
-        <EmergencyBanner
-          onBookAppointment={() => handleOpenBooking()}
-        />
         <Header
           currentPage={currentPage}
           onNavigate={navigateTo}

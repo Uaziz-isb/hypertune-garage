@@ -9,8 +9,35 @@
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     
-    <!-- LCP Image Preload (Discoverable immediately from HTML) -->
-    <link rel="preload" as="image" href="/images/ppf-hero-banner.jpg" fetchpriority="high" type="image/jpeg" />
+    <!-- LCP Image Preload (WebP with high fetch priority) -->
+    <link rel="preload" as="image" href="/images/ppf-hero-banner.webp" fetchpriority="high" type="image/webp" />
+    
+    <!-- Critical Rendering Path Inline Styles -->
+    <style>
+      :root {
+        color-scheme: dark;
+        background-color: #05080e;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #05080e;
+        color: #f8fafc;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+      }
+      #root {
+        min-height: 100vh;
+        background-color: #05080e;
+      }
+      /* Prevent layout shifts */
+      header {
+        contain: layout size style;
+      }
+    </style>
     
     <!-- Favicon & Brand Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -43,20 +70,45 @@
     <meta name="twitter:title" content="HyperTune Garage | Premier Automotive Workshop in Islamabad & Rawalpindi" />
     <meta name="twitter:description" content="Pakistan’s top automotive workshop specializing in BMW, Mercedes, Audi, Porsche, Toyota, ECU remapping, engine overhauls & hybrid battery repair." />
 
-    <!-- Google Analytics (GA4) - Deferred to prioritize initial paint and LCP -->
+    <!-- Google Analytics (GA4) - Deferred on interaction / idle to prevent blocking initial render & LCP -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-PPQJEQSLVE');
+      gtag('config', 'G-PPQJEQSLVE', { 'send_page_view': true });
       
-      // Load GA script asynchronously after critical render
-      window.addEventListener('load', function() {
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-PPQJEQSLVE';
-        document.head.appendChild(s);
-      });
+      (function() {
+        var gtmLoaded = false;
+        function loadGTM() {
+          if (gtmLoaded) return;
+          gtmLoaded = true;
+          // Remove interaction listeners once triggered
+          window.removeEventListener('scroll', loadGTM, { passive: true });
+          window.removeEventListener('touchstart', loadGTM, { passive: true });
+          window.removeEventListener('mousemove', loadGTM, { passive: true });
+          window.removeEventListener('keydown', loadGTM, { passive: true });
+          
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-PPQJEQSLVE';
+          document.head.appendChild(s);
+        }
+
+        // Listen for early user interaction
+        window.addEventListener('scroll', loadGTM, { passive: true, once: true });
+        window.addEventListener('touchstart', loadGTM, { passive: true, once: true });
+        window.addEventListener('mousemove', loadGTM, { passive: true, once: true });
+        window.addEventListener('keydown', loadGTM, { passive: true, once: true });
+
+        // Fallback: Idle load after 8s if no user interaction occurred
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(function() {
+            setTimeout(loadGTM, 5000);
+          }, { timeout: 10000 });
+        } else {
+          setTimeout(loadGTM, 8000);
+        }
+      })();
     </script>
   </head>
   <body>

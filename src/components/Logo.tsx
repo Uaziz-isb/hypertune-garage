@@ -1,5 +1,5 @@
 import React from 'react';
-import hypertuneLogo from '../assets/images/hypertune_logo_new_1785539043513.jpg';
+import hypertuneLogo from '../assets/images/hypertune_logo_new_1785539043513.webp';
 
 interface LogoProps {
   className?: string;
@@ -8,22 +8,17 @@ interface LogoProps {
   scale?: number;
 }
 
-export const Logo: React.FC<LogoProps> = ({ className = '', variant = 'dark', onClick, scale = 1.0 }) => {
+export const Logo: React.FC<LogoProps> = ({ className = '', variant = 'dark', onClick }) => {
   const textColor = variant === 'dark' ? 'text-white' : 'text-slate-950';
-
-  const boxSize = Math.round(50 * scale);
-  const titleFontSize = (23 * scale).toFixed(1);
-  const subFontSize = (11 * scale).toFixed(1);
 
   return (
     <div
       onClick={onClick}
-      className={`flex items-center gap-3 font-bold tracking-tight select-none cursor-pointer ${className}`}
+      className={`flex items-center gap-2.5 sm:gap-3 font-bold tracking-tight select-none cursor-pointer group ${className}`}
     >
       {/* HyperTune Garage Official Logo Mark */}
       <div 
-        style={{ width: `${boxSize}px`, height: `${boxSize}px` }}
-        className="relative flex items-center justify-center rounded-xl bg-slate-950 border border-slate-800 shadow-md shadow-red-600/20 shrink-0 group-hover:scale-105 transition-transform overflow-hidden"
+        className="relative flex items-center justify-center rounded-xl bg-slate-950 border border-slate-800 shadow-md shadow-red-600/20 shrink-0 group-hover:scale-105 transition-transform overflow-hidden w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12"
       >
         <img
           src={hypertuneLogo}
@@ -31,28 +26,27 @@ export const Logo: React.FC<LogoProps> = ({ className = '', variant = 'dark', on
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover"
         />
-        <span className="absolute top-0.5 right-0.5 w-2.5 h-2.5 bg-emerald-400 border-2 border-slate-950 rounded-full animate-pulse z-10" />
+        <span className="absolute top-0.5 right-0.5 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-emerald-400 border-2 border-slate-950 rounded-full animate-pulse z-10" />
       </div>
 
       {/* Typography & Web Domain */}
       <div className="flex flex-col leading-none">
         <div className="flex items-center gap-1">
           <span 
-            style={{ fontSize: `${titleFontSize}px` }}
-            className={`font-black tracking-tight uppercase ${textColor}`}
+            className={`text-base sm:text-xl md:text-2xl font-black tracking-tight uppercase ${textColor}`}
           >
             HYPER<span className="text-red-500">TUNE</span>
           </span>
         </div>
         <span 
-          style={{ fontSize: `${subFontSize}px` }}
-          className="font-bold tracking-widest text-slate-400 uppercase mt-1 flex items-center gap-1"
+          className="text-[8px] sm:text-[10px] md:text-[11px] font-bold tracking-widest text-slate-400 uppercase mt-0.5 sm:mt-1 flex items-center gap-1"
         >
-          <span>HYPERTUNEGARAGE.PK</span>
-          <span className="text-red-500">•</span>
-          <span>ISLAMABAD</span>
+          <span className="truncate">HYPERTUNEGARAGE.PK</span>
+          <span className="text-red-500 hidden xs:inline">•</span>
+          <span className="hidden xs:inline">ISLAMABAD</span>
         </span>
       </div>
     </div>
   );
 };
+

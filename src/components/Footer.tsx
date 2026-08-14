@@ -176,7 +176,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               { label: 'Privacy Policy', page: 'privacy' as PageId },
               { label: 'Terms & Conditions', page: 'terms' as PageId },
               { label: 'Warranty Specs', page: 'warranty' as PageId },
-              { label: 'Site Map Directory', page: 'sitemap' as PageId },
             ].map((link) => (
               <li key={link.page}>
                 <button

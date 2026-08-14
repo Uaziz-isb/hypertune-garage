@@ -141,18 +141,30 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
   };
 
   useEffect(() => {
-    // Non-blocking deferred sync after initial paint
-    const timeout = setTimeout(() => {
-      fetchReviews();
-    }, 2500);
+    // Completely out of critical rendering path: only sync when browser is idle after 8 seconds
+    let idleId: number;
+    let timeoutId: NodeJS.Timeout;
 
-    // Periodic background sync every 60 seconds
+    const scheduleSync = () => {
+      if ('requestIdleCallback' in window) {
+        idleId = (window as any).requestIdleCallback(() => fetchReviews(), { timeout: 10000 });
+      } else {
+        timeoutId = setTimeout(() => fetchReviews(), 8000);
+      }
+    };
+
+    scheduleSync();
+
+    // Background sync every 5 minutes (300s)
     const interval = setInterval(() => {
       fetchReviews();
-    }, 60000);
+    }, 300000);
 
     return () => {
-      clearTimeout(timeout);
+      if (idleId && 'cancelIdleCallback' in window) {
+        (window as any).cancelIdleCallback(idleId);
+      }
+      if (timeoutId) clearTimeout(timeoutId);
       clearInterval(interval);
     };
   }, []);
