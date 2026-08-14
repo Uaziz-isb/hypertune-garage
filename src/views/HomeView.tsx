@@ -116,6 +116,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
               key={slide.badge + idx}
               src={slide.image}
               alt={slide.title}
+              width={1376}
+              height={768}
               referrerPolicy="no-referrer"
               loading={idx === 0 ? 'eager' : 'lazy'}
               decoding={idx === 0 ? 'sync' : 'async'}
