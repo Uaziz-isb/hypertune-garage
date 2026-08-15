@@ -9,7 +9,7 @@ interface WarrantyViewProps {
 
 export const WarrantyView: React.FC<WarrantyViewProps> = ({ onNavigate, onOpenBooking }) => {
   return (
-    <div className="pt-24 md:pt-28 pb-20 max-w-5xl mx-auto px-4 space-y-12">
+    <div className="pt-28 sm:pt-32 md:pt-36 pb-20 max-w-5xl mx-auto px-4 space-y-12">
       {/* Header Banner */}
       <div className="text-center space-y-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 font-extrabold text-xs uppercase tracking-widest">

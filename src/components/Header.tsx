@@ -4,12 +4,10 @@ import { Logo } from './Logo';
 import {
   Phone,
   Clock,
-  MapPin,
   Search,
   ChevronDown,
   Menu,
   Wrench,
-  Bot,
   ShieldCheck,
   Shield,
   Palette,
@@ -22,7 +20,7 @@ import {
   Facebook,
   Instagram,
   Video,
-  MessageCircle
+  MessageCircle,
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -45,7 +43,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      setIsScrolled(window.scrollY > 25);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -79,9 +77,9 @@ export const Header: React.FC<HeaderProps> = ({
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 transition-all duration-300">
-      {/* Top Utility Announcement Bar */}
-      <div className="bg-[#05080e] text-slate-300 text-xs py-2 px-4 border-b border-cyan-500/20">
+    <header className="w-full relative transition-all duration-300">
+      {/* Top Utility Announcement Bar (Tablet/Desktop) */}
+      <div className="hidden md:block bg-[#05080e] text-slate-300 text-xs py-1.5 px-4 border-b border-cyan-500/20">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
           {/* Left: Contact Info */}
           <div className="flex flex-wrap items-center gap-4">
@@ -91,14 +89,14 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Phone className="w-3.5 h-3.5 text-cyan-400" />
               <span>
-                Contact Now:{' '}
+                Call Now:{' '}
                 <strong className="text-white font-extrabold tracking-wide">
                   0333-0177717
                 </strong>
               </span>
             </a>
 
-            <div className="hidden sm:flex items-center gap-1.5 text-slate-400">
+            <div className="flex items-center gap-1.5 text-slate-400">
               <Clock className="w-3.5 h-3.5 text-cyan-400/70" />
               <span>Sat - Thu: 10:00 AM - 10:00 PM <strong className="text-amber-400 font-bold ml-1">(Friday Off)</strong></span>
             </div>
@@ -106,9 +104,8 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Right: Social Media */}
           <div className="flex items-center gap-3">
-            {/* Social Media Links */}
             <div className="flex items-center gap-2 text-slate-400">
-              <span className="hidden md:inline text-[11px] text-slate-400 font-semibold mr-0.5">Follow:</span>
+              <span className="text-[11px] text-slate-400 font-semibold mr-0.5">Follow:</span>
               <a
                 href="https://wa.me/923330177717"
                 target="_blank"
@@ -158,19 +155,34 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Main Navigation Bar */}
       <nav
-        className={`transition-all duration-300 ${
+        className={`transition-all duration-300 relative z-30 ${
           isScrolled
-            ? 'bg-[#070b12]/95 backdrop-blur-md shadow-2xl border-b border-cyan-500/20 py-3'
-            : 'bg-[#070b12]/90 backdrop-blur-sm border-b border-slate-800/80 py-4'
+            ? 'bg-[#070b12]/98 backdrop-blur-md shadow-2xl border-b border-cyan-500/20 py-2 sm:py-2.5'
+            : 'bg-[#070b12]/95 backdrop-blur-sm border-b border-slate-800/80 py-2.5 sm:py-3.5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between gap-4">
-          {/* Logo */}
-          <div onClick={() => onNavigate('home')}>
-            <Logo variant="dark" scale={1.1} />
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 flex items-center justify-between gap-2 sm:gap-4">
+          {/* Left Side: Mobile Menu Button on the LEFT + Logo */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* Mobile / Tablet Menu Button - POSITIONED ON THE LEFT */}
+            <button
+              onClick={onOpenMobileMenu}
+              className="flex xl:hidden items-center gap-1.5 px-3 py-2 rounded-xl bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-xs sm:text-sm shadow-md shadow-cyan-500/25 active:scale-95 transition-all border border-cyan-400/50 cursor-pointer"
+              aria-label="Open Navigation Menu"
+              title="Menu"
+            >
+              <Menu className="w-4 h-4 sm:w-5 sm:h-5 text-slate-950 stroke-[2.5]" />
+              <span className="font-extrabold tracking-wide uppercase">Menu</span>
+            </button>
+
+            {/* Brand Logo */}
+            <div onClick={() => onNavigate('home')} className="shrink-0 cursor-pointer">
+              <Logo variant="dark" scale={0.92} className="sm:hidden" />
+              <Logo variant="dark" scale={1.08} className="hidden sm:flex" />
+            </div>
           </div>
 
-          {/* Desktop Nav Items */}
+          {/* Desktop Nav Items (xl and above) */}
           <div className="hidden xl:flex items-center gap-1">
             {navItems.map((item) => {
               const isActive = currentPage === item.id;
@@ -234,7 +246,7 @@ export const Header: React.FC<HeaderProps> = ({
                             }}
                             className="text-cyan-400 hover:text-cyan-300 font-bold flex items-center gap-1"
                           >
-                            View All 13 Services →
+                            View All 12 Services →
                           </button>
                         </div>
                       </div>
@@ -259,34 +271,48 @@ export const Header: React.FC<HeaderProps> = ({
             })}
           </div>
 
-          {/* Header Action Buttons */}
-          <div className="flex items-center gap-2">
-            {/* Search Trigger (Desktop/Tablet) */}
+          {/* Right Side Header Action Buttons */}
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            {/* Search Trigger */}
             <button
               onClick={onOpenSearch}
-              className="hidden sm:flex p-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-cyan-400 border border-slate-800 transition-colors"
+              className="p-2 sm:p-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-cyan-400 border border-slate-800 transition-colors active:scale-95"
               title="Search Services, Brands & Advice"
+              aria-label="Search"
             >
               <Search className="w-4 h-4" />
             </button>
 
-            {/* Book Appointment CTA */}
+            {/* WhatsApp Quick Chat */}
+            <a
+              href="https://wa.me/923330177717"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden xs:flex items-center justify-center p-2 sm:px-3 sm:py-2 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-400 font-bold text-xs active:scale-95 transition-all"
+              aria-label="WhatsApp"
+              title="WhatsApp +92 333 0177717"
+            >
+              <MessageCircle className="w-4 h-4 text-emerald-400" />
+              <span className="hidden sm:inline ml-1.5">WhatsApp</span>
+            </a>
+
+            {/* Mobile Quick Call CTA */}
+            <a
+              href="tel:+923330177717"
+              className="flex sm:hidden items-center justify-center p-2 rounded-xl bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 active:scale-95 transition-all"
+              aria-label="Call HyperTune Garage"
+              title="Call HyperTune Garage"
+            >
+              <Phone className="w-4 h-4 text-cyan-400" />
+            </a>
+
+            {/* Book Appointment CTA (Tablet/Desktop) */}
             <button
               onClick={onOpenBooking}
-              className="hidden sm:flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-400 font-extrabold text-xs sm:text-sm border border-cyan-500/30 active:scale-95 transition-all"
+              className="hidden sm:flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-xs sm:text-sm shadow-md shadow-cyan-500/20 active:scale-95 transition-all"
             >
-              <Wrench className="w-4 h-4 text-cyan-400" />
+              <Wrench className="w-4 h-4 text-slate-950" />
               <span>Book Service</span>
-            </button>
-
-            {/* Mobile / Tablet Drawer Trigger - Prominent MENU Button */}
-            <button
-              onClick={onOpenMobileMenu}
-              className="flex xl:hidden items-center gap-1.5 px-3 py-2 rounded-xl bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-cyan-500/25 active:scale-95 transition-all border border-cyan-400/50"
-              aria-label="Open Navigation Menu"
-            >
-              <Menu className="w-5 h-5 text-slate-950 stroke-[2.5]" />
-              <span className="font-extrabold tracking-wide uppercase">Menu</span>
             </button>
           </div>
         </div>

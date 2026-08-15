@@ -70,7 +70,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
               <p className="text-sm">Type a search term above to instantly find workshop services, brand diagnostics, blog articles, and FAQs.</p>
               <div className="flex flex-wrap items-center justify-center gap-2 pt-2 text-xs">
                 <span className="text-slate-400">Popular searches:</span>
-                {['ECU Remap', 'BMW ISTA', 'Prius Battery', 'Oil Change G-8', '3D Alignment'].map((tag) => (
+                {['Engine Overhaul', 'PPF Studio', 'Prius Battery', 'Oil Change', '3D Alignment'].map((tag) => (
                   <button
                     key={tag}
                     onClick={() => setQuery(tag)}

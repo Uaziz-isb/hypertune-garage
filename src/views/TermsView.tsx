@@ -9,7 +9,7 @@ interface TermsViewProps {
 
 export const TermsView: React.FC<TermsViewProps> = ({ onNavigate, onOpenBooking }) => {
   return (
-    <div className="pt-24 md:pt-28 pb-20 max-w-5xl mx-auto px-4 space-y-12">
+    <div className="pt-28 sm:pt-32 md:pt-36 pb-20 max-w-5xl mx-auto px-4 space-y-12">
       {/* Header Banner */}
       <div className="text-center space-y-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 font-extrabold text-xs uppercase tracking-widest">
@@ -20,7 +20,7 @@ export const TermsView: React.FC<TermsViewProps> = ({ onNavigate, onOpenBooking 
           Terms & Conditions
         </h1>
         <p className="text-slate-400 text-sm max-w-2xl mx-auto">
-          Clear, transparent operating terms for mechanical repairs, ECU remapping, vehicle storage, and spare parts authorization at <span className="text-cyan-400 font-bold">HyperTune Garage</span>.
+          Clear, transparent operating terms for mechanical repairs, engine overhauls, vehicle storage, and spare parts authorization at <span className="text-cyan-400 font-bold">HyperTune Garage</span>.
         </p>
       </div>
 
@@ -71,7 +71,7 @@ export const TermsView: React.FC<TermsViewProps> = ({ onNavigate, onOpenBooking 
             <h2 className="text-xl font-extrabold text-white">Job Authorization & Work Estimates</h2>
           </div>
           <p className="text-sm text-slate-300 leading-relaxed pl-11">
-            Before any teardown, mechanical repair, or ECU flashing begins, HyperTune Garage issues a digital job card and itemized estimate.
+            Before any teardown, mechanical repair, or diagnostic servicing begins, HyperTune Garage issues a digital job card and itemized estimate.
           </p>
           <ul className="space-y-2.5 pl-11 text-xs text-slate-400">
             <li className="flex items-start gap-2">
@@ -127,7 +127,7 @@ export const TermsView: React.FC<TermsViewProps> = ({ onNavigate, onOpenBooking 
             <h2 className="text-xl font-extrabold text-white">Diagnostic Road Testing & Vehicle Handling</h2>
           </div>
           <p className="text-sm text-slate-300 leading-relaxed pl-11">
-            By dropping off your vehicle at our Islamabad or Rawalpindi workshop, you authorize certified master engineers to operate the vehicle on public roads strictly for road testing, pre-repair fault reproduction, ECU logging, and post-repair quality verification.
+            By dropping off your vehicle at our Islamabad or Rawalpindi workshop, you authorize certified master engineers to operate the vehicle on public roads strictly for road testing, pre-repair fault reproduction, diagnostic sensor logging, and post-repair quality verification.
           </p>
           <div className="pl-11 text-xs text-slate-400 space-y-2">
             <p className="flex items-center gap-2 text-slate-200 font-semibold">

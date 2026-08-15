@@ -63,7 +63,6 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate, onOpenBo
     { id: 'body', label: 'Body Repair & Oven Paint' },
     { id: 'modification', label: 'Body Kit & Modification' },
     { id: 'hybrid', label: 'Hybrid & EV Battery' },
-    { id: 'tuning', label: 'ECU Remapping & Dyno' },
     { id: 'electrical', label: 'Car AC & Auto Electrical' },
   ];
 
@@ -71,7 +70,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate, onOpenBo
     <div className="pt-32 md:pt-36 pb-16 space-y-12">
       <SEOHead
         title="Automotive Services Catalogue | HyperTune Garage Islamabad & Rawalpindi"
-        description="Explore 13 specialized automotive service categories in Islamabad & Rawalpindi: Engine Overhaul, Maintenance, Brakes, Transmission, Hybrid Battery, ECU Tuning, AC & Electrical, Diagnostics, Body Repair, PPF & Detailing."
+        description="Explore 12 specialized automotive service categories in Islamabad & Rawalpindi: Engine Overhaul, Maintenance, Brakes, Transmission, Hybrid Battery, AC & Electrical, Diagnostics, Body Repair, PPF & Detailing."
         canonicalUrl="https://hypertunegarage.pk/services"
       />
 
@@ -81,7 +80,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate, onOpenBo
         <div className="max-w-7xl mx-auto space-y-4 text-center relative z-10">
           <div className="inline-flex items-center gap-2 bg-cyan-950/60 border border-cyan-500/30 px-3.5 py-1.5 rounded-full text-cyan-400 font-bold text-xs uppercase tracking-wider">
             <ShieldCheck className="w-4 h-4 text-cyan-400" />
-            <span>13 Core Automotive Service Categories • Dealer-Level Standards</span>
+            <span>12 Core Automotive Service Categories • Dealer-Level Standards</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-black text-white">
             Automotive Services & Specializations

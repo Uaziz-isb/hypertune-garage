@@ -9,7 +9,7 @@ interface PrivacyViewProps {
 
 export const PrivacyView: React.FC<PrivacyViewProps> = ({ onNavigate, onOpenBooking }) => {
   return (
-    <div className="pt-24 md:pt-28 pb-20 max-w-5xl mx-auto px-4 space-y-12">
+    <div className="pt-28 sm:pt-32 md:pt-36 pb-20 max-w-5xl mx-auto px-4 space-y-12">
       {/* Header Banner */}
       <div className="text-center space-y-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 font-extrabold text-xs uppercase tracking-widest">
@@ -117,7 +117,7 @@ export const PrivacyView: React.FC<PrivacyViewProps> = ({ onNavigate, onOpenBook
             </li>
             <li className="flex items-start gap-2">
               <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-              <span>Public promotional usage of vehicle footage (such as PPF transformations or custom ECU dyno runs) is restricted to anonymized vehicle views with license plates digitally blurred upon request.</span>
+              <span>Public promotional usage of vehicle footage (such as PPF transformations or precision engine rebuilds) is restricted to anonymized vehicle views with license plates digitally blurred upon request.</span>
             </li>
           </ul>
         </section>

@@ -13,7 +13,7 @@ export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavi
   const loc = locationsData.find((l) => l.slug === slug) || locationsData[0];
 
   return (
-    <div className="pt-24 pb-16 space-y-12">
+    <div className="pt-28 sm:pt-32 md:pt-36 pb-16 space-y-12">
       <div className="max-w-7xl mx-auto px-4">
         <button
           onClick={() => onNavigate('locations')}
@@ -42,8 +42,8 @@ export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavi
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="p-4 bg-[#0b121e] border border-slate-800 rounded-2xl space-y-1">
               <span className="text-[11px] font-bold text-slate-400 uppercase">Direct Hotline:</span>
-              <a href="tel:+923315008872" className="text-base font-black text-cyan-400 block hover:underline">
-                0331-5008872
+              <a href="tel:+923330177717" className="text-base font-black text-cyan-400 block hover:underline">
+                0333-0177717
               </a>
             </div>
             <div className="p-4 bg-[#0b121e] border border-slate-800 rounded-2xl space-y-1">

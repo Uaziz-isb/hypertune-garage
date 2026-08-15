@@ -17,7 +17,7 @@ export const FAQView: React.FC<FAQViewProps> = ({ onNavigate, onOpenBooking }) =
     : faqData.filter((f) => f.category === activeCat);
 
   return (
-    <div className="pt-24 pb-16 space-y-12">
+    <div className="pt-28 sm:pt-32 md:pt-36 pb-16 space-y-12">
       <section className="bg-[#05080e] border-b border-slate-800 py-16 px-4">
         <div className="max-w-7xl mx-auto space-y-4 text-center">
           <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-1.5">

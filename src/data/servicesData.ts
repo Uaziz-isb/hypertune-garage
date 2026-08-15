@@ -150,19 +150,19 @@ export const servicesData: ServiceItem[] = [
   {
     id: 'engine-services',
     slug: 'engine-services',
-    title: 'Engine Services',
-    shortDesc: 'Specialized engine repair and performance ECU tuning for all vehicle makes in Islamabad & Rawalpindi. Our certified technicians perform engine overhauls, cylinder head repairs, valve jobs, timing belt replacement, and dyno-tested ECU remapping to restore power, fuel efficiency, and original factory smoothness.',
-    fullDesc: 'HyperTune Garage is Islamabad and Rawalpindi’s dedicated center for complete engine repair, overhaul, and stage 1 & 2 ECU remapping. Whether your engine suffers from overheating damage, blown head gaskets, excessive oil burning, low cylinder compression, or rod knock, our dust-free mechanical bay is equipped with computerized diagnostic rigs and precision micrometer measuring tools. We rebuild engines to strict 0.001mm OEM specifications and offer custom dyno tuning for optimized horsepower, torque, and throttle response.',
-    subServices: ['Engine Repair', 'Engine Tuning'],
+    title: 'Engine Services & Overhaul',
+    shortDesc: 'Specialized engine repair and precision mechanical overhaul for all vehicle makes in Islamabad & Rawalpindi. Our certified technicians perform engine overhauls, cylinder head repairs, valve jobs, timing chain replacement, and computerized sensor calibration to restore power, fuel efficiency, and factory smoothness.',
+    fullDesc: 'HyperTune Garage is Islamabad and Rawalpindi’s dedicated center for complete engine repair, overhaul, and precision diagnostics. Whether your engine suffers from overheating damage, blown head gaskets, excessive oil burning, low cylinder compression, or rod knock, our dust-free mechanical bay is equipped with computerized diagnostic rigs and precision micrometer measuring tools. We rebuild engines to strict 0.001mm OEM specifications with guaranteed factory reliability.',
+    subServices: ['Engine Repair & Rebuild', 'Engine Health & Diagnostics'],
     subServicePrices: [
-      { name: 'Car Diagnostics / ECU Scan', price: 'PKR 1,500 to 2,500 per Diagnostics' },
-      { name: 'Engine Repair', price: 'PKR 10,000 to 100,000' },
-      { name: 'Engine Tuning', price: 'PKR 8,000 to 30,000' },
+      { name: 'Computerized Diagnostics Scan', price: 'PKR 1,500 to 2,500' },
+      { name: 'Cylinder Head & Valve Repair', price: 'PKR 15,000 to 45,000' },
+      { name: 'Complete Engine Overhaul', price: 'PKR 45,000 to 180,000' },
     ],
     category: 'engine',
     icon: 'Cpu',
     image: images.engineOverhaul,
-    priceRange: 'PKR 8,000 - PKR 100,000',
+    priceRange: 'PKR 8,000 - PKR 180,000',
     estimatedTime: '1 - 5 Days',
     isFeatured: true,
     symptoms: [
@@ -175,7 +175,7 @@ export const servicesData: ServiceItem[] = [
     keyBenefits: [
       '0.001mm micrometer precision block honing & deck resurfacing',
       '100% genuine OEM pistons, rings, valves, timing chain kits, and head gaskets',
-      'Custom ECU remapping for smooth power delivery & Pakistani fuel optimization',
+      'Computerized sensor calibration & fuel injector balance for Pakistani conditions',
       '12-Month / 20,000 km Written Warranty on complete engine rebuilds',
       'Complimentary break-in inspection & 1,000 km oil service check',
     ],
@@ -186,11 +186,11 @@ export const servicesData: ServiceItem[] = [
       'Transparent video reports sent to your WhatsApp during teardown',
     ],
     processSteps: [
-      { title: '1. Diagnostic Computer & Pressure Test', desc: 'Read ECU fault codes, cylinder compression test, and cooling pressure audit.' },
+      { title: '1. Diagnostic Computer & Pressure Test', desc: 'Read fault codes, cylinder compression test, and cooling pressure audit.' },
       { title: '2. Safe Extraction & Teardown', desc: 'Meticulous engine disassembly with cataloged parts and video documentation.' },
       { title: '3. Precision Machining & Ultrasonic Wash', desc: 'Resurface cylinder heads, hone cylinders, and clean all internal galleries.' },
       { title: '4. OEM Assembly & Torque Specs', desc: 'Rebuild using genuine OEM components adhering strictly to factory torque limits.' },
-      { title: '5. Dyno Bench Audit & Road Testing', desc: 'Warm break-in cycle, oil pressure verification, and road safety audit.' },
+      { title: '5. Break-In Test & Road Verification', desc: 'Warm break-in cycle, oil pressure verification, and road safety audit.' },
     ],
     faqs: [
       {
@@ -198,25 +198,23 @@ export const servicesData: ServiceItem[] = [
         answer: 'Our technicians conduct a 4-point diagnostic test including cylinder compression, leak-down test, oil pressure check, and scope camera inspection. If wear is limited to gaskets or sensors, we perform targeted repair; if internal pistons or bearings are damaged, a full rebuild is recommended.',
       },
       {
-        question: 'What is included in HyperTune Garage Engine Tuning?',
-        answer: 'Engine tuning includes ECU remapping for Pakistani 92/95 Octane fuel conditions, air-fuel ratio optimization, spark plug upgrades, throttle response calibration, and ultrasonic fuel injector servicing.',
+        question: 'What is included in HyperTune Garage Engine Maintenance & Overhaul?',
+        answer: 'Engine overhaul includes block resurfacing, precision cylinder honing, new OEM pistons, rings, bearings, timing chain replacement, valve clearance adjustment, and ultrasonic fuel injector servicing.',
       },
     ],
     seo: {
-      seoTitle: 'Engine Services, Repair & Tuning Islamabad | HyperTune',
-      metaDescription: 'Expert engine repair, tuning & overhaul in Islamabad & Rawalpindi. Factory-grade diagnostics, head gasket repair, timing belt replacement & ECU remapping.',
-      h1Heading: 'Engine Repair & Performance Tuning Services in Islamabad & Rawalpindi',
+      seoTitle: 'Engine Services, Repair & Overhaul Islamabad | HyperTune',
+      metaDescription: 'Expert engine repair, diagnostics & overhaul in Islamabad & Rawalpindi. Factory-grade diagnostics, head gasket repair, timing belt replacement & 12-month warranty.',
+      h1Heading: 'Engine Repair & Precision Overhaul Services in Islamabad & Rawalpindi',
       targetKeywords: [
         'Engine Repair Islamabad',
-        'Engine Tuning Islamabad',
         'Engine Overhaul Rawalpindi',
-        'ECU Remapping Pakistan',
         'Cylinder Head Repair',
         'Engine Diagnostics Islamabad',
         'Timing Belt Replacement',
-        'Car Engine Tuning Rawalpindi'
+        'Car Engine Overhaul Rawalpindi'
       ],
-      keywordParagraph: 'Looking for specialized Engine Repair in Islamabad or complete Engine Overhaul in Rawalpindi? HyperTune Garage provides dealership-grade Engine Diagnostics in Islamabad using advanced diagnostic scanners, cylinder compression testing, and precision measuring tools. Our certified mechanics excel in Cylinder Head Repair, timing belt replacement, valve clearance adjustment, and stage 1 & 2 ECU Remapping in Pakistan. Whether you need routine Car Engine Tuning in Rawalpindi for improved fuel efficiency or a complete 0.001mm precision engine rebuild with a 12-month warranty, HyperTune Garage delivers peak power and smooth operation across Islamabad and Rawalpindi.',
+      keywordParagraph: 'Looking for specialized Engine Repair in Islamabad or complete Engine Overhaul in Rawalpindi? HyperTune Garage provides dealership-grade Engine Diagnostics in Islamabad using advanced diagnostic scanners, cylinder compression testing, and precision measuring tools. Our certified mechanics excel in Cylinder Head Repair, timing belt replacement, valve clearance adjustment, and precision engine rebuilds with a 12-month warranty across Islamabad and Rawalpindi.',
     },
   },
 
@@ -660,7 +658,7 @@ export const servicesData: ServiceItem[] = [
     ],
     category: 'modification',
     icon: 'Wrench',
-    image: images.bannerDyno,
+    image: images.heroBanner,
     priceRange: 'PKR 5,000 - PKR 300,000',
     estimatedTime: '2 - 7 Days',
     isFeatured: true,
@@ -788,75 +786,6 @@ export const servicesData: ServiceItem[] = [
   },
 
   {
-    id: 'ecu-tuning-dyno',
-    slug: 'ecu-tuning-dyno',
-    title: 'ECU Remapping & Dyno Tuning',
-    shortDesc: 'Stage 1, Stage 2, and custom ECU remapping with 4WD Mustang Dyno validation in Islamabad & Rawalpindi. Unlock horsepower, torque, and optimized fuel economy safely.',
-    fullDesc: 'HyperTune Garage features a state-of-the-art 4WD Mustang Dyno tuning cell in Islamabad & Rawalpindi. We specialize in custom ECU remapping, TCU transmission tuning, speed limiter removal, pop & bang flame maps, and Stage 1 / Stage 2 performance upgrades for German, Japanese, and local vehicles.',
-    subServices: ['Stage 1 Custom ECU Remap', 'Stage 2 Performance Tune', '4WD Mustang Dyno Run', 'Pop & Bang / Flame Maps'],
-    subServicePrices: [
-      { name: 'Stage 1 Eco & Performance Remap', price: 'PKR 25,000 to 50,000' },
-      { name: 'Stage 2 Custom Dyno Tuning', price: 'PKR 60,000 to 120,000' }
-    ],
-    category: 'tuning',
-    icon: 'Cpu',
-    image: images.bannerDyno,
-    priceRange: 'PKR 25,000 - PKR 120,000',
-    estimatedTime: '1 Day',
-    isFeatured: true,
-    symptoms: [
-      'Sluggish throttle response and turbo lag during acceleration',
-      'Desire for additional horsepower, torque, and top-end responsiveness',
-      'Engine hesitation after installing aftermarket downpipe or exhaust',
-      'Restricted top speed governor or factory power detuning',
-    ],
-    keyBenefits: [
-      'Up to +20% to +35% horsepower and torque gains verified on 4WD Dyno',
-      'Smoother throttle delivery and reduced turbo lag',
-      'Improved highway fuel efficiency under cruising conditions',
-      'Safety parameters preserved within engine tolerance limits',
-    ],
-    whyChooseUs: [
-      '4WD Mustang Dyno tuning cell with high-velocity cooling wind fans',
-      'Licensed genuine tuning software (Alientech KESSv3, CMD Flash, HP Tuners)',
-      'Custom fuel map writing specifically calibrated for Pakistani fuel octane levels',
-      'Original factory ECU software backup maintained on cloud storage',
-    ],
-    processSteps: [
-      { title: '1. Baseline Dyno Pull & Health Audit', desc: 'Perform pre-tune diagnostic scan and baseline power pull on 4WD dyno.' },
-      { title: '2. Factory ECU Read & File Extraction', desc: 'Extract original ECU map via OBD-II port or bench mode safely.' },
-      { title: '3. Custom Map Calibration & Parameter Adjustment', desc: 'Optimize air-fuel ratios, boost pressure, ignition timing, and torque limits.' },
-      { title: '4. Flashing & Dyno Fine-Tuning', desc: 'Flash custom calibration map and monitor knock sensors, AFR, and exhaust gas temp.' },
-      { title: '5. Final Dyno Graph Printout & Road Audit', desc: 'Deliver baseline vs tuned horsepower/torque comparison graph to customer.' },
-    ],
-    faqs: [
-      {
-        question: 'Will ECU remapping damage my vehicle engine?',
-        answer: 'Our tunes keep all safety parameters and thermal limits intact. We write custom maps tailored specifically to local fuel quality to ensure maximum reliability.',
-      },
-      {
-        question: 'Can the tune be reverted back to stock factory settings?',
-        answer: 'Yes! We store a complete backup of your original stock software file and can re-flash it back at any time.',
-      },
-    ],
-    seo: {
-      seoTitle: 'ECU Remapping & Dyno Tuning Islamabad & Rawalpindi | HyperTune',
-      metaDescription: 'Professional Stage 1 & Stage 2 ECU remapping with 4WD Mustang Dyno tuning in Islamabad & Rawalpindi. Safe power gains and throttle response.',
-      h1Heading: 'ECU Remapping & 4WD Dyno Tuning Center',
-      targetKeywords: [
-        'ECU tuning Islamabad',
-        'Dyno tuning Rawalpindi',
-        'Stage 1 remapping',
-        'Stage 2 tune',
-        'Civic 1.5T tuning',
-        'BMW ECU remap',
-        'Pop and bang tune Islamabad'
-      ],
-      keywordParagraph: 'Maximize engine output and driving dynamics with custom ECU Remapping and 4WD Dyno Tuning in Islamabad & Rawalpindi at HyperTune Garage.',
-    },
-  },
-
-  {
     id: 'car-ac-electrical',
     slug: 'car-ac-electrical',
     title: 'Car AC & Auto Electrical Systems',
@@ -961,12 +890,8 @@ export function getServiceBySlug(slug?: string): ServiceItem {
     return servicesData.find((s) => s.id === 'hybrid-ev-battery-services') || servicesData[10];
   }
 
-  if (normalized.includes('tuning') || normalized.includes('dyno') || normalized.includes('remap') || normalized.includes('ecu')) {
-    return servicesData.find((s) => s.id === 'ecu-tuning-dyno') || servicesData[11];
-  }
-
   if (normalized.includes('ac') || normalized.includes('air-condition') || normalized.includes('electric') || normalized.includes('wiring') || normalized.includes('compressor')) {
-    return servicesData.find((s) => s.id === 'car-ac-electrical') || servicesData[12];
+    return servicesData.find((s) => s.id === 'car-ac-electrical') || servicesData[11];
   }
 
   if (normalized.includes('diagnostic') || normalized.includes('inspection') || normalized.includes('scan')) {

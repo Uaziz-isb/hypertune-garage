@@ -18,7 +18,7 @@ export const GalleryView: React.FC<GalleryViewProps> = ({ onNavigate, onOpenBook
     : galleryData.filter((g) => g.category === activeCat);
 
   return (
-    <div className="pt-24 pb-16 space-y-12">
+    <div className="pt-28 sm:pt-32 md:pt-36 pb-16 space-y-12">
       <section className="bg-[#05080e] border-b border-slate-800 py-16 px-4">
         <div className="max-w-7xl mx-auto space-y-4 text-center">
           <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
@@ -28,14 +28,14 @@ export const GalleryView: React.FC<GalleryViewProps> = ({ onNavigate, onOpenBook
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">HyperTune Garage</span> Workshop Gallery
           </h1>
           <p className="text-slate-400 text-sm max-w-2xl mx-auto">
-            High-resolution photography from our Islamabad & Rawalpindi workshops featuring ECU dyno tunes, engine overhauls on popular brands, and 9H ceramic PPF detailing.
+            High-resolution photography from our Islamabad & Rawalpindi workshops featuring precision engine overhauls, transmission repairs on popular brands, and 9H ceramic PPF detailing.
           </p>
         </div>
       </section>
 
       <section className="max-w-7xl mx-auto px-4 space-y-8">
         <div className="flex flex-wrap items-center justify-center gap-2">
-          {['all', 'Engine Overhaul', 'ECU Dyno', 'Popular Brands Repair', 'Ceramic & PPF', 'Suspension & Brakes', 'Hybrid Battery'].map((cat) => (
+          {['all', 'Engine Overhaul', 'Transmission & Gearbox', 'Popular Brands Repair', 'Ceramic & PPF', 'Suspension & Brakes', 'Hybrid Battery'].map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCat(cat)}

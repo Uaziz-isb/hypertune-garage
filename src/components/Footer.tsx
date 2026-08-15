@@ -169,14 +169,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               { label: 'Services Catalogue', page: 'services' as PageId },
               { label: 'Workshop Locations', page: 'locations' as PageId },
               { label: 'Work Gallery & Restorations', page: 'gallery' as PageId },
+              { label: 'Customer Reviews & Ratings', page: 'testimonials' as PageId },
+              { label: '12-Month Warranty Specs', page: 'warranty' as PageId },
               { label: 'Car Care Blog & Guides', page: 'blog' as PageId },
-              { label: 'Customer Reviews & FAQ', page: 'faq' as PageId },
+              { label: 'Frequently Asked Questions (FAQ)', page: 'faq' as PageId },
               { label: 'About HyperTune', page: 'about' as PageId },
               { label: 'Contact Us', page: 'contact' as PageId },
               { label: 'Privacy Policy', page: 'privacy' as PageId },
               { label: 'Terms & Conditions', page: 'terms' as PageId },
-              { label: 'Warranty Specs', page: 'warranty' as PageId },
-              { label: 'Site Map Directory', page: 'sitemap' as PageId },
             ].map((link) => (
               <li key={link.page}>
                 <button

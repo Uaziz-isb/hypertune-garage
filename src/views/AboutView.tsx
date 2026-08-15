@@ -33,7 +33,7 @@ interface AboutViewProps {
 
 export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking }) => {
   return (
-    <div className="pt-24 pb-16 space-y-16">
+    <div className="pt-28 sm:pt-32 md:pt-36 pb-16 space-y-16">
       {/* Hero Banner Section */}
       <section className="bg-[#05080e] border-b border-slate-800 py-16 px-4 relative overflow-hidden">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -59,13 +59,13 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
             Our Precision & Engineering Craftsmanship
           </span>
           <h2 className="text-3xl font-black text-white">
-            Redefining Car Maintenance & Tuning in Pakistan
+            Redefining Car Maintenance & Overhaul in Pakistan
           </h2>
           <p className="text-slate-300 text-sm leading-relaxed">
-            Founded with a passion for automotive perfection, HyperTune Garage bridges the gap between factory dealer standards and high-performance custom tuning. We combine years of hands-on experience with continuous training on the latest automotive technology, computer diagnostics, and engine remapping techniques.
+            Founded with a passion for automotive perfection, HyperTune Garage bridges the gap between factory dealer standards and precision mechanical service. We combine years of hands-on experience with continuous training on the latest automotive technology, computer diagnostics, and engine rebuilding techniques.
           </p>
           <p className="text-slate-400 text-xs leading-relaxed">
-            Whether you are maintaining your daily commuter or upgrading a turbocharged track build, our workshop features official dealer-level diagnostic interfaces, dust-free paint protection cleanrooms, state-of-the-art lifts, and specialized tuning rigs to ensure your vehicle performs at its absolute peak.
+            Whether you are maintaining your daily commuter or restoring a luxury SUV, our workshop features official dealer-level diagnostic interfaces, dust-free paint protection cleanrooms, state-of-the-art lifts, and specialized measurement tools to ensure your vehicle performs at its absolute peak.
           </p>
 
           {/* Quick Metrics */}
@@ -129,8 +129,8 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
               },
               {
                 icon: Activity,
-                title: 'Engine Tuning & ECU Remapping',
-                desc: 'Custom Stage 1, Stage 2, and TCU remapping with dyno-proven calibration for enhanced horsepower, torque, and crisp throttle response.',
+                title: 'Engine Rebuilding & Overhaul',
+                desc: 'Precision 0.001mm micrometer cylinder rebuilding, timing chain renewal, and valve restoration with 12-month written warranty.',
                 slug: 'engine-services',
                 highlight: true,
               },

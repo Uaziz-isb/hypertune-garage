@@ -14,7 +14,7 @@ export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpen
   const post = blogData.find((b) => b.slug === slug) || blogData[0];
 
   return (
-    <div className="pt-24 pb-16 space-y-12">
+    <div className="pt-28 sm:pt-32 md:pt-36 pb-16 space-y-12">
       <div className="max-w-4xl mx-auto px-4">
         <button
           onClick={() => onNavigate('blog')}

@@ -52,11 +52,11 @@ export const galleryData: GalleryItem[] = [
   },
   {
     id: 'gal-7',
-    title: 'BMW M4 Competition Stage 2 ECU Remap & Dyno Calibration',
-    category: 'ECU Dyno',
-    image: images.bannerDyno,
+    title: 'BMW M4 Competition Carbon Brake Upgrade & Laser Track Alignment',
+    category: 'Suspension & Brakes',
+    image: images.suspension,
     vehicle: 'BMW M4 Competition F82',
-    description: 'Custom ECU remapping on 4WD rolling dyno with pops/bangs toggle and speed limiter removal.',
+    description: 'High-performance brake rotor installation, braided lines, and 3D computerized track alignment.',
   },
   {
     id: 'gal-8',
@@ -68,11 +68,11 @@ export const galleryData: GalleryItem[] = [
   },
   {
     id: 'gal-9',
-    title: 'Audi S5 3.0 TFSI Pops & Bangs ECU Tuning & TCU Flash',
-    category: 'ECU Dyno',
-    image: images.ecuTuning,
+    title: 'Audi S5 3.0 TFSI Dual-Clutch S-Tronic Transmission Overhaul',
+    category: 'Transmission & Gearbox',
+    image: images.engineRebuild,
     vehicle: 'Audi S5 Sportback',
-    description: 'Custom stage 1 ECU calibration delivering +65 HP gain and lightning-fast S-Tronic TCU shift points.',
+    description: 'Mechatronic unit repair, clutch pack replacement, and fluid pressure calibration.',
   },
   {
     id: 'gal-10',

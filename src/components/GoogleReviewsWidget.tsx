@@ -234,7 +234,7 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
             </div>
 
             <a
-              href={data?.googleMapsUrl || 'https://www.google.com/maps/place/HyperTune+Garage/@33.5622113,73.1345365,17z/data=!3m1!4b1!4m6!3m5!1s0x38dfede5eabd2d83:0xf3b2d99386f26b69!8m2!3d33.5622113!4d73.1345365'}
+              href={data?.googleMapsUrl || 'https://www.google.com/maps?cid=17560337124718439273&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en&gl=PK&source=embed'}
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 shrink-0"

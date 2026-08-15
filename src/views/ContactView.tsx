@@ -24,7 +24,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
   };
 
   return (
-    <div className="pt-24 pb-16 space-y-12">
+    <div className="pt-28 sm:pt-32 md:pt-36 pb-16 space-y-12">
       <section className="bg-[#05080e] border-b border-slate-800 py-16 px-4">
         <div className="max-w-7xl mx-auto space-y-4 text-center">
           <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
@@ -34,7 +34,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
             Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">HyperTune Garage</span>
           </h1>
           <p className="text-slate-400 text-sm max-w-2xl mx-auto">
-            Reach out directly to our master engineering team in Islamabad & Rawalpindi for immediate assistance, roadside towing, or diagnostic inquiries.
+            Reach out directly to our master engineering team in Islamabad & Rawalpindi for service bookings, PPF consultations, or vehicle health inquiries.
           </p>
         </div>
       </section>
@@ -118,7 +118,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
                   required
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="e.g. 0331 5008872"
+                  placeholder="e.g. 0333 0177717"
                   className="w-full bg-[#070c14] border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-cyan-500 focus:outline-none"
                 />
               </div>
@@ -130,7 +130,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
                   required
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Inquire about ECU tuning, Toyota/Honda/Suzuki repairs, PPF studio booking..."
+                  placeholder="Inquire about engine diagnostics, Toyota/Honda/Suzuki repairs, PPF studio booking..."
                   className="w-full bg-[#070c14] border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-cyan-500 focus:outline-none resize-none"
                 />
               </div>
@@ -175,7 +175,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
             </p>
           </div>
           <a
-            href="https://www.google.com/maps/search/?api=1&query=HyperTune+Garage&query_place_id=ChIJg2296t7t3z8RabZyjT3Zsg8"
+            href="https://www.google.com/maps?cid=17560337124718439273&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en&gl=PK&source=embed"
             target="_blank"
             rel="noopener noreferrer"
             className="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-xs flex items-center gap-2 shadow-lg shadow-cyan-500/20 shrink-0 transition-all active:scale-95"

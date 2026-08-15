@@ -35,12 +35,10 @@ interface SitemapViewProps {
 export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBooking }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [copiedUrl, setCopiedUrl] = useState(false);
-  const [copiedXml, setCopiedXml] = useState(false);
-  const [showXmlModal, setShowXmlModal] = useState(false);
 
   const sitemapDirectUrl = typeof window !== 'undefined'
-    ? `${window.location.origin}${window.location.pathname}#sitemap`
-    : 'https://hypertunegarage.com/#sitemap';
+    ? `${window.location.origin}/sitemap`
+    : 'https://hypertunegarage.pk/sitemap';
 
   const handleCopyUrl = () => {
     navigator.clipboard.writeText(sitemapDirectUrl);
@@ -49,46 +47,20 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
   };
 
   // Main high-level site pages
-  const mainPages: { label: string; page: PageId; desc: string; icon: React.ElementType }[] = [
-    { label: 'Home Page', page: 'home', desc: 'Main workshop overview, hero service highlights, and instant booking.', icon: Globe },
-    { label: 'Services Catalogue', page: 'services', desc: 'Full catalogue of 13+ precision repair, protection, and tuning services.', icon: Wrench },
-    { label: 'Workshop Locations', page: 'locations', desc: 'Islamabad G-8/4 Hub & Rawalpindi I-9 Branch directions and contacts.', icon: MapPin },
-    { label: 'Work Gallery & Restorations', page: 'gallery', desc: 'Before & after high-resolution portfolio of PPF, paint & engine rebuilds.', icon: Sparkles },
-    { label: 'Car Care Blog & Guides', page: 'blog', desc: 'Technical guides, ECU tuning tips, and maintenance articles by engineers.', icon: BookOpen },
-    { label: 'Customer Reviews & Rating', page: 'testimonials', desc: 'Genuine 4.9-star Google reviews from BMW, Audi, Mercedes & Toyota owners.', icon: ShieldCheck },
-    { label: 'Frequently Asked Questions', page: 'faq', desc: 'Detailed answers on repair warranties, pricing, turnaround, and parts.', icon: FileText },
-    { label: 'About HyperTune Garage', page: 'about', desc: 'Company history, master technician credentials, and workshop specs.', icon: Layers },
-    { label: 'Contact Us', page: 'contact', desc: 'Direct phone lines, WhatsApp links, email, and location maps.', icon: Phone },
-    { label: '12-Month Warranty Specs', page: 'warranty', desc: 'Bumper-to-bumper 12-month / 15,000 km warranty coverage details.', icon: ShieldCheck },
-    { label: 'Privacy Policy', page: 'privacy', desc: 'Customer data privacy standards, security, and cookie policies.', icon: FileText },
-    { label: 'Terms & Conditions', page: 'terms', desc: 'Service agreements, estimate terms, and workshop repair policies.', icon: FileText },
+  const mainPages: { label: string; page: PageId; path: string; desc: string; icon: React.ElementType }[] = [
+    { label: 'Home Page', page: 'home', path: '/', desc: 'Main workshop overview, hero service highlights, and instant booking.', icon: Globe },
+    { label: 'Services Catalogue', page: 'services', path: '/services', desc: 'Full catalogue of 12 precision repair, protection, and overhaul services.', icon: Wrench },
+    { label: 'Workshop Locations', page: 'locations', path: '/locations', desc: 'Islamabad G-8/4 Hub & Rawalpindi I-9 Branch directions and contacts.', icon: MapPin },
+    { label: 'Work Gallery & Restorations', page: 'gallery', path: '/gallery', desc: 'Before & after high-resolution portfolio of PPF, paint & engine rebuilds.', icon: Sparkles },
+    { label: 'Car Care Blog & Guides', page: 'blog', path: '/blog', desc: 'Technical guides, engine care tips, and maintenance articles by engineers.', icon: BookOpen },
+    { label: 'Customer Reviews & Rating', page: 'testimonials', path: '/testimonials', desc: 'Genuine 4.9-star Google reviews from BMW, Audi, Mercedes & Toyota owners.', icon: ShieldCheck },
+    { label: 'Frequently Asked Questions', page: 'faq', path: '/faq', desc: 'Detailed answers on repair warranties, pricing, turnaround, and parts.', icon: FileText },
+    { label: 'About HyperTune Garage', page: 'about', path: '/about', desc: 'Company history, master technician credentials, and workshop specs.', icon: Layers },
+    { label: 'Contact Us', page: 'contact', path: '/contact', desc: 'Direct phone lines, WhatsApp links, email, and location maps.', icon: Phone },
+    { label: '12-Month Warranty Specs', page: 'warranty', path: '/warranty-specs', desc: 'Bumper-to-bumper 12-month / 15,000 km warranty coverage details.', icon: ShieldCheck },
+    { label: 'Privacy Policy', page: 'privacy', path: '/privacy-policy', desc: 'Customer data privacy standards, security, and cookie policies.', icon: FileText },
+    { label: 'Terms & Conditions', page: 'terms', path: '/terms-conditions', desc: 'Service agreements, estimate terms, and workshop repair policies.', icon: FileText },
   ];
-
-  const xmlContent = useMemo(() => {
-    const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://hypertunegarage.com';
-    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-    xml += `  <url><loc>${baseUrl}/#sitemap</loc><priority>1.0</priority><changefreq>daily</changefreq></url>\n`;
-    mainPages.forEach(p => {
-      xml += `  <url><loc>${baseUrl}/#${p.page}</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>\n`;
-    });
-    servicesData.forEach(s => {
-      xml += `  <url><loc>${baseUrl}/#service-detail?slug=${s.slug}</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>\n`;
-    });
-    locationsData.forEach(l => {
-      xml += `  <url><loc>${baseUrl}/#location-detail?slug=${l.slug}</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>\n`;
-    });
-    blogData.forEach(b => {
-      xml += `  <url><loc>${baseUrl}/#blog-post?slug=${b.slug}</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>\n`;
-    });
-    xml += `</urlset>`;
-    return xml;
-  }, [mainPages]);
-
-  const handleCopyXml = () => {
-    navigator.clipboard.writeText(xmlContent);
-    setCopiedXml(true);
-    setTimeout(() => setCopiedXml(false), 2500);
-  };
 
   // Filter items based on search query
   const filteredMainPages = useMemo(() => {
@@ -186,7 +158,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search site map links (e.g., PPF, Engine Overhaul, Islamabad, ECU Remap)..."
+          placeholder="Search site map links (e.g., PPF, Engine Overhaul, Islamabad, Hybrid Battery)..."
           className="w-full pl-11 pr-10 py-3.5 bg-[#0b121e] border border-slate-800 rounded-2xl text-slate-100 text-sm placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all shadow-xl"
         />
         {searchQuery && (
@@ -250,7 +222,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
           </div>
           <div>
             <h2 className="text-xl font-extrabold text-white">Services Catalogue Directory</h2>
-            <p className="text-xs text-slate-400">Individual precision repair, protection & remap service pages ({filteredServices.length} services)</p>
+            <p className="text-xs text-slate-400">Individual precision repair, protection & overhaul service pages ({filteredServices.length} services)</p>
           </div>
         </div>
 
@@ -402,7 +374,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
           </div>
           <div>
             <h2 className="text-xl font-extrabold text-white">Direct Booking & Quick Utility Portals</h2>
-            <p className="text-xs text-slate-400">Instant shortcuts to book repairs, request estimates, or contact emergency towing</p>
+            <p className="text-xs text-slate-400">Instant shortcuts to book repairs, request estimates, or contact workshop engineers</p>
           </div>
         </div>
 
@@ -433,11 +405,11 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
 
           <a
             href="tel:+923330177717"
-            className="p-4 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs flex items-center justify-between shadow-lg transition-all active:scale-95"
+            className="p-4 rounded-2xl bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-cyan-500/30 font-bold text-xs flex items-center justify-between shadow-lg transition-all active:scale-95"
           >
             <div className="flex items-center gap-2">
-              <Phone className="w-4 h-4" />
-              <span>24/7 Hotline + Towing</span>
+              <Phone className="w-4 h-4 text-cyan-400" />
+              <span>Helpline: 0333-0177717</span>
             </div>
             <ExternalLink className="w-4 h-4" />
           </a>
