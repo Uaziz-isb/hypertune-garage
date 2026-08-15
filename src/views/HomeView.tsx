@@ -62,10 +62,22 @@ const heroSlides = [
     badge: "HyperTune Garage Vehicle Armor",
   },
   {
+    image: images.bannerDyno,
+    title: "HyperTune Garage Dyno & ECU Remap Laboratory",
+    tagline: "Live Sensor Telemetry • Custom Stage 1/2 Performance ECU Calibration",
+    badge: "HyperTune Garage ECU & Tuning Lab",
+  },
+  {
     image: images.ppfSedanStudio,
     title: "HyperTune Garage Hydrophobic Ceramic Shielding",
     tagline: "9H Nano-Ceramic Barrier • Paint Correction & Mirror Gloss Finish",
     badge: "HyperTune Garage Ceramic Studio",
+  },
+  {
+    image: images.bannerEngine,
+    title: "HyperTune Garage Master Engine Rebuild Lab",
+    tagline: "0.001mm Tolerance Measuring • Dust-Free Overhaul & Gearbox Restorations",
+    badge: "HyperTune Garage Engine Lab",
   },
   {
     image: images.heroBanner,
@@ -117,9 +129,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
               src={slide.image}
               alt={slide.title}
               referrerPolicy="no-referrer"
-              loading={idx === 0 ? 'eager' : 'lazy'}
-              decoding={idx === 0 ? 'sync' : 'async'}
-              fetchPriority={idx === 0 ? 'high' : 'low'}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 scale-105 ${
                 idx === currentSlide ? 'opacity-40 z-10' : 'opacity-0 z-0'
               }`}
@@ -159,7 +168,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </button>
 
               <a
-                href="https://wa.me/923330177717?text=Hi%20HyperTune%20Garage%2C%20I%20want%20to%20get%20an%20instant%20PPF%20and%20repair%20estimate."
+                href="https://wa.me/923315008872?text=Hi%20HyperTune%20Garage%2C%20I%20want%20to%20get%20an%20instant%20PPF%20and%20repair%20estimate."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm flex items-center gap-2 shadow-xl shadow-emerald-600/20 active:scale-95 transition-all"
@@ -197,9 +206,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     src={slide.image}
                     alt={slide.title}
                     referrerPolicy="no-referrer"
-                    loading={idx === 0 ? 'eager' : 'lazy'}
-                    decoding={idx === 0 ? 'sync' : 'async'}
-                    fetchPriority={idx === 0 ? 'high' : 'low'}
                     className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
                       idx === currentSlide
                         ? 'opacity-100 scale-100'
@@ -610,11 +616,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
                 <div className="flex items-center gap-2 pt-2">
                   <a
-                    href="tel:+923315008872"
+                    href="tel:+923330177717"
                     className="flex-1 py-2.5 rounded-xl bg-[#070c14] hover:bg-slate-800 text-white font-bold text-xs border border-slate-800 flex items-center justify-center gap-1.5 transition-colors"
                   >
                     <Phone className="w-3.5 h-3.5 text-cyan-400" />
-                    <span>0331-5008872</span>
+                    <span>0333-0177717</span>
                   </a>
                   <a
                     href={loc.googleMapsDirectionsUrl}
@@ -646,7 +652,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </p>
           </div>
           <a
-            href="https://www.google.com/maps?cid=17560337124718439273&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en&gl=PK&source=embed"
+            href="https://www.google.com/maps/search/?api=1&query=HyperTune+Garage&query_place_id=ChIJg2296t7t3z8RabZyjT3Zsg8"
             target="_blank"
             rel="noopener noreferrer"
             className="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-xs flex items-center gap-2 shadow-lg shadow-cyan-500/20 shrink-0 transition-all active:scale-95"

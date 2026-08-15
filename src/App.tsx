@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageId } from './types';
 import { SEOHead } from './components/SEOHead';
 import { EmergencyBanner } from './components/EmergencyBanner';
@@ -6,112 +6,47 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { MobileDrawer } from './components/MobileDrawer';
+import { BookingModal } from './components/BookingModal';
+import { SearchModal } from './components/SearchModal';
 
-// Critical Initial View (HomeView loaded directly)
+// Views
 import { HomeView } from './views/HomeView';
-
-// Code-split secondary views & modals to optimize initial bundle size & LCP
-const AboutView = lazy(() => import('./views/AboutView').then(m => ({ default: m.AboutView })));
-const ServicesView = lazy(() => import('./views/ServicesView').then(m => ({ default: m.ServicesView })));
-const ServiceDetailView = lazy(() => import('./views/ServiceDetailView').then(m => ({ default: m.ServiceDetailView })));
-const LocationsView = lazy(() => import('./views/LocationsView').then(m => ({ default: m.LocationsView })));
-const LocationDetailView = lazy(() => import('./views/LocationDetailView').then(m => ({ default: m.LocationDetailView })));
-const BlogView = lazy(() => import('./views/BlogView').then(m => ({ default: m.BlogView })));
-const BlogPostView = lazy(() => import('./views/BlogPostView').then(m => ({ default: m.BlogPostView })));
-const GalleryView = lazy(() => import('./views/GalleryView').then(m => ({ default: m.GalleryView })));
-const TestimonialsView = lazy(() => import('./views/TestimonialsView').then(m => ({ default: m.TestimonialsView })));
-const FAQView = lazy(() => import('./views/FAQView').then(m => ({ default: m.FAQView })));
-const ContactView = lazy(() => import('./views/ContactView').then(m => ({ default: m.ContactView })));
-const PrivacyView = lazy(() => import('./views/PrivacyView').then(m => ({ default: m.PrivacyView })));
-const TermsView = lazy(() => import('./views/TermsView').then(m => ({ default: m.TermsView })));
-const WarrantyView = lazy(() => import('./views/WarrantyView').then(m => ({ default: m.WarrantyView })));
-const SitemapView = lazy(() => import('./views/SitemapView').then(m => ({ default: m.SitemapView })));
-
-const BookingModal = lazy(() => import('./components/BookingModal').then(m => ({ default: m.BookingModal })));
-const SearchModal = lazy(() => import('./components/SearchModal').then(m => ({ default: m.SearchModal })));
+import { AboutView } from './views/AboutView';
+import { ServicesView } from './views/ServicesView';
+import { ServiceDetailView } from './views/ServiceDetailView';
+import { LocationsView } from './views/LocationsView';
+import { LocationDetailView } from './views/LocationDetailView';
+import { BlogView } from './views/BlogView';
+import { BlogPostView } from './views/BlogPostView';
+import { GalleryView } from './views/GalleryView';
+import { TestimonialsView } from './views/TestimonialsView';
+import { FAQView } from './views/FAQView';
+import { ContactView } from './views/ContactView';
+import { PrivacyView } from './views/PrivacyView';
+import { TermsView } from './views/TermsView';
+import { WarrantyView } from './views/WarrantyView';
+import { SitemapView } from './views/SitemapView';
 
 export function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
   const [currentSlug, setCurrentSlug] = useState<string | undefined>(undefined);
 
-  // Handle URL pathname and hash navigation on load, popstate, & hashchange
+  // Handle URL hash & pathname navigation on load & hashchange
   useEffect(() => {
     const handleNavigation = () => {
-      const pathSegments = window.location.pathname
-        .toLowerCase()
-        .split('/')
-        .filter(Boolean);
+      const pathname = window.location.pathname.replace('/', '').toLowerCase();
       const hash = window.location.hash.replace('#', '').trim();
-
-      const mainSegment = pathSegments[0] || '';
-      const subSegment = pathSegments[1] || '';
-
       const validPages: PageId[] = [
         'home', 'about', 'services', 'service-detail', 'locations', 'location-detail',
         'blog', 'blog-post', 'gallery', 'testimonials', 'faq', 'contact',
         'privacy', 'terms', 'warranty', 'sitemap'
       ];
-
-      if (mainSegment === 'contact' || hash === 'contact') {
-        setCurrentPage('contact');
-        setCurrentSlug(undefined);
-      } else if (mainSegment === 'about' || hash === 'about') {
-        setCurrentPage('about');
-        setCurrentSlug(undefined);
-      } else if (mainSegment === 'services' || hash === 'services') {
-        if (subSegment) {
-          setCurrentPage('service-detail');
-          setCurrentSlug(subSegment);
-        } else {
-          setCurrentPage('services');
-          setCurrentSlug(undefined);
-        }
-      } else if (mainSegment === 'locations' || hash === 'locations') {
-        if (subSegment) {
-          setCurrentPage('location-detail');
-          setCurrentSlug(subSegment);
-        } else {
-          setCurrentPage('locations');
-          setCurrentSlug(undefined);
-        }
-      } else if (mainSegment === 'blog' || hash === 'blog') {
-        if (subSegment) {
-          setCurrentPage('blog-post');
-          setCurrentSlug(subSegment);
-        } else {
-          setCurrentPage('blog');
-          setCurrentSlug(undefined);
-        }
-      } else if (mainSegment === 'gallery' || hash === 'gallery') {
-        setCurrentPage('gallery');
-        setCurrentSlug(undefined);
-      } else if (mainSegment === 'testimonials' || hash === 'testimonials') {
-        setCurrentPage('testimonials');
-        setCurrentSlug(undefined);
-      } else if (mainSegment === 'faq' || hash === 'faq') {
-        setCurrentPage('faq');
-        setCurrentSlug(undefined);
-      } else if (mainSegment === 'privacy' || mainSegment === 'privacy-policy' || hash === 'privacy') {
-        setCurrentPage('privacy');
-        setCurrentSlug(undefined);
-      } else if (mainSegment === 'terms' || mainSegment === 'terms-conditions' || hash === 'terms') {
-        setCurrentPage('terms');
-        setCurrentSlug(undefined);
-      } else if (mainSegment === 'warranty' || mainSegment === 'warranty-specs' || hash === 'warranty') {
-        setCurrentPage('warranty');
-        setCurrentSlug(undefined);
-      } else if (mainSegment === 'sitemap' || mainSegment === 'sitemap.html' || hash === 'sitemap') {
+      if (pathname === 'sitemap' || pathname === 'sitemap.html') {
         setCurrentPage('sitemap');
-        setCurrentSlug(undefined);
       } else if (validPages.includes(hash as PageId)) {
         setCurrentPage(hash as PageId);
-        setCurrentSlug(undefined);
-      } else {
-        setCurrentPage('home');
-        setCurrentSlug(undefined);
       }
     };
-
     handleNavigation();
     window.addEventListener('hashchange', handleNavigation);
     window.addEventListener('popstate', handleNavigation);
@@ -127,36 +62,15 @@ export function App() {
   const [bookingServiceId, setBookingServiceId] = useState<string | undefined>(undefined);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  // Scroll to top on navigation change and update history
+  // Scroll to top on navigation change
   const navigateTo = (page: PageId, slug?: string) => {
     setCurrentPage(page);
     setCurrentSlug(slug);
-
-    let targetUrl = '/';
-    if (page === 'contact') targetUrl = '/contact';
-    else if (page === 'about') targetUrl = '/about';
-    else if (page === 'services') targetUrl = slug ? `/services/${slug}` : '/services';
-    else if (page === 'service-detail') targetUrl = slug ? `/services/${slug}` : '/services';
-    else if (page === 'locations') targetUrl = slug ? `/locations/${slug}` : '/locations';
-    else if (page === 'location-detail') targetUrl = slug ? `/locations/${slug}` : '/locations';
-    else if (page === 'blog') targetUrl = slug ? `/blog/${slug}` : '/blog';
-    else if (page === 'blog-post') targetUrl = slug ? `/blog/${slug}` : '/blog';
-    else if (page === 'gallery') targetUrl = '/gallery';
-    else if (page === 'testimonials') targetUrl = '/testimonials';
-    else if (page === 'faq') targetUrl = '/faq';
-    else if (page === 'privacy') targetUrl = '/privacy-policy';
-    else if (page === 'terms') targetUrl = '/terms-conditions';
-    else if (page === 'warranty') targetUrl = '/warranty-specs';
-    else if (page === 'sitemap') targetUrl = '/sitemap';
-
-    if (window.location.pathname !== targetUrl) {
-      try {
-        window.history.pushState({ page, slug }, '', targetUrl);
-      } catch {
-        window.location.hash = page;
-      }
+    if (page === 'home') {
+      window.history.replaceState(null, '', window.location.pathname);
+    } else {
+      window.location.hash = page;
     }
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -226,7 +140,7 @@ export function App() {
     pagePath = '/faq/';
   } else if (currentPage === 'contact') {
     seoTitle = 'Contact Us | HyperTune Garage Islamabad & Rawalpindi';
-    seoDesc = 'Get in touch with HyperTune Garage in Islamabad & Rawalpindi. Call +92 331 5008872, message on WhatsApp, or book an online repair slot.';
+    seoDesc = 'Get in touch with HyperTune Garage in Islamabad & Rawalpindi. Call +92 300 1234567, message on WhatsApp, or book an online repair slot.';
     seoKeywords = 'contact hypertune garage, car workshop phone number islamabad, book car service rawalpindi';
     pagePath = '/contact/';
   } else if (currentPage === 'privacy') {
@@ -272,110 +186,101 @@ export function App() {
 
       {/* Main View Router */}
       <main className="flex-grow">
-        {currentPage === 'home' ? (
+        {currentPage === 'home' && (
           <HomeView
             onNavigate={navigateTo}
             onOpenBooking={handleOpenBooking}
           />
-        ) : (
-          <Suspense
-            fallback={
-              <div className="min-h-[70vh] flex items-center justify-center pt-32">
-                <div className="w-8 h-8 rounded-full border-2 border-cyan-500 border-t-transparent animate-spin" />
-              </div>
-            }
-          >
-            {currentPage === 'about' && (
-              <AboutView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'services' && (
-              <ServicesView
-                onNavigate={navigateTo}
-                onOpenBooking={handleOpenBooking}
-              />
-            )}
-            {currentPage === 'service-detail' && (
-              <ServiceDetailView
-                slug={currentSlug}
-                onNavigate={navigateTo}
-                onOpenBooking={handleOpenBooking}
-              />
-            )}
-            {currentPage === 'locations' && (
-              <LocationsView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'location-detail' && (
-              <LocationDetailView
-                slug={currentSlug}
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'blog' && (
-              <BlogView onNavigate={navigateTo} />
-            )}
-            {currentPage === 'blog-post' && (
-              <BlogPostView
-                slug={currentSlug}
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'gallery' && (
-              <GalleryView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'testimonials' && (
-              <TestimonialsView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'faq' && (
-              <FAQView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'contact' && (
-              <ContactView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'privacy' && (
-              <PrivacyView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'terms' && (
-              <TermsView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'warranty' && (
-              <WarrantyView
-                onNavigate={navigateTo}
-                onOpenBooking={() => handleOpenBooking()}
-              />
-            )}
-            {currentPage === 'sitemap' && (
-              <SitemapView
-                onNavigate={navigateTo}
-                onOpenBooking={handleOpenBooking}
-              />
-            )}
-          </Suspense>
+        )}
+        {currentPage === 'about' && (
+          <AboutView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'services' && (
+          <ServicesView
+            onNavigate={navigateTo}
+            onOpenBooking={handleOpenBooking}
+          />
+        )}
+        {currentPage === 'service-detail' && (
+          <ServiceDetailView
+            slug={currentSlug}
+            onNavigate={navigateTo}
+            onOpenBooking={handleOpenBooking}
+          />
+        )}
+        {currentPage === 'locations' && (
+          <LocationsView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'location-detail' && (
+          <LocationDetailView
+            slug={currentSlug}
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'blog' && (
+          <BlogView onNavigate={navigateTo} />
+        )}
+        {currentPage === 'blog-post' && (
+          <BlogPostView
+            slug={currentSlug}
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'gallery' && (
+          <GalleryView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'testimonials' && (
+          <TestimonialsView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'faq' && (
+          <FAQView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'contact' && (
+          <ContactView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'privacy' && (
+          <PrivacyView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'terms' && (
+          <TermsView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'warranty' && (
+          <WarrantyView
+            onNavigate={navigateTo}
+            onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+        {currentPage === 'sitemap' && (
+          <SitemapView
+            onNavigate={navigateTo}
+            onOpenBooking={handleOpenBooking}
+          />
         )}
       </main>
 
@@ -397,25 +302,17 @@ export function App() {
         onOpenBooking={() => handleOpenBooking()}
       />
 
-      {isBookingOpen && (
-        <Suspense fallback={null}>
-          <BookingModal
-            isOpen={isBookingOpen}
-            onClose={() => setIsBookingOpen(false)}
-            initialServiceId={bookingServiceId}
-          />
-        </Suspense>
-      )}
+      <BookingModal
+        isOpen={isBookingOpen}
+        onClose={() => setIsBookingOpen(false)}
+        initialServiceId={bookingServiceId}
+      />
 
-      {isSearchOpen && (
-        <Suspense fallback={null}>
-          <SearchModal
-            isOpen={isSearchOpen}
-            onClose={() => setIsSearchOpen(false)}
-            onNavigate={navigateTo}
-          />
-        </Suspense>
-      )}
+      <SearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        onNavigate={navigateTo}
+      />
     </div>
   );
 }
