@@ -72,6 +72,8 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = ({
         <img
           src={afterImage}
           alt={afterLabel}
+          loading="lazy"
+          decoding="async"
           referrerPolicy="no-referrer"
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
@@ -94,6 +96,8 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = ({
           <img
             src={beforeImage}
             alt={beforeLabel}
+            loading="lazy"
+            decoding="async"
             referrerPolicy="no-referrer"
             className="absolute inset-0 w-full h-full object-cover filter brightness-[0.92] contrast-[0.98] transition-transform duration-700 group-hover:scale-105"
           />

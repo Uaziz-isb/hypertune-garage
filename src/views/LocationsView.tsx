@@ -29,10 +29,14 @@ export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate, onOpen
         {locationsData.map((loc) => (
           <div key={loc.id} className="bg-[#0b121e] border border-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-between">
             <div>
-              <div className="h-64 relative">
+              <div className="h-64 relative bg-slate-900">
                 <img
                   src={loc.image}
                   alt={loc.branchName}
+                  width={600}
+                  height={256}
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
                 />

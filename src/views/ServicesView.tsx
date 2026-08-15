@@ -120,10 +120,14 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate, onOpenBo
               >
                 <div>
                   {/* Card Image Banner */}
-                  <div className="relative h-56 overflow-hidden">
+                  <div className="relative h-56 overflow-hidden bg-slate-900">
                     <img
                       src={service.image}
                       alt={`${service.title} - HyperTune Garage`}
+                      width={400}
+                      height={224}
+                      loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
