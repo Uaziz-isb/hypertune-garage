@@ -123,28 +123,17 @@ export const HomeView: React.FC<HomeViewProps> = ({
       <section className="relative min-h-[85vh] flex items-center pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16 px-3 sm:px-4 bg-slate-950 overflow-hidden">
         {/* Background Image Carousel with Vignette */}
         <div className="absolute inset-0 z-0">
-          {heroSlides.map((slide, idx) => {
-            // Only render active and adjacent slide to minimize network and memory
-            if (Math.abs(idx - currentSlide) > 1 && !(currentSlide === 0 && idx === heroSlides.length - 1) && !(currentSlide === heroSlides.length - 1 && idx === 0)) {
-              return null;
-            }
-            return (
-              <img
-                key={slide.badge + idx}
-                src={slide.image}
-                alt={slide.title}
-                width={1376}
-                height={768}
-                loading={idx === 0 ? "eager" : "lazy"}
-                decoding="async"
-                fetchPriority={idx === 0 ? "high" : "auto"}
-                referrerPolicy="no-referrer"
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 scale-105 ${
-                  idx === currentSlide ? 'opacity-40 z-10' : 'opacity-0 z-0'
-                }`}
-              />
-            );
-          })}
+          {heroSlides.map((slide, idx) => (
+            <img
+              key={slide.badge + idx}
+              src={slide.image}
+              alt={slide.title}
+              referrerPolicy="no-referrer"
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 scale-105 ${
+                idx === currentSlide ? 'opacity-40 z-10' : 'opacity-0 z-0'
+              }`}
+            />
+          ))}
           <div className="absolute inset-0 z-20 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/70" />
           <div className="absolute inset-0 z-20 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/80" />
         </div>
@@ -211,29 +200,19 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-cyan-500/30 shadow-2xl shadow-cyan-500/10 group">
               {/* Animated Slide Container */}
               <div className="relative h-[290px] sm:h-[380px] md:h-[430px] w-full bg-slate-950">
-                {heroSlides.map((slide, idx) => {
-                  if (Math.abs(idx - currentSlide) > 1 && !(currentSlide === 0 && idx === heroSlides.length - 1) && !(currentSlide === heroSlides.length - 1 && idx === 0)) {
-                    return null;
-                  }
-                  return (
-                    <img
-                      key={slide.title + idx}
-                      src={slide.image}
-                      alt={slide.title}
-                      width={1376}
-                      height={768}
-                      loading={idx === 0 ? "eager" : "lazy"}
-                      decoding="async"
-                      fetchPriority={idx === 0 ? "high" : "auto"}
-                      referrerPolicy="no-referrer"
-                      className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
-                        idx === currentSlide
-                          ? 'opacity-100 scale-100'
-                          : 'opacity-0 scale-105 pointer-events-none'
-                      }`}
-                    />
-                  );
-                })}
+                {heroSlides.map((slide, idx) => (
+                  <img
+                    key={slide.title + idx}
+                    src={slide.image}
+                    alt={slide.title}
+                    referrerPolicy="no-referrer"
+                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
+                      idx === currentSlide
+                        ? 'opacity-100 scale-100'
+                        : 'opacity-0 scale-105 pointer-events-none'
+                    }`}
+                  />
+                ))}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#05080e] via-transparent to-black/30 opacity-90" />
               </div>
 
@@ -413,14 +392,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
               className="bg-[#0b121e] border border-slate-800 rounded-3xl overflow-hidden hover:border-cyan-500/50 transition-all duration-300 flex flex-col justify-between group shadow-xl"
             >
               <div>
-                <div className="relative h-48 overflow-hidden bg-slate-900">
+                <div className="relative h-48 overflow-hidden">
                   <img
                     src={service.image}
                     alt={service.title}
-                    width={400}
-                    height={192}
-                    loading="lazy"
-                    decoding="async"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -613,14 +588,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {locationsData.map((loc) => (
             <div key={loc.id} className="bg-[#0b121e] border border-slate-800 rounded-3xl overflow-hidden shadow-2xl grid grid-cols-1 sm:grid-cols-12">
-              <div className="sm:col-span-5 h-56 sm:h-auto relative bg-slate-900">
+              <div className="sm:col-span-5 h-56 sm:h-auto relative">
                 <img
                   src={loc.image}
                   alt={loc.branchName}
-                  width={500}
-                  height={350}
-                  loading="lazy"
-                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
                 />
