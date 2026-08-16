@@ -33,10 +33,6 @@ export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate, onOpen
                 <img
                   src={loc.image}
                   alt={loc.branchName}
-                  width={600}
-                  height={256}
-                  loading="lazy"
-                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
                 />

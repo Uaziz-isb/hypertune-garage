@@ -60,10 +60,6 @@ export const BlogView: React.FC<BlogViewProps> = ({ onNavigate }) => {
                   <img
                     src={post.featuredImage}
                     alt={post.title}
-                    width={400}
-                    height={192}
-                    loading="lazy"
-                    decoding="async"
                     referrerPolicy="no-referrer"
                     onError={(e) => {
                       (e.currentTarget as HTMLImageElement).src = images.heroBanner;

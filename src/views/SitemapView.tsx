@@ -37,8 +37,8 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
   const [copiedUrl, setCopiedUrl] = useState(false);
 
   const sitemapDirectUrl = typeof window !== 'undefined'
-    ? `${window.location.origin}/sitemap/`
-    : 'https://hypertunegarage.pk/sitemap/';
+    ? `${window.location.origin}/sitemap`
+    : 'https://hypertunegarage.pk/sitemap';
 
   const handleCopyUrl = () => {
     navigator.clipboard.writeText(sitemapDirectUrl);
@@ -49,17 +49,17 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
   // Main high-level site pages
   const mainPages: { label: string; page: PageId; path: string; desc: string; icon: React.ElementType }[] = [
     { label: 'Home Page', page: 'home', path: '/', desc: 'Main workshop overview, hero service highlights, and instant booking.', icon: Globe },
-    { label: 'Services Catalogue', page: 'services', path: '/services/', desc: 'Full catalogue of 12 precision repair, protection, and overhaul services.', icon: Wrench },
-    { label: 'Workshop Locations', page: 'locations', path: '/locations/', desc: 'Islamabad G-8/4 Hub & Rawalpindi I-9 Branch directions and contacts.', icon: MapPin },
-    { label: 'Work Gallery & Restorations', page: 'gallery', path: '/gallery/', desc: 'Before & after high-resolution portfolio of PPF, paint & engine rebuilds.', icon: Sparkles },
-    { label: 'Car Care Blog & Guides', page: 'blog', path: '/blog/', desc: 'Technical guides, engine care tips, and maintenance articles by engineers.', icon: BookOpen },
-    { label: 'Customer Reviews & Rating', page: 'testimonials', path: '/testimonials/', desc: 'Genuine 4.9-star Google reviews from BMW, Audi, Mercedes & Toyota owners.', icon: ShieldCheck },
-    { label: 'Frequently Asked Questions', page: 'faq', path: '/faq/', desc: 'Detailed answers on repair warranties, pricing, turnaround, and parts.', icon: FileText },
-    { label: 'About HyperTune Garage', page: 'about', path: '/about/', desc: 'Company history, master technician credentials, and workshop specs.', icon: Layers },
-    { label: 'Contact Us', page: 'contact', path: '/contact/', desc: 'Direct phone lines, WhatsApp links, email, and location maps.', icon: Phone },
-    { label: '12-Month Warranty Specs', page: 'warranty', path: '/warranty-specs/', desc: 'Bumper-to-bumper 12-month / 15,000 km warranty coverage details.', icon: ShieldCheck },
-    { label: 'Privacy Policy', page: 'privacy', path: '/privacy-policy/', desc: 'Customer data privacy standards, security, and cookie policies.', icon: FileText },
-    { label: 'Terms & Conditions', page: 'terms', path: '/terms-conditions/', desc: 'Service agreements, estimate terms, and workshop repair policies.', icon: FileText },
+    { label: 'Services Catalogue', page: 'services', path: '/services', desc: 'Full catalogue of 12 precision repair, protection, and overhaul services.', icon: Wrench },
+    { label: 'Workshop Locations', page: 'locations', path: '/locations', desc: 'Islamabad G-8/4 Hub & Rawalpindi I-9 Branch directions and contacts.', icon: MapPin },
+    { label: 'Work Gallery & Restorations', page: 'gallery', path: '/gallery', desc: 'Before & after high-resolution portfolio of PPF, paint & engine rebuilds.', icon: Sparkles },
+    { label: 'Car Care Blog & Guides', page: 'blog', path: '/blog', desc: 'Technical guides, engine care tips, and maintenance articles by engineers.', icon: BookOpen },
+    { label: 'Customer Reviews & Rating', page: 'testimonials', path: '/testimonials', desc: 'Genuine 4.9-star Google reviews from BMW, Audi, Mercedes & Toyota owners.', icon: ShieldCheck },
+    { label: 'Frequently Asked Questions', page: 'faq', path: '/faq', desc: 'Detailed answers on repair warranties, pricing, turnaround, and parts.', icon: FileText },
+    { label: 'About HyperTune Garage', page: 'about', path: '/about', desc: 'Company history, master technician credentials, and workshop specs.', icon: Layers },
+    { label: 'Contact Us', page: 'contact', path: '/contact', desc: 'Direct phone lines, WhatsApp links, email, and location maps.', icon: Phone },
+    { label: '12-Month Warranty Specs', page: 'warranty', path: '/warranty-specs', desc: 'Bumper-to-bumper 12-month / 15,000 km warranty coverage details.', icon: ShieldCheck },
+    { label: 'Privacy Policy', page: 'privacy', path: '/privacy-policy', desc: 'Customer data privacy standards, security, and cookie policies.', icon: FileText },
+    { label: 'Terms & Conditions', page: 'terms', path: '/terms-conditions', desc: 'Service agreements, estimate terms, and workshop repair policies.', icon: FileText },
   ];
 
   // Filter items based on search query
@@ -187,13 +187,9 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
           {filteredMainPages.map((item) => {
             const Icon = item.icon;
             return (
-              <a
+              <div
                 key={item.page}
-                href={item.path}
-                onClick={(e) => {
-                  e.preventDefault();
-                  onNavigate(item.page);
-                }}
+                onClick={() => onNavigate(item.page)}
                 className="bg-[#0b121e] border border-slate-800 hover:border-cyan-500/50 p-5 rounded-2xl transition-all hover:-translate-y-0.5 cursor-pointer group shadow-lg flex flex-col justify-between"
               >
                 <div className="space-y-2">
@@ -212,7 +208,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
                     {item.desc}
                   </p>
                 </div>
-              </a>
+              </div>
             );
           })}
         </div>
@@ -232,13 +228,9 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredServices.map((service) => (
-            <a
+            <div
               key={service.slug}
-              href={`/services/${service.slug}/`}
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('service-detail', service.slug);
-              }}
+              onClick={() => onNavigate('service-detail', service.slug)}
               className="bg-[#0b121e] border border-slate-800 hover:border-cyan-500/50 p-5 rounded-2xl transition-all hover:-translate-y-0.5 cursor-pointer group shadow-lg flex flex-col justify-between space-y-4"
             >
               <div className="space-y-2">
@@ -268,7 +260,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
                   View Service Specs &rarr;
                 </span>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </section>
@@ -300,17 +292,13 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
                     {loc.branchName}
                   </h3>
                 </div>
-                <a
-                  href={`/locations/${loc.slug}/`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNavigate('location-detail', loc.slug);
-                  }}
+                <button
+                  onClick={() => onNavigate('location-detail', loc.slug)}
                   className="px-3 py-2 rounded-xl bg-slate-900 hover:bg-cyan-500 hover:text-slate-950 text-cyan-400 text-xs font-bold transition-all border border-slate-800 flex items-center gap-1 shrink-0"
                 >
                   <span>Branch Page</span>
                   <ChevronRight className="w-3.5 h-3.5" />
-                </a>
+                </button>
               </div>
 
               <p className="text-xs text-slate-300 leading-relaxed flex items-start gap-2">
@@ -349,13 +337,9 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredBlogPosts.map((post) => (
-            <a
+            <div
               key={post.slug}
-              href={`/blog/${post.slug}/`}
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('blog-post', post.slug);
-              }}
+              onClick={() => onNavigate('blog-post', post.slug)}
               className="bg-[#0b121e] border border-slate-800 hover:border-cyan-500/50 p-5 rounded-2xl transition-all hover:-translate-y-0.5 cursor-pointer group shadow-lg flex flex-col justify-between space-y-4"
             >
               <div className="space-y-2">
@@ -377,7 +361,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
                   Read Article <ArrowRight className="w-3 h-3" />
                 </span>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </section>
@@ -430,12 +414,8 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
             <ExternalLink className="w-4 h-4" />
           </a>
 
-          <a
-            href="/warranty-specs/"
-            onClick={(e) => {
-              e.preventDefault();
-              onNavigate('warranty');
-            }}
+          <button
+            onClick={() => onNavigate('warranty')}
             className="p-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-cyan-400 font-bold text-xs flex items-center justify-between border border-cyan-500/30 transition-all"
           >
             <div className="flex items-center gap-2">
@@ -443,7 +423,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
               <span>12-Mo Warranty Specs</span>
             </div>
             <ChevronRight className="w-4 h-4" />
-          </a>
+          </button>
         </div>
       </section>
     </div>

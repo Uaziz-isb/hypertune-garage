@@ -58,10 +58,6 @@ export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpen
           <img
             src={post.featuredImage}
             alt={post.title}
-            width={800}
-            height={420}
-            fetchPriority="high"
-            decoding="async"
             referrerPolicy="no-referrer"
             onError={(e) => {
               (e.currentTarget as HTMLImageElement).src = images.heroBanner;
