@@ -26,7 +26,7 @@ function getAIClient() {
 app.get("/api/health", (_req, res) => {
   res.json({
     status: "ok",
-    workshop: "AutoExtreme Pakistan - Islamabad & Lahore Studio",
+    workshop: "HyperTune Garage Pakistan - Islamabad & Rawalpindi Studio",
     timestamp: new Date().toISOString(),
   });
 });
@@ -43,7 +43,7 @@ app.post("/api/ai-diagnostic", async (req, res) => {
     const client = getAIClient();
 
     if (client) {
-      const prompt = `You are the Lead Customization & Technical Lead at AutoExtreme.pk (AutoExtreme Pakistan), Pakistan's top car detailing, body kit, PPF, and custom tuning studio in Islamabad & Lahore.
+      const prompt = `You are the Lead Technical Specialist at HyperTune Garage (hypertunegarage.pk), Pakistan's top car detailing, PPF, engine overhaul, and diagnostic workshop in Islamabad & Rawalpindi.
 Analyze the following vehicle issue and provide a structured professional diagnosis:
 - Vehicle: ${year || "N/A"} ${vehicleMake || "Car"} ${vehicleModel || ""}
 - Reported Symptoms: ${symptoms || "None provided"}
@@ -55,7 +55,7 @@ Return a helpful JSON object with the following fields:
   "urgencyLevel": "High" | "Medium" | "Low",
   "estimatedTimeHours": "1 - 3 hours",
   "recommendedServices": ["service 1", "service 2"],
-  "diagnosticAdvice": "Professional summary paragraph explaining the problem, potential causes in Pakistani driving conditions (heat, fuel, dust), and why visiting AutoExtreme.pk for specialized scanning/customization is recommended.",
+  "diagnosticAdvice": "Professional summary paragraph explaining the problem, potential causes in Pakistani driving conditions (heat, fuel, dust), and why visiting HyperTune Garage for specialized scanning/maintenance is recommended.",
   "safetyWarning": "Optional safety note if driving is unsafe"
 }`;
 
