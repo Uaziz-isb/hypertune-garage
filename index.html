@@ -13,11 +13,15 @@
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#030712" />
     
-    <!-- SEO Meta Tags -->
+    <!-- SEO & AI Crawler Meta Tags -->
     <meta name="description" content="Pakistan’s premier automotive workshop specializing in BMW, Mercedes, Audi, Porsche, Toyota, Honda, Master Engine Overhauls, Hybrid Battery Repair & PPF in Islamabad G-8/4 & Rawalpindi." />
     <meta name="keywords" content="car workshop islamabad, auto repair rawalpindi, car detailing islamabad, paint protection film ppf islamabad, ceramic coating rawalpindi, bmw repair islamabad, mercedes garage rawalpindi, audi service center, engine overhaul islamabad, hybrid battery repair, 3d laser wheel alignment, car mechanic near me, hypertune garage" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://hypertunegarage.pk/" />
+
+    <!-- Agentic Browsing & LLM Ingestion Link Discovery -->
+    <link rel="alternate" type="text/markdown" title="LLMs.txt" href="/llms.txt" />
+    <link rel="alternate" type="text/markdown" title="LLMs-Full.txt" href="/llms-full.txt" />
 
     <!-- Geo Local SEO Tags -->
     <meta name="geo.region" content="PK-IS" />
@@ -37,13 +41,34 @@
     <meta name="twitter:title" content="HyperTune Garage | Premier Automotive Workshop in Islamabad & Rawalpindi" />
     <meta name="twitter:description" content="Pakistan’s top automotive workshop specializing in BMW, Mercedes, Audi, Porsche, Toyota, ECU remapping, engine overhauls & hybrid battery repair." />
 
-    <!-- Google Analytics (GA4) Tag Setup -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PPQJEQSLVE"></script>
+    <!-- Preconnect & DNS-Prefetch for External CDNs -->
+    <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+    <!-- Google Analytics (GA4) Tag Setup (Performance Optimized) -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-PPQJEQSLVE');
+      gtag('config', 'G-PPQJEQSLVE', { 'transport_type': 'beacon' });
+
+      (function() {
+        var loadGA = function() {
+          if (document.getElementById('ga-gtag-script')) return;
+          var s = document.createElement('script');
+          s.id = 'ga-gtag-script';
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-PPQJEQSLVE';
+          document.head.appendChild(s);
+        };
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(loadGA, { timeout: 2500 });
+        } else {
+          window.addEventListener('load', loadGA);
+        }
+      })();
     </script>
   </head>
   <body>

@@ -128,6 +128,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
               key={slide.badge + idx}
               src={slide.image}
               alt={slide.title}
+              fetchPriority={idx === 0 ? "high" : "low"}
+              loading={idx === 0 ? "eager" : "lazy"}
+              decoding="async"
               referrerPolicy="no-referrer"
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 scale-105 ${
                 idx === currentSlide ? 'opacity-40 z-10' : 'opacity-0 z-0'
@@ -205,6 +208,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     key={slide.title + idx}
                     src={slide.image}
                     alt={slide.title}
+                    loading={idx === 0 ? "eager" : "lazy"}
+                    decoding="async"
                     referrerPolicy="no-referrer"
                     className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
                       idx === currentSlide
@@ -276,7 +281,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* WHY CHOOSE HYPERTUNE GARAGE */}
-      <section className="max-w-7xl mx-auto px-4 space-y-10">
+      <section className="max-w-7xl mx-auto px-4 space-y-10 cv-auto">
         <div className="text-center space-y-3 max-w-2xl mx-auto">
           <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
             Uncompromising Standards
@@ -340,7 +345,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* CORE SERVICES OVERVIEW */}
-      <section className="max-w-7xl mx-auto px-4 space-y-8">
+      <section className="max-w-7xl mx-auto px-4 space-y-8 cv-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="space-y-2">
             <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest flex items-center gap-1.5">
@@ -396,6 +401,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   <img
                     src={service.image}
                     alt={service.title}
+                    width={400}
+                    height={250}
+                    loading="lazy"
+                    decoding="async"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -431,6 +440,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   onClick={() => onOpenBooking(service.id)}
                   className="p-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold transition-colors"
                   title="Book Service"
+                  aria-label={`Book ${service.title}`}
                 >
                   <Wrench className="w-4 h-4 text-slate-950" />
                 </button>
@@ -441,12 +451,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* INTERACTIVE COST ESTIMATOR */}
-      <section className="max-w-7xl mx-auto px-4">
+      <section className="max-w-7xl mx-auto px-4 cv-auto">
         <CostEstimator onBookService={(serviceId) => onOpenBooking(serviceId)} />
       </section>
 
       {/* BEFORE & AFTER REPAIR RESTORATIONS */}
-      <section className="max-w-7xl mx-auto px-4 space-y-8">
+      <section className="max-w-7xl mx-auto px-4 space-y-8 cv-auto">
         <div className="text-center space-y-2 max-w-xl mx-auto">
           <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
             Craftsmanship Proof
@@ -481,7 +491,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* CUSTOMER REVIEWS & GOOGLE RATINGS + HYPERTUNE PERFORMANCE METRICS */}
-      <section className="bg-[#070c14] border-y border-slate-800/80 py-16 px-4">
+      <section className="bg-[#070c14] border-y border-slate-800/80 py-16 px-4 cv-auto">
         <div className="max-w-7xl mx-auto space-y-12">
           {/* HyperTune Performance Metrics */}
           <div className="bg-[#0b121e] border border-cyan-500/20 rounded-3xl p-6 md:p-8 backdrop-blur-md shadow-2xl space-y-6">
@@ -552,7 +562,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* 4-STEP SERVICE PROCESS */}
-      <section className="max-w-7xl mx-auto px-4 space-y-10">
+      <section className="max-w-7xl mx-auto px-4 space-y-10 cv-auto">
         <div className="text-center space-y-2 max-w-xl mx-auto">
           <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
             Transparent Workflow
@@ -577,7 +587,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* WORKSHOP LOCATIONS */}
-      <section className="max-w-7xl mx-auto px-4 space-y-8">
+      <section className="max-w-7xl mx-auto px-4 space-y-8 cv-auto">
         <div className="text-center space-y-2 max-w-xl mx-auto">
           <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
             Visit Our Workshops
@@ -592,6 +602,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <img
                   src={loc.image}
                   alt={loc.branchName}
+                  width={400}
+                  height={300}
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
                 />
@@ -639,7 +653,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* GOOGLE MAP LOCATION AT BOTTOM OF HOME PAGE */}
-      <section className="max-w-7xl mx-auto px-4 space-y-6">
+      <section className="max-w-7xl mx-auto px-4 space-y-6 cv-auto">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-[#0b121e] border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl">
           <div className="space-y-2">
             <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest flex items-center gap-1.5">

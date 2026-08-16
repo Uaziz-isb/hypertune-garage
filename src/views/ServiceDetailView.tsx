@@ -238,6 +238,10 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
             <img
               src={service.image}
               alt={`${service.title} - HyperTune Garage Islamabad & Rawalpindi`}
+              width={600}
+              height={420}
+              fetchPriority="high"
+              decoding="async"
               referrerPolicy="no-referrer"
               className="w-full h-80 sm:h-[420px] object-cover group-hover:scale-105 transition-transform duration-500"
             />
@@ -441,6 +445,10 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
                 <img
                   src={rel.image}
                   alt={`${rel.title} - HyperTune Garage`}
+                  width={360}
+                  height={160}
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
