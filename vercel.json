@@ -22,7 +22,7 @@
       ]
     },
     {
-      "source": "/(.*)\\.(png|jpg|jpeg|webp|svg|ico|gif)",
+      "source": "/(.*)\\.(png|jpg|jpeg|webp|svg|ico|gif|woff2)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -72,31 +72,7 @@
   ],
   "rewrites": [
     {
-      "source": "/llms.txt",
-      "destination": "/llms.txt"
-    },
-    {
-      "source": "/llms-full.txt",
-      "destination": "/llms-full.txt"
-    },
-    {
-      "source": "/robots.txt",
-      "destination": "/robots.txt"
-    },
-    {
-      "source": "/sitemap.xml",
-      "destination": "/sitemap.xml"
-    },
-    {
-      "source": "/images/:path*",
-      "destination": "/images/:path*"
-    },
-    {
-      "source": "/assets/:path*",
-      "destination": "/assets/:path*"
-    },
-    {
-      "source": "/(.*)",
+      "source": "/((?!assets/|images/|favicon|robots\\.txt|sitemap\\.xml|site\\.webmanifest|android-chrome|apple-touch|.*\\.(?:css|js|json|png|jpg|jpeg|webp|svg|ico|txt|woff2?)$).*)",
       "destination": "/index.html"
     }
   ]

@@ -265,7 +265,10 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
                     loading="lazy"
                     decoding="async"
                     referrerPolicy="no-referrer"
-                    className="w-11 h-11 rounded-full object-cover border-2 border-slate-700 shrink-0"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44"><rect width="44" height="44" fill="%230f172a"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="%2338bdf8">${encodeURIComponent(review.authorName.charAt(0))}</text></svg>`;
+                    }}
+                    className="w-11 h-11 rounded-full object-cover border-2 border-slate-700 shrink-0 bg-slate-900"
                   />
                   <div>
                     <h4 className="font-extrabold text-white text-sm flex items-center gap-1.5">
