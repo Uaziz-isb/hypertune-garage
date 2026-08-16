@@ -82,7 +82,7 @@ export function App() {
     const root = segments[0];
     const sub = segments[1];
 
-    if (root === 'about') return { page: 'about' };
+    if (root === 'about' || root === 'about-us') return { page: 'about' };
     if (root === 'services') {
       if (sub) return { page: 'service-detail', slug: sub };
       return { page: 'services' };
@@ -96,52 +96,52 @@ export function App() {
       return { page: 'blog' };
     }
     if (root === 'gallery') return { page: 'gallery' };
-    if (root === 'testimonials' || root === 'reviews') return { page: 'testimonials' };
-    if (root === 'faq' || root === 'faqs') return { page: 'faq' };
+    if (root === 'testimonials' || root === 'reviews' || root === 'customer-reviews') return { page: 'testimonials' };
+    if (root === 'faq' || root === 'faqs' || root === 'questions') return { page: 'faq' };
     if (root === 'contact' || root === 'contact-us') return { page: 'contact' };
     if (root === 'privacy' || root === 'privacy-policy') return { page: 'privacy' };
     if (root === 'terms' || root === 'terms-conditions' || root === 'terms-of-service') return { page: 'terms' };
     if (root === 'warranty' || root === 'warranty-specs') return { page: 'warranty' };
-    if (root === 'sitemap' || root === 'sitemap.html') return { page: 'sitemap' };
+    if (root === 'sitemap' || root === 'site-map' || root === 'sitemap.html') return { page: 'sitemap' };
 
     return { page: 'home' };
   };
 
-  // Convert page ID and slug to standalone separate page URL path
+  // Convert page ID and slug to standalone separate page URL path with trailing slash
   const getPathFromRoute = (page: PageId, slug?: string): string => {
     switch (page) {
       case 'home':
         return '/';
       case 'about':
-        return '/about';
+        return '/about/';
       case 'services':
-        return '/services';
+        return '/services/';
       case 'service-detail':
-        return slug ? `/services/${slug}` : '/services';
+        return slug ? `/services/${slug}/` : '/services/';
       case 'locations':
-        return '/locations';
+        return '/locations/';
       case 'location-detail':
-        return slug ? `/locations/${slug}` : '/locations';
+        return slug ? `/locations/${slug}/` : '/locations/';
       case 'blog':
-        return '/blog';
+        return '/blog/';
       case 'blog-post':
-        return slug ? `/blog/${slug}` : '/blog';
+        return slug ? `/blog/${slug}/` : '/blog/';
       case 'gallery':
-        return '/gallery';
+        return '/gallery/';
       case 'testimonials':
-        return '/testimonials';
+        return '/testimonials/';
       case 'faq':
-        return '/faq';
+        return '/faq/';
       case 'contact':
-        return '/contact';
+        return '/contact/';
       case 'privacy':
-        return '/privacy-policy';
+        return '/privacy-policy/';
       case 'terms':
-        return '/terms-conditions';
+        return '/terms-conditions/';
       case 'warranty':
-        return '/warranty-specs';
+        return '/warranty-specs/';
       case 'sitemap':
-        return '/sitemap';
+        return '/sitemap/';
       default:
         return '/';
     }

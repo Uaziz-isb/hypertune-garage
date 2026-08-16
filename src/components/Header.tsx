@@ -173,16 +173,26 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             {/* Brand Logo */}
-            <div onClick={() => onNavigate('home')} className="shrink-0 cursor-pointer">
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('home');
+              }}
+              className="shrink-0 cursor-pointer"
+              title="HyperTune Garage Home"
+            >
               <Logo variant="dark" scale={0.92} className="sm:hidden" />
               <Logo variant="dark" scale={1.08} className="hidden sm:flex" />
-            </div>
+            </a>
           </div>
 
           {/* Desktop Nav Items (xl and above) */}
           <div className="hidden xl:flex items-center gap-1">
             {navItems.map((item) => {
               const isActive = currentPage === item.id;
+              const itemHref = item.id === 'home' ? '/' : `/${item.id}/`;
+
               if (item.hasDropdown) {
                 return (
                   <div
@@ -191,8 +201,12 @@ export const Header: React.FC<HeaderProps> = ({
                     onMouseEnter={() => setServicesDropdownOpen(true)}
                     onMouseLeave={() => setServicesDropdownOpen(false)}
                   >
-                    <button
-                      onClick={() => onNavigate('services')}
+                    <a
+                      href={itemHref}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        onNavigate('services');
+                      }}
                       className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-[15px] font-bold transition-all ${
                         isActive
                           ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30'
@@ -205,7 +219,7 @@ export const Header: React.FC<HeaderProps> = ({
                           servicesDropdownOpen ? 'rotate-180 text-cyan-400' : 'text-slate-400'
                         }`}
                       />
-                    </button>
+                    </a>
 
                     {/* Services Mega Dropdown */}
                     {servicesDropdownOpen && (
@@ -213,9 +227,11 @@ export const Header: React.FC<HeaderProps> = ({
                         {serviceCategories.map((cat) => {
                           const IconComp = cat.icon;
                           return (
-                            <button
+                            <a
                               key={cat.id}
-                              onClick={() => {
+                              href={`/services/${cat.id}/`}
+                              onClick={(e) => {
+                                e.preventDefault();
                                 setServicesDropdownOpen(false);
                                 onNavigate('service-detail', cat.id);
                               }}
@@ -230,21 +246,23 @@ export const Header: React.FC<HeaderProps> = ({
                                 </h4>
                                 <p className="text-xs text-slate-400 line-clamp-1">{cat.desc}</p>
                               </div>
-                            </button>
+                            </a>
                           );
                         })}
 
                         <div className="col-span-2 mt-2 pt-3 border-t border-slate-800 flex items-center justify-between px-2 text-xs text-slate-400">
                           <span>Need customized performance upgrade?</span>
-                          <button
-                            onClick={() => {
+                          <a
+                            href="/services/"
+                            onClick={(e) => {
+                              e.preventDefault();
                               setServicesDropdownOpen(false);
                               onNavigate('services');
                             }}
                             className="text-cyan-400 hover:text-cyan-300 font-bold flex items-center gap-1"
                           >
                             View All 12 Services →
-                          </button>
+                          </a>
                         </div>
                       </div>
                     )}
@@ -253,9 +271,13 @@ export const Header: React.FC<HeaderProps> = ({
               }
 
               return (
-                <button
+                <a
                   key={item.id}
-                  onClick={() => onNavigate(item.id)}
+                  href={itemHref}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate(item.id);
+                  }}
                   className={`px-3 py-2 rounded-lg text-[15px] font-bold transition-all ${
                     isActive
                       ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30'
@@ -263,7 +285,7 @@ export const Header: React.FC<HeaderProps> = ({
                   }`}
                 >
                   {item.label}
-                </button>
+                </a>
               );
             })}
           </div>

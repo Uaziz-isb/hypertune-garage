@@ -1,7 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "cleanUrls": true,
-  "trailingSlash": false,
+  "trailingSlash": true,
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -68,11 +67,24 @@
           "value": "public, max-age=3600"
         }
       ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
     }
   ],
   "rewrites": [
     {
-      "source": "/((?!assets/|images/|favicon|robots\\.txt|sitemap\\.xml|site\\.webmanifest|android-chrome|apple-touch|.*\\.(?:css|js|json|png|jpg|jpeg|webp|svg|ico|txt|woff2?)$).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
