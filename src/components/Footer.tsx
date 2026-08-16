@@ -132,23 +132,31 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
 
         {/* Col 2: Core Services */}
         <div className="space-y-3">
-          <button
-            onClick={() => onNavigate('services')}
+          <a
+            href="/services/"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('services');
+            }}
             className="text-white font-bold text-sm uppercase tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1.5"
           >
             <span>Services</span>
             <ChevronRight className="w-3.5 h-3.5 text-cyan-400" />
-          </button>
+          </a>
           <ul className="space-y-2 text-xs">
             {servicesData.map((s) => (
               <li key={s.slug}>
-                <button
-                  onClick={() => onNavigate('service-detail', s.slug)}
+                <a
+                  href={`/services/${s.slug}/`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('service-detail', s.slug);
+                  }}
                   className="hover:text-cyan-400 transition-colors flex items-center gap-1.5 text-left"
                 >
                   <ChevronRight className="w-3 h-3 text-cyan-400 shrink-0" />
                   <span>{s.title}</span>
-                </button>
+                </a>
               </li>
             ))}
           </ul>
@@ -156,36 +164,44 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
 
         {/* Col 3: Site Map Navigation */}
         <div className="space-y-3">
-          <button
-            onClick={() => onNavigate('sitemap')}
+          <a
+            href="/sitemap/"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('sitemap');
+            }}
             className="text-white font-bold text-sm uppercase tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1.5"
           >
             <span>Site Map</span>
             <ExternalLink className="w-3.5 h-3.5 text-cyan-400" />
-          </button>
+          </a>
           <ul className="space-y-2 text-xs">
             {[
-              { label: 'Home Page', page: 'home' as PageId },
-              { label: 'Services Catalogue', page: 'services' as PageId },
-              { label: 'Workshop Locations', page: 'locations' as PageId },
-              { label: 'Work Gallery & Restorations', page: 'gallery' as PageId },
-              { label: 'Customer Reviews & Ratings', page: 'testimonials' as PageId },
-              { label: '12-Month Warranty Specs', page: 'warranty' as PageId },
-              { label: 'Car Care Blog & Guides', page: 'blog' as PageId },
-              { label: 'Frequently Asked Questions (FAQ)', page: 'faq' as PageId },
-              { label: 'About HyperTune', page: 'about' as PageId },
-              { label: 'Contact Us', page: 'contact' as PageId },
-              { label: 'Privacy Policy', page: 'privacy' as PageId },
-              { label: 'Terms & Conditions', page: 'terms' as PageId },
+              { label: 'Home Page', page: 'home' as PageId, path: '/' },
+              { label: 'Services Catalogue', page: 'services' as PageId, path: '/services/' },
+              { label: 'Workshop Locations', page: 'locations' as PageId, path: '/locations/' },
+              { label: 'Work Gallery & Restorations', page: 'gallery' as PageId, path: '/gallery/' },
+              { label: 'Customer Reviews & Ratings', page: 'testimonials' as PageId, path: '/testimonials/' },
+              { label: '12-Month Warranty Specs', page: 'warranty' as PageId, path: '/warranty-specs/' },
+              { label: 'Car Care Blog & Guides', page: 'blog' as PageId, path: '/blog/' },
+              { label: 'Frequently Asked Questions (FAQ)', page: 'faq' as PageId, path: '/faq/' },
+              { label: 'About HyperTune', page: 'about' as PageId, path: '/about/' },
+              { label: 'Contact Us', page: 'contact' as PageId, path: '/contact/' },
+              { label: 'Privacy Policy', page: 'privacy' as PageId, path: '/privacy-policy/' },
+              { label: 'Terms & Conditions', page: 'terms' as PageId, path: '/terms-conditions/' },
             ].map((link) => (
               <li key={link.page}>
-                <button
-                  onClick={() => onNavigate(link.page)}
+                <a
+                  href={link.path}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate(link.page);
+                  }}
                   className="hover:text-cyan-400 transition-colors flex items-center gap-1.5 text-left"
                 >
                   <ChevronRight className="w-3 h-3 text-cyan-400 shrink-0" />
                   <span>{link.label}</span>
-                </button>
+                </a>
               </li>
             ))}
           </ul>
@@ -197,13 +213,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
           <div className="space-y-4 text-xs">
             {/* Islamabad */}
             <div className="space-y-1">
-              <button
-                onClick={() => onNavigate('location-detail', 'islamabad-workshop-g8')}
+              <a
+                href="/locations/islamabad-workshop-g8/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('location-detail', 'islamabad-workshop-g8');
+                }}
                 className="font-bold text-white hover:text-cyan-400 flex items-center gap-1 transition-colors text-left"
               >
                 <MapPin className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
                 <span>Islamabad Hub (Police Foundation)</span>
-              </button>
+              </a>
               <p className="text-slate-400 leading-relaxed">Shop 1-G, Ground Floor, Central Ave, near Attock Petrol Pump, Block E Police Foundation, Islamabad, 44000</p>
               <a href="tel:+923330177717" className="text-cyan-400 hover:underline font-bold inline-block">
                 0333-0177717
@@ -212,13 +232,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
 
             {/* Rawalpindi */}
             <div className="pt-3 border-t border-slate-800 space-y-1">
-              <button
-                onClick={() => onNavigate('location-detail', 'rawalpindi-workshop-saddar')}
+              <a
+                href="/locations/rawalpindi-workshop-saddar/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('location-detail', 'rawalpindi-workshop-saddar');
+                }}
                 className="font-bold text-white hover:text-cyan-400 flex items-center gap-1 transition-colors text-left"
               >
                 <MapPin className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
                 <span>Rawalpindi & I-9 Branch</span>
-              </button>
+              </a>
               <p className="text-slate-400 leading-relaxed">Plot 18, Sector I-9/3 Industrial Area / Saddar Link</p>
               <a href="tel:+923330177717" className="text-cyan-400 hover:underline font-bold inline-block">
                 0333-0177717
@@ -233,21 +257,49 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} HyperTune Garage. Drive Better, Drive Worry-Free. • <span className="text-slate-400 font-medium">Developed & Managed by: Umair Aziz</span> •</p>
           <div className="flex items-center gap-4">
-            <button onClick={() => onNavigate('sitemap')} className="hover:text-cyan-400 text-cyan-400 font-semibold transition-colors">
+            <a
+              href="/sitemap/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('sitemap');
+              }}
+              className="hover:text-cyan-400 text-cyan-400 font-semibold transition-colors"
+            >
               Site Map
-            </button>
+            </a>
             <span>•</span>
-            <button onClick={() => onNavigate('privacy')} className="hover:text-slate-300 transition-colors">
+            <a
+              href="/privacy-policy/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('privacy');
+              }}
+              className="hover:text-slate-300 transition-colors"
+            >
               Privacy Policy
-            </button>
+            </a>
             <span>•</span>
-            <button onClick={() => onNavigate('terms')} className="hover:text-slate-300 transition-colors">
+            <a
+              href="/terms-conditions/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('terms');
+              }}
+              className="hover:text-slate-300 transition-colors"
+            >
               Terms & Conditions
-            </button>
+            </a>
             <span>•</span>
-            <button onClick={() => onNavigate('warranty')} className="hover:text-slate-300 transition-colors">
+            <a
+              href="/warranty-specs/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('warranty');
+              }}
+              className="hover:text-slate-300 transition-colors"
+            >
               Warranty Specs
-            </button>
+            </a>
           </div>
         </div>
       </div>
