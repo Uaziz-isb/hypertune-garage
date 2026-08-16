@@ -124,26 +124,26 @@ export const SEOHead: React.FC<SEOProps> = ({
       image: ogImage,
       '@id': targetCanonicalUrl,
       url: targetCanonicalUrl,
-      telephone: '+923001234567',
+      telephone: '+923330177717',
       priceRange: '$$$',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Plot 42, Service Road East, Sector G-8/4',
+        streetAddress: 'Main Avenue, Police Foundation, Sector O-9 / PWD',
         addressLocality: 'Islamabad',
         postalCode: '44000',
         addressCountry: 'PK',
       },
       geo: {
         '@type': 'GeoCoordinates',
-        latitude: 33.6938,
-        longitude: 73.0415,
+        latitude: 33.5651,
+        longitude: 73.1362,
       },
       openingHoursSpecification: [
         {
           '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-          opens: '09:00',
-          closes: '20:00',
+          dayOfWeek: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+          opens: '10:00',
+          closes: '22:00',
         },
       ],
       aggregateRating: {

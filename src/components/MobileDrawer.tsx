@@ -57,7 +57,6 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
     { id: 'gallery', label: 'Restoration Gallery', icon: Image },
     { id: 'blog', label: 'Car Care Guides & Blog', icon: FileText },
     { id: 'about', label: 'About HyperTune Garage', icon: Info },
-    { id: 'faq', label: 'FAQ & Questions', icon: HelpCircle },
     { id: 'contact', label: 'Contact Us', icon: Phone },
   ];
 
@@ -134,8 +133,12 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
         {/* Navigation Links Scroll Area */}
         <div className="p-3.5 space-y-1.5 flex-1 overflow-y-auto">
           {/* Home Link */}
-          <button
-            onClick={() => handleNav('home')}
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav('home');
+            }}
             className={`w-full flex items-center justify-between p-3 rounded-xl font-bold text-sm transition-all cursor-pointer ${
               currentPage === 'home'
                 ? 'bg-cyan-950/50 text-cyan-400 border border-cyan-500/30'
@@ -147,7 +150,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
               <span>Home</span>
             </div>
             <ChevronRight className="w-4 h-4 text-slate-500" />
-          </button>
+          </a>
 
           {/* Expandable Services Catalogue */}
           <div className="rounded-xl border border-slate-800/80 bg-slate-900/40 overflow-hidden">
@@ -173,22 +176,30 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
             {/* Sub-services list */}
             {isServicesExpanded && (
               <div className="p-2 space-y-1 bg-slate-950/90 border-t border-slate-800">
-                <button
-                  onClick={() => handleNav('services')}
+                <a
+                  href="/services/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('services');
+                  }}
                   className="w-full text-left px-3 py-2 rounded-lg bg-cyan-950/30 text-cyan-400 font-bold text-xs flex items-center gap-2 cursor-pointer"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>View All 12 Services Overview</span>
-                </button>
+                </a>
                 {servicesData.map((service) => (
-                  <button
+                  <a
                     key={service.id}
-                    onClick={() => handleNav('service-detail', service.id)}
+                    href={`/services/${service.id}/`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNav('service-detail', service.id);
+                    }}
                     className="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-900 text-slate-300 hover:text-cyan-400 font-semibold text-xs flex items-center gap-2.5 transition-colors cursor-pointer"
                   >
                     <Wrench className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
                     <span className="truncate">{service.title}</span>
-                  </button>
+                  </a>
                 ))}
               </div>
             )}
@@ -199,9 +210,13 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
             const isActive = currentPage === link.id;
             const IconComp = link.icon;
             return (
-              <button
+              <a
                 key={link.id}
-                onClick={() => handleNav(link.id)}
+                href={`/${link.id}/`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNav(link.id);
+                }}
                 className={`w-full flex items-center justify-between p-3 rounded-xl font-bold text-sm transition-all cursor-pointer ${
                   isActive
                     ? 'bg-cyan-950/50 text-cyan-400 border border-cyan-500/30'
@@ -213,7 +228,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
                   <span>{link.label}</span>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-500 shrink-0" />
-              </button>
+              </a>
             );
           })}
         </div>

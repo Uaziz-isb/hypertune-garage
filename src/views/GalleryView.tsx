@@ -61,6 +61,10 @@ export const GalleryView: React.FC<GalleryViewProps> = ({ onNavigate, onOpenBook
                 <img
                   src={item.image}
                   alt={item.title}
+                  width={400}
+                  height={256}
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
                     (e.currentTarget as HTMLImageElement).src = images.heroBanner;
@@ -96,6 +100,7 @@ export const GalleryView: React.FC<GalleryViewProps> = ({ onNavigate, onOpenBook
             <button
               onClick={() => setActiveModalImage(null)}
               className="absolute -top-12 right-0 p-2 text-white hover:text-cyan-400 font-bold"
+              aria-label="Close Image Preview"
             >
               <X className="w-6 h-6" />
             </button>
