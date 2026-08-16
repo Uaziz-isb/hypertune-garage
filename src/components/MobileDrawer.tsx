@@ -57,6 +57,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
     { id: 'gallery', label: 'Restoration Gallery', icon: Image },
     { id: 'blog', label: 'Car Care Guides & Blog', icon: FileText },
     { id: 'about', label: 'About HyperTune Garage', icon: Info },
+    { id: 'faq', label: 'FAQ & Questions', icon: HelpCircle },
     { id: 'contact', label: 'Contact Us', icon: Phone },
   ];
 

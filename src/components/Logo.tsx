@@ -1,5 +1,5 @@
 import React from 'react';
-import hypertuneLogo from '../assets/images/hypertune_logo_new_1785539043513.webp';
+import hypertuneLogo from '../assets/images/hypertune_logo_new_1785539043513.jpg';
 
 interface LogoProps {
   className?: string;
@@ -28,10 +28,6 @@ export const Logo: React.FC<LogoProps> = ({ className = '', variant = 'dark', on
         <img
           src={hypertuneLogo}
           alt="HyperTune Garage Logo"
-          width={boxSize}
-          height={boxSize}
-          fetchPriority="high"
-          decoding="async"
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover"
         />

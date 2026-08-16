@@ -260,10 +260,6 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
                   <img
                     src={review.authorPhoto}
                     alt={review.authorName}
-                    width={44}
-                    height={44}
-                    loading="lazy"
-                    decoding="async"
                     referrerPolicy="no-referrer"
                     className="w-11 h-11 rounded-full object-cover border-2 border-slate-700 shrink-0"
                   />
