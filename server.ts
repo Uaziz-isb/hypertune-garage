@@ -128,7 +128,7 @@ app.post("/api/booking", (req, res) => {
     `Phone: ${phone}\n` +
     `Vehicle: ${year || ""} ${vehicleMake} ${vehicleModel || ""}\n` +
     `Service: ${service}\n` +
-    `Branch: ${location || "Islamabad G-8/4 Studio"}\n` +
+    `Branch: ${location || "HyperTune Garage - Islamabad Flagship Hub"}\n` +
     `Preferred Date/Time: ${date || "Earliest"} at ${time || "Morning"}\n` +
     `Notes: ${notes || "None"}`
   );

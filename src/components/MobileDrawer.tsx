@@ -102,13 +102,17 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
 
         {/* Action Buttons Section */}
         <div className="p-3.5 bg-slate-900/60 border-b border-slate-800 space-y-2">
-          <button
-            onClick={handleBooking}
+          <a
+            href="/book-appointment/"
+            onClick={(e) => {
+              e.preventDefault();
+              handleBooking();
+            }}
             className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 font-black text-xs sm:text-sm text-slate-950 shadow-md shadow-cyan-500/25 active:scale-95 transition-all cursor-pointer"
           >
             <Wrench className="w-4 h-4 text-slate-950 shrink-0" />
             <span>Book Service Appointment</span>
-          </button>
+          </a>
 
           <div className="grid grid-cols-2 gap-2">
             <a
