@@ -14,8 +14,7 @@ import {
   MessageCircle,
   Facebook,
   Instagram,
-  Video,
-  Wrench
+  Video
 } from 'lucide-react';
 
 interface FooterProps {
@@ -43,17 +42,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <a
-              href="/book-appointment/"
-              onClick={(e) => {
-                e.preventDefault();
-                onOpenBooking();
-              }}
-              className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-sm shadow-lg shadow-cyan-500/30 transition-all active:scale-95 flex items-center gap-2"
+            <button
+              onClick={onOpenBooking}
+              className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-sm shadow-lg shadow-cyan-500/30 transition-all active:scale-95"
             >
-              <Wrench className="w-4 h-4 text-slate-950" />
-              <span>Book Service Online</span>
-            </a>
+              Book Service Online
+            </button>
             <a
               href="https://wa.me/923330177717?text=Hi%20HyperTune%20Garage%2C%20I%20would%20like%20an%20instant%20repair/tuning%20quote."
               target="_blank"
@@ -184,7 +178,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
           <ul className="space-y-2 text-xs">
             {[
               { label: 'Home Page', page: 'home' as PageId, path: '/' },
-              { label: 'Book Service Appointment', page: 'booking' as PageId, path: '/book-appointment/' },
               { label: 'Services Catalogue', page: 'services' as PageId, path: '/services/' },
               { label: 'Workshop Locations', page: 'locations' as PageId, path: '/locations/' },
               { label: 'Work Gallery & Restorations', page: 'gallery' as PageId, path: '/gallery/' },

@@ -22,8 +22,8 @@ const PrivacyView = lazy(() => import('./views/PrivacyView').then((m) => ({ defa
 const TermsView = lazy(() => import('./views/TermsView').then((m) => ({ default: m.TermsView })));
 const WarrantyView = lazy(() => import('./views/WarrantyView').then((m) => ({ default: m.WarrantyView })));
 const SitemapView = lazy(() => import('./views/SitemapView').then((m) => ({ default: m.SitemapView })));
-const BookingView = lazy(() => import('./views/BookingView').then((m) => ({ default: m.BookingView })));
 
+const BookingModal = lazy(() => import('./components/BookingModal').then((m) => ({ default: m.BookingModal })));
 const SearchModal = lazy(() => import('./components/SearchModal').then((m) => ({ default: m.SearchModal })));
 const MobileDrawer = lazy(() => import('./components/MobileDrawer').then((m) => ({ default: m.MobileDrawer })));
 
@@ -54,11 +54,6 @@ export function App() {
           const slug = urlParams.get('slug') || undefined;
           return { page: 'blog-post', slug };
         }
-        if (hash.startsWith('booking') || hash.startsWith('book-appointment') || hash.startsWith('book-service')) {
-          const urlParams = new URLSearchParams(window.location.search || window.location.hash.split('?')[1] || '');
-          const slug = urlParams.get('service') || urlParams.get('slug') || undefined;
-          return { page: 'booking', slug };
-        }
         const validPages: Record<string, PageId> = {
           about: 'about',
           services: 'services',
@@ -75,10 +70,6 @@ export function App() {
           warranty: 'warranty',
           'warranty-specs': 'warranty',
           sitemap: 'sitemap',
-          booking: 'booking',
-          'book-appointment': 'booking',
-          'book-service': 'booking',
-          'book-online': 'booking',
         };
         if (validPages[hash]) {
           return { page: validPages[hash] };
@@ -103,11 +94,6 @@ export function App() {
     if (root === 'blog') {
       if (sub) return { page: 'blog-post', slug: sub };
       return { page: 'blog' };
-    }
-    if (root === 'booking' || root === 'book-appointment' || root === 'book-service' || root === 'book-service-appointment' || root === 'book-online') {
-      const urlParams = new URLSearchParams(window.location.search || '');
-      const slug = sub || urlParams.get('service') || urlParams.get('slug') || undefined;
-      return { page: 'booking', slug };
     }
     if (root === 'gallery') return { page: 'gallery' };
     if (root === 'testimonials' || root === 'reviews' || root === 'customer-reviews') return { page: 'testimonials' };
@@ -140,8 +126,6 @@ export function App() {
         return '/blog/';
       case 'blog-post':
         return slug ? `/blog/${slug}/` : '/blog/';
-      case 'booking':
-        return slug ? `/book-appointment/?service=${slug}` : '/book-appointment/';
       case 'gallery':
         return '/gallery/';
       case 'testimonials':
@@ -190,6 +174,8 @@ export function App() {
 
   // Modals state
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [bookingServiceId, setBookingServiceId] = useState<string | undefined>(undefined);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   // Navigate to separate page URL cleanly using HTML5 History
@@ -202,7 +188,8 @@ export function App() {
   };
 
   const handleOpenBooking = (serviceId?: string) => {
-    navigateTo('booking', serviceId);
+    setBookingServiceId(serviceId);
+    setIsBookingOpen(true);
   };
 
   // Compute page SEO title, description, keywords & path
@@ -216,11 +203,6 @@ export function App() {
     seoDesc = 'Learn about HyperTune Garage, Islamabad & Rawalpindi’s premier automotive workshop with master certified technicians, German computer diagnostics, and 10+ years of repair excellence.';
     seoKeywords = 'about hypertune garage, best car workshop islamabad, certified car mechanics rawalpindi, luxury car specialist pakistan';
     pagePath = '/about/';
-  } else if (currentPage === 'booking') {
-    seoTitle = 'Book Service Appointment Online | HyperTune Garage Islamabad & Rawalpindi';
-    seoDesc = 'Schedule your car repair, PPF installation, ceramic detailing, engine overhaul, or computer diagnostic appointment at HyperTune Garage Islamabad G-8/4 or Rawalpindi I-9. Zero wait times & 12-month warranty.';
-    seoKeywords = 'book car service islamabad, car repair appointment rawalpindi, book ppf installation, book engine diagnostic online, hypertune garage booking, car mechanic appointment';
-    pagePath = currentSlug ? `/book-appointment/?service=${currentSlug}` : '/book-appointment/';
   } else if (currentPage === 'services') {
     seoTitle = 'Car Repair Services & Prices | HyperTune Garage';
     seoDesc = 'Explore 12 specialized automotive service categories in Islamabad & Rawalpindi: Engine Overhaul, Maintenance, Brakes, Transmission, Hybrid Battery, AC & Electrical, Diagnostics, Body Repair, PPF & Detailing.';
@@ -417,12 +399,6 @@ export function App() {
               onOpenBooking={handleOpenBooking}
             />
           )}
-          {currentPage === 'booking' && (
-            <BookingView
-              onNavigate={navigateTo}
-              initialServiceId={currentSlug}
-            />
-          )}
         </Suspense>
       </main>
 
@@ -444,6 +420,14 @@ export function App() {
             currentPage={currentPage}
             onNavigate={navigateTo}
             onOpenBooking={() => handleOpenBooking()}
+          />
+        )}
+
+        {isBookingOpen && (
+          <BookingModal
+            isOpen={isBookingOpen}
+            onClose={() => setIsBookingOpen(false)}
+            initialServiceId={bookingServiceId}
           />
         )}
 

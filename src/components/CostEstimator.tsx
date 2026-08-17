@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calculator, Clock, ShieldCheck, CheckCircle2, Wrench } from 'lucide-react';
+import { Calculator, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { servicesData } from '../data/servicesData';
 
 interface CostEstimatorProps {
@@ -16,7 +16,7 @@ const estimatorBrands = [
   { id: 'hyundai', name: 'Hyundai / Kia' },
 ];
 
-export const CostEstimator: React.FC<CostEstimatorProps> = ({ onBookService }) => {
+export const CostEstimator: React.FC<CostEstimatorProps> = () => {
   const [selectedBrand, setSelectedBrand] = useState('toyota');
   const [selectedServiceId, setSelectedServiceId] = useState('ecu-tuning');
 
@@ -134,19 +134,6 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ onBookService }) =
                 </div>
               )}
             </div>
-
-            {onBookService && (
-              <div className="pt-1">
-                <button
-                  type="button"
-                  onClick={() => onBookService(selectedServiceId)}
-                  className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 active:scale-95 transition-all"
-                >
-                  <Wrench className="w-4 h-4 text-slate-950" />
-                  <span>Book Service Appointment for this Estimate</span>
-                </button>
-              </div>
-            )}
           </div>
 
           <div className="pt-3 border-t border-slate-800 text-[11px] text-slate-400 text-center italic">
