@@ -326,13 +326,17 @@ export const Header: React.FC<HeaderProps> = ({
             </a>
 
             {/* Book Appointment CTA (Tablet/Desktop) */}
-            <button
-              onClick={onOpenBooking}
+            <a
+              href="/book-appointment/"
+              onClick={(e) => {
+                e.preventDefault();
+                onOpenBooking();
+              }}
               className="hidden sm:flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-xs sm:text-sm shadow-md shadow-cyan-500/20 active:scale-95 transition-all"
             >
               <Wrench className="w-4 h-4 text-slate-950" />
               <span>Book Service</span>
-            </button>
+            </a>
           </div>
         </div>
       </nav>
