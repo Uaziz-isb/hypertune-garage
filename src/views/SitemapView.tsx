@@ -49,6 +49,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
   // Main high-level site pages
   const mainPages: { label: string; page: PageId; path: string; desc: string; icon: React.ElementType }[] = [
     { label: 'Home Page', page: 'home', path: '/', desc: 'Main workshop overview, hero service highlights, and instant booking.', icon: Globe },
+    { label: 'Book Service Appointment', page: 'booking', path: '/book-appointment/', desc: 'Online workshop appointment scheduling at our Islamabad Flagship Hub or Rawalpindi Branch with instant time slot reservation.', icon: Calendar },
     { label: 'Services Catalogue', page: 'services', path: '/services/', desc: 'Full catalogue of 12 precision repair, protection, and overhaul services.', icon: Wrench },
     { label: 'Workshop Locations', page: 'locations', path: '/locations/', desc: 'Islamabad G-8/4 Hub & Rawalpindi I-9 Branch directions and contacts.', icon: MapPin },
     { label: 'Work Gallery & Restorations', page: 'gallery', path: '/gallery/', desc: 'Before & after high-resolution portfolio of PPF, paint & engine rebuilds.', icon: Sparkles },
