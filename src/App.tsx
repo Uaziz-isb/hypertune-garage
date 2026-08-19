@@ -218,7 +218,7 @@ export function App() {
     pagePath = '/about/';
   } else if (currentPage === 'booking') {
     seoTitle = 'Book Service Appointment Online | HyperTune Garage Islamabad & Rawalpindi';
-    seoDesc = 'Schedule your car repair, PPF installation, ceramic detailing, engine overhaul, or computer diagnostic appointment at HyperTune Garage Islamabad G-8/4 or Rawalpindi I-9. Zero wait times & 12-month warranty.';
+    seoDesc = 'Schedule your car repair, PPF installation, ceramic detailing, engine overhaul, or computer diagnostic appointment at HyperTune Garage Islamabad Police Foundation Flagship Hub or Rawalpindi. Zero wait times & 12-month warranty.';
     seoKeywords = 'book car service islamabad, car repair appointment rawalpindi, book ppf installation, book engine diagnostic online, hypertune garage booking, car mechanic appointment';
     pagePath = currentSlug ? `/book-appointment/?service=${currentSlug}` : '/book-appointment/';
   } else if (currentPage === 'services') {
@@ -229,13 +229,13 @@ export function App() {
   } else if (currentPage === 'service-detail') {
     const serviceName = currentSlug ? currentSlug.replace(/-/g, ' ').toUpperCase() : 'Service';
     seoTitle = `${serviceName} Service | HyperTune Garage Islamabad`;
-    seoDesc = `Professional ${serviceName.toLowerCase()} in Islamabad G-8/4 & Rawalpindi I-9. Advanced diagnostic tools, OEM spare parts, and 12-month workmanship warranty.`;
+    seoDesc = `Professional ${serviceName.toLowerCase()} at HyperTune Garage Islamabad Flagship Hub & Rawalpindi. Advanced diagnostic tools, OEM spare parts, and 12-month workmanship warranty.`;
     seoKeywords = `${currentSlug ? currentSlug.replace(/-/g, ' ') : 'car service'}, ${serviceName.toLowerCase()} islamabad, ${serviceName.toLowerCase()} rawalpindi, car repair packages`;
     pagePath = `/services/${currentSlug || ''}/`;
   } else if (currentPage === 'locations') {
-    seoTitle = 'Workshop Locations in Islamabad G-8 & Rawalpindi I-9 | HyperTune';
-    seoDesc = 'Visit HyperTune Garage workshops in Islamabad G-8/4 Service Road East and Rawalpindi I-9 Industrial Area. Clean customer lounges and express repair bays.';
-    seoKeywords = 'car workshop g8 islamabad, auto repair shop i9 rawalpindi, hypertune locations, car mechanic near me islamabad';
+    seoTitle = 'Workshop Locations in Islamabad & Rawalpindi | HyperTune';
+    seoDesc = 'Visit HyperTune Garage Flagship Hub in Block E Police Foundation, Sector O-9, Islamabad. Clean customer lounges, dust-free PPF clean rooms, and express repair bays.';
+    seoKeywords = 'car workshop police foundation islamabad, auto repair shop rawalpindi, hypertune locations, car mechanic near me islamabad';
     pagePath = '/locations/';
   } else if (currentPage === 'location-detail') {
     const locName = currentSlug ? currentSlug.replace(/-/g, ' ').toUpperCase() : 'Branch';

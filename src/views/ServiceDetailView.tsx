@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageId } from '../types';
 import { getServiceBySlug, servicesData } from '../data/servicesData';
+import { images } from '../data/images';
 import { SEOHead } from '../components/SEOHead';
 import {
   Wrench,
@@ -73,7 +74,7 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
           telephone: '+923330177717',
           address: {
             '@type': 'PostalAddress',
-            streetAddress: 'Plot 42, Service Road East, Sector G-8/4',
+            streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
             addressLocality: 'Islamabad',
             addressRegion: 'ICT',
             postalCode: '44000',
@@ -243,6 +244,9 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
               fetchPriority="high"
               decoding="async"
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = images.islamabadPpfStudio;
+              }}
               className="w-full h-80 sm:h-[420px] object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
@@ -252,7 +256,7 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
                 Available at Both Branches
               </span>
               <p className="text-slate-300 font-semibold">
-                Sector G-8/4 Islamabad & Rawalpindi Saddar / I-9 Hub
+                Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad & Rawalpindi Hub
               </p>
             </div>
           </div>
@@ -450,6 +454,9 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
                   loading="lazy"
                   decoding="async"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = images.islamabadPpfStudio;
+                  }}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0b121e] via-transparent to-transparent" />

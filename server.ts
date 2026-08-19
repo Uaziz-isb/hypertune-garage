@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import fs from "fs";
 import compression from "compression";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
@@ -7,8 +8,28 @@ import { GoogleGenAI } from "@google/genai";
 const app = express();
 const PORT = 3000;
 
-app.use(compression());
-app.use(express.json());
+// High-Performance Compression for 98+ PageSpeed
+app.use(
+  compression({
+    level: 9,
+    threshold: 512,
+    filter: (req, res) => {
+      if (req.headers["x-no-compression"]) return false;
+      return compression.filter(req, res);
+    },
+  })
+);
+
+// Performance & Security Headers
+app.use((_req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("Permissions-Policy", "geolocation=(self), camera=(), microphone=()");
+  next();
+});
+
+app.use(express.json({ limit: "2mb" }));
 
 // Lazy Gemini AI Client Initialization
 let aiClient: GoogleGenAI | null = null;
@@ -29,6 +50,17 @@ app.get("/api/health", (_req, res) => {
     workshop: "HyperTune Garage Pakistan - Islamabad & Rawalpindi Studio",
     timestamp: new Date().toISOString(),
   });
+});
+
+// ZIP Archive Download Endpoint for GitHub Migration
+app.get(["/api/download-zip", "/hypertune-garage-app.zip"], (_req, res) => {
+  const zipPath = path.join(process.cwd(), "public", "hypertune-garage-app.zip");
+  if (fs.existsSync(zipPath)) {
+    res.setHeader("Content-Disposition", 'attachment; filename="hypertune-garage-app.zip"');
+    res.setHeader("Content-Type", "application/zip");
+    return res.sendFile(zipPath);
+  }
+  return res.status(404).json({ error: "ZIP file not found" });
 });
 
 // API AI Diagnostic Assistant
@@ -97,85 +129,43 @@ Return a helpful JSON object with the following fields:
           isGerman ? "German Vehicle Systems Health Check" : "3D Laser Wheel Alignment & Fitment Inspection",
           "Comprehensive Multi-Point Safety Audit",
         ],
-        diagnosticAdvice: `Based on your reported details for your ${vehicleMake || "vehicle"}, our AutoExtreme master specialists recommend a computerized diagnostic scan and fitment check at our ${isGerman ? "G-8/4 Islamabad" : "Gulberg III Lahore"} studio.`,
-        safetyWarning: symptoms?.toLowerCase().includes("brake") || symptoms?.toLowerCase().includes("overheat")
-          ? "CRITICAL: Braking or overheating issues require immediate attention to prevent engine block damage or brake line failure."
-          : null,
+        diagnosticAdvice: `Based on your ${year || ""} ${vehicleMake || "vehicle"} report, our certified master technicians recommend a computer diagnostic scan at HyperTune Garage. Extreme ambient heat and road conditions in Islamabad & Rawalpindi can strain vehicle electronics and cooling circuits. We verify live sensor telemetry before initiating any mechanical repair.`,
+        safetyWarning: symptoms?.toLowerCase().includes("brake") || symptoms?.toLowerCase().includes("smoke") ? "Warning: For your safety, do not drive long distances before inspection." : undefined,
       },
-      source: "local-expert-rules",
+      source: "rule-engine",
     });
   } catch (error: any) {
-    console.error("AI Diagnostic error:", error);
-    res.status(500).json({ error: "Failed to generate diagnostic report." });
+    console.error("AI Diagnostic Error:", error);
+    return res.status(500).json({
+      error: "Unable to process diagnostic request. Please contact HyperTune Garage directly at 0333-0177717.",
+    });
   }
 });
 
-// API Booking Submission
-app.post("/api/booking", (req, res) => {
-  const { name, phone, email, vehicleMake, vehicleModel, year, location, service, date, time, notes } = req.body;
-
-  if (!name || !phone || !vehicleMake || !service) {
-    return res.status(400).json({ error: "Required booking fields are missing." });
-  }
-
-  const bookingRef = `HTG-${Date.now().toString().slice(-6)}`;
-  
-  // Create prefilled WhatsApp link for instant customer confirmation
-  const whatsappMsg = encodeURIComponent(
-    `*NEW BOOKING REQUEST - HYPERTUNE GARAGE*\n` +
-    `Ref #: ${bookingRef}\n` +
-    `Name: ${name}\n` +
-    `Phone: ${phone}\n` +
-    `Vehicle: ${year || ""} ${vehicleMake} ${vehicleModel || ""}\n` +
-    `Service: ${service}\n` +
-    `Branch: ${location || "HyperTune Garage - Islamabad Flagship Hub"}\n` +
-    `Preferred Date/Time: ${date || "Earliest"} at ${time || "Morning"}\n` +
-    `Notes: ${notes || "None"}`
-  );
-
-  const whatsappUrl = `https://wa.me/923330177717?text=${whatsappMsg}`;
-
-  res.json({
-    success: true,
-    bookingRef,
-    message: "Booking received successfully! Our team will contact you shortly to confirm.",
-    whatsappUrl,
-    details: {
-      name,
-      phone,
-      vehicle: `${vehicleMake} ${vehicleModel}`,
-      location,
-      service,
-      date,
-      time,
-    },
-  });
-});
-
-// API Google Business Profile Live Reviews Auto-Sync
-app.get("/api/google-reviews", async (_req, res) => {
-  const apiKey = process.env.GOOGLE_PLACES_API_KEY || process.env.GOOGLE_MAPS_API_KEY;
-  const placeId = process.env.GOOGLE_PLACE_ID || "ChIJg2296t7t3z8RabZyjT3Zsg8";
+// API Google Reviews Sync Endpoint
+app.get("/api/google-reviews", async (req, res) => {
+  const apiKey = process.env.GOOGLE_PLACES_API_KEY;
+  const placeId = process.env.GOOGLE_PLACE_ID || "ChIJ81-K99C33zgR8w3m_9pD2gE";
 
   if (apiKey && apiKey !== "MY_GOOGLE_PLACES_API_KEY") {
     try {
-      const googleRes = await fetch(
-        `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,rating,user_ratings_total,reviews,url,website&key=${apiKey}`
+      const response = await fetch(
+        `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,rating,user_ratings_total,reviews,url&key=${apiKey}`
       );
-      const data = await googleRes.json();
+      const data = await response.json();
+
       if (data.status === "OK" && data.result) {
         return res.json({
           success: true,
-          source: "google-places-api",
-          isLiveSynced: true,
-          placeName: data.result.name || "HyperTune Garage",
+          source: "google-places-live",
+          placeName: data.result.name,
           rating: data.result.rating || 4.9,
           totalReviews: data.result.user_ratings_total || 348,
           googleMapsUrl: data.result.url || "https://maps.google.com/?q=HyperTune+Garage+Islamabad",
           writeReviewUrl: `https://search.google.com/local/writereview?placeid=${placeId}`,
           lastSyncedAt: new Date().toISOString(),
           reviews: (data.result.reviews || []).map((r: any, idx: number) => ({
-            id: `g-rev-live-${idx}-${r.time}`,
+            id: `g-live-${idx}`,
             authorName: r.author_name,
             authorPhoto: r.profile_photo_url,
             rating: r.rating,
@@ -211,7 +201,7 @@ app.get("/api/google-reviews", async (_req, res) => {
         authorPhoto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80",
         rating: 5,
         relativeTimeText: "2 days ago",
-        text: "Got full body TPU Paint Protection Film (PPF) and Paint Protection System (PPS) hydrophobic armor done on my Porsche 911 GT3 at HyperTune Garage Islamabad. The glass mirror clarity and self-healing capability are remarkable. Zero bubbles, flawless edge tucking in their dust-free clean studio. Engr. Shahzaib and team are true professionals!",
+        text: "Got full body TPU Paint Protection Film (PPF) done on my Porsche 911 GT3 at HyperTune Garage Islamabad. The glass mirror clarity and self-healing capability are remarkable. Zero bubbles, flawless edge tucking in their dust-free clean studio. Engr. Shahzaib and team are true professionals!",
         vehicle: "Porsche 911 GT3 / BMW M5",
         branch: "Islamabad Police Foundation Hub",
         ownerResponse: "Thank you Usman! It was an absolute pleasure hosting your GT3 in our dust-free studio. Drive safe and enjoy the glass gloss PPF protection!",
@@ -225,7 +215,7 @@ app.get("/api/google-reviews", async (_req, res) => {
         relativeTimeText: "5 days ago",
         text: "HyperTune Garage solved a complex drivetrain error on my BMW 530i that two major workshops in Rawalpindi failed to diagnose. Their BMW ISTA scanner identified a faulty sensor, replaced it with original OEM parts, and applied front-end PPF. Transparent video inspection updates sent directly to my WhatsApp. Unmatched service quality in Pakistan!",
         vehicle: "BMW 530i M-Sport",
-        branch: "Rawalpindi I-9 Hub",
+        branch: "Islamabad Police Foundation Hub",
         ownerResponse: "Thank you Dr. Hammad for your kind words! We pride ourselves on OEM digital diagnostics and clear video proof for every client.",
         verified: true,
       },
@@ -235,7 +225,7 @@ app.get("/api/google-reviews", async (_req, res) => {
         authorPhoto: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=120&q=80",
         rating: 5,
         relativeTimeText: "1 week ago",
-        text: "Applied self-healing Paint Protection Film (PPF) and 9H Ceramic PPS topcoat on my new Honda Civic RS. Gravel stone chips on Islamabad Highway leave absolutely zero marks now! Their CAD computer plotter pre-cuts the film so no knives ever touch your car's factory paint. 10/10 recommendation!",
+        text: "Applied self-healing Paint Protection Film (PPF) and 9H Ceramic topcoat on my new Honda Civic RS. Gravel stone chips on Islamabad Highway leave absolutely zero marks now! Their CAD computer plotter pre-cuts the film so no knives ever touch your car's factory paint. 10/10 recommendation!",
         vehicle: "Honda Civic RS (2024)",
         branch: "Islamabad Police Foundation Hub",
         ownerResponse: "Thank you Saad! Our computerized plotter ensures 100% blade-free installation for pristine factory paint preservation.",
@@ -247,9 +237,9 @@ app.get("/api/google-reviews", async (_req, res) => {
         authorPhoto: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=120&q=80",
         rating: 5,
         relativeTimeText: "2 weeks ago",
-        text: "Brought my Toyota Land Cruiser V8 to HyperTune Garage for full body heavy-duty PPF & PPS armor. Off-road driving around Murree & Hazara leaves zero scratches now. The hydrophobic water beading is incredible. Excellent customer lounge with live video monitoring of the workshop bay.",
+        text: "Brought my Toyota Land Cruiser V8 to HyperTune Garage for full body heavy-duty PPF armor. Off-road driving around Murree & Hazara leaves zero scratches now. The hydrophobic water beading is incredible. Excellent customer lounge with live video monitoring of the workshop bay.",
         vehicle: "Toyota Land Cruiser V8",
-        branch: "Rawalpindi I-9 Hub",
+        branch: "Islamabad Police Foundation Hub",
         ownerResponse: "Thank you Malik sb! Happy to serve your Land Cruiser V8 with top-grade off-road PPF protection.",
         verified: true,
       },
@@ -259,7 +249,7 @@ app.get("/api/google-reviews", async (_req, res) => {
         authorPhoto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80",
         rating: 5,
         relativeTimeText: "3 weeks ago",
-        text: "Outstanding interior detailing and PPS ceramic coating for my Audi A4. The workshop is immaculate, staff is courteous, and pricing is extremely honest compared to local dealerships. Will definitely return for routine maintenance!",
+        text: "Outstanding interior detailing and 9H ceramic coating for my Audi A4. The workshop is immaculate, staff is courteous, and pricing is extremely honest compared to local dealerships. Will definitely return for routine maintenance!",
         vehicle: "Audi A4 S-Line",
         branch: "Islamabad Police Foundation Hub",
         ownerResponse: "Thank you Zainab! We look forward to taking great care of your Audi A4 in the future.",
@@ -269,6 +259,45 @@ app.get("/api/google-reviews", async (_req, res) => {
   });
 });
 
+// Comprehensive URL Registry for Sitemap, Meta Tags & Google Search Console
+const SITE_ROUTES = [
+  { path: "/", priority: "1.0", changefreq: "daily", title: "HyperTune Garage - Premium Automotive Workshop in Islamabad & Rawalpindi", desc: "Pakistan’s top automotive workshop specializing in Toyota, Honda, Suzuki, BMW, Mercedes, Audi, engine overhauls & hybrid battery repair in Islamabad Police Foundation & Rawalpindi." },
+  { path: "/about", priority: "0.8", changefreq: "weekly", title: "About HyperTune Garage | Master Auto Repair & PPF Specialists", desc: "Learn about HyperTune Garage, our certified master automotive technicians, climate-controlled PPF bays, and state-of-the-art diagnostic facilities in Islamabad." },
+  { path: "/services", priority: "0.9", changefreq: "weekly", title: "Automotive Services & Maintenance Packages | HyperTune Garage", desc: "Complete automotive services catalog including PPF, ceramic detailing, engine overhaul, suspension, transmission, AC repair, and 3D wheel alignment." },
+  { path: "/services/paint-protection-film-ppf", priority: "0.9", changefreq: "weekly", title: "Paint Protection Film (PPF) Islamabad & Rawalpindi | HyperTune", desc: "Premier self-healing TPU Paint Protection Film (PPF) studio in Islamabad & Rawalpindi. Protect original vehicle paint with up to 10-year warranty." },
+  { path: "/services/car-detailing", priority: "0.9", changefreq: "weekly", title: "Car Detailing & 9H Ceramic Coating Islamabad | HyperTune", desc: "Professional car detailing, 3-stage paint correction, 9H nano-ceramic coating, and interior steam deep cleaning in Islamabad & Rawalpindi." },
+  { path: "/services/vehicle-wrap", priority: "0.9", changefreq: "weekly", title: "Vehicle Vinyl Wrapping & Color Change Islamabad | HyperTune", desc: "Premium vinyl car wrapping, matte/gloss color transformations, chrome delete, and roof wraps with precision blade-free installation." },
+  { path: "/services/body-repair-paint", priority: "0.9", changefreq: "weekly", title: "Car Body Repair, Denting & Painting Booth Islamabad | HyperTune", desc: "Computerized paint booth, exact OEM color matching, paintless dent repair (PDR), and accident chassis restoration in Islamabad & Rawalpindi." },
+  { path: "/services/body-modification", priority: "0.9", changefreq: "weekly", title: "Car Body Kits & Custom Modification Islamabad | HyperTune", desc: "Custom aerodynamic body kits, front lip splitters, rear diffusers, ducktail spoilers, and sports exhaust modifications in Islamabad." },
+  { path: "/services/engine-services", priority: "0.9", changefreq: "weekly", title: "Engine Repair, Overhaul & Tuning Islamabad | HyperTune", desc: "Master engine rebuilds, cylinder head resurfacing, ECU remapping, dyno tuning, and performance upgrades with genuine OEM components." },
+  { path: "/services/maintenance-servicing", priority: "0.8", changefreq: "weekly", title: "Periodic Maintenance & Oil Change Service Islamabad | HyperTune", desc: "Factory scheduled maintenance, 100% synthetic oil changes, 50-point safety inspection, and OEM filter replacement in Islamabad & Rawalpindi." },
+  { path: "/services/brake-suspension-steering", priority: "0.8", changefreq: "weekly", title: "Brake Repair, Suspension & 3D Wheel Alignment | HyperTune", desc: "Ceramic brake pads, disc skim lathe resurfacing, polyurethane suspension bushing overhaul, and 3D computerized laser alignment." },
+  { path: "/services/transmission-drivetrain", priority: "0.8", changefreq: "weekly", title: "Automatic & CVT Gearbox Transmission Repair | HyperTune", desc: "Automatic transmission overhaul, Dual-Clutch (DCT/DSG) repair, CVT fluid flush, and drivetrain diagnostics in Islamabad & Rawalpindi." },
+  { path: "/services/car-ac-repair", priority: "0.8", changefreq: "weekly", title: "Car AC Repair & R134a Gas Recharge Islamabad | HyperTune", desc: "Complete automotive AC diagnostics, compressor overhaul, condenser cleaning, evaporator leak detection, and R134a gas charging." },
+  { path: "/services/electrical-electronics", priority: "0.8", changefreq: "weekly", title: "Car Electrical, Wiring & Battery Replacement | HyperTune", desc: "Advanced electronic module coding, computer wiring harness repair, alternator overhaul, and AGM battery replacement in Islamabad." },
+  { path: "/services/cooling-fuel-exhaust", priority: "0.8", changefreq: "weekly", title: "Radiator, Cooling, Fuel Injector & Exhaust Repair | HyperTune", desc: "Radiator leak repair, coolant flush, ultrasonic fuel injector cleaning, catalytic converter decoking, and performance exhaust repair." },
+  { path: "/services/inspection-diagnostics", priority: "0.8", changefreq: "weekly", title: "OBD-II Computer Diagnostics & Pre-Purchase Inspection | HyperTune", desc: "OEM computerized diagnostic scans (BMW ISTA, Mercedes Xentry, Toyota Techstream) and 200-point pre-purchase vehicle health audits." },
+  { path: "/locations", priority: "0.8", changefreq: "monthly", title: "Workshop Locations in Islamabad & Rawalpindi | HyperTune", desc: "Visit HyperTune Garage facilities in Islamabad Police Foundation and Rawalpindi. View maps, GPS directions, contact numbers, and hours." },
+  { path: "/locations/islamabad-workshop-g8", priority: "0.8", changefreq: "monthly", title: "Islamabad Flagship Hub - Sector O-9 Police Foundation | HyperTune", desc: "Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad. Call 0333-0177717. Full PPF, detailing & mechanical bays." },
+  { path: "/locations/rawalpindi-workshop-saddar", priority: "0.8", changefreq: "monthly", title: "Rawalpindi Hub | HyperTune Garage Expansion", desc: "Our Rawalpindi branch is currently under development. Serving Rawalpindi clients at our primary twin-cities hub in Islamabad Police Foundation." },
+  { path: "/gallery", priority: "0.7", changefreq: "monthly", title: "Transformation Gallery & PPF Showcase | HyperTune Garage", desc: "Explore before-and-after transformations of luxury sports cars, SUVs, and sedans featuring Paint Protection Film, ceramic coating, and rebuilds." },
+  { path: "/testimonials", priority: "0.7", changefreq: "monthly", title: "Customer Reviews & Google Ratings | HyperTune Garage", desc: "Read verified customer reviews and 4.9-star Google ratings for HyperTune Garage Islamabad & Rawalpindi automotive workshop." },
+  { path: "/faq", priority: "0.6", changefreq: "monthly", title: "Frequently Asked Questions (FAQ) | HyperTune Garage", desc: "Find answers about PPF lifespan, ceramic coating benefits, engine overhaul warranties, repair pricing, and booking appointments in Pakistan." },
+  { path: "/contact", priority: "0.8", changefreq: "monthly", title: "Contact Us & Book Service | HyperTune Garage Islamabad", desc: "Get in touch with HyperTune Garage. Call 0333-0177717, chat on WhatsApp, or send an inquiry for vehicle repairs and PPF quotes." },
+  { path: "/book-appointment", priority: "0.9", changefreq: "weekly", title: "Book Service Appointment Online | HyperTune Garage", desc: "Schedule your car diagnostic scan, PPF installation, ceramic detailing, or periodic maintenance online with instant WhatsApp confirmation." },
+  { path: "/blog", priority: "0.8", changefreq: "weekly", title: "Automotive Blog, Guides & Maintenance Tips | HyperTune Garage", desc: "Expert automotive advice on Paint Protection Film, ceramic vs graphene coating, German car care, hybrid battery maintenance, and engine health." },
+  { path: "/blog/ppf-pps-paint-protection-guide-pakistan", priority: "0.7", changefreq: "monthly", title: "PPF vs Ceramic Coating in Pakistan: The Complete Guide | HyperTune", desc: "Comprehensive comparison between self-healing TPU Paint Protection Film (PPF) and Ceramic Coatings for Pakistani road and weather conditions." },
+  { path: "/blog/ceramic-coating-vs-graphene-vs-wax-guide", priority: "0.7", changefreq: "monthly", title: "Ceramic Coating vs Graphene vs Wax: Which Is Best? | HyperTune", desc: "Detailed breakdown of durability, hardness, hydrophobic properties, and maintenance requirements for car paint protection technologies." },
+  { path: "/blog/german-car-maintenance-islamabad-rawalpindi", priority: "0.7", changefreq: "monthly", title: "German Car Maintenance Guide: BMW, Mercedes & Audi in Pakistan | HyperTune", desc: "Essential maintenance practices for German vehicles in Pakistan’s high ambient heat, fuel quality challenges, and road vibrations." },
+  { path: "/blog/hybrid-battery-life-care-tips-pakistan", priority: "0.7", changefreq: "monthly", title: "Hybrid Battery Care & Life Extension Tips: Prius, Aqua, Vezel | HyperTune", desc: "Proven techniques to prevent high-voltage battery cell degradation, clean hybrid cooling blowers, and diagnose inverter faults." },
+  { path: "/blog/engine-overhaul-maintenance-guide-pakistan", priority: "0.7", changefreq: "monthly", title: "Engine Overhaul & Break-In Guide in Pakistan | HyperTune", desc: "Warning signs of engine wear, low oil pressure diagnosis, and correct break-in procedures for freshly rebuilt petrol and diesel engines." },
+  { path: "/blog/toyota-honda-maintenance-pakistan-guide", priority: "0.7", changefreq: "monthly", title: "Toyota & Honda Periodic Maintenance Checklist in Pakistan | HyperTune", desc: "Step-by-step 10,000 km periodic servicing guide for Corolla, Civic, Fortuner, Yaris, and City to preserve engine reliability." },
+  { path: "/warranty-specs", priority: "0.5", changefreq: "yearly", title: "Warranty Policy & Technical Specifications | HyperTune Garage", desc: "Official warranty terms covering TPU Paint Protection Film (up to 10 years), 9H Ceramic Coatings, engine overhauls, and genuine OEM parts." },
+  { path: "/privacy-policy", priority: "0.3", changefreq: "yearly", title: "Privacy Policy | HyperTune Garage Pakistan", desc: "HyperTune Garage privacy policy outlining how customer data, booking information, and telemetry inquiries are securely handled." },
+  { path: "/terms-conditions", priority: "0.3", changefreq: "yearly", title: "Terms & Conditions | HyperTune Garage Pakistan", desc: "Terms of service, estimate policies, workshop storage agreements, and warranty stipulations for HyperTune Garage clients." },
+  { path: "/sitemap", priority: "0.6", changefreq: "weekly", title: "HTML Sitemap & Navigation Index | HyperTune Garage", desc: "Complete HTML site index listing all service pages, location guides, blog articles, and workshop resources for HyperTune Garage." }
+];
+
 // XML Sitemap Endpoint for Google Search Console & Webmasters
 app.get(["/sitemap.xml", "/sitemap.xml/"], (req, res) => {
   const host = req.headers.host || "hypertunegarage.pk";
@@ -276,203 +305,28 @@ app.get(["/sitemap.xml", "/sitemap.xml/"], (req, res) => {
   const baseUrl = `${protocol}://${host}`;
   const today = new Date().toISOString().split("T")[0];
 
-  const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${baseUrl}/</loc>
+  let xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+`;
+
+  SITE_ROUTES.forEach((route) => {
+    const loc = route.path === "/" ? `${baseUrl}/` : `${baseUrl}${route.path}`;
+    xmlContent += `  <url>
+    <loc>${loc}</loc>
     <lastmod>${today}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <changefreq>${route.changefreq}</changefreq>
+    <priority>${route.priority}</priority>
   </url>
-  <url>
-    <loc>${baseUrl}/about</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/services</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/locations</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/gallery</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/testimonials</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/faq</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/contact</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/blog</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/warranty-specs</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/privacy-policy</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/terms-conditions</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/sitemap</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/services/paint-protection-film-ppf</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/services/pps-paint-protection-system</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/services/detailing-ceramic-coating</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/services/engine-services</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/services/periodic-maintenance</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/services/brakes-suspension-alignment</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/services/transmission-gearbox-services</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/services/computer-diagnostics-scanning</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/services/denting-painting-body-repair</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/services/body-kit-custom-modification</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/services/hybrid-ev-battery-services</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/services/car-ac-electrical</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/locations/islamabad-workshop-g8</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/locations/rawalpindi-workshop-i9</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/blog/ppf-pps-paint-protection-guide-pakistan</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/blog/ceramic-coating-vs-graphene-vs-wax-guide</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/blog/german-car-maintenance-islamabad-rawalpindi</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/blog/hybrid-battery-life-care-tips-pakistan</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/blog/engine-overhaul-maintenance-guide-pakistan</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-</urlset>`;
+`;
+  });
+
+  xmlContent += `</urlset>`;
 
   res.setHeader("Content-Type", "application/xml; charset=utf-8");
+  res.setHeader("Cache-Control", "public, max-age=3600, must-revalidate");
   res.status(200).send(xmlContent);
 });
 
@@ -488,7 +342,7 @@ app.get(["/llms.txt", "/.well-known/llms.txt"], (req, res) => {
 
 ## Primary Pages
 
-- [Home Page](${baseUrl}/): Overview of HyperTune Garage workshops, specialized services, instant cost estimator, Google customer reviews, live workshop camera, and booking system.
+- [Home Page](${baseUrl}/): Overview of HyperTune Garage workshops, specialized services, instant cost estimator, Google customer reviews, and booking system.
 - [About Us](${baseUrl}/about): Learn about HyperTune Garage, certified master technicians, state-of-the-art dust-free PPF bays, and laser diagnostic equipment.
 - [Services Directory](${baseUrl}/services): Comprehensive catalog of automotive services for German, European, Japanese, and hybrid vehicles.
 - [Workshop Locations](${baseUrl}/locations): Physical studio addresses, GPS directions, operational hours, and contact details for Islamabad and Rawalpindi branches.
@@ -502,34 +356,23 @@ app.get(["/llms.txt", "/.well-known/llms.txt"], (req, res) => {
 ## Specialized Automotive Services
 
 - [Paint Protection Film (PPF)](${baseUrl}/services/paint-protection-film-ppf): 100% self-healing, anti-yellowing optical TPU paint protection film with computerized blade-free CAD plotter cut precision.
-- [PPS Paint Protection System](${baseUrl}/services/pps-paint-protection-system): Multi-stage ceramic shield and polymer armor protecting vehicles against UV rays, acid rain, stone chips, and swirl marks.
-- [Detailing & 9H Ceramic Coating](${baseUrl}/services/detailing-ceramic-coating): 3-step paint correction, deep hydrophobic graphene/ceramic coating, and interior steam deep cleaning.
-- [Engine Overhaul & Mechanical Services](${baseUrl}/services/engine-services): Precision engine rebuilding, cylinder head resurfacing, timing belt/chain replacement, and performance tuning.
-- [Periodic Maintenance & Lube Service](${baseUrl}/services/periodic-maintenance): Factory-scheduled oil changes with 100% genuine synthetic oils, filter renewals, spark plugs, and 45-point inspection.
-- [Brakes, Suspension & 3D Alignment](${baseUrl}/services/brakes-suspension-alignment): Ceramic brake pad replacement, hydraulic caliper repair, suspension bushing overhaul, and computerized 3D laser wheel alignment.
-- [Transmission & Automatic Gearbox Services](${baseUrl}/services/transmission-gearbox-services): Dual-clutch (DCT), CVT, and torque converter gearbox diagnostics, fluid flush, and complete rebuilds.
-- [Computerized Diagnostics & OBD Scanning](${baseUrl}/services/computer-diagnostics-scanning): OEM-grade diagnostic tools (BMW ISTA, Mercedes Xentry, VAG ODIS, Toyota Techstream) for precise fault finding and ECU coding.
-- [Denting, Painting & Body Repair](${baseUrl}/services/denting-painting-body-repair): Computerized color matching paint booth, paintless dent repair (PDR), and structural chassis realignment.
-- [Custom Body Kits & Aerodynamics](${baseUrl}/services/body-kit-custom-modification): Premium OEM and aftermarket body kit fabrication, diffuser installation, spoiler fitting, and custom exhaust fabrication.
-- [Hybrid & EV Battery Services](${baseUrl}/services/hybrid-ev-battery-services): High-voltage hybrid battery cell reconditioning, inverter diagnostic testing, cooling fan maintenance, and battery pack replacements.
-- [Car AC & Electrical Systems](${baseUrl}/services/car-ac-electrical): Complete automotive climate control servicing, refrigerant recharge, evaporator cleaning, compressor repairs, and wiring troubleshooting.
+- [Car Detailing & 9H Ceramic Coating](${baseUrl}/services/car-detailing): 3-step paint correction, deep hydrophobic graphene/ceramic coating, and interior steam deep cleaning.
+- [Vehicle Wrap & Color Change](${baseUrl}/services/vehicle-wrap): Custom color vinyl wrap, gloss, satin, and matte transformations.
+- [Body Repair & Paint Booth](${baseUrl}/services/body-repair-paint): Computerized paint booth, OEM color matching, and paintless dent repair.
+- [Body Kits & Custom Modification](${baseUrl}/services/body-modification): Premium body kit fabrication, diffuser installation, and aerodynamic styling.
+- [Engine Overhaul & Performance Tuning](${baseUrl}/services/engine-services): Precision engine rebuilding, cylinder head resurfacing, and performance tuning.
+- [Periodic Maintenance & Servicing](${baseUrl}/services/maintenance-servicing): Factory-scheduled oil changes with genuine synthetic oils and 50-point inspection.
+- [Brakes, Suspension & Steering](${baseUrl}/services/brake-suspension-steering): Ceramic brake pads, suspension bushing overhaul, and 3D wheel alignment.
+- [Transmission & Drivetrain](${baseUrl}/services/transmission-drivetrain): Automatic, CVT, and Dual-Clutch (DCT) gearbox overhaul and fluid flush.
+- [Car AC Repair](${baseUrl}/services/car-ac-repair): Compressor repairs, condenser service, leak detection, and R134a refrigerant recharge.
+- [Electrical & Electronics](${baseUrl}/services/electrical-electronics): Computerized diagnostics, module coding, and battery replacements.
+- [Cooling, Fuel & Exhaust](${baseUrl}/services/cooling-fuel-exhaust): Radiator flush, ultrasonic injector cleaning, and exhaust maintenance.
+- [Inspection & Diagnostics](${baseUrl}/services/inspection-diagnostics): OEM OBD-II computer scans and 200-point pre-purchase inspections.
 
 ## Workshop Branches & Contact Info
 
-- [Islamabad Police Foundation Hub](${baseUrl}/locations/islamabad-workshop-g8): Main Avenue, Police Foundation, Sector O-9 / PWD, Islamabad. Phone: +92 333 0177717.
-- [Rawalpindi I-9 Hub](${baseUrl}/locations/rawalpindi-workshop-i9): Sector I-9 Industrial Area, Islamabad / Rawalpindi Border. Phone: +92 333 0177717.
-
-## Automotive Guides & Knowledge Base
-
-- [PPF vs PPS Paint Protection Guide](${baseUrl}/blog/ppf-pps-paint-protection-guide-pakistan): In-depth comparison of TPU Paint Protection Film vs Paint Protection System coating for Pakistani driving conditions.
-- [Ceramic vs Graphene vs Wax Coating](${baseUrl}/blog/ceramic-coating-vs-graphene-vs-wax-guide): Complete guide to modern automotive surface protection and longevity ratings.
-- [German Car Maintenance in Islamabad & Rawalpindi](${baseUrl}/blog/german-car-maintenance-islamabad-rawalpindi): Expert guide to maintaining BMW, Mercedes-Benz, and Audi vehicles in Pakistan's high temperature and humidity.
-- [Hybrid Battery Life & Care Tips](${baseUrl}/blog/hybrid-battery-life-care-tips-pakistan): How to extend the lifespan of Toyota Prius, Aqua, Vezel, and Honda Hybrid traction batteries.
-- [Engine Overhaul & Maintenance Guide](${baseUrl}/blog/engine-overhaul-maintenance-guide-pakistan): Symptoms of engine failure, oil consumption causes, and proper break-in procedures after rebuilds.
-
-## Full Documentation & Specifications
-
-- [LLMs Full Reference Document](${baseUrl}/llms-full.txt): Complete in-depth knowledge base, service specifications, pricing tiers, and diagnostic matrices for AI systems.
+- [Islamabad Police Foundation Hub](${baseUrl}/locations/islamabad-workshop-g8): Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan. Phone: +92 333 0177717 (Fully Operational).
+- [Rawalpindi Hub](${baseUrl}/locations/rawalpindi-workshop-saddar): Expansion hub currently under development. Phone: +92 333 0177717.
 `;
 
   res.setHeader("Content-Type", "text/markdown; charset=utf-8");
@@ -554,69 +397,10 @@ app.get(["/llms-full.txt", "/.well-known/llms-full.txt"], (req, res) => {
 - **Email:** info@hypertunegarage.pk
 - **Operating Hours:** Saturday - Thursday: 10:00 AM - 10:00 PM (Friday Closed)
 - **Locations:**
-  - **Islamabad Studio:** Main Avenue, Police Foundation, Sector O-9 / PWD, Islamabad, Pakistan (Postal Code 44000)
-  - **Rawalpindi Workshop:** Sector I-9 Industrial Area, Islamabad/Rawalpindi Border, Pakistan (Postal Code 46000)
+  - **Islamabad Flagship Hub (Operational):** Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
+  - **Rawalpindi Hub (Under Development):** Expansion branch currently under development.
 - **Primary Website:** ${baseUrl}/
 - **Google Rating:** 4.9 / 5.0 Stars (348+ Verified Reviews)
-
----
-
-## Detailed Service Catalog
-
-### 1. Paint Protection Film (PPF) Installation
-- **URL:** ${baseUrl}/services/paint-protection-film-ppf
-- **Description:** High-grade optical TPU (Thermoplastic Polyurethane) film application offering scratch self-healing, stain resistance, and UV rejection.
-- **Technology:** Computer-aided design (CAD) plotter pre-cut film to ensure 100% blade-free installation on vehicle paintwork.
-- **Warranty:** 5 to 10 Year Written Warranty against bubbling, cracking, and yellowing.
-
-### 2. PPS Paint Protection System & 9H Ceramic Coating
-- **URL:** ${baseUrl}/services/pps-paint-protection-system
-- **Description:** Multi-layer liquid quartz glass and graphene ceramic coating forming a permanent chemical bond with factory clear coat.
-- **Features:** 9H pencil hardness, 110-degree water contact angle (super-hydrophobic), high gloss mirror reflection, and chemical protection.
-- **Warranty:** 2 to 5 Year Warranty with complimentary periodic inspection.
-
-### 3. German & Luxury Vehicle Diagnostics
-- **URL:** ${baseUrl}/services/computer-diagnostics-scanning
-- **OEM Diagnostic Systems:** BMW ISTA+, Mercedes-Benz XENTRY, Audi/Porsche VAG ODIS, Toyota Techstream.
-- **Capabilities:** ECU coding, transmission adaptation, active sensor testing, electronic module programming.
-
-### 4. Engine & Mechanical Overhauls
-- **URL:** ${baseUrl}/services/engine-services
-- **Description:** Complete rebuilds of petrol, turbo, and diesel engines to factory torque specs with OEM pistons, rings, bearings, and gaskets.
-
-### 5. Hybrid & EV Battery Diagnostics & Reconditioning
-- **URL:** ${baseUrl}/services/hybrid-ev-battery-services
-- **Vehicles Serviced:** Toyota Prius, Aqua, Axio, Fielder, Corolla Cross, Honda Vezel, Fit, Grace, Hyundai, Kia Hybrids.
-
-### 6. Brakes, Suspension & 3D Wheel Alignment
-- **URL:** ${baseUrl}/services/brakes-suspension-alignment
-- **Features:** High-definition 3D camera wheel alignment, brake disc skim lathe machining, polyurethane bushing overhaul.
-
-### 7. Transmission & Gearbox Overhaul
-- **URL:** ${baseUrl}/services/transmission-gearbox-services
-- **Gearbox Types:** CVT, Dual Clutch Transmission (DSG/DCT), Automatic Torque Converter.
-
-### 8. Custom Body Kits & Aerodynamics
-- **URL:** ${baseUrl}/services/body-kit-custom-modification
-- **Modifications:** FRP and ABS body kits, carbon fiber front splitters, rear diffusers, ducktail spoilers, custom sports exhausts.
-
----
-
-## Direct Links & Resource Map
-
-- **Home:** ${baseUrl}/
-- **About:** ${baseUrl}/about
-- **Services:** ${baseUrl}/services
-- **Locations:** ${baseUrl}/locations
-- **Gallery:** ${baseUrl}/gallery
-- **Testimonials:** ${baseUrl}/testimonials
-- **FAQ:** ${baseUrl}/faq
-- **Contact:** ${baseUrl}/contact
-- **Warranty Specs:** ${baseUrl}/warranty-specs
-- **Privacy Policy:** ${baseUrl}/privacy-policy
-- **Terms & Conditions:** ${baseUrl}/terms-conditions
-- **Sitemap Index:** ${baseUrl}/sitemap.xml
-- **LLMs Summary:** ${baseUrl}/llms.txt
 `;
 
   res.setHeader("Content-Type", "text/markdown; charset=utf-8");
@@ -632,35 +416,233 @@ app.get(["/robots.txt", "/robots.txt/"], (req, res) => {
   const robotsContent = `User-agent: *
 Allow: /
 
+# Allow all major search engine crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# XML Sitemap declaration
 Sitemap: ${baseUrl}/sitemap.xml
+
 # LLMs specification available at /llms.txt and /llms-full.txt
 `;
 
   res.setHeader("Content-Type", "text/plain; charset=utf-8");
+  res.setHeader("Cache-Control", "public, max-age=86400, must-revalidate");
   res.status(200).send(robotsContent);
 });
+
+// Helper function to inject rich SSR metadata into HTML for Google Search Console & Crawlers
+function injectSSRMeta(htmlTemplate: string, reqUrl: string, host: string, protocol: string): string {
+  const cleanPath = reqUrl.split("?")[0].replace(/\/+$/, "") || "/";
+  const baseUrl = `${protocol}://${host}`;
+  const canonicalUrl = cleanPath === "/" ? `${baseUrl}/` : `${baseUrl}${cleanPath}`;
+
+  // Find matching route or fallback to root
+  const matchedRoute = SITE_ROUTES.find((r) => r.path === cleanPath) || {
+    title: "HyperTune Garage - Premium Automotive Workshop in Islamabad & Rawalpindi",
+    desc: "Pakistan’s top automotive workshop specializing in Toyota, Honda, Suzuki, BMW, Mercedes, Audi, engine overhauls & hybrid battery repair in Islamabad Police Foundation & Rawalpindi.",
+  };
+
+  const pageTitle = matchedRoute.title;
+  const pageDesc = matchedRoute.desc;
+  const ogImage = `${baseUrl}/images/hypertune_logo.webp`;
+
+  // Build Structured Data Schema.org
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "name": "HyperTune Garage",
+    "image": ogImage,
+    "@id": canonicalUrl,
+    "url": canonicalUrl,
+    "telephone": "+923330177717",
+    "priceRange": "$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9",
+      "addressLocality": "Islamabad",
+      "postalCode": "44000",
+      "addressCountry": "PK"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 33.5651,
+      "longitude": 73.1362
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+        "opens": "10:00",
+        "closes": "22:00"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "348"
+    }
+  };
+
+  const breadcrumbsSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": `${baseUrl}/`
+      },
+      cleanPath !== "/" ? {
+        "@type": "ListItem",
+        "position": 2,
+        "name": pageTitle.split("|")[0].trim(),
+        "item": canonicalUrl
+      } : null
+    ].filter(Boolean)
+  };
+
+  const schemaScripts = `
+    <script type="application/ld+json" id="server-schema-localbusiness">
+      ${JSON.stringify(localBusinessSchema)}
+    </script>
+    <script type="application/ld+json" id="server-schema-breadcrumbs">
+      ${JSON.stringify(breadcrumbsSchema)}
+    </script>
+  `;
+
+  let updatedHtml = htmlTemplate;
+
+  // Replace Title
+  updatedHtml = updatedHtml.replace(/<title>.*?<\/title>/i, `<title>${pageTitle}</title>`);
+
+  // Replace Description
+  updatedHtml = updatedHtml.replace(
+    /<meta\s+name=["']description["'][^>]*>/i,
+    `<meta name="description" content="${pageDesc.replace(/"/g, '&quot;')}" />`
+  );
+
+  // Replace Canonical
+  updatedHtml = updatedHtml.replace(
+    /<link\s+rel=["']canonical["'][^>]*>/i,
+    `<link rel="canonical" href="${canonicalUrl}" />`
+  );
+
+  // Replace OpenGraph Title & Desc
+  updatedHtml = updatedHtml.replace(
+    /<meta\s+property=["']og:title["'][^>]*>/i,
+    `<meta property="og:title" content="${pageTitle.replace(/"/g, '&quot;')}" />`
+  );
+  updatedHtml = updatedHtml.replace(
+    /<meta\s+property=["']og:description["'][^>]*>/i,
+    `<meta property="og:description" content="${pageDesc.replace(/"/g, '&quot;')}" />`
+  );
+  updatedHtml = updatedHtml.replace(
+    /<meta\s+property=["']og:url["'][^>]*>/i,
+    `<meta property="og:url" content="${canonicalUrl}" />`
+  );
+
+  // Replace Twitter Title & Desc
+  updatedHtml = updatedHtml.replace(
+    /<meta\s+name=["']twitter:title["'][^>]*>/i,
+    `<meta name="twitter:title" content="${pageTitle.replace(/"/g, '&quot;')}" />`
+  );
+  updatedHtml = updatedHtml.replace(
+    /<meta\s+name=["']twitter:description["'][^>]*>/i,
+    `<meta name="twitter:description" content="${pageDesc.replace(/"/g, '&quot;')}" />`
+  );
+
+  // Inject Schemas before </head>
+  updatedHtml = updatedHtml.replace("</head>", `${schemaScripts}\n  </head>`);
+
+  return updatedHtml;
+}
 
 async function startServer() {
   // Vite middleware in dev mode
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
       server: { middlewareMode: true },
-      appType: "spa",
+      appType: "custom",
     });
+
     app.use(vite.middlewares);
+
+    // Custom HTML routing with SSR meta injection for all non-asset paths
+    app.use("*", async (req, res, next) => {
+      if (req.method !== "GET") return next();
+
+      const url = req.originalUrl;
+      const host = req.headers.host || "hypertunegarage.pk";
+      const protocol = req.headers["x-forwarded-proto"] || "https";
+
+      try {
+        let template = fs.readFileSync(path.resolve(process.cwd(), "index.html"), "utf-8");
+        template = await vite.transformIndexHtml(url, template);
+        const finalHtml = injectSSRMeta(template, url, host, protocol as string);
+        res.status(200).set({ "Content-Type": "text/html; charset=utf-8" }).end(finalHtml);
+      } catch (e: any) {
+        vite.ssrFixStacktrace(e);
+        next(e);
+      }
+    });
   } else {
     const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath, {
-      maxAge: "1y",
-      immutable: true,
-      setHeaders: (res, filePath) => {
-        if (filePath.endsWith("index.html")) {
-          res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-        }
-      },
-    }));
+    
+    // Serve Static Assets with High-Performance Cache-Control
+    app.use(
+      express.static(distPath, {
+        maxAge: "1y",
+        immutable: true,
+        etag: true,
+        lastModified: true,
+        setHeaders: (res, filePath) => {
+          if (filePath.endsWith("index.html") || filePath.endsWith(".txt") || filePath.endsWith(".xml")) {
+            res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+          } else if (filePath.match(/\.(webp|jpg|jpeg|png|svg|ico|webmanifest)$/)) {
+            res.setHeader("Cache-Control", "public, max-age=2592000, stale-while-revalidate=86400");
+          } else if (filePath.match(/\.(js|css|woff2|woff)$/)) {
+            res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+          }
+        },
+      })
+    );
+
+    // Production SPA handler with SSR Meta Injection for Googlebot & SEO Crawlers
     app.get("*", (req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
+      const host = req.headers.host || "hypertunegarage.pk";
+      const protocol = req.headers["x-forwarded-proto"] || "https";
+      const indexPath = path.join(distPath, "index.html");
+
+      try {
+        const rawHtml = fs.readFileSync(indexPath, "utf-8");
+        const finalHtml = injectSSRMeta(rawHtml, req.originalUrl, host, protocol as string);
+        res.status(200).set({ "Content-Type": "text/html; charset=utf-8" }).end(finalHtml);
+      } catch (e) {
+        res.sendFile(indexPath);
+      }
     });
   }
 

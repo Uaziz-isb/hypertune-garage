@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PageId } from '../types';
 import { servicesData } from '../data/servicesData';
+import { images } from '../data/images';
 import { SEOHead } from '../components/SEOHead';
 import {
   Wrench,
@@ -129,6 +130,9 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate, onOpenBo
                       loading="lazy"
                       decoding="async"
                       referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src = images.islamabadPpfStudio;
+                      }}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0b121e] via-[#0b121e]/40 to-transparent" />

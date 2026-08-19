@@ -11,7 +11,7 @@ export const blogData: BlogPost[] = [
     author: {
       name: 'Engr. Shahzaib Malik',
       role: 'Lead Detailing & PPF Specialist',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+      avatar: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><rect width="80" height="80" rx="40" fill="%230e1e38"/><circle cx="40" cy="32" r="14" fill="%2306b6d4"/><path d="M20 68c0-11 9-20 20-20s20 9 20 20" fill="%2306b6d4"/></svg>',
     },
     publishedDate: 'July 15, 2026',
     readTime: '6 min read',
@@ -48,7 +48,7 @@ export const blogData: BlogPost[] = [
     author: {
       name: 'Tariq Mahmood',
       role: 'Master Automotive Specialist',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+      avatar: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><rect width="80" height="80" rx="40" fill="%230e1e38"/><circle cx="40" cy="32" r="14" fill="%2338bdf8"/><path d="M20 68c0-11 9-20 20-20s20 9 20 20" fill="%2338bdf8"/></svg>',
     },
     publishedDate: 'June 28, 2026',
     readTime: '5 min read',
@@ -78,7 +78,7 @@ export const blogData: BlogPost[] = [
     author: {
       name: 'Usman Ali',
       role: 'High-Voltage Hybrid Technician',
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+      avatar: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><rect width="80" height="80" rx="40" fill="%230e1e38"/><circle cx="40" cy="32" r="14" fill="%233b82f6"/><path d="M20 68c0-11 9-20 20-20s20 9 20 20" fill="%233b82f6"/></svg>',
     },
     publishedDate: 'May 14, 2026',
     readTime: '7 min read',
@@ -105,7 +105,7 @@ export const blogData: BlogPost[] = [
     author: {
       name: 'Engr. Hassan Raza',
       role: 'Master Mechanical Engineer',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+      avatar: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><rect width="80" height="80" rx="40" fill="%230e1e38"/><circle cx="40" cy="32" r="14" fill="%2306b6d4"/><path d="M20 68c0-11 9-20 20-20s20 9 20 20" fill="%2306b6d4"/></svg>',
     },
     publishedDate: 'August 02, 2026',
     readTime: '7 min read',

@@ -104,7 +104,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Right: Social Media Links */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            <span className="hidden sm:inline text-[11px] text-slate-400 font-semibold mr-0.5">Follow:</span>
+            <span className="hidden sm:inline text-[11px] text-slate-400 font-semibold mr-0.5">Follow us:</span>
             <a
               href="https://wa.me/923330177717"
               target="_blank"

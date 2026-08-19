@@ -106,7 +106,7 @@ export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpen
         <div className="bg-[#0b121e] border border-slate-800 rounded-3xl p-8 text-center space-y-4 shadow-xl">
           <h3 className="text-xl font-black text-white">Need Expert Diagnostic Care for Your Vehicle?</h3>
           <p className="text-xs text-slate-400 max-w-md mx-auto">
-            Schedule a diagnostic check at our G-8/4 Islamabad or Rawalpindi workshop.
+            Schedule a diagnostic check at our Islamabad Flagship Hub or Rawalpindi workshop.
           </p>
           <button
             onClick={onOpenBooking}

@@ -244,7 +244,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
             <span>Sat - Thu: 10:00 AM - 10:00 PM</span>
           </div>
           <p className="text-[11px] text-slate-400 leading-tight">
-            Hub: Police Foundation, Islamabad • Branch: Sector I-9/3, Rawalpindi
+            Hub: Police Foundation, Islamabad • Rawalpindi Hub: Opening Soon
           </p>
         </div>
       </aside>

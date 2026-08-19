@@ -7,7 +7,7 @@ export const servicesData: ServiceItem[] = [
     slug: 'paint-protection-film-ppf',
     title: 'Paint Protection Film (PPF)',
     shortDesc: 'Pakistan’s premier studio for self-healing TPU Paint Protection Film (PPF) in Islamabad & Rawalpindi. Defend original paintwork from stone chips, UV fading, road debris, and scratches with up to 10-year warranty protection.',
-    fullDesc: 'HyperTune Garage is Pakistan’s leading studio for self-healing TPU Paint Protection Film (PPF). Located in Sector G-8/4 Islamabad and Rawalpindi, our clean, climate-controlled detailing bay utilizes CAD computer digital plotter pre-cut TPU self-healing films. PPF forms an invisible, ultra-durable hydrophobic armor over your vehicle’s paint, self-healing swirl marks under heat or sunlight while preserving original factory paint and high resale value.',
+    fullDesc: 'HyperTune Garage is Pakistan’s leading studio for self-healing TPU Paint Protection Film (PPF). Located at our Flagship Studio in Block E Police Foundation, Sector O-9, Islamabad and Rawalpindi, our clean, climate-controlled detailing bay utilizes CAD computer digital plotter pre-cut TPU self-healing films. PPF forms an invisible, ultra-durable hydrophobic armor over your vehicle’s paint, self-healing swirl marks under heat or sunlight while preserving original factory paint and high resale value.',
     subServices: ['Paint Protection Film (PPF)', 'Self-Healing TPU Film', 'Clear Bra Armor', 'Luxury Vehicle Armor'],
     subServicePrices: [
       { name: 'PPF (Paint Protection Film)', price: 'PKR 10,000 to 250,000' }
@@ -253,7 +253,7 @@ export const servicesData: ServiceItem[] = [
       '100% Independent inspection studio — zero seller commission bias',
       'Equipped with hydraulic undercarriage lifts to check hidden chassis damage',
       'Master inspection engineers with thousands of verified car evaluations',
-      'Fast same-day appointment booking in Sector G-8/4 Islamabad & Rawalpindi Saddar',
+      'Fast same-day appointment booking at Islamabad Flagship Hub & Rawalpindi',
     ],
     processSteps: [
       { title: '1. Computerized Full-System ECU Scan', desc: 'Scan all control modules for current fault codes, historic errors, and mileage tampering.' },

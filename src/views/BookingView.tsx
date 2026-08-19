@@ -3,6 +3,12 @@ import { PageId } from '../types';
 import { servicesData } from '../data/servicesData';
 import { locationsData } from '../data/locationsData';
 import {
+  trackAppointmentStep,
+  trackAppointmentCompleted,
+  trackWhatsAppClick,
+  trackPhoneClick,
+} from '../utils/analytics';
+import {
   Wrench,
   Calendar,
   Clock,
@@ -76,11 +82,11 @@ const TIME_SLOTS = [
 const APPOINTMENT_FAQS = [
   {
     q: 'Do I need an appointment, or can I walk in directly?',
-    a: 'While walk-in customers are warmly welcome at both our Islamabad Flagship Hub and Rawalpindi I-9 branches, booking your service appointment online guarantees a reserved repair bay, dedicated diagnostic engineer, and zero waiting time upon arrival.',
+    a: 'While walk-in customers are warmly welcome at our Islamabad Flagship Hub, booking your service appointment online guarantees a reserved repair bay, dedicated diagnostic engineer, and zero waiting time upon arrival.',
   },
   {
-    q: 'Which branch is the default workshop location for service appointments?',
-    a: 'Our default primary facility is the HyperTune Garage - Islamabad Flagship Hub located at Block E Police Foundation (Central Avenue near Attock Petrol Pump). You can also choose our Rawalpindi I-9 Branch if preferred.',
+    q: 'Which branch is the active workshop location for service appointments?',
+    a: 'All service appointments, PPF installations, and mechanical overhauls are handled at the HyperTune Garage - Islamabad Flagship Hub (Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan). Our new Rawalpindi Hub is currently under development and opening soon.',
   },
   {
     q: 'Will I be informed of costs before any work begins?',
@@ -196,12 +202,21 @@ export const BookingView: React.FC<BookingViewProps> = ({
         alert('Please select at least one workshop service.');
         return;
       }
+      trackAppointmentStep(2, 'Branch & Schedule', {
+        vehicle_make: make === 'Other' ? customMake : make,
+        services_count: selectedServices.length,
+      });
     }
     if (stepNumber === 3) {
       if (!date) {
         alert('Please select your preferred appointment date.');
         return;
       }
+      trackAppointmentStep(3, 'Customer Details & Review', {
+        workshop_branch: locationId,
+        date,
+        time,
+      });
     }
     setCurrentStep(stepNumber);
     window.scrollTo({ top: 180, behavior: 'smooth' });
@@ -268,6 +283,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
           services: selectedServiceTitles,
           vehicle: vehicleFull,
         };
+        trackAppointmentCompleted(data.bookingRef, selectedServiceTitles, branchName, vehicleFull);
         setBookingResult(resultPayload);
         setCurrentStep(4);
         window.scrollTo({ top: 100, behavior: 'smooth' });
@@ -299,6 +315,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
         services: selectedServiceTitles,
         vehicle: vehicleFull,
       };
+      trackAppointmentCompleted(fallbackRef, selectedServiceTitles, branchName, vehicleFull);
       setBookingResult(resultPayload);
       setCurrentStep(4);
       window.scrollTo({ top: 100, behavior: 'smooth' });
@@ -696,7 +713,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
                       <span>Step 2: Workshop Location & Preferred Time Slot</span>
                     </h2>
                     <p className="text-xs sm:text-sm text-slate-400">
-                      Our Islamabad Flagship Hub is selected by default. You may also select our Rawalpindi I-9 Branch.
+                      All active appointments are scheduled at our Islamabad Flagship Hub. (Rawalpindi Hub is opening soon).
                     </p>
                   </div>
 
@@ -705,6 +722,38 @@ export const BookingView: React.FC<BookingViewProps> = ({
                     {locationsData.map((loc) => {
                       const isSelected = locationId === loc.id;
                       const isDefaultHub = loc.id === 'islamabad-g8';
+                      
+                      if (!loc.isOperational) {
+                        return (
+                          <div
+                            key={loc.id}
+                            className="p-5 rounded-2xl border border-amber-500/30 bg-[#070c14]/80 text-slate-400 space-y-3 relative overflow-hidden"
+                          >
+                            <div className="inline-flex items-center gap-1 bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[10px] font-black uppercase px-2 py-0.5 rounded-md">
+                              ✦ Opening Soon • Under Development
+                            </div>
+
+                            <div className="flex items-start justify-between gap-2">
+                              <div className="flex items-center gap-2 font-black text-sm sm:text-base text-slate-300 leading-tight">
+                                <MapPin className="w-5 h-5 shrink-0 text-amber-400" />
+                                <span>{loc.branchName}</span>
+                              </div>
+                              <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 shrink-0">
+                                {loc.city}
+                              </span>
+                            </div>
+
+                            <p className="text-xs text-amber-200/90 italic leading-relaxed bg-amber-500/10 p-3 rounded-xl border border-amber-500/20">
+                              &ldquo;{loc.statusNotice || 'Opening soon — our new branch is currently under development. Stay tuned for the official opening announcement.'}&rdquo;
+                            </p>
+
+                            <p className="text-[11px] text-slate-400">
+                              Appointments are currently serviced at our Islamabad Flagship Hub.
+                            </p>
+                          </div>
+                        );
+                      }
+
                       return (
                         <div
                           key={loc.id}
@@ -717,7 +766,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
                         >
                           {isDefaultHub && (
                             <div className="inline-flex items-center gap-1 bg-cyan-500 text-slate-950 text-[10px] font-black uppercase px-2 py-0.5 rounded-md mb-1">
-                              ★ Default Flagship Hub
+                              ★ Active Flagship Hub
                             </div>
                           )}
 
@@ -737,9 +786,11 @@ export const BookingView: React.FC<BookingViewProps> = ({
                             </span>
                           </div>
 
-                          <p className="text-xs text-slate-400 leading-relaxed">
-                            {loc.address}
-                          </p>
+                          {loc.address && (
+                            <p className="text-xs text-slate-400 leading-relaxed">
+                              {loc.address}
+                            </p>
+                          )}
 
                           <div className="space-y-1 text-xs text-slate-300 pt-2 border-t border-slate-800/80">
                             <div className="flex items-center gap-1.5">
@@ -752,16 +803,18 @@ export const BookingView: React.FC<BookingViewProps> = ({
                             </div>
                           </div>
 
-                          <div className="flex flex-wrap gap-1 pt-1">
-                            {loc.workshopSpecs.slice(0, 3).map((spec, i) => (
-                              <span
-                                key={i}
-                                className="text-[10px] bg-slate-900/90 text-cyan-300 border border-cyan-500/20 px-2 py-0.5 rounded-md"
-                              >
-                                ✓ {spec}
-                              </span>
-                            ))}
-                          </div>
+                          {loc.workshopSpecs && (
+                            <div className="flex flex-wrap gap-1 pt-1">
+                              {loc.workshopSpecs.slice(0, 3).map((spec, i) => (
+                                <span
+                                  key={i}
+                                  className="text-[10px] bg-slate-900/90 text-cyan-300 border border-cyan-500/20 px-2 py-0.5 rounded-md"
+                                >
+                                  ✓ {spec}
+                                </span>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       );
                     })}
@@ -1193,13 +1246,13 @@ export const BookingView: React.FC<BookingViewProps> = ({
           <div className="space-y-2 text-center md:text-left">
             <div className="inline-flex items-center gap-2 text-xs font-extrabold text-cyan-400 uppercase tracking-wider">
               <MapPin className="w-4 h-4" />
-              <span>Two Convenient Workshop Hubs</span>
+              <span>Workshop Facilities</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-black text-white">
               Visiting in Person? Here is Where to Find Us
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-              <strong>Islamabad Flagship Hub:</strong> Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation • <strong>Rawalpindi Branch:</strong> Sector I-9/3 Industrial Area. Air-conditioned customer lounges with high-speed Wi-Fi and espresso.
+              <strong>Islamabad Flagship Hub:</strong> Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan • <strong>Rawalpindi Hub:</strong> Opening soon — our new branch is currently under development.
             </p>
           </div>
 
