@@ -19,31 +19,9 @@ export default defineConfig(() => {
       minify: 'esbuild' as const,
       rollupOptions: {
         output: {
-          manualChunks(id) {
-            if (id.includes('node_modules')) {
-              if (id.includes('lucide-react')) {
-                return 'icons';
-              }
-              if (id.includes('/react/') || id.includes('/react-dom/') || id.includes('/scheduler/')) {
-                return 'vendor-react';
-              }
-              return 'vendor';
-            }
-            if (id.includes('/data/servicesData')) {
-              return 'data-services';
-            }
-            if (id.includes('/data/faqData')) {
-              return 'data-faq';
-            }
-            if (id.includes('/data/reviewsData')) {
-              return 'data-reviews';
-            }
-            if (id.includes('/data/galleryData')) {
-              return 'data-gallery';
-            }
-            if (id.includes('/data/blogData')) {
-              return 'data-blog';
-            }
+          manualChunks: {
+            'vendor-react': ['react', 'react-dom'],
+            'icons': ['lucide-react'],
           },
         },
       },

@@ -1,13 +1,12 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageId } from '../types';
 import { servicesData } from '../data/servicesData';
 import { locationsData } from '../data/locationsData';
+import { reviewsData } from '../data/reviewsData';
 import { images } from '../data/images';
-
-// Dynamic Lazy Imports for Below-the-Fold Heavy Widgets (Mobile Speed Optimization)
-const CostEstimator = lazy(() => import('../components/CostEstimator').then((m) => ({ default: m.CostEstimator })));
-const BeforeAfterSlider = lazy(() => import('../components/BeforeAfterSlider').then((m) => ({ default: m.BeforeAfterSlider })));
-const GoogleReviewsWidget = lazy(() => import('../components/GoogleReviewsWidget').then((m) => ({ default: m.GoogleReviewsWidget })));
+import { CostEstimator } from '../components/CostEstimator';
+import { BeforeAfterSlider } from '../components/BeforeAfterSlider';
+import { GoogleReviewsWidget } from '../components/GoogleReviewsWidget';
 import {
   Wrench,
   ShieldCheck,
@@ -45,10 +44,16 @@ interface HomeViewProps {
 
 const heroSlides = [
   {
-    image: images.islamabadPpfStudio,
+    image: images.ppfHeroBanner,
     title: "HyperTune Garage Precision PPF Studio",
     tagline: "Ultra-Clear Self-Healing TPU • 10-Year Yellowing & Scratch Defense",
     badge: "HyperTune Garage Paint Protection",
+  },
+  {
+    image: images.bannerPpf,
+    title: "HyperTune Garage Dust-Free PPF Wrap Bay",
+    tagline: "Hydrophobic Glass Gloss • Computerized CAD Pre-Cut Film Installation",
+    badge: "HyperTune Garage Clean Room",
   },
   {
     image: images.ppfFortunerStudio,
@@ -57,22 +62,28 @@ const heroSlides = [
     badge: "HyperTune Garage Vehicle Armor",
   },
   {
-    image: images.ecuTuning,
-    title: "HyperTune Garage Master ECU Tuning & Diagnostics Lab",
+    image: images.ppfSedanStudio,
+    title: "HyperTune Garage Master Engine Diagnostic Lab",
     tagline: "Live Sensor Telemetry • Computerized OEM Scanner Health Audits",
     badge: "HyperTune Garage Diagnostic Lab",
   },
   {
-    image: images.ceramicDetailing,
+    image: images.ppfSedanStudio,
     title: "HyperTune Garage Hydrophobic Ceramic Shielding",
     tagline: "9H Nano-Ceramic Barrier • Paint Correction & Mirror Gloss Finish",
     badge: "HyperTune Garage Ceramic Studio",
   },
   {
-    image: images.engineOverhaul,
-    title: "HyperTune Garage Precision Mechanical & Overhaul Lab",
-    tagline: "0.001mm Tolerance Measuring • Dust-Free Overhaul & Transmission Restorations",
+    image: images.bannerEngine,
+    title: "HyperTune Garage Master Engine Rebuild Lab",
+    tagline: "0.001mm Tolerance Measuring • Dust-Free Overhaul & Gearbox Restorations",
     badge: "HyperTune Garage Engine Lab",
+  },
+  {
+    image: images.heroBanner,
+    title: "HyperTune Garage Workshop & Service Bay",
+    tagline: "Precision Maintenance • 3D Laser Alignment & Diagnostics",
+    badge: "HyperTune Garage Islamabad & Rawalpindi",
   },
 ];
 
@@ -112,20 +123,20 @@ export const HomeView: React.FC<HomeViewProps> = ({
       <section className="relative min-h-[85vh] flex items-center pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16 px-3 sm:px-4 bg-slate-950 overflow-hidden">
         {/* Background Image Carousel with Vignette */}
         <div className="absolute inset-0 z-0">
-          <img
-            key={activeHero.title + currentSlide}
-            src={activeHero.image}
-            alt={activeHero.title}
-            width={1440}
-            height={810}
-            fetchPriority={currentSlide === 0 ? "high" : "auto"}
-            loading={currentSlide === 0 ? "eager" : "lazy"}
-            decoding="async"
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src = images.islamabadPpfStudio;
-            }}
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-40 z-10 scale-105"
-          />
+          {heroSlides.map((slide, idx) => (
+            <img
+              key={slide.badge + idx}
+              src={slide.image}
+              alt={slide.title}
+              fetchPriority={idx === 0 ? "high" : "low"}
+              loading={idx === 0 ? "eager" : "lazy"}
+              decoding="async"
+              referrerPolicy="no-referrer"
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 scale-105 ${
+                idx === currentSlide ? 'opacity-40 z-10' : 'opacity-0 z-0'
+              }`}
+            />
+          ))}
           <div className="absolute inset-0 z-20 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/70" />
           <div className="absolute inset-0 z-20 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/80" />
         </div>
@@ -192,20 +203,21 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-cyan-500/30 shadow-2xl shadow-cyan-500/10 group">
               {/* Animated Slide Container */}
               <div className="relative h-[290px] sm:h-[380px] md:h-[430px] w-full bg-slate-950">
-                <img
-                  key={activeHero.title + currentSlide}
-                  src={activeHero.image}
-                  alt={activeHero.title}
-                  width={640}
-                  height={430}
-                  loading={currentSlide === 0 ? "eager" : "lazy"}
-                  fetchPriority={currentSlide === 0 ? "high" : "auto"}
-                  decoding="async"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).src = images.islamabadPpfStudio;
-                  }}
-                  className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out opacity-100 scale-100"
-                />
+                {heroSlides.map((slide, idx) => (
+                  <img
+                    key={slide.title + idx}
+                    src={slide.image}
+                    alt={slide.title}
+                    loading={idx === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    referrerPolicy="no-referrer"
+                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
+                      idx === currentSlide
+                        ? 'opacity-100 scale-100'
+                        : 'opacity-0 scale-105 pointer-events-none'
+                    }`}
+                  />
+                ))}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#05080e] via-transparent to-black/30 opacity-90" />
               </div>
 
@@ -394,9 +406,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     loading="lazy"
                     decoding="async"
                     referrerPolicy="no-referrer"
-                    onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src = images.islamabadPpfStudio;
-                    }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0b121e] via-transparent to-transparent" />
@@ -443,9 +452,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
       {/* INTERACTIVE COST ESTIMATOR */}
       <section className="max-w-7xl mx-auto px-4 cv-auto">
-        <Suspense fallback={<div className="h-96 rounded-3xl bg-[#0b121e] animate-pulse border border-slate-800" />}>
-          <CostEstimator onBookService={(serviceId) => onOpenBooking(serviceId)} />
-        </Suspense>
+        <CostEstimator onBookService={(serviceId) => onOpenBooking(serviceId)} />
       </section>
 
       {/* BEFORE & AFTER REPAIR RESTORATIONS */}
@@ -460,29 +467,27 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </p>
         </div>
 
-        <Suspense fallback={<div className="h-96 rounded-3xl bg-[#0b121e] animate-pulse border border-slate-800" />}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <BeforeAfterSlider
-              title="Haval H6 GT Full Body TPU Paint Protection Film (PPF)"
-              beforeImage={images.havalStudioBefore}
-              afterImage={images.havalStudioAfter}
-              topBeforeTag="Before PPF"
-              topAfterTag="After PPF"
-              beforeLabel="Factory Maroon Finish"
-              afterLabel="Self-Healing Mirror Armor"
-            />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <BeforeAfterSlider
+            title="Haval H6 GT Full Body TPU Paint Protection Film (PPF)"
+            beforeImage={images.havalStudioBefore}
+            afterImage={images.havalStudioAfter}
+            topBeforeTag="Before PPF"
+            topAfterTag="After PPF"
+            beforeLabel="Factory Maroon Finish"
+            afterLabel="Self-Healing Mirror Armor"
+          />
 
-            <BeforeAfterSlider
-              title="Toyota Land Cruiser TPU PPF & Ceramic Coating"
-              beforeImage={images.toyotaStudioBefore}
-              afterImage={images.toyotaStudioAfter}
-              topBeforeTag="Before PPF"
-              topAfterTag="After PPF"
-              beforeLabel="Factory Metallic Grey"
-              afterLabel="9H Hydrophobic Mirror Gloss"
-            />
-          </div>
-        </Suspense>
+          <BeforeAfterSlider
+            title="Toyota Land Cruiser TPU PPF & Ceramic Coating"
+            beforeImage={images.toyotaStudioBefore}
+            afterImage={images.toyotaStudioAfter}
+            topBeforeTag="Before PPF"
+            topAfterTag="After PPF"
+            beforeLabel="Factory Metallic Grey"
+            afterLabel="9H Hydrophobic Mirror Gloss"
+          />
+        </div>
       </section>
 
       {/* CUSTOMER REVIEWS & GOOGLE RATINGS + HYPERTUNE PERFORMANCE METRICS */}
@@ -550,9 +555,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </button>
             </div>
 
-            <Suspense fallback={<div className="h-64 rounded-3xl bg-[#0b121e] animate-pulse border border-slate-800" />}>
-              <GoogleReviewsWidget compact={true} limit={3} showTitle={false} />
-            </Suspense>
+            <GoogleReviewsWidget compact={true} limit={3} showTitle={false} />
           </div>
 
         </div>
@@ -604,80 +607,44 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   loading="lazy"
                   decoding="async"
                   referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).src = images.islamabadPpfStudio;
-                  }}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-[#05080e]/40" />
-                <div className="absolute top-3 left-3 flex items-center gap-1.5">
-                  <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-extrabold text-xs px-2.5 py-1 rounded-lg">
-                    {loc.city} Hub
-                  </span>
-                  {!loc.isOperational && (
-                    <span className="bg-amber-500 text-slate-950 font-black text-[10px] uppercase px-2 py-0.5 rounded-md">
-                      Opening Soon
-                    </span>
-                  )}
-                </div>
+                <span className="absolute top-3 left-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-extrabold text-xs px-2.5 py-1 rounded-lg">
+                  {loc.city} Hub
+                </span>
               </div>
 
               <div className="sm:col-span-7 p-6 space-y-4 flex flex-col justify-between">
                 <div className="space-y-2">
                   <h3 className="font-bold text-lg text-white">{loc.branchName}</h3>
-                  {loc.isOperational ? (
-                    <>
-                      {loc.address && (
-                        <p className="text-slate-400 text-xs flex items-start gap-1.5">
-                          <MapPin className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                          <span>{loc.address}</span>
-                        </p>
-                      )}
-                      {loc.hours && (
-                        <p className="text-slate-400 text-xs flex items-center gap-1.5">
-                          <Clock className="w-4 h-4 text-slate-500 shrink-0" />
-                          <span>{loc.hours.weekdays}</span>
-                        </p>
-                      )}
-                    </>
-                  ) : (
-                    <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-200 text-xs leading-relaxed italic">
-                      &ldquo;{loc.statusNotice || 'Opening soon — our new branch is currently under development. Stay tuned for the official opening announcement.'}&rdquo;
-                    </div>
-                  )}
+                  <p className="text-slate-400 text-xs flex items-start gap-1.5">
+                    <MapPin className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                    <span>{loc.address}</span>
+                  </p>
+                  <p className="text-slate-400 text-xs flex items-center gap-1.5">
+                    <Clock className="w-4 h-4 text-slate-500 shrink-0" />
+                    <span>{loc.hours.weekdays}</span>
+                  </p>
                 </div>
 
                 <div className="flex items-center gap-2 pt-2">
-                  {loc.isOperational ? (
-                    <>
-                      <a
-                        href="tel:+923330177717"
-                        className="flex-1 py-2.5 rounded-xl bg-[#070c14] hover:bg-slate-800 text-white font-bold text-xs border border-slate-800 flex items-center justify-center gap-1.5 transition-colors"
-                      >
-                        <Phone className="w-3.5 h-3.5 text-cyan-400" />
-                        <span>0333-0177717</span>
-                      </a>
-                      {loc.googleMapsDirectionsUrl && (
-                        <a
-                          href={loc.googleMapsDirectionsUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="py-2.5 px-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold text-xs transition-colors flex items-center gap-1 shrink-0"
-                        >
-                          <Navigation className="w-3.5 h-3.5 text-slate-950" />
-                          <span>Directions</span>
-                        </a>
-                      )}
-                    </>
-                  ) : (
-                    <button
-                      onClick={() => onNavigate('location-detail', loc.slug)}
-                      className="w-full py-2.5 rounded-xl bg-[#070c14] hover:bg-slate-800 text-white font-bold text-xs border border-slate-800 flex items-center justify-center gap-1.5 transition-colors"
-                    >
-                      <span>Branch Info & Development Status</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
-                    </button>
-                  )}
+                  <a
+                    href="tel:+923330177717"
+                    className="flex-1 py-2.5 rounded-xl bg-[#070c14] hover:bg-slate-800 text-white font-bold text-xs border border-slate-800 flex items-center justify-center gap-1.5 transition-colors"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>0333-0177717</span>
+                  </a>
+                  <a
+                    href={loc.googleMapsDirectionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-2.5 px-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold text-xs transition-colors flex items-center gap-1 shrink-0"
+                  >
+                    <Navigation className="w-3.5 h-3.5 text-slate-950" />
+                    <span>Directions</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -695,7 +662,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </span>
             <h2 className="text-2xl md:text-3xl font-black text-white">Find HyperTune Garage on Google Maps</h2>
             <p className="text-xs text-slate-400 max-w-xl">
-              Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan.
+              Shop 1-G, Ground Floor, Central Ave, near Attock Petrol Pump, Block E Police Foundation, Islamabad, 44000, Pakistan.
             </p>
           </div>
           <a

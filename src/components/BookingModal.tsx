@@ -63,7 +63,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
           vehicleMake: make,
           vehicleModel: model,
           year,
-          location: locationId === 'islamabad-g8' ? 'Islamabad Flagship Hub (Police Foundation)' : 'Rawalpindi Hub (Opening Soon)',
+          location: locationId === 'islamabad-g8' ? 'Islamabad G-8/4' : 'Rawalpindi I-9/Saddar',
           service: selectedServiceTitles || 'Diagnostic Audit',
           date,
           time,
@@ -91,7 +91,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
         .join(', ');
       const fallbackRef = `HTG-${Math.floor(100000 + Math.random() * 900000)}`;
       const msg = encodeURIComponent(
-        `*New Service Booking - HyperTune Garage*\n*Booking Ref:* #${fallbackRef}\n*Customer:* ${name} (${phone})\n*Vehicle:* ${year} ${make} ${model}\n*Services:* ${selectedServiceTitles || 'Diagnostic Audit'}\n*Branch:* ${locationId === 'islamabad-g8' ? 'Islamabad Flagship Hub (Police Foundation)' : 'Rawalpindi Hub (Opening Soon)'}\n*Scheduled:* ${date} at ${time}${customNotes ? `\n*Notes:* ${customNotes}` : ''}`
+        `*New Service Booking - HyperTune Garage*\n*Booking Ref:* #${fallbackRef}\n*Customer:* ${name} (${phone})\n*Vehicle:* ${year} ${make} ${model}\n*Services:* ${selectedServiceTitles || 'Diagnostic Audit'}\n*Branch:* ${locationId === 'islamabad-g8' ? 'Islamabad G-8/4' : 'Rawalpindi I-9/Saddar'}\n*Scheduled:* ${date} at ${time}${customNotes ? `\n*Notes:* ${customNotes}` : ''}`
       );
       const waUrl = `https://wa.me/923330177717?text=${msg}`;
       setBookingResult({
@@ -278,52 +278,23 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
 
               {/* Branch Picker */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {locationsData.map((loc) => {
-                  if (!loc.isOperational) {
-                    return (
-                      <div
-                        key={loc.id}
-                        className="p-4 rounded-2xl border border-amber-500/30 bg-[#070c14]/80 text-slate-400 space-y-1.5"
-                      >
-                        <div className="flex items-center justify-between gap-1">
-                          <div className="flex items-center gap-1.5 font-bold text-xs text-slate-300">
-                            <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                            <span>{loc.branchName}</span>
-                          </div>
-                          <span className="text-[10px] uppercase font-bold text-amber-400 bg-amber-500/15 px-2 py-0.5 rounded">
-                            Opening Soon
-                          </span>
-                        </div>
-                        <p className="text-[11px] text-amber-200/80 italic leading-snug">
-                          {loc.statusNotice}
-                        </p>
-                      </div>
-                    );
-                  }
-
-                  return (
-                    <div
-                      key={loc.id}
-                      onClick={() => setLocationId(loc.id)}
-                      className={`p-4 rounded-2xl border cursor-pointer transition-all ${
-                        locationId === loc.id
-                          ? 'bg-cyan-950/40 border-cyan-500 text-white'
-                          : 'bg-[#070c14] border-slate-800 text-slate-300 hover:border-slate-700'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between gap-1">
-                        <div className="flex items-center gap-2 font-bold text-sm">
-                          <MapPin className="w-4 h-4 text-cyan-400" />
-                          <span>{loc.branchName}</span>
-                        </div>
-                        <span className="text-[10px] uppercase font-bold text-cyan-400 bg-cyan-950 px-2 py-0.5 rounded">
-                          Active Hub
-                        </span>
-                      </div>
-                      {loc.address && <p className="text-xs text-slate-400 mt-1">{loc.address}</p>}
+                {locationsData.map((loc) => (
+                  <div
+                    key={loc.id}
+                    onClick={() => setLocationId(loc.id)}
+                    className={`p-4 rounded-2xl border cursor-pointer transition-all ${
+                      locationId === loc.id
+                        ? 'bg-cyan-950/40 border-cyan-500 text-white'
+                        : 'bg-[#070c14] border-slate-800 text-slate-300 hover:border-slate-700'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2 font-bold text-sm">
+                      <MapPin className="w-4 h-4 text-cyan-400" />
+                      <span>{loc.branchName}</span>
                     </div>
-                  );
-                })}
+                    <p className="text-xs text-slate-400 mt-1">{loc.address}</p>
+                  </div>
+                ))}
               </div>
 
               {/* Date & Time */}
@@ -481,7 +452,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
                 <div className="flex justify-between border-b border-slate-800 pb-2">
                   <span className="text-slate-400">Location:</span>
                   <span className="font-bold text-white">
-                    {locationId === 'islamabad-g8' ? 'Islamabad Flagship Hub (Police Foundation)' : 'Rawalpindi Hub (Opening Soon)'}
+                    {locationId === 'islamabad-g8' ? 'Islamabad G-8/4' : 'Rawalpindi I-9/Saddar'}
                   </span>
                 </div>
                 <div className="flex justify-between">

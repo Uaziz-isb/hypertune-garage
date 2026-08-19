@@ -14,8 +14,7 @@ import {
   MessageCircle,
   Facebook,
   Instagram,
-  Video,
-  Wrench
+  Video
 } from 'lucide-react';
 
 interface FooterProps {
@@ -43,17 +42,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <a
-              href="/book-appointment/"
-              onClick={(e) => {
-                e.preventDefault();
-                onOpenBooking();
-              }}
-              className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-sm shadow-lg shadow-cyan-500/30 transition-all active:scale-95 flex items-center gap-2"
+            <button
+              onClick={onOpenBooking}
+              className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-sm shadow-lg shadow-cyan-500/30 transition-all active:scale-95"
             >
-              <Wrench className="w-4 h-4 text-slate-950" />
-              <span>Book Service Online</span>
-            </a>
+              Book Service Online
+            </button>
             <a
               href="https://wa.me/923330177717?text=Hi%20HyperTune%20Garage%2C%20I%20would%20like%20an%20instant%20repair/tuning%20quote."
               target="_blank"
@@ -71,17 +65,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
       <div className="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Col 1: Brand & Identity */}
         <div className="space-y-4">
-          <a
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              onNavigate('home');
-            }}
-            className="inline-block cursor-pointer"
-            title="HyperTune Garage Home"
-          >
-            <Logo variant="dark" scale={1.05} />
-          </a>
+          <Logo variant="dark" scale={1.05} onClick={() => onNavigate('home')} />
           <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
             HyperTune Garage is Pakistan's premier precision automotive workshop specializing in popular vehicle brands (Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval), Japanese imports, Paint Protection Film (PPF), engine rebuilding, ceramic detailing, and hybrid battery diagnostics.
           </p>
@@ -194,15 +178,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
           <ul className="space-y-2 text-xs">
             {[
               { label: 'Home Page', page: 'home' as PageId, path: '/' },
-              { label: 'Book Service Appointment', page: 'booking' as PageId, path: '/book-appointment/' },
               { label: 'Services Catalogue', page: 'services' as PageId, path: '/services/' },
               { label: 'Workshop Locations', page: 'locations' as PageId, path: '/locations/' },
               { label: 'Work Gallery & Restorations', page: 'gallery' as PageId, path: '/gallery/' },
               { label: 'Customer Reviews & Ratings', page: 'testimonials' as PageId, path: '/testimonials/' },
+              { label: '12-Month Warranty Specs', page: 'warranty' as PageId, path: '/warranty-specs/' },
               { label: 'Car Care Blog & Guides', page: 'blog' as PageId, path: '/blog/' },
               { label: 'Frequently Asked Questions (FAQ)', page: 'faq' as PageId, path: '/faq/' },
               { label: 'About HyperTune', page: 'about' as PageId, path: '/about/' },
               { label: 'Contact Us', page: 'contact' as PageId, path: '/contact/' },
+              { label: 'Privacy Policy', page: 'privacy' as PageId, path: '/privacy-policy/' },
+              { label: 'Terms & Conditions', page: 'terms' as PageId, path: '/terms-conditions/' },
             ].map((link) => (
               <li key={link.page}>
                 <a
@@ -238,7 +224,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
                 <MapPin className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
                 <span>Islamabad Hub (Police Foundation)</span>
               </a>
-              <p className="text-slate-400 leading-relaxed">Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan</p>
+              <p className="text-slate-400 leading-relaxed">Shop 1-G, Ground Floor, Central Ave, near Attock Petrol Pump, Block E Police Foundation, Islamabad, 44000</p>
               <a href="tel:+923330177717" className="text-cyan-400 hover:underline font-bold inline-block">
                 0333-0177717
               </a>
@@ -252,17 +238,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
                   e.preventDefault();
                   onNavigate('location-detail', 'rawalpindi-workshop-saddar');
                 }}
-                className="font-bold text-white hover:text-cyan-400 flex items-center gap-1.5 transition-colors text-left"
+                className="font-bold text-white hover:text-cyan-400 flex items-center gap-1 transition-colors text-left"
               >
-                <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                <span>Rawalpindi Hub</span>
-                <span className="text-[10px] bg-amber-500/20 text-amber-300 px-1.5 py-0.2 rounded font-semibold ml-1">
-                  Opening Soon
-                </span>
+                <MapPin className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                <span>Rawalpindi & I-9 Branch</span>
               </a>
-              <p className="text-amber-200/80 italic leading-relaxed text-[11px]">
-                Opening soon — our new branch is currently under development. Stay tuned for official announcement.
-              </p>
+              <p className="text-slate-400 leading-relaxed">Plot 18, Sector I-9/3 Industrial Area / Saddar Link</p>
+              <a href="tel:+923330177717" className="text-cyan-400 hover:underline font-bold inline-block">
+                0333-0177717
+              </a>
             </div>
           </div>
         </div>

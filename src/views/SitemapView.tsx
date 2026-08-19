@@ -49,9 +49,8 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
   // Main high-level site pages
   const mainPages: { label: string; page: PageId; path: string; desc: string; icon: React.ElementType }[] = [
     { label: 'Home Page', page: 'home', path: '/', desc: 'Main workshop overview, hero service highlights, and instant booking.', icon: Globe },
-    { label: 'Book Service Appointment', page: 'booking', path: '/book-appointment/', desc: 'Online workshop appointment scheduling at our Islamabad Flagship Hub or Rawalpindi Branch with instant time slot reservation.', icon: Calendar },
     { label: 'Services Catalogue', page: 'services', path: '/services/', desc: 'Full catalogue of 12 precision repair, protection, and overhaul services.', icon: Wrench },
-    { label: 'Workshop Locations', page: 'locations', path: '/locations/', desc: 'Islamabad Police Foundation Flagship Hub & Rawalpindi Branch directions and contacts.', icon: MapPin },
+    { label: 'Workshop Locations', page: 'locations', path: '/locations/', desc: 'Islamabad G-8/4 Hub & Rawalpindi I-9 Branch directions and contacts.', icon: MapPin },
     { label: 'Work Gallery & Restorations', page: 'gallery', path: '/gallery/', desc: 'Before & after high-resolution portfolio of PPF, paint & engine rebuilds.', icon: Sparkles },
     { label: 'Car Care Blog & Guides', page: 'blog', path: '/blog/', desc: 'Technical guides, engine care tips, and maintenance articles by engineers.', icon: BookOpen },
     { label: 'Customer Reviews & Rating', page: 'testimonials', path: '/testimonials/', desc: 'Genuine 4.9-star Google reviews from BMW, Audi, Mercedes & Toyota owners.', icon: ShieldCheck },
@@ -314,40 +313,23 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
                 </a>
               </div>
 
-              {loc.isOperational ? (
-                <>
-                  {loc.address && (
-                    <p className="text-xs text-slate-300 leading-relaxed flex items-start gap-2">
-                      <MapPin className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                      <span>{loc.address}</span>
-                    </p>
-                  )}
+              <p className="text-xs text-slate-300 leading-relaxed flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                <span>{loc.address}</span>
+              </p>
 
-                  <div className="pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-xs">
-                    {loc.hours && (
-                      <span className="text-slate-400 flex items-center gap-1.5 font-mono">
-                        <Clock className="w-3.5 h-3.5 text-cyan-400" />
-                        {loc.hours.weekdays}
-                      </span>
-                    )}
-                    <a
-                      href={`tel:${loc.phone}`}
-                      className="text-cyan-400 hover:underline font-bold font-mono"
-                    >
-                      📞 {loc.phone}
-                    </a>
-                  </div>
-                </>
-              ) : (
-                <div className="space-y-3">
-                  <p className="text-xs text-amber-200/90 italic bg-amber-500/10 border border-amber-500/20 p-3 rounded-xl">
-                    &ldquo;{loc.statusNotice}&rdquo;
-                  </p>
-                  <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs">
-                    <span className="text-amber-400 font-bold">Status: Opening Soon (Under Development)</span>
-                  </div>
-                </div>
-              )}
+              <div className="pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-xs">
+                <span className="text-slate-400 flex items-center gap-1.5 font-mono">
+                  <Clock className="w-3.5 h-3.5 text-cyan-400" />
+                  {loc.hours.weekdays}
+                </span>
+                <a
+                  href={`tel:${loc.whatsapp}`}
+                  className="text-cyan-400 hover:underline font-bold font-mono"
+                >
+                  📞 {loc.phone}
+                </a>
+              </div>
             </div>
           ))}
         </div>

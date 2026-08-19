@@ -2,7 +2,8 @@ import heroBanner from '../assets/images/hypertune_hero_banner_1785533542266.web
 import ecuTuning from '../assets/images/hypertune_ecu_tuning_1785533556122.webp';
 import engineOverhaul from '../assets/images/hypertune_engine_overhaul_1785533568562.webp';
 import ceramicDetailing from '../assets/images/hypertune_ceramic_detailing_1785533581788.webp';
-import logo from '../assets/images/hypertune_logo.webp';
+import logoNew from '../assets/images/hypertune_logo_new_1785539043513.webp';
+import logoOld from '../assets/images/hypertune_logo_1785535380171.webp';
 import ppfHeroBanner from '../assets/images/ppf_hero_banner_1785597040377.webp';
 import ppfFortunerStudio from '../assets/images/ppf_fortuner_studio_1785597187309.webp';
 import ppfSedanStudio from '../assets/images/ppf_sedan_studio_1785597200101.webp';
@@ -13,9 +14,6 @@ import havalStudioBefore from '../assets/images/haval_maroon_before_178638523761
 import havalStudioAfter from '../assets/images/haval_maroon_after_1786383981252.webp';
 import toyotaStudioBefore from '../assets/images/toyota_grey_before_1786385251436.webp';
 import toyotaStudioAfter from '../assets/images/toyota_grey_after_1786385265810.webp';
-import islamabadPpfStudio from '../assets/images/islamabad_ppf_studio_1786992942639.webp';
-import aboutPpfStudio from '../assets/images/about_ppf_studio_1786992956322.webp';
-import rawalpindiHubBay from '../assets/images/rawalpindi_hub_bay_1786992970175.webp';
 
 export const images = {
   heroBanner,
@@ -32,12 +30,9 @@ export const images = {
   ecuTuning,
   engineOverhaul,
   ceramicDetailing,
-  logo,
-  logoNew: logo,
-  islamabadPpfStudio,
-  aboutPpfStudio,
-  rawalpindiHubBay,
-  ppfStudio: islamabadPpfStudio,
+  logoNew,
+  logoOld,
+  ppfStudio: ppfHeroBanner,
   ppfDetailingGarage: bannerPpf,
   sportsCarHero: ppfSedanStudio,
   sportsCarShowcase: ppfFortunerStudio,
@@ -49,6 +44,6 @@ export const images = {
   oilChange: ceramicDetailing,
   carAc: bannerPpf,
   ceramicPpf: ceramicDetailing,
-  workshopIslamabad: islamabadPpfStudio,
-  workshopRawalpindi: rawalpindiHubBay,
+  workshopIslamabad: heroBanner,
+  workshopRawalpindi: bannerEngine,
 };

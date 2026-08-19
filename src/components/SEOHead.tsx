@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import defaultOgBanner from '../assets/images/hypertune_hero_banner_1785533542266.webp';
-import { trackPageView, initGA } from '../utils/analytics';
 
 declare global {
   interface Window {
@@ -22,7 +21,7 @@ interface SEOProps {
 
 export const SEOHead: React.FC<SEOProps> = ({
   title = 'HyperTune Garage - Premium Automotive Workshop in Islamabad & Rawalpindi',
-  description = 'Pakistan’s top automotive workshop specializing in Toyota, Honda, Suzuki, BMW, Mercedes, Audi, engine overhauls & hybrid battery repair in Islamabad Police Foundation & Rawalpindi.',
+  description = 'Pakistan’s top automotive workshop specializing in Toyota, Honda, Suzuki, BMW, Mercedes, Audi, engine overhauls & hybrid battery repair in Islamabad G-8/4 & Rawalpindi.',
   keywords = 'car workshop islamabad, auto repair rawalpindi, car detailing islamabad, paint protection film ppf islamabad, ceramic coating rawalpindi, bmw repair islamabad, mercedes garage rawalpindi, audi service center, engine overhaul islamabad, hybrid battery repair, 3d laser wheel alignment, car mechanic near me, hypertune garage',
   canonicalUrl,
   path = '/',
@@ -33,9 +32,32 @@ export const SEOHead: React.FC<SEOProps> = ({
     // Update Title
     document.title = title;
 
-    // Ensure Google Analytics is initialized and trigger SPA page view
-    initGA();
-    trackPageView(path, title);
+    // Google Analytics (GA4) Setup
+    const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID || window.GA_MEASUREMENT_ID || 'G-PPQJEQSLVE';
+    if (gaId) {
+      let gaScript = document.getElementById('ga-gtag-script') as HTMLScriptElement | null;
+      if (!gaScript) {
+        gaScript = document.createElement('script');
+        gaScript.id = 'ga-gtag-script';
+        gaScript.async = true;
+        gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+        document.head.appendChild(gaScript);
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () {
+          // eslint-disable-next-line prefer-rest-params
+          window.dataLayer?.push(arguments);
+        };
+        window.gtag('js', new Date());
+      }
+
+      if (typeof window.gtag === 'function') {
+        window.gtag('config', gaId, {
+          page_path: path,
+          page_title: title,
+        });
+      }
+    }
 
     // Update Meta Description
     let metaDesc = document.querySelector('meta[name="description"]');
@@ -106,7 +128,7 @@ export const SEOHead: React.FC<SEOProps> = ({
       priceRange: '$$$',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
+        streetAddress: 'Main Avenue, Police Foundation, Sector O-9 / PWD',
         addressLocality: 'Islamabad',
         postalCode: '44000',
         addressCountry: 'PK',

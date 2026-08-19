@@ -1,34 +1,10 @@
 <!doctype html>
-<html lang="en" class="bg-[#030712] text-slate-100">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HyperTune Garage - Premium Automotive Workshop in Islamabad & Rawalpindi</title>
     
-    <!-- Inline Critical Layout CSS for Instant FCP & 0.000 CLS -->
-    <style>
-      :root { color-scheme: dark; }
-      html, body {
-        margin: 0;
-        padding: 0;
-        background-color: #030712;
-        color: #f8fafc;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        overflow-x: hidden;
-      }
-      #root {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-      img {
-        content-visibility: auto;
-      }
-    </style>
-
     <!-- Favicon & Brand Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -38,8 +14,7 @@
     <meta name="theme-color" content="#030712" />
     
     <!-- SEO & AI Crawler Meta Tags -->
-    <meta name="google-site-verification" content="google-site-verification-hypertunegarage-pk" />
-    <meta name="description" content="Pakistan’s premier automotive workshop specializing in BMW, Mercedes, Audi, Porsche, Toyota, Honda, Master Engine Overhauls, Hybrid Battery Repair & PPF in Islamabad Police Foundation & Rawalpindi." />
+    <meta name="description" content="Pakistan’s premier automotive workshop specializing in BMW, Mercedes, Audi, Porsche, Toyota, Honda, Master Engine Overhauls, Hybrid Battery Repair & PPF in Islamabad G-8/4 & Rawalpindi." />
     <meta name="keywords" content="car workshop islamabad, auto repair rawalpindi, car detailing islamabad, paint protection film ppf islamabad, ceramic coating rawalpindi, bmw repair islamabad, mercedes garage rawalpindi, audi service center, engine overhaul islamabad, hybrid battery repair, 3d laser wheel alignment, car mechanic near me, hypertune garage" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://hypertunegarage.pk/" />
@@ -60,50 +35,41 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://hypertunegarage.pk/" />
     <meta property="og:site_name" content="HyperTune Garage" />
-    <meta property="og:image" content="https://hypertunegarage.pk/images/hypertune_logo.webp" />
-    <meta property="og:image:width" content="1024" />
-    <meta property="og:image:height" content="1024" />
-    <meta property="og:image:alt" content="HyperTune Garage Official Logo" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="HyperTune Garage | Premier Automotive Workshop in Islamabad & Rawalpindi" />
     <meta name="twitter:description" content="Pakistan’s top automotive workshop specializing in BMW, Mercedes, Audi, Porsche, Toyota, ECU remapping, engine overhauls & hybrid battery repair." />
-    <meta name="twitter:image" content="https://hypertunegarage.pk/images/hypertune_logo.webp" />
 
-    <!-- Preload Critical Above-The-Fold Assets -->
-    <link rel="preload" as="image" type="image/webp" href="/images/hypertune_logo.webp" fetchpriority="high" />
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <!-- Preconnect & DNS-Prefetch for External CDNs -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-    <!-- Google Tag & Analytics with Non-Blocking Idle Execution for 98+ Desktop / 95+ Mobile PageSpeed -->
+    <!-- Google Analytics (GA4) Tag Setup (Performance Optimized) -->
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){window.dataLayer.push(arguments);}
+      function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-PPQJEQSLVE', {
-        send_page_view: false,
-        transport_type: 'beacon'
-      });
+      gtag('config', 'G-PPQJEQSLVE', { 'transport_type': 'beacon' });
 
-      // Deferred load of external GTM/GA4 script after idle to guarantee zero Total Blocking Time (TBT)
-      function loadGtagScript() {
-        if (!document.getElementById('gtag-js')) {
+      (function() {
+        var loadGA = function() {
+          if (document.getElementById('ga-gtag-script')) return;
           var s = document.createElement('script');
-          s.id = 'gtag-js';
+          s.id = 'ga-gtag-script';
           s.async = true;
           s.src = 'https://www.googletagmanager.com/gtag/js?id=G-PPQJEQSLVE';
           document.head.appendChild(s);
+        };
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(loadGA, { timeout: 2500 });
+        } else {
+          window.addEventListener('load', loadGA);
         }
-      }
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(function() { setTimeout(loadGtagScript, 1000); }, { timeout: 3000 });
-      } else {
-        window.addEventListener('load', function() { setTimeout(loadGtagScript, 1000); });
-      }
+      })();
     </script>
   </head>
-  <body class="bg-[#030712] text-slate-100 antialiased selection:bg-cyan-500 selection:text-slate-950">
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

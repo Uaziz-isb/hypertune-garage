@@ -104,7 +104,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Right: Social Media Links */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            <span className="hidden sm:inline text-[11px] text-slate-400 font-semibold mr-0.5">Follow us:</span>
+            <span className="hidden sm:inline text-[11px] text-slate-400 font-semibold mr-0.5">Follow:</span>
             <a
               href="https://wa.me/923330177717"
               target="_blank"
@@ -326,17 +326,13 @@ export const Header: React.FC<HeaderProps> = ({
             </a>
 
             {/* Book Appointment CTA (Tablet/Desktop) */}
-            <a
-              href="/book-appointment/"
-              onClick={(e) => {
-                e.preventDefault();
-                onOpenBooking();
-              }}
+            <button
+              onClick={onOpenBooking}
               className="hidden sm:flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-xs sm:text-sm shadow-md shadow-cyan-500/20 active:scale-95 transition-all"
             >
               <Wrench className="w-4 h-4 text-slate-950" />
               <span>Book Service</span>
-            </a>
+            </button>
           </div>
         </div>
       </nav>

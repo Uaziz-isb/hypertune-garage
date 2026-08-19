@@ -50,24 +50,21 @@ export interface LocationItem {
   slug: string;
   city: 'Islamabad' | 'Rawalpindi';
   branchName: string;
-  isOperational: boolean;
-  statusBadge?: string;
-  statusNotice?: string;
-  address?: string;
-  area?: string;
-  phone?: string;
-  whatsapp?: string;
-  googleMapEmbedUrl?: string;
-  googleMapsDirectionsUrl?: string;
-  hours?: {
+  address: string;
+  area: string;
+  phone: string;
+  whatsapp: string;
+  googleMapEmbedUrl: string;
+  googleMapsDirectionsUrl: string;
+  hours: {
     weekdays: string;
     friday: string;
     saturday: string;
     sunday: string;
   };
-  workshopSpecs?: string[];
-  landmarks?: string[];
-  managerName?: string;
+  workshopSpecs: string[];
+  landmarks: string[];
+  managerName: string;
   image: string;
 }
 

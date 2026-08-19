@@ -50,7 +50,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
               <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider block">
                 Islamabad Hub (Police Foundation):
               </span>
-              <p className="text-xs text-slate-300">Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan</p>
+              <p className="text-xs text-slate-300">Shop 1-G, Ground Floor, Central Ave, near Attock Petrol Pump, Block E Police Foundation, Islamabad, 44000, Pakistan</p>
               <a href="tel:+923330177717" className="text-base font-black text-white hover:text-cyan-400 block">
                 +92 333 0177717
               </a>
@@ -58,17 +58,13 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
 
             {/* Rawalpindi */}
             <div className="space-y-2 border-b border-slate-800 pb-4">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-amber-400 uppercase tracking-wider block">
-                  HyperTune Garage - Rawalpindi Hub
-                </span>
-                <span className="text-[10px] bg-amber-500/20 text-amber-300 font-bold px-1.5 py-0.5 rounded">
-                  Opening Soon
-                </span>
-              </div>
-              <p className="text-xs text-amber-200/90 italic leading-relaxed">
-                &ldquo;Opening soon — our new branch is currently under development. Stay tuned for the official opening announcement.&rdquo;
-              </p>
+              <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider block">
+                Rawalpindi Branch (I-9 / Saddar):
+              </span>
+              <p className="text-xs text-slate-300">Plot 18, Sector I-9/3 Industrial Area</p>
+              <a href="tel:+923330177717" className="text-base font-black text-white hover:text-cyan-400 block">
+                0333-0177717
+              </a>
             </div>
 
             {/* Hours */}
@@ -175,7 +171,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
             </span>
             <h2 className="text-2xl md:text-3xl font-black text-white">HyperTune Garage Location Map</h2>
             <p className="text-xs text-slate-400 max-w-xl">
-              Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan.
+              Shop 1-G, Ground Floor, Central Ave, near Attock Petrol Pump, Block E Police Foundation, Islamabad, 44000, Pakistan.
             </p>
           </div>
           <a
@@ -212,7 +208,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
           <div className="space-y-2 text-center md:text-right max-w-xl">
             <h3 className="text-xl md:text-2xl font-black text-white">HyperTune Garage Pakistan</h3>
             <p className="text-xs md:text-sm text-slate-300 leading-relaxed">
-              Official Hub: Block E Police Foundation, Islamabad • Rawalpindi Hub (Opening Soon).
+              Official Hub: Block E Police Foundation, Islamabad & Sector I-9 Industrial Area, Rawalpindi.
               <br />
               Specializing in Paint Protection Film (PPF), Ceramic Detailing, Vehicle Wraps & Precision Engineering.
             </p>
