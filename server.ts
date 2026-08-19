@@ -52,17 +52,6 @@ app.get("/api/health", (_req, res) => {
   });
 });
 
-// ZIP Archive Download Endpoint for GitHub Migration
-app.get(["/api/download-zip", "/hypertune-garage-app.zip"], (_req, res) => {
-  const zipPath = path.join(process.cwd(), "public", "hypertune-garage-app.zip");
-  if (fs.existsSync(zipPath)) {
-    res.setHeader("Content-Disposition", 'attachment; filename="hypertune-garage-app.zip"');
-    res.setHeader("Content-Type", "application/zip");
-    return res.sendFile(zipPath);
-  }
-  return res.status(404).json({ error: "ZIP file not found" });
-});
-
 // API AI Diagnostic Assistant
 app.post("/api/ai-diagnostic", async (req, res) => {
   try {
