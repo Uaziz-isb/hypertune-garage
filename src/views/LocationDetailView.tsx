@@ -166,10 +166,6 @@ export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavi
               <img
                 src={loc.image}
                 alt={loc.branchName}
-                width={640}
-                height={384}
-                loading="lazy"
-                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover opacity-60"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b121e] via-[#0b121e]/70 to-transparent" />
