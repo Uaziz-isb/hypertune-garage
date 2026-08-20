@@ -206,42 +206,42 @@ export function App() {
   };
 
   // Compute page SEO title, description, keywords & path
-  let seoTitle = 'HyperTune Garage - Premium Automotive Workshop in Islamabad & Rawalpindi';
-  let seoDesc = 'Car repair workshop in Islamabad & Rawalpindi for Toyota, Honda, Suzuki, Hyundai, Kia & luxury imports. Engine overhaul, PPF studio, 3D laser alignment, hybrid battery repair. 12-Month warranty.';
-  let seoKeywords = 'car workshop islamabad, auto repair rawalpindi, car detailing islamabad, paint protection film ppf islamabad, ceramic coating rawalpindi, bmw repair islamabad, mercedes garage rawalpindi, audi service center, engine overhaul, hybrid battery repair, car mechanic near me, hypertune garage';
+  let seoTitle = 'HyperTune Garage - Premium Automotive Workshop in Islamabad';
+  let seoDesc = 'Car repair workshop in Islamabad for Toyota, Honda, Suzuki, Hyundai, Kia & luxury imports. Engine overhaul, PPF studio, 3D laser alignment, hybrid battery repair. 12-Month warranty.';
+  let seoKeywords = 'car workshop islamabad, car detailing islamabad, paint protection film ppf islamabad, ceramic coating islamabad, bmw repair islamabad, audi service center, engine overhaul, hybrid battery repair, car mechanic near me, hypertune garage';
   let pagePath = '/';
 
   if (currentPage === 'about') {
     seoTitle = 'About Us | HyperTune Garage Workshop Islamabad';
-    seoDesc = 'Learn about HyperTune Garage, Islamabad & Rawalpindi’s premier automotive workshop with master certified technicians, German computer diagnostics, and 10+ years of repair excellence.';
-    seoKeywords = 'about hypertune garage, best car workshop islamabad, certified car mechanics rawalpindi, luxury car specialist pakistan';
+    seoDesc = 'Learn about HyperTune Garage, Islamabad’s premier automotive workshop with master certified technicians, German computer diagnostics, and repair excellence.';
+    seoKeywords = 'about hypertune garage, best car workshop islamabad, certified car mechanics islamabad, luxury car specialist pakistan';
     pagePath = '/about/';
   } else if (currentPage === 'booking') {
-    seoTitle = 'Book Service Appointment Online | HyperTune Garage Islamabad & Rawalpindi';
-    seoDesc = 'Schedule your car repair, PPF installation, ceramic detailing, engine overhaul, or computer diagnostic appointment at HyperTune Garage Islamabad G-8/4 or Rawalpindi I-9. Zero wait times & 12-month warranty.';
-    seoKeywords = 'book car service islamabad, car repair appointment rawalpindi, book ppf installation, book engine diagnostic online, hypertune garage booking, car mechanic appointment';
+    seoTitle = 'Book Service Appointment Online | HyperTune Garage Islamabad';
+    seoDesc = 'Schedule your car repair, PPF installation, ceramic detailing, engine overhaul, or computer diagnostic appointment at HyperTune Garage Islamabad Police Foundation Flagship Hub. Zero wait times & 12-month warranty.';
+    seoKeywords = 'book car service islamabad, book ppf installation, book engine diagnostic online, hypertune garage booking, car mechanic appointment';
     pagePath = currentSlug ? `/book-appointment/?service=${currentSlug}` : '/book-appointment/';
   } else if (currentPage === 'services') {
     seoTitle = 'Car Repair Services & Prices | HyperTune Garage';
-    seoDesc = 'Explore 12 specialized automotive service categories in Islamabad & Rawalpindi: Engine Overhaul, Maintenance, Brakes, Transmission, Hybrid Battery, AC & Electrical, Diagnostics, Body Repair, PPF & Detailing.';
-    seoKeywords = 'car repair services islamabad, automotive services rawalpindi, car servicing packages, engine overhaul cost, ppf coating price islamabad';
+    seoDesc = 'Explore 12 specialized automotive service categories in Islamabad: Engine Overhaul, Maintenance, Brakes, Transmission, Hybrid Battery, AC & Electrical, Diagnostics, Body Repair, PPF & Detailing.';
+    seoKeywords = 'car repair services islamabad, car servicing packages, engine overhaul cost, ppf coating price islamabad';
     pagePath = '/services/';
   } else if (currentPage === 'service-detail') {
     const serviceName = currentSlug ? currentSlug.replace(/-/g, ' ').toUpperCase() : 'Service';
     seoTitle = `${serviceName} Service | HyperTune Garage Islamabad`;
-    seoDesc = `Professional ${serviceName.toLowerCase()} in Islamabad G-8/4 & Rawalpindi I-9. Advanced diagnostic tools, OEM spare parts, and 12-month workmanship warranty.`;
-    seoKeywords = `${currentSlug ? currentSlug.replace(/-/g, ' ') : 'car service'}, ${serviceName.toLowerCase()} islamabad, ${serviceName.toLowerCase()} rawalpindi, car repair packages`;
+    seoDesc = `Professional ${serviceName.toLowerCase()} at HyperTune Garage Islamabad Flagship Hub. Advanced diagnostic tools, OEM spare parts, and 12-month workmanship warranty.`;
+    seoKeywords = `${currentSlug ? currentSlug.replace(/-/g, ' ') : 'car service'}, ${serviceName.toLowerCase()} islamabad, car repair packages`;
     pagePath = `/services/${currentSlug || ''}/`;
   } else if (currentPage === 'locations') {
-    seoTitle = 'Workshop Locations in Islamabad G-8 & Rawalpindi I-9 | HyperTune';
-    seoDesc = 'Visit HyperTune Garage workshops in Islamabad G-8/4 Service Road East and Rawalpindi I-9 Industrial Area. Clean customer lounges and express repair bays.';
-    seoKeywords = 'car workshop g8 islamabad, auto repair shop i9 rawalpindi, hypertune locations, car mechanic near me islamabad';
+    seoTitle = 'Workshop Locations in Islamabad & Rawalpindi | HyperTune Garage';
+    seoDesc = 'Discover HyperTune Garage Flagship Hub in Block E Police Foundation, Sector O-9, Islamabad, and our upcoming Rawalpindi Hub under development.';
+    seoKeywords = 'car workshop police foundation islamabad, hypertune rawalpindi, auto repair workshop pakistan, car mechanic near me';
     pagePath = '/locations/';
   } else if (currentPage === 'location-detail') {
     const locName = currentSlug ? currentSlug.replace(/-/g, ' ').toUpperCase() : 'Branch';
-    seoTitle = `${locName} Branch | HyperTune Garage Workshop`;
-    seoDesc = `HyperTune Garage ${locName} location. Directions, contact numbers, working hours, and specialized repair bays in Islamabad & Rawalpindi.`;
-    seoKeywords = `${locName.toLowerCase()} workshop islamabad, hypertune branch rawalpindi, car service center directions`;
+    seoTitle = `${locName} | HyperTune Garage Workshop`;
+    seoDesc = `HyperTune Garage ${locName} facility details, services, and appointment bookings.`;
+    seoKeywords = `${locName.toLowerCase()} workshop, hypertune locations, car service center`;
     pagePath = `/locations/${currentSlug || ''}/`;
   } else if (currentPage === 'blog') {
     seoTitle = 'Car Maintenance Blog & Technical Guides | HyperTune Garage';
@@ -261,7 +261,7 @@ export function App() {
     pagePath = '/gallery/';
   } else if (currentPage === 'testimonials') {
     seoTitle = 'Customer Reviews & Google Ratings | HyperTune Garage';
-    seoDesc = 'Read genuine 4.9-star reviews from BMW, Audi, Mercedes, and Toyota owners who trust HyperTune Garage in Islamabad & Rawalpindi.';
+    seoDesc = 'Read genuine 4.9-star reviews from BMW, Audi, Mercedes, and Toyota owners who trust HyperTune Garage in Islamabad.';
     seoKeywords = 'hypertune garage reviews, best rated car workshop islamabad, customer feedback auto repair';
     pagePath = '/testimonials/';
   } else if (currentPage === 'faq') {
@@ -270,9 +270,9 @@ export function App() {
     seoKeywords = 'car repair faq islamabad, hypertune warranty questions, car service cost pakistan';
     pagePath = '/faq/';
   } else if (currentPage === 'contact') {
-    seoTitle = 'Contact Us | HyperTune Garage Islamabad & Rawalpindi';
-    seoDesc = 'Get in touch with HyperTune Garage in Islamabad & Rawalpindi. Call +92 300 1234567, message on WhatsApp, or book an online repair slot.';
-    seoKeywords = 'contact hypertune garage, car workshop phone number islamabad, book car service rawalpindi';
+    seoTitle = 'Contact Us | HyperTune Garage Islamabad';
+    seoDesc = 'Get in touch with HyperTune Garage in Islamabad. Call +92 333 0177717, message on WhatsApp, or book an online repair slot.';
+    seoKeywords = 'contact hypertune garage, car workshop phone number islamabad, book car service islamabad';
     pagePath = '/contact/';
   } else if (currentPage === 'privacy') {
     seoTitle = 'Privacy Policy | HyperTune Garage Islamabad';
@@ -281,18 +281,18 @@ export function App() {
     pagePath = '/privacy-policy/';
   } else if (currentPage === 'terms') {
     seoTitle = 'Terms & Conditions | HyperTune Garage Islamabad';
-    seoDesc = 'Terms of service, warranty conditions, and service agreements at HyperTune Garage Islamabad & Rawalpindi.';
+    seoDesc = 'Terms of service, warranty conditions, and service agreements at HyperTune Garage Islamabad.';
     seoKeywords = 'terms and conditions hypertune garage';
     pagePath = '/terms-conditions/';
   } else if (currentPage === 'warranty') {
     seoTitle = '12-Month Warranty Specs & Policy | HyperTune Garage';
-    seoDesc = 'Details on HyperTune Garage 12-month / 20,000 km bumper-to-bumper repair warranty covering parts and labor across Islamabad & Rawalpindi.';
+    seoDesc = 'Details on HyperTune Garage 12-month / 20,000 km bumper-to-bumper repair warranty covering parts and labor across Islamabad.';
     seoKeywords = 'car repair warranty islamabad, 12 month auto warranty pakistan, hypertune warranty specs';
     pagePath = '/warranty-specs/';
   } else if (currentPage === 'sitemap') {
-    seoTitle = 'HTML Site Map & Index Directory | HyperTune Garage Islamabad & Rawalpindi';
-    seoDesc = 'Explore the complete dynamic index of HyperTune Garage pages, specialized service categories, workshop locations in Islamabad & Rawalpindi, and technical blog articles.';
-    seoKeywords = 'hypertune garage site map, car workshop index islamabad, car repair services directory, auto repair rawalpindi pages';
+    seoTitle = 'HTML Site Map & Index Directory | HyperTune Garage Islamabad';
+    seoDesc = 'Explore the complete dynamic index of HyperTune Garage pages, specialized service categories, workshop location in Islamabad, and technical blog articles.';
+    seoKeywords = 'hypertune garage site map, car workshop index islamabad, car repair services directory';
     pagePath = '/sitemap/';
   }
 

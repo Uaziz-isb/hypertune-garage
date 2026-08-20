@@ -136,7 +136,7 @@ export const PrivacyView: React.FC<PrivacyViewProps> = ({ onNavigate, onOpenBook
           <div className="p-4 rounded-2xl bg-cyan-950/20 border border-cyan-500/30 text-xs text-slate-300 pl-11 flex items-start gap-3">
             <Eye className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
             <p>
-              Your contact details are strictly accessed by authorized workshop service advisors and management to send job status updates, invoice receipts, and scheduled maintenance reminders.
+              Your contact details are strictly accessed by authorized workshop technical staff and management to send job status updates, invoice receipts, and scheduled maintenance reminders.
             </p>
           </div>
         </section>
@@ -160,7 +160,7 @@ export const PrivacyView: React.FC<PrivacyViewProps> = ({ onNavigate, onOpenBook
               className="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors"
             >
               <PhoneCall className="w-4 h-4 text-cyan-400" />
-              <span>Contact Data Protection Advisor via WhatsApp (+92 333 0177717)</span>
+              <span>Contact Workshop Team via WhatsApp (+92 333 0177717)</span>
             </a>
           </div>
         </section>

@@ -9,18 +9,18 @@ export const blogData: BlogPost[] = [
     excerpt: 'Everything you need to know about TPU self-healing PPF, hydrophobic ceramic barrier, stone chip defense, and preserving 100% factory paint in Pakistan.',
     category: 'PPF & Paint Protection',
     author: {
-      name: 'Engr. Shahzaib Malik',
-      role: 'Lead Detailing & PPF Specialist',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+      name: 'HyperTune PPF Studio',
+      role: 'Paint Protection & Detailing Division',
+      avatar: images.logo,
     },
     publishedDate: 'July 15, 2026',
     readTime: '6 min read',
-    featuredImage: images.ppfHeroBanner,
+    featuredImage: images.blogPpfGuide,
     tags: ['PPF', 'Paint Protection Film', 'Ceramic Coating', 'Pakistani Road Defense'],
-    relatedServices: ['ppf-pps-protection', 'detailing-ceramic-ppf'],
+    relatedServices: ['paint-protection-film-ppf', 'car-detailing'],
     content: `
       <h2>Why Your Car Needs PPF & Ceramic Coating in Pakistan</h2>
-      <p>Driving on highways in Islamabad and Rawalpindi exposes your car paint to flying gravel, stone chips, harsh sun UV fading, acid rain, and aggressive dust storms. Factory clear coats are thinner than ever, leading to permanent swirl marks and micro-scratches within months of new car delivery.</p>
+      <p>Driving in Islamabad exposes your car paint to flying gravel, stone chips, harsh sun UV fading, acid rain, and aggressive dust storms. Factory clear coats are thinner than ever, leading to permanent swirl marks and micro-scratches within months of new car delivery.</p>
       
       <p>In Pakistan, car enthusiasts often ask: <em>"Should I get Paint Protection Film (PPF) or Ceramic Coating?"</em> The answer lies in combining both technologies for total physical and chemical paint defense.</p>
 
@@ -46,18 +46,18 @@ export const blogData: BlogPost[] = [
     excerpt: 'Essential summer coolant checks, synthetic oil viscosity guide, and radiator cleaning for Toyota, Honda, Suzuki, Hyundai & Kia vehicles.',
     category: 'Popular Brands',
     author: {
-      name: 'Tariq Mahmood',
-      role: 'Master Automotive Specialist',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+      name: 'HyperTune Diagnostics',
+      role: 'Automotive Engineering Team',
+      avatar: images.logo,
     },
     publishedDate: 'June 28, 2026',
     readTime: '5 min read',
-    featuredImage: images.germanCar,
+    featuredImage: images.blogSummerCooling,
     tags: ['Cooling System', 'Summer Maintenance', 'Synthetic Oil', 'Toyota', 'Honda', 'Suzuki'],
-    relatedServices: ['german-car-specialist', 'periodic-maintenance'],
+    relatedServices: ['maintenance-servicing', 'inspection-diagnostics'],
     content: `
-      <h2>Why Vehicle Engines Run Hotter in Islamabad & Rawalpindi</h2>
-      <p>Modern engines across popular vehicles (such as Toyota 1.8/2.8, Honda 1.5 Turbo, Suzuki 1.0/1.2, Hyundai & Kia platforms) operate under high thermal stress during Pakistani summer road temperatures exceeding 45°C–50°C.</p>
+      <h2>Why Vehicle Engines Run Hotter in Summer Climates</h2>
+      <p>Modern engines across popular vehicles (such as Toyota 1.8/2.8, Honda 1.5 Turbo, Suzuki 1.0/1.2, Hyundai & Kia platforms) operate under high thermal stress during Pakistani summer road temperatures exceeding 45°C–50°C in Islamabad.</p>
 
       <h3>1. Coolant System & Hose Checks</h3>
       <p>Rubber hoses, plastic thermostat housings, and radiator caps deteriorate over time. In extreme heat, pressure build-up can lead to sudden coolant leakage or head gasket failure if not inspected regularly.</p>
@@ -76,15 +76,15 @@ export const blogData: BlogPost[] = [
     excerpt: 'Deep dive into cell load testing, copper busbar cleaning, fan ducting maintenance, and module re-balancing.',
     category: 'Hybrid Tech',
     author: {
-      name: 'Usman Ali',
-      role: 'High-Voltage Hybrid Technician',
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+      name: 'HyperTune Hybrid Lab',
+      role: 'High-Voltage Battery Specialists',
+      avatar: images.logo,
     },
     publishedDate: 'May 14, 2026',
     readTime: '7 min read',
-    featuredImage: images.hybridBattery,
+    featuredImage: images.blogHybridGuide,
     tags: ['Hybrid Battery', 'Prius', 'Aqua', 'Vezel', 'Cell Balancing', 'Fuel Average'],
-    relatedServices: ['hybrid-ev-battery-repair'],
+    relatedServices: ['electrical-electronics', 'maintenance-servicing'],
     content: `
       <h2>Maximizing Hybrid Battery Lifespan in Pakistan</h2>
       <p>Toyota Prius, Aqua, Corolla Cross, and Honda Vezel hybrids are extremely popular in Pakistan due to high fuel efficiency. However, extreme summer temperatures and dusty conditions take a toll on high-voltage battery cooling.</p>
@@ -103,18 +103,18 @@ export const blogData: BlogPost[] = [
     excerpt: 'How proper viscosity selection, periodic cooling system flushes, and early diagnostic scans prevent catastrophic engine damage during extreme summer temperatures in Pakistan.',
     category: 'Engine Care',
     author: {
-      name: 'Engr. Hassan Raza',
-      role: 'Master Mechanical Engineer',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+      name: 'HyperTune Rebuild Division',
+      role: 'Master Mechanical Rebuild Team',
+      avatar: images.logo,
     },
     publishedDate: 'August 02, 2026',
     readTime: '7 min read',
-    featuredImage: images.bannerEngine,
+    featuredImage: images.blogEngineOil,
     tags: ['Engine Health', 'Synthetic Oil', 'Engine Overhaul', 'Cooling System', 'Toyota', 'Honda', 'Suzuki'],
-    relatedServices: ['engine-services'],
+    relatedServices: ['engine-services', 'cooling-fuel-exhaust'],
     content: `
       <h2>Maximizing Engine Longevity in Extreme Pakistani Temperatures</h2>
-      <p>Operating a modern vehicle in Pakistan exposes internal engine components to severe ambient heat exceeding 45°C, high dust concentration, and stop-and-go traffic conditions in Islamabad and Rawalpindi. Implementing the correct maintenance schedule protects tight-tolerance camshafts, piston rings, and turbochargers from premature breakdown.</p>
+      <p>Operating a modern vehicle in Pakistan exposes internal engine components to severe ambient heat exceeding 45°C, high dust concentration, and stop-and-go traffic conditions. Implementing the correct maintenance schedule protects tight-tolerance camshafts, piston rings, and turbochargers from premature breakdown.</p>
 
       <h3>Key Pillars of Engine Health</h3>
       <ul>

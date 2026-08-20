@@ -34,7 +34,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
             Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">HyperTune Garage</span>
           </h1>
           <p className="text-slate-400 text-sm max-w-2xl mx-auto">
-            Reach out directly to our master engineering team in Islamabad & Rawalpindi for service bookings, PPF consultations, or vehicle health inquiries.
+            Reach out directly to our master engineering team for service bookings, PPF consultations, or vehicle health inquiries at our Islamabad Flagship Hub.
           </p>
         </div>
       </section>
@@ -45,25 +45,16 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
           <div className="bg-[#0b121e] border border-slate-800 rounded-3xl p-6 space-y-6 shadow-xl">
             <h3 className="text-xl font-black text-white">Direct Hotlines & Support</h3>
 
-            {/* Islamabad */}
+            {/* Islamabad Flagship Hub Address */}
             <div className="space-y-2 border-b border-slate-800 pb-4">
               <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider block">
-                Islamabad Hub (Police Foundation):
+                Islamabad Flagship Hub:
               </span>
-              <p className="text-xs text-slate-300">Shop 1-G, Ground Floor, Central Ave, near Attock Petrol Pump, Block E Police Foundation, Islamabad, 44000, Pakistan</p>
-              <a href="tel:+923330177717" className="text-base font-black text-white hover:text-cyan-400 block">
+              <p className="text-xs text-slate-300 leading-relaxed font-medium">
+                Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
+              </p>
+              <a href="tel:+923330177717" className="text-base font-black text-white hover:text-cyan-400 block pt-1">
                 +92 333 0177717
-              </a>
-            </div>
-
-            {/* Rawalpindi */}
-            <div className="space-y-2 border-b border-slate-800 pb-4">
-              <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider block">
-                Rawalpindi Branch (I-9 / Saddar):
-              </span>
-              <p className="text-xs text-slate-300">Plot 18, Sector I-9/3 Industrial Area</p>
-              <a href="tel:+923330177717" className="text-base font-black text-white hover:text-cyan-400 block">
-                0333-0177717
               </a>
             </div>
 
@@ -106,7 +97,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Saad Alvi"
+                  placeholder="e.g. Your Name"
                   className="w-full bg-[#070c14] border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-cyan-500 focus:outline-none"
                 />
               </div>
@@ -171,7 +162,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
             </span>
             <h2 className="text-2xl md:text-3xl font-black text-white">HyperTune Garage Location Map</h2>
             <p className="text-xs text-slate-400 max-w-xl">
-              Shop 1-G, Ground Floor, Central Ave, near Attock Petrol Pump, Block E Police Foundation, Islamabad, 44000, Pakistan.
+              Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan.
             </p>
           </div>
           <a
@@ -200,15 +191,15 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
           />
         </div>
 
-        {/* LOGO UNDER GOOGLE MAP - 150% BIGGER SIZE */}
+        {/* LOGO UNDER GOOGLE MAP */}
         <div className="bg-[#0b121e] border border-cyan-500/30 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl overflow-hidden">
           <div className="flex items-center justify-center py-4 px-2 scale-150 transform origin-center sm:origin-left my-2 shrink-0">
             <Logo onClick={() => onNavigate('home')} />
           </div>
           <div className="space-y-2 text-center md:text-right max-w-xl">
-            <h3 className="text-xl md:text-2xl font-black text-white">HyperTune Garage Pakistan</h3>
+            <h3 className="text-xl md:text-2xl font-black text-white">HyperTune Garage Islamabad</h3>
             <p className="text-xs md:text-sm text-slate-300 leading-relaxed">
-              Official Hub: Block E Police Foundation, Islamabad & Sector I-9 Industrial Area, Rawalpindi.
+              Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan.
               <br />
               Specializing in Paint Protection Film (PPF), Ceramic Detailing, Vehicle Wraps & Precision Engineering.
             </p>

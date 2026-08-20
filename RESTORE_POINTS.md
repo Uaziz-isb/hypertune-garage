@@ -28,7 +28,14 @@
 
 ---
 
-### 🔄 How to Restore to this State:
+## 🛠️ Quick Commands & Automation Prompts
+
+### ⚡ **"fix logo"**:
+When the prompt/trigger **"fix logo"** is requested:
+1. Fetch latest official 1024x1024 logo directly from live site `https://hypertunegarage.pk` (or `https://hypertunegarage.pk/assets/hypertune_logo_new_1785539043513-AetUsquw.webp`).
+2. Sync into `src/assets/images/hypertune_logo.webp` and `public/images/hypertune_logo.webp`.
+3. Ensure `src/components/Logo.tsx` has corner trim padding removed with `object-cover object-center scale-[1.03] rounded-xl` to seamlessly fill all corner gaps between image and border.
+
 To reset the repository back to this exact restore point at any time in the future, run:
 ```bash
 git reset --hard 15-August-restore-point

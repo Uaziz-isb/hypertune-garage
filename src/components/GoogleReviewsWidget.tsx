@@ -257,19 +257,25 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
               {/* Author Info Header */}
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <img
-                    src={review.authorPhoto}
-                    alt={review.authorName}
-                    width={44}
-                    height={44}
-                    loading="lazy"
-                    decoding="async"
-                    referrerPolicy="no-referrer"
-                    onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44"><rect width="44" height="44" fill="%230f172a"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="%2338bdf8">${encodeURIComponent(review.authorName.charAt(0))}</text></svg>`;
-                    }}
-                    className="w-11 h-11 rounded-full object-cover border-2 border-slate-700 shrink-0 bg-slate-900"
-                  />
+                  {review.authorPhoto ? (
+                    <img
+                      src={review.authorPhoto}
+                      alt={review.authorName}
+                      width={44}
+                      height={44}
+                      loading="lazy"
+                      decoding="async"
+                      referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).style.display = 'none';
+                      }}
+                      className="w-11 h-11 rounded-full object-cover border-2 border-slate-700 shrink-0 bg-slate-900"
+                    />
+                  ) : (
+                    <div className="w-11 h-11 rounded-full bg-gradient-to-br from-cyan-950 to-blue-900 border-2 border-cyan-500/40 flex items-center justify-center text-cyan-400 font-extrabold text-base shrink-0 shadow-inner">
+                      {review.authorName.charAt(0)}
+                    </div>
+                  )}
                   <div>
                     <h4 className="font-extrabold text-white text-sm flex items-center gap-1.5">
                       <span>{review.authorName}</span>

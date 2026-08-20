@@ -36,9 +36,21 @@ export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpen
           </h1>
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400">
-            <div className="flex items-center gap-2">
-              <User className="w-4 h-4 text-cyan-400" />
-              <span className="text-white font-bold">{post.author.name}</span> ({post.author.role})
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full overflow-hidden border border-cyan-500/40 shrink-0 bg-slate-900">
+                <img
+                  src={post.author.avatar}
+                  alt={post.author.name}
+                  width={32}
+                  height={32}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="text-left">
+                <span className="text-white font-bold block">{post.author.name}</span>
+                <span className="text-[11px] text-cyan-400">{post.author.role}</span>
+              </div>
             </div>
             <span>•</span>
             <div className="flex items-center gap-1">
@@ -106,7 +118,7 @@ export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpen
         <div className="bg-[#0b121e] border border-slate-800 rounded-3xl p-8 text-center space-y-4 shadow-xl">
           <h3 className="text-xl font-black text-white">Need Expert Diagnostic Care for Your Vehicle?</h3>
           <p className="text-xs text-slate-400 max-w-md mx-auto">
-            Schedule a diagnostic check at our G-8/4 Islamabad or Rawalpindi workshop.
+            Schedule a diagnostic check at our Islamabad Flagship Hub or Rawalpindi workshop.
           </p>
           <button
             onClick={onOpenBooking}

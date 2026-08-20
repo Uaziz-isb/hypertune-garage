@@ -8,7 +8,7 @@ export const reviewsData: ReviewItem[] = [
     location: 'Islamabad (F-7 / G-8)',
     rating: 5,
     date: 'July 20, 2026',
-    comment: 'HyperTune Garage solved a complex check engine and drivetrain issue on my car that two other shops in Rawalpindi couldn’t diagnose. Their scanner identified a faulty sensor, replaced it with genuine OEM part, and applied front-end PPF protection. The car runs and looks stunning! Highly recommend Engr. Shahzaib and team.',
+    comment: 'HyperTune Garage solved a complex check engine and drivetrain issue on my car that two other shops in Rawalpindi couldn’t diagnose. Their scanner identified a faulty sensor, replaced it with genuine OEM part, and applied front-end PPF protection. The car runs and looks stunning! Highly recommend the HyperTune Garage team.',
     service: 'Popular Vehicle Repair & PPF Protection',
     verified: true,
   },

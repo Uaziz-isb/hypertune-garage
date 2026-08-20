@@ -97,8 +97,23 @@ export const BlogView: React.FC<BlogViewProps> = ({ onNavigate }) => {
               </div>
 
               <div className="p-6 pt-0 flex items-center justify-between text-xs text-cyan-400 font-bold group-hover:text-cyan-300">
-                <span>Read Article</span>
-                <ArrowRight className="w-4 h-4" />
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-full overflow-hidden border border-cyan-500/30 shrink-0">
+                    <img
+                      src={post.author.avatar}
+                      alt={post.author.name}
+                      width={24}
+                      height={24}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <span className="text-[11px] text-slate-300 font-medium">{post.author.name}</span>
+                </div>
+                <span className="flex items-center gap-1">
+                  <span>Read Article</span>
+                  <ArrowRight className="w-4 h-4" />
+                </span>
               </div>
             </article>
           ))}
