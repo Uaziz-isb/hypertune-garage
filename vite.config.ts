@@ -17,6 +17,13 @@ export default defineConfig(() => {
       cssCodeSplit: true,
       cssMinify: true,
       minify: 'esbuild' as const,
+      modulePreload: {
+        // Vite auto-preloads dependencies of React.lazy() chunks reachable from eager modules
+        // (HomeView/Footer), which defeats the point of code-splitting the large /data files.
+        // Only preload what's genuinely needed for first paint; the rest loads on demand.
+        resolveDependencies: (_filename, deps) =>
+          deps.filter((dep) => !/\/(data-services|data-faq|data-gallery|data-blog|data-reviews)-/.test(dep)),
+      },
       rollupOptions: {
         output: {
           manualChunks(id) {
