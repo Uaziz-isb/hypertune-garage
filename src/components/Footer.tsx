@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { PageId } from '../types';
 import { Logo } from './Logo';
-import { servicesData } from '../data/servicesData';
+const FooterServicesList = lazy(() => import('./FooterServicesList').then((m) => ({ default: m.FooterServicesList })));
 import {
   Phone,
   Mail,
@@ -159,23 +159,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
             <span>Services</span>
             <ChevronRight className="w-3.5 h-3.5 text-cyan-400" />
           </a>
-          <ul className="space-y-2 text-xs">
-            {servicesData.map((s) => (
-              <li key={s.slug}>
-                <a
-                  href={`/services/${s.slug}/`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNavigate('service-detail', s.slug);
-                  }}
-                  className="hover:text-cyan-400 transition-colors flex items-center gap-1.5 text-left"
-                >
-                  <ChevronRight className="w-3 h-3 text-cyan-400 shrink-0" />
-                  <span>{s.title}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+          <Suspense fallback={
+            <ul className="space-y-2 text-xs" aria-hidden="true">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <li key={i} className="h-3.5 w-32 rounded bg-slate-800/60 animate-pulse" />
+              ))}
+            </ul>
+          }>
+            <FooterServicesList onNavigate={onNavigate} />
+          </Suspense>
         </div>
 
         {/* Col 3: Site Map Navigation */}
