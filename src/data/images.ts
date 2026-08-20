@@ -7,7 +7,9 @@ import bannerPpf from '../assets/images/hypertune_banner_ppf_1785686823979.webp'
 import ppfSedanStudio from '../assets/images/ppf_sedan_studio_1785597200101.webp';
 
 // Home Carousel (5 Unique Slides)
-import heroPorscheStudio from '../assets/images/hero_porsche_studio_1787240154464.jpg';
+// Served from /public (not bundled) so it matches the <link rel="preload"> in index.html exactly —
+// prevents the browser from double-downloading the LCP hero image under two different URLs.
+const heroPorscheStudio = '/images/hero_porsche_studio_1787240154464.jpg';
 import heroFortuner from '../assets/images/ppf_fortuner_studio_1785597187309.webp';
 import heroEcuTuning from '../assets/images/hypertune_ecu_tuning_1785533556122.webp';
 import heroG63Ceramic from '../assets/images/hero_g63_ceramic_1787240170103.jpg';
