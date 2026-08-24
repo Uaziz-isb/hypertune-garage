@@ -182,6 +182,77 @@ export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate, onOpen
           </div>
         ))}
       </section>
+
+      {/* Local Sector Coverage & Doorstep Valet Area Guide */}
+      <section className="max-w-7xl mx-auto px-4 pt-6 pb-8">
+        <div className="bg-[#0b121e] border border-slate-800 rounded-3xl p-6 sm:p-10 space-y-6">
+          <div className="max-w-3xl">
+            <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">Islamabad & Rawalpindi Service Zones</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+              Local Area Coverage & Insured Valet Pickup
+            </h2>
+            <p className="text-slate-400 text-xs sm:text-sm mt-2">
+              Whether you are located in Sector O-9, DHA, Bahria Town, or central Islamabad F/G Sectors, we provide comprehensive workshop access with insured flatbed concierge pickup for major jobs.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
+            <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800/80">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-sm font-bold text-white">Sector O-9 & Police Foundation</h3>
+                <span className="text-[10px] bg-cyan-950 text-cyan-400 px-2 py-0.5 rounded border border-cyan-800/50 font-bold">Flagship Hub</span>
+              </div>
+              <p className="text-xs text-slate-400 mb-3">Central Avenue Block E. Full 8-bay facility, PPF clean room, 3D laser alignment & diagnostic lab.</p>
+              <div className="text-[11px] text-cyan-300 font-medium">Areas: PWD, Media Town, CBR Town, Police Foundation</div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800/80">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-sm font-bold text-white">DHA & Bahria Town</h3>
+                <span className="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-bold">8–12 mins</span>
+              </div>
+              <p className="text-xs text-slate-400 mb-3">Concierge valet vehicle pickup for luxury European sports cars, SUVs, PPF and engine overhauls.</p>
+              <div className="text-[11px] text-cyan-300 font-medium">Areas: DHA Phase 1, 2, 3, 5 & Bahria Phases 1–8</div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800/80">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-sm font-bold text-white">Sectors F-6, F-7, F-8, F-10, F-11</h3>
+                <span className="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-bold">Valet Available</span>
+              </div>
+              <p className="text-xs text-slate-400 mb-3">Executive diagnostics, periodic maintenance, and ceramic detailing with insured vehicle transport.</p>
+              <div className="text-[11px] text-cyan-300 font-medium">Areas: F-6 Super, F-7 Jinnah, F-10/F-11 Markaz</div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800/80">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-sm font-bold text-white">Sectors G-8, G-9, G-10, G-11, I-8</h3>
+                <span className="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-bold">Full Maintenance</span>
+              </div>
+              <p className="text-xs text-slate-400 mb-3">Computerized scanning, 3D laser alignment, synthetic oil packages, and brake overhauls.</p>
+              <div className="text-[11px] text-cyan-300 font-medium">Areas: G-8, G-9, G-10, G-11, G-13 & I-8 Markaz</div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800/80">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-sm font-bold text-white">Gulberg Greens & E-11</h3>
+                <span className="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-bold">Direct Access</span>
+              </div>
+              <p className="text-xs text-slate-400 mb-3">SUV & Sedan ceramic coating, PPF armor, suspension upgrades, and factory servicing.</p>
+              <div className="text-[11px] text-cyan-300 font-medium">Areas: Gulberg Greens, E-11, B-17, Park View</div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800/80">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-sm font-bold text-white">Rawalpindi Cantt, Saddar & Chaklala</h3>
+                <span className="text-[10px] bg-amber-950 text-amber-300 px-2 py-0.5 rounded border border-amber-800/50 font-bold">Expansion Hub</span>
+              </div>
+              <p className="text-xs text-slate-400 mb-3">Expansion hub under development. Doorstep valet collection active for Rawalpindi residents.</p>
+              <div className="text-[11px] text-cyan-300 font-medium">Areas: Saddar, Mall Road, Chaklala 3, Westridge</div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

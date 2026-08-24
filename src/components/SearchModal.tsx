@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { X, Search, ChevronRight, Wrench, ShieldCheck, MapPin, BookOpen, HelpCircle } from 'lucide-react';
+import { X, Search, ChevronRight, Wrench, ShieldCheck, MapPin, BookOpen, HelpCircle, Award } from 'lucide-react';
 import { PageId } from '../types';
 import { servicesData } from '../data/servicesData';
+import { brandsData } from '../data/brandsData';
 import { blogData } from '../data/blogData';
 import { faqData } from '../data/faqData';
 
@@ -24,6 +25,15 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
       )
     : [];
 
+  const matchedBrands = q
+    ? brandsData.filter(
+        (b) =>
+          b.name.toLowerCase().includes(q) ||
+          b.tagline.toLowerCase().includes(q) ||
+          b.modelsCovered.some((m) => m.toLowerCase().includes(q))
+      )
+    : [];
+
   const matchedBlogs = q
     ? blogData.filter(
         (b) => b.title.toLowerCase().includes(q) || b.excerpt.toLowerCase().includes(q)
@@ -36,7 +46,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
       )
     : [];
 
-  const totalResults = matchedServices.length + matchedBlogs.length + matchedFaqs.length;
+  const totalResults = matchedServices.length + matchedBrands.length + matchedBlogs.length + matchedFaqs.length;
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-16 bg-[#05080e]/90 backdrop-blur-md overflow-y-auto">
@@ -110,6 +120,36 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
                             {s.title}
                           </h5>
                           <p className="text-xs text-slate-400 line-clamp-1">{s.shortDesc}</p>
+                        </div>
+                        <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-white" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Matched Brand Specialists */}
+              {matchedBrands.length > 0 && (
+                <div className="space-y-2">
+                  <h4 className="text-xs font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <Award className="w-3.5 h-3.5 text-cyan-400" />
+                    Brand Specialists ({matchedBrands.length})
+                  </h4>
+                  <div className="space-y-1.5">
+                    {matchedBrands.map((b) => (
+                      <button
+                        key={b.id}
+                        onClick={() => {
+                          onClose();
+                          onNavigate('brand-detail', b.slug);
+                        }}
+                        className="w-full flex items-center justify-between p-3 rounded-xl bg-[#070c14] hover:bg-slate-900 border border-slate-800 text-left transition-colors group"
+                      >
+                        <div>
+                          <h5 className="font-bold text-sm text-white group-hover:text-cyan-400 transition-colors">
+                            {b.name}
+                          </h5>
+                          <p className="text-xs text-slate-400 line-clamp-1">{b.tagline}</p>
                         </div>
                         <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-white" />
                       </button>

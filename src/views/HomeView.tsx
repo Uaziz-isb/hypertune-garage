@@ -284,7 +284,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           {[
             {
               title: 'Official Dealer-Level Diagnostics',
-              desc: 'Equipped with BMW ISTA+, Mercedes Xentry, Audi ODIS, and Porsche PIWIS III software scanners.',
+              desc: 'Equipped with Toyota Techstream, Honda HDS, Suzuki SDT-II, Hyundai GDS, Kia KDS, JLR Pathfinder, and OEM diagnostic scanners.',
               icon: Cpu,
             },
             {

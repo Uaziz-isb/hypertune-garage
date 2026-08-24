@@ -2,6 +2,7 @@ import React from 'react';
 import { PageId } from '../types';
 import { blogData } from '../data/blogData';
 import { images } from '../data/images';
+import { SEOHead } from '../components/SEOHead';
 import { ArrowLeft, Clock, Calendar, User, Share2, Wrench, ChevronRight } from 'lucide-react';
 
 interface BlogPostProps {
@@ -13,8 +14,42 @@ interface BlogPostProps {
 export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpenBooking }) => {
   const post = blogData.find((b) => b.slug === slug) || blogData[0];
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    image: post.featuredImage,
+    datePublished: post.publishedDate,
+    author: {
+      '@type': 'Organization',
+      name: post.author.name,
+    },
+    publisher: {
+      '@type': 'AutoRepair',
+      name: 'HyperTune Garage',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://hypertunegarage.pk/images/hypertune_logo.webp',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://hypertunegarage.pk/blog/${post.slug}/`,
+    },
+  };
+
   return (
     <div className="pt-28 sm:pt-32 md:pt-36 pb-16 space-y-12">
+      <SEOHead
+        title={`${post.title} | HyperTune Garage`}
+        description={post.excerpt.slice(0, 155)}
+        keywords={post.tags.join(', ')}
+        path={`/blog/${post.slug}/`}
+        ogImage={post.featuredImage}
+        schema={articleSchema}
+      />
+
       <div className="max-w-4xl mx-auto px-4">
         <button
           onClick={() => onNavigate('blog')}

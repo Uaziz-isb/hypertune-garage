@@ -11,9 +11,9 @@ interface BookingModalProps {
 
 export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, initialServiceId }) => {
   const [step, setStep] = useState(1);
-  const [make, setMake] = useState('BMW');
-  const [model, setModel] = useState('5 Series');
-  const [year, setYear] = useState('2022');
+  const [make, setMake] = useState('Toyota');
+  const [model, setModel] = useState('Fortuner');
+  const [year, setYear] = useState('2023');
   const [selectedServices, setSelectedServices] = useState<string[]>(
     initialServiceId ? [initialServiceId] : ['ecu-tuning']
   );
@@ -169,7 +169,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
                     onChange={(e) => setMake(e.target.value)}
                     className="w-full bg-[#070c14] border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-cyan-500 focus:outline-none"
                   >
-                    {['BMW', 'Mercedes-Benz', 'Audi', 'Porsche', 'Toyota', 'Honda', 'Lexus', 'Hyundai', 'Kia', 'Nissan', 'Range Rover'].map((m) => (
+                    {[
+                      'Toyota', 'Honda', 'Suzuki', 'Hyundai', 'Kia', 'Changan',
+                      'Haval', 'MG', 'BYD', 'Chery', 'Isuzu', 'FAW',
+                      'Daihatsu', 'Nissan', 'Mitsubishi', 'Mazda', 'Subaru', 'Lexus',
+                      'Land Rover', 'Range Rover', 'Jeep', 'Ford', 'Chevrolet', 'Volvo'
+                    ].map((m) => (
                       <option key={m} value={m}>{m}</option>
                     ))}
                   </select>

@@ -7,13 +7,22 @@ interface CostEstimatorProps {
 }
 
 const estimatorBrands = [
-  { id: 'honda', name: 'Honda' },
   { id: 'toyota', name: 'Toyota' },
-  { id: 'nissan', name: 'Nissan' },
+  { id: 'honda', name: 'Honda' },
   { id: 'suzuki', name: 'Suzuki' },
+  { id: 'hyundai', name: 'Hyundai' },
+  { id: 'kia', name: 'Kia' },
   { id: 'changan', name: 'Changan' },
+  { id: 'haval', name: 'Haval' },
   { id: 'mg', name: 'MG' },
-  { id: 'hyundai', name: 'Hyundai / Kia' },
+  { id: 'byd', name: 'BYD' },
+  { id: 'chery', name: 'Chery' },
+  { id: 'isuzu', name: 'Isuzu' },
+  { id: 'nissan', name: 'Nissan' },
+  { id: 'lexus', name: 'Lexus' },
+  { id: 'landrover', name: 'Land / Range Rover' },
+  { id: 'ford', name: 'Ford' },
+  { id: 'volvo', name: 'Volvo' },
 ];
 
 export const CostEstimator: React.FC<CostEstimatorProps> = ({ onBookService }) => {

@@ -83,7 +83,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
             <Logo variant="dark" scale={1.05} />
           </a>
           <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
-            HyperTune Garage is Pakistan's premier precision automotive workshop specializing in popular vehicle brands (Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval), Japanese imports, Paint Protection Film (PPF), engine rebuilding, ceramic detailing, and hybrid battery diagnostics.
+            HyperTune Garage is Pakistan's premier precision automotive workshop specializing in 24 vehicle brands (Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Lexus, Land Rover, etc.), Paint Protection Film (PPF), engine rebuilding, ceramic detailing, and hybrid battery diagnostics.
           </p>
           <div className="flex items-center gap-2 text-xs text-slate-300 font-semibold bg-[#09101d] border border-cyan-500/20 p-3 rounded-xl max-w-sm">
             <ShieldCheck className="w-5 h-5 text-cyan-400 shrink-0" />
@@ -156,7 +156,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
             }}
             className="text-white font-bold text-sm uppercase tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1.5"
           >
-            <span>Services</span>
+            <span>Services Catalogue</span>
             <ChevronRight className="w-3.5 h-3.5 text-cyan-400" />
           </a>
           <ul className="space-y-2 text-xs">
@@ -188,12 +188,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
             }}
             className="text-white font-bold text-sm uppercase tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1.5"
           >
-            <span>Site Map</span>
+            <span>Site Map Navigation</span>
             <ExternalLink className="w-3.5 h-3.5 text-cyan-400" />
           </a>
           <ul className="space-y-2 text-xs">
             {[
               { label: 'Home Page', page: 'home' as PageId, path: '/' },
+              { label: 'Brand Specialists (24 Brands)', page: 'brands' as PageId, path: '/brands/' },
               { label: 'Book Service Appointment', page: 'booking' as PageId, path: '/book-appointment/' },
               { label: 'Services Catalogue', page: 'services' as PageId, path: '/services/' },
               { label: 'Workshop Locations', page: 'locations' as PageId, path: '/locations/' },
@@ -201,7 +202,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               { label: 'Customer Reviews & Ratings', page: 'testimonials' as PageId, path: '/testimonials/' },
               { label: 'Car Care Blog & Guides', page: 'blog' as PageId, path: '/blog/' },
               { label: 'Frequently Asked Questions (FAQ)', page: 'faq' as PageId, path: '/faq/' },
-              { label: 'About HyperTune', page: 'about' as PageId, path: '/about/' },
+              { label: 'About HyperTune Garage', page: 'about' as PageId, path: '/about/' },
               { label: 'Contact Us', page: 'contact' as PageId, path: '/contact/' },
             ].map((link) => (
               <li key={link.page}>
@@ -223,7 +224,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
 
         {/* Col 4: Location & Contact */}
         <div className="space-y-3">
-          <h4 className="text-white font-bold text-sm uppercase tracking-wider text-cyan-400">Workshop Locations</h4>
+          <a
+            href="/locations/"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('locations');
+            }}
+            className="text-white font-bold text-sm uppercase tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1.5"
+          >
+            <span>Workshop Locations</span>
+            <ChevronRight className="w-3.5 h-3.5 text-cyan-400" />
+          </a>
           <div className="space-y-4 text-xs">
             {/* Islamabad Flagship Hub */}
             <div className="space-y-1.5">

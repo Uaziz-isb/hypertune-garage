@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { PageId } from '../types';
 import { servicesData } from '../data/servicesData';
+import { brandsData } from '../data/brandsData';
 import { locationsData } from '../data/locationsData';
 import { blogData } from '../data/blogData';
 import {
@@ -20,11 +21,7 @@ import {
   Layers,
   ArrowRight,
   Clock,
-  Copy,
-  Check,
-  Link,
-  Share2,
-  Code2
+  Award
 } from 'lucide-react';
 
 interface SitemapViewProps {
@@ -49,12 +46,13 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
   // Main high-level site pages
   const mainPages: { label: string; page: PageId; path: string; desc: string; icon: React.ElementType }[] = [
     { label: 'Home Page', page: 'home', path: '/', desc: 'Main workshop overview, hero service highlights, and instant booking.', icon: Globe },
+    { label: 'Brand Specialists Directory', page: 'brands', path: '/brands/', desc: 'Dedicated engineering hubs and factory diagnostic scan facilities for 24 vehicle brands.', icon: Award },
     { label: 'Book Service Appointment', page: 'booking', path: '/book-appointment/', desc: 'Online workshop appointment scheduling at our Islamabad Flagship Hub with instant time slot reservation.', icon: Calendar },
-    { label: 'Services Catalogue', page: 'services', path: '/services/', desc: 'Full catalogue of 12 precision repair, protection, and overhaul services.', icon: Wrench },
-    { label: 'Workshop Location', page: 'locations', path: '/locations/', desc: 'Islamabad Police Foundation Flagship Hub directions, facilities and contacts.', icon: MapPin },
+    { label: 'Services Catalogue', page: 'services', path: '/services/', desc: 'Full catalogue of 13 precision repair, protection, and overhaul services.', icon: Wrench },
+    { label: 'Workshop Locations', page: 'locations', path: '/locations/', desc: 'Islamabad Police Foundation Flagship Hub directions, facilities and contacts.', icon: MapPin },
     { label: 'Work Gallery & Restorations', page: 'gallery', path: '/gallery/', desc: 'Before & after high-resolution portfolio of PPF, paint & engine rebuilds.', icon: Sparkles },
     { label: 'Car Care Blog & Guides', page: 'blog', path: '/blog/', desc: 'Technical guides, engine care tips, and maintenance articles by engineers.', icon: BookOpen },
-    { label: 'Customer Reviews & Rating', page: 'testimonials', path: '/testimonials/', desc: 'Genuine 4.9-star Google reviews from BMW, Audi, Mercedes & Toyota owners.', icon: ShieldCheck },
+    { label: 'Customer Reviews & Rating', page: 'testimonials', path: '/testimonials/', desc: 'Genuine 4.9-star Google reviews from verified vehicle owners across Islamabad & Rawalpindi.', icon: ShieldCheck },
     { label: 'Frequently Asked Questions', page: 'faq', path: '/faq/', desc: 'Detailed answers on repair warranties, pricing, turnaround, and parts.', icon: FileText },
     { label: 'About HyperTune Garage', page: 'about', path: '/about/', desc: 'Company history, master technician credentials, and workshop specs.', icon: Layers },
     { label: 'Contact Us', page: 'contact', path: '/contact/', desc: 'Direct phone lines, WhatsApp links, email, and location maps.', icon: Phone },
@@ -78,6 +76,17 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
       s.shortDesc.toLowerCase().includes(q) ||
       s.category.toLowerCase().includes(q) ||
       s.subServices.some(sub => sub.toLowerCase().includes(q))
+    );
+  }, [searchQuery]);
+
+  const filteredBrands = useMemo(() => {
+    if (!searchQuery.trim()) return brandsData;
+    const q = searchQuery.toLowerCase();
+    return brandsData.filter(b =>
+      b.name.toLowerCase().includes(q) ||
+      b.tagline.toLowerCase().includes(q) ||
+      b.specializedServices.some(s => s.toLowerCase().includes(q)) ||
+      b.diagnosticSoftware.toLowerCase().includes(q)
     );
   }, [searchQuery]);
 
@@ -106,6 +115,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
   const totalIndexedCount =
     filteredMainPages.length +
     filteredServices.length +
+    filteredBrands.length +
     filteredLocations.length +
     filteredBlogPosts.length;
 
@@ -274,7 +284,61 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
         </div>
       </section>
 
-      {/* SECTION 3: WORKSHOP BRANCH LOCATIONS */}
+      {/* SECTION 3: DEDICATED BRAND SPECIALISTS */}
+      <section className="space-y-6">
+        <div className="flex items-center gap-3 border-b border-slate-800 pb-3">
+          <div className="p-2 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
+            <Award className="w-5 h-5" />
+          </div>
+          <div>
+            <h2 className="text-xl font-extrabold text-white">Vehicle Brand Specialists</h2>
+            <p className="text-xs text-slate-400">OEM diagnostics, specialized toolsets & expert maintenance for luxury and hybrid vehicles ({filteredBrands.length} brands)</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filteredBrands.map((brand) => (
+            <a
+              key={brand.slug}
+              href={`/brands/${brand.slug}/`}
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('brand-detail', brand.slug);
+              }}
+              className="bg-[#0b121e] border border-slate-800 hover:border-cyan-500/50 p-5 rounded-2xl transition-all hover:-translate-y-0.5 cursor-pointer group shadow-lg flex flex-col justify-between space-y-4"
+            >
+              <div className="space-y-2">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="px-2.5 py-0.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 font-mono text-[10px] font-bold uppercase tracking-wider">
+                    {brand.diagnosticSoftware}
+                  </span>
+                  <span className="text-xs font-extrabold text-cyan-400 font-mono">
+                    Specialist Hub
+                  </span>
+                </div>
+                <h3 className="text-base font-bold text-white group-hover:text-cyan-400 transition-colors flex items-center justify-between">
+                  <span>{brand.name}</span>
+                  <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors shrink-0" />
+                </h3>
+                <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                  {brand.tagline}
+                </p>
+              </div>
+
+              <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+                <span className="text-slate-400 font-mono">
+                  {brand.specializedServices.length} Specialist Services
+                </span>
+                <span className="text-cyan-400 font-bold group-hover:underline">
+                  View Brand Guide &rarr;
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 4: WORKSHOP BRANCH LOCATIONS */}
       <section className="space-y-6">
         <div className="flex items-center gap-3 border-b border-slate-800 pb-3">
           <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">

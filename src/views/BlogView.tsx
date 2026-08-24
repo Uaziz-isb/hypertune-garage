@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PageId } from '../types';
 import { blogData } from '../data/blogData';
 import { images } from '../data/images';
+import { SEOHead } from '../components/SEOHead';
 import { BookOpen, Clock, ArrowRight, User } from 'lucide-react';
 
 interface BlogViewProps {
@@ -11,29 +12,47 @@ interface BlogViewProps {
 export const BlogView: React.FC<BlogViewProps> = ({ onNavigate }) => {
   const [activeCategory, setActiveCategory] = useState('all');
 
+  const categories = [
+    'all',
+    'Hybrid Tech',
+    'German Cars',
+    'PPF & Paint Protection',
+    'Engine Care',
+    'Maintenance Tips',
+    'Buyer Guides',
+    'Popular Brands',
+  ];
+
   const filtered = activeCategory === 'all'
     ? blogData
     : blogData.filter((b) => b.category === activeCategory);
 
   return (
     <div className="pt-28 sm:pt-32 md:pt-36 pb-16 space-y-12">
+      <SEOHead
+        title="Car Maintenance Guides & Diagnostic Blog | HyperTune Garage"
+        description="Authoritative automotive repair guides: P0A80 hybrid battery repair, BMW ISTA diagnostics, Audi DSG transmission fixes, PPF care & engine overhauls."
+        keywords="car repair guides islamabad, hybrid battery guide p0a80, bmw drivetrain malfunction, audi dsg repair, ceramic coating vs ppf, synthetic oil guide pakistan"
+        path="/blog/"
+      />
+
       <section className="bg-[#05080e] border-b border-slate-800 py-16 px-4">
         <div className="max-w-7xl mx-auto space-y-4 text-center">
           <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
-            Automotive Knowledge & Technical Guides
+            Diagnostic & Maintenance Knowledge Hub
           </span>
           <h1 className="text-3xl md:text-[48px] md:leading-[48px] font-black text-white">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">HyperTune Garage</span> Car Care Journal
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">HyperTune Garage</span> Technical Journal
           </h1>
           <p className="text-slate-400 text-sm max-w-2xl mx-auto">
-            Expert insights, ECU tuning advice, summer heat maintenance, and vehicle diagnostics tailored for Pakistani drivers.
+            In-depth engineering guides, OBD2 fault troubleshooting, hybrid battery restoration, and climate maintenance for Pakistani drivers.
           </p>
         </div>
       </section>
 
       <section className="max-w-7xl mx-auto px-4 space-y-8">
         <div className="flex flex-wrap items-center justify-center gap-2">
-          {['all', 'PPF & Paint Protection', 'ECU Tuning', 'Popular Brands', 'Hybrid Tech'].map((cat) => (
+          {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
@@ -43,7 +62,7 @@ export const BlogView: React.FC<BlogViewProps> = ({ onNavigate }) => {
                   : 'bg-[#0b121e] text-slate-300 border border-slate-800 hover:bg-slate-800'
               }`}
             >
-              {cat === 'all' ? 'All Articles' : cat}
+              {cat === 'all' ? 'All Guides & Articles' : cat}
             </button>
           ))}
         </div>

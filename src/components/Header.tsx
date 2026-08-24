@@ -52,7 +52,7 @@ export const Header: React.FC<HeaderProps> = ({
   const navItems: { id: PageId; label: string; hasDropdown?: boolean }[] = [
     { id: 'home', label: 'Home' },
     { id: 'services', label: 'Services', hasDropdown: true },
-    { id: 'locations', label: 'Locations' },
+    { id: 'brands', label: 'Brand Specialists' },
     { id: 'gallery', label: 'Gallery' },
     { id: 'blog', label: 'Blog' },
     { id: 'about', label: 'About Us' },

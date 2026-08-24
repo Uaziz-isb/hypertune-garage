@@ -10,6 +10,8 @@ import { HomeView } from './views/HomeView';
 const AboutView = lazy(() => import('./views/AboutView').then((m) => ({ default: m.AboutView })));
 const ServicesView = lazy(() => import('./views/ServicesView').then((m) => ({ default: m.ServicesView })));
 const ServiceDetailView = lazy(() => import('./views/ServiceDetailView').then((m) => ({ default: m.ServiceDetailView })));
+const BrandsView = lazy(() => import('./views/BrandsView').then((m) => ({ default: m.BrandsView })));
+const BrandDetailView = lazy(() => import('./views/BrandDetailView').then((m) => ({ default: m.BrandDetailView })));
 const LocationsView = lazy(() => import('./views/LocationsView').then((m) => ({ default: m.LocationsView })));
 const LocationDetailView = lazy(() => import('./views/LocationDetailView').then((m) => ({ default: m.LocationDetailView })));
 const BlogView = lazy(() => import('./views/BlogView').then((m) => ({ default: m.BlogView })));
@@ -96,6 +98,10 @@ export function App() {
       if (sub) return { page: 'service-detail', slug: sub };
       return { page: 'services' };
     }
+    if (root === 'brands' || root === 'specialists') {
+      if (sub) return { page: 'brand-detail', slug: sub };
+      return { page: 'brands' };
+    }
     if (root === 'locations') {
       if (sub) return { page: 'location-detail', slug: sub };
       return { page: 'locations' };
@@ -132,6 +138,10 @@ export function App() {
         return '/services/';
       case 'service-detail':
         return slug ? `/services/${slug}/` : '/services/';
+      case 'brands':
+        return '/brands/';
+      case 'brand-detail':
+        return slug ? `/brands/${slug}/` : '/brands/';
       case 'locations':
         return '/locations/';
       case 'location-detail':
@@ -232,6 +242,17 @@ export function App() {
     seoDesc = `Professional ${serviceName.toLowerCase()} at HyperTune Garage Islamabad Flagship Hub. Advanced diagnostic tools, OEM spare parts, and 12-month workmanship warranty.`;
     seoKeywords = `${currentSlug ? currentSlug.replace(/-/g, ' ') : 'car service'}, ${serviceName.toLowerCase()} islamabad, car repair packages`;
     pagePath = `/services/${currentSlug || ''}/`;
+  } else if (currentPage === 'brands') {
+    seoTitle = 'Vehicle Brand Specialists in Islamabad & Rawalpindi | HyperTune Garage';
+    seoDesc = 'Certified specialist repair and maintenance for BMW, Mercedes-Benz, Audi, Porsche, Toyota/Lexus Hybrid & Honda in Islamabad with OEM diagnostic tools.';
+    seoKeywords = 'bmw specialist islamabad, mercedes repair rawalpindi, audi service center, porsche maintenance, toyota hybrid battery repair';
+    pagePath = '/brands/';
+  } else if (currentPage === 'brand-detail') {
+    const brandName = currentSlug ? currentSlug.replace(/-/g, ' ').toUpperCase() : 'Brand Specialist';
+    seoTitle = `${brandName} Specialist Workshop Islamabad | HyperTune Garage`;
+    seoDesc = `Dealer-grade computerized diagnostics, factory repair & maintenance for ${brandName.toLowerCase()} at HyperTune Garage Islamabad & Rawalpindi.`;
+    seoKeywords = `${brandName.toLowerCase()}, car repair islamabad, diagnostic scanning, genuine parts`;
+    pagePath = `/brands/${currentSlug || ''}/`;
   } else if (currentPage === 'locations') {
     seoTitle = 'Workshop Locations in Islamabad & Rawalpindi | HyperTune Garage';
     seoDesc = 'Discover HyperTune Garage Flagship Hub in Block E Police Foundation, Sector O-9, Islamabad, and our upcoming Rawalpindi Hub under development.';
@@ -344,6 +365,17 @@ export function App() {
               slug={currentSlug}
               onNavigate={navigateTo}
               onOpenBooking={handleOpenBooking}
+            />
+          )}
+          {currentPage === 'brands' && (
+            <BrandsView
+              onNavigate={navigateTo}
+            />
+          )}
+          {currentPage === 'brand-detail' && (
+            <BrandDetailView
+              slug={currentSlug}
+              onNavigate={navigateTo}
             />
           )}
           {currentPage === 'locations' && (

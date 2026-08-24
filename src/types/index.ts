@@ -3,6 +3,8 @@ export type PageId =
   | 'about'
   | 'services'
   | 'service-detail'
+  | 'brands'
+  | 'brand-detail'
   | 'locations'
   | 'location-detail'
   | 'blog'
@@ -16,6 +18,45 @@ export type PageId =
   | 'terms'
   | 'warranty'
   | 'sitemap';
+
+export interface BrandItem {
+  id: string;
+  slug: string;
+  name: string;
+  tagline: string;
+  logoBadge: string;
+  heroImage: string;
+  overview: string;
+  modelsCovered: string[];
+  diagnosticSoftware: string;
+  commonIssuesAndFixes: { issue: string; solution: string }[];
+  specializedServices: string[];
+  pricingRange: string;
+  faqs: { question: string; answer: string }[];
+  seo: {
+    title: string;
+    description: string;
+    keywords: string[];
+  };
+}
+
+export interface SectorItem {
+  id: string;
+  slug: string;
+  name: string;
+  areaName: string;
+  city: 'Islamabad' | 'Rawalpindi';
+  description: string;
+  travelTimeFromHub: string;
+  valetServiceAvailable: boolean;
+  popularVehiclesInArea: string[];
+  landmarks: string[];
+  seo: {
+    title: string;
+    description: string;
+    keywords: string[];
+  };
+}
 
 export interface ServiceItem {
   id: string;
