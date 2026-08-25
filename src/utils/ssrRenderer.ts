@@ -1,4 +1,7 @@
-import { servicesDataSSR, brandsDataSSR, locationsDataSSR, blogDataSSR } from '../data/ssrData';
+import { servicesData as servicesDataSSR } from '../data/servicesData';
+import { brandsData as brandsDataSSR } from '../data/brandsData';
+import { locationsData as locationsDataSSR } from '../data/locationsData';
+import { blogData as blogDataSSR } from '../data/blogData';
 
 export interface RouteMetaInfo {
   title: string;
@@ -7,34 +10,6 @@ export interface RouteMetaInfo {
   canonicalUrl: string;
   ogImage: string;
   schemas: object[];
-}
-
-export function normalizeCanonicalUrl(inputPathOrUrl: string, baseUrl: string = 'https://hypertunegarage.pk'): string {
-  // Normalize base URL without trailing slash
-  const cleanBase = baseUrl.replace(/\/+$/, '');
-  
-  // Extract path portion
-  let path = inputPathOrUrl || '/';
-  if (path.startsWith('http://') || path.startsWith('https://')) {
-    try {
-      const u = new URL(path);
-      path = u.pathname;
-    } catch {
-      path = path.replace(/^https?:\/\/[^/]+/, '');
-    }
-  }
-
-  // Strip query strings and hashes
-  path = path.split('?')[0].split('#')[0];
-
-  // Strip all leading and trailing slashes
-  const trimmed = path.replace(/^\/+|\/+$/g, '');
-
-  if (!trimmed) {
-    return `${cleanBase}/`;
-  }
-
-  return `${cleanBase}/${trimmed}/`;
 }
 
 const BASE_BUSINESS_SCHEMA = (canonicalUrl: string, ogImage: string) => ({
@@ -82,209 +57,201 @@ function escapeHtml(str: string): string {
     .replace(/'/g, '&#039;');
 }
 
-export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): RouteMetaInfo {
-  const canonicalUrl = normalizeCanonicalUrl(rawPath, baseUrl);
-  const ogImage = `${baseUrl.replace(/\/+$/, '')}/images/hypertune_logo.webp`;
-
-  const routePath = (rawPath.split('?')[0].split('#')[0] || '/').replace(/^\/+|\/+$/g, '');
-  const pathParts = routePath ? routePath.split('/') : [];
-  const root = pathParts[0] || '';
-  const sub = pathParts[1] || '';
+export function getRouteMetadataAndSchema(cleanPath: string, baseUrl: string): RouteMetaInfo {
+  const ogImage = `${baseUrl}/images/hypertune_logo.webp`;
+  const canonicalUrl = cleanPath === '/' ? `${baseUrl}/` : `${baseUrl}${cleanPath}/`;
 
   let title = 'HyperTune Garage - Specialized Automotive Workshop in Islamabad & Rawalpindi';
   let description = 'Pakistan’s premier automotive workshop specializing in Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Lexus, Land Rover, Master Engine Overhauls, Hybrid Battery Repair & PPF in Islamabad Police Foundation & Rawalpindi.';
   let keywords = 'car workshop islamabad, auto repair rawalpindi, toyota repair islamabad, honda service rawalpindi, suzuki garage, haval specialist, byd ev service, hybrid battery repair, engine overhaul islamabad';
   const schemas: object[] = [BASE_BUSINESS_SCHEMA(canonicalUrl, ogImage)];
 
+  const pathParts = cleanPath.split('/').filter(Boolean);
   const breadcrumbItems: any[] = [
     {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: normalizeCanonicalUrl('/', baseUrl),
+      item: `${baseUrl}/`,
     },
   ];
 
-  if (root === 'services') {
-    if (sub) {
-      const service = servicesDataSSR.find((s) => s.slug === sub);
-      if (service) {
-        title = `${service.title} in Islamabad & Rawalpindi | HyperTune Garage`;
-        description = service.shortDesc.slice(0, 155);
-        keywords = `${service.title.toLowerCase()}, car repair islamabad, ${service.subServices.join(', ')}`;
-        breadcrumbItems.push({
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Services',
-          item: normalizeCanonicalUrl('/services/', baseUrl),
-        });
-        breadcrumbItems.push({
-          '@type': 'ListItem',
-          position: 3,
-          name: service.title,
-          item: canonicalUrl,
-        });
-
-        if (service.faqs && service.faqs.length > 0) {
-          schemas.push({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: service.faqs.map((f) => ({
-              '@type': 'Question',
-              name: f.question,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: f.answer,
-              },
-            })),
-          });
-        }
-      }
-    } else {
-      title = 'Automotive Services & Maintenance Packages | HyperTune Garage';
-      description = 'Complete automotive services catalog including PPF, ceramic detailing, engine overhaul, suspension, transmission, AC repair, and 3D wheel alignment.';
-      keywords = 'car services islamabad, ppf coating rawalpindi, engine repair, transmission service';
+  if (cleanPath.startsWith('/services/')) {
+    const slug = pathParts[1];
+    const service = servicesDataSSR.find((s) => s.slug === slug);
+    if (service) {
+      title = `${service.title} in Islamabad & Rawalpindi | HyperTune Garage`;
+      description = service.shortDesc.slice(0, 155);
+      keywords = `${service.title.toLowerCase()}, car repair islamabad, ${service.subServices.join(', ')}`;
       breadcrumbItems.push({
         '@type': 'ListItem',
         position: 2,
         name: 'Services',
+        item: `${baseUrl}/services/`,
+      });
+      breadcrumbItems.push({
+        '@type': 'ListItem',
+        position: 3,
+        name: service.title,
         item: canonicalUrl,
       });
-    }
-  } else if (root === 'brands') {
-    if (sub) {
-      const brand = brandsDataSSR.find((b) => b.slug === sub);
-      if (brand) {
-        title = `${brand.name} | HyperTune Garage`;
-        description = brand.tagline.slice(0, 155);
-        keywords = `${brand.name.toLowerCase()}, ${brand.diagnosticSoftware}, car specialist islamabad`;
-        breadcrumbItems.push({
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Brand Specialists',
-          item: normalizeCanonicalUrl('/brands/', baseUrl),
-        });
-        breadcrumbItems.push({
-          '@type': 'ListItem',
-          position: 3,
-          name: brand.name,
-          item: canonicalUrl,
-        });
 
-        if (brand.faqs && brand.faqs.length > 0) {
-          schemas.push({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: brand.faqs.map((f) => ({
-              '@type': 'Question',
-              name: f.question,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: f.answer,
-              },
-            })),
-          });
-        }
+      if (service.faqs && service.faqs.length > 0) {
+        schemas.push({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: service.faqs.map((f) => ({
+            '@type': 'Question',
+            name: f.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: f.answer,
+            },
+          })),
+        });
       }
-    } else {
-      title = 'Vehicle Brand Specialists in Islamabad & Rawalpindi | HyperTune Garage';
-      description = 'Certified specialist repair and maintenance for Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Chery, Isuzu, FAW, Daihatsu, Nissan, Mitsubishi, Mazda, Subaru, Lexus, Land Rover, Range Rover, Jeep, Ford, Chevrolet & Volvo in Islamabad.';
-      keywords = 'toyota repair islamabad, honda specialist rawalpindi, suzuki maintenance, hyundai tucson repair, kia sportage service, changan workshop, haval specialist, byd ev service, lexus hybrid repair, land rover workshop islamabad';
+    }
+  } else if (cleanPath === '/services') {
+    title = 'Automotive Services & Maintenance Packages | HyperTune Garage';
+    description = 'Complete automotive services catalog including PPF, ceramic detailing, engine overhaul, suspension, transmission, AC repair, and 3D wheel alignment.';
+    keywords = 'car services islamabad, ppf coating rawalpindi, engine repair, transmission service';
+    breadcrumbItems.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Services',
+      item: canonicalUrl,
+    });
+  } else if (cleanPath.startsWith('/brands/')) {
+    const slug = pathParts[1];
+    const brand = brandsDataSSR.find((b) => b.slug === slug);
+    if (brand) {
+      title = `${brand.name} | HyperTune Garage`;
+      description = brand.tagline.slice(0, 155);
+      keywords = `${brand.name.toLowerCase()}, ${brand.diagnosticSoftware}, car specialist islamabad`;
       breadcrumbItems.push({
         '@type': 'ListItem',
         position: 2,
         name: 'Brand Specialists',
+        item: `${baseUrl}/brands/`,
+      });
+      breadcrumbItems.push({
+        '@type': 'ListItem',
+        position: 3,
+        name: brand.name,
         item: canonicalUrl,
       });
-    }
-  } else if (root === 'locations') {
-    if (sub) {
-      const location = locationsDataSSR.find((l) => l.slug === sub);
-      if (location) {
-        title = `${location.branchName} | HyperTune Garage`;
-        description = `${location.branchName} - ${location.address || 'Islamabad & Rawalpindi'}`;
-        keywords = `${location.branchName.toLowerCase()}, workshop islamabad, auto repair police foundation`;
-        breadcrumbItems.push({
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Locations',
-          item: normalizeCanonicalUrl('/locations/', baseUrl),
-        });
-        breadcrumbItems.push({
-          '@type': 'ListItem',
-          position: 3,
-          name: location.branchName,
-          item: canonicalUrl,
+
+      if (brand.faqs && brand.faqs.length > 0) {
+        schemas.push({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: brand.faqs.map((f) => ({
+            '@type': 'Question',
+            name: f.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: f.answer,
+            },
+          })),
         });
       }
-    } else {
-      title = 'Workshop Locations in Islamabad & Rawalpindi | HyperTune Garage';
-      description = 'Discover HyperTune Garage Flagship Hub in Block E Police Foundation, Sector O-9, Islamabad, and our upcoming Rawalpindi Hub.';
-      keywords = 'workshop locations islamabad, rawalpindi car garage, police foundation sector o9';
+    }
+  } else if (cleanPath === '/brands') {
+    title = 'Vehicle Brand Specialists in Islamabad & Rawalpindi | HyperTune Garage';
+    description = 'Certified specialist repair and maintenance for Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Chery, Isuzu, FAW, Daihatsu, Nissan, Mitsubishi, Mazda, Subaru, Lexus, Land Rover, Range Rover, Jeep, Ford, Chevrolet & Volvo in Islamabad.';
+    keywords = 'toyota repair islamabad, honda specialist rawalpindi, suzuki maintenance, hyundai tucson repair, kia sportage service, changan workshop, haval specialist, byd ev service, lexus hybrid repair, land rover workshop islamabad';
+    breadcrumbItems.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Brand Specialists',
+      item: canonicalUrl,
+    });
+  } else if (cleanPath.startsWith('/locations/')) {
+    const slug = pathParts[1];
+    const location = locationsDataSSR.find((l) => l.slug === slug);
+    if (location) {
+      title = `${location.branchName} | HyperTune Garage`;
+      description = `${location.branchName} - ${location.address || 'Islamabad & Rawalpindi'}`;
+      keywords = `${location.branchName.toLowerCase()}, workshop islamabad, auto repair police foundation`;
       breadcrumbItems.push({
         '@type': 'ListItem',
         position: 2,
         name: 'Locations',
+        item: `${baseUrl}/locations/`,
+      });
+      breadcrumbItems.push({
+        '@type': 'ListItem',
+        position: 3,
+        name: location.branchName,
         item: canonicalUrl,
       });
     }
-  } else if (root === 'blog') {
-    if (sub) {
-      const post = blogDataSSR.find((b) => b.slug === sub);
-      if (post) {
-        title = `${post.title} | HyperTune Garage`;
-        description = post.excerpt.slice(0, 155);
-        keywords = post.tags.join(', ');
-        breadcrumbItems.push({
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Technical Blog',
-          item: normalizeCanonicalUrl('/blog/', baseUrl),
-        });
-        breadcrumbItems.push({
-          '@type': 'ListItem',
-          position: 3,
-          name: post.title,
-          item: canonicalUrl,
-        });
-
-        schemas.push({
-          '@context': 'https://schema.org',
-          '@type': 'BlogPosting',
-          headline: post.title,
-          description: post.excerpt,
-          image: ogImage,
-          datePublished: post.publishedDate,
-          author: {
-            '@type': 'Organization',
-            name: post.author.name,
-          },
-          publisher: {
-            '@type': 'AutoRepair',
-            name: 'HyperTune Garage',
-            logo: {
-              '@type': 'ImageObject',
-              url: ogImage,
-            },
-          },
-          mainEntityOfPage: {
-            '@type': 'WebPage',
-            '@id': canonicalUrl,
-          },
-        });
-      }
-    } else {
-      title = 'Technical Blog | HyperTune Garage — Car Care Guides for Islamabad & Rawalpindi';
-      description = 'Authoritative automotive repair guides: P0A80 hybrid battery repair, BMW ISTA diagnostics, Audi DSG transmission fixes, PPF care & engine overhauls.';
-      keywords = 'car repair blog, hybrid battery repair guide, bmw ista diagnostics, audi dsg repair, ppf guide pakistan, automotive maintenance islamabad';
+  } else if (cleanPath === '/locations') {
+    title = 'Workshop Locations in Islamabad & Rawalpindi | HyperTune Garage';
+    description = 'Discover HyperTune Garage Flagship Hub in Block E Police Foundation, Sector O-9, Islamabad, and our upcoming Rawalpindi Hub.';
+    keywords = 'workshop locations islamabad, rawalpindi car garage, police foundation sector o9';
+    breadcrumbItems.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Locations',
+      item: canonicalUrl,
+    });
+  } else if (cleanPath.startsWith('/blog/')) {
+    const slug = pathParts[1];
+    const post = blogDataSSR.find((b) => b.slug === slug);
+    if (post) {
+      title = `${post.title} | HyperTune Garage`;
+      description = post.excerpt.slice(0, 155);
+      keywords = post.tags.join(', ');
       breadcrumbItems.push({
         '@type': 'ListItem',
         position: 2,
-        name: 'Technical Blog',
+        name: 'Blog',
+        item: `${baseUrl}/blog/`,
+      });
+      breadcrumbItems.push({
+        '@type': 'ListItem',
+        position: 3,
+        name: post.title,
         item: canonicalUrl,
       });
+
+      schemas.push({
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.excerpt,
+        image: ogImage,
+        datePublished: post.publishedDate,
+        author: {
+          '@type': 'Organization',
+          name: post.author.name,
+        },
+        publisher: {
+          '@type': 'AutoRepair',
+          name: 'HyperTune Garage',
+          logo: {
+            '@type': 'ImageObject',
+            url: ogImage,
+          },
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': canonicalUrl,
+        },
+      });
     }
-  } else if (root === 'about' || root === 'about-us') {
+  } else if (cleanPath === '/blog') {
+    title = 'Automotive Blog, Diagnostic Guides & Maintenance Tips | HyperTune Garage';
+    description = 'Authoritative automotive repair guides: P0A80 hybrid battery repair, BMW ISTA diagnostics, Audi DSG transmission fixes, PPF care & engine overhauls.';
+    keywords = 'car repair blog, hybrid battery repair guide, bmw ista diagnostics, audi dsg repair, ppf guide pakistan';
+    breadcrumbItems.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Blog',
+      item: canonicalUrl,
+    });
+  } else if (cleanPath === '/about') {
     title = 'About HyperTune Garage | Master Auto Repair & PPF Specialists';
     description = 'Learn about HyperTune Garage, certified master automotive technicians, climate-controlled PPF bays, and state-of-the-art diagnostic facilities in Islamabad.';
     breadcrumbItems.push({
@@ -293,7 +260,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       name: 'About Us',
       item: canonicalUrl,
     });
-  } else if (root === 'testimonials' || root === 'reviews') {
+  } else if (cleanPath === '/testimonials') {
     title = 'Customer Reviews & Google Ratings (4.9 / 5.0) | HyperTune Garage';
     description = 'Read verified customer reviews and 4.9-star Google ratings for HyperTune Garage Islamabad & Rawalpindi automotive workshop.';
     breadcrumbItems.push({
@@ -302,7 +269,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       name: 'Customer Reviews',
       item: canonicalUrl,
     });
-  } else if (root === 'faq' || root === 'faqs') {
+  } else if (cleanPath === '/faq') {
     title = 'Frequently Asked Questions (FAQ) | HyperTune Garage';
     description = 'Find answers about PPF lifespan, ceramic coating benefits, engine overhaul warranties, repair pricing, and booking appointments in Pakistan.';
     breadcrumbItems.push({
@@ -311,7 +278,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       name: 'FAQ',
       item: canonicalUrl,
     });
-  } else if (root === 'contact' || root === 'contact-us') {
+  } else if (cleanPath === '/contact') {
     title = 'Contact Us & Book Service | HyperTune Garage Islamabad';
     description = 'Get in touch with HyperTune Garage. Call 0333-0177717, chat on WhatsApp, or send an inquiry for vehicle repairs and PPF quotes.';
     breadcrumbItems.push({
@@ -320,7 +287,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       name: 'Contact',
       item: canonicalUrl,
     });
-  } else if (root === 'book-appointment' || root === 'booking') {
+  } else if (cleanPath === '/book-appointment') {
     title = 'Book Service Appointment Online | HyperTune Garage';
     description = 'Schedule your car diagnostic scan, PPF installation, ceramic detailing, or periodic maintenance online with instant WhatsApp confirmation.';
     breadcrumbItems.push({
@@ -329,50 +296,13 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       name: 'Book Appointment',
       item: canonicalUrl,
     });
-  } else if (root === 'privacy-policy' || root === 'privacy') {
-    title = 'Privacy Policy | HyperTune Garage Islamabad';
-    description = 'HyperTune Garage privacy policy outlining customer data security, repair guarantees, and privacy protocols.';
+  } else if (cleanPath === '/sitemap') {
+    title = 'HTML Sitemap & Navigation Index | HyperTune Garage';
+    description = 'Complete HTML site index listing all service pages, brand specialist hubs, location guides, blog articles, and workshop resources for HyperTune Garage.';
     breadcrumbItems.push({
       '@type': 'ListItem',
       position: 2,
-      name: 'Privacy Policy',
-      item: canonicalUrl,
-    });
-  } else if (root === 'terms-conditions' || root === 'terms') {
-    title = 'Terms & Conditions | HyperTune Garage Islamabad';
-    description = 'Terms of service, warranty coverage guidelines, and workshop service policies for HyperTune Garage.';
-    breadcrumbItems.push({
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Terms & Conditions',
-      item: canonicalUrl,
-    });
-  } else if (root === 'warranty-specs' || root === 'warranty') {
-    title = '12-Month Repair Warranty Specs | HyperTune Garage';
-    description = 'Comprehensive details on HyperTune Garage 12-month / 20,000 km bumper-to-bumper automotive repair warranty.';
-    breadcrumbItems.push({
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Warranty Specs',
-      item: canonicalUrl,
-    });
-  } else if (root === 'gallery') {
-    title = 'Workshop Gallery & Work Portfolio | HyperTune Garage';
-    description = 'Browse high-resolution before & after photos of PPF installations, ceramic coating finishes, engine rebuilds, and luxury repairs.';
-    breadcrumbItems.push({
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Gallery',
-      item: canonicalUrl,
-    });
-  } else if (root === 'sitemap' || root === 'site-map') {
-    title = 'HTML Sitemap & Complete Site Index | HyperTune Garage';
-    description = 'Explore the complete directory of HyperTune Garage pages, specialized services, 24 vehicle brand specialist hubs, workshop locations, and technical blog guides.';
-    keywords = 'hypertune garage sitemap, car workshop site index islamabad, automotive services directory';
-    breadcrumbItems.push({
-      '@type': 'ListItem',
-      position: 2,
-      name: 'HTML Sitemap',
+      name: 'Sitemap',
       item: canonicalUrl,
     });
   }
@@ -393,12 +323,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
   };
 }
 
-export function renderSSRBody(rawPath: string, _baseUrl: string): string {
-  const routePath = (rawPath.split('?')[0].split('#')[0] || '/').replace(/^\/+|\/+$/g, '');
-  const pathParts = routePath ? routePath.split('/') : [];
-  const root = pathParts[0] || '';
-  const sub = pathParts[1] || '';
-
+export function renderSSRBody(cleanPath: string, _baseUrl: string): string {
   const headerHtml = `
   <header style="background:#05080e;border-bottom:1px solid #1e293b;padding:12px 16px;">
     <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
@@ -427,212 +352,194 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
   <footer style="background:#05080e;border-top:1px solid #1e293b;padding:48px 16px;color:#94a3b8;font-size:13px;margin-top:48px;">
     <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:32px;">
       <div>
-        <h3 style="color:#ffffff;font-size:16px;font-weight:800;margin-bottom:12px;">HyperTune Garage</h3>
-        <p style="line-height:1.6;margin-bottom:16px;">Islamabad's premier automotive engineering and car care facility. Certified technicians, German OEM diagnostics, and 12-month warranties.</p>
-        <p style="color:#06b6d4;font-weight:700;">📍 Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad</p>
+        <h4 style="color:#ffffff;font-size:16px;font-weight:800;margin-bottom:12px;">HyperTune Garage Pakistan</h4>
+        <p style="margin-bottom:8px;line-height:1.6;">Premier independent automotive workshop, Paint Protection Film (PPF) studio, and computerized diagnostics hub in Islamabad & Rawalpindi.</p>
+        <address style="font-style:normal;line-height:1.6;color:#cbd5e1;">
+          <strong>Flagship Hub:</strong> Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, Pakistan.<br />
+          <strong>Phone / WhatsApp:</strong> <a href="tel:+923330177717" style="color:#06b6d4;text-decoration:none;">+92 333 0177717</a><br />
+          <strong>Hours:</strong> Saturday – Thursday: 10:00 AM – 10:00 PM (Friday Closed)
+        </address>
       </div>
+
       <div>
-        <h4 style="color:#ffffff;font-size:14px;font-weight:700;margin-bottom:12px;">Popular Services</h4>
+        <h4 style="color:#ffffff;font-size:16px;font-weight:800;margin-bottom:12px;">Automotive Services</h4>
         <ul style="list-style:none;padding:0;margin:0;line-height:2;">
-          <li><a href="/services/paint-protection-film-ppf/" style="color:#94a3b8;text-decoration:none;">Self-Healing TPU PPF</a></li>
-          <li><a href="/services/car-detailing/" style="color:#94a3b8;text-decoration:none;">9H Ceramic Coating</a></li>
-          <li><a href="/services/engine-services/" style="color:#94a3b8;text-decoration:none;">Engine Overhauls</a></li>
-          <li><a href="/services/electrical-electronics/" style="color:#94a3b8;text-decoration:none;">Hybrid Battery Repair</a></li>
-          <li><a href="/services/brake-suspension-steering/" style="color:#94a3b8;text-decoration:none;">3D Laser Alignment</a></li>
+          ${servicesDataSSR.slice(0, 6).map((s) => `<li><a href="/services/${s.slug}/" style="color:#94a3b8;text-decoration:none;">${escapeHtml(s.title)}</a></li>`).join('')}
         </ul>
       </div>
+
       <div>
-        <h4 style="color:#ffffff;font-size:14px;font-weight:700;margin-bottom:12px;">Brand Specialists</h4>
+        <h4 style="color:#ffffff;font-size:16px;font-weight:800;margin-bottom:12px;">Vehicle Brand Specialists</h4>
         <ul style="list-style:none;padding:0;margin:0;line-height:2;">
-          <li><a href="/brands/toyota-repair-islamabad/" style="color:#94a3b8;text-decoration:none;">Toyota &amp; Lexus Hybrid</a></li>
-          <li><a href="/brands/honda-service-islamabad/" style="color:#94a3b8;text-decoration:none;">Honda Specialists</a></li>
-          <li><a href="/brands/bmw-repair-islamabad/" style="color:#94a3b8;text-decoration:none;">BMW ISTA Diagnostics</a></li>
-          <li><a href="/brands/mercedes-service-islamabad/" style="color:#94a3b8;text-decoration:none;">Mercedes-Benz Xentry</a></li>
-          <li><a href="/brands/audi-repair-islamabad/" style="color:#94a3b8;text-decoration:none;">Audi &amp; Porsche Care</a></li>
+          ${brandsDataSSR.map((b) => `<li><a href="/brands/${b.slug}/" style="color:#94a3b8;text-decoration:none;">${escapeHtml(b.name)}</a></li>`).join('')}
         </ul>
       </div>
+
       <div>
-        <h4 style="color:#ffffff;font-size:14px;font-weight:700;margin-bottom:12px;">Quick Links</h4>
+        <h4 style="color:#ffffff;font-size:16px;font-weight:800;margin-bottom:12px;">Service Locations</h4>
         <ul style="list-style:none;padding:0;margin:0;line-height:2;">
-          <li><a href="/blog/" style="color:#94a3b8;text-decoration:none;">Technical Blog &amp; Guides</a></li>
-          <li><a href="/sitemap/" style="color:#94a3b8;text-decoration:none;">HTML Sitemap</a></li>
-          <li><a href="/warranty-specs/" style="color:#94a3b8;text-decoration:none;">12-Month Warranty Policy</a></li>
-          <li><a href="/privacy-policy/" style="color:#94a3b8;text-decoration:none;">Privacy Policy</a></li>
-          <li><a href="/terms-conditions/" style="color:#94a3b8;text-decoration:none;">Terms &amp; Conditions</a></li>
+          ${locationsDataSSR.map((l) => `<li><a href="/locations/${l.slug}/" style="color:#94a3b8;text-decoration:none;">${escapeHtml(l.branchName)}</a></li>`).join('')}
+          <li><a href="/sitemap/" style="color:#06b6d4;text-decoration:none;">HTML Sitemap Index &rarr;</a></li>
         </ul>
       </div>
     </div>
     <div style="max-width:1280px;margin:32px auto 0;padding-top:24px;border-top:1px solid #1e293b;text-align:center;font-size:12px;color:#64748b;">
-      © ${new Date().getFullYear()} HyperTune Garage Islamabad. All Rights Reserved.
+      &copy; 2026 HyperTune Garage Pakistan. All Rights Reserved. Master Automotive Engineering & PPF Protection.
     </div>
   </footer>`;
 
   let mainContentHtml = '';
 
-  if (root === 'services' && sub) {
-    const service = servicesDataSSR.find((s) => s.slug === sub);
+  if (cleanPath.startsWith('/services/')) {
+    const slug = cleanPath.split('/')[2];
+    const service = servicesDataSSR.find((s) => s.slug === slug);
     if (service) {
       mainContentHtml = `
-      <main style="max-width:1280px;margin:32px auto;padding:0 16px;">
+      <main style="max-width:1100px;margin:32px auto;padding:0 16px;">
         <nav style="font-size:12px;color:#64748b;margin-bottom:16px;">
           <a href="/" style="color:#06b6d4;text-decoration:none;">Home</a> &gt;
           <a href="/services/" style="color:#06b6d4;text-decoration:none;">Services</a> &gt;
           <span style="color:#cbd5e1;">${escapeHtml(service.title)}</span>
         </nav>
-        
-        <span style="display:inline-block;background:rgba(6,182,212,0.1);color:#06b6d4;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:12px;">
-          ${escapeHtml(service.category.toUpperCase())}
-        </span>
-        <h1 style="font-size:36px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;">
+
+        <h1 style="font-size:32px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;">
           ${escapeHtml(service.title)} in Islamabad &amp; Rawalpindi
         </h1>
-        <p style="font-size:16px;color:#94a3b8;line-height:1.6;margin-bottom:24px;max-width:900px;">
+
+        <p style="font-size:16px;color:#94a3b8;line-height:1.7;margin-bottom:24px;">
           ${escapeHtml(service.fullDesc)}
         </p>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:24px;margin-bottom:32px;">
-          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
-            <h3 style="font-size:16px;font-weight:700;color:#06b6d4;margin-bottom:8px;">Pricing &amp; Turnaround</h3>
-            <p style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:4px;">${escapeHtml(service.priceRange)}</p>
-            <p style="font-size:13px;color:#94a3b8;">Estimated Time: ${escapeHtml(service.estimatedTime)}</p>
-          </div>
-          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
-            <h3 style="font-size:16px;font-weight:700;color:#06b6d4;margin-bottom:8px;">Warranty Coverage</h3>
-            <p style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:4px;">12-Month Guarantee</p>
-            <p style="font-size:13px;color:#94a3b8;">100% genuine OEM parts and precision workmanship warranty.</p>
+        <div style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;margin-bottom:32px;">
+          <h2 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:16px;">Service Details &amp; Specifications</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:16px;margin-bottom:16px;">
+            <div><strong>Price Estimate:</strong> <span style="color:#06b6d4;">${escapeHtml(service.priceRange)}</span></div>
+            <div><strong>Turnaround Time:</strong> <span style="color:#06b6d4;">${escapeHtml(service.estimatedTime)}</span></div>
+            <div><strong>Workmanship Guarantee:</strong> <span style="color:#06b6d4;">12-Month Written Warranty</span></div>
           </div>
         </div>
 
-        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Included Service Packages</h2>
-        <ul style="color:#cbd5e1;font-size:14px;line-height:2;padding-left:24px;margin-bottom:32px;">
-          ${service.subServices.map((sub) => `<li>${escapeHtml(sub)}</li>`).join('')}
-        </ul>
+        <section style="margin-bottom:32px;">
+          <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Included Sub-Services &amp; Packages</h2>
+          <ul style="color:#cbd5e1;line-height:1.8;padding-left:20px;">
+            ${service.subServices.map((sub) => `<li>${escapeHtml(sub)}</li>`).join('')}
+          </ul>
+        </section>
 
         ${service.processSteps && service.processSteps.length > 0 ? `
-        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Precision Engineering Process</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:16px;margin-bottom:32px;">
-          ${service.processSteps.map((step, idx) => `
-            <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:16px;">
-              <span style="font-size:12px;font-weight:800;color:#06b6d4;">STEP 0${idx + 1}</span>
-              <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin:6px 0;">${escapeHtml(step.title)}</h3>
-              <p style="font-size:13px;color:#94a3b8;line-height:1.5;">${escapeHtml(step.desc)}</p>
-            </div>
-          `).join('')}
-        </div>
+        <section style="margin-bottom:32px;">
+          <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Our Engineering Workflow</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:16px;">
+            ${service.processSteps.map((step, idx) => `
+              <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:16px;">
+                <span style="font-size:20px;font-weight:900;color:#06b6d4;">0${idx + 1}</span>
+                <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin:8px 0;">${escapeHtml(step.title)}</h3>
+                <p style="font-size:13px;color:#94a3b8;line-height:1.5;">${escapeHtml(step.desc)}</p>
+              </div>
+            `).join('')}
+          </div>
+        </section>
         ` : ''}
 
         ${service.faqs && service.faqs.length > 0 ? `
-        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Frequently Asked Questions</h2>
-        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
-          ${service.faqs.map((faq) => `
-            <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:16px;">
-              <h3 style="font-size:15px;font-weight:700;color:#ffffff;margin-bottom:6px;">${escapeHtml(faq.question)}</h3>
-              <p style="font-size:13px;color:#94a3b8;line-height:1.5;">${escapeHtml(faq.answer)}</p>
-            </div>
-          `).join('')}
-        </div>
+        <section style="margin-bottom:32px;">
+          <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Frequently Asked Questions</h2>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            ${service.faqs.map((faq) => `
+              <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+                <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin-bottom:8px;">${escapeHtml(faq.question)}</h3>
+                <p style="font-size:14px;color:#94a3b8;line-height:1.6;">${escapeHtml(faq.answer)}</p>
+              </div>
+            `).join('')}
+          </div>
+        </section>
         ` : ''}
 
-        <div style="background:#0b121e;border:1px solid #06b6d4;border-radius:16px;padding:24px;text-align:center;">
-          <h3 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:8px;">Ready to Book Your Service?</h3>
-          <p style="font-size:14px;color:#94a3b8;margin-bottom:16px;">Reserve a workshop slot at HyperTune Garage Islamabad.</p>
-          <a href="/book-appointment/" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;display:inline-block;">Book Appointment Online</a>
+        <div style="background:#070c14;border:1px solid #06b6d4;border-radius:16px;padding:24px;text-align:center;">
+          <h3 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:8px;">Book Your ${escapeHtml(service.title)} Appointment</h3>
+          <p style="font-size:14px;color:#94a3b8;margin-bottom:16px;">Visit our Islamabad Flagship Hub or contact our master technicians on WhatsApp.</p>
+          <a href="/book-appointment/" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;display:inline-block;">Schedule Inspection Now</a>
         </div>
       </main>`;
     }
-  } else if (root === 'brands' && sub) {
-    const brand = brandsDataSSR.find((b) => b.slug === sub);
+  } else if (cleanPath.startsWith('/brands/')) {
+    const slug = cleanPath.split('/')[2];
+    const brand = brandsDataSSR.find((b) => b.slug === slug);
     if (brand) {
       mainContentHtml = `
-      <main style="max-width:1280px;margin:32px auto;padding:0 16px;">
+      <main style="max-width:1100px;margin:32px auto;padding:0 16px;">
         <nav style="font-size:12px;color:#64748b;margin-bottom:16px;">
           <a href="/" style="color:#06b6d4;text-decoration:none;">Home</a> &gt;
           <a href="/brands/" style="color:#06b6d4;text-decoration:none;">Brand Specialists</a> &gt;
           <span style="color:#cbd5e1;">${escapeHtml(brand.name)}</span>
         </nav>
 
-        <span style="display:inline-block;background:rgba(6,182,212,0.1);color:#06b6d4;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:12px;">
-          ${escapeHtml(brand.logoBadge)}
-        </span>
-        <h1 style="font-size:36px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;">
+        <h1 style="font-size:32px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;">
           ${escapeHtml(brand.name)}
         </h1>
-        <p style="font-size:16px;color:#94a3b8;line-height:1.6;margin-bottom:24px;max-width:900px;">
+
+        <p style="font-size:16px;color:#94a3b8;line-height:1.7;margin-bottom:24px;">
           ${escapeHtml(brand.overview)}
         </p>
 
-        <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;margin-bottom:32px;">
-          <h3 style="font-size:14px;font-weight:700;color:#06b6d4;margin-bottom:6px;">Diagnostic Rig &amp; Scanner Systems</h3>
-          <p style="font-size:15px;color:#ffffff;font-family:monospace;">${escapeHtml(brand.diagnosticSoftware)}</p>
+        <div style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;margin-bottom:32px;">
+          <h2 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:12px;">Official Diagnostic Software &amp; Toolset</h2>
+          <p style="font-size:15px;color:#06b6d4;font-family:monospace;margin-bottom:16px;">${escapeHtml(brand.diagnosticSoftware)}</p>
+          <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin-bottom:8px;">Models Repaired &amp; Serviced:</h3>
+          <ul style="color:#cbd5e1;line-height:1.8;padding-left:20px;">
+            ${brand.modelsCovered.map((m) => `<li>${escapeHtml(m)}</li>`).join('')}
+          </ul>
         </div>
 
-        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Models Serviced &amp; Repaired</h2>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;">
-          ${brand.modelsCovered.map((m) => `
-            <span style="background:#0b121e;border:1px solid #1e293b;color:#cbd5e1;padding:6px 14px;border-radius:8px;font-size:13px;">${escapeHtml(m)}</span>
-          `).join('')}
-        </div>
+        <section style="margin-bottom:32px;">
+          <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Common Faults Diagnosed &amp; Repaired</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px;">
+            ${brand.commonIssuesAndFixes.map((item) => `
+              <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:16px;">
+                <h3 style="font-size:15px;font-weight:700;color:#ef4444;margin-bottom:6px;">⚠️ ${escapeHtml(item.issue)}</h3>
+                <p style="font-size:13px;color:#94a3b8;line-height:1.5;"><strong>HyperTune Fix:</strong> ${escapeHtml(item.solution)}</p>
+              </div>
+            `).join('')}
+          </div>
+        </section>
 
-        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Specialized Engineering Services</h2>
-        <ul style="color:#cbd5e1;font-size:14px;line-height:2;padding-left:24px;margin-bottom:32px;">
-          ${brand.specializedServices.map((s) => `<li>${escapeHtml(s)}</li>`).join('')}
-        </ul>
+        <section style="margin-bottom:32px;">
+          <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Specialized Engineering Services</h2>
+          <ul style="color:#cbd5e1;line-height:1.8;padding-left:20px;">
+            ${brand.specializedServices.map((s) => `<li>${escapeHtml(s)}</li>`).join('')}
+          </ul>
+        </section>
 
-        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Common Issues &amp; Factory Solutions</h2>
-        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
-          ${brand.commonIssuesAndFixes.map((item) => `
-            <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:16px;">
-              <h3 style="font-size:15px;font-weight:700;color:#f87171;margin-bottom:6px;">⚠️ ${escapeHtml(item.issue)}</h3>
-              <p style="font-size:13px;color:#cbd5e1;line-height:1.5;"><strong>HyperTune Fix:</strong> ${escapeHtml(item.solution)}</p>
-            </div>
-          `).join('')}
-        </div>
+        ${brand.faqs && brand.faqs.length > 0 ? `
+        <section style="margin-bottom:32px;">
+          <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Frequently Asked Questions</h2>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            ${brand.faqs.map((faq) => `
+              <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+                <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin-bottom:8px;">${escapeHtml(faq.question)}</h3>
+                <p style="font-size:14px;color:#94a3b8;line-height:1.6;">${escapeHtml(faq.answer)}</p>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+        ` : ''}
 
-        <div style="background:#0b121e;border:1px solid #06b6d4;border-radius:16px;padding:24px;text-align:center;">
-          <h3 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:8px;">Schedule ${escapeHtml(brand.name.split(' ')[0])} Service</h3>
-          <p style="font-size:14px;color:#94a3b8;margin-bottom:16px;">Book your appointment with our master specialist technicians.</p>
-          <a href="/book-appointment/" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;display:inline-block;">Book Specialist Slot</a>
+        <div style="background:#070c14;border:1px solid #06b6d4;border-radius:16px;padding:24px;text-align:center;">
+          <h3 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:8px;">Book Your ${escapeHtml(brand.name.split(' ')[0])} Diagnostic Scan</h3>
+          <p style="font-size:14px;color:#94a3b8;margin-bottom:16px;">Dealer-level diagnostics with genuine OEM German and Japanese parts in Islamabad.</p>
+          <a href="/book-appointment/" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;display:inline-block;">Book Specialist Appointment</a>
         </div>
       </main>`;
     }
-  } else if (root === 'locations' && sub) {
-    const location = locationsDataSSR.find((l) => l.slug === sub);
-    if (location) {
-      mainContentHtml = `
-      <main style="max-width:1280px;margin:32px auto;padding:0 16px;">
-        <nav style="font-size:12px;color:#64748b;margin-bottom:16px;">
-          <a href="/" style="color:#06b6d4;text-decoration:none;">Home</a> &gt;
-          <a href="/locations/" style="color:#06b6d4;text-decoration:none;">Locations</a> &gt;
-          <span style="color:#cbd5e1;">${escapeHtml(location.branchName)}</span>
-        </nav>
-
-        <h1 style="font-size:36px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;">
-          ${escapeHtml(location.branchName)}
-        </h1>
-        <p style="font-size:16px;color:#94a3b8;line-height:1.6;margin-bottom:24px;max-width:900px;">
-          ${escapeHtml(location.address || '')}
-        </p>
-
-        <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;margin-bottom:32px;">
-          <h3 style="font-size:16px;font-weight:700;color:#06b6d4;margin-bottom:8px;">Contact &amp; Bookings</h3>
-          <p style="font-size:18px;font-weight:800;color:#ffffff;margin-bottom:8px;">📞 ${escapeHtml(location.phone || '+92 333 0177717')}</p>
-          <a href="https://wa.me/${location.whatsapp || '923330177717'}" style="color:#06b6d4;text-decoration:none;font-weight:700;">Chat on WhatsApp &rarr;</a>
-        </div>
-
-        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Facility Specs &amp; Workshop Amenities</h2>
-        <ul style="color:#cbd5e1;font-size:14px;line-height:2;padding-left:24px;margin-bottom:32px;">
-          ${(location.workshopSpecs || []).map((s) => `<li>${escapeHtml(s)}</li>`).join('')}
-        </ul>
-      </main>`;
-    }
-  } else if (root === 'blog' && sub) {
-    const post = blogDataSSR.find((b) => b.slug === sub);
+  } else if (cleanPath.startsWith('/blog/')) {
+    const slug = cleanPath.split('/')[2];
+    const post = blogDataSSR.find((b) => b.slug === slug);
     if (post) {
       mainContentHtml = `
       <main style="max-width:900px;margin:32px auto;padding:0 16px;">
         <nav style="font-size:12px;color:#64748b;margin-bottom:16px;">
           <a href="/" style="color:#06b6d4;text-decoration:none;">Home</a> &gt;
-          <a href="/blog/" style="color:#06b6d4;text-decoration:none;">Technical Blog</a> &gt;
+          <a href="/blog/" style="color:#06b6d4;text-decoration:none;">Diagnostic Blog</a> &gt;
           <span style="color:#cbd5e1;">${escapeHtml(post.title)}</span>
         </nav>
 
@@ -640,7 +547,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           ${escapeHtml(post.title)}
         </h1>
 
-        <div style="font-size:13px;color:#64748b;margin-bottom:24px;display:flex;gap:16px;flex-wrap:wrap;">
+        <div style="font-size:13px;color:#64748b;margin-bottom:24px;display:flex;gap:16px;">
           <span>By ${escapeHtml(post.author.name)} (${escapeHtml(post.author.role)})</span>
           <span>📅 ${escapeHtml(post.publishedDate)}</span>
           <span>⏱️ ${escapeHtml(post.readTime)}</span>
@@ -672,7 +579,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         </div>
       </main>`;
     }
-  } else if (root === 'services') {
+  } else if (cleanPath === '/services') {
     mainContentHtml = `
     <main style="max-width:1280px;margin:32px auto;padding:0 16px;">
       <h1 style="font-size:36px;font-weight:900;color:#ffffff;text-align:center;margin-bottom:12px;">
@@ -700,7 +607,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         `).join('')}
       </div>
     </main>`;
-  } else if (root === 'brands') {
+  } else if (cleanPath === '/brands') {
     mainContentHtml = `
     <main style="max-width:1280px;margin:32px auto;padding:0 16px;">
       <h1 style="font-size:36px;font-weight:900;color:#ffffff;text-align:center;margin-bottom:12px;">
@@ -726,7 +633,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         `).join('')}
       </div>
     </main>`;
-  } else if (root === 'locations') {
+  } else if (cleanPath === '/locations') {
     mainContentHtml = `
     <main style="max-width:1280px;margin:32px auto;padding:0 16px;">
       <h1 style="font-size:36px;font-weight:900;color:#ffffff;text-align:center;margin-bottom:12px;">
@@ -753,140 +660,28 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         `).join('')}
       </div>
     </main>`;
-  } else if (root === 'blog') {
+  } else if (cleanPath === '/blog') {
     mainContentHtml = `
     <main style="max-width:1280px;margin:32px auto;padding:0 16px;">
-      <div style="text-align:center;margin-bottom:40px;">
-        <span style="display:inline-block;background:rgba(6,182,212,0.1);color:#06b6d4;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:12px;">
-          DIAGNOSTIC &amp; MAINTENANCE KNOWLEDGE HUB
-        </span>
-        <h1 style="font-size:36px;font-weight:900;color:#ffffff;margin-bottom:12px;">
-          Technical Blog | HyperTune Garage — Car Care Guides
-        </h1>
-        <p style="font-size:16px;color:#94a3b8;max-width:800px;margin:0 auto;line-height:1.6;">
-          Authoritative automotive engineering guides, OBD2 fault code analysis, hybrid battery restoration protocols, and climate maintenance for drivers across Islamabad and Rawalpindi.
-        </p>
-      </div>
+      <h1 style="font-size:36px;font-weight:900;color:#ffffff;text-align:center;margin-bottom:12px;">
+        Diagnostic &amp; Car Care Technical Journal
+      </h1>
+      <p style="font-size:16px;color:#94a3b8;text-align:center;max-width:800px;margin:0 auto 40px;line-height:1.6;">
+        Expert engineering guides, OBD2 fault code solutions, hybrid battery restoration tips, and climate maintenance for Pakistani drivers.
+      </p>
 
-      ${blogDataSSR.length > 0 ? `
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
         ${blogDataSSR.map((b) => `
-          <article style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;">
             <div>
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-                <span style="font-size:11px;font-weight:700;color:#06b6d4;text-transform:uppercase;">${escapeHtml(b.category)}</span>
-                <span style="font-size:11px;color:#64748b;">${escapeHtml(b.readTime)}</span>
-              </div>
-              <h2 style="font-size:18px;font-weight:800;color:#ffffff;margin:0 0 12px;line-height:1.4;">${escapeHtml(b.title)}</h2>
+              <span style="font-size:11px;font-weight:700;color:#06b6d4;text-transform:uppercase;">${escapeHtml(b.category)} • ${escapeHtml(b.readTime)}</span>
+              <h2 style="font-size:18px;font-weight:800;color:#ffffff;margin:8px 0 12px;">${escapeHtml(b.title)}</h2>
               <p style="font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:16px;">${escapeHtml(b.excerpt)}</p>
             </div>
-            <div>
-              <div style="font-size:11px;color:#64748b;margin-bottom:12px;">
-                <span>By ${escapeHtml(b.author.name)}</span> • <span>${escapeHtml(b.publishedDate)}</span>
-              </div>
-              <a href="/blog/${b.slug}/" style="color:#06b6d4;font-weight:700;text-decoration:none;font-size:14px;display:inline-block;">
-                Read Full Technical Guide &rarr;
-              </a>
-            </div>
-          </article>
+            <a href="/blog/${b.slug}/" style="color:#06b6d4;font-weight:700;text-decoration:none;font-size:14px;">Read Full Guide &rarr;</a>
+          </div>
         `).join('')}
       </div>
-      ` : `
-      <div style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:48px 24px;text-align:center;max-width:600px;margin:0 auto;">
-        <h2 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:8px;">New Guides Publishing Soon</h2>
-        <p style="font-size:14px;color:#94a3b8;margin-bottom:20px;">Our master automotive engineers are currently authoring comprehensive diagnostic and maintenance guides.</p>
-        <a href="/" style="background:#06b6d4;color:#030712;padding:10px 20px;border-radius:8px;font-weight:800;text-decoration:none;">Return to Homepage</a>
-      </div>
-      `}
-    </main>`;
-  } else if (root === 'sitemap' || root === 'site-map') {
-    mainContentHtml = `
-    <main style="max-width:1280px;margin:32px auto;padding:0 16px;">
-      <div style="text-align:center;margin-bottom:40px;">
-        <span style="display:inline-block;background:rgba(6,182,212,0.1);color:#06b6d4;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:12px;">
-          INDEX &amp; NAVIGATION DIRECTORY
-        </span>
-        <h1 style="font-size:36px;font-weight:900;color:#ffffff;margin-bottom:12px;">
-          HTML Site Map &amp; Complete Directory
-        </h1>
-        <p style="font-size:16px;color:#94a3b8;max-width:800px;margin:0 auto;line-height:1.6;">
-          Complete index of all pages, 13 core automotive repair services, 24 vehicle brand specialist hubs, workshop locations, and technical diagnostic guides at HyperTune Garage.
-        </p>
-      </div>
-
-      <!-- Core Pages Section -->
-      <section style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;margin-bottom:24px;">
-        <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:16px;">🏢 Primary Website Pages</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:12px;">
-          <a href="/" style="color:#f8fafc;text-decoration:none;padding:8px 12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;font-size:14px;font-weight:600;display:block;">🏠 Home Page</a>
-          <a href="/services/" style="color:#f8fafc;text-decoration:none;padding:8px 12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;font-size:14px;font-weight:600;display:block;">🔧 Services Catalogue</a>
-          <a href="/brands/" style="color:#f8fafc;text-decoration:none;padding:8px 12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;font-size:14px;font-weight:600;display:block;">⭐ Brand Specialists Index</a>
-          <a href="/locations/" style="color:#f8fafc;text-decoration:none;padding:8px 12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;font-size:14px;font-weight:600;display:block;">📍 Workshop Locations</a>
-          <a href="/blog/" style="color:#f8fafc;text-decoration:none;padding:8px 12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;font-size:14px;font-weight:600;display:block;">📚 Technical Blog</a>
-          <a href="/testimonials/" style="color:#f8fafc;text-decoration:none;padding:8px 12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;font-size:14px;font-weight:600;display:block;">⭐ Customer Reviews (4.9★)</a>
-          <a href="/book-appointment/" style="color:#f8fafc;text-decoration:none;padding:8px 12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;font-size:14px;font-weight:600;display:block;">📅 Book Service Appointment</a>
-          <a href="/gallery/" style="color:#f8fafc;text-decoration:none;padding:8px 12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;font-size:14px;font-weight:600;display:block;">📷 Workshop Gallery</a>
-          <a href="/faq/" style="color:#f8fafc;text-decoration:none;padding:8px 12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;font-size:14px;font-weight:600;display:block;">❓ Frequently Asked Questions</a>
-          <a href="/about/" style="color:#f8fafc;text-decoration:none;padding:8px 12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;font-size:14px;font-weight:600;display:block;">ℹ️ About HyperTune Garage</a>
-          <a href="/contact/" style="color:#f8fafc;text-decoration:none;padding:8px 12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;font-size:14px;font-weight:600;display:block;">📞 Contact Us</a>
-          <a href="/warranty-specs/" style="color:#f8fafc;text-decoration:none;padding:8px 12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;font-size:14px;font-weight:600;display:block;">🛡️ 12-Month Warranty Specs</a>
-          <a href="/privacy-policy/" style="color:#f8fafc;text-decoration:none;padding:8px 12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;font-size:14px;font-weight:600;display:block;">🔒 Privacy Policy</a>
-          <a href="/terms-conditions/" style="color:#f8fafc;text-decoration:none;padding:8px 12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;font-size:14px;font-weight:600;display:block;">📄 Terms &amp; Conditions</a>
-        </div>
-      </section>
-
-      <!-- 13 Core Services Directory -->
-      <section style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;margin-bottom:24px;">
-        <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:16px;">🛠️ Automotive Repair &amp; Protection Services (13)</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:12px;">
-          ${servicesDataSSR.map((s) => `
-            <a href="/services/${s.slug}/" style="color:#cbd5e1;text-decoration:none;padding:12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;display:block;transition:all 0.2s;">
-              <span style="color:#06b6d4;font-size:11px;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">${escapeHtml(s.category)}</span>
-              <strong style="color:#ffffff;font-size:14px;display:block;">${escapeHtml(s.title)}</strong>
-              <span style="color:#64748b;font-size:12px;">Est: ${escapeHtml(s.priceRange)}</span>
-            </a>
-          `).join('')}
-        </div>
-      </section>
-
-      <!-- 24 Vehicle Brand Specialists -->
-      <section style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;margin-bottom:24px;">
-        <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:16px;">🚗 Vehicle Brand Specialist Hubs (24 Brands)</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:12px;">
-          ${brandsDataSSR.map((b) => `
-            <a href="/brands/${b.slug}/" style="color:#cbd5e1;text-decoration:none;padding:12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;display:block;">
-              <strong style="color:#ffffff;font-size:14px;display:block;margin-bottom:4px;">${escapeHtml(b.name)}</strong>
-              <span style="color:#06b6d4;font-size:11px;font-family:monospace;">${escapeHtml(b.diagnosticSoftware)}</span>
-            </a>
-          `).join('')}
-        </div>
-      </section>
-
-      <!-- Technical Guides & Articles -->
-      <section style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;margin-bottom:24px;">
-        <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:16px;">📖 Technical Guides &amp; Diagnostic Articles (${blogDataSSR.length})</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:12px;">
-          ${blogDataSSR.map((post) => `
-            <a href="/blog/${post.slug}/" style="color:#cbd5e1;text-decoration:none;padding:12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;display:block;">
-              <span style="color:#06b6d4;font-size:11px;font-weight:700;">${escapeHtml(post.category)} • ${escapeHtml(post.readTime)}</span>
-              <strong style="color:#ffffff;font-size:13px;display:block;margin-top:4px;">${escapeHtml(post.title)}</strong>
-            </a>
-          `).join('')}
-        </div>
-      </section>
-
-      <!-- Workshop Locations -->
-      <section style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;">
-        <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:16px;">📍 Workshop Branches &amp; Hubs</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:12px;">
-          ${locationsDataSSR.map((loc) => `
-            <a href="/locations/${loc.slug}/" style="color:#cbd5e1;text-decoration:none;padding:12px;background:#05080e;border-radius:8px;border:1px solid #1e293b;display:block;">
-              <strong style="color:#ffffff;font-size:14px;display:block;margin-bottom:4px;">${escapeHtml(loc.branchName)}</strong>
-              <span style="color:#94a3b8;font-size:12px;">${escapeHtml(loc.address || '')}</span>
-            </a>
-          `).join('')}
-        </div>
-      </section>
     </main>`;
   } else {
     mainContentHtml = `

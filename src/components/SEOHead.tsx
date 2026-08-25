@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
+import defaultOgBanner from '../assets/images/hypertune_hero_banner_1785533542266.webp';
 import { trackPageView, initGA } from '../utils/analytics';
-import { normalizeCanonicalUrl } from '../utils/ssrRenderer';
 
 declare global {
   interface Window {
@@ -26,7 +26,7 @@ export const SEOHead: React.FC<SEOProps> = ({
   keywords = 'car workshop islamabad, auto repair rawalpindi, car detailing islamabad, paint protection film ppf islamabad, ceramic coating rawalpindi, bmw repair islamabad, mercedes garage rawalpindi, audi service center, engine overhaul islamabad, hybrid battery repair, 3d laser wheel alignment, car mechanic near me, hypertune garage',
   canonicalUrl,
   path = '/',
-  ogImage = '/images/hypertune_hero_banner_1785533542266.webp',
+  ogImage = defaultOgBanner,
   schema,
 }) => {
   useEffect(() => {
@@ -55,7 +55,7 @@ export const SEOHead: React.FC<SEOProps> = ({
     }
     metaKeywords.setAttribute('content', keywords);
 
-    const targetCanonicalUrl = normalizeCanonicalUrl(canonicalUrl || path, 'https://hypertunegarage.pk');
+    const targetCanonicalUrl = canonicalUrl || `https://hypertunegarage.pk${path}`;
 
     // Update Canonical Tag
     let canonicalTag = document.querySelector('link[rel="canonical"]');
