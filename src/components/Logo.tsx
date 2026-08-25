@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import hypertuneLogoWebp from '../assets/images/hypertune_logo.webp';
 import { Gauge } from 'lucide-react';
 
 interface LogoProps {
@@ -20,9 +21,10 @@ export const Logo: React.FC<LogoProps> = ({
   const [fallbackIndex, setFallbackIndex] = useState(0);
 
   const fallbackSources = [
+    hypertuneLogoWebp,
     '/images/hypertune_logo.webp',
     '/images/hypertune_logo_new_1785539043513.webp',
-    'https://hypertunegarage.pk/images/hypertune_logo.webp',
+    'https://www.hypertunegarage.pk/images/hypertune_logo.webp',
   ];
 
   const textColor = variant === 'dark' ? 'text-white' : 'text-slate-950';

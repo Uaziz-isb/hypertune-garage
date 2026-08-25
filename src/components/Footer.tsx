@@ -83,7 +83,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
             <Logo variant="dark" scale={1.05} />
           </a>
           <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
-            HyperTune Garage is Pakistan's premier precision automotive workshop specializing in all famous vehicle brands (Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Lexus, Land Rover, etc.), for Paint Protection Film (PPF), Engine Rebuilding, Ceramic Detailing, Inspection - Diagnostics and Maintenance - Servicing.
+            HyperTune Garage is Pakistan's premier precision automotive workshop specializing in 24 vehicle brands (Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Lexus, Land Rover, etc.), Paint Protection Film (PPF), engine rebuilding, ceramic detailing, and hybrid battery diagnostics.
           </p>
           <div className="flex items-center gap-2 text-xs text-slate-300 font-semibold bg-[#09101d] border border-cyan-500/20 p-3 rounded-xl max-w-sm">
             <ShieldCheck className="w-5 h-5 text-cyan-400 shrink-0" />
