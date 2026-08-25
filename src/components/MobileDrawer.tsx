@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PageId } from '../types';
 import { Logo } from './Logo';
 import { servicesData } from '../data/servicesData';
+import { brandsData } from '../data/brandsData';
 import {
   X,
   Phone,
@@ -18,7 +19,9 @@ import {
   Info,
   Home,
   ShieldCheck,
-  Star
+  Star,
+  Car,
+  Award,
 } from 'lucide-react';
 
 interface MobileDrawerProps {
@@ -37,6 +40,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
   onOpenBooking,
 }) => {
   const [isServicesExpanded, setIsServicesExpanded] = useState(false);
+  const [isBrandsExpanded, setIsBrandsExpanded] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -52,8 +56,6 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
   if (!isOpen) return null;
 
   const mainLinks: { id: PageId; label: string; icon: React.ElementType }[] = [
-    { id: 'home', label: 'Home', icon: Home },
-    { id: 'brands', label: 'Brand Specialists', icon: ShieldCheck },
     { id: 'gallery', label: 'Restoration Gallery', icon: Image },
     { id: 'blog', label: 'Car Care Guides & Blog', icon: FileText },
     { id: 'about', label: 'About HyperTune Garage', icon: Info },
@@ -168,7 +170,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
             >
               <div className="flex items-center gap-3">
                 <Wrench className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>Services Catalogue (12)</span>
+                <span>Services Catalogue (13)</span>
               </div>
               <ChevronDown
                 className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
@@ -189,7 +191,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
                   className="w-full text-left px-3 py-2 rounded-lg bg-cyan-950/30 text-cyan-400 font-bold text-xs flex items-center gap-2 cursor-pointer"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>View All 12 Services Overview</span>
+                  <span>View All 13 Services Overview</span>
                 </a>
                 {servicesData.map((service) => (
                   <a
@@ -209,8 +211,64 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
             )}
           </div>
 
+          {/* Expandable Brand Specialists */}
+          <div className="rounded-xl border border-slate-800/80 bg-slate-900/40 overflow-hidden">
+            <button
+              onClick={() => setIsBrandsExpanded(!isBrandsExpanded)}
+              className={`w-full flex items-center justify-between p-3 font-bold text-sm transition-all cursor-pointer ${
+                currentPage === 'brands' || currentPage === 'brand-detail'
+                  ? 'bg-cyan-950/40 text-cyan-400'
+                  : 'text-slate-200 hover:bg-slate-900 hover:text-white'
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" />
+                <span>Brand Specialists (24)</span>
+              </div>
+              <ChevronDown
+                className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
+                  isBrandsExpanded ? 'rotate-180 text-cyan-400' : ''
+                }`}
+              />
+            </button>
+
+            {/* Sub-brands list */}
+            {isBrandsExpanded && (
+              <div className="p-2 space-y-1 bg-slate-950/90 border-t border-slate-800 max-h-72 overflow-y-auto">
+                <a
+                  href="/brands/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('brands');
+                  }}
+                  className="w-full text-left px-3 py-2 rounded-lg bg-cyan-950/30 text-cyan-400 font-bold text-xs flex items-center gap-2 cursor-pointer"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>View All 24 Brand Specialist Hubs</span>
+                </a>
+                {brandsData.map((brand) => {
+                  const shortName = brand.name.replace(/ Repair.*| Service.*| Maintenance.*| Specialist.*/i, '') || brand.name;
+                  return (
+                    <a
+                      key={brand.id}
+                      href={`/brands/${brand.slug}/`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNav('brand-detail', brand.slug);
+                      }}
+                      className="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-900 text-slate-300 hover:text-cyan-400 font-semibold text-xs flex items-center gap-2.5 transition-colors cursor-pointer"
+                    >
+                      <Car className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                      <span className="truncate">{shortName}</span>
+                    </a>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
           {/* Remaining Main Navigation Links */}
-          {mainLinks.slice(1).map((link) => {
+          {mainLinks.map((link) => {
             const isActive = currentPage === link.id;
             const IconComp = link.icon;
             return (

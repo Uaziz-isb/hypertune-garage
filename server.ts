@@ -623,9 +623,21 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`HyperTune Garage server running on http://0.0.0.0:${PORT}`);
-  });
+  // On Vercel, the app is invoked per-request via api/index.ts as a
+  // serverless function — it must NOT call app.listen(), which would try
+  // to bind a port inside the function sandbox and serves no purpose there.
+  if (!process.env.VERCEL) {
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`HyperTune Garage server running on http://0.0.0.0:${PORT}`);
+    });
+  }
 }
 
-startServer();
+// Vercel sets NODE_ENV=production automatically, so this always takes the
+// static-serving branch (not the Vite dev-middleware branch) in production.
+// We still need to kick off setup (mounting static + catch-all routes)
+// exactly once per cold start before the app can handle requests.
+const readyPromise = startServer();
+
+export { readyPromise };
+export default app;
