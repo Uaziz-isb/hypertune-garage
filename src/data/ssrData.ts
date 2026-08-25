@@ -190,7 +190,96 @@ export const servicesDataSSR: ServiceItemSSR[] = [
     estimatedTime: '1 - 3 Hours',
     subServices: ['OEM Dealer-Level Diagnostic Scan', '200-Point Pre-Purchase Car Inspection', 'Digital Paint Depth Meter Inspection', 'Live Telemetry Sensor Logging', 'Written Vehicle Health Audit Report'],
   },
+  {
+    slug: 'hybrid-ev-battery-services',
+    title: 'Hybrid & EV Battery Services',
+    category: 'Hybrid',
+    shortDesc: 'Dedicated hybrid battery diagnostic, cell balancing, reconditioning, and replacement laboratory in Islamabad & Rawalpindi for Toyota Prius, Aqua, Vezel, and Lexus hybrids.',
+    fullDesc: 'HyperTune Garage operates a dedicated Hybrid & EV Battery Diagnostics & Cell Reconditioning Laboratory serving vehicle owners across Islamabad and Rawalpindi. We perform computerized cell internal resistance testing, individual NiMH and Li-ion module balancing, high-voltage cooling fan cleaning, inverter coolant flushing, and genuine OEM cell replacements with warranty.',
+    priceRange: 'PKR 15,000 - PKR 180,000',
+    estimatedTime: '1 - 2 Days',
+    subServices: ['Cell Balancing & Health Audit', 'Hybrid Battery Cell Replacement', 'High Voltage Cooling Fan Cleaning', 'Inverter & Converter Servicing'],
+  },
+  {
+    slug: 'car-ac-electrical',
+    title: 'Car AC & Auto Electrical Systems',
+    category: 'Electrical',
+    shortDesc: 'Precision car AC gas recharging, compressor overhaul, cooling coil leak repair, and computerized wiring diagnostics in Islamabad & Rawalpindi.',
+    fullDesc: 'HyperTune Garage provides full-service Automotive Air Conditioning & Electrical System repair in Islamabad & Rawalpindi. We utilize automated AC refrigerant recovery/recharge stations, digital leak detectors, and oscilloscope wiring analysis to solve cooling loss, compressor noise, electrical short circuits, and sensor glitches.',
+    priceRange: 'PKR 5,000 - PKR 45,000',
+    estimatedTime: '1 Day',
+    subServices: ['AC Gas Recharging (R134a / R1234yf)', 'Compressor & Clutch Overhaul', 'Evaporator / Cooling Coil Leak Repair', 'Computerized Electrical & Wiring Trace'],
+  },
 ];
+
+export function findServiceSSR(slug?: string): ServiceItemSSR | undefined {
+  if (!slug) return undefined;
+  const normalized = slug.toLowerCase().trim();
+  const direct = servicesDataSSR.find((s) => s.slug === normalized);
+  if (direct) return direct;
+
+  // Slug aliases
+  const aliasMap: Record<string, string> = {
+    'oil-filter-maintenance': 'maintenance-servicing',
+    'transmission-clutch-gearbox': 'transmission-drivetrain',
+    'car-wrapping-styling': 'vehicle-wrap',
+    'denting-painting-bodywork': 'body-repair-paint',
+    'body-kits-facelifts-modifications': 'body-modification',
+    'cooling-radiator-climate-control': 'cooling-fuel-exhaust',
+    'air-conditioning-heating-hvac': 'car-ac-electrical',
+    'car-ac-repair': 'car-ac-electrical',
+    'pre-purchase-inspection': 'inspection-diagnostics',
+    'hybrid-battery-repair': 'hybrid-ev-battery-services',
+  };
+
+  if (aliasMap[normalized]) {
+    const aliased = servicesDataSSR.find((s) => s.slug === aliasMap[normalized]);
+    if (aliased) return aliased;
+  }
+
+  // Keyword / Substring match
+  if (normalized.includes('ppf') || normalized.includes('paint-protection')) {
+    return servicesDataSSR.find((s) => s.slug === 'paint-protection-film-ppf');
+  }
+  if (normalized.includes('detail') || normalized.includes('ceramic')) {
+    return servicesDataSSR.find((s) => s.slug === 'car-detailing');
+  }
+  if (normalized.includes('wrap') || normalized.includes('vinyl')) {
+    return servicesDataSSR.find((s) => s.slug === 'vehicle-wrap');
+  }
+  if (normalized.includes('dent') || normalized.includes('paint') || normalized.includes('body-repair')) {
+    return servicesDataSSR.find((s) => s.slug === 'body-repair-paint');
+  }
+  if (normalized.includes('mod') || normalized.includes('body-kit')) {
+    return servicesDataSSR.find((s) => s.slug === 'body-modification');
+  }
+  if (normalized.includes('engine')) {
+    return servicesDataSSR.find((s) => s.slug === 'engine-services');
+  }
+  if (normalized.includes('maint') || normalized.includes('oil')) {
+    return servicesDataSSR.find((s) => s.slug === 'maintenance-servicing');
+  }
+  if (normalized.includes('brake') || normalized.includes('suspension')) {
+    return servicesDataSSR.find((s) => s.slug === 'brake-suspension-steering');
+  }
+  if (normalized.includes('trans') || normalized.includes('gear') || normalized.includes('clutch')) {
+    return servicesDataSSR.find((s) => s.slug === 'transmission-drivetrain');
+  }
+  if (normalized.includes('ac') || normalized.includes('air-condition') || normalized.includes('hvac')) {
+    return servicesDataSSR.find((s) => s.slug === 'car-ac-electrical') || servicesDataSSR.find((s) => s.slug === 'car-ac-repair');
+  }
+  if (normalized.includes('hybrid') || normalized.includes('battery')) {
+    return servicesDataSSR.find((s) => s.slug === 'hybrid-ev-battery-services') || servicesDataSSR.find((s) => s.slug === 'electrical-electronics');
+  }
+  if (normalized.includes('cool') || normalized.includes('radiator')) {
+    return servicesDataSSR.find((s) => s.slug === 'cooling-fuel-exhaust');
+  }
+  if (normalized.includes('inspect') || normalized.includes('diagnos') || normalized.includes('pre-purchase')) {
+    return servicesDataSSR.find((s) => s.slug === 'inspection-diagnostics');
+  }
+
+  return undefined;
+}
 
 export const brandsDataSSR: BrandItemSSR[] = [
   {

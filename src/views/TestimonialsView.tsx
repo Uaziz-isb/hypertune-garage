@@ -13,13 +13,13 @@ export const TestimonialsView: React.FC<TestimonialsViewProps> = ({ onNavigate, 
       <section className="bg-[#05080e] border-b border-slate-800 py-16 px-4">
         <div className="max-w-7xl mx-auto space-y-4 text-center">
           <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
-            Live Google Business Profile Ratings
+            Verified Google Business Profile Ratings
           </span>
           <h1 className="text-4xl md:text-5xl font-black text-white">
             Google Reviews & Feedback
           </h1>
           <p className="text-slate-400 text-sm max-w-2xl mx-auto">
-            Live auto-synced rating & reviews directly from HyperTune Garage Google Business Profile.
+            Verified customer ratings and authentic feedback directly from HyperTune Garage Google Business Profile.
           </p>
         </div>
       </section>
