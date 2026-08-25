@@ -84,7 +84,7 @@ function escapeHtml(str: string): string {
 
 export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): RouteMetaInfo {
   const canonicalUrl = normalizeCanonicalUrl(rawPath, baseUrl);
-  const ogImage = `${baseUrl.replace(/\/+$/, '')}/images/hypertunegarage_brand_logo_workshop_1787495393437.webp`;
+  const ogImage = `${baseUrl.replace(/\/+$/, '')}/images/hypertune_logo.webp`;
 
   const routePath = (rawPath.split('?')[0].split('#')[0] || '/').replace(/^\/+|\/+$/g, '');
   const pathParts = routePath ? routePath.split('/') : [];

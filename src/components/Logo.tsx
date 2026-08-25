@@ -20,7 +20,6 @@ export const Logo: React.FC<LogoProps> = ({
   const [fallbackIndex, setFallbackIndex] = useState(0);
 
   const fallbackSources = [
-    '/images/hypertunegarage_brand_logo_workshop_1787495393437.webp',
     '/images/hypertune_logo.webp',
     '/images/hypertune_logo_new_1785539043513.webp',
     'https://hypertunegarage.pk/images/hypertune_logo.webp',
