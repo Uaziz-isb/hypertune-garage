@@ -37,7 +37,7 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
     .slice(0, 3);
 
   // Generate JSON-LD Schema (LocalBusiness + Service + Breadcrumb)
-  const serviceUrl = `https://hypertunegarage.pk/services/${service.slug}`;
+  const serviceUrl = `https://hypertunegarage.pk/services/${service.slug}/`;
   const customSchema = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -54,7 +54,7 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
             '@type': 'ListItem',
             position: 2,
             name: 'Services',
-            item: 'https://hypertunegarage.pk/services',
+            item: 'https://hypertunegarage.pk/services/',
           },
           {
             '@type': 'ListItem',
