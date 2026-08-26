@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hypertunegarage.pk/sitemap.xml
+# LLMs specification available at /llms.txt and /llms-full.txt
+

@@ -1,0 +1,918 @@
+import { ServiceItem } from '../types';
+import { images } from './images';
+
+export const servicesData: ServiceItem[] = [
+  {
+    id: 'paint-protection-film-ppf',
+    slug: 'paint-protection-film-ppf',
+    title: 'Paint Protection Film (PPF)',
+    shortDesc: 'Pakistan’s premier studio for self-healing TPU Paint Protection Film (PPF) in Islamabad & Rawalpindi. Defend original paintwork from stone chips, UV fading, road debris, and scratches with up to 10-year warranty protection.',
+    fullDesc: 'HyperTune Garage is Pakistan’s leading studio for self-healing TPU Paint Protection Film (PPF). Located at our Flagship Studio in Block E Police Foundation, Sector O-9, Islamabad and Rawalpindi, our clean, climate-controlled detailing bay utilizes CAD computer digital plotter pre-cut TPU self-healing films. PPF forms an invisible, ultra-durable hydrophobic armor over your vehicle’s paint, self-healing swirl marks under heat or sunlight while preserving original factory paint and high resale value.',
+    subServices: ['Paint Protection Film (PPF)', 'Self-Healing TPU Film', 'Clear Bra Armor', 'Luxury Vehicle Armor'],
+    subServicePrices: [
+      { name: 'PPF (Paint Protection Film)', price: 'PKR 10,000 to 250,000' }
+    ],
+    category: 'protection',
+    icon: 'ShieldCheck',
+    image: images.servicePpf,
+    priceRange: 'PKR 10,000 - PKR 250,000',
+    estimatedTime: '2 - 4 Days',
+    isFeatured: true,
+    symptoms: [
+      'Stone chips and gravel impact marks on front bumper, hood, and fenders',
+      'Swirl marks, spiderweb scratches, and environmental fallout on car body',
+      'Desire to preserve 100% original factory paint resale value on new vehicle delivery',
+      'Frequent highway driving causing gravel erosion on quarter panels',
+    ],
+    keyBenefits: [
+      'Self-Healing TPU Technology — scratches vanish under sun or heat',
+      'Up to 10-Year Manufacturer Warranty against yellowing, cracking & peeling',
+      'Hydrophobic surface resistance repelling water, mud, and road grime',
+      'Computerized CAD plotter pre-cut patterns — 0% razor blade cuts on car paintwork',
+    ],
+    whyChooseUs: [
+      'Dust-free, climate-controlled installation bay with infrared curing lamps',
+      'Certified master detailers & wrap technicians with 1,000+ completed projects',
+      'Official imported TPU film brands (Gtechniq, CarPro, Avery, 3M)',
+      'Seamless wrapped edge tucking for invisible film borders',
+    ],
+    processSteps: [
+      { title: '1. Multi-Stage Decontamination Wash', desc: 'Iron fallout removal, clay bar decontamination, and high-pressure snow foam wash.' },
+      { title: '2. Paint Correction & Surface Audit', desc: 'Dual-action machine polishing to eliminate swirl marks and prep clear coat.' },
+      { title: '3. CAD Digital Plotter Pre-Cut Film', desc: 'Computerized pre-cut film matching your specific vehicle model measurements.' },
+      { title: '4. Clean Room Squeegee Installation', desc: 'Squeegee installation in dust-free bay with seamless wrapped edge tucking.' },
+      { title: '5. IR Thermal Curing & Quality Audit', desc: 'Infrared thermal lamp curing and multi-angle light inspection before delivery.' },
+    ],
+    faqs: [
+      {
+        question: 'What is Paint Protection Film (PPF) and how does self-healing work?',
+        answer: 'PPF is a thick elastomeric TPU film that physically absorbs stone chips. The clear topcoat self-heals minor scratches and swirl marks when exposed to heat or sunlight.',
+      },
+      {
+        question: 'Will PPF damage my original paint when removed?',
+        answer: 'Not at all! We use premium imported acrylic adhesives that peel away cleanly with zero sticky residue, preserving original factory paint.',
+      },
+    ],
+    seo: {
+      seoTitle: 'Paint Protection Film (PPF) Islamabad & Rawalpindi | HyperTune',
+      metaDescription: 'Premier self-healing TPU Paint Protection Film (PPF) studio in Islamabad & Rawalpindi. Protect original vehicle paint with up to 10-year warranty.',
+      h1Heading: 'Paint Protection Film (PPF) Studio in Islamabad & Rawalpindi',
+      targetKeywords: [
+        'PPF Islamabad',
+        'PPF Rawalpindi',
+        'Paint Protection Film Islamabad',
+        'Paint Protection Film Rawalpindi',
+        'Car PPF Islamabad',
+        'Car PPF Rawalpindi',
+        'Best PPF in Islamabad',
+        'Best PPF in Rawalpindi',
+        'PPF Installation Islamabad',
+        'Self-Healing TPU Film',
+        'TPU Paint Protection Film',
+        'Clear Bra Installation',
+        'Luxury Car PPF Islamabad'
+      ],
+      keywordParagraph: 'Shield original paintwork and preserve maximum resale value with world-class Paint Protection Film (PPF) in Islamabad & Rawalpindi. HyperTune Garage is Pakistan\'s premier studio for self-healing TPU PPF installation, computer plotter pre-cut film, clear bra armor, and luxury vehicle protection with up to 10-year warranty protection.',
+    },
+  },
+
+  {
+    id: 'car-detailing',
+    slug: 'car-detailing',
+    title: 'Car Detailing',
+    shortDesc: 'Professional interior steam extraction & 9H Nano-Ceramic Coating detailing studio in Islamabad & Rawalpindi. Restore showroom shine with multi-stage paint correction, deep leather treatment, and headlight restoration.',
+    fullDesc: 'HyperTune Garage provides comprehensive professional Car Detailing services in Islamabad and Rawalpindi. Our master detailers use multi-stage paint correction to eliminate 95%+ of swirl marks and scratches, followed by 9H Nano-Ceramic glass coating for hydrophobic mirror clarity. Inside the cabin, we perform deep steam extraction, leather conditioning, ozone anti-bacterial sterilization, and engine bay detailing.',
+    subServices: ['Car Detailing', '9H Ceramic Coating', 'Interior Steam Detailing', 'Paint Correction'],
+    subServicePrices: [
+      { name: 'Detailing (Interior & Exterior Ceramic)', price: 'PKR 10,000 to 45,000' }
+    ],
+    category: 'detailing',
+    icon: 'Sparkles',
+    image: images.serviceDetailing,
+    priceRange: 'PKR 10,000 - PKR 45,000',
+    estimatedTime: '1 - 2 Days',
+    isFeatured: true,
+    symptoms: [
+      'Swirl marks, scratches, and dull oxidation on vehicle paint under sunlight',
+      'Stained leather seats, dirty carpet interior, and dust accumulation in vents',
+      'Yellowed or cloudy headlights reducing nighttime driving visibility',
+      'Brake dust build-up and road tar baked onto alloy wheels',
+    ],
+    keyBenefits: [
+      'Multi-Stage Machine Paint Correction removing swirl marks & holograms',
+      '9H Nano-Ceramic Coating providing hydrophobic gloss & dirt repellency',
+      'Hot steam extraction detailing killing 99.9% of cabin bacteria & allergens',
+      'Deep leather nourishing and UV protection preventing seat cracking',
+    ],
+    whyChooseUs: [
+      'Clean indoor detailing studio with high-intensity color-matching inspection lights',
+      'Imported ceramic coating products (Gtechniq, CarPro, Meguiar’s, Koch Chemie)',
+      'Experienced detailers using orbital dual-action polishers to prevent paint burn',
+      'Complete interior, exterior, engine bay, and wheel glass restoration',
+    ],
+    processSteps: [
+      { title: '1. Snow Foam Decontamination Wash', desc: 'Pre-rinse foam wash, iron fallout chemical removal, and clay bar treatment.' },
+      { title: '2. Paint Micron Audit & Inspection', desc: 'Measure paint depth microns to safely guide multi-stage machine polishing.' },
+      { title: '3. Dual-Action Paint Correction', desc: 'Compound cutting and finishing polish to remove 95%+ of swirl marks.' },
+      { title: '4. Interior Steam Extraction & Leather Conditioning', desc: 'Deep steam clean carpets, dashboard vents, and apply leather balm.' },
+      { title: '5. 9H Ceramic Coating Application', desc: 'Hand-apply hydrophobic ceramic glass coating to paint, glass, and alloy wheels.' },
+    ],
+    faqs: [
+      {
+        question: 'What is included in full Car Detailing at HyperTune Garage?',
+        answer: 'Full detailing includes exterior paint decontamination, multi-stage machine paint correction, 9H ceramic coating layer, deep interior steam cleaning, leather conditioning, engine bay wash, and headlight restoration.',
+      },
+      {
+        question: 'How long does 9H Ceramic Coating last?',
+        answer: 'Our professional 9H ceramic glass coatings provide extreme water beading and high-gloss protection for 2 to 5 years depending on maintenance.',
+      },
+    ],
+    seo: {
+      seoTitle: 'Car Detailing & 9H Ceramic Coating Islamabad | HyperTune',
+      metaDescription: 'Professional car detailing, 9H ceramic coating & interior steam cleaning in Islamabad & Rawalpindi. Restore showroom shine and paint clarity.',
+      h1Heading: 'Car Detailing & Ceramic Coating Studio in Islamabad & Rawalpindi',
+      targetKeywords: [
+        'Car Detailing Islamabad',
+        'Car Detailing Rawalpindi',
+        'Auto Detailing Islamabad',
+        'Professional Car Detailing',
+        'Best Car Detailing Islamabad',
+        'Ceramic Coating Islamabad',
+        'Ceramic Coating Rawalpindi',
+        'Paint Correction Islamabad',
+        'Interior Car Detailing',
+        'Exterior Car Detailing'
+      ],
+      keywordParagraph: 'Restore your car\'s showroom luster with specialized Car Detailing in Islamabad and Rawalpindi. HyperTune Garage provides professional 9H Ceramic Coating, multi-stage paint correction, interior steam extraction detailing, leather restoration, and exterior polishing for all car makes.',
+    },
+  },
+
+  {
+    id: 'engine-services',
+    slug: 'engine-services',
+    title: 'Engine Services & Overhaul',
+    shortDesc: 'Specialized engine repair and precision mechanical overhaul for all vehicle makes in Islamabad & Rawalpindi. Our certified technicians perform engine overhauls, cylinder head repairs, valve jobs, timing chain replacement, and computerized sensor calibration to restore power, fuel efficiency, and factory smoothness.',
+    fullDesc: 'HyperTune Garage is Islamabad and Rawalpindi’s dedicated center for complete engine repair, overhaul, and precision diagnostics. Whether your engine suffers from overheating damage, blown head gaskets, excessive oil burning, low cylinder compression, or rod knock, our dust-free mechanical bay is equipped with computerized diagnostic rigs and precision micrometer measuring tools. We rebuild engines to strict 0.001mm OEM specifications with guaranteed factory reliability.',
+    subServices: ['Engine Repair & Rebuild', 'Engine Health & Diagnostics'],
+    subServicePrices: [
+      { name: 'Computerized Diagnostics Scan', price: 'PKR 1,500 to 2,500' },
+      { name: 'Cylinder Head & Valve Repair', price: 'PKR 15,000 to 45,000' },
+      { name: 'Complete Engine Overhaul', price: 'PKR 45,000 to 180,000' },
+    ],
+    category: 'engine',
+    icon: 'Cpu',
+    image: images.serviceEngine,
+    priceRange: 'PKR 8,000 - PKR 180,000',
+    estimatedTime: '1 - 5 Days',
+    isFeatured: true,
+    symptoms: [
+      'Check Engine light illuminated with active fault codes (P0300, P0011, etc.)',
+      'Engine knocking sound, metallic ticking, or heavy blue exhaust smoke',
+      'Engine overheating, coolant reservoir boiling, or oil mixing with coolant',
+      'Loss of power, slow acceleration, or engine stalling under load',
+      'Rough idle, engine misfire, or decreased fuel economy (KM/L)',
+    ],
+    keyBenefits: [
+      '0.001mm micrometer precision block honing & deck resurfacing',
+      '100% genuine OEM pistons, rings, valves, timing chain kits, and head gaskets',
+      'Computerized sensor calibration & fuel injector balance for Pakistani conditions',
+      '12-Month / 20,000 km Written Warranty on complete engine rebuilds',
+      'Complimentary break-in inspection & 1,000 km oil service check',
+    ],
+    whyChooseUs: [
+      'Cleanroom engine assembly bay free of dirt & grit',
+      'Master mechanics with 15+ years experience in Asian & European engines',
+      'High-pressure ultrasonic cleaning for engine heads & oil galleries',
+      'Transparent video reports sent to your WhatsApp during teardown',
+    ],
+    processSteps: [
+      { title: '1. Diagnostic Computer & Pressure Test', desc: 'Read fault codes, cylinder compression test, and cooling pressure audit.' },
+      { title: '2. Safe Extraction & Teardown', desc: 'Meticulous engine disassembly with cataloged parts and video documentation.' },
+      { title: '3. Precision Machining & Ultrasonic Wash', desc: 'Resurface cylinder heads, hone cylinders, and clean all internal galleries.' },
+      { title: '4. OEM Assembly & Torque Specs', desc: 'Rebuild using genuine OEM components adhering strictly to factory torque limits.' },
+      { title: '5. Break-In Test & Road Verification', desc: 'Warm break-in cycle, oil pressure verification, and road safety audit.' },
+    ],
+    faqs: [
+      {
+        question: 'How do I know if my engine needs a repair or a full overhaul?',
+        answer: 'Our technicians conduct a 4-point diagnostic test including cylinder compression, leak-down test, oil pressure check, and scope camera inspection. If wear is limited to gaskets or sensors, we perform targeted repair; if internal pistons or bearings are damaged, a full rebuild is recommended.',
+      },
+      {
+        question: 'What is included in HyperTune Garage Engine Maintenance & Overhaul?',
+        answer: 'Engine overhaul includes block resurfacing, precision cylinder honing, new OEM pistons, rings, bearings, timing chain replacement, valve clearance adjustment, and ultrasonic fuel injector servicing.',
+      },
+    ],
+    seo: {
+      seoTitle: 'Engine Services, Repair & Overhaul Islamabad | HyperTune',
+      metaDescription: 'Expert engine repair, diagnostics & overhaul in Islamabad & Rawalpindi. Factory-grade diagnostics, head gasket repair, timing belt replacement & 12-month warranty.',
+      h1Heading: 'Engine Repair & Precision Overhaul Services in Islamabad & Rawalpindi',
+      targetKeywords: [
+        'Engine Repair Islamabad',
+        'Engine Overhaul Rawalpindi',
+        'Cylinder Head Repair',
+        'Engine Diagnostics Islamabad',
+        'Timing Belt Replacement',
+        'Car Engine Overhaul Rawalpindi'
+      ],
+      keywordParagraph: 'Looking for specialized Engine Repair in Islamabad or complete Engine Overhaul in Rawalpindi? HyperTune Garage provides dealership-grade Engine Diagnostics in Islamabad using advanced diagnostic scanners, cylinder compression testing, and precision measuring tools. Our certified mechanics excel in Cylinder Head Repair, timing belt replacement, valve clearance adjustment, and precision engine rebuilds with a 12-month warranty across Islamabad and Rawalpindi.',
+    },
+  },
+
+  {
+    id: 'inspection-diagnostics',
+    slug: 'inspection-diagnostics',
+    title: 'Inspection & Diagnostics',
+    shortDesc: 'Computerized dealer-level OBD2 diagnostic scanning and detailed 150+ point pre-purchase car inspection in Islamabad & Rawalpindi. Get an honest digital health report covering engine compression, transmission codes, accident body damage, paint thickness microns, and electrical diagnostics before buying any car.',
+    fullDesc: 'Buying a used car in Pakistan without a thorough professional inspection can lead to hidden financial nightmares—such as flood damage, rolled-back odometers, concealed accident body repairs, or failing hybrid batteries. HyperTune Garage offers dealer-grade 150+ Point Pre-Purchase Car Inspections and Computerized Diagnostic Scanning across Islamabad and Rawalpindi. We provide an un-biased, comprehensive digital report complete with paint meter micron readings, camera scope cylinder checks, and ECU diagnostic logs.',
+    subServices: ['Car Diagnostics', 'Pre-Purchase Car Inspection'],
+    subServicePrices: [
+      { name: 'Car Diagnostics', price: 'PKR 1,500 to 2,500 per Diagnostics' },
+      { name: 'Pre-Purchase Car Inspection', price: 'PKR 2,000 to 10,000' },
+    ],
+    category: 'diagnostics',
+    icon: 'Search',
+    image: images.serviceDiagnostics,
+    priceRange: 'PKR 1,500 - PKR 10,000',
+    estimatedTime: '1 - 3 Hours',
+    isFeatured: true,
+    symptoms: [
+      'Planning to buy a used car in Islamabad / Rawalpindi and need unbiased inspection',
+      'Check Engine light, ABS, Airbag, or Transmission lights lit on dashboard',
+      'Unexplained vehicle behavior, intermittent electrical glitches, or sudden stalling',
+      'Need verified paint thickness measurement to check for re-painted or filled panels',
+      'Verifying mileage integrity & historic ECU fault code records',
+    ],
+    keyBenefits: [
+      '150+ Point Comprehensive Inspection Report sent directly to your phone',
+      'Dealer-level diagnostic scanners (BMW ISTA+, Mercedes Xentry, Audi ODIS, Toyota Techstream)',
+      'Digital magnetic paint thickness meter audit (detects body filler & repainted panels)',
+      'Engine cylinder scope camera inspection & compression test option',
+      'Unbiased evaluation protecting buyers from costly pre-existing mechanical defects',
+    ],
+    whyChooseUs: [
+      '100% Independent inspection studio — zero seller commission bias',
+      'Equipped with hydraulic undercarriage lifts to check hidden chassis damage',
+      'Master inspection engineers with thousands of verified car evaluations',
+      'Fast same-day appointment booking at Islamabad Flagship Hub & Rawalpindi',
+    ],
+    processSteps: [
+      { title: '1. Computerized Full-System ECU Scan', desc: 'Scan all control modules for current fault codes, historic errors, and mileage tampering.' },
+      { title: '2. Paint Thickness & Body Structure Audit', desc: 'Measure clear coat microns across all panels to detect hidden accident repair.' },
+      { title: '3. Undercarriage Lift Inspection', desc: 'Inspect chassis rails, floor pan, suspension joints, oil leaks, and exhaust condition.' },
+      { title: '4. Engine Bay & Fluid Quality Test', desc: 'Check brake fluid moisture, coolant freeze point, battery health, and belt wear.' },
+      { title: '5. Road Audit & Comprehensive Report', desc: 'Perform test drive and deliver a detailed digital PDF report with HD photos.' },
+    ],
+    faqs: [
+      {
+        question: 'Can your pre-purchase inspection detect if a car has been in a major accident?',
+        answer: 'Yes! We measure panel paint thickness in microns to identify body filler (poti), inspect factory spot welds, check frame rail straightness, and verify airbag module deployment history.',
+      },
+      {
+        question: 'Do you offer mobile on-site pre-purchase car inspections in Islamabad/Rawalpindi?',
+        answer: 'We strongly recommend bringing the vehicle to our workshop where we can lift it on hydraulic ramps for undercarriage checks, but we also offer mobile inspection teams across Islamabad & Rawalpindi upon request.',
+      },
+    ],
+    seo: {
+      seoTitle: 'Car Diagnostics & Pre-Purchase Inspection | HyperTune',
+      metaDescription: 'Dealer-level computer diagnostics & 150+ point pre-purchase car inspection in Islamabad & Rawalpindi. Digital health report & paint thickness audit.',
+      h1Heading: 'Computerized Car Diagnostics & Pre-Purchase Inspection in Islamabad & Rawalpindi',
+      targetKeywords: [
+        'Car Diagnostics Islamabad',
+        'Pre Purchase Car Inspection Rawalpindi',
+        'Used Car Inspection Islamabad',
+        'Computerized Car Scan',
+        'Paint Meter Car Inspection',
+        'OBD2 Diagnostic Scan',
+        'Car Health Report Islamabad',
+        'Used Car Verification Pakistan'
+      ],
+      keywordParagraph: 'Make informed automotive decisions with dealer-level Car Diagnostics in Islamabad and comprehensive Pre Purchase Car Inspection in Rawalpindi. HyperTune Garage utilizes advanced OBD2 Diagnostic Scan and computerized car scan rigs to audit all control modules for engine fault codes, transmission issues, and electrical warnings. Before buying a used car in Pakistan, rely on our detailed used car inspection report—including paint meter car inspection micron readings and cylinder scope checks—for a complete car health report in G-8 Islamabad.',
+    },
+  },
+
+  {
+    id: 'maintenance-servicing',
+    slug: 'maintenance-servicing',
+    title: 'Maintenance & Servicing',
+    shortDesc: 'Comprehensive periodic maintenance, synthetic oil changes, and preventive inspection services in Islamabad & Rawalpindi. Keep your vehicle running smoothly with genuine filters, high-grade lubricants, spark plug replacement, fluid flushes, and a thorough 50-point safety health audit by expert technicians.',
+    fullDesc: 'Regular periodic maintenance is the single most important factor in extending your car’s lifespan and maintaining peak resale value. At HyperTune Garage Islamabad & Rawalpindi, our maintenance packages use 100% authentic imported fully synthetic oils (Liqui Moly, Mobil 1, Shell Helix Ultra, Total Quartz) matched strictly to manufacturer viscosity standards (0W-20, 5W-30, 5W-40). Every periodic service comes with our 50-Point Digital Vehicle Health Report.',
+    subServices: ['Oil Change & Periodic Maintenance', 'Preventive Car Maintenance'],
+    subServicePrices: [
+      { name: 'Oil Change & Periodic Maintenance', price: 'PKR 6,000 to 18,000' },
+      { name: 'Preventive Car Maintenance', price: 'PKR 1,000 to 20,000' },
+    ],
+    category: 'maintenance',
+    icon: 'Activity',
+    image: images.serviceMaintenance,
+    priceRange: 'PKR 1,000 - PKR 20,000',
+    estimatedTime: '45 Mins - 2 Hours',
+    isFeatured: true,
+    symptoms: [
+      'Due for oil change mileage interval (every 5,000 km to 10,000 km)',
+      'Maintenance indicator light or oil service alert on dashboard',
+      'Dark, dirty, or low engine oil level on dipstick check',
+      'Sluggish engine performance or reduced fuel average (KM/L)',
+      'Preparing car for long northern tours (Kaghan, Hunza, Skardu, Murree)',
+    ],
+    keyBenefits: [
+      '100% Authentic Imported Synthetic Oils with QR Code traceability',
+      'Genuine OEM Oil, Air, Cabin, and Fuel Filters',
+      'Comprehensive 50-Point Digital Safety Inspection Report with photos',
+      'Complimentary fluid top-up (coolant, brake fluid, washer fluid)',
+      'Computerized service interval reset & digital maintenance logbook',
+    ],
+    whyChooseUs: [
+      'Express maintenance completed in under 60 minutes',
+      'Clean vehicle lift bays & air-conditioned customer lounge',
+      'Zero counterfeit oil guarantee — sourced directly from official importers',
+      'Free tire pressure audit & brake pad thickness measurement',
+    ],
+    processSteps: [
+      { title: '1. Hot Oil Drain & Inspection', desc: 'Warm gravity drain of old engine oil to clear sludge and heavy deposits.' },
+      { title: '2. OEM Filter Replacement', desc: 'Install new OEM oil filter, clean air intake box, and swap cabin micro-filter.' },
+      { title: '3. Synthetic Refill & Torque Check', desc: 'Refill exact oil volume using digital dispensing guns and torque oil plug.' },
+      { title: '4. 50-Point Health Audit', desc: 'Inspect battery health, brake pads, suspension bushings, belts, and hoses.' },
+      { title: '5. Service Reset & Wash', desc: 'Reset dash maintenance alert and provide complimentary exterior wash.' },
+    ],
+    faqs: [
+      {
+        question: 'Which engine oil viscosity should I use for Pakistani summer temperatures?',
+        answer: 'We recommend 0W-20 for modern Japanese hybrid cars, and 5W-30 or 5W-40 fully synthetic oils for turbo gasoline and European vehicles to withstand summer ambient heat exceeding 45°C in Islamabad and Rawalpindi.',
+      },
+      {
+        question: 'What is included in the 50-Point Inspection?',
+        answer: 'The audit covers brake pad thickness, battery cold-cranking amps, suspension play, coolant freezing/boiling point, transmission fluid condition, drive belt tension, tire tread depth, and computerized diagnostic fault scan.',
+      },
+    ],
+    seo: {
+      seoTitle: 'Car Maintenance & Oil Change Services | HyperTune Garage',
+      metaDescription: 'Professional periodic car maintenance & synthetic oil change in Islamabad & Rawalpindi. 100% genuine lubricants, OEM filters & 50-point safety check.',
+      h1Heading: 'Periodic Car Maintenance & Oil Change Services in Islamabad & Rawalpindi',
+      targetKeywords: [
+        'Oil Change Islamabad',
+        'Car Maintenance Rawalpindi',
+        'Synthetic Oil Change Islamabad',
+        'Periodic Car Service',
+        'Preventive Car Maintenance',
+        'Liqui Moly Oil Change Pakistan',
+        'Car Inspection Islamabad',
+        'Periodic Maintenance Service'
+      ],
+      keywordParagraph: 'Ensure your vehicle stays in peak condition with our top-rated Oil Change in Islamabad and complete Periodic Maintenance in Rawalpindi. At HyperTune Garage, we deliver premium Car Maintenance in Pakistan using 100% authentic imported lubricants for every Synthetic Oil Change in Islamabad. Our comprehensive periodic service includes genuine oil filter installation, Spark Plug Replacement, air/cabin filter renewal, Liqui Moly oil changes, and a thorough 50 Point Car Inspection. Visit our modern facility for Car Servicing in G-8 Islamabad to enjoy long-term reliability and complete Preventive Car Care for all Asian, Japanese, and European car models.',
+    },
+  },
+
+  {
+    id: 'brake-suspension-steering',
+    slug: 'brake-suspension-steering',
+    title: 'Brake, Suspension & Steering',
+    shortDesc: 'Precision brake repair, suspension overhaul, electronic air suspension repair, steering rack restoration, and 3D laser wheel alignment in Islamabad & Rawalpindi. Eliminate thumping noises, spongy braking, steering looseness, and uneven tire wear with factory OEM replacement components.',
+    fullDesc: 'Pakistani road conditions place severe stress on vehicle undercarriage systems, causing worn shocks, damaged control arm bushings, leaking steering racks, and misaligned wheels. HyperTune Garage houses Italian 3D Laser Wheel Alignment rigs, heavy-duty hydraulic presses, and specialized diagnostic software for electronic air suspension (Mercedes Airmatic, Audi Adaptive Air, BMW Dynamic Drive). We restore factory handling, stopping distance, and ride comfort.',
+    subServices: ['Brake Repair', 'Suspension Repair', 'Steering Repair'],
+    subServicePrices: [
+      { name: 'Brake Repair', price: 'PKR 1,000 to 5,000' },
+      { name: 'Suspension Repair', price: 'PKR 4,000 to 50,000' },
+      { name: 'Steering Repair', price: 'PKR 3,500 to 25,000' },
+    ],
+    category: 'suspension',
+    icon: 'Disc',
+    image: images.serviceSuspension,
+    priceRange: 'PKR 1,000 - PKR 50,000',
+    estimatedTime: '2 - 5 Hours',
+    isFeatured: true,
+    symptoms: [
+      'Clunking, squeaking, or thumping noises over road bumps and speed breakers',
+      'Vehicle pulling to left or right while steering straight',
+      'Spongy brake pedal feeling, squealing noise, or extended stopping distance',
+      'Steering wheel vibration at high highway speeds (80-120 km/h)',
+      'Uneven, premature tire tread wear across inner or outer edges',
+    ],
+    keyBenefits: [
+      'Italian 3D Laser Wheel Alignment with sub-millimeter toe & camber accuracy',
+      'High-performance ceramic low-dust brake pads for maximum stopping power',
+      'Hydraulic press bushing installation preserving suspension arms',
+      'Air suspension compressor & strut repair with 12-month warranty',
+      'Electronic steering rack re-calibration & power steering fluid flush',
+    ],
+    whyChooseUs: [
+      'Official 3D laser alignment targets matched to factory chassis specs',
+      '100% Genuine OEM brake discs, pads, shock absorbers, and tie rods',
+      'No guess work — clear digital report of alignment angles before & after',
+      'Expert repair for both standard coil springs & complex air suspension',
+    ],
+    processSteps: [
+      { title: '1. Undercarriage Lift Audit', desc: 'Inspect ball joints, tie-rod ends, sway bar links, shock absorbers, and brake discs.' },
+      { title: '2. OEM Component Replacement', desc: 'Extract worn parts using hydraulic presses and install genuine replacement components.' },
+      { title: '3. Brake Disc Resurfacing / Renewal', desc: 'Precision brake lathe skimming or brand new rotor installation with low-dust ceramic pads.' },
+      { title: '4. 3D Laser Wheel Alignment', desc: 'Mount 3D optical targets to calibrate toe, camber, and caster to factory specifications.' },
+      { title: '5. High-Speed Highway Drive Test', desc: 'Verify straight-line tracking, steering returnability, and braking emergency response.' },
+    ],
+    faqs: [
+      {
+        question: 'How often should I align my car wheels in Islamabad & Rawalpindi?',
+        answer: 'We recommend 3D laser wheel alignment every 10,000 km or immediately after hitting deep road potholes or installing new tires/suspension parts.',
+      },
+      {
+        question: 'What causes squealing brake noises?',
+        answer: 'Brake squeal occurs due to worn friction pads, glazed brake rotors, or missing anti-squeal shims. We inspect pad thickness, rotor runout, and install premium ceramic brake pads with anti-vibration lubricant.',
+      },
+    ],
+    seo: {
+      seoTitle: 'Brake, Suspension & Steering Repair | HyperTune Garage',
+      metaDescription: 'Expert brake repair, suspension overhaul, steering rack repair & 3D wheel alignment in Islamabad & Rawalpindi. Eliminate noises & restore smooth handling.',
+      h1Heading: 'Precision Brake, Suspension & Steering Repair in Islamabad & Rawalpindi',
+      targetKeywords: [
+        'Brake Repair Islamabad',
+        'Suspension Repair Rawalpindi',
+        'Steering Rack Repair',
+        '3D Wheel Alignment Islamabad',
+        'Ceramic Brake Pads Pakistan',
+        'Air Suspension Repair Islamabad',
+        'Shock Absorber Replacement',
+        'Car Steering Repair Rawalpindi'
+      ],
+      keywordParagraph: 'Eliminate undercarriage noises, uneven tire wear, and spongy braking with professional Brake Repair in Islamabad and complete Suspension Repair in Rawalpindi. HyperTune Garage offers precision Steering Rack Repair, Italian 3D Wheel Alignment in Islamabad, shock absorber replacement, and expert Ceramic Brake Pads installation in Pakistan. From complex Air Suspension Repair in Islamabad on European luxury sedans to heavy-duty Steering Repair in Rawalpindi on local Japanese hatchbacks and SUVs, our technicians restore original factory handling, stopping confidence, and ride comfort.',
+    },
+  },
+
+  {
+    id: 'transmission-drivetrain',
+    slug: 'transmission-drivetrain',
+    title: 'Transmission & Drivetrain',
+    shortDesc: 'Expert automatic, CVT, dual-clutch (DCT), and manual transmission repair and rebuilding in Islamabad & Rawalpindi. We resolve gear slipping, shifting jerks, transmission fluid leaks, torque converter faults, and electronic solenoid issues using genuine OEM parts and specialized diagnostic procedures.',
+    fullDesc: 'Modern automatic gearboxes—including Continuously Variable Transmissions (CVT), Dual-Clutch Transmissions (Honda DCT, VW DSG), and multi-speed torque-converter automatics—require delicate hydraulic and electronic calibration. High summer ambient heat and delayed fluid service lead to jerking, gear slipping, or limp-mode warnings. HyperTune Garage provides complete transmission diagnostics, fluid flushing with OEM specs, valve body solenoid rebuilding, and complete gearbox overhauls.',
+    subServices: ['Transmission Repair'],
+    subServicePrices: [
+      { name: 'Transmission Repair', price: 'PKR 8,000 to 85,000' },
+    ],
+    category: 'transmission',
+    icon: 'Settings',
+    image: images.serviceTransmission,
+    priceRange: 'PKR 8,000 - PKR 85,000',
+    estimatedTime: '1 - 4 Days',
+    isFeatured: true,
+    symptoms: [
+      'Harsh jerking or shuddering when shifting from Park to Drive or during gear shifts',
+      'Engine revving high without vehicle accelerating (gear slip)',
+      'Transmission warning light or "Transmission Malfunction" message on dash',
+      'Delayed gear engagement when cold or noisy transmission whining',
+      'Reddish or brown transmission fluid leaking underneath car',
+    ],
+    keyBenefits: [
+      'Factory diagnostic scanning for TCU error codes & solenoid live data',
+      '100% Genuine OEM CVT / DCT / ATF fluids matching exact manufacturer specs',
+      'Complete valve body overhaul & electronic solenoid replacement',
+      'Honda DCT / Vezel clutch actuator relearn & computerized fluid exchange',
+      '12-Month warranty on rebuilt automatic & CVT transmissions',
+    ],
+    whyChooseUs: [
+      'Specialized clean bench for automatic gearbox rebuilding',
+      'Computerized fluid exchange machines preventing torque converter air lock',
+      'Save 50% compared to purchasing new factory gearbox units',
+      'Experienced master transmission technicians',
+    ],
+    processSteps: [
+      { title: '1. Computerized TCU Scan & Fluid Test', desc: 'Audit transmission control unit fault codes, pressure sensors, and fluid burnt smell.' },
+      { title: '2. Transmission Fluid Flush / Removal', desc: 'Perform full fluid exchange or safely extract gearbox for bench rebuilding.' },
+      { title: '3. Valve Body & Solenoid Servicing', desc: 'Disassemble valve body, replace faulty solenoids, and clean internal fluid channels.' },
+      { title: '4. Clutch Pack & Seal Rebuild', desc: 'Replace worn friction plates, seals, torque converter, and bearings.' },
+      { title: '5. Calibration & Adaption Drive', desc: 'Perform electronic clutch adaptation relearn and road test under load.' },
+    ],
+    faqs: [
+      {
+        question: 'Why does Honda Vezel or Grace transmission jerk during summer?',
+        answer: 'Honda Dual-Clutch (DCT) gearboxes experience clutch actuator fluid breakdown in Pakistani heat. We perform a specialized DOT4 clutch fluid flush and computerized actuator relearn to restore smooth gear shifts.',
+      },
+      {
+        question: 'How often should CVT transmission fluid be changed in Pakistan?',
+        answer: 'We recommend replacing CVT fluid and internal filters every 40,000 km to prevent belt slippage and costly transmission failure.',
+      },
+    ],
+    seo: {
+      seoTitle: 'Transmission Repair & Gearbox Service | HyperTune Garage',
+      metaDescription: 'Professional transmission repair, CVT overhaul & dual-clutch service in Islamabad & Rawalpindi. Resolve shifting jerks, gear slip & gearbox fluid leaks.',
+      h1Heading: 'Automatic & CVT Transmission Repair in Islamabad & Rawalpindi',
+      targetKeywords: [
+        'Transmission Repair Islamabad',
+        'Automatic Gearbox Repair Rawalpindi',
+        'CVT Transmission Service',
+        'Dual Clutch Repair Honda Vezel',
+        'Gearbox Overhaul Islamabad',
+        'Transmission Fluid Flush',
+        'DSG Repair Pakistan',
+        'Car Transmission Specialist'
+      ],
+      keywordParagraph: 'Solve gear slipping, harsh shifting, and transmission fluid leaks with specialized Transmission Repair in Islamabad and Automatic Gearbox Repair in Rawalpindi. HyperTune Garage is equipped for complete CVT Transmission Service, factory-spec Transmission Fluid Flush, Dual Clutch Repair for Honda Vezel / Grace, and advanced DSG Repair in Pakistan. If your vehicle experiences gear slipping, delayed engagement, or transmission errors, our Car Transmission Specialists provide complete gearbox overhaul solutions to guarantee smooth gear shifts.',
+    },
+  },
+
+  {
+    id: 'vehicle-wrap',
+    slug: 'vehicle-wrap',
+    title: 'Vehicle Wrap',
+    shortDesc: 'Full car vinyl wrapping studio in Islamabad & Rawalpindi. Transform your vehicle\'s look with matte, satin, gloss, chrome, and carbon fiber vinyl wraps while preserving original factory paint.',
+    fullDesc: 'HyperTune Garage is Islamabad and Rawalpindi’s premier studio for custom Vehicle Wrapping and vinyl styling. Whether you desire a complete color change wrap (matte black, satin gray, gloss Nardo, metallic), roof wraps, carbon fiber accents, or custom vinyl wraps, our skilled technicians disassemble trim for seamless, bubble-free installation with wrapped edge tucking.',
+    subServices: ['Vehicle Wrap', 'Color Change Vinyl Wrap', 'Matte & Satin Wrap', 'Carbon Fiber & Roof Wrap'],
+    subServicePrices: [
+      { name: 'Body Wrap (Vehicle Wrapping)', price: 'PKR 1,000 to 250,000' }
+    ],
+    category: 'wrap',
+    icon: 'Shield',
+    image: images.serviceWrap,
+    priceRange: 'PKR 1,000 - PKR 250,000',
+    estimatedTime: '2 - 4 Days',
+    isFeatured: true,
+    symptoms: [
+      'Desire to transform vehicle color without permanently altering factory paint',
+      'Sun-faded roof or bonnet paint requiring stylish black or carbon wrap contrast',
+      'Desire for specialized finishes like satin metallic, matte, or gloss colors',
+      'Protection of original body paint against minor road debris and sun oxidation',
+    ],
+    keyBenefits: [
+      'Endless custom color & texture options (Matte, Satin, Gloss, Chrome, Carbon Fiber)',
+      'Non-destructive installation preserving original factory paint underneath',
+      'Fully reversible — peel off cleanly anytime with zero paint damage',
+      'Protects factory clear coat from UV fading, light scratches, and rain stains',
+    ],
+    whyChooseUs: [
+      'Clean, dust-controlled wrapping booth with heat-gun post-curing',
+      'Imported automotive cast vinyl films (Avery Dennison, 3M, KPMF, Inozetek)',
+      'Master wrap artists trained in corner wrapping and edge tucking',
+      'Disassembly of handles, lights, and emblems for seamless finish',
+    ],
+    processSteps: [
+      { title: '1. Surface Cleaning & Trim Prep', desc: 'Thorough clay bar cleaning, alcohol wipe down, and careful removal of emblems/handles.' },
+      { title: '2. Panel Measurement & Film Cutting', desc: 'Precision panel sizing of premium cast vinyl wrap rolls.' },
+      { title: '3. Heat Application & Seamless Wrapping', desc: 'Squeegee installation with heat stretching for smooth contour wrapping.' },
+      { title: '4. Deep Edge Tucking & Trim Reassembly', desc: 'Tuck edges behind body panels to prevent lifting and reinstall vehicle trim.' },
+      { title: '5. Post-Heating & Inspection Audit', desc: 'Post-heat film edges to 90°C to lock memory shape and ensure 100% adhesion.' },
+    ],
+    faqs: [
+      {
+        question: 'Will a vehicle wrap damage my car’s original paint?',
+        answer: 'No! Automotive cast vinyl wraps protect your original paint from UV rays and road debris. When removed professionally, the wrap leaves no adhesive residue and leaves paint intact.',
+      },
+      {
+        question: 'How long does a car wrap last in Pakistan?',
+        answer: 'High-quality cast vinyl wraps (Avery/3M) last 3 to 5 years under Pakistani sun when cared for properly.',
+      },
+    ],
+    seo: {
+      seoTitle: 'Car Wrap & Vehicle Vinyl Wrapping Islamabad | HyperTune',
+      metaDescription: 'Custom car vinyl wrapping studio in Islamabad & Rawalpindi. Full color change, matte, satin, gloss & carbon fiber wraps.',
+      h1Heading: 'Car Wrap & Vehicle Vinyl Wrapping Studio in Islamabad & Rawalpindi',
+      targetKeywords: [
+        'Car Wrap Islamabad',
+        'Car Wrap Rawalpindi',
+        'Vehicle Wrap Islamabad',
+        'Vinyl Wrap Islamabad',
+        'Best Car Wrap Islamabad',
+        'Color Change Wrap',
+        'Matte Car Wrap',
+        'Gloss Vinyl Wrap',
+        'Satin Car Wrap',
+        'Carbon Fiber Wrap'
+      ],
+      keywordParagraph: 'Transform your car\'s style with premier Car Wrap and Vehicle Vinyl Wrapping in Islamabad & Rawalpindi. HyperTune Garage offers custom color change wraps, matte black, satin metallic, gloss finishes, roof wraps, and carbon fiber wraps with seamless edge tucking.',
+    },
+  },
+
+  {
+    id: 'body-repair-paint',
+    slug: 'body-repair-paint',
+    title: 'Body Repair & Paint',
+    shortDesc: 'Premier auto body repair, collision denting, paintless dent repair (PDR), and computerized paint booth spraying in Islamabad & Rawalpindi with exact European spectrophotometer color matching.',
+    fullDesc: 'HyperTune Garage operates a state-of-the-art auto body repair and thermal spray paint booth facility in Islamabad and Rawalpindi. From major insurance collision repair and chassis alignment to minor dent removal, scratch repair, and bumper restoration, our skilled craftsmen deliver factory-smooth panel alignment and 100% computerized paint color matching.',
+    subServices: ['Body Repair & Paint', 'Collision Denting & Frame Alignment', 'Paintless Dent Repair (PDR)', 'Thermal Paint Booth Spraying'],
+    subServicePrices: [
+      { name: 'Body Repair & Paint', price: 'PKR 5,000 to 100,000' }
+    ],
+    category: 'body',
+    icon: 'Palette',
+    image: images.servicePaint,
+    priceRange: 'PKR 5,000 - PKR 100,000',
+    estimatedTime: '2 - 5 Days',
+    isFeatured: true,
+    symptoms: [
+      'Accident collision damage, dented doors, crushed bumpers, or misaligned panels',
+      'Deep paint scratches, key marks, or scraped quarter panels',
+      'Faded, sun-damaged, or peeling clear coat requiring complete car repainting',
+      'Insurance claim repair requiring professional bodyshop documentation',
+    ],
+    keyBenefits: [
+      'Dust-Free Down-Draft Thermal Paint Booth for mirror glass paint clarity',
+      'Computerized Spectrophotometer Color Matching (100% exact factory paint match)',
+      'Paintless Dent Repair (PDR) for minor door dings preserving original paint',
+      'High-grade Standox / PPG European paint systems with 5-year color warranty',
+    ],
+    whyChooseUs: [
+      'Precision hydraulic frame alignment bench for collision restoration',
+      'Experienced denters and painters with decades of automotive bodyshop expertise',
+      'Direct assistance with insurance claim paperwork and surveyor approvals',
+      'Seamless panel gaps matching original factory assembly line standards',
+    ],
+    processSteps: [
+      { title: '1. Damage Assessment & Panel Pulling', desc: 'Inspect frame straightness, pull dented panels, or replace damaged sheet metal.' },
+      { title: '2. Surface Prep & Primer Application', desc: 'Sanding, leveling filler, anti-corrosion primer coating, and guide coat block sanding.' },
+      { title: '3. Computerized Spectrophotometer Match', desc: 'Scan paint color code and mix premium European basecoat to exact factory tint.' },
+      { title: '4. Thermal Bake Spray Booth Application', desc: 'Spray basecoat and high-solid clear coat inside dust-free 70°C heated spray booth.' },
+      { title: '5. Wet Sanding & Mirror Polish', desc: '2000-3000 grit wet sanding and dual-action machine polishing for a flawless finish.' },
+    ],
+    faqs: [
+      {
+        question: 'How do you guarantee an exact paint color match?',
+        answer: 'We use digital spectrophotometers to analyze your car’s current paint tint and mix custom Standox European paint formulas to guarantee 100% seamless color matching.',
+      },
+      {
+        question: 'Do you help with car insurance collision claims?',
+        answer: 'Yes, we assist with insurance claim estimates, surveyor inspections, and repairs for all major insurance companies in Pakistan.',
+      },
+    ],
+    seo: {
+      seoTitle: 'Car Body Repair, Denting & Paint Shop Islamabad | HyperTune',
+      metaDescription: 'Premier car body repair, denting, paint booth repainting & collision restoration in Islamabad & Rawalpindi. 100% exact color matching.',
+      h1Heading: 'Car Body Repair, Denting & Painting in Islamabad & Rawalpindi',
+      targetKeywords: [
+        'Car Body Repair Islamabad',
+        'Car Body Repair Rawalpindi',
+        'Car Paint Shop Islamabad',
+        'Best Car Paint Shop Rawalpindi',
+        'Dent Repair Islamabad',
+        'Bumper Repair',
+        'Collision Repair',
+        'Paint Booth Service'
+      ],
+      keywordParagraph: 'Restore your vehicle\'s factory body condition with top-rated Car Body Repair in Islamabad & Rawalpindi. HyperTune Garage features the best car paint shop in Islamabad and Rawalpindi with a dust-free paint booth for dent repair, scratch removal, bumper repair, and insurance claim collision repair with 100% computerized color matching.',
+    },
+  },
+
+  {
+    id: 'body-modification',
+    slug: 'body-modification',
+    title: 'Body Modification',
+    shortDesc: 'Custom car body modification studio in Islamabad & Rawalpindi. Supply & installation of wide body kits, spoilers, front lips, side skirts, rear diffusers, carbon fiber hoods, and sports bumpers.',
+    fullDesc: 'HyperTune Garage is Islamabad and Rawalpindi’s dedicated workshop for custom Body Modification and sports car aerodynamic upgrades. From wide body conversions, lip kits, side skirts, and rear diffusers to carbon fiber hoods, trunk spoilers, performance bumpers, and custom grille upgrades, we turn your car design vision into reality.',
+    subServices: ['Body Modification', 'Wide Body Kit Installation', 'Front Lips & Side Skirts', 'Rear Diffuser & Spoilers', 'Carbon Fiber Body Parts'],
+    subServicePrices: [
+      { name: 'Body Modification', price: 'PKR 5,000 to 300,000' }
+    ],
+    category: 'modification',
+    icon: 'Wrench',
+    image: images.serviceBodyMod,
+    priceRange: 'PKR 5,000 - PKR 300,000',
+    estimatedTime: '2 - 7 Days',
+    isFeatured: true,
+    symptoms: [
+      'Desire to upgrade stock car appearance with aggressive sports body kits',
+      'Desire for functional aerodynamic downforce (front lips, rear diffusers, GT wings)',
+      'Installation of aftermarket fiberglass, ABS plastic, or carbon fiber body components',
+      'Custom stance, wide wheel arch fender flare modification, and fitment',
+    ],
+    keyBenefits: [
+      'Custom Body Kit Installation (Wide body kits, front lips, side skirts, rear diffusers)',
+      'Precision test-fitting and panel alignment before paint matching',
+      'Expertise in carbon fiber, ABS plastic, and composite fiberglass body parts',
+      'Flawless paint matching in our thermal bake spray booth',
+    ],
+    whyChooseUs: [
+      'Experienced body modification technicians skilled in custom body styling',
+      'Imported body kits & custom fabrication facilities',
+      'Seamless integration with original mounting points and sensor locations',
+      'Complete custom car transformations under one roof',
+    ],
+    processSteps: [
+      { title: '1. Design Consultation & Part Inspection', desc: 'Inspect body kit material quality, test fitment on vehicle, and align mounting brackets.' },
+      { title: '2. Panel Trimming & Custom Fitment', desc: 'Custom modify panel gaps, arches, and body lines for perfect flush fitment.' },
+      { title: '3. Surface Preparation & Color Matching', desc: 'Prime, sand, and spectrophotometer color-match body kit components to car paint.' },
+      { title: '4. Thermal Bake Painting', desc: 'Spray body kit components inside dust-free thermal bake paint booth.' },
+      { title: '5. Final Assembly & Polish', desc: 'Mount body kit securely, re-connect PDC sensors, and machine polish for delivery.' },
+    ],
+    faqs: [
+      {
+        question: 'What body kit modifications do you install?',
+        answer: 'We supply and install front lips, side skirts, rear diffusers, trunk spoilers, carbon fiber hoods, wide body kits, sports bumpers, and custom grilles for sedans, sports cars, and SUVs.',
+      },
+      {
+        question: 'Can you custom paint match body kits to my vehicle?',
+        answer: 'Yes! All body kit parts are painted in our computerized thermal spray booth to match your car’s exact paint shade.',
+      },
+    ],
+    seo: {
+      seoTitle: 'Car Body Modification & Body Kit Installation Islamabad | HyperTune',
+      metaDescription: 'Custom car body modification studio in Islamabad & Rawalpindi. Body kits, wide body fitment, spoilers, front lips, diffusers & carbon fiber parts.',
+      h1Heading: 'Car Body Modification & Body Kit Studio in Islamabad & Rawalpindi',
+      targetKeywords: [
+        'Car Modification Islamabad',
+        'Car Customization Rawalpindi',
+        'Body Kit Installation Islamabad',
+        'Wide Body Kit',
+        'Spoiler Installation',
+        'Front Lip Installation',
+        'Side Skirts',
+        'Rear Diffuser',
+        'Performance Body Parts'
+      ],
+      keywordParagraph: 'Upgrade your vehicle with expert Car Body Modification and Body Kit Installation in Islamabad & Rawalpindi. HyperTune Garage specializes in sports car modifications, wide body kits, spoilers, front lips, side skirts, rear diffusers, carbon fiber body parts, and aggressive aerodynamic styling.',
+    },
+  },
+
+  {
+    id: 'hybrid-ev-battery-services',
+    slug: 'hybrid-ev-battery-services',
+    title: 'Hybrid & EV Battery Services',
+    shortDesc: 'State-of-the-art hybrid battery diagnostic, cell balancing, reconditioning, and replacement laboratory in Islamabad & Rawalpindi for Toyota Prius, Aqua, Vezel, Insight, and Lexus hybrids.',
+    fullDesc: 'HyperTune Garage operates a dedicated Hybrid & EV Battery Diagnostics & Cell Reconditioning Laboratory serving vehicle owners across Islamabad and Rawalpindi. We perform computerized cell internal resistance testing, individual NiMH and Li-ion module balancing, high-voltage cooling fan cleaning, inverter coolant flushing, and genuine OEM cell replacements with warranty.',
+    subServices: ['Cell Balancing & Health Audit', 'Hybrid Battery Cell Replacement', 'High Voltage Cooling Fan Cleaning', 'Inverter & Converter Servicing'],
+    subServicePrices: [
+      { name: 'Cell Balancing & Health Audit', price: 'PKR 15,000' },
+      { name: 'Cell Replacement & Reconditioning', price: 'PKR 45,000 to 180,000' }
+    ],
+    category: 'hybrid',
+    icon: 'Zap',
+    image: images.serviceCooling,
+    priceRange: 'PKR 15,000 - PKR 180,000',
+    estimatedTime: '1 - 2 Days',
+    isFeatured: true,
+    symptoms: [
+      'Red Triangle of Death or Hybrid System Warning Light illuminated on dashboard',
+      'Engine running continuously with rapid battery charge level fluctuations',
+      'Reduced fuel economy (km/l dropping significantly)',
+      'High voltage cooling fan running loudly in backseat area',
+    ],
+    keyBenefits: [
+      'Computerized computerized cell charge/discharge balancing restores up to 90% capacity',
+      'Fraction of the cost compared to dealership complete battery replacement',
+      'Genuine high-grade Japanese replacement cells with performance warranty',
+      'High-voltage inverter cooling maintenance prevents catastrophic inverter failure',
+    ],
+    whyChooseUs: [
+      'Certified high-voltage hybrid electrical safety technicians',
+      'Automated multi-channel computerized battery load tester rigs',
+      'Dust-free clean cell assembly laboratory',
+      'Comprehensive warranty provided on cell reconditioning and packs',
+    ],
+    processSteps: [
+      { title: '1. Computerized Hybrid ECU Diagnostics', desc: 'Read high-voltage battery ECU error codes, block voltage deltas, and temperature sensors.' },
+      { title: '2. Battery Pack Disassembly & Safety Isolation', desc: 'Isolate high-voltage service plug and disassemble pack in clean room laboratory.' },
+      { title: '3. Individual Cell Internal Resistance Test', desc: 'Test each cell module under load to identify weak or shorted cells.' },
+      { title: '4. Module Replacement & Balance Cycle', desc: 'Replace faulty cells and perform multi-cycle automated charge/discharge balancing.' },
+      { title: '5. Cooling System Cleaning & Installation', desc: 'Clean high-voltage cooling duct fan, clear error codes, and perform road test.' },
+    ],
+    faqs: [
+      {
+        question: 'Can individual hybrid battery cells be replaced without buying a full battery?',
+        answer: 'Yes! Our diagnostic equipment identifies the exact weak cells, allowing us to replace only bad modules and balance the pack at a fraction of dealership prices.',
+      },
+      {
+        question: 'How often should hybrid battery cooling fans be cleaned?',
+        answer: 'We recommend cleaning the cooling fan and air duct every 20,000 km to prevent thermal degradation of hybrid battery cells.',
+      },
+    ],
+    seo: {
+      seoTitle: 'Hybrid Battery Repair & Cell Reconditioning Islamabad & Rawalpindi | HyperTune',
+      metaDescription: 'Expert hybrid battery repair, cell balancing, and replacement laboratory in Islamabad & Rawalpindi for Toyota, Honda, and Nissan hybrids.',
+      h1Heading: 'Hybrid Battery Diagnostic & Reconditioning Laboratory',
+      targetKeywords: [
+        'Hybrid battery repair Islamabad',
+        'Hybrid battery Rawalpindi',
+        'Prius battery repair',
+        'Aqua hybrid battery',
+        'Vezel hybrid battery',
+        'Hybrid cell balancing',
+        'Lexus hybrid battery service'
+      ],
+      keywordParagraph: 'Restore hybrid battery performance and fuel efficiency with expert Hybrid Battery Repair, Cell Balancing, and High-Voltage Diagnostics at HyperTune Garage in Islamabad & Rawalpindi.',
+    },
+  },
+
+  {
+    id: 'car-ac-electrical',
+    slug: 'car-ac-electrical',
+    title: 'Car AC & Auto Electrical Systems',
+    shortDesc: 'Precision car AC gas recharging, compressor overhaul, cooling coil leak repair, and computerized wiring diagnostics in Islamabad & Rawalpindi for all Japanese, European, and local vehicles.',
+    fullDesc: 'HyperTune Garage provides full-service Automotive Air Conditioning & Electrical System repair in Islamabad & Rawalpindi. We utilize automated AC refrigerant recovery/recharge stations, digital leak detectors, and oscilloscope wiring analysis to solve cooling loss, compressor noise, electrical short circuits, and sensor glitches.',
+    subServices: ['AC Gas Recharging (R134a / R1234yf)', 'Compressor & Clutch Overhaul', 'Evaporator / Cooling Coil Leak Repair', 'Computerized Electrical & Wiring Trace'],
+    subServicePrices: [
+      { name: 'AC Service & Gas Top-Up', price: 'PKR 5,000 to 12,000' },
+      { name: 'Compressor & Cooling Coil Overhaul', price: 'PKR 18,000 to 45,000' }
+    ],
+    category: 'electrical',
+    icon: 'Wind',
+    image: images.serviceElectrical,
+    priceRange: 'PKR 5,000 - PKR 45,000',
+    estimatedTime: '1 Day',
+    isFeatured: true,
+    symptoms: [
+      'AC blowing warm or tepid air during hot summer weather',
+      'Squealing or grinding noise when AC compressor engages',
+      'Unpleasant musty odor coming from dashboard air vents',
+      'Intermittent battery drain, blown fuses, or malfunctioning lights and windows',
+    ],
+    keyBenefits: [
+      'Ice-cold cabin cooling restored to factory sub-zero standards',
+      '100% pure high-grade R134a and R1234yf synthetic refrigerant used',
+      'Nitrogen pressure testing identifies microscopic leaks without damaging components',
+      'Professional electrical diagnosis prevents short circuit risks',
+    ],
+    whyChooseUs: [
+      'Automated digital AC recovery and recharge station',
+      'Electronic halogen leak detectors and UV dye inspection',
+      'Genuine OEM AC compressors, expansion valves, and condensers in stock',
+      'Certified auto-electricians with oscilloscope diagnostic tools',
+    ],
+    processSteps: [
+      { title: '1. Temperature & Pressure Gauge Audit', desc: 'Measure vent output temperature and high/low side system refrigerant pressures.' },
+      { title: '2. Nitrogen Pressure & UV Leak Detection', desc: 'Pressurize system with dry nitrogen gas to pinpoint evaporator or hose leaks.' },
+      { title: '3. Vacuum Evacuation & Moisture Removal', desc: 'Pull deep vacuum to boil off moisture and contaminants inside cooling lines.' },
+      { title: '4. PAG Oil & Refrigerant Automated Recharge', desc: 'Inject fresh PAG compressor oil and exact weight of pure R134a refrigerant.' },
+      { title: '5. Cabin Filter Swap & Odor Disinfection', desc: 'Swap cabin air micro-filter and perform antibacterial ozone vent treatment.' },
+    ],
+    faqs: [
+      {
+        question: 'Why is my car AC blowing warm air even after gas top-up?',
+        answer: 'A simple gas top-up will leak out if there is a pinhole leak in the cooling coil, condenser, or compressor seals. We perform nitrogen pressure testing to locate and repair the leak permanently.',
+      },
+      {
+        question: 'How long does a car AC overhaul take?',
+        answer: 'Standard AC service and gas recharge takes 1 to 2 hours. A full dashboard dashboard cooling coil replacement is completed within 1 day.',
+      },
+    ],
+    seo: {
+      seoTitle: 'Car AC Repair & Auto Electrical Islamabad & Rawalpindi | HyperTune',
+      metaDescription: 'Complete car AC gas recharging, compressor repair, cooling coil replacement, and electrical diagnostics in Islamabad & Rawalpindi.',
+      h1Heading: 'Car AC Repair & Automotive Electrical Specialist',
+      targetKeywords: [
+        'Car AC repair Islamabad',
+        'Car AC gas Rawalpindi',
+        'Car compressor repair',
+        'Cooling coil replacement',
+        'Auto electrician Islamabad',
+        'Car wiring repair Rawalpindi'
+      ],
+      keywordParagraph: 'Beat the summer heat with expert Car AC Repair, Refrigerant Gas Recharging, Compressor Overhaul, and Wiring Diagnostics in Islamabad & Rawalpindi at HyperTune Garage.',
+    },
+  }
+];
+
+/**
+ * Helper function to match any main category slug or alias/sub-service slug
+ */
+export function getServiceBySlug(slug?: string): ServiceItem {
+  if (!slug) return servicesData[0];
+  const normalized = slug.toLowerCase().trim();
+
+  // Direct slug match
+  const direct = servicesData.find((s) => s.slug === normalized || s.id === normalized);
+  if (direct) return direct;
+
+  // Keyword / Subservice alias resolution
+  if (normalized.includes('ppf') || normalized.includes('paint-protection')) {
+    return servicesData.find((s) => s.id === 'paint-protection-film-ppf') || servicesData[0];
+  }
+
+  if (normalized.includes('detailing') || normalized.includes('ceramic') || normalized.includes('polishing')) {
+    return servicesData.find((s) => s.id === 'car-detailing') || servicesData[1];
+  }
+
+  if (normalized.includes('wrap') || normalized.includes('vinyl')) {
+    return servicesData.find((s) => s.id === 'vehicle-wrap') || servicesData[7];
+  }
+
+  if (normalized.includes('body-repair') || normalized.includes('paint') || normalized.includes('dent') || normalized.includes('collision')) {
+    return servicesData.find((s) => s.id === 'body-repair-paint') || servicesData[8];
+  }
+
+  if (normalized.includes('modification') || normalized.includes('body-kit') || normalized.includes('spoiler') || normalized.includes('lip')) {
+    return servicesData.find((s) => s.id === 'body-modification') || servicesData[9];
+  }
+
+  if (normalized.includes('hybrid') || normalized.includes('prius') || normalized.includes('battery')) {
+    return servicesData.find((s) => s.id === 'hybrid-ev-battery-services') || servicesData[10];
+  }
+
+  if (normalized.includes('ac') || normalized.includes('air-condition') || normalized.includes('electric') || normalized.includes('wiring') || normalized.includes('compressor')) {
+    return servicesData.find((s) => s.id === 'car-ac-electrical') || servicesData[11];
+  }
+
+  if (normalized.includes('diagnostic') || normalized.includes('inspection') || normalized.includes('scan')) {
+    return servicesData.find((s) => s.id === 'inspection-diagnostics') || servicesData[3];
+  }
+
+  if (normalized.includes('transmission') || normalized.includes('gear') || normalized.includes('cvt') || normalized.includes('clutch')) {
+    return servicesData.find((s) => s.id === 'transmission-drivetrain') || servicesData[6];
+  }
+
+  if (normalized.includes('brake') || normalized.includes('suspension') || normalized.includes('steering') || normalized.includes('alignment')) {
+    return servicesData.find((s) => s.id === 'brake-suspension-steering') || servicesData[5];
+  }
+
+  if (normalized.includes('maintenance') || normalized.includes('oil') || normalized.includes('periodic')) {
+    return servicesData.find((s) => s.id === 'maintenance-servicing') || servicesData[4];
+  }
+
+  if (normalized.includes('engine') || normalized.includes('overhaul') || normalized.includes('cooling') || normalized.includes('radiator')) {
+    return servicesData.find((s) => s.id === 'engine-services') || servicesData[2];
+  }
+
+  return servicesData[0];
+}
