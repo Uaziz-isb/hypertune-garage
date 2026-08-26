@@ -745,7 +745,6 @@ async function startServer() {
   }
 }
 
-const readyPromise = startServer();
+startServer();
 
-export { readyPromise };
 export default app;
