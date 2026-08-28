@@ -72,7 +72,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate, onOpenBo
       <SEOHead
         title="Automotive Services Catalogue | HyperTune Garage Islamabad & Rawalpindi"
         description="Explore 12 specialized automotive service categories in Islamabad & Rawalpindi: Engine Overhaul, Maintenance, Brakes, Transmission, Hybrid Battery, AC & Electrical, Diagnostics, Body Repair, PPF & Detailing."
-        canonicalUrl="https://hypertunegarage.pk/services/"
+        canonicalUrl="https://hypertunegarage.pk/services"
       />
 
       {/* Header Banner */}

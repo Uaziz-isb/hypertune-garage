@@ -85,7 +85,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/api"
+      "destination": "/index.html"
     }
   ]
 }

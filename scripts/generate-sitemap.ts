@@ -1,59 +1,63 @@
+// Regenerates public/sitemap.xml (into dist/) from the real data files -- the exact
+// same source of truth used by App.tsx routing and the prerender script. Run as part
+// of `npm run build` so the sitemap can never drift out of sync with real routes again
+// (previously it was missing all 24 /brands/ pages, 12 of 14 blog posts, and used a
+// stale location slug).
 import fs from 'fs';
 import path from 'path';
-import { getSiteRoutes } from '../src/utils/routes';
+import { fileURLToPath } from 'url';
+import { servicesData } from '../src/data/servicesData';
+import { brandsData } from '../src/data/brandsData';
+import { locationsData } from '../src/data/locationsData';
+import { blogData } from '../src/data/blogData';
 
-export function generateSitemapXml(baseUrl: string = 'https://hypertunegarage.pk'): string {
-  const routes = getSiteRoutes();
-  const today = new Date().toISOString().split('T')[0];
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const distDir = path.resolve(__dirname, '../dist');
+const baseUrl = 'https://hypertunegarage.pk';
+const today = new Date().toISOString().slice(0, 10);
 
-  let xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-`;
+interface Entry {
+  loc: string;
+  changefreq: string;
+  priority: string;
+}
 
-  routes.forEach((route) => {
-    const loc = route.path === '/' ? `${baseUrl}/` : `${baseUrl}${route.path}`;
-    xml += `  <url>
-    <loc>${loc}</loc>
+const entries: Entry[] = [
+  { loc: '/', changefreq: 'daily', priority: '1.0' },
+  { loc: '/about/', changefreq: 'weekly', priority: '0.8' },
+  { loc: '/services/', changefreq: 'weekly', priority: '0.9' },
+  { loc: '/brands/', changefreq: 'weekly', priority: '0.9' },
+  { loc: '/locations/', changefreq: 'weekly', priority: '0.8' },
+  { loc: '/gallery/', changefreq: 'weekly', priority: '0.7' },
+  { loc: '/testimonials/', changefreq: 'weekly', priority: '0.6' },
+  { loc: '/faq/', changefreq: 'monthly', priority: '0.6' },
+  { loc: '/contact/', changefreq: 'monthly', priority: '0.7' },
+  { loc: '/blog/', changefreq: 'weekly', priority: '0.8' },
+  { loc: '/warranty-specs/', changefreq: 'monthly', priority: '0.5' },
+  { loc: '/privacy-policy/', changefreq: 'yearly', priority: '0.3' },
+  { loc: '/terms-conditions/', changefreq: 'yearly', priority: '0.3' },
+  { loc: '/sitemap/', changefreq: 'monthly', priority: '0.3' },
+  ...servicesData.map((s) => ({ loc: `/services/${s.slug}/`, changefreq: 'monthly', priority: '0.85' })),
+  ...brandsData.map((b) => ({ loc: `/brands/${b.slug}/`, changefreq: 'monthly', priority: '0.85' })),
+  ...locationsData.map((l) => ({ loc: `/locations/${l.slug}/`, changefreq: 'monthly', priority: '0.75' })),
+  ...blogData.map((p) => ({ loc: `/blog/${p.slug}/`, changefreq: 'monthly', priority: '0.7' })),
+];
+
+const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${entries
+  .map(
+    (e) => `  <url>
+    <loc>${baseUrl}${e.loc}</loc>
     <lastmod>${today}</lastmod>
-    <changefreq>${route.changefreq}</changefreq>
-    <priority>${route.priority}</priority>
-  </url>
+    <changefreq>${e.changefreq}</changefreq>
+    <priority>${e.priority}</priority>
+  </url>`
+  )
+  .join('\n')}
+</urlset>
 `;
-  });
 
-  xml += `</urlset>\n`;
-  return xml;
-}
-
-async function run() {
-  const xml = generateSitemapXml('https://hypertunegarage.pk');
-  const distDir = path.resolve(process.cwd(), 'dist');
-  const publicDir = path.resolve(process.cwd(), 'public');
-
-  if (!fs.existsSync(distDir)) {
-    fs.mkdirSync(distDir, { recursive: true });
-  }
-
-  const distSitemapPath = path.join(distDir, 'sitemap.xml');
-  const publicSitemapPath = path.join(publicDir, 'sitemap.xml');
-
-  fs.writeFileSync(distSitemapPath, xml, 'utf-8');
-  fs.writeFileSync(publicSitemapPath, xml, 'utf-8');
-
-  const routes = getSiteRoutes();
-  console.log(`✅ Successfully generated sitemap.xml with ${routes.length} URLs from:`);
-  console.log(`   - 15 Core static routes`);
-  console.log(`   - 12 Dynamic services (from servicesData.ts)`);
-  console.log(`   - 24 Dynamic brand specialists (from brandsData.ts)`);
-  console.log(`   - 2 Workshop locations (from locationsData.ts)`);
-  console.log(`   - 14 Technical blog guides (from blogData.ts)`);
-  console.log(`📁 Saved to ${distSitemapPath} & ${publicSitemapPath}`);
-}
-
-run().catch((err) => {
-  console.error('❌ Error generating sitemap:', err);
-  process.exit(1);
-});
+fs.mkdirSync(distDir, { recursive: true });
+fs.writeFileSync(path.join(distDir, 'sitemap.xml'), xml, 'utf-8');
+console.log(`[sitemap] Wrote ${entries.length} URLs to dist/sitemap.xml`);

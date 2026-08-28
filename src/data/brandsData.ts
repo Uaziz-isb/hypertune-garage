@@ -3,267 +3,6 @@ import { images } from './images';
 
 export const brandsData: BrandItem[] = [
   {
-    id: 'bmw-specialist',
-    slug: 'bmw-repair-islamabad',
-    name: 'BMW Repair & Maintenance Specialist Islamabad',
-    tagline: 'BMW ISTA Diagnostics, VANOS & Valvetronic Servicing, B48/B58 Engine Overhauls & ZF 8-Speed Fluid Service',
-    logoBadge: 'BMW Master Specialist',
-    heroImage: images.galleryBmwBrakes,
-    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent German automotive workshop specializing in BMW M-Power, xDrive, and core Series models (3 Series, 5 Series, 7 Series, X3, X5, X6, X7, M3, M5). Utilizing genuine BMW ISTA-D diagnostic software, ISTA-P programming suites, and dealer-grade optical ICOM interfaces, our factory-certified BMW technicians perform precision diagnostics, VANOS camshaft timing solenoid repairs, Valvetronic eccentric shaft servo motor calibration, cooling system thermostat replacements, oil leak remediations (valve cover, oil filter housing gasket), and ZF 8HP transmission servicing backed by written warranties.',
-    modelsCovered: [
-      'BMW 3 Series (E46, E90, F30, G20 - 318i, 320i, 328i, 330e Hybrid, M340i)',
-      'BMW 5 Series (E60, F10, G30 - 520i, 528i, 530e, 535i, 540i, M550i)',
-      'BMW 7 Series (F01/F02, G11/G12 - 730Li, 740Li, 750Li, ActiveHybrid 7)',
-      'BMW X-Series (X1, X3, X5 E70/F15/G05, X6, X7 xDrive)',
-      'BMW M Performance (M2, M3, M4, M5, X5M with S55/S58/S63 V8 Biturbo)',
-      'BMW 4 Series & 6 Series Gran Coupé',
-    ],
-    diagnosticSoftware: 'BMW ISTA-D (Integrated Service Technical Application - Diagnostics), BMW ISTA-P (Programming), ICOM Next Optical Diagnostic Rig',
-    commonIssuesAndFixes: [
-      {
-        issue: 'BMW "Drivetrain Malfunction - Drive Moderately" & Limp Mode',
-        solution: 'ISTA deep fault code analysis, electronic wastegate solenoid actuator testing, high-pressure fuel pump (HPFP) pressure test, and ignition coil/spark plug replacement.',
-      },
-      {
-        issue: 'Oil Filter Housing & Valve Cover Gasket Leaks (N20, B48, N55)',
-        solution: 'OEM gasket replacement with high-temp sealant, PCV integrated valve cover renewal, and ultrasonic engine bay degreasing.',
-      },
-      {
-        issue: 'VANOS Camshaft Solenoid & Valvetronic Servo Motor Failure',
-        solution: 'Replacement of VANOS solenoids with genuine BMW parts, eccentric shaft wear inspection, and electronic ISTA limit learning calibration.',
-      },
-      {
-        issue: 'ZF 8-Speed / 6-Speed Automatic Transmission Jerk & Sluggish Shifts',
-        solution: 'Full transmission fluid flush using genuine ZF Lifeguard Fluid 8, pan filter replacement, and mechatronic adaptive shift recalibration.',
-      },
-    ],
-    specializedServices: [
-      'BMW ISTA-D & ISTA-P Factory Dealer Diagnostics & ECU Module Coding',
-      'B38 / B48 / B58 / N20 / N55 / S58 Master Engine Rebuilding & Timing Calibration',
-      'ZF 6HP & 8HP Transmission Fluid Flush & Mechatronic Repair',
-      'BMW Dynamic Drive & Adaptive M Air Suspension Calibration',
-      'VANOS Camshaft Phasing & Valvetronic Eccentric Shaft Rebuild',
-      'High-Pressure Fuel System (HPFP) & Piezo/Solenoid Injector Flow Testing',
-      'Self-Healing TPU Paint Protection Film (PPF) for BMW M & X Series',
-    ],
-    pricingRange: 'PKR 6,000 - PKR 350,000 (Based on Model & Service)',
-    faqs: [
-      {
-        question: 'Do you use genuine BMW ISTA diagnostic software in Islamabad?',
-        answer: 'Yes, we use the official BMW ISTA diagnostic and programming system with ICOM Next interfaces to diagnose all electrical, mechanical, and hybrid systems down to individual sensor telemetry.',
-      },
-      {
-        question: 'How often should the ZF 8HP transmission fluid be changed on a BMW?',
-        answer: 'While marketed as lifetime by some dealers, ZF explicitly recommends transmission fluid and integrated pan-filter replacement every 60,000 to 80,000 km to prevent solenoid wear and shuddering.',
-      },
-      {
-        question: 'Can you fix oil leaks on BMW N20, B48, and B58 engines in Islamabad?',
-        answer: 'Yes! We specialize in resolving oil filter housing gasket, valve cover, oil pan, and turbocharger oil feed line leaks using OEM Victor Reinz and genuine BMW seals.',
-      },
-    ],
-    seo: {
-      title: 'BMW Repair & Maintenance Specialist Islamabad | HyperTune Garage',
-      description: 'Certified BMW workshop in Islamabad & Rawalpindi. BMW ISTA diagnostics, 3 Series, 5 Series, 7 Series, X5, M Power engine overhauls & ZF transmission service.',
-      keywords: ['bmw repair islamabad', 'bmw specialist rawalpindi', 'bmw ista diagnostics', 'bmw workshop police foundation', 'bmw transmission service', 'bmw oil leak repair'],
-    },
-  },
-  {
-    id: 'mercedes-specialist',
-    slug: 'mercedes-service-islamabad',
-    name: 'Mercedes-Benz Luxury & AMG Specialist Workshop Islamabad',
-    tagline: 'Mercedes Xentry Diagnostics, 7G/9G-Tronic Gearbox Care, Airmatic Air Suspension & M274/M264 Engine Tuning',
-    logoBadge: 'Mercedes-Benz Master Specialist',
-    heroImage: images.galleryAmgDetailing,
-    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent workshop for Mercedes-Benz passenger, luxury limousine, and AMG performance vehicles. Armed with dealer-grade Mercedes-Benz Xentry Diagnostics, DAS, Star Diagnosis hardware, and certified European master engineers, we deliver comprehensive solutions for C-Class, E-Class, S-Class, CLA, GLA, GLC, GLE, GLS, and G-Wagon (G63 AMG). From diagnosing Check Engine fault codes and repairing Airmatic air suspension strut leaks to 7G-Tronic and 9G-Tronic automatic transmission overhauls, M274/M264 camshaft timing gear rattle fixes, and genuine 229.5 / 229.51 engine oil servicing, we provide dealership-level precision at honest rates.',
-    modelsCovered: [
-      'Mercedes-Benz C-Class (W203, W204, W205, W206 - C180, C200, C250, C300, C43 AMG)',
-      'Mercedes-Benz E-Class (W211, W212, W213 - E200, E220d, E250, E300, E350e Hybrid, E63s)',
-      'Mercedes-Benz S-Class (W221, W222, W223 - S350, S400 Hybrid, S500, S560, S580, Maybach)',
-      'Mercedes-Benz SUV Family (GLA, GLB, GLC, GLE, GLS, ML350, GL500)',
-      'Mercedes-AMG Performance Line (A45, C63s, E63s, G63 AMG 4.0L V8 Biturbo)',
-      'Mercedes-Benz CLA & CLS 4-Door Coupé',
-    ],
-    diagnosticSoftware: 'Mercedes-Benz Xentry Diagnosis, DAS (Diagnostic Assistance System), Star Diagnosis C4/C6 DoIP Rig',
-    commonIssuesAndFixes: [
-      {
-        issue: 'Mercedes-Benz Airmatic Air Suspension "Car Rising / Stop Vehicle Too Low" Error',
-        solution: 'Xentry pneumatic pressure testing, air suspension compressor rebuild, air strut bellow replacement, and computerized 4-corner ride height calibration.',
-      },
-      {
-        issue: 'M274 / M271 Camshaft Timing Adjuster Rattle on Cold Start',
-        solution: 'Replacement of worn intake/exhaust camshaft sprockets, hydraulic timing chain tensioner renewal, and laser timing lock alignment.',
-      },
-      {
-        issue: '7G-Tronic / 9G-Tronic Transmission Hesitation & Conductor Plate Fault',
-        solution: 'Conductor plate speed sensor repair, valve body solenoid ultrasonic cleaning, genuine Mercedes ATF fluid flush, and adaptation drive.',
-      },
-      {
-        issue: 'Auxiliary Battery Malfunction Warning on Dashboard',
-        solution: 'Auxiliary capacitor / AGM voltage regulator replacement and electronic SAM module error reset.',
-      },
-    ],
-    specializedServices: [
-      'Mercedes-Benz Xentry Dealer Diagnostics & SCN Online Module Coding',
-      'M270 / M274 / M264 / M276 / M177 AMG V8 Biturbo Master Engine Overhaul',
-      '7G-Tronic (722.9) & 9G-Tronic (725.0) Transmission Fluid Flush & Valve Body Repair',
-      'Airmatic & ABC (Active Body Control) Hydraulic/Air Suspension Overhaul',
-      'Mercedes ME9 / MED17 Engine ECU Diagnostics & Electronic Key/EIS Repair',
-      'Distronic Plus Radar, 360-Camera & Active Brake Assist Calibration',
-      'Self-Healing TPU Paint Protection Film (PPF) for Mercedes G63 & S-Class',
-    ],
-    pricingRange: 'PKR 6,000 - PKR 380,000 (Based on Model & Service)',
-    faqs: [
-      {
-        question: 'Do you have official Mercedes Xentry Star Diagnostic scanners in Islamabad?',
-        answer: 'Yes, our workshop uses authentic Mercedes-Benz Xentry and DAS Star Diagnostic hardware with DoIP support for comprehensive electronic scanning, live telemetry, and module adaptations.',
-      },
-      {
-        question: 'How do you fix Mercedes Airmatic suspension problems in Islamabad?',
-        answer: 'We diagnose pneumatic leaks with soapy nitrogen leak testing and Xentry pressure readouts, repair leaking air springs or valve blocks, and calibrate level sensors.',
-      },
-      {
-        question: 'Can you service Mercedes-AMG G63 and V8 Biturbo engines in Rawalpindi / Islamabad?',
-        answer: 'Yes! Our master technicians are trained on Mercedes-AMG Handcrafted V8 biturbo engines (M177/M178), twin turbochargers, and high-performance carbon-ceramic braking systems.',
-      },
-    ],
-    seo: {
-      title: 'Mercedes-Benz Repair & Service Specialist Islamabad | HyperTune Garage',
-      description: 'Certified Mercedes-Benz workshop in Islamabad & Rawalpindi. Mercedes Xentry diagnostics, C-Class, E-Class, S-Class, G-Wagon, AMG repairs, Airmatic & 7G/9G transmission care.',
-      keywords: ['mercedes repair islamabad', 'mercedes specialist rawalpindi', 'mercedes xentry diagnostic', 'mercedes workshop police foundation', 'mercedes airmatic repair', 'mercedes amg service'],
-    },
-  },
-  {
-    id: 'audi-specialist',
-    slug: 'audi-repair-islamabad',
-    name: 'Audi & German VAG Specialist Workshop Islamabad',
-    tagline: 'ODIS Factory Diagnostics, S-Tronic / DSG Dual-Clutch Repair, EA888 TFSI Carbon Cleaning & Quattro Servicing',
-    logoBadge: 'Audi Master Specialist',
-    heroImage: images.galleryAudiModule,
-    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist for Audi and Volkswagen Group (VAG) vehicles. Equipped with the official Audi ODIS (Offboard Diagnostic Information System), VCDS / VAG-COM interfaces, and VAS specialty toolsets, our certified European technicians deliver comprehensive engineering solutions for Audi A3, A4, A5, A6, A7, A8, Q2, Q3, Q5, Q7, Q8, TT, and RS models. From diagnosing TFSI carbon buildup and solving excessive oil consumption to rebuilding S-Tronic (DQ200, DQ250, DQ381, DQ500, DL501) mechatronic units and servicing Quattro differentials, we provide dealer-grade expertise.',
-    modelsCovered: [
-      'Audi A3 & S3 (1.4L TFSI, 1.8L TFSI, 2.0L TFSI S-Tronic)',
-      'Audi A4 & S4 (B7, B8, B9 - 1.8T, 2.0 TFSI, 3.0T V6 Supercharged / Turbo)',
-      'Audi A5 & S5 Sportback / Coupé',
-      'Audi A6 & A7 (C6, C7, C8 - 2.0 TFSI, 3.0 TFSI V6 Quattro)',
-      'Audi A8 & A8L Flagship Sedan (Matrix LED, Quattro)',
-      'Audi Q-Series (Q2, Q3, Q5, Q7 3.0T / TDI, Q8 Coupé SUV)',
-      'Audi RS Performance (RS3, RS5, RS6 Avant, RS7, Audi R8 V10)',
-    ],
-    diagnosticSoftware: 'Audi ODIS (Offboard Diagnostic Information System), VAS 6154 DoIP Interface & Ross-Tech VCDS Hex-V2',
-    commonIssuesAndFixes: [
-      {
-        issue: 'Audi S-Tronic / DSG Transmission "Gearbox Malfunction: You Can Continue Driving"',
-        solution: 'Mechatronic electronic circuit board repair, solenoid valve pressure recalibration, dual clutch pack clearance adjustment, and high-performance DSG fluid flush.',
-      },
-      {
-        issue: 'EA888 1.8L / 2.0L TFSI High Engine Oil Consumption & Timing Chain Stretch',
-        solution: 'Installation of updated OEM piston ring assemblies, revised PCV oil separator, timing chain and hydraulic tensioner replacement with phase calibration.',
-      },
-      {
-        issue: 'Intake Valve Carbon Fouling Causing Cold-Start Misfires (P0300)',
-        solution: 'Precision walnut shell abrasive blasting of intake ports and valves, ultrasonic direct-injection fuel injector cleansing, and throttle body relearn.',
-      },
-      {
-        issue: 'Quattro Haldex / Torsen All-Wheel Drive Binding Noise & Shudder',
-        solution: 'Quattro differential and Haldex AWD coupling fluid flush with OEM Audi G055 / G060 gear lubricants and clutch pump filter cleaning.',
-      },
-    ],
-    specializedServices: [
-      'Audi ODIS Factory Dealer Diagnostics & Component Protection Removal',
-      'EA888 Gen 2 / Gen 3 / Gen 4 TFSI Master Engine Rebuilding & Oil Consumption Rectification',
-      'S-Tronic & DSG (DQ200 / DQ250 / DQ381 / DL501) Mechatronic Unit Overhaul',
-      'Intake Valve Direct-Injection Carbon Removal via Walnut Blasting',
-      'Adaptive Air Suspension Compressor & Strut Calibration',
-      'Quattro AWD Differential & Transfer Case Servicing with OEM Fluids',
-      'Self-Healing TPU Paint Protection Film (PPF) for Audi A5, A7 & Q8',
-    ],
-    pricingRange: 'PKR 5,000 - PKR 360,000 (Based on Model & Service)',
-    faqs: [
-      {
-        question: 'Do you have official Audi ODIS dealer diagnostic tools in Islamabad?',
-        answer: 'Yes! We use the genuine Audi ODIS diagnostic platform with VAS 6154 hardware for deep module flashing, parameter adaptation, and guided fault finding.',
-      },
-      {
-        question: 'How do you fix DSG / S-Tronic gearbox shudder and mechatronic faults on Audi cars?',
-        answer: 'We specialize in repairing the mechatronic electronic solenoid circuit board, replacing worn multi-plate dual clutch packs, and completing clutch kiss-point adaptation.',
-      },
-      {
-        question: 'Why do Audi TFSI engines consume oil and how does HyperTune fix it?',
-        answer: 'Older EA888 engines have thin oil control rings. We rebuild the engine with modified OEM pistons and updated wider scraper rings, eliminating oil consumption permanently.',
-      },
-    ],
-    seo: {
-      title: 'Audi Repair & Maintenance Specialist Islamabad | HyperTune Garage',
-      description: 'Certified Audi workshop in Islamabad & Rawalpindi. Audi ODIS diagnostics, A3, A4, A6, A7, Q7, S-Tronic DSG transmission repair, TFSI engine overhaul & Quattro service.',
-      keywords: ['audi repair islamabad', 'audi specialist rawalpindi', 'audi odis diagnostic', 'audi dsg repair', 'audi stronic workshop', 'audi tfsi carbon cleaning'],
-    },
-  },
-  {
-    id: 'porsche-specialist',
-    slug: 'porsche-repair-islamabad',
-    name: 'Porsche High-Performance Engineering Specialist Islamabad',
-    tagline: 'Porsche PIWIS III Diagnostics, PDK Dual-Clutch Gearbox Overhauls, PASM Air Suspension & 911 / Cayenne Care',
-    logoBadge: 'Porsche Master Specialist',
-    heroImage: images.galleryPorscheGt3,
-    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s dedicated high-performance engineering studio for Porsche sports cars and luxury performance SUVs. Equipped with official Porsche PIWIS III dealer diagnostic rigs, specialized engine micrometer toolsets, and certified master technicians, we cater to Porsche 911 (996, 997, 991, 992), 718 Boxster & Cayman, Cayenne (9PA, 92A, 9YA - V6, S, GTS, Turbo), Panamera, Macan, and Taycan EV models. From PDK dual-clutch transmission dual-chamber fluid flushes and PASM air suspension accelerometer calibrations to V6/V8 twin-turbo cooling tube upgrades and 6-piston Brembo / PCCB ceramic brake maintenance, we deliver Stuttgart-standard precision.',
-    modelsCovered: [
-      'Porsche 911 (997, 991, 992 - Carrera, Carrera S, 4S, Turbo, Turbo S, GT3)',
-      'Porsche 718 Cayman & Boxster (2.0T, 2.5T, GTS 4.0)',
-      'Porsche Cayenne (958, 9YA - 3.0 V6, 3.6 V6, 4.8 V8, 4.0TT V8, E-Hybrid)',
-      'Porsche Panamera (Panamera 4, 4S, GTS, Turbo, Turbo S E-Hybrid)',
-      'Porsche Macan (Macan 2.0T, Macan S 3.0T, Macan GTS, Turbo)',
-      'Porsche Taycan 100% Electric (4S, Turbo, Turbo S)',
-    ],
-    diagnosticSoftware: 'Porsche PIWIS Tester III (Porsche Integrated Workshop Information System) & VCI Diagnostic Rig',
-    commonIssuesAndFixes: [
-      {
-        issue: 'Porsche PDK Transmission "Transmission Emergency Run" Warning',
-        solution: 'PDK dual-chamber fluid flush (gear & clutch oil), distance sensor / temperature sensor telemetry check, and PIWIS clutch calibration relearn.',
-      },
-      {
-        issue: 'Cayenne / Panamera V8 Coolant Valley Pipe Leak & Engine Overheating',
-        solution: 'Replacement of plastic valley coolant pipes with upgraded aluminum lines, thermostat housing renewal, and vacuum bleed with genuine Porsche G40 coolant.',
-      },
-      {
-        issue: 'PASM (Porsche Active Suspension Management) Chassis System Fault',
-        solution: 'PASM valve solenoid testing, air spring strut bladder leak detection, height sensor replacement, and PIWIS corner weighting calibration.',
-      },
-      {
-        issue: 'Porsche Direct-Injection (DFI) Spark Plug & Ignition Coil Breakdown',
-        solution: 'Installation of genuine Porsche OEM Bosch/Beru spark plugs, heat shield verification, and high-energy coil pack replacement.',
-      },
-    ],
-    specializedServices: [
-      'Porsche PIWIS III Dealer-Level Diagnostics, Live Telemetry & Handover Handshake',
-      'PDK (Porsche Doppelkupplung) 7-Speed & 8-Speed Fluid Servicing & Calibration',
-      'Flat-6 (3.0T, 3.8L, 4.0L) & V6 / V8 Twin-Turbo Master Engine Rebuilding',
-      'PASM (Porsche Active Suspension Management) Air Suspension Calibration & Strut Repair',
-      'Porsche Ceramic Composite Brakes (PCCB) & Multi-Piston Brembo Caliper Overhaul',
-      'Sport Chrono Package Launch Control Telemetry & ECU Stage 1/2 Tuning',
-      'Self-Healing TPU Paint Protection Film (PPF) for Porsche 911, GT3, Cayman & Cayenne',
-    ],
-    pricingRange: 'PKR 10,000 - PKR 500,000 (Based on Model & Service)',
-    faqs: [
-      {
-        question: 'Do you have official Porsche PIWIS III diagnostic equipment in Islamabad?',
-        answer: 'Yes! We possess the official Porsche PIWIS Tester III system, allowing dealer-grade guided diagnostics, PDK transmission calibrations, PASM resets, and ECU coding on all modern Porsche models.',
-      },
-      {
-        question: 'How do you service Porsche PDK transmissions in Pakistan?',
-        answer: 'We use genuine Porsche dual-chamber transmission lubricants (PDK clutch oil and hypoid gear oil), change the integrated sump pan filter, and run computerized PIWIS adaptation cycles.',
-      },
-      {
-        question: 'Can you install Paint Protection Film (PPF) on Porsche sports cars and GT3s?',
-        answer: 'Yes! Our climate-controlled cleanroom studio applies pre-cut computer CAD plotter TPU self-healing PPF with wrapped edges, protecting expensive factory Porsche paint from high-speed motorway stone chips.',
-      },
-    ],
-    seo: {
-      title: 'Porsche Repair & High-Performance Specialist Islamabad | HyperTune Garage',
-      description: 'Premier Porsche workshop in Islamabad & Rawalpindi. Porsche PIWIS III diagnostics, 911, Cayenne, Panamera, Macan & Cayman service, PDK transmission fluid flush & PASM repair.',
-      keywords: ['porsche repair islamabad', 'porsche specialist rawalpindi', 'porsche piwis diagnostic', 'porsche 911 service', 'porsche cayenne maintenance', 'porsche pdk transmission repair'],
-    },
-  },
-  {
     id: 'toyota-specialist',
     slug: 'toyota-repair-islamabad',
     name: 'Toyota Repair & Maintenance Specialist Islamabad',
@@ -336,7 +75,7 @@ export const brandsData: BrandItem[] = [
     name: 'Honda Turbo & Hybrid Specialist Workshop Islamabad',
     tagline: 'HDS Factory Diagnostics, Civic 1.5 Turbo Care, Vezel i-DCD Dual-Clutch Repair & Steering Calibration',
     logoBadge: 'Honda Master Specialist',
-    heroImage: images.brandHondaService,
+    heroImage: images.galleryBmwBrakes,
     overview: 'HyperTune Garage is the go-to independent specialist workshop for Honda vehicles in Islamabad and Rawalpindi. Equipped with official Honda Diagnostic System (HDS) and GNA600 scan rigs, our certified technicians excel in solving complex issues across Civic Turbo (Gen 10 & Gen 11), Vezel Hybrid i-DCD dual-clutch transmissions, City, Accord, and CR-V. From intake valve walnut blasting for direct-injection carbon buildup to Vezel dual-clutch actuator fluid bleeding and electronic power steering (EPS) rack repairs, we ensure smooth, responsive performance.',
     modelsCovered: [
       'Honda Civic (Reborn, Rebirth, Turbo RS Gen 10 1.5T, Gen 11 1.5T Oriel/RS)',
@@ -403,7 +142,7 @@ export const brandsData: BrandItem[] = [
     name: 'Suzuki Repair & Servicing Specialist Islamabad',
     tagline: 'SDT-II Computer Diagnostics, AGS Actuator Calibration, K-Series Engine Rebuild & Suspension Overhaul',
     logoBadge: 'Suzuki Master Specialist',
-    heroImage: images.brandSuzukiService,
+    heroImage: images.galleryCayenneEngine,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s trusted specialist for all Suzuki domestic and imported Japanese kei cars. Utilizing the official Suzuki SDT-II scanner, our expert technicians troubleshoot Alto (660cc & AGS), Cultus AGS, Swift (1.3L & 1.2L Boosterjet), Wagon R, Jimny 4x4, and imported Japanese models (Hustler, Spacia, Every). We offer swift AGS clutch actuator repairs, K-Series engine tune-ups, AC cooling overhauls, and robust suspension rebuilding.',
     modelsCovered: [
       'Suzuki Alto (660cc Japanese, 660cc PKDM VXR/VXL/AGS)',
@@ -469,7 +208,7 @@ export const brandsData: BrandItem[] = [
     name: 'Hyundai Specialist Repair & Service Center Islamabad',
     tagline: 'Hyundai GDS Factory Diagnostics, Tucson DCT Overhaul, Elantra & Santa Fe Servicing',
     logoBadge: 'Hyundai Master Specialist',
-    heroImage: images.brandHyundaiService,
+    heroImage: images.galleryStronicBox,
     overview: 'HyperTune Garage provides dealer-level independent engineering for the entire Hyundai lineup in Islamabad and Rawalpindi. Equipped with the official Hyundai Global Diagnostic System (GDS-Mobile), our master technicians specialize in Elantra (1.6L/2.0L), Tucson (AWD/FWD), Sonata (2.0L/2.5L), Santa Fe Hybrid, Staria, and Porter H-100. From diagnosing Dual-Clutch Transmission (DCT) shudder and theta/nu engine maintenance to 8-speed automatic gearbox fluid flushes and electronic parking brake calibration, we ensure factory refinement.',
     modelsCovered: [
       'Hyundai Tucson (2.0L MPI Petrol AWD/FWD & 1.6T DCT)',
@@ -535,7 +274,7 @@ export const brandsData: BrandItem[] = [
     name: 'Kia Specialist Workshop & Maintenance Islamabad',
     tagline: 'Kia KDS Dealer Diagnostics, Sportage AWD Servicing, Sorento V6, Stinger & Carnival Care',
     logoBadge: 'Kia Master Specialist',
-    heroImage: images.brandKiaService,
+    heroImage: images.galleryBakeBooth,
     overview: 'HyperTune Garage provides premium independent servicing and technical repairs for Kia vehicles across Islamabad and Rawalpindi. Utilizing the official Kia Diagnostic System (KDS) scanner, our technicians expertly maintain Sportage (Alpha, FWD, AWD), Sorento (2.4L & 3.5L V6), Grand Carnival (3.5L V6 & 2.2L Diesel), Stonic, Picanto, and EV6. From fixing Sportage AWD coupling binding to 8-speed transmission servicing, panoramic sunroof track repairs, and ceramic brake upgrades, we ensure top-tier performance.',
     modelsCovered: [
       'Kia Sportage (Alpha, FWD, AWD 2.0L Nu MPI & 1.6T)',
@@ -601,7 +340,7 @@ export const brandsData: BrandItem[] = [
     name: 'Changan Specialist Workshop & Tuning Islamabad',
     tagline: 'Changan Diagnostic System, Oshan X7 Blue Core Turbo, Alsvin DCT Servicing & Karvaan Fleet Care',
     logoBadge: 'Changan Master Specialist',
-    heroImage: images.brandChanganService,
+    heroImage: images.serviceCooling,
     overview: 'HyperTune Garage is the leading independent Changan specialist in Islamabad and Rawalpindi. Equipped with Changan OEM computerized diagnostic rigs, our technicians expertly maintain Oshan X7 (FutureSense & Comfort 1.5T), Alsvin (1.3L & 1.5L Dual-Clutch), Karvaan, and Deepal EV/EREV models. We provide specialized care for Changan’s high-output Blue Core turbocharged engines, 7-speed wet dual-clutch transmissions (DCT), ADAS sensor calibrations, and suspension tuning.',
     modelsCovered: [
       'Changan Oshan X7 (1.5L Blue Core Turbo 7-Speed Wet DCT FutureSense/Comfort)',
@@ -666,7 +405,7 @@ export const brandsData: BrandItem[] = [
     name: 'Haval & Great Wall Motors Specialist Islamabad',
     tagline: 'GWM Factory Diagnostics, H6 1.5T / 2.0T / HEV Hybrid Care & Jolion Dual-Clutch Servicing',
     logoBadge: 'Haval Master Specialist',
-    heroImage: images.brandHavalService,
+    heroImage: images.havalStudioAfter,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier destination for Haval and Great Wall Motors (GWM) SUV maintenance. Equipped with official GWM Diagnostic interfaces, our technicians deliver comprehensive mechanical, electrical, and hybrid battery servicing for Haval H6 (1.5T Petrol, 2.0T AWD, and 1.5T HEV Hybrid), Haval Jolion, GWM Tank 500, and Ora 03 EV. From hybrid battery cooling fan cleaning and 7-speed wet DCT transmission servicing to Level 2 ADAS calibrations and PPF protection, we ensure optimal luxury SUV performance.',
     modelsCovered: [
       'Haval H6 (1.5L Turbo Petrol, 2.0L Turbo AWD 7-Speed DCT)',
@@ -731,7 +470,7 @@ export const brandsData: BrandItem[] = [
     name: 'MG Specialist Workshop & Electric Care Islamabad',
     tagline: 'MG VDS Factory Diagnostics, MG HS 1.5T / Trophy, MG ZS EV & MG 4 / MG 5 Servicing',
     logoBadge: 'MG Master Specialist',
-    heroImage: images.brandMgService,
+    heroImage: images.galleryBmwBrakes,
     overview: 'HyperTune Garage is the premier independent MG (Morris Garages) repair and maintenance facility in Islamabad and Rawalpindi. Equipped with the official MG VDS diagnostic platform, our technicians expertly maintain MG HS (1.5T Turbo, 2.0T Trophy AWD, and PHEV Plug-in Hybrid), MG ZS, MG ZS EV, MG 4 Electric, and MG 5. From dual-clutch transmission clutch pack calibration and turbo wastegate actuator adjustments to high-voltage EV battery diagnostics, we provide dealer-quality care.',
     modelsCovered: [
       'MG HS (1.5L Turbo Petrol, 2.0L Turbo Trophy AWD)',
@@ -796,7 +535,7 @@ export const brandsData: BrandItem[] = [
     name: 'BYD EV & Hybrid Specialist Workshop Islamabad',
     tagline: 'BYD VDS3.0 Diagnostics, Blade Battery SOH Scans, Atto 3, Seal, Sealion & Song Plus Care',
     logoBadge: 'BYD Master Specialist',
-    heroImage: images.brandBydService,
+    heroImage: images.galleryHybridBench,
     overview: 'HyperTune Garage is Pakistan’s leading high-voltage electric and hybrid engineering workshop for BYD (Build Your Dreams) vehicles in Islamabad and Rawalpindi. Equipped with the official BYD VDS3.0 diagnostic suite, high-voltage insulation testers, and master electrical engineers, we service BYD Atto 3, BYD Seal, BYD Sealion 6, BYD Dolphin, and BYD Song Plus DM-i. From Blade Battery State-of-Health (SOH) evaluations and Cell-to-Body (CTB) chassis inspections to DM-i dual-mode hybrid engine overhauls, high-voltage cooling flushes, and ceramic detailing, we deliver certified EV care.',
     modelsCovered: [
       'BYD Atto 3 (e-Platform 3.0 Blade Battery Crossover)',
@@ -860,7 +599,7 @@ export const brandsData: BrandItem[] = [
     name: 'Chery Specialist Workshop & Turbo Care Islamabad',
     tagline: 'Chery ACTECO Diagnostics, Tiggo 4 Pro, Tiggo 8 Pro 1.6T / PHEV & Omoda 5 Servicing',
     logoBadge: 'Chery Master Specialist',
-    heroImage: images.brandCheryService,
+    heroImage: images.galleryCayenneEngine,
     overview: 'HyperTune Garage provides expert independent maintenance and diagnostic services for Chery and Omoda vehicles in Islamabad and Rawalpindi. Equipped with official Chery Diagnostic test rigs, our certified mechanics specialize in Tiggo 4 Pro (1.5L Turbo CVT), Tiggo 8 Pro (1.6L TGDI 7-Speed DCT & 2.0T AWD), Tiggo 8 Pro e+ PHEV, and Omoda 5. From ACTECO TGDI engine carbon cleaning to dual-clutch transmission adaptations and suspension overhauls, we keep your luxury crossover running at peak efficiency.',
     modelsCovered: [
       'Chery Tiggo 8 Pro (1.6L TGDI Direct Injection 7-Speed Wet DCT 7-Seater)',
@@ -925,7 +664,7 @@ export const brandsData: BrandItem[] = [
     name: 'Isuzu D-Max & Commercial 4x4 Specialist Islamabad',
     tagline: 'Isuzu G-IDSS Factory Diagnostics, D-Max 3.0L / 1.9L Ddi BluePower, V-Cross & NPR Fleet Care',
     logoBadge: 'Isuzu Master Specialist',
-    heroImage: images.brandIsuzuService,
+    heroImage: images.galleryStronicBox,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent diesel and 4x4 workshop for Isuzu vehicles. Utilizing the official Isuzu G-IDSS (Global Isuzu Diagnostic Service System), our master diesel mechanics specialize in Isuzu D-Max (V-Cross 3.0L 4JJ1/4JJ3, Hi-Spark 2.5L, and 1.9L Ddi BluePower), Isuzu MU-X, and Isuzu N-Series/NPR commercial fleets. We excel in 4JJ1/4JJ3 common rail diesel tuning, turbocharger rebuilding, heavy-duty 4x4 transmission servicing, leaf spring suspension upgrades, and PPF armor.',
     modelsCovered: [
       'Isuzu D-Max V-Cross (3.0L 4JJ1-TCX & 4JJ3-TCX 4x4 AT/MT)',
@@ -989,7 +728,7 @@ export const brandsData: BrandItem[] = [
     name: 'FAW Specialist Repair & Fleet Maintenance Islamabad',
     tagline: 'FAW Diagnostic System, V2 1.3L VCT-i, Carrier, X-PV & Commercial Truck Care',
     logoBadge: 'FAW Master Specialist',
-    heroImage: images.brandFawService,
+    heroImage: images.galleryBakeBooth,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s dedicated specialist workshop for FAW passenger vehicles and light commercial fleets. Equipped with FAW computerized diagnostic scanners and experienced automotive technicians, we expertly service FAW V2 (1.3L VCT-i), FAW X-PV, FAW Carrier, and FAW J5P/J6 heavy commercial trucks. We provide affordable, durable solutions for engine rebuilds, gearbox overhauls, cooling system upgrades, and suspension repairs.',
     modelsCovered: [
       'FAW V2 (1.3L 16-Valve VCT-i Petrol Hatchback)',
@@ -1053,7 +792,7 @@ export const brandsData: BrandItem[] = [
     name: 'Daihatsu Japanese Kei Car Specialist Islamabad',
     tagline: 'Daihatsu DS-II Diagnostics, Mira, Move, Cast, Hijet, Coure & Terios 4x4 Care',
     logoBadge: 'Daihatsu Master Specialist',
-    heroImage: images.brandDaihatsuService,
+    heroImage: images.serviceCooling,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s trusted specialist for all Daihatsu Japanese imported kei cars and PKDM classics. Equipped with the official Daihatsu DS-II / DST-i scanner interface, our mechanics expertly service Mira (ES & Custom), Move (Custom Turbo), Cast, Tanto, Hijet, Coure, and Terios 4x4. From solving Eco-Idle start-stop battery glitches and CVT transmission whining to KF-VE/KF-DET engine rebuilds and suspension overhauls, we keep your Japanese mini car purring.',
     modelsCovered: [
       'Daihatsu Mira (ES, Custom, Gino, Cocoa 660cc KF-VE Engine)',
@@ -1120,7 +859,7 @@ export const brandsData: BrandItem[] = [
     name: 'Nissan Specialist Workshop & Xtronic CVT Care Islamabad',
     tagline: 'Nissan Consult-III Plus Diagnostics, Xtronic CVT Overhaul, Note e-Power, X-Trail, Juke & Patrol V8',
     logoBadge: 'Nissan Master Specialist',
-    heroImage: images.brandNissanService,
+    heroImage: images.galleryBmwBrakes,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent Nissan specialist workshop. Equipped with the official Nissan Consult-III Plus diagnostic platform, our technicians expertly service Nissan Note e-Power (Hybrid Series), X-Trail (T31/T32/T33 Hybrid), Dayz/Roox, Juke (1.6T Turbo), Sunny, Kicks, Navara, and Patrol Y62 V8. We specialize in solving Nissan Xtronic CVT transmission judders, e-Power generator inverter calibrations, VK56 V8 engine rebuilds, and direct injection carbon cleaning.',
     modelsCovered: [
       'Nissan Note e-Power (HE12 / E13 1.2L Range-Extender Series Hybrid)',
@@ -1187,7 +926,7 @@ export const brandsData: BrandItem[] = [
     name: 'Mitsubishi 4x4 & JDM Specialist Islamabad',
     tagline: 'MUT-III SE Diagnostics, Pajero V6 / Turbo Diesel, Outlander PHEV, Lancer & Ek Wagon Care',
     logoBadge: 'Mitsubishi Master Specialist',
-    heroImage: images.brandMitsubishiService,
+    heroImage: images.galleryCayenneEngine,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent Mitsubishi workshop. Equipped with the official Mitsubishi MUT-III SE diagnostic scanner, our technicians expertly maintain Pajero (3.0L/3.5L/3.8L V6 & 3.2L 4M41 Di-D), Outlander PHEV (Plug-in Hybrid), Lancer (1.3L/1.6L & Evolution), Mirage, Ek Wagon/Ek Custom, and Triton/L200. From Super Select 4WD-II actuator repairs and Outlander high-voltage hybrid diagnostics to GDI intake valve cleaning, we provide dealer-quality engineering.',
     modelsCovered: [
       'Mitsubishi Pajero (V60, V70, V80, V90 - 3.0L, 3.5L, 3.8L V6 & 3.2L Di-D Diesel)',
@@ -1253,7 +992,7 @@ export const brandsData: BrandItem[] = [
     name: 'Mazda SkyActiv Specialist Workshop Islamabad',
     tagline: 'Mazda IDS Diagnostics, SkyActiv-G / SkyActiv-D Engine Care, Mazda 3, Mazda 6, CX-3 & CX-5',
     logoBadge: 'Mazda Master Specialist',
-    heroImage: images.brandMazdaService,
+    heroImage: images.galleryStronicBox,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist workshop for Mazda SkyActiv vehicles. Equipped with official Mazda IDS and M-MDS diagnostic interfaces, our certified technicians expertly service Mazda 3 (Axela), Mazda 6 (Atenza), CX-3, CX-5, CX-9, Demio (Mazda 2), and MX-5 Miata. From de-coking SkyActiv-G high-compression direct injection intake valves and servicing 6-speed SkyActiv-Drive automatic transmissions to i-ELOOP capacitor checks and suspension tuning, we deliver refined driving dynamics.',
     modelsCovered: [
       'Mazda 3 / Axela (1.5L, 2.0L, 2.5L SkyActiv-G & SkyActiv-X)',
@@ -1319,7 +1058,7 @@ export const brandsData: BrandItem[] = [
     name: 'Subaru Boxer & Symmetrical AWD Specialist Islamabad',
     tagline: 'Subaru SSM4 Diagnostics, Boxer Engine Overhaul, Lineartronic CVT & WRX STI Care',
     logoBadge: 'Subaru Master Specialist',
-    heroImage: images.brandSubaruService,
+    heroImage: images.galleryBakeBooth,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist for Subaru Boxer engines and Symmetrical All-Wheel Drive (AWD) vehicles. Utilizing official Subaru Select Monitor (SSM4) diagnostic software, our master mechanics service Subaru Forester, Outback, XV / Crosstrek, Legacy, Impreza, WRX, and WRX STI. From Boxer head gasket overhauls and Lineartronic CVT high-torque fluid servicing to turbocharger calibrations and symmetrical AWD differential maintenance, we guarantee master-level precision.',
     modelsCovered: [
       'Subaru Forester (SJ, SK - 2.0L, 2.5L FB20/FB25 & 2.0T FA20 DIT AWD)',
@@ -1384,7 +1123,7 @@ export const brandsData: BrandItem[] = [
     name: 'Lexus Luxury & Hybrid Specialist Workshop Islamabad',
     tagline: 'Lexus Techstream Diagnostics, P0A80 Hybrid Battery Balancing, LX600/LX570, RX & ES Care',
     logoBadge: 'Lexus Master Specialist',
-    heroImage: images.brandLexusService,
+    heroImage: images.serviceCooling,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent luxury workshop for Lexus vehicles. Utilizing official Lexus Techstream diagnostics, Denso scanning rigs, and master automotive engineers, we provide white-glove servicing for Lexus LX570, LX600 (3.5TT V6), RX450h / RX350, NX300h, ES300h / ES350, GX460, and LS500 / LS600h. From high-voltage hybrid battery balancing and Active Height Control (AHC) hydraulic air suspension overhauls to Mark Levinson audio electronics and concourse detailing, we ensure unparalleled luxury.',
     modelsCovered: [
       'Lexus LX Series (LX470, LX570 5.7L V8 3UR-FE, LX600 3.5L Twin-Turbo V35A, LX500d)',
@@ -1450,7 +1189,7 @@ export const brandsData: BrandItem[] = [
     name: 'Land Rover Specialist Workshop Islamabad',
     tagline: 'JLR Pathfinder & SDD Diagnostics, Defender, Discovery, Air Suspension & Terrain Response Overhaul',
     logoBadge: 'Land Rover Master Specialist',
-    heroImage: images.brandLandRoverService,
+    heroImage: images.galleryBmwBrakes,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist workshop for Land Rover vehicles. Equipped with official Jaguar Land Rover (JLR) Pathfinder and SDD diagnostic suites, our master British automotive technicians specialize in Defender (New Defender L663, Classic Td5/Puma), Discovery (3, 4, 5), and Freelander. From solving Terrain Response 4x4 faults and air suspension valve block leaks to Ingenium 2.0T/3.0T timing chain overhauls and ZF 8HP transmission fluid flushes, we deliver dealer-level mastery.',
     modelsCovered: [
       'Land Rover Defender (New L663 - P300, P400 MHEV, D250, D300, V8 5.0L Supercharged)',
@@ -1514,7 +1253,7 @@ export const brandsData: BrandItem[] = [
     name: 'Range Rover Specialist Workshop Islamabad',
     tagline: 'JLR Pathfinder Diagnostics, Vogue, Sport, Velar, Evoque & Air Suspension Mastery',
     logoBadge: 'Range Rover Master Specialist',
-    heroImage: images.brandRangeRoverService,
+    heroImage: images.galleryCayenneEngine,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s dedicated luxury destination for Range Rover repair and maintenance. Utilizing official JLR Pathfinder and SDD diagnostic suites with factory-trained master technicians, we service Range Rover Vogue (L322, L405, L460), Range Rover Sport (L320, L494, L461), Range Rover Velar, and Range Rover Evoque. From resolving Dynamic Air Suspension sagging and Supercharged V8 cooling issues to ZF 8-speed gearbox overhauls, deployable side-step motor repairs, and concourse PPF wrapping, we deliver unmatched prestige care.',
     modelsCovered: [
       'Range Rover Vogue / Autobiography (L322, L405, L460 - 3.0L D/P, 4.4L SDV8, 5.0L V8 Supercharged, 4.4L Twin-Turbo V8)',
@@ -1578,7 +1317,7 @@ export const brandsData: BrandItem[] = [
     name: 'Jeep 4x4 & American SUV Specialist Islamabad',
     tagline: 'Chrysler wiTECH 2.0 Diagnostics, Wrangler, Grand Cherokee, Hemi V8 & Quadra-Trac Servicing',
     logoBadge: 'Jeep Master Specialist',
-    heroImage: images.brandJeepService,
+    heroImage: images.galleryStronicBox,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist for Jeep 4x4 vehicles. Equipped with the official Chrysler/Stellantis wiTECH 2.0 diagnostic system, our American SUV master technicians service Jeep Wrangler (TJ, JK, JL - 3.6L Pentastar & 2.0T), Grand Cherokee (WK, WK2, WL - 3.6L, 5.7L Hemi V8, 6.4L SRT), Gladiator, Cherokee, and Compass. From death wobble elimination and Dana 44 axle rebuilding to Quadra-Lift air suspension repairs and 8-speed automatic gearbox servicing, we guarantee heavy-duty reliability.',
     modelsCovered: [
       'Jeep Wrangler (TJ, JK, JL - 3.6L Pentastar V6, 2.0L Turbo & 392 Hemi V8 Rubicon / Sahara)',
@@ -1643,7 +1382,7 @@ export const brandsData: BrandItem[] = [
     name: 'Ford Specialist Workshop & EcoBoost Tuning Islamabad',
     tagline: 'Ford FDRS / IDS Diagnostics, F-150 Raptor, Ranger, Everest, Mustang & EcoBoost Care',
     logoBadge: 'Ford Master Specialist',
-    heroImage: images.brandFordService,
+    heroImage: images.galleryBakeBooth,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist workshop for Ford vehicles. Utilizing official Ford FDRS (Ford Diagnostic & Repair System) and IDS platforms, our technicians service Ford F-150 / F-150 Raptor, Ranger (T6 / T7 / T8 / Raptor 2.0L Bi-Turbo & 3.0L V6), Everest (Endeavour), Mustang (2.3L EcoBoost & 5.0L Coyote V8), Explorer, and EcoSport. From solving EcoBoost direct injection carbon issues and 10-speed (10R80) automatic transmission hesitations to Fox Racing suspension overhauls, we deliver heavy-duty American performance.',
     modelsCovered: [
       'Ford F-150 & F-150 Raptor (3.5L High-Output EcoBoost TT & 5.2L Supercharged V8 Raptor R)',
@@ -1708,7 +1447,7 @@ export const brandsData: BrandItem[] = [
     name: 'Chevrolet & GM Specialist Workshop Islamabad',
     tagline: 'GM GDS2 Diagnostics, Tahoe, Suburban, Silverado, Corvette, Camaro & Joy / Optra Care',
     logoBadge: 'Chevrolet Master Specialist',
-    heroImage: images.brandChevroletService,
+    heroImage: images.serviceCooling,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist for Chevrolet and General Motors (GM) vehicles. Equipped with the official GM GDS2 and Tech2 diagnostic platforms, our American vehicle technicians expertly service Tahoe, Suburban, Silverado, Corvette (C7 & C8), Camaro (SS & ZL1), Captiva, Optra, and classic Joy/Exclusive models. From Small Block V8 (5.3L, 6.2L LT1/LT4) lifter repairs and Active Fuel Management (AFM) tuning to Magnetic Ride Control calibrations and heavy-duty transmission overhauls, we ensure peak performance.',
     modelsCovered: [
       'Chevrolet Tahoe & Suburban (5.3L & 6.2L EcoTec3 V8 Luxury SUV)',
@@ -1774,7 +1513,7 @@ export const brandsData: BrandItem[] = [
     name: 'Volvo Scandinavian Safety & Hybrid Specialist Islamabad',
     tagline: 'Volvo VIDA Diagnostics, XC90, XC60, XC40 Recharge, T8 Twin-Engine & Drive-E Care',
     logoBadge: 'Volvo Master Specialist',
-    heroImage: images.brandVolvoService,
+    heroImage: images.galleryBmwBrakes,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist for Volvo Scandinavian luxury vehicles. Equipped with the official Volvo VIDA (Vehicle Information & Diagnostics for Aftersales) platform and DiCE diagnostic interface, our European master technicians expertly service Volvo XC90 (T6, T8 Twin-Engine Recharge, D5), XC60, XC40 / XC40 Recharge EV, S90, S60, and V90. From high-voltage T8 hybrid battery diagnostics and Aisin 8-speed transmission servicing to Four-C active air suspension overhauls and IntelliSafe radar calibrations, we provide Swedish engineering excellence.',
     modelsCovered: [
       'Volvo XC90 (T6 Supercharged+Turbo, T8 Twin-Engine Recharge PHEV, D5 AWD 7-Seater)',
@@ -1834,58 +1573,3 @@ export const brandsData: BrandItem[] = [
     },
   },
 ];
-
-export function getBrandBySlug(slug?: string): BrandItem | undefined {
-  if (!slug) return undefined;
-  const cleanSlug = slug.toLowerCase().replace(/^\/+|\/+$/g, '').trim();
-  
-  // Exact match
-  const exact = brandsData.find((b) => b.slug === cleanSlug || b.id === cleanSlug);
-  if (exact) return exact;
-
-  // Slug aliases
-  const aliasMap: Record<string, string> = {
-    'bmw': 'bmw-repair-islamabad',
-    'bmw-repair': 'bmw-repair-islamabad',
-    'mercedes': 'mercedes-service-islamabad',
-    'mercedes-benz': 'mercedes-service-islamabad',
-    'mercedes-repair-islamabad': 'mercedes-service-islamabad',
-    'mercedes-benz-repair-islamabad': 'mercedes-service-islamabad',
-    'audi': 'audi-repair-islamabad',
-    'porsche': 'porsche-repair-islamabad',
-    'toyota': 'toyota-repair-islamabad',
-    'honda': 'honda-service-islamabad',
-    'honda-repair-islamabad': 'honda-service-islamabad',
-    'suzuki': 'suzuki-repair-islamabad',
-    'hyundai': 'hyundai-repair-islamabad',
-    'kia': 'kia-service-islamabad',
-    'changan': 'changan-service-islamabad',
-    'haval': 'haval-service-islamabad',
-    'mg': 'mg-service-islamabad',
-    'byd': 'byd-ev-service-islamabad',
-    'chery': 'chery-service-islamabad',
-    'isuzu': 'isuzu-dmax-service-islamabad',
-    'faw': 'faw-service-islamabad',
-    'daihatsu': 'daihatsu-repair-islamabad',
-    'nissan': 'nissan-repair-islamabad',
-    'mitsubishi': 'mitsubishi-repair-islamabad',
-    'mazda': 'mazda-repair-islamabad',
-    'subaru': 'subaru-boxer-service-islamabad',
-    'lexus': 'lexus-hybrid-service-islamabad',
-    'land-rover': 'land-rover-service-islamabad',
-    'range-rover': 'range-rover-service-islamabad',
-    'jeep': 'jeep-grand-cherokee-service-islamabad',
-    'ford': 'ford-service-islamabad',
-    'chevrolet': 'chevrolet-service-islamabad',
-    'volvo': 'volvo-repair-islamabad',
-  };
-
-  const targetSlug = aliasMap[cleanSlug];
-  if (targetSlug) {
-    return brandsData.find((b) => b.slug === targetSlug);
-  }
-
-  // Partial match fallback
-  return brandsData.find((b) => b.slug.includes(cleanSlug) || cleanSlug.includes(b.slug));
-}
-

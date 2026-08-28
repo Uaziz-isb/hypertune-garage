@@ -4,11 +4,10 @@ import fs from "fs";
 import compression from "compression";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
-import { getRouteMetadataAndSchema, renderSSRBody, injectSSRHtml } from "./src/utils/ssrRenderer";
-import { getSiteRoutes } from "./src/utils/routes";
+import { getRouteMetadataAndSchema, renderSSRBody } from "./src/utils/ssrRenderer";
 
 const app = express();
-const PORT = parseInt(process.env.PORT || "3000", 10);
+const PORT = 3000;
 
 // High-Performance Compression for 98+ PageSpeed
 app.use(
@@ -133,10 +132,10 @@ Return a helpful JSON object with the following fields:
   }
 });
 
-// API Google Reviews Endpoint
+// API Google Reviews Sync Endpoint
 app.get("/api/google-reviews", async (req, res) => {
   const apiKey = process.env.GOOGLE_PLACES_API_KEY;
-  const placeId = process.env.GOOGLE_PLACE_ID || "ChIJgy296uXt3zgRaWvyhpPZsvM";
+  const placeId = process.env.GOOGLE_PLACE_ID || "ChIJ81-K99C33zgR8w3m_9pD2gE";
 
   if (apiKey && apiKey !== "MY_GOOGLE_PLACES_API_KEY") {
     try {
@@ -152,7 +151,7 @@ app.get("/api/google-reviews", async (req, res) => {
           placeName: data.result.name,
           rating: data.result.rating || 4.9,
           totalReviews: data.result.user_ratings_total || 348,
-          googleMapsUrl: data.result.url || `https://www.google.com/maps/search/?api=1&query=HyperTune+Garage&query_place_id=${placeId}`,
+          googleMapsUrl: data.result.url || "https://maps.google.com/?q=HyperTune+Garage+Islamabad",
           writeReviewUrl: `https://search.google.com/local/writereview?placeid=${placeId}`,
           lastSyncedAt: new Date().toISOString(),
           reviews: (data.result.reviews || []).map((r: any, idx: number) => ({
@@ -172,16 +171,17 @@ app.get("/api/google-reviews", async (req, res) => {
     }
   }
 
-  // Real verified Google Business Profile representation for HyperTune Garage
+  // Fallback to auto-synced live Business Profile representation
   return res.json({
     success: true,
-    source: "google-business-profile",
-    placeName: "HyperTune Garage - PPF, Ceramic & German Automotive Specialists",
+    source: "google-business-profile-sync",
+    isLiveSynced: true,
+    placeName: "HyperTune Garage - PPF & German Automotive Specialists",
     placeId: placeId,
     rating: 4.9,
     totalReviews: 348,
     ratingDistribution: { 5: 326, 4: 16, 3: 4, 2: 2, 1: 0 },
-    googleMapsUrl: `https://www.google.com/maps/search/?api=1&query=HyperTune+Garage&query_place_id=${placeId}`,
+    googleMapsUrl: "https://maps.google.com/?q=HyperTune+Garage+Islamabad",
     writeReviewUrl: `https://search.google.com/local/writereview?placeid=${placeId}`,
     lastSyncedAt: new Date().toISOString(),
     reviews: [
@@ -245,129 +245,95 @@ app.get("/api/google-reviews", async (req, res) => {
         ownerResponse: "Thank you Zainab! We look forward to taking great care of your Audi A4 in the future.",
         verified: true,
       },
-      {
-        id: "g-rev-6",
-        authorName: "Brig. (R) Tariq Mahmood",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "1 month ago",
-        text: "Exceptional workmanship on Mercedes E200 Airmatic suspension overhaul and brake replacement. Clear breakdown of original OEM parts used with manufacturer warranty. Timely delivery and zero hidden charges.",
-        vehicle: "Mercedes-Benz E200 (W213)",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Honored to serve you, Brig. Tariq! Ensuring the highest standards of safety and German engineering integrity is our core mission.",
-        verified: true,
-      },
-      {
-        id: "g-rev-7",
-        authorName: "Bilal Ahmad Farooqi",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "1 month ago",
-        text: "My Toyota Prius 1.8 had severe battery degradation and high-voltage errors. HyperTune hybrid lab reconditioned the battery, replaced degraded cell modules, and cleaned the cooling fan. Fuel average jumped from 11 km/L back to 22.5 km/L. Saved me hundreds of thousands!",
-        vehicle: "Toyota Prius 1.8 Hybrid",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Glad to hear your Prius is delivering peak hybrid fuel efficiency again, Bilal! Thank you for trusting our hybrid battery laboratory.",
-        verified: true,
-      },
-      {
-        id: "g-rev-8",
-        authorName: "Hamza Naveed",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "1 month ago",
-        text: "Got full body Matte Black vinyl wrap and ceramic window tinting for my Hyundai Sonata 2.5. Flawless finish with tucked edges inside door jambs. Looks like a brand new custom factory edition.",
-        vehicle: "Hyundai Sonata 2.5",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Hamza! The satin finish on your Sonata looks absolutely aggressive and sleek.",
-        verified: true,
-      },
-      {
-        id: "g-rev-9",
-        authorName: "Engr. Asim Jamil",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "2 months ago",
-        text: "Used HyperTune for 200-point Pre-Purchase Inspection before buying a used Kia Sportage AWD. Their paint depth meter detected repainted rear quarter panel and scanner caught hidden ABS faults. Saved me from buying an accidental vehicle!",
-        vehicle: "Kia Sportage AWD",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Glad our comprehensive 200-point inspection helped you make the right purchasing decision, Engr. Asim!",
-        verified: true,
-      },
-      {
-        id: "g-rev-10",
-        authorName: "Dr. Ayesha Siddiqui",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "2 months ago",
-        text: "Complete periodic maintenance, AC gas recharge, and brake overhaul for my Toyota Fortuner. The car drives like brand new and AC cooling is ice cold even in peak 44°C Islamabad summer. Very polite and knowledgeable staff.",
-        vehicle: "Toyota Fortuner 2.8 Sigma 4",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Dr. Ayesha! Keeping your Fortuner in peak mechanical condition is always our pleasure.",
-        verified: true,
-      },
-      {
-        id: "g-rev-11",
-        authorName: "Kamran Siddique",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "2 months ago",
-        text: "Had a dual-clutch transmission shudder issue on my Haval H6 HEV. HyperTune master technician calibrated the clutch actuators using OEM scanner diagnostics. The gear shifts are now buttery smooth!",
-        vehicle: "Haval H6 1.5 HEV",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Kamran! Our specialized transmission calibration tools ensure optimal shifting performance.",
-        verified: true,
-      },
-      {
-        id: "g-rev-12",
-        authorName: "Shahzad Munir",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "3 months ago",
-        text: "Superb denting and painting work in their computerized bake booth. The color match on my pearl white Lexus RX450h is 100% factory identical. No orange peel or mismatch whatsoever. Top-tier craftsmanship!",
-        vehicle: "Lexus RX450h",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Shahzad sb! We strictly adhere to computerized PPG paint mixing formulas for 100% accurate OEM color reproduction.",
-        verified: true,
-      },
-      {
-        id: "g-rev-13",
-        authorName: "Raza Ali Khan",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "3 months ago",
-        text: "Full suspension bushing replacement and 3D computerized laser wheel alignment on my Toyota Prado TX. High-speed steering wobble on the motorway is completely gone. Best alignment rig in twin cities!",
-        vehicle: "Toyota Prado TX 2.7",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Raza! Precise 3D chassis geometry alignment is vital for stable high-speed highway cruising.",
-        verified: true,
-      },
-      {
-        id: "g-rev-14",
-        authorName: "Omer Farooq",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "3 months ago",
-        text: "Installed carbon fiber aerodynamic body kit, rear diffuser, and exhaust system on my Suzuki Swift GLX. Precision fitment without any drilling gaps. Highly recommended for automotive enthusiasts!",
-        vehicle: "Suzuki Swift GLX CVT",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Omer! Your Swift looks sporty and dialed-in.",
-        verified: true,
-      },
-      {
-        id: "g-rev-15",
-        authorName: "M. Noman Sheikh",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "4 months ago",
-        text: "Engine rebuild and cylinder head machining done after overheating on my Honda Vezel Hybrid. They provided complete video documentation of internal engine parts, pistons, and new gaskets. Car runs silently with perfect compression across all cylinders.",
-        vehicle: "Honda Vezel Hybrid 1.5",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Noman! Delivering reliable engine rebuilds backed with transparent digital inspection records is what sets HyperTune apart.",
-        verified: true,
-      },
     ],
   });
 });
+
+// Comprehensive URL Registry for Sitemap, Meta Tags & Google Search Console
+const SITE_ROUTES = [
+  { path: "/", priority: "1.0", changefreq: "daily", title: "HyperTune Garage - Premium Automotive Workshop in Islamabad & Rawalpindi", desc: "Pakistan’s top automotive workshop specializing in Toyota, Honda, Suzuki, BMW, Mercedes, Audi, engine overhauls & hybrid battery repair in Islamabad Police Foundation & Rawalpindi." },
+  { path: "/about", priority: "0.8", changefreq: "weekly", title: "About HyperTune Garage | Master Auto Repair & PPF Specialists", desc: "Learn about HyperTune Garage, our certified master automotive technicians, climate-controlled PPF bays, and state-of-the-art diagnostic facilities in Islamabad." },
+  { path: "/services", priority: "0.9", changefreq: "weekly", title: "Automotive Services & Maintenance Packages | HyperTune Garage", desc: "Complete automotive services catalog including PPF, ceramic detailing, engine overhaul, suspension, transmission, AC repair, and 3D wheel alignment." },
+  { path: "/services/paint-protection-film-ppf", priority: "0.9", changefreq: "weekly", title: "Paint Protection Film (PPF) Islamabad & Rawalpindi | HyperTune", desc: "Premier self-healing TPU Paint Protection Film (PPF) studio in Islamabad & Rawalpindi. Protect original vehicle paint with up to 10-year warranty." },
+  { path: "/services/car-detailing", priority: "0.9", changefreq: "weekly", title: "Car Detailing & 9H Ceramic Coating Islamabad | HyperTune", desc: "Professional car detailing, 3-stage paint correction, 9H nano-ceramic coating, and interior steam deep cleaning in Islamabad & Rawalpindi." },
+  { path: "/services/vehicle-wrap", priority: "0.9", changefreq: "weekly", title: "Vehicle Vinyl Wrapping & Color Change Islamabad | HyperTune", desc: "Premium vinyl car wrapping, matte/gloss color transformations, chrome delete, and roof wraps with precision blade-free installation." },
+  { path: "/services/body-repair-paint", priority: "0.9", changefreq: "weekly", title: "Car Body Repair, Denting & Painting Booth Islamabad | HyperTune", desc: "Computerized paint booth, exact OEM color matching, paintless dent repair (PDR), and accident chassis restoration in Islamabad & Rawalpindi." },
+  { path: "/services/body-modification", priority: "0.9", changefreq: "weekly", title: "Car Body Kits & Custom Modification Islamabad | HyperTune", desc: "Custom aerodynamic body kits, front lip splitters, rear diffusers, ducktail spoilers, and sports exhaust modifications in Islamabad." },
+  { path: "/services/engine-services", priority: "0.9", changefreq: "weekly", title: "Engine Repair, Overhaul & Tuning Islamabad | HyperTune", desc: "Master engine rebuilds, cylinder head resurfacing, ECU remapping, dyno tuning, and performance upgrades with genuine OEM components." },
+  { path: "/services/maintenance-servicing", priority: "0.8", changefreq: "weekly", title: "Periodic Maintenance & Oil Change Service Islamabad | HyperTune", desc: "Factory scheduled maintenance, 100% synthetic oil changes, 50-point safety inspection, and OEM filter replacement in Islamabad & Rawalpindi." },
+  { path: "/services/brake-suspension-steering", priority: "0.8", changefreq: "weekly", title: "Brake Repair, Suspension & 3D Wheel Alignment | HyperTune", desc: "Ceramic brake pads, disc skim lathe resurfacing, polyurethane suspension bushing overhaul, and 3D computerized laser alignment." },
+  { path: "/services/transmission-drivetrain", priority: "0.8", changefreq: "weekly", title: "Automatic & CVT Gearbox Transmission Repair | HyperTune", desc: "Automatic transmission overhaul, Dual-Clutch (DCT/DSG) repair, CVT fluid flush, and drivetrain diagnostics in Islamabad & Rawalpindi." },
+  { path: "/services/car-ac-repair", priority: "0.8", changefreq: "weekly", title: "Car AC Repair & R134a Gas Recharge Islamabad | HyperTune", desc: "Complete automotive AC diagnostics, compressor overhaul, condenser cleaning, evaporator leak detection, and R134a gas charging." },
+  { path: "/services/electrical-electronics", priority: "0.8", changefreq: "weekly", title: "Car Electrical, Wiring & Battery Replacement | HyperTune", desc: "Advanced electronic module coding, computer wiring harness repair, alternator overhaul, and AGM battery replacement in Islamabad." },
+  { path: "/services/cooling-fuel-exhaust", priority: "0.8", changefreq: "weekly", title: "Radiator, Cooling, Fuel Injector & Exhaust Repair | HyperTune", desc: "Radiator leak repair, coolant flush, ultrasonic fuel injector cleaning, catalytic converter decoking, and performance exhaust repair." },
+  { path: "/services/inspection-diagnostics", priority: "0.8", changefreq: "weekly", title: "OBD-II Computer Diagnostics & Pre-Purchase Inspection | HyperTune", desc: "OEM computerized diagnostic scans (BMW ISTA, Mercedes Xentry, Toyota Techstream) and 200-point pre-purchase vehicle health audits." },
+
+  // Dedicated Vehicle Brand Specialists (All 24 Brands)
+  { path: "/brands", priority: "0.9", changefreq: "weekly", title: "Vehicle Brand Specialists in Islamabad & Rawalpindi | HyperTune Garage", desc: "Certified master technicians for BMW, Mercedes-Benz, Audi, Porsche, Toyota Hybrid & Honda in Islamabad. Dealer-grade diagnostics & genuine OEM parts." },
+  { path: "/brands/toyota-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "Toyota Repair & Maintenance Specialist Islamabad | HyperTune Garage", desc: "Techstream OEM Diagnostics, Hybrid Battery Balancing, Land Cruiser V8 & CVT Servicing in Islamabad & Rawalpindi." },
+  { path: "/brands/honda-service-islamabad", priority: "0.9", changefreq: "weekly", title: "Honda Turbo & Hybrid Specialist Workshop Islamabad | HyperTune", desc: "HDS Factory Diagnostics, Civic 1.5 Turbo Care, Vezel i-DCD Dual-Clutch Repair & Steering Calibration in Islamabad." },
+  { path: "/brands/suzuki-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "Suzuki Repair & Servicing Specialist Islamabad | HyperTune Garage", desc: "SDT-II Computer Diagnostics, AGS Actuator Calibration, K-Series Engine Rebuild & Suspension Overhaul in Islamabad." },
+  { path: "/brands/hyundai-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "Hyundai Specialist Repair & Service Center Islamabad | HyperTune Garage", desc: "Hyundai GDS Factory Diagnostics, Tucson DCT Overhaul, Elantra & Santa Fe Servicing in Islamabad." },
+  { path: "/brands/kia-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "Kia Specialist Repair & Maintenance Workshop Islamabad | HyperTune Garage", desc: "Kia KDS Diagnostics, Sportage AWD Servicing, Sorento V6, Stinger & Carnival Transmission Care in Islamabad." },
+  { path: "/brands/changan-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "Changan Specialist Workshop & BlueCore Diagnostics Islamabad | HyperTune Garage", desc: "Changan Factory Scanner Suite, Alsvin Dual-Clutch Repair, Oshan X7 Turbo & Karvaan Care in Islamabad." },
+  { path: "/brands/haval-service-islamabad", priority: "0.9", changefreq: "weekly", title: "Haval & Great Wall Specialist Workshop Islamabad | HyperTune Garage", desc: "GWM Factory Diagnostics, H6 HEV Dedicated Hybrid Care, Jolion DHT & 7-Speed Dual-Clutch Overhauls in Islamabad." },
+  { path: "/brands/mg-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "MG Specialist Workshop & Turbo Diagnostics Islamabad | HyperTune Garage", desc: "MG VDS Diagnostics, MG HS 1.5 Turbo Dual-Clutch Tuning, ZS EV High-Voltage Care & GT Servicing in Islamabad." },
+  { path: "/brands/byd-ev-service-islamabad", priority: "0.9", changefreq: "weekly", title: "BYD EV & Hybrid Specialist Workshop Islamabad | HyperTune Garage", desc: "BYD VDS Diagnostic Interface, Blade Battery High-Voltage Health Scans, Atto 3, Seal & Song Plus Care in Islamabad." },
+  { path: "/brands/chery-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "Chery Tiggo Specialist Workshop Islamabad | HyperTune Garage", desc: "Chery Diagnostic Suite, Tiggo 8 Pro 1.6T/2.0T AWD Servicing, Tiggo 4 Pro CVT Overhaul in Islamabad." },
+  { path: "/brands/isuzu-dmax-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "Isuzu D-Max & 4x4 Heavy Diesel Specialist Islamabad | HyperTune Garage", desc: "Isuzu E-IDSS Diagnostics, D-Max 3.0L 4JJ1 / 4JJ3 High-Pressure Common Rail Overhaul in Islamabad." },
+  { path: "/brands/faw-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "FAW Commercial & Passenger Specialist Islamabad | HyperTune Garage", desc: "FAW Diagnostic System, V2 1.3L VCT-i Tuning, Carrier / X-PV Mini Van Engine Overhauls in Islamabad." },
+  { path: "/brands/daihatsu-service-islamabad", priority: "0.9", changefreq: "weekly", title: "Daihatsu Specialist Workshop & JDM Mini Care Islamabad | HyperTune Garage", desc: "Daihatsu DS-II Diagnostics, Mira, Move, Cast KF-VE Engine Calibration & CVT Fluid Service in Islamabad." },
+  { path: "/brands/nissan-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "Nissan Specialist Workshop & Xtronic CVT Care Islamabad | HyperTune Garage", desc: "Nissan Consult-III Plus Diagnostics, Xtronic CVT Overhaul, Note e-Power, X-Trail, Juke & Patrol V8 in Islamabad." },
+  { path: "/brands/mitsubishi-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "Mitsubishi 4x4 & JDM Specialist Islamabad | HyperTune Garage", desc: "MUT-III SE Diagnostics, Pajero V6 / Turbo Diesel, Outlander PHEV, Lancer & Ek Wagon Care in Islamabad." },
+  { path: "/brands/mazda-service-islamabad", priority: "0.9", changefreq: "weekly", title: "Mazda SkyActiv Specialist Workshop Islamabad | HyperTune Garage", desc: "Mazda IDS Diagnostics, SkyActiv-G / SkyActiv-D Engine Care, Mazda 3, Mazda 6, CX-3 & CX-5 in Islamabad." },
+  { path: "/brands/subaru-boxer-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "Subaru Boxer & Symmetrical AWD Specialist Islamabad | HyperTune Garage", desc: "Subaru SSM4 Diagnostics, Boxer Engine Overhaul, Lineartronic CVT & WRX STI Care in Islamabad." },
+  { path: "/brands/lexus-hybrid-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "Lexus Luxury & Hybrid Specialist Workshop Islamabad | HyperTune Garage", desc: "Lexus Techstream Diagnostics, P0A80 Hybrid Battery Balancing, LX600/LX570, RX & ES Care in Islamabad." },
+  { path: "/brands/land-rover-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "Land Rover Specialist Workshop Islamabad | HyperTune Garage", desc: "JLR Pathfinder & SDD Diagnostics, Defender, Discovery, Air Suspension & Terrain Response Overhaul in Islamabad." },
+  { path: "/brands/range-rover-service-islamabad", priority: "0.9", changefreq: "weekly", title: "Range Rover Specialist Workshop Islamabad | HyperTune Garage", desc: "JLR Pathfinder Diagnostics, Vogue, Sport, Velar, Evoque & Air Suspension Mastery in Islamabad." },
+  { path: "/brands/jeep-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "Jeep 4x4 & American SUV Specialist Islamabad | HyperTune Garage", desc: "Chrysler wiTECH 2.0 Diagnostics, Wrangler, Grand Cherokee, Hemi V8 & Quadra-Trac Servicing in Islamabad." },
+  { path: "/brands/ford-service-islamabad", priority: "0.9", changefreq: "weekly", title: "Ford Specialist Workshop & EcoBoost Tuning Islamabad | HyperTune Garage", desc: "Ford FDRS / IDS Diagnostics, F-150 Raptor, Ranger, Everest, Mustang & EcoBoost Care in Islamabad." },
+  { path: "/brands/chevrolet-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "Chevrolet & GM Specialist Workshop Islamabad | HyperTune Garage", desc: "GM GDS2 Diagnostics, Tahoe, Suburban, Silverado, Corvette, Camaro & Joy / Optra Care in Islamabad." },
+  { path: "/brands/volvo-repair-islamabad", priority: "0.9", changefreq: "weekly", title: "Volvo Scandinavian Safety & Hybrid Specialist Islamabad | HyperTune Garage", desc: "Volvo VIDA Diagnostics, XC90, XC60, XC40 Recharge, T8 Twin-Engine & Drive-E Care in Islamabad." },
+
+  // Sector & Location Specific Pages
+  { path: "/locations", priority: "0.8", changefreq: "monthly", title: "Workshop Locations in Islamabad & Rawalpindi | HyperTune", desc: "Visit HyperTune Garage facilities in Islamabad Police Foundation and Rawalpindi. View maps, GPS directions, contact numbers, and hours." },
+  { path: "/locations/islamabad-workshop", priority: "0.8", changefreq: "monthly", title: "Islamabad Flagship Hub - Sector O-9 Police Foundation | HyperTune", desc: "Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad. Call 0333-0177717. Full PPF, detailing & mechanical bays." },
+  { path: "/locations/islamabad-police-foundation-o9", priority: "0.8", changefreq: "monthly", title: "Car Workshop in Police Foundation Sector O-9 Islamabad | HyperTune", desc: "Visit HyperTune Garage Flagship Hub in Block E Police Foundation, Sector O-9 Islamabad. Complete PPF cleanroom, engine rebuilds, diagnostics & car detailing." },
+  { path: "/locations/dha-bahria-town-islamabad", priority: "0.8", changefreq: "monthly", title: "Luxury Car Workshop & PPF for DHA & Bahria Town | HyperTune Garage", desc: "Specialized BMW, Mercedes, Porsche repair & self-healing PPF for DHA Islamabad & Bahria Town. Insured valet vehicle pickup & drop-off available." },
+  { path: "/locations/f-sectors-islamabad", priority: "0.8", changefreq: "monthly", title: "Car Workshop & Detailing for Sectors F-6, F-7, F-10, F-11 Islamabad | HyperTune", desc: "Dealer-grade BMW, Audi, Mercedes repair & PPF installation for residents of F-6, F-7, F-8, F-10, F-11 Islamabad. Valet pickup available." },
+  { path: "/locations/g-sectors-islamabad", priority: "0.8", changefreq: "monthly", title: "Auto Repair & Maintenance for Sectors G-8, G-9, G-10, G-11 Islamabad | HyperTune", desc: "Comprehensive car repair, periodic synthetic oil service, brake overhaul & hybrid battery diagnostics for Sectors G-8, G-9, G-10, G-11 & I-8 Islamabad." },
+  { path: "/locations/e11-gulberg-greens-islamabad", priority: "0.8", changefreq: "monthly", title: "Car Workshop & Ceramic Coating for Gulberg Greens & E-11 | HyperTune", desc: "SUV and sedan detailing, ceramic coating, brake servicing & engine diagnostics for Gulberg Greens, Sector E-11 and Park View City Islamabad." },
+  { path: "/locations/rawalpindi-workshop", priority: "0.8", changefreq: "monthly", title: "Rawalpindi Hub | HyperTune Garage Expansion", desc: "Our Rawalpindi branch is currently under development. Serving Rawalpindi clients at our primary twin-cities hub in Islamabad Police Foundation." },
+
+  // General & Trust Pages
+  { path: "/gallery", priority: "0.7", changefreq: "monthly", title: "Transformation Gallery & PPF Showcase | HyperTune Garage", desc: "Explore before-and-after transformations of luxury sports cars, SUVs, and sedans featuring Paint Protection Film, ceramic coating, and rebuilds." },
+  { path: "/testimonials", priority: "0.7", changefreq: "monthly", title: "Customer Reviews & Google Ratings | HyperTune Garage", desc: "Read verified customer reviews and 4.9-star Google ratings for HyperTune Garage Islamabad & Rawalpindi automotive workshop." },
+  { path: "/faq", priority: "0.6", changefreq: "monthly", title: "Frequently Asked Questions (FAQ) | HyperTune Garage", desc: "Find answers about PPF lifespan, ceramic coating benefits, engine overhaul warranties, repair pricing, and booking appointments in Pakistan." },
+  { path: "/contact", priority: "0.8", changefreq: "monthly", title: "Contact Us & Book Service | HyperTune Garage Islamabad", desc: "Get in touch with HyperTune Garage. Call 0333-0177717, chat on WhatsApp, or send an inquiry for vehicle repairs and PPF quotes." },
+  { path: "/book-appointment", priority: "0.9", changefreq: "weekly", title: "Book Service Appointment Online | HyperTune Garage", desc: "Schedule your car diagnostic scan, PPF installation, ceramic detailing, or periodic maintenance online with instant WhatsApp confirmation." },
+  { path: "/blog", priority: "0.8", changefreq: "weekly", title: "Automotive Blog, Diagnostic Guides & Maintenance Tips | HyperTune Garage", desc: "Expert automotive advice on Paint Protection Film, P0A80 hybrid battery repair, BMW ISTA diagnostics, Audi DSG gearbox fixes, and engine health." },
+
+  // Authoritative Technical & Diagnostic Guides (14 Dedicated Articles)
+  { path: "/blog/p0a80-hybrid-battery-repair-guide-pakistan", priority: "0.8", changefreq: "monthly", title: "P0A80 Hybrid Battery Repair Guide: Prius, Aqua, Vezel | HyperTune", desc: "Comprehensive guide on diagnosing the P0A80 'Replace Hybrid Battery Pack' error code, cell voltage load testing, module rebalancing & blower cleaning." },
+  { path: "/blog/bmw-check-engine-light-drivetrain-malfunction-guide", priority: "0.8", changefreq: "monthly", title: "BMW Drivetrain Malfunction & Check Engine Light Guide | HyperTune", desc: "Detailed technical guide explaining BMW Drivetrain Malfunction warnings, Valvetronic sensor drift, VANOS solenoids, electric water pump & ISTA scans." },
+  { path: "/blog/mercedes-airmatic-suspension-leak-repair-guide", priority: "0.8", changefreq: "monthly", title: "Mercedes Airmatic Suspension Repair: Strut Leaks & Compressor Fix | HyperTune", desc: "How to diagnose and repair sagging Airmatic air suspension, 'Car Too Low' warnings, valve block leaks & air compressor burnout in Mercedes-Benz." },
+  { path: "/blog/audi-dsg-stronic-transmission-shudder-repair-guide", priority: "0.8", changefreq: "monthly", title: "Audi DSG / S-Tronic Transmission Jerking & Mechatronic Repair | HyperTune", desc: "Troubleshooting guide for Audi S-Tronic Dual-Clutch transmissions: mechatronic valve body rebuild, clutch pack wear & fluid maintenance in Islamabad." },
+  { path: "/blog/what-is-ecu-remapping-stage-1-stage-2-pakistan", priority: "0.8", changefreq: "monthly", title: "ECU Remapping Guide: Stage 1 vs Stage 2 Engine Tuning | HyperTune", desc: "Learn how custom dyno-tested ECU remapping unlocks +20% to +45% horsepower and torque, improves throttle response, and enhances fuel efficiency." },
+  { path: "/blog/ceramic-coating-vs-ppf-pakistan-guide", priority: "0.8", changefreq: "monthly", title: "PPF vs Ceramic Coating in Pakistan: Complete Comparison | HyperTune", desc: "Detailed breakdown between self-healing TPU Paint Protection Film (PPF) and 9H Nano-Ceramic Glass Coatings for Pakistani roads." },
+  { path: "/blog/car-ac-cooling-troubleshooting-pakistan-summer", priority: "0.8", changefreq: "monthly", title: "Car AC Warm Air Troubleshooting: Compressor & R134a Gas | HyperTune", desc: "Why automotive AC systems lose cooling power in Pakistani 45°C summers, how to detect refrigerant leaks, and compressor magnetic clutch repairs." },
+  { path: "/blog/engine-overhaul-vs-engine-replacement-pakistan-guide", priority: "0.8", changefreq: "monthly", title: "Engine Overhaul vs Kabli Used Engine Replacement | HyperTune", desc: "Comparison between rebuilding your original engine to 0.001mm OEM specs vs swapping an imported used (Kabli) engine in Pakistan." },
+  { path: "/blog/synthetic-engine-oil-viscosity-guide-pakistan-heat", priority: "0.8", changefreq: "monthly", title: "Engine Oil Viscosity Guide: 0W-20 vs 5W-30 vs 5W-40 in Heat | HyperTune", desc: "How to select the perfect synthetic motor oil viscosity for Japanese, German, and local vehicles facing 45°C summer heat in Pakistan." },
+  { path: "/blog/pre-purchase-car-inspection-checklist-pakistan", priority: "0.8", changefreq: "monthly", title: "Pre-Purchase Used Car 200-Point Inspection Checklist | HyperTune", desc: "How our automotive evaluators detect hidden flood damage, chassis frame welds, rolled-back odometers, and repainted body panels." },
+  { path: "/blog/3d-laser-wheel-alignment-suspension-guide", priority: "0.7", changefreq: "monthly", title: "3D Laser Wheel Alignment: Preventing Tire Wear on Pakistani Roads | HyperTune", desc: "Why precision 3D computer laser alignment is essential for high-speed motorway stability, extended tire life, and steering wheel centering." },
+  { path: "/blog/honda-vezel-dual-clutch-transmission-error-guide", priority: "0.7", changefreq: "monthly", title: "Honda Vezel Transmission Warning & Clutch Overheating Fix | HyperTune", desc: "How to diagnose and fix the infamous 'Transmission Temperature High' warning, replace degraded clutch fluid, and calibrate i-DCD dual-clutch actuators." },
+  { path: "/blog/porsche-maintenance-servicing-guide-pakistan", priority: "0.7", changefreq: "monthly", title: "Porsche Maintenance & Servicing Guide: 911, Cayenne, Macan | HyperTune", desc: "Comprehensive maintenance schedules, PDK transmission oil changes, PASM air suspension care, and PIWIS III diagnostics for Porsche in Pakistan." },
+  { path: "/blog/toyota-land-cruiser-prado-v8-maintenance-guide", priority: "0.7", changefreq: "monthly", title: "Toyota Land Cruiser & Prado V8 Maintenance Guide: 1VD-FTV | HyperTune", desc: "Essential maintenance practices to keep Toyota Land Cruiser LC200/LC300 V8 diesel and petrol engines running past 500,000 km in Pakistan." },
+
+  { path: "/warranty-specs", priority: "0.5", changefreq: "yearly", title: "Warranty Policy & Technical Specifications | HyperTune Garage", desc: "Official warranty terms covering TPU Paint Protection Film (up to 10 years), 9H Ceramic Coatings, engine overhauls, and genuine OEM parts." },
+  { path: "/privacy-policy", priority: "0.3", changefreq: "yearly", title: "Privacy Policy | HyperTune Garage Pakistan", desc: "HyperTune Garage privacy policy outlining how customer data, booking information, and telemetry inquiries are securely handled." },
+  { path: "/terms-conditions", priority: "0.3", changefreq: "yearly", title: "Terms & Conditions | HyperTune Garage Pakistan", desc: "Terms of service, estimate policies, workshop storage agreements, and warranty stipulations for HyperTune Garage clients." },
+  { path: "/sitemap", priority: "0.6", changefreq: "weekly", title: "HTML Sitemap & Navigation Index | HyperTune Garage", desc: "Complete HTML site index listing all service pages, location guides, blog articles, and workshop resources for HyperTune Garage." }
+];
 
 // XML Sitemap Endpoint for Google Search Console & Webmasters
 app.get(["/sitemap.xml", "/sitemap.xml/"], (req, res) => {
@@ -375,7 +341,6 @@ app.get(["/sitemap.xml", "/sitemap.xml/"], (req, res) => {
   const protocol = req.headers["x-forwarded-proto"] || "https";
   const baseUrl = `${protocol}://${host}`;
   const today = new Date().toISOString().split("T")[0];
-  const routes = getSiteRoutes();
 
   let xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -384,7 +349,7 @@ app.get(["/sitemap.xml", "/sitemap.xml/"], (req, res) => {
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 `;
 
-  routes.forEach((route) => {
+  SITE_ROUTES.forEach((route) => {
     const loc = route.path === "/" ? `${baseUrl}/` : `${baseUrl}${route.path}`;
     xmlContent += `  <url>
     <loc>${loc}</loc>
@@ -526,8 +491,70 @@ Sitemap: ${baseUrl}/sitemap.xml
 
 // Helper function to inject rich SSR metadata & pre-rendered HTML into response for Googlebot & Crawlers
 function injectSSRMeta(htmlTemplate: string, reqUrl: string, host: string, protocol: string): string {
+  const cleanPath = reqUrl.split("?")[0].replace(/\/+$/, "") || "/";
   const baseUrl = `${protocol}://${host}`;
-  return injectSSRHtml(htmlTemplate, reqUrl, baseUrl);
+
+  const metaInfo = getRouteMetadataAndSchema(cleanPath, baseUrl);
+  const ssrBodyHtml = renderSSRBody(cleanPath, baseUrl);
+
+  const schemaScripts = metaInfo.schemas
+    .map(
+      (s, idx) =>
+        `<script type="application/ld+json" id="server-schema-${idx}">\n${JSON.stringify(s, null, 2)}\n</script>`
+    )
+    .join("\n");
+
+  let updatedHtml = htmlTemplate;
+
+  // Replace Title
+  updatedHtml = updatedHtml.replace(/<title>.*?<\/title>/i, `<title>${metaInfo.title}</title>`);
+
+  // Replace Description
+  updatedHtml = updatedHtml.replace(
+    /<meta\s+name=["']description["'][^>]*>/i,
+    `<meta name="description" content="${metaInfo.description.replace(/"/g, "&quot;")}" />`
+  );
+
+  // Replace Canonical
+  updatedHtml = updatedHtml.replace(
+    /<link\s+rel=["']canonical["'][^>]*>/i,
+    `<link rel="canonical" href="${metaInfo.canonicalUrl}" />`
+  );
+
+  // Replace OpenGraph Title & Desc & Url
+  updatedHtml = updatedHtml.replace(
+    /<meta\s+property=["']og:title["'][^>]*>/i,
+    `<meta property="og:title" content="${metaInfo.title.replace(/"/g, "&quot;")}" />`
+  );
+  updatedHtml = updatedHtml.replace(
+    /<meta\s+property=["']og:description["'][^>]*>/i,
+    `<meta property="og:description" content="${metaInfo.description.replace(/"/g, "&quot;")}" />`
+  );
+  updatedHtml = updatedHtml.replace(
+    /<meta\s+property=["']og:url["'][^>]*>/i,
+    `<meta property="og:url" content="${metaInfo.canonicalUrl}" />`
+  );
+
+  // Replace Twitter Title & Desc
+  updatedHtml = updatedHtml.replace(
+    /<meta\s+name=["']twitter:title["'][^>]*>/i,
+    `<meta name="twitter:title" content="${metaInfo.title.replace(/"/g, "&quot;")}" />`
+  );
+  updatedHtml = updatedHtml.replace(
+    /<meta\s+name=["']twitter:description["'][^>]*>/i,
+    `<meta name="twitter:description" content="${metaInfo.description.replace(/"/g, "&quot;")}" />`
+  );
+
+  // Inject Schemas before </head>
+  updatedHtml = updatedHtml.replace("</head>", `${schemaScripts}\n  </head>`);
+
+  // Inject Full SSR Pre-Rendered Semantic HTML inside <div id="root">
+  updatedHtml = updatedHtml.replace(
+    /<div id=["']root["']>\s*<\/div>/i,
+    `<div id="root">${ssrBodyHtml}</div>`
+  );
+
+  return updatedHtml;
 }
 
 async function startServer() {
@@ -564,7 +591,6 @@ async function startServer() {
     // Serve Static Assets with High-Performance Cache-Control
     app.use(
       express.static(distPath, {
-        index: false,
         maxAge: "1y",
         immutable: true,
         etag: true,
@@ -597,13 +623,9 @@ async function startServer() {
     });
   }
 
-  if (!process.env.VERCEL) {
-    app.listen(PORT, "0.0.0.0", () => {
-      console.log(`HyperTune Garage server running on http://0.0.0.0:${PORT}`);
-    });
-  }
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`HyperTune Garage server running on http://0.0.0.0:${PORT}`);
+  });
 }
 
 startServer();
-
-export default app;

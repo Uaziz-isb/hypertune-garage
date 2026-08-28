@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PageId } from '../types';
 import { Logo } from './Logo';
-import { brandsData } from '../data/brandsData';
 import {
   Phone,
   Clock,
@@ -22,8 +21,6 @@ import {
   Instagram,
   Video,
   MessageCircle,
-  Car,
-  Award,
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -43,7 +40,6 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const [brandsDropdownOpen, setBrandsDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,10 +49,10 @@ export const Header: React.FC<HeaderProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems: { id: PageId; label: string; hasDropdown?: boolean; dropdownType?: 'services' | 'brands' }[] = [
+  const navItems: { id: PageId; label: string; hasDropdown?: boolean }[] = [
     { id: 'home', label: 'Home' },
-    { id: 'services', label: 'Services', hasDropdown: true, dropdownType: 'services' },
-    { id: 'brands', label: 'Brand Specialists', hasDropdown: true, dropdownType: 'brands' },
+    { id: 'services', label: 'Services', hasDropdown: true },
+    { id: 'brands', label: 'Brand Specialists' },
     { id: 'gallery', label: 'Gallery' },
     { id: 'blog', label: 'Blog' },
     { id: 'about', label: 'About Us' },
@@ -194,10 +190,10 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Desktop Nav Items (xl and above) */}
           <div className="hidden xl:flex items-center gap-1">
             {navItems.map((item) => {
-              const isActive = currentPage === item.id || (item.id === 'services' && currentPage === 'service-detail') || (item.id === 'brands' && currentPage === 'brand-detail');
+              const isActive = currentPage === item.id;
               const itemHref = item.id === 'home' ? '/' : `/${item.id}/`;
 
-              if (item.hasDropdown && item.dropdownType === 'services') {
+              if (item.hasDropdown) {
                 return (
                   <div
                     key={item.id}
@@ -209,7 +205,6 @@ export const Header: React.FC<HeaderProps> = ({
                       href={itemHref}
                       onClick={(e) => {
                         e.preventDefault();
-                        setServicesDropdownOpen(false);
                         onNavigate('services');
                       }}
                       className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-[15px] font-bold transition-all ${
@@ -266,118 +261,7 @@ export const Header: React.FC<HeaderProps> = ({
                             }}
                             className="text-cyan-400 hover:text-cyan-300 font-bold flex items-center gap-1"
                           >
-                            View All 13 Services →
-                          </a>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                );
-              }
-
-              if (item.hasDropdown && item.dropdownType === 'brands') {
-                return (
-                  <div
-                    key={item.id}
-                    className="relative"
-                    onMouseEnter={() => setBrandsDropdownOpen(true)}
-                    onMouseLeave={() => setBrandsDropdownOpen(false)}
-                  >
-                    <a
-                      href={itemHref}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setBrandsDropdownOpen(false);
-                        onNavigate('brands');
-                      }}
-                      className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-[15px] font-bold transition-all ${
-                        isActive
-                          ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30'
-                          : 'text-slate-200 hover:text-cyan-400 hover:bg-slate-900/80'
-                      }`}
-                    >
-                      <span>{item.label}</span>
-                      <ChevronDown
-                        className={`w-4 h-4 transition-transform duration-200 ${
-                          brandsDropdownOpen ? 'rotate-180 text-cyan-400' : 'text-slate-400'
-                        }`}
-                      />
-                    </a>
-
-                    {/* Brand Specialists Mega Dropdown */}
-                    {brandsDropdownOpen && (
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 w-[760px] bg-[#0c1322] border border-cyan-500/30 rounded-2xl shadow-2xl shadow-cyan-950/50 p-4 mt-1 z-50 animate-in fade-in duration-150">
-                        {/* Header Banner */}
-                        <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-800 px-1">
-                          <div>
-                            <span className="text-[10px] font-extrabold tracking-wider text-cyan-400 uppercase bg-cyan-950/60 px-2 py-0.5 rounded border border-cyan-500/30">
-                              OEM DIAGNOSTIC RIGS &amp; CERTIFIED TECHNICIANS
-                            </span>
-                            <h4 className="text-sm font-bold text-white mt-1">
-                              24 Dedicated Vehicle Brand Specialist Hubs
-                            </h4>
-                          </div>
-                          <a
-                            href="/brands/"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              setBrandsDropdownOpen(false);
-                              onNavigate('brands');
-                            }}
-                            className="text-xs text-cyan-400 hover:text-cyan-300 font-bold flex items-center gap-1"
-                          >
-                            Explore All Brands →
-                          </a>
-                        </div>
-
-                        {/* 4-Column Brands Grid */}
-                        <div className="grid grid-cols-4 gap-1.5 max-h-[380px] overflow-y-auto pr-1">
-                          {brandsData.map((brand) => {
-                            const shortName = brand.name.replace(/ Repair.*| Service.*| Maintenance.*| Specialist.*/i, '') || brand.name;
-                            const shortDiag = brand.diagnosticSoftware.split(',')[0].trim();
-                            return (
-                              <a
-                                key={brand.id}
-                                href={`/brands/${brand.slug}/`}
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  setBrandsDropdownOpen(false);
-                                  onNavigate('brand-detail', brand.slug);
-                                }}
-                                className="flex items-center gap-2 p-2 rounded-xl hover:bg-slate-800/80 text-left transition-all group border border-transparent hover:border-cyan-500/30"
-                              >
-                                <div className="w-7 h-7 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-colors">
-                                  <Car className="w-3.5 h-3.5" />
-                                </div>
-                                <div className="min-w-0 flex-1">
-                                  <h5 className="text-xs font-bold text-white group-hover:text-cyan-400 transition-colors truncate">
-                                    {shortName}
-                                  </h5>
-                                  <p className="text-[10px] text-slate-400 truncate leading-tight">
-                                    {shortDiag}
-                                  </p>
-                                </div>
-                              </a>
-                            );
-                          })}
-                        </div>
-
-                        {/* Footer Info */}
-                        <div className="mt-3 pt-3 border-t border-slate-800 flex items-center justify-between px-2 text-xs text-slate-400">
-                          <div className="flex items-center gap-1.5 text-slate-300">
-                            <Award className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-                            <span>100% Genuine OEM Replacement Parts &amp; Dealer-Grade Scanners</span>
-                          </div>
-                          <a
-                            href="/brands/"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              setBrandsDropdownOpen(false);
-                              onNavigate('brands');
-                            }}
-                            className="text-cyan-400 hover:text-cyan-300 font-bold flex items-center gap-1"
-                          >
-                            View All 24 Brand Specialist Hubs →
+                            View All 12 Services →
                           </a>
                         </div>
                       </div>
