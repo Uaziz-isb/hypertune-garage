@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import hypertuneLogoWebp from '../assets/images/hypertune_logo.webp';
 import { Gauge } from 'lucide-react';
+import logoLocal from '../assets/images/hypertune_logo.webp';
 
 interface LogoProps {
   className?: string;
@@ -21,10 +21,10 @@ export const Logo: React.FC<LogoProps> = ({
   const [fallbackIndex, setFallbackIndex] = useState(0);
 
   const fallbackSources = [
-    hypertuneLogoWebp,
+    logoLocal,
     '/images/hypertune_logo.webp',
-    '/images/hypertune_logo_new_1785539043513.webp',
-    'https://www.hypertunegarage.pk/images/hypertune_logo.webp',
+    '/images/hypertune_logo.png',
+    'https://hypertunegarage.pk/images/hypertune_logo.webp',
   ];
 
   const textColor = variant === 'dark' ? 'text-white' : 'text-slate-950';
@@ -50,10 +50,10 @@ export const Logo: React.FC<LogoProps> = ({
       className={`flex items-center gap-2.5 sm:gap-3 font-bold tracking-tight select-none cursor-pointer group ${className}`}
       role="banner"
     >
-      {/* HyperTune Garage Official Logo Mark - Trimmed Corners & Seamless Border */}
+      {/* HyperTune Garage Official Logo Mark - Trimmed Corners & Seamless Border Filling */}
       <div
         style={{ width: `${boxSize}px`, height: `${boxSize}px` }}
-        className="relative flex items-center justify-center rounded-xl bg-black border border-slate-700/80 shadow-md shadow-sky-500/10 shrink-0 group-hover:border-cyan-400 group-hover:shadow-cyan-500/30 transition-all duration-300 overflow-hidden p-0"
+        className="relative flex items-center justify-center rounded-xl overflow-hidden border border-slate-700/80 shadow-md shadow-sky-500/10 shrink-0 group-hover:border-cyan-400 group-hover:shadow-cyan-500/30 transition-all duration-300 bg-black p-0"
       >
         {!imgError ? (
           <img
@@ -65,7 +65,7 @@ export const Logo: React.FC<LogoProps> = ({
             fetchPriority="high"
             decoding="async"
             onError={handleImageError}
-            className="w-full h-full object-cover object-center rounded-xl scale-[1.02] block group-hover:scale-108 transition-transform duration-300"
+            className="w-full h-full object-cover object-center block rounded-[inherit] transition-transform duration-300 group-hover:scale-105"
           />
         ) : (
           <div className="flex flex-col items-center justify-center text-cyan-400 w-full h-full bg-slate-950">

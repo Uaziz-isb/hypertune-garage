@@ -83,7 +83,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
             <Logo variant="dark" scale={1.05} />
           </a>
           <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
-            HyperTune Garage is Pakistan's premier precision automotive workshop specializing in 24 vehicle brands (Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Lexus, Land Rover, etc.), Paint Protection Film (PPF), engine rebuilding, ceramic detailing, and hybrid battery diagnostics.
+            HyperTune Garage is Pakistan's premier precision automotive workshop specializing in all famous vehicle brands (Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Lexus, Land Rover, etc.), for Paint Protection Film (PPF), Engine Rebuilding, Ceramic Detailing, Inspection - Diagnostics and Maintenance - Servicing.
           </p>
           <div className="flex items-center gap-2 text-xs text-slate-300 font-semibold bg-[#09101d] border border-cyan-500/20 p-3 rounded-xl max-w-sm">
             <ShieldCheck className="w-5 h-5 text-cyan-400 shrink-0" />
@@ -253,8 +253,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
                 Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
               </p>
               <div className="pt-1 flex flex-col gap-1">
-                <a href="tel:+923330177717" className="text-cyan-400 hover:underline font-bold inline-block">
-                  Hotline: 0333-0177717
+                <a
+                  href="tel:+923330177717"
+                  className="text-cyan-400 hover:text-cyan-300 font-bold inline-flex items-center gap-1.5 hover:underline"
+                >
+                  <Phone className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                  <span>Call Now 0333-0177717</span>
                 </a>
                 <span className="text-slate-400 text-[11px]">Sat - Thu: 10:00 AM - 10:00 PM</span>
                 <span className="text-amber-400 font-bold text-[11px]">Friday: CLOSED (Weekly Holiday)</span>
