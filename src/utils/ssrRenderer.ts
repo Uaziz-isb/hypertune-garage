@@ -625,6 +625,140 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         </ul>
       </main>`;
     }
+  } else if (root === 'about' || root === 'about-us') {
+    mainContentHtml = `
+      <main style="max-width:900px;margin:32px auto;padding:0 16px;">
+        <nav style="font-size:12px;color:#64748b;margin-bottom:16px;">
+          <a href="/" style="color:#06b6d4;text-decoration:none;">Home</a> &gt;
+          <span style="color:#cbd5e1;">About Us</span>
+        </nav>
+        <h1 style="font-size:32px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;">
+          About HyperTune Garage
+        </h1>
+        <p style="font-size:16px;color:#94a3b8;line-height:1.6;max-width:760px;">
+          Learn about HyperTune Garage, certified master automotive technicians, climate-controlled PPF bays, and state-of-the-art diagnostic facilities in Islamabad.
+        </p>
+      </main>`;
+
+  } else if (root === 'testimonials' || root === 'reviews') {
+    mainContentHtml = `
+      <main style="max-width:900px;margin:32px auto;padding:0 16px;">
+        <nav style="font-size:12px;color:#64748b;margin-bottom:16px;">
+          <a href="/" style="color:#06b6d4;text-decoration:none;">Home</a> &gt;
+          <span style="color:#cbd5e1;">Customer Reviews</span>
+        </nav>
+        <h1 style="font-size:32px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;">
+          Customer Reviews & Google Ratings
+        </h1>
+        <p style="font-size:16px;color:#94a3b8;line-height:1.6;max-width:760px;">
+          Read verified customer reviews and 4.9-star Google ratings for HyperTune Garage Islamabad & Rawalpindi automotive workshop.
+        </p>
+      </main>`;
+
+  } else if (root === 'faq' || root === 'faqs') {
+    mainContentHtml = `
+      <main style="max-width:900px;margin:32px auto;padding:0 16px;">
+        <nav style="font-size:12px;color:#64748b;margin-bottom:16px;">
+          <a href="/" style="color:#06b6d4;text-decoration:none;">Home</a> &gt;
+          <span style="color:#cbd5e1;">FAQ</span>
+        </nav>
+        <h1 style="font-size:32px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;">
+          Frequently Asked Questions
+        </h1>
+        <p style="font-size:16px;color:#94a3b8;line-height:1.6;max-width:760px;">
+          Find answers about PPF lifespan, ceramic coating benefits, engine overhaul warranties, repair pricing, and booking appointments in Pakistan.
+        </p>
+      </main>`;
+
+  } else if (root === 'contact' || root === 'contact-us') {
+    mainContentHtml = `
+      <main style="max-width:900px;margin:32px auto;padding:0 16px;">
+        <nav style="font-size:12px;color:#64748b;margin-bottom:16px;">
+          <a href="/" style="color:#06b6d4;text-decoration:none;">Home</a> &gt;
+          <span style="color:#cbd5e1;">Contact</span>
+        </nav>
+        <h1 style="font-size:32px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;">
+          Contact Us & Book Service
+        </h1>
+        <p style="font-size:16px;color:#94a3b8;line-height:1.6;max-width:760px;">
+          Get in touch with HyperTune Garage. Call 0333-0177717, chat on WhatsApp, or send an inquiry for vehicle repairs and PPF quotes.
+        </p>
+      </main>`;
+
+  } else if (root === 'book-appointment' || root === 'booking') {
+    mainContentHtml = `
+      <main style="max-width:900px;margin:32px auto;padding:0 16px;">
+        <nav style="font-size:12px;color:#64748b;margin-bottom:16px;">
+          <a href="/" style="color:#06b6d4;text-decoration:none;">Home</a> &gt;
+          <span style="color:#cbd5e1;">Book Appointment</span>
+        </nav>
+        <h1 style="font-size:32px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;">
+          Book Service Appointment Online
+        </h1>
+        <p style="font-size:16px;color:#94a3b8;line-height:1.6;max-width:760px;">
+          Schedule your car diagnostic scan, PPF installation, ceramic detailing, or periodic maintenance online with instant WhatsApp confirmation.
+        </p>
+      </main>`;
+
+  } else if (root === 'privacy-policy' || root === 'privacy') {
+    mainContentHtml = `
+      <main style="max-width:900px;margin:32px auto;padding:0 16px;">
+        <nav style="font-size:12px;color:#64748b;margin-bottom:16px;">
+          <a href="/" style="color:#06b6d4;text-decoration:none;">Home</a> &gt;
+          <span style="color:#cbd5e1;">Privacy Policy</span>
+        </nav>
+        <h1 style="font-size:32px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;">
+          Privacy Policy
+        </h1>
+        <p style="font-size:16px;color:#94a3b8;line-height:1.6;max-width:760px;">
+          HyperTune Garage privacy policy outlining customer data security, repair guarantees, and privacy protocols.
+        </p>
+      </main>`;
+
+  } else if (root === 'terms-conditions' || root === 'terms') {
+    mainContentHtml = `
+      <main style="max-width:900px;margin:32px auto;padding:0 16px;">
+        <nav style="font-size:12px;color:#64748b;margin-bottom:16px;">
+          <a href="/" style="color:#06b6d4;text-decoration:none;">Home</a> &gt;
+          <span style="color:#cbd5e1;">Terms & Conditions</span>
+        </nav>
+        <h1 style="font-size:32px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;">
+          Terms & Conditions
+        </h1>
+        <p style="font-size:16px;color:#94a3b8;line-height:1.6;max-width:760px;">
+          Terms of service, warranty coverage guidelines, and workshop service policies for HyperTune Garage.
+        </p>
+      </main>`;
+
+  } else if (root === 'warranty-specs' || root === 'warranty') {
+    mainContentHtml = `
+      <main style="max-width:900px;margin:32px auto;padding:0 16px;">
+        <nav style="font-size:12px;color:#64748b;margin-bottom:16px;">
+          <a href="/" style="color:#06b6d4;text-decoration:none;">Home</a> &gt;
+          <span style="color:#cbd5e1;">Warranty Specs</span>
+        </nav>
+        <h1 style="font-size:32px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;">
+          12-Month Repair Warranty Specs
+        </h1>
+        <p style="font-size:16px;color:#94a3b8;line-height:1.6;max-width:760px;">
+          Comprehensive details on HyperTune Garage 12-month / 20,000 km bumper-to-bumper automotive repair warranty.
+        </p>
+      </main>`;
+
+  } else if (root === 'gallery') {
+    mainContentHtml = `
+      <main style="max-width:900px;margin:32px auto;padding:0 16px;">
+        <nav style="font-size:12px;color:#64748b;margin-bottom:16px;">
+          <a href="/" style="color:#06b6d4;text-decoration:none;">Home</a> &gt;
+          <span style="color:#cbd5e1;">Gallery</span>
+        </nav>
+        <h1 style="font-size:32px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;">
+          Workshop Gallery & Work Portfolio
+        </h1>
+        <p style="font-size:16px;color:#94a3b8;line-height:1.6;max-width:760px;">
+          Browse high-resolution before & after photos of PPF installations, ceramic coating finishes, engine rebuilds, and luxury repairs.
+        </p>
+      </main>`;
   } else if (root === 'blog' && sub) {
     const post = blogDataSSR.find((b) => b.slug === sub);
     if (post) {
