@@ -64,7 +64,7 @@ async function verifyBuild() {
   });
 
   if (sitemapMissing === 0) {
-    console.log(`✅ dist/sitemap.xml successfully verified: Contains all 12 services, 24 brands, 2 locations, and 14 blog posts (Total: ${routes.length} URLs)`);
+    console.log(`✅ dist/sitemap.xml successfully verified: Contains all ${servicesData.length} services, ${brandsData.length} brands, ${locationsData.length} locations, and ${blogData.length} blog posts (Total: ${routes.length} URLs)`);
   } else {
     console.error(`❌ Sitemap validation failed with ${sitemapMissing} missing entries!`);
     process.exit(1);

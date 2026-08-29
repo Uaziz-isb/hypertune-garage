@@ -1,4 +1,6 @@
 import { servicesDataSSR, brandsDataSSR, locationsDataSSR, blogDataSSR, findServiceSSR } from '../data/ssrData';
+import { googleBusinessData } from '../data/reviewsData';
+import { faqData } from '../data/faqData';
 
 export interface RouteMetaInfo {
   title: string;
@@ -32,13 +34,13 @@ export function normalizeCanonicalUrl(inputPathOrUrl: string, baseUrl: string = 
   return `${cleanBase}/${trimmed}/`;
 }
 
-const BASE_BUSINESS_SCHEMA = (_canonicalUrl: string, ogImage: string) => ({
+const BASE_BUSINESS_SCHEMA = (baseUrl: string, ogImage: string) => ({
   '@context': 'https://schema.org',
   '@type': 'AutoRepair',
   name: 'HyperTune Garage',
   image: ogImage,
-  '@id': 'https://hypertunegarage.pk/#business',
-  url: 'https://hypertunegarage.pk/',
+  '@id': `${baseUrl.replace(/\/+$/, '')}/#business`,
+  url: `${baseUrl.replace(/\/+$/, '')}/`,
   telephone: '+923330177717',
   priceRange: '$$$',
   address: {
@@ -61,11 +63,6 @@ const BASE_BUSINESS_SCHEMA = (_canonicalUrl: string, ogImage: string) => ({
       closes: '22:00',
     },
   ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: '348',
-  },
 });
 
 function escapeHtml(str: string): string {
@@ -87,10 +84,10 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
   const root = pathParts[0] || '';
   const sub = pathParts[1] || '';
 
-  let title = 'HyperTune Garage - Specialized Automotive Workshop in Islamabad & Rawalpindi';
-  let description = 'Pakistan’s premier automotive workshop specializing in Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Lexus, Land Rover, Master Engine Overhauls, Hybrid Battery Repair & PPF in Islamabad Police Foundation & Rawalpindi.';
-  let keywords = 'car workshop islamabad, auto repair rawalpindi, toyota repair islamabad, honda service rawalpindi, suzuki garage, haval specialist, byd ev service, hybrid battery repair, engine overhaul islamabad';
-  const schemas: object[] = [BASE_BUSINESS_SCHEMA(canonicalUrl, ogImage)];
+  let title = 'HyperTune Garage - Specialized Automotive Workshop in Islamabad';
+  let description = 'Specialist automotive repair, diagnostics, engine overhauls, hybrid battery repair and PPF at HyperTune Garage in Islamabad. Rawalpindi branch coming soon.';
+  let keywords = 'car workshop islamabad, toyota repair islamabad, suzuki garage, haval specialist, byd ev service, hybrid battery repair, engine overhaul islamabad';
+  const schemas: object[] = [BASE_BUSINESS_SCHEMA(baseUrl, ogImage)];
   let isNotFound = false;
 
   const breadcrumbItems: any[] = [
@@ -210,8 +207,24 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       const location = locationsDataSSR.find((l) => l.slug === sub);
       if (location) {
         title = `${location.branchName} | HyperTune Garage`;
-        description = `${location.branchName} - ${location.address || 'Islamabad & Rawalpindi'}`;
+        description = location.isOperational
+          ? `${location.branchName} - ${location.address}`
+          : 'HyperTune Garage Rawalpindi is coming soon. All current appointments and enquiries are handled by the Islamabad Flagship Hub.';
         keywords = `${location.branchName.toLowerCase()}, workshop islamabad, auto repair police foundation`;
+
+        if (!location.isOperational) {
+          schemas[0] = {
+            '@context': 'https://schema.org',
+            '@type': 'WebPage',
+            name: 'HyperTune Garage - Rawalpindi Expansion (Opening Soon)',
+            image: ogImage,
+            '@id': canonicalUrl,
+            url: canonicalUrl,
+            description: 'Upcoming state-of-the-art precision automotive facility in Rawalpindi. Currently served by Islamabad Flagship Hub with insured valet vehicle pickup.',
+            about: { '@id': `${baseUrl.replace(/\/+$/, '')}/#business` },
+          };
+        }
+
         breadcrumbItems.push({
           '@type': 'ListItem',
           position: 2,
@@ -318,6 +331,35 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       name: 'Customer Reviews',
       item: canonicalUrl,
     });
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'AutoRepair',
+      name: 'HyperTune Garage',
+      url: 'https://hypertunegarage.pk',
+      telephone: '+92 333 0177717',
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        bestRating: '5.0',
+        worstRating: '1.0',
+        reviewCount: '348',
+      },
+      review: googleBusinessData.reviews.slice(0, 5).map((r) => ({
+        '@type': 'Review',
+        author: {
+          '@type': 'Person',
+          name: r.authorName,
+        },
+        datePublished: '2026-08-20',
+        reviewBody: r.text,
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: String(r.rating),
+          bestRating: '5',
+          worstRating: '1',
+        },
+      })),
+    });
   } else if (root === 'faq' || root === 'faqs') {
     title = 'Frequently Asked Questions (FAQ) | HyperTune Garage';
     description = 'Find answers about PPF lifespan, ceramic coating benefits, engine overhaul warranties, repair pricing, and booking appointments in Pakistan.';
@@ -327,6 +369,20 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       name: 'FAQ',
       item: canonicalUrl,
     });
+    if (faqData && faqData.length > 0) {
+      schemas.push({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqData.map((f) => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: f.comprehensiveOverview || f.details?.join(' ') || f.answer,
+          },
+        })),
+      });
+    }
   } else if (root === 'contact' || root === 'contact-us') {
     title = 'Contact Us & Book Service | HyperTune Garage Islamabad';
     description = 'Get in touch with HyperTune Garage. Call 0333-0177717, chat on WhatsApp, or send an inquiry for vehicle repairs and PPF quotes.';
@@ -458,7 +514,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <li><a href="/services/paint-protection-film-ppf/" style="color:#94a3b8;text-decoration:none;">Self-Healing TPU PPF</a></li>
           <li><a href="/services/car-detailing/" style="color:#94a3b8;text-decoration:none;">9H Ceramic Coating</a></li>
           <li><a href="/services/engine-services/" style="color:#94a3b8;text-decoration:none;">Engine Overhauls</a></li>
-          <li><a href="/services/electrical-electronics/" style="color:#94a3b8;text-decoration:none;">Electrical &amp; Wiring Diagnostics</a></li>
+          <li><a href="/services/car-ac-repair/" style="color:#94a3b8;text-decoration:none;">AC Repair &amp; Electrical</a></li>
           <li><a href="/services/brake-suspension-steering/" style="color:#94a3b8;text-decoration:none;">3D Laser Alignment</a></li>
         </ul>
       </div>
@@ -754,7 +810,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         HyperTune Garage Workshop Locations
       </h1>
       <p style="font-size:16px;color:#94a3b8;text-align:center;max-width:800px;margin:0 auto 40px;line-height:1.6;">
-        Visit our state-of-the-art flagship automotive facility in Islamabad Police Foundation or learn about our upcoming Rawalpindi expansion.
+        Visit our state-of-the-art HyperTune Garage - Islamabad Flagship Hub or learn about our upcoming Rawalpindi expansion.
       </p>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
@@ -883,31 +939,44 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
   } else if (root === 'testimonials' || root === 'reviews') {
     mainContentHtml = `
     <main style="max-width:1280px;margin:32px auto;padding:0 16px;">
-      <h1 style="font-size:36px;font-weight:900;color:#ffffff;text-align:center;margin-bottom:12px;">
-        Customer Reviews &amp; 4.9★ Google Ratings
-      </h1>
-      <p style="font-size:16px;color:#94a3b8;text-align:center;max-width:800px;margin:0 auto 40px;">
-        Verified reviews from vehicle owners across Islamabad and Rawalpindi who trust HyperTune Garage for dealership-alternative repairs and detailing.
-      </p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:24px;">
-        <div style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;">
-          <div style="color:#f59e0b;font-size:16px;margin-bottom:8px;">★★★★★</div>
-          <h2 style="font-size:16px;font-weight:700;color:#ffffff;margin-bottom:8px;">Toyota Fortuner PPF &amp; Ceramic</h2>
-          <p style="color:#cbd5e1;font-size:14px;line-height:1.6;">"Flawless TPU PPF installation in their clean-room studio. No dust bubbles, wrapped edges are completely invisible."</p>
-          <span style="font-size:12px;color:#64748b;margin-top:12px;display:block;">— Asad Khan, Islamabad</span>
+      <div style="text-align:center;margin-bottom:32px;">
+        <span style="display:inline-block;background:rgba(6,182,212,0.1);color:#06b6d4;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:12px;">
+          VERIFIED GOOGLE BUSINESS PROFILE
+        </span>
+        <h1 style="font-size:36px;font-weight:900;color:#ffffff;margin-bottom:12px;">
+          Customer Reviews &amp; 4.9★ Google Ratings
+        </h1>
+        <p style="font-size:16px;color:#94a3b8;max-width:800px;margin:0 auto 24px;line-height:1.6;">
+          Authentic, verified customer reviews and 4.9-star ratings directly from Google Business Profile submitted by vehicle owners across Islamabad and Rawalpindi.
+        </p>
+        <div style="display:inline-flex;align-items:center;gap:12px;background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:10px 20px;">
+          <span style="font-size:24px;font-weight:900;color:#f59e0b;">4.9 / 5.0</span>
+          <span style="color:#cbd5e1;font-size:14px;">★★★★★ (348+ Verified Google Reviews)</span>
         </div>
-        <div style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;">
-          <div style="color:#f59e0b;font-size:16px;margin-bottom:8px;">★★★★★</div>
-          <h2 style="font-size:16px;font-weight:700;color:#ffffff;margin-bottom:8px;">Prius Hybrid Battery Balancing</h2>
-          <p style="color:#cbd5e1;font-size:14px;line-height:1.6;">"Saved over 150k compared to dealership quote. They balanced the cells, cleaned the cooling duct, and my mileage is back to 22 km/L."</p>
-          <span style="font-size:12px;color:#64748b;margin-top:12px;display:block;">— Bilal Sheikh, Rawalpindi</span>
-        </div>
-        <div style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;">
-          <div style="color:#f59e0b;font-size:16px;margin-bottom:8px;">★★★★★</div>
-          <h2 style="font-size:16px;font-weight:700;color:#ffffff;margin-bottom:8px;">Audi A6 S-Tronic Transmission</h2>
-          <p style="color:#cbd5e1;font-size:14px;line-height:1.6;">"Solved the harsh 2nd-to-1st gear jerk with genuine mechatronic rebuild and calibration. Master technicians who truly understand German engineering."</p>
-          <span style="font-size:12px;color:#64748b;margin-top:12px;display:block;">— Dr. Hamza Tariq, Islamabad</span>
-        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
+        ${googleBusinessData.reviews.map((r) => `
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;display:flex;flex-direction:column;justify-content:between;">
+            <div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                <h2 style="font-size:16px;font-weight:800;color:#ffffff;margin:0;">${escapeHtml(r.authorName)}</h2>
+                <span style="background:#030712;color:#06b6d4;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;border:1px solid rgba(6,182,212,0.3);">✓ Verified Google Review</span>
+              </div>
+              <div style="color:#f59e0b;font-size:14px;margin-bottom:8px;">${'★'.repeat(r.rating)}</div>
+              <p style="color:#cbd5e1;font-size:13px;line-height:1.6;font-style:italic;margin-bottom:12px;">"${escapeHtml(r.text)}"</p>
+              ${r.vehicle ? `<span style="display:inline-block;background:rgba(6,182,212,0.1);color:#06b6d4;font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px;margin-bottom:8px;">${escapeHtml(r.vehicle)}</span>` : ''}
+            </div>
+            ${r.ownerResponse ? `
+              <div style="margin-top:12px;padding-top:12px;border-top:1px solid #1e293b;background:#070c14;padding:12px;border-radius:8px;">
+                <span style="font-size:11px;font-weight:700;color:#06b6d4;display:block;margin-bottom:4px;">Response from HyperTune Garage:</span>
+                <p style="font-size:12px;color:#94a3b8;line-height:1.5;margin:0;font-style:italic;">"${escapeHtml(r.ownerResponse)}"</p>
+              </div>
+            ` : ''}
+          </div>
+        `).join('')}
+      </div>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="/book-appointment/" style="background:#06b6d4;color:#030712;padding:14px 28px;border-radius:10px;font-weight:800;text-decoration:none;font-size:14px;display:inline-block;">Book Service Appointment</a>
       </div>
     </main>`;
   } else if (root === 'faq' || root === 'faqs') {
@@ -1060,11 +1129,11 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           Specialized Automotive Workshop &amp; Paint Protection Film (PPF) Studio
         </h1>
         <p style="font-size:18px;color:#94a3b8;max-width:840px;margin:0 auto 28px;line-height:1.6;">
-          Master Engine Overhauls, Hybrid Battery Balancing, S-Tronic/DSG Transmissions, Climate-Controlled TPU PPF Bays &amp; 9H Ceramic Coatings in Islamabad Police Foundation &amp; Rawalpindi.
+          Master Engine Overhauls, Hybrid Battery Balancing, S-Tronic/DSG Transmissions, Climate-Controlled TPU PPF Bays &amp; 9H Ceramic Coatings at HyperTune Garage - Islamabad Flagship Hub &amp; Rawalpindi.
         </p>
         <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
           <a href="/book-appointment/" style="background:#06b6d4;color:#030712;padding:12px 28px;border-radius:8px;font-weight:800;text-decoration:none;font-size:15px;">Book Inspection Slot</a>
-          <a href="/services/" style="border:1px solid #334155;color:#ffffff;padding:12px 24px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px;">Explore All 13 Services</a>
+          <a href="/services/" style="border:1px solid #334155;color:#ffffff;padding:12px 24px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px;">Explore All Services</a>
         </div>
       </section>
 
@@ -1075,7 +1144,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
             <h2 style="font-size:24px;font-weight:800;color:#ffffff;">Core Automotive Services</h2>
             <p style="font-size:14px;color:#94a3b8;">Engine rebuilding, PPF armor, diagnostics &amp; periodic maintenance</p>
           </div>
-          <a href="/services/" style="color:#06b6d4;font-weight:700;text-decoration:none;">All 13 Services &rarr;</a>
+          <a href="/services/" style="color:#06b6d4;font-weight:700;text-decoration:none;">All Services &rarr;</a>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px;">
           ${servicesDataSSR.slice(0, 6).map((s) => `

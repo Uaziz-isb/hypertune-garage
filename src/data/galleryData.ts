@@ -44,11 +44,11 @@ export const galleryData: GalleryItem[] = [
   },
   {
     id: 'gal-6',
-    title: 'Honda Vezel i-DCD Hybrid Battery & DCT Actuator Overhaul',
-    category: 'Hybrid Battery',
+    title: 'Honda Vezel i-DCD Dual-Clutch Transmission & Actuator Overhaul',
+    category: 'Transmission & Gearbox',
     image: images.galleryHybridBench,
     vehicle: 'Honda Vezel Z Sensing',
-    description: 'Battery cell replacement, high-voltage copper busbar de-oxidation, and clutch relearn.',
+    description: 'Dual-clutch actuator calibration, transmission fluid flush, and clutch relearn.',
   },
   {
     id: 'gal-7',

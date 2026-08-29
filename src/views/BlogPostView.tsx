@@ -78,8 +78,6 @@ export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpen
                   alt={post.author.name}
                   width={32}
                   height={32}
-                  loading="lazy"
-                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
                 />

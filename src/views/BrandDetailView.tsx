@@ -132,10 +132,10 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
             <div className="relative rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
               <img
                 src={brand.heroImage}
-                alt={brand.name}
+                alt={`${brand.name} Service & Repair Facility HyperTune Garage`}
+                width={520}
+                height={320}
                 className="w-full h-80 object-cover"
-                width={800}
-                height={450}
                 loading="eager"
                 decoding="async"
               />

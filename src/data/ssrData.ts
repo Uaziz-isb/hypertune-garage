@@ -34,6 +34,7 @@ export interface LocationItemSSR {
   address: string;
   phone: string;
   whatsapp: string;
+  isOperational?: boolean;
   workshopSpecs: string[];
 }
 
@@ -152,23 +153,22 @@ export const servicesDataSSR: ServiceItemSSR[] = [
   },
   {
     slug: 'car-ac-repair',
-    title: 'Car AC Repair & R134a Gas Recharge',
-    category: 'Climate',
-    shortDesc: 'Computerized AC refrigerant charging, compressor rebuilding, evaporator coil leak detection, and condenser ultrasonic cleaning.',
-    fullDesc: 'High-performance automotive climate control restoration engineered to deliver sub-5°C vent temperatures even during 45°C Islamabad heatwaves.',
-    priceRange: 'PKR 3,000 - PKR 45,000',
-    estimatedTime: '2 - 5 Hours',
-    subServices: ['R134a & R1234yf Pure Refrigerant Charge', 'AC Compressor Overhaul & Clutch Repair', 'Evaporator Core Nitrogen Leak Testing', 'Condenser High-Pressure Washing', 'Cabin Antibacterial Fogging'],
-  },
-  {
-    slug: 'electrical-electronics',
-    title: 'Car Electrical, Wiring & Hybrid Battery',
+    title: 'AC Repair & Electrical Specialist',
     category: 'Electrical',
-    shortDesc: 'P0A80 hybrid battery cell rebalancing, alternator & starter motor overhauls, computer module coding, and fuse box wiring restoration.',
-    fullDesc: 'Master electrical engineers equipped with high-voltage battery test benches and computerized CAN-bus oscilloscopes to diagnose parasitic battery drains and hybrid inverter faults.',
-    priceRange: 'PKR 4,000 - PKR 180,000',
-    estimatedTime: '3 Hours - 3 Days',
-    subServices: ['Hybrid Battery Cell Balancing (P0A80)', 'ECU & BCM Electronic Module Coding', 'Alternator & Starter Motor Rebuild', 'Parasitic Battery Drain Diagnostics', 'CAN-Bus Short Circuit Troubleshooting'],
+    shortDesc: 'Automated R134a/R1234yf refrigerant recovery & recharge, cooling coil leak detection, compressor overhaul, climate control servicing, ECU module programming, and computerized auto electrical wiring diagnostics in Islamabad & Rawalpindi.',
+    fullDesc: 'HyperTune Garage provides comprehensive Automotive Air Conditioning & Electrical System repair in Islamabad & Rawalpindi. We combine automated digital AC refrigerant recovery/recharge stations, dry nitrogen pressure leak testing, and electronic halogen detectors with certified master auto-electrician diagnostics utilizing digital oscilloscopes, CAN-bus analyzers, and factory diagnostic computers to solve cooling loss, compressor noise, evaporator coil leaks, parasitic battery drains, short circuits, and electronic sensor glitches.',
+    priceRange: 'PKR 5,000 - PKR 65,000',
+    estimatedTime: '2 - 8 Hours',
+    subServices: [
+      'Automated R134a / R1234yf Refrigerant Recharge',
+      'AC Compressor & Clutch Overhaul',
+      'Evaporator / Cooling Coil Leak Repair & Replacement',
+      'Computerized Auto Electrical & Wiring Diagnostics',
+      'ECU & BCM Module Coding & Programming',
+      'Alternator & Starter Motor Rebuild',
+      'Parasitic Battery Drain Diagnostics',
+      'Cabin Air Filter & Antibacterial Ozone Vent Disinfection'
+    ],
   },
   {
     slug: 'cooling-fuel-exhaust',
@@ -190,46 +190,6 @@ export const servicesDataSSR: ServiceItemSSR[] = [
     estimatedTime: '1 - 3 Hours',
     subServices: ['OEM Dealer-Level Diagnostic Scan', '200-Point Pre-Purchase Car Inspection', 'Digital Paint Depth Meter Inspection', 'Live Telemetry Sensor Logging', 'Written Vehicle Health Audit Report'],
   },
-  {
-    slug: 'hybrid-ev-battery-services',
-    title: 'Hybrid & EV Battery Services',
-    category: 'Hybrid',
-    shortDesc: 'Dedicated hybrid battery diagnostic, cell balancing, reconditioning, and replacement laboratory in Islamabad & Rawalpindi for Toyota Prius, Aqua, Vezel, and Lexus hybrids.',
-    fullDesc: 'HyperTune Garage operates a dedicated Hybrid & EV Battery Diagnostics & Cell Reconditioning Laboratory serving vehicle owners across Islamabad and Rawalpindi. We perform computerized cell internal resistance testing, individual NiMH and Li-ion module balancing, high-voltage cooling fan cleaning, inverter coolant flushing, and genuine OEM cell replacements with warranty.',
-    priceRange: 'PKR 15,000 - PKR 180,000',
-    estimatedTime: '1 - 2 Days',
-    subServices: ['Cell Balancing & Health Audit', 'Hybrid Battery Cell Replacement', 'High Voltage Cooling Fan Cleaning', 'Inverter & Converter Servicing'],
-  },
-  {
-    slug: 'car-ac-electrical',
-    title: 'Car AC & Auto Electrical Systems',
-    category: 'Electrical',
-    shortDesc: 'Precision car AC gas recharging, compressor overhaul, cooling coil leak repair, and computerized wiring diagnostics in Islamabad & Rawalpindi.',
-    fullDesc: 'HyperTune Garage provides full-service Automotive Air Conditioning & Electrical System repair in Islamabad & Rawalpindi. We utilize automated AC refrigerant recovery/recharge stations, digital leak detectors, and oscilloscope wiring analysis to solve cooling loss, compressor noise, electrical short circuits, and sensor glitches.',
-    priceRange: 'PKR 5,000 - PKR 45,000',
-    estimatedTime: '1 Day',
-    subServices: ['AC Gas Recharging (R134a / R1234yf)', 'Compressor & Clutch Overhaul', 'Evaporator / Cooling Coil Leak Repair', 'Computerized Electrical & Wiring Trace'],
-  },
-  {
-    slug: 'car-ac-repair',
-    title: 'Air Conditioning (AC) & R134a Gas Recharge',
-    category: 'Climate',
-    shortDesc: 'Automated refrigerant recovery, cooling coil leak detection, compressor overhaul, and climate control servicing in Islamabad & Rawalpindi.',
-    fullDesc: 'HyperTune Garage provides precision Automotive Air Conditioning repair and R134a / R1234yf refrigerant gas recharging in Islamabad and Rawalpindi. We utilize automated digital recovery stations, electronic halogen leak detectors, and nitrogen pressure testing to solve warm air blowing, compressor clutch failure, and evaporator leaks.',
-    priceRange: 'PKR 6,000 - PKR 45,000',
-    estimatedTime: '2 - 6 Hours',
-    subServices: ['Automated R134a / R1234yf Refrigerant Recharge', 'Compressor Rebuild & Clutch Repair', 'Evaporator / Cooling Coil Leak Fix', 'Odor Removal & Antibacterial Vent Ozone Treatment'],
-  },
-  {
-    slug: 'electrical-electronics',
-    title: 'Auto Electrical & Electronics Diagnostics',
-    category: 'Electrical',
-    shortDesc: 'Master auto electricians for ECU programming, wiring harness repairs, sensor diagnostics, alternator/starter overhaul, and battery health audits in Islamabad & Rawalpindi.',
-    fullDesc: 'HyperTune Garage features certified master auto electricians equipped with digital oscilloscopes, CAN-bus analyzers, and factory diagnostic computers in Islamabad and Rawalpindi. We diagnose complex parasitic battery drains, short circuits, airbag SRS faults, body control module (BCM) glitches, and blown fuse networks.',
-    priceRange: 'PKR 5,000 - PKR 65,000',
-    estimatedTime: '2 - 8 Hours',
-    subServices: ['CAN-Bus & Wiring Harness Trace', 'ECU / BCM Module Repair & Coding', 'Alternator & Starter Motor Rebuild', 'Parasitic Battery Drain Diagnosis'],
-  },
 ];
 
 export function findServiceSSR(slug?: string): ServiceItemSSR | undefined {
@@ -246,10 +206,11 @@ export function findServiceSSR(slug?: string): ServiceItemSSR | undefined {
     'denting-painting-bodywork': 'body-repair-paint',
     'body-kits-facelifts-modifications': 'body-modification',
     'cooling-radiator-climate-control': 'cooling-fuel-exhaust',
-    'air-conditioning-heating-hvac': 'car-ac-electrical',
-    'car-ac-repair': 'car-ac-electrical',
+    'air-conditioning-heating-hvac': 'car-ac-repair',
+    'car-ac-electrical': 'car-ac-repair',
+    'electrical-electronics': 'car-ac-repair',
+    'car-ac-repair': 'car-ac-repair',
     'pre-purchase-inspection': 'inspection-diagnostics',
-    'hybrid-battery-repair': 'hybrid-ev-battery-services',
   };
 
   if (aliasMap[normalized]) {
@@ -286,10 +247,7 @@ export function findServiceSSR(slug?: string): ServiceItemSSR | undefined {
     return servicesDataSSR.find((s) => s.slug === 'transmission-drivetrain');
   }
   if (normalized.includes('ac') || normalized.includes('air-condition') || normalized.includes('hvac')) {
-    return servicesDataSSR.find((s) => s.slug === 'car-ac-electrical') || servicesDataSSR.find((s) => s.slug === 'car-ac-repair');
-  }
-  if (normalized.includes('hybrid') || normalized.includes('battery')) {
-    return servicesDataSSR.find((s) => s.slug === 'hybrid-ev-battery-services') || servicesDataSSR.find((s) => s.slug === 'electrical-electronics');
+    return servicesDataSSR.find((s) => s.slug === 'car-ac-repair');
   }
   if (normalized.includes('cool') || normalized.includes('radiator')) {
     return servicesDataSSR.find((s) => s.slug === 'cooling-fuel-exhaust');
@@ -809,6 +767,7 @@ export const locationsDataSSR: LocationItemSSR[] = [
     address: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan',
     phone: '+92 333 0177717',
     whatsapp: '923330177717',
+    isOperational: true,
     workshopSpecs: [
       'Computerized PPF CAD Plotter & Dust-Free Clean Studio',
       'Downdraft Heated Bake Paint Booth',
@@ -825,6 +784,7 @@ export const locationsDataSSR: LocationItemSSR[] = [
     address: 'Serving Rawalpindi clients via Islamabad Flagship Hub with Insured Valet Pickup',
     phone: '+92 333 0177717',
     whatsapp: '923330177717',
+    isOperational: false,
     workshopSpecs: [
       'Dedicated Express Periodic Maintenance Bay',
       'Computerized Diagnostic & Quick Scan Bay',

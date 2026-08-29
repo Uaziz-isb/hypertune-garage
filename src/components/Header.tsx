@@ -68,8 +68,7 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'maintenance-servicing', title: 'Maintenance & Servicing', icon: Activity, desc: 'Synthetic Oil & 50-Point Health Audit' },
     { id: 'brake-suspension-steering', title: 'Brake, Suspension & Steering', icon: Disc, desc: 'Brakes, Air Suspension & 3D Alignment' },
     { id: 'transmission-drivetrain', title: 'Transmission & Drivetrain', icon: Wrench, desc: 'Automatic & CVT Gearbox Overhaul' },
-    { id: 'car-ac-repair', title: 'Air Conditioning (AC)', icon: Wind, desc: 'R134a Gas Recharge & Compressor Repair' },
-    { id: 'electrical-electronics', title: 'Electrical & Electronics', icon: Zap, desc: 'Wiring Diagnostics & Battery Replacement' },
+    { id: 'car-ac-repair', title: 'AC Repair & Electrical Specialist', icon: Wind, desc: 'AC Gas, Electrical & ECU Diagnostics' },
     { id: 'cooling-fuel-exhaust', title: 'Cooling, Fuel & Exhaust', icon: Cpu, desc: 'Radiator Flush, Injectors & Exhaust' },
     { id: 'inspection-diagnostics', title: 'Inspection & Diagnostics', icon: Search, desc: 'OBD2 Diagnostics & Pre-Purchase Audit' },
     { id: 'paint-protection-film-ppf', title: 'Paint Protection Film (PPF)', icon: ShieldCheck, desc: 'Self-Healing TPU Film (PKR 10k-250k)' },
@@ -266,7 +265,7 @@ export const Header: React.FC<HeaderProps> = ({
                             }}
                             className="text-cyan-400 hover:text-cyan-300 font-bold flex items-center gap-1"
                           >
-                            View All 13 Services →
+                            View All Services →
                           </a>
                         </div>
                       </div>
@@ -377,7 +376,7 @@ export const Header: React.FC<HeaderProps> = ({
                             }}
                             className="text-cyan-400 hover:text-cyan-300 font-bold flex items-center gap-1"
                           >
-                            View All 24 Brand Specialist Hubs →
+                            View All Brand Specialist Hubs →
                           </a>
                         </div>
                       </div>

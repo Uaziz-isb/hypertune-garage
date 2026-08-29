@@ -491,7 +491,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
                 <div className="flex justify-between border-b border-slate-800 pb-2">
                   <span className="text-slate-400">Location:</span>
                   <span className="font-bold text-white">
-                    {locationId === 'islamabad-g8' ? 'Islamabad Flagship Hub (Police Foundation)' : 'Rawalpindi Hub (Opening Soon)'}
+                    {locationsData.find(l => l.id === locationId)?.branchName || 'HyperTune Garage - Islamabad Flagship Hub'}
                   </span>
                 </div>
                 <div className="flex justify-between">

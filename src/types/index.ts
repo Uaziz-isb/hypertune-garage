@@ -148,7 +148,7 @@ export interface ReviewItem {
 export interface GalleryItem {
   id: string;
   title: string;
-  category: 'Engine Overhaul' | 'PPF & PPS Studio' | 'German Repair' | 'Ceramic & PPF' | 'Suspension & Brakes' | 'Hybrid Battery' | 'Popular Brands Repair' | 'Transmission & Gearbox';
+  category: 'Engine Overhaul' | 'PPF & PPS Studio' | 'German Repair' | 'Ceramic & PPF' | 'Suspension & Brakes' | 'Popular Brands Repair' | 'Transmission & Gearbox';
   image: string;
   vehicle: string;
   description: string;

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { PageId } from '../types';
-import { Logo } from '../components/Logo';
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send, CheckCircle2, ExternalLink, Navigation } from 'lucide-react';
 
 interface ContactViewProps {
@@ -189,21 +188,6 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
             referrerPolicy="no-referrer-when-downgrade"
             className="w-full h-full filter brightness-90 contrast-105"
           />
-        </div>
-
-        {/* LOGO UNDER GOOGLE MAP */}
-        <div className="bg-[#0b121e] border border-cyan-500/30 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl overflow-hidden">
-          <div className="flex items-center justify-center py-4 px-2 scale-150 transform origin-center sm:origin-left my-2 shrink-0">
-            <Logo onClick={() => onNavigate('home')} />
-          </div>
-          <div className="space-y-2 text-center md:text-right max-w-xl">
-            <h3 className="text-xl md:text-2xl font-black text-white">HyperTune Garage Islamabad</h3>
-            <p className="text-xs md:text-sm text-slate-300 leading-relaxed">
-              Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan.
-              <br />
-              Specializing in Paint Protection Film (PPF), Ceramic Detailing, Vehicle Wraps & Precision Engineering.
-            </p>
-          </div>
         </div>
       </section>
     </div>

@@ -1,31 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Star, CheckCircle2, ExternalLink, MessageSquare } from 'lucide-react';
+import { Star, CheckCircle2, ExternalLink, MessageSquare, ShieldCheck, Sparkles } from 'lucide-react';
+import { googleBusinessData, GoogleBusinessData, GoogleReviewItem } from '../data/reviewsData';
 
-export interface GoogleReviewItem {
-  id: string;
-  authorName: string;
-  authorPhoto: string;
-  rating: number;
-  relativeTimeText: string;
-  text: string;
-  vehicle?: string;
-  branch?: string;
-  ownerResponse?: string;
-  verified?: boolean;
-}
-
-export interface GoogleBusinessData {
-  placeName: string;
-  placeId: string;
-  rating: number;
-  totalReviews: number;
-  ratingDistribution?: { [key: number]: number };
-  googleMapsUrl: string;
-  writeReviewUrl: string;
-  lastSyncedAt?: string;
-  source?: string;
-  reviews: GoogleReviewItem[];
-}
+export type { GoogleReviewItem, GoogleBusinessData };
 
 interface GoogleReviewsWidgetProps {
   compact?: boolean;
@@ -38,8 +15,7 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
   limit,
   showTitle = true,
 }) => {
-  const [data, setData] = useState<GoogleBusinessData | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [data, setData] = useState<GoogleBusinessData>(googleBusinessData);
   const [filterRating, setFilterRating] = useState<number | 'all'>('all');
 
   const fetchReviews = async () => {
@@ -47,14 +23,16 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
       const res = await fetch('/api/google-reviews');
       if (res.ok) {
         const json = await res.json();
-        if (json.success) {
-          setData(json);
+        if (json && json.success && json.reviews && json.reviews.length > 0) {
+          setData((prev) => ({
+            ...prev,
+            ...json,
+            reviews: json.reviews,
+          }));
         }
       }
-    } catch (err) {
-      console.error('Failed to fetch Google reviews:', err);
-    } finally {
-      setLoading(false);
+    } catch {
+      // Graceful fallback to bundled verified Google Business dataset
     }
   };
 
@@ -62,30 +40,20 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
     fetchReviews();
   }, []);
 
-  const reviewsToDisplay = data
-    ? data.reviews.filter((r) => (filterRating === 'all' ? true : r.rating === filterRating))
-    : [];
+  const reviewsToDisplay = data.reviews.filter((r) =>
+    filterRating === 'all' ? true : r.rating === filterRating
+  );
 
   const displayedList = limit ? reviewsToDisplay.slice(0, limit) : reviewsToDisplay;
 
-  if (loading && !data) {
-    return (
-      <div className="bg-[#0b121e] border border-slate-800 rounded-3xl p-8 text-center space-y-4 animate-pulse">
-        <div className="h-6 bg-slate-800 rounded w-1/3 mx-auto" />
-        <div className="h-4 bg-slate-800 rounded w-1/2 mx-auto" />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
-          <div className="h-32 bg-slate-900 rounded-2xl" />
-          <div className="h-32 bg-slate-900 rounded-2xl" />
-          <div className="h-32 bg-slate-900 rounded-2xl" />
-        </div>
-      </div>
-    );
-  }
-
-  const rating = data?.rating || 4.9;
-  const totalReviews = data?.totalReviews || 348;
-  const writeReviewUrl = data?.writeReviewUrl || 'https://search.google.com/local/writereview?placeid=ChIJgy296uXt3zgRaWvyhpPZsvM';
-  const googleMapsUrl = data?.googleMapsUrl || 'https://www.google.com/maps/search/?api=1&query=HyperTune+Garage&query_place_id=ChIJgy296uXt3zgRaWvyhpPZsvM';
+  const rating = data.rating || 4.9;
+  const totalReviews = data.totalReviews || 348;
+  const writeReviewUrl =
+    data.writeReviewUrl ||
+    'https://search.google.com/local/writereview?placeid=ChIJgy296uXt3zgRaWvyhpPZsvM';
+  const googleMapsUrl =
+    data.googleMapsUrl ||
+    'https://www.google.com/maps/search/?api=1&query=HyperTune+Garage&query_place_id=ChIJgy296uXt3zgRaWvyhpPZsvM';
 
   return (
     <div className="space-y-6">
@@ -190,7 +158,7 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
                     : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
                 }`}
               >
-                All Reviews ({data?.reviews.length || 15})
+                All Reviews ({data.reviews.length})
               </button>
               <button
                 onClick={() => setFilterRating(5)}

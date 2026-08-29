@@ -6,20 +6,21 @@ import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import { getRouteMetadataAndSchema, renderSSRBody, injectSSRHtml } from "./src/utils/ssrRenderer";
 import { getSiteRoutes } from "./src/utils/routes";
+import { googleBusinessData } from "./src/data/reviewsData";
 
 const app = express();
 const PORT = parseInt(process.env.PORT || "3000", 10);
 
 // High-Performance Compression for 98+ PageSpeed
 app.use(
-  compression({
+  ((compression as any)({
     level: 9,
     threshold: 512,
-    filter: (req, res) => {
-      if (req.headers["x-no-compression"]) return false;
-      return compression.filter(req, res);
+    filter: (req: any, res: any) => {
+      if (req.headers && req.headers["x-no-compression"]) return false;
+      return (compression as any).filter ? (compression as any).filter(req, res) : true;
     },
-  })
+  }) as unknown) as express.RequestHandler
 );
 
 // Performance & Security Headers
@@ -173,200 +174,7 @@ app.get("/api/google-reviews", async (req, res) => {
   }
 
   // Real verified Google Business Profile representation for HyperTune Garage
-  return res.json({
-    success: true,
-    source: "google-business-profile",
-    placeName: "HyperTune Garage - PPF, Ceramic & German Automotive Specialists",
-    placeId: placeId,
-    rating: 4.9,
-    totalReviews: 348,
-    ratingDistribution: { 5: 326, 4: 16, 3: 4, 2: 2, 1: 0 },
-    googleMapsUrl: `https://www.google.com/maps/search/?api=1&query=HyperTune+Garage&query_place_id=${placeId}`,
-    writeReviewUrl: `https://search.google.com/local/writereview?placeid=${placeId}`,
-    lastSyncedAt: new Date().toISOString(),
-    reviews: [
-      {
-        id: "g-rev-1",
-        authorName: "Usman Tariq",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "2 days ago",
-        text: "Got full body TPU Paint Protection Film (PPF) done on my Porsche 911 GT3 at HyperTune Garage Islamabad. The glass mirror clarity and self-healing capability are remarkable. Zero bubbles, flawless edge tucking in their dust-free clean studio. The HyperTune Garage team are true professionals!",
-        vehicle: "Porsche 911 GT3 / BMW M5",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Usman! It was an absolute pleasure hosting your GT3 in our dust-free studio. Drive safe and enjoy the glass gloss PPF protection!",
-        verified: true,
-      },
-      {
-        id: "g-rev-2",
-        authorName: "Dr. Hammad Chaudhry",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "5 days ago",
-        text: "HyperTune Garage solved a complex drivetrain error on my BMW 530i that two major workshops in Rawalpindi failed to diagnose. Their BMW ISTA scanner identified a faulty sensor, replaced it with original OEM parts, and applied front-end PPF. Transparent video inspection updates sent directly to my WhatsApp. Unmatched service quality in Pakistan!",
-        vehicle: "BMW 530i M-Sport",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Dr. Hammad for your kind words! We pride ourselves on OEM digital diagnostics and clear video proof for every client.",
-        verified: true,
-      },
-      {
-        id: "g-rev-3",
-        authorName: "Saad Alvi",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "1 week ago",
-        text: "Applied self-healing Paint Protection Film (PPF) and 9H Ceramic topcoat on my new Honda Civic RS. Gravel stone chips on Islamabad Highway leave absolutely zero marks now! Their CAD computer plotter pre-cuts the film so no knives ever touch your car's factory paint. 10/10 recommendation!",
-        vehicle: "Honda Civic RS (2024)",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Saad! Our computerized plotter ensures 100% blade-free installation for pristine factory paint preservation.",
-        verified: true,
-      },
-      {
-        id: "g-rev-4",
-        authorName: "Malik Shehryar Khan",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "2 weeks ago",
-        text: "Brought my Toyota Land Cruiser V8 to HyperTune Garage for full body heavy-duty PPF armor. Off-road driving around Murree & Hazara leaves zero scratches now. The hydrophobic water beading is incredible. Excellent customer lounge with live video monitoring of the workshop bay.",
-        vehicle: "Toyota Land Cruiser V8",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Malik sb! Happy to serve your Land Cruiser V8 with top-grade off-road PPF protection.",
-        verified: true,
-      },
-      {
-        id: "g-rev-5",
-        authorName: "Zainab Raza",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "3 weeks ago",
-        text: "Outstanding interior detailing and 9H ceramic coating for my Audi A4. The workshop is immaculate, staff is courteous, and pricing is extremely honest compared to local dealerships. Will definitely return for routine maintenance!",
-        vehicle: "Audi A4 S-Line",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Zainab! We look forward to taking great care of your Audi A4 in the future.",
-        verified: true,
-      },
-      {
-        id: "g-rev-6",
-        authorName: "Brig. (R) Tariq Mahmood",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "1 month ago",
-        text: "Exceptional workmanship on Mercedes E200 Airmatic suspension overhaul and brake replacement. Clear breakdown of original OEM parts used with manufacturer warranty. Timely delivery and zero hidden charges.",
-        vehicle: "Mercedes-Benz E200 (W213)",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Honored to serve you, Brig. Tariq! Ensuring the highest standards of safety and German engineering integrity is our core mission.",
-        verified: true,
-      },
-      {
-        id: "g-rev-7",
-        authorName: "Bilal Ahmad Farooqi",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "1 month ago",
-        text: "My Toyota Prius 1.8 had severe battery degradation and high-voltage errors. HyperTune hybrid lab reconditioned the battery, replaced degraded cell modules, and cleaned the cooling fan. Fuel average jumped from 11 km/L back to 22.5 km/L. Saved me hundreds of thousands!",
-        vehicle: "Toyota Prius 1.8 Hybrid",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Glad to hear your Prius is delivering peak hybrid fuel efficiency again, Bilal! Thank you for trusting our hybrid battery laboratory.",
-        verified: true,
-      },
-      {
-        id: "g-rev-8",
-        authorName: "Hamza Naveed",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "1 month ago",
-        text: "Got full body Matte Black vinyl wrap and ceramic window tinting for my Hyundai Sonata 2.5. Flawless finish with tucked edges inside door jambs. Looks like a brand new custom factory edition.",
-        vehicle: "Hyundai Sonata 2.5",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Hamza! The satin finish on your Sonata looks absolutely aggressive and sleek.",
-        verified: true,
-      },
-      {
-        id: "g-rev-9",
-        authorName: "Engr. Asim Jamil",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "2 months ago",
-        text: "Used HyperTune for 200-point Pre-Purchase Inspection before buying a used Kia Sportage AWD. Their paint depth meter detected repainted rear quarter panel and scanner caught hidden ABS faults. Saved me from buying an accidental vehicle!",
-        vehicle: "Kia Sportage AWD",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Glad our comprehensive 200-point inspection helped you make the right purchasing decision, Engr. Asim!",
-        verified: true,
-      },
-      {
-        id: "g-rev-10",
-        authorName: "Dr. Ayesha Siddiqui",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "2 months ago",
-        text: "Complete periodic maintenance, AC gas recharge, and brake overhaul for my Toyota Fortuner. The car drives like brand new and AC cooling is ice cold even in peak 44°C Islamabad summer. Very polite and knowledgeable staff.",
-        vehicle: "Toyota Fortuner 2.8 Sigma 4",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Dr. Ayesha! Keeping your Fortuner in peak mechanical condition is always our pleasure.",
-        verified: true,
-      },
-      {
-        id: "g-rev-11",
-        authorName: "Kamran Siddique",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "2 months ago",
-        text: "Had a dual-clutch transmission shudder issue on my Haval H6 HEV. HyperTune master technician calibrated the clutch actuators using OEM scanner diagnostics. The gear shifts are now buttery smooth!",
-        vehicle: "Haval H6 1.5 HEV",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Kamran! Our specialized transmission calibration tools ensure optimal shifting performance.",
-        verified: true,
-      },
-      {
-        id: "g-rev-12",
-        authorName: "Shahzad Munir",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "3 months ago",
-        text: "Superb denting and painting work in their computerized bake booth. The color match on my pearl white Lexus RX450h is 100% factory identical. No orange peel or mismatch whatsoever. Top-tier craftsmanship!",
-        vehicle: "Lexus RX450h",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Shahzad sb! We strictly adhere to computerized PPG paint mixing formulas for 100% accurate OEM color reproduction.",
-        verified: true,
-      },
-      {
-        id: "g-rev-13",
-        authorName: "Raza Ali Khan",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "3 months ago",
-        text: "Full suspension bushing replacement and 3D computerized laser wheel alignment on my Toyota Prado TX. High-speed steering wobble on the motorway is completely gone. Best alignment rig in twin cities!",
-        vehicle: "Toyota Prado TX 2.7",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Raza! Precise 3D chassis geometry alignment is vital for stable high-speed highway cruising.",
-        verified: true,
-      },
-      {
-        id: "g-rev-14",
-        authorName: "Omer Farooq",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "3 months ago",
-        text: "Installed carbon fiber aerodynamic body kit, rear diffuser, and exhaust system on my Suzuki Swift GLX. Precision fitment without any drilling gaps. Highly recommended for automotive enthusiasts!",
-        vehicle: "Suzuki Swift GLX CVT",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Omer! Your Swift looks sporty and dialed-in.",
-        verified: true,
-      },
-      {
-        id: "g-rev-15",
-        authorName: "M. Noman Sheikh",
-        authorPhoto: "",
-        rating: 5,
-        relativeTimeText: "4 months ago",
-        text: "Engine rebuild and cylinder head machining done after overheating on my Honda Vezel Hybrid. They provided complete video documentation of internal engine parts, pistons, and new gaskets. Car runs silently with perfect compression across all cylinders.",
-        vehicle: "Honda Vezel Hybrid 1.5",
-        branch: "Islamabad Police Foundation Hub",
-        ownerResponse: "Thank you Noman! Delivering reliable engine rebuilds backed with transparent digital inspection records is what sets HyperTune apart.",
-        verified: true,
-      },
-    ],
-  });
+  return res.json(googleBusinessData);
 });
 
 // XML Sitemap Endpoint for Google Search Console & Webmasters
@@ -436,8 +244,7 @@ app.get(["/llms.txt", "/.well-known/llms.txt"], (req, res) => {
 - [Periodic Maintenance & Servicing](${baseUrl}/services/maintenance-servicing): Factory-scheduled oil changes with genuine synthetic oils and 50-point inspection.
 - [Brakes, Suspension & Steering](${baseUrl}/services/brake-suspension-steering): Ceramic brake pads, suspension bushing overhaul, and 3D wheel alignment.
 - [Transmission & Drivetrain](${baseUrl}/services/transmission-drivetrain): Automatic, CVT, and Dual-Clutch (DCT) gearbox overhaul and fluid flush.
-- [Car AC Repair](${baseUrl}/services/car-ac-repair): Compressor repairs, condenser service, leak detection, and R134a refrigerant recharge.
-- [Electrical & Electronics](${baseUrl}/services/electrical-electronics): Computerized diagnostics, module coding, and battery replacements.
+- [AC Repair & Electrical Specialist](${baseUrl}/services/car-ac-repair): Compressor repairs, condenser service, leak detection, R134a/R1234yf refrigerant recharge, auto electrical wiring diagnostics, ECU programming, and alternator/starter rebuilds.
 - [Cooling, Fuel & Exhaust](${baseUrl}/services/cooling-fuel-exhaust): Radiator flush, ultrasonic injector cleaning, and exhaust maintenance.
 - [Inspection & Diagnostics](${baseUrl}/services/inspection-diagnostics): OEM OBD-II computer scans and 200-point pre-purchase inspections.
 

@@ -110,24 +110,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
     <div className="space-y-20 pb-16">
       {/* HERO SECTION */}
       <section className="relative min-h-[85vh] flex items-center pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16 px-3 sm:px-4 bg-slate-950 overflow-hidden">
-        {/* Background Image Carousel with Vignette */}
-        <div className="absolute inset-0 z-0">
-          <img
-            key={activeHero.title + currentSlide}
-            src={activeHero.image}
-            alt={activeHero.title}
-            width={1440}
-            height={810}
-            fetchPriority={currentSlide === 0 ? "high" : "auto"}
-            loading={currentSlide === 0 ? "eager" : "lazy"}
-            decoding="async"
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src = images.islamabadPpfStudio;
-            }}
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-40 z-10 scale-105"
-          />
-          <div className="absolute inset-0 z-20 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/70" />
-          <div className="absolute inset-0 z-20 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/80" />
+        {/* Atmospheric Workshop Gradient Backdrop */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-[#060c16] to-slate-950" />
+          <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[140px]" />
+          <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px]" />
         </div>
 
         <div className="relative z-30 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -146,7 +133,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
             {/* Subhead */}
             <p className="text-slate-300 text-sm sm:text-base lg:text-lg font-normal leading-relaxed mx-auto lg:mx-0 max-w-2xl">
-              Self-healing Paint Protection Film (PPF), Ceramic Coating, and mechanical repairs for Pakistan’s famous vehicle brands (Honda, Nissan, Changan, MG, Toyota, Suzuki, Hyundai, Kia, Haval) in <strong>Islamabad Police Foundation Hub</strong> & <strong>Rawalpindi</strong>.
+              Self-healing Paint Protection Film (PPF), Ceramic Coating, and mechanical repairs for Pakistan’s famous vehicle brands (Honda, Nissan, Changan, MG, Toyota, Suzuki, Hyundai, Kia, Haval) in <strong>Islamabad Flagship Hub</strong> & <strong>Rawalpindi</strong>.
             </p>
 
             {/* CTA Buttons */}
@@ -346,7 +333,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           {/* Filter Pills */}
           <div className="flex flex-wrap items-center gap-2">
             {[
-              { id: 'all', label: 'All 13 Services' },
+              { id: 'all', label: 'All Services' },
               { id: 'premium', label: '★ 5 Premium Services' },
               { id: 'protection', label: 'PPF' },
               { id: 'detailing', label: 'Detailing' },
@@ -358,8 +345,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
               { id: 'wrap', label: 'Vehicle Wrap' },
               { id: 'body', label: 'Body & Paint' },
               { id: 'modification', label: 'Body Kits' },
-              { id: 'hybrid', label: 'Hybrid & EV' },
-              { id: 'tuning', label: 'ECU Tuning' },
               { id: 'electrical', label: 'AC & Electrical' },
             ].map((cat) => (
               <button
@@ -495,11 +480,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 Proven Operations & Track Record
               </span>
               <h3 className="text-2xl font-black text-white mt-1">HyperTune Performance Metrics</h3>
-              <p className="text-xs text-slate-400 mt-0.5">Islamabad Police Foundation Flagship Hub</p>
+              <p className="text-xs text-cyan-400 font-semibold mt-0.5">HyperTune Garage - Islamabad Flagship Hub</p>
             </div>
 
             <p className="text-slate-300 text-sm leading-relaxed">
-              HyperTune Garage operates on rigorous engineering standards, pairing dealer-level diagnostic protocols with precision craftsmanship — and every service is measured, not guessed. Our diagnostic bays run dealer-grade German scan tools capable of reading OEM fault codes down to the millivolt, giving us a data-backed baseline before a single wrench turns. From computerized engine diagnostics and hybrid battery cell reconditioning to blade-free Paint Protection Film (PPF) application in a certified dust-free cleanroom, our benchmark metrics reflect an unwavering commitment to automotive excellence. Combined with fully transparent, itemized pricing on every invoice, these benchmarks aren't marketing claims; they're the operating standard behind every vehicle that leaves our shop, engineered for measurable, long-term performance and superior longevity.
+              HyperTune Garage operates on rigorous engineering standards, pairing dealer-level diagnostic protocols with precision craftsmanship — and every service is measured, not guessed. Our diagnostic bays run dealer-grade German scan tools capable of reading OEM fault codes down to the millivolt, giving us a data-backed baseline before a single wrench turns. From computerized engine diagnostics and precision AC & auto electrical repair to blade-free Paint Protection Film (PPF) application in a certified dust-free cleanroom, our benchmark metrics reflect an unwavering commitment to automotive excellence. Combined with fully transparent, itemized pricing on every invoice, these benchmarks aren't marketing claims; they're the operating standard behind every vehicle that leaves our shop, engineered for measurable, long-term performance and superior longevity.
             </p>
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-2">

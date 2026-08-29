@@ -49,10 +49,10 @@
 - **Description:** Complete rebuilds of petrol, turbo, and diesel engines to factory torque specs with OEM pistons, rings, bearings, and gaskets.
 - **Precision Equipment:** Computerized cylinder honing, micrometer crank inspection, pressure-tested cylinder heads.
 
-### 5. Hybrid & EV Battery Diagnostics & Reconditioning
-- **URL:** https://hypertunegarage.pk/services/hybrid-ev-battery-services
-- **Vehicles Serviced:** Toyota Prius, Aqua, Axio, Fielder, Corolla Cross, Honda Vezel, Fit, Grace, Hyundai, Kia Hybrids.
-- **Services:** Computerized individual cell capacity testing, balancing, cooling fan cleaning, busbar corrosion removal, and cell replacement.
+### 5. AC Repair & Electrical Specialist
+- **URL:** https://hypertunegarage.pk/services/car-ac-repair
+- **Vehicles Serviced:** All Japanese, German, European, and local market vehicles.
+- **Services:** Automated R134a/R1234yf refrigerant charging, compressor overhaul, cooling coil leak detection, computerized auto electrical wiring diagnostics, and sensor calibration.
 
 ### 6. Brakes, Suspension & 3D Wheel Alignment
 - **URL:** https://hypertunegarage.pk/services/brakes-suspension-alignment

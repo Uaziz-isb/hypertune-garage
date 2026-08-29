@@ -17,7 +17,7 @@ export const blogData: BlogPost[] = [
     readTime: '8 min read',
     featuredImage: images.blogHybridGuide,
     tags: ['P0A80', 'Hybrid Battery Repair', 'Toyota Prius', 'Toyota Aqua', 'Honda Vezel', 'Cell Balancing', 'Islamabad'],
-    relatedServices: ['electrical-electronics', 'maintenance-servicing', 'inspection-diagnostics'],
+    relatedServices: ['car-ac-repair', 'maintenance-servicing', 'inspection-diagnostics'],
     content: `
       <h2>Understanding the Dreaded P0A80 Diagnostic Trouble Code in Pakistan</h2>
       <p>If you drive a Toyota Prius (1.8L), Toyota Aqua (1.5L), Corolla Axio/Fielder, or Honda Vezel Hybrid in Pakistan, encountering the yellow "Check Hybrid System" warning alongside fault code <strong>P0A80 (Replace Hybrid Battery Pack)</strong> is one of the most common high-voltage diagnostic errors.</p>
@@ -410,7 +410,7 @@ export const blogData: BlogPost[] = [
     readTime: '7 min read',
     featuredImage: images.galleryStronicBox,
     tags: ['Honda Vezel', 'Dual Clutch Transmission', 'i-DCD Hybrid', 'Transmission Warning', 'Islamabad'],
-    relatedServices: ['transmission-drivetrain', 'electrical-electronics'],
+    relatedServices: ['transmission-drivetrain', 'car-ac-repair'],
     content: `
       <h2>Solving the Honda Vezel i-DCD Dual Clutch Transmission Headache in Pakistan</h2>
       <p>The Honda Vezel Hybrid (RU3 / RU4) is a fantastic, fuel-efficient compact SUV. However, its 7-speed Dual-Clutch Transmission (i-DCD) is infamous in Pakistan for flashing the high-temperature warning light during summer traffic jams on Islamabad Expressway.</p>

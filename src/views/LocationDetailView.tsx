@@ -165,9 +165,9 @@ export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavi
             <div className="rounded-3xl overflow-hidden border border-slate-800 h-96 lg:h-full min-h-[380px] shadow-2xl relative bg-[#0b121e] flex flex-col justify-end p-8">
               <img
                 src={loc.image}
-                alt={loc.branchName}
-                width={800}
-                height={500}
+                alt={`${loc.branchName} facility preview`}
+                width={600}
+                height={400}
                 loading="lazy"
                 decoding="async"
                 className="absolute inset-0 w-full h-full object-cover opacity-60"

@@ -191,7 +191,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
                   className="w-full text-left px-3 py-2 rounded-lg bg-cyan-950/30 text-cyan-400 font-bold text-xs flex items-center gap-2 cursor-pointer"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>View All 13 Services Overview</span>
+                  <span>View All Services</span>
                 </a>
                 {servicesData.map((service) => (
                   <a
@@ -223,7 +223,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
             >
               <div className="flex items-center gap-3">
                 <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>Brand Specialists (24)</span>
+                <span>Brand Specialists ({brandsData.length})</span>
               </div>
               <ChevronDown
                 className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
@@ -244,7 +244,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
                   className="w-full text-left px-3 py-2 rounded-lg bg-cyan-950/30 text-cyan-400 font-bold text-xs flex items-center gap-2 cursor-pointer"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>View All 24 Brand Specialist Hubs</span>
+                  <span>View All Brand Specialist Hubs</span>
                 </a>
                 {brandsData.map((brand) => {
                   const shortName = brand.name.replace(/ Repair.*| Service.*| Maintenance.*| Specialist.*/i, '') || brand.name;

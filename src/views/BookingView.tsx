@@ -1039,7 +1039,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
                     <h3 className="font-black text-base text-white">Booking Summary</h3>
                   </div>
                   <span className="text-[11px] font-bold text-cyan-400 bg-cyan-950/60 border border-cyan-500/30 px-2 py-0.5 rounded-full">
-                    {locationId === 'islamabad-g8' ? 'Islamabad Flagship Hub' : 'Rawalpindi I-9'}
+                    {locationId === 'islamabad-hub' ? 'Islamabad Flagship Hub' : 'Rawalpindi Hub'}
                   </span>
                 </div>
 
@@ -1089,7 +1089,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
                       <div className="flex items-center gap-1.5">
                         <MapPin className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
                         <span className="font-bold text-white">
-                          {locationId === 'islamabad-g8' ? 'HyperTune Garage - Islamabad Flagship Hub' : 'HyperTune Garage - Rawalpindi & I-9 Branch'}
+                          {locationsData.find(l => l.id === locationId)?.branchName || 'HyperTune Garage - Islamabad Flagship Hub'}
                         </span>
                       </div>
                       <div className="flex items-center gap-1.5 text-cyan-400 font-semibold">

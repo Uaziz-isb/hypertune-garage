@@ -6,10 +6,10 @@ import { MapPin, Phone, Clock, ArrowRight, Building2, MessageCircle, Navigation,
 
 interface LocationsViewProps {
   onNavigate: (page: PageId, slug?: string) => void;
-  onOpenBooking: () => void;
+  onOpenBooking?: () => void;
 }
 
-export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate, onOpenBooking }) => {
+export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate }) => {
   return (
     <div className="pt-28 sm:pt-32 md:pt-36 pb-16 space-y-12">
       <section className="bg-[#05080e] border-b border-slate-800 py-16 px-4">
@@ -138,13 +138,17 @@ export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate, onOpen
             <div className="p-6 sm:p-8 pt-0 border-t border-slate-800/60 mt-4 flex flex-col sm:flex-row gap-3">
               {loc.isOperational ? (
                 <>
-                  <button
-                    onClick={onOpenBooking}
-                    className="flex-1 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-xs flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20"
+                  <a
+                    href={`/locations/${loc.slug}/`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavigate('location-detail', loc.slug);
+                    }}
+                    className="flex-1 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-xs flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 cursor-pointer"
                   >
-                    <span>Book Appointment at Hub</span>
+                    <span>Islamabad Workshop Page</span>
                     <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </a>
 
                   <a
                     href={loc.googleMapsDirectionsUrl || "https://www.google.com/maps?cid=17560337124718439273&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en&gl=PK&source=embed"}
@@ -159,13 +163,17 @@ export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate, onOpen
                 </>
               ) : (
                 <>
-                  <button
-                    onClick={onOpenBooking}
-                    className="flex-1 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-300 font-bold text-xs flex items-center justify-center gap-2 border border-slate-700"
+                  <a
+                    href={`/locations/${loc.slug}/`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavigate('location-detail', loc.slug);
+                    }}
+                    className="flex-1 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-xs flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 cursor-pointer"
                   >
-                    <span>Book at Islamabad Flagship Hub</span>
+                    <span>Rawalpindi Workshop Page</span>
                     <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </a>
 
                   <a
                     href="https://wa.me/923330177717?text=Hi%20HyperTune%20Garage%2C%20I%20would%20like%20to%20inquire%20about%20the%20upcoming%20Rawalpindi%20Hub."

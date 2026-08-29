@@ -45,11 +45,11 @@ async function run() {
 
   const routes = getSiteRoutes();
   console.log(`✅ Successfully generated sitemap.xml with ${routes.length} URLs from:`);
-  console.log(`   - 15 Core static routes`);
-  console.log(`   - 12 Dynamic services (from servicesData.ts)`);
-  console.log(`   - 24 Dynamic brand specialists (from brandsData.ts)`);
-  console.log(`   - 2 Workshop locations (from locationsData.ts)`);
-  console.log(`   - 14 Technical blog guides (from blogData.ts)`);
+  console.log(`   - Core static routes`);
+  console.log(`   - Dynamic services (from servicesData.ts)`);
+  console.log(`   - Dynamic brand specialists (from brandsData.ts)`);
+  console.log(`   - Workshop locations (from locationsData.ts)`);
+  console.log(`   - Technical blog guides (from blogData.ts)`);
   console.log(`📁 Saved to ${distSitemapPath} & ${publicSitemapPath}`);
 }
 

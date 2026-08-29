@@ -18,7 +18,7 @@ export function getSiteRoutes(): SiteRoute[] {
       priority: '1.0',
       changefreq: 'daily',
       title: 'HyperTune Garage - Specialized Automotive Workshop in Islamabad & Rawalpindi',
-      desc: 'Pakistan’s premier automotive workshop specializing in Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Lexus, Land Rover, Master Engine Overhauls, Hybrid Battery Repair & PPF in Islamabad Police Foundation & Rawalpindi.',
+      desc: 'Pakistan’s premier automotive workshop specializing in Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Lexus, Land Rover, Master Engine Overhauls, Hybrid Battery Repair & PPF at HyperTune Garage - Islamabad Flagship Hub and Rawalpindi.',
     },
     {
       path: '/about/',
@@ -46,7 +46,7 @@ export function getSiteRoutes(): SiteRoute[] {
       priority: '0.8',
       changefreq: 'monthly',
       title: 'Workshop Locations in Islamabad & Rawalpindi | HyperTune Garage',
-      desc: 'Visit HyperTune Garage facilities in Islamabad Police Foundation and Rawalpindi. View maps, GPS directions, contact numbers, and hours.',
+      desc: 'Visit HyperTune Garage - Islamabad Flagship Hub and our upcoming Rawalpindi facility. View maps, GPS directions, contact numbers, and hours.',
     },
     {
       path: '/gallery/',

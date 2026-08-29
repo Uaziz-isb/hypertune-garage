@@ -21,16 +21,12 @@ async function runImageAudit() {
   console.log('🖼️  HYPERTUNE GARAGE — COMPREHENSIVE IMAGE ASSET & INTEGRITY AUDIT');
   console.log('======================================================================\n');
 
-  const assetsImgDir = path.resolve(process.cwd(), 'public/images');
-  const legacyImgDir = path.resolve(process.cwd(), 'src/assets/images');
+  const publicImgDir = path.resolve(process.cwd(), 'public/images');
 
-  const assetsFiles = fs.existsSync(assetsImgDir) ? fs.readdirSync(assetsImgDir) : [];
-  const publicFiles = assetsFiles;
-  const legacyFiles = fs.existsSync(legacyImgDir) ? fs.readdirSync(legacyImgDir) : [];
+  const publicFiles = fs.existsSync(publicImgDir) ? fs.readdirSync(publicImgDir) : [];
 
-  console.log(`📁 Asset Directories:`);
-  console.log(`   - public/images (authoritative): ${assetsFiles.length} files`);
-  console.log(`   - src/assets/images (legacy):    ${legacyFiles.length} files\n`);
+  console.log(`📁 Authoritative image directory:`);
+  console.log(`   - public/images: ${publicFiles.length} files\n`);
 
   // 1. Collect all referenced image strings across data and registry
   const referencedImages = new Map<string, string[]>();
@@ -90,8 +86,8 @@ async function runImageAudit() {
   let totalJpg = 0;
   let totalPng = 0;
 
-  assetsFiles.forEach((file) => {
-    const fullPath = path.join(assetsImgDir, file);
+  publicFiles.forEach((file) => {
+    const fullPath = path.join(publicImgDir, file);
     const stat = fs.statSync(fullPath);
     const ext = path.extname(file).toLowerCase();
     totalSizeBytes += stat.size;
@@ -115,7 +111,7 @@ async function runImageAudit() {
   console.log('🔍 1. Validating Image References Across Application Data:');
   const brokenReferences: { source: string; missingFile: string }[] = [];
   referencedImages.forEach((sources, fileName) => {
-    if (!allDiskFiles.has(fileName) && !publicFiles.includes(fileName)) {
+    if (!allDiskFiles.has(fileName)) {
       sources.forEach((src) => {
         brokenReferences.push({ source: src, missingFile: fileName });
       });
@@ -167,7 +163,7 @@ async function runImageAudit() {
   if (unusedFiles.length === 0) {
     console.log('   ✅ No orphan files. Every image in public/images is actively referenced.');
   } else {
-    console.log(`   ℹ️  ${unusedFiles.length} legacy/backup asset files retained in public asset directory:`);
+    console.log(`   ℹ️  ${unusedFiles.length} legacy/backup asset files retained in asset directory:`);
     unusedFiles.slice(0, 5).forEach((f) => console.log(`      - ${f.fileName} (${f.sizeKb})`));
     if (unusedFiles.length > 5) {
       console.log(`      ... and ${unusedFiles.length - 5} more.`);

@@ -46,7 +46,9 @@ export const BrandsView: React.FC<BrandsViewProps> = ({ onNavigate }) => {
               <div className="relative h-52 overflow-hidden">
                 <img
                   src={brand.heroImage}
-                  alt={brand.name}
+                  alt={`${brand.name} repair and service at HyperTune Garage Islamabad`}
+                  width={380}
+                  height={208}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                   decoding="async"

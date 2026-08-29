@@ -35,7 +35,7 @@ export const GalleryView: React.FC<GalleryViewProps> = ({ onNavigate, onOpenBook
 
       <section className="max-w-7xl mx-auto px-4 space-y-8">
         <div className="flex flex-wrap items-center justify-center gap-2">
-          {['all', 'Engine Overhaul', 'Transmission & Gearbox', 'Popular Brands Repair', 'Ceramic & PPF', 'Suspension & Brakes', 'Hybrid Battery'].map((cat) => (
+          {['all', 'Engine Overhaul', 'Transmission & Gearbox', 'Popular Brands Repair', 'Ceramic & PPF', 'Suspension & Brakes'].map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCat(cat)}
@@ -107,8 +107,6 @@ export const GalleryView: React.FC<GalleryViewProps> = ({ onNavigate, onOpenBook
             <img
               src={activeModalImage}
               alt="Gallery Preview"
-              loading="lazy"
-              decoding="async"
               referrerPolicy="no-referrer"
               className="w-full rounded-2xl shadow-2xl max-h-[85vh] object-contain border border-slate-800"
             />

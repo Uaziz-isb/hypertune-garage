@@ -69,11 +69,8 @@ function verifyImages() {
     }
   }
 
-  console.log(`📁 Asset Directories Scanned:`);
-  const srcImagesDir = path.resolve('src/assets/images');
-  const publicImagesDir = path.resolve('public/images');
-  console.log(`   - src/assets/images: ${fs.existsSync(srcImagesDir) ? fs.readdirSync(srcImagesDir).length : 0} files`);
-  console.log(`   - public/images:     ${fs.existsSync(publicImagesDir) ? fs.readdirSync(publicImagesDir).length : 0} files`);
+  console.log(`📁 Authoritative image directory scanned:`);
+  console.log(`   - public/images: ${fs.readdirSync('public/images').length} files`);
   console.log(`\n🔍 Image Files Inspected: ${totalChecked}`);
   console.log(`❌ Corrupted Files Found: ${totalCorrupt}`);
 
@@ -106,12 +103,13 @@ function verifyImages() {
   for (const cf of codeFiles) {
     const content = fs.readFileSync(cf, 'utf-8');
     // Match import or url paths
-    const regex = /['"]([^'"]*\/assets\/images\/[^'"]+\.(?:webp|jpg|jpeg|png|svg|ico))['"]/g;
+    const regex = /['"]([^'"]*\/(?:assets\/images|images)\/[^'"]+\.(?:webp|jpg|jpeg|png|svg|ico))['"]/g;
     let m;
     while ((m = regex.exec(content)) !== null) {
       const ref = m[1];
-      const sourceDir = path.dirname(cf);
-      const target = path.resolve(sourceDir, ref);
+      const target = ref.includes('/images/')
+        ? path.resolve('public/images', path.basename(ref))
+        : path.resolve(path.dirname(cf), ref);
       if (!fs.existsSync(target)) {
         brokenRefs.push({ source: path.relative(process.cwd(), cf), ref });
       }

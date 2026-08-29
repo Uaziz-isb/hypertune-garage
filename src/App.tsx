@@ -252,12 +252,12 @@ export function App() {
     pagePath = '/about/';
   } else if (currentPage === 'booking') {
     seoTitle = 'Book Service Appointment Online | HyperTune Garage Islamabad';
-    seoDesc = 'Schedule your car repair, PPF installation, ceramic detailing, engine overhaul, or computer diagnostic appointment at HyperTune Garage Islamabad Police Foundation Flagship Hub. Zero wait times & 12-month warranty.';
+    seoDesc = 'Schedule your car repair, PPF installation, ceramic detailing, engine overhaul, or computer diagnostic appointment at HyperTune Garage - Islamabad Flagship Hub. Zero wait times & 12-month warranty.';
     seoKeywords = 'book car service islamabad, book ppf installation, book engine diagnostic online, hypertune garage booking, car mechanic appointment';
     pagePath = currentSlug ? `/book-appointment/?service=${currentSlug}` : '/book-appointment/';
   } else if (currentPage === 'services') {
     seoTitle = 'Car Repair Services & Prices | HyperTune Garage';
-    seoDesc = 'Explore 12 specialized automotive service categories in Islamabad: Engine Overhaul, Maintenance, Brakes, Transmission, Hybrid Battery, AC & Electrical, Diagnostics, Body Repair, PPF & Detailing.';
+    seoDesc = 'Explore specialized automotive service categories in Islamabad: Engine Overhaul, Maintenance, Brakes, Transmission, AC Repair & Electrical Specialist, Diagnostics, Body Repair, PPF & Detailing.';
     seoKeywords = 'car repair services islamabad, car servicing packages, engine overhaul cost, ppf coating price islamabad';
     pagePath = '/services/';
   } else if (currentPage === 'service-detail') {
@@ -341,7 +341,7 @@ export function App() {
     pagePath = '/sitemap/';
   } else if (currentPage === 'not-found') {
     seoTitle = '404 - Page Not Found | HyperTune Garage Islamabad';
-    seoDesc = 'The requested page could not be found. Explore our 13 precision automotive repair services, 24 brand specialist hubs, and workshop locations in Islamabad & Rawalpindi.';
+    seoDesc = 'The requested page could not be found. Explore our specialized automotive repair services, 24 brand specialist hubs, and workshop locations in Islamabad & Rawalpindi.';
     seoKeywords = '404 not found, hypertune garage islamabad, car repair islamabad';
     pagePath = '/404/';
   }

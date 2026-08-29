@@ -123,8 +123,6 @@ export const BlogView: React.FC<BlogViewProps> = ({ onNavigate }) => {
                       alt={post.author.name}
                       width={24}
                       height={24}
-                      loading="lazy"
-                      decoding="async"
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover"
                     />

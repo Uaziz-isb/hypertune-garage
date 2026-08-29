@@ -17,8 +17,12 @@ export const Logo: React.FC<LogoProps> = ({
   showSubtitle = true,
 }) => {
   const [imgError, setImgError] = useState(false);
+  const [fallbackIndex, setFallbackIndex] = useState(0);
 
-  const logoSource = '/images/hypertune_logo.webp';
+  const fallbackSources = [
+    '/images/hypertune_logo.webp',
+    'https://hypertunegarage.pk/images/hypertune_logo.webp',
+  ];
 
   const textColor = variant === 'dark' ? 'text-white' : 'text-slate-950';
   const subTextColor = variant === 'dark' ? 'text-slate-400' : 'text-slate-600';
@@ -27,7 +31,15 @@ export const Logo: React.FC<LogoProps> = ({
   const titleFontSize = (22 * scale).toFixed(1);
   const subFontSize = (10.5 * scale).toFixed(1);
 
-  const handleImageError = () => setImgError(true);
+  const handleImageError = () => {
+    if (fallbackIndex < fallbackSources.length - 1) {
+      setFallbackIndex((prev) => prev + 1);
+    } else {
+      setImgError(true);
+    }
+  };
+
+  const currentLogoSrc = fallbackSources[fallbackIndex];
 
   return (
     <div
@@ -42,12 +54,11 @@ export const Logo: React.FC<LogoProps> = ({
       >
         {!imgError ? (
           <img
-            src={logoSource}
+            src={currentLogoSrc}
             alt="HyperTune Garage Official Logo"
             width={boxSize}
             height={boxSize}
             loading="eager"
-            fetchPriority="high"
             decoding="async"
             onError={handleImageError}
             className="w-full h-full object-cover object-center block rounded-[inherit] transition-transform duration-300 group-hover:scale-105"

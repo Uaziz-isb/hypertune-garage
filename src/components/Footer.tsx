@@ -194,7 +194,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
           <ul className="space-y-2 text-xs">
             {[
               { label: 'Home Page', page: 'home' as PageId, path: '/' },
-              { label: 'Brand Specialists (24 Brands)', page: 'brands' as PageId, path: '/brands/' },
+              { label: 'Brand Specialists Directory', page: 'brands' as PageId, path: '/brands/' },
               { label: 'Book Service Appointment', page: 'booking' as PageId, path: '/book-appointment/' },
               { label: 'Services Catalogue', page: 'services' as PageId, path: '/services/' },
               { label: 'Workshop Locations', page: 'locations' as PageId, path: '/locations/' },
