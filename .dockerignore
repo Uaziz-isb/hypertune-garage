@@ -1,9 +1,0 @@
-node_modules
-dist
-build
-coverage
-.git
-.gitignore
-.gcloudignore
-npm-debug.log
-.DS_Store
