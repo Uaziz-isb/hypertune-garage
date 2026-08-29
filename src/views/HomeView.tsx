@@ -146,7 +146,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
             {/* Subhead */}
             <p className="text-slate-300 text-sm sm:text-base lg:text-lg font-normal leading-relaxed mx-auto lg:mx-0 max-w-2xl">
-              Self-healing Paint Protection Film (PPF), Ceramic Coating, and mechanical repairs for Pakistan’s famous vehicle brands (Honda, Nissan, Changan, MG, Toyota, Suzuki, Hyundai, Kia, Haval) in <strong>Islamabad Police Foundation Hub</strong> & <strong>Rawalpindi</strong>.
+              Self-healing Paint Protection Film (PPF), Ceramic Coating, and mechanical repairs for Pakistan’s famous vehicle brands (Honda, Nissan, Changan, MG, Toyota, Suzuki, Hyundai, Kia, Haval) in <strong>Islamabad Police Foundation Hub</strong> & <strong>Rawalpindi I-9</strong>.
             </p>
 
             {/* CTA Buttons */}
@@ -490,19 +490,21 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div className="max-w-7xl mx-auto space-y-12">
           {/* HyperTune Performance Metrics */}
           <div className="bg-[#0b121e] border border-cyan-500/20 rounded-3xl p-6 md:p-8 backdrop-blur-md shadow-2xl space-y-6">
-            <div className="border-b border-slate-800 pb-4">
-              <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
-                Proven Operations & Track Record
-              </span>
-              <h3 className="text-2xl font-black text-white mt-1">HyperTune Performance Metrics</h3>
-              <p className="text-xs text-slate-400 mt-0.5">Islamabad Police Foundation Flagship Hub</p>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+              <div>
+                <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
+                  Proven Operations & Track Record
+                </span>
+                <h3 className="text-2xl font-black text-white">HyperTune Performance Metrics</h3>
+                <p className="text-xs text-slate-400">Islamabad Police Foundation Hub & Rawalpindi I-9 Workshop Facilities</p>
+              </div>
+              <div className="flex items-center gap-2 bg-cyan-950/60 border border-cyan-500/30 px-3 py-1.5 rounded-full text-cyan-400 font-bold text-xs">
+                <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping" />
+                <span>Live Metrics</span>
+              </div>
             </div>
 
-            <p className="text-slate-300 text-sm leading-relaxed">
-              HyperTune Garage operates on rigorous engineering standards, pairing dealer-level diagnostic protocols with precision craftsmanship — and every service is measured, not guessed. Our diagnostic bays run dealer-grade German scan tools capable of reading OEM fault codes down to the millivolt, giving us a data-backed baseline before a single wrench turns. From computerized engine diagnostics and hybrid battery cell reconditioning to blade-free Paint Protection Film (PPF) application in a certified dust-free cleanroom, our benchmark metrics reflect an unwavering commitment to automotive excellence. Combined with fully transparent, itemized pricing on every invoice, these benchmarks aren't marketing claims; they're the operating standard behind every vehicle that leaves our shop, engineered for measurable, long-term performance and superior longevity.
-            </p>
-
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800">
                 <span className="text-3xl font-black text-cyan-400 block">15,000+</span>
                 <span className="text-xs font-semibold text-slate-300">Vehicles Serviced</span>
@@ -519,6 +521,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <span className="text-3xl font-black text-cyan-400 block">2</span>
                 <span className="text-xs font-semibold text-slate-300">Mega Workshop Hubs</span>
               </div>
+            </div>
+
+            <div className="bg-[#070c14] p-4 rounded-2xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs gap-2">
+              <div className="flex items-center gap-2">
+                <Video className="w-4 h-4 text-cyan-400 shrink-0" />
+                <span className="text-slate-300 font-medium">Live HD Video Inspection Proof</span>
+              </div>
+              <span className="text-cyan-400 font-bold">Standard on All Repairs</span>
             </div>
           </div>
 

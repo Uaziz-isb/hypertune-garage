@@ -5,10 +5,6 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { HomeView } from './views/HomeView';
-import { findServiceBySlug } from './data/servicesData';
-import { brandsData } from './data/brandsData';
-import { locationsData } from './data/locationsData';
-import { blogData } from './data/blogData';
 
 // Dynamic Lazy Imports for Non-Critical Views & Modals (Mobile Performance Optimization)
 const AboutView = lazy(() => import('./views/AboutView').then((m) => ({ default: m.AboutView })));
@@ -29,7 +25,6 @@ const TermsView = lazy(() => import('./views/TermsView').then((m) => ({ default:
 const WarrantyView = lazy(() => import('./views/WarrantyView').then((m) => ({ default: m.WarrantyView })));
 const SitemapView = lazy(() => import('./views/SitemapView').then((m) => ({ default: m.SitemapView })));
 const BookingView = lazy(() => import('./views/BookingView').then((m) => ({ default: m.BookingView })));
-const NotFoundView = lazy(() => import('./views/NotFoundView').then((m) => ({ default: m.NotFoundView })));
 
 const SearchModal = lazy(() => import('./components/SearchModal').then((m) => ({ default: m.SearchModal })));
 const MobileDrawer = lazy(() => import('./components/MobileDrawer').then((m) => ({ default: m.MobileDrawer })));
@@ -100,35 +95,19 @@ export function App() {
 
     if (root === 'about' || root === 'about-us') return { page: 'about' };
     if (root === 'services') {
-      if (sub) {
-        const found = findServiceBySlug(sub);
-        if (found) return { page: 'service-detail', slug: found.slug };
-        return { page: 'not-found' };
-      }
+      if (sub) return { page: 'service-detail', slug: sub };
       return { page: 'services' };
     }
     if (root === 'brands' || root === 'specialists') {
-      if (sub) {
-        const found = brandsData.find((b) => b.slug === sub);
-        if (found) return { page: 'brand-detail', slug: found.slug };
-        return { page: 'not-found' };
-      }
+      if (sub) return { page: 'brand-detail', slug: sub };
       return { page: 'brands' };
     }
     if (root === 'locations') {
-      if (sub) {
-        const found = locationsData.find((l) => l.slug === sub);
-        if (found) return { page: 'location-detail', slug: found.slug };
-        return { page: 'not-found' };
-      }
+      if (sub) return { page: 'location-detail', slug: sub };
       return { page: 'locations' };
     }
     if (root === 'blog') {
-      if (sub) {
-        const found = blogData.find((p) => p.slug === sub);
-        if (found) return { page: 'blog-post', slug: found.slug };
-        return { page: 'not-found' };
-      }
+      if (sub) return { page: 'blog-post', slug: sub };
       return { page: 'blog' };
     }
     if (root === 'booking' || root === 'book-appointment' || root === 'book-service' || root === 'book-service-appointment' || root === 'book-online') {
@@ -144,9 +123,8 @@ export function App() {
     if (root === 'terms' || root === 'terms-conditions' || root === 'terms-of-service') return { page: 'terms' };
     if (root === 'warranty' || root === 'warranty-specs') return { page: 'warranty' };
     if (root === 'sitemap' || root === 'site-map' || root === 'sitemap.html') return { page: 'sitemap' };
-    if (root === '404' || root === 'not-found') return { page: 'not-found' };
 
-    return { page: 'not-found' };
+    return { page: 'home' };
   };
 
   // Convert page ID and slug to standalone separate page URL path with trailing slash
@@ -190,8 +168,6 @@ export function App() {
         return '/warranty-specs/';
       case 'sitemap':
         return '/sitemap/';
-      case 'not-found':
-        return '/404/';
       default:
         return '/';
     }
@@ -339,11 +315,6 @@ export function App() {
     seoDesc = 'Explore the complete dynamic index of HyperTune Garage pages, specialized service categories, workshop location in Islamabad, and technical blog articles.';
     seoKeywords = 'hypertune garage site map, car workshop index islamabad, car repair services directory';
     pagePath = '/sitemap/';
-  } else if (currentPage === 'not-found') {
-    seoTitle = '404 - Page Not Found | HyperTune Garage Islamabad';
-    seoDesc = 'The requested page could not be found. Explore our 13 precision automotive repair services, 24 brand specialist hubs, and workshop locations in Islamabad & Rawalpindi.';
-    seoKeywords = '404 not found, hypertune garage islamabad, car repair islamabad';
-    pagePath = '/404/';
   }
 
   return (
@@ -482,11 +453,6 @@ export function App() {
             <BookingView
               onNavigate={navigateTo}
               initialServiceId={currentSlug}
-            />
-          )}
-          {currentPage === 'not-found' && (
-            <NotFoundView
-              onNavigate={navigateTo}
             />
           )}
         </Suspense>

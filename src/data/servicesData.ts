@@ -851,274 +851,68 @@ export const servicesData: ServiceItem[] = [
       ],
       keywordParagraph: 'Beat the summer heat with expert Car AC Repair, Refrigerant Gas Recharging, Compressor Overhaul, and Wiring Diagnostics in Islamabad & Rawalpindi at HyperTune Garage.',
     },
-  },
-
-  {
-    id: 'car-ac-repair',
-    slug: 'car-ac-repair',
-    title: 'Air Conditioning (AC) & R134a Gas Recharge',
-    shortDesc: 'Automated refrigerant recovery, cooling coil leak detection, compressor overhaul, and climate control servicing in Islamabad & Rawalpindi.',
-    fullDesc: 'HyperTune Garage provides precision Automotive Air Conditioning repair and R134a / R1234yf refrigerant gas recharging in Islamabad and Rawalpindi. We utilize automated digital recovery stations, electronic halogen leak detectors, and nitrogen pressure testing to solve warm air blowing, compressor clutch failure, and evaporator leaks.',
-    subServices: ['Automated R134a / R1234yf Refrigerant Recharge', 'Compressor Rebuild & Clutch Repair', 'Evaporator / Cooling Coil Leak Fix', 'Odor Removal & Antibacterial Vent Ozone Treatment'],
-    subServicePrices: [
-      { name: 'Standard AC Gas Top-Up & Audit', price: 'PKR 6,000 - 12,000' },
-      { name: 'Compressor & Evaporator Coil Overhaul', price: 'PKR 18,000 - 45,000' }
-    ],
-    category: 'ac',
-    icon: 'Wind',
-    image: images.serviceElectrical,
-    priceRange: 'PKR 6,000 - PKR 45,000',
-    estimatedTime: '2 - 6 Hours',
-    isFeatured: true,
-    symptoms: [
-      'AC blowing warm or humid air during summer temperatures',
-      'Loud clicking or grinding noises when AC button is engaged',
-      'Musty, mildew odor blowing out of dashboard air registers',
-      'Water leaking into front passenger footwell area',
-    ],
-    keyBenefits: [
-      'Ice-cold vent temperatures restored to sub-zero factory specs',
-      '100% pure high-purity R134a synthetic refrigerant (no contaminated gases)',
-      'Digital halogen leak detection prevents recurring gas leaks',
-      'Fresh PAG lubricant prevents expensive compressor seizing',
-    ],
-    whyChooseUs: [
-      'Automated digital AC recovery, vacuuming, and oil injection station',
-      'Dry nitrogen pressure testing for pinhole leak diagnosis',
-      'Genuine OEM Denso and Valeo compressors and condenser units in stock',
-      '12-month warranty on AC compressor replacements and coil overhauls',
-    ],
-    processSteps: [
-      { title: '1. Vent Temp & Pressure Testing', desc: 'Measure vent output temperature and dual-gauge high/low pressure levels.' },
-      { title: '2. Nitrogen Pinhole Leak Test', desc: 'Pressurize AC lines with dry nitrogen to inspect cooling coil and condenser.' },
-      { title: '3. Deep Vacuum Evacuation', desc: 'Pull 30-minute deep vacuum to eliminate all moisture and atmospheric air.' },
-      { title: '4. PAG Oil & Exact Gas Recharge', desc: 'Inject synthetic compressor oil and precision weighed R134a refrigerant.' },
-      { title: '5. Vent Ozone Disinfection', desc: 'Sanitize ducts with antibacterial ozone treatment and install new cabin filter.' },
-    ],
-    faqs: [
-      {
-        question: 'Why does my car AC lose cooling after only a few weeks?',
-        answer: 'Gas loss indicates a microscopic leak in the cooling coil, condenser, or rubber O-rings. We perform nitrogen pressure testing to locate and permanently repair the leak before refilling.',
-      },
-      {
-        question: 'How long does a complete AC service take?',
-        answer: 'Standard AC gas recharging and pressure testing takes 1 to 2 hours. Dashboard removal for evaporator cooling coil replacement takes 1 business day.',
-      },
-    ],
-    seo: {
-      seoTitle: 'Car AC Repair & R134a Gas Recharge Islamabad & Rawalpindi | HyperTune',
-      metaDescription: 'Specialized car AC repair, R134a gas recharging, compressor overhaul, and cooling coil replacement in Islamabad & Rawalpindi. 100% cooling guarantee.',
-      h1Heading: 'Car AC Repair & Climate Control Specialists in Islamabad & Rawalpindi',
-      targetKeywords: [
-        'Car AC repair Islamabad',
-        'Car AC gas refill Rawalpindi',
-        'Car compressor repair',
-        'Cooling coil replacement',
-        'Car AC service Islamabad',
-        'R134a gas recharge'
-      ],
-      keywordParagraph: 'Restore icy sub-zero cabin comfort with professional Car AC Repair, R134a Gas Recharging, Compressor Overhauls, and Evaporator Leak Repairs in Islamabad and Rawalpindi at HyperTune Garage.',
-    },
-  },
-
-  {
-    id: 'electrical-electronics',
-    slug: 'electrical-electronics',
-    title: 'Auto Electrical & Electronics Diagnostics',
-    shortDesc: 'Master auto electricians for ECU programming, wiring harness repairs, sensor diagnostics, alternator/starter overhaul, and battery health audits in Islamabad & Rawalpindi.',
-    fullDesc: 'HyperTune Garage features certified master auto electricians equipped with digital oscilloscopes, CAN-bus analyzers, and factory diagnostic computers in Islamabad and Rawalpindi. We diagnose complex parasitic battery drains, short circuits, airbag SRS faults, body control module (BCM) glitches, and blown fuse networks.',
-    subServices: ['CAN-Bus & Wiring Harness Trace', 'ECU / BCM Module Repair & Coding', 'Alternator & Starter Motor Rebuild', 'Parasitic Battery Drain Diagnosis'],
-    subServicePrices: [
-      { name: 'Computerized Electrical Diagnostic Audit', price: 'PKR 5,000 - 15,000' },
-      { name: 'Wiring Harness & Module Overhaul', price: 'PKR 15,000 - 65,000' }
-    ],
-    category: 'electrical',
-    icon: 'Zap',
-    image: images.serviceElectrical,
-    priceRange: 'PKR 5,000 - PKR 65,000',
-    estimatedTime: '2 - 8 Hours',
-    isFeatured: false,
-    symptoms: [
-      'Battery going flat overnight due to unseen parasitic electrical drain',
-      'Power windows, central locking, or digital cluster screens malfunctioning',
-      'Alternator warning light or battery icon illuminated on dashboard',
-      'Engine cranking slowly or refusing to turn over when ignition is pressed',
-    ],
-    keyBenefits: [
-      'Pinpoint wiring trace without hacking or damaging factory wire harnesses',
-      'Factory CAN-bus signal testing with multi-channel digital oscilloscope',
-      'Genuine OEM relay, fuse, sensor, and starter replacements',
-      'Prevents fire hazards caused by improper aftermarket accessory wiring',
-    ],
-    whyChooseUs: [
-      'Master auto-electricians with German & Japanese electrical certifications',
-      'Factory electrical schematics for Toyota, Honda, BMW, Mercedes & Audi',
-      'Thermal imaging cameras to detect overheating relays and resistance hotspots',
-      'Clean solder and heat-shrink terminal insulation standards',
-    ],
-    processSteps: [
-      { title: '1. Multi-Meter & Parasitic Amp Draw Test', desc: 'Measure milliamp draw with vehicle in sleep mode to trace active battery drains.' },
-      { title: '2. Oscilloscope Signal Audit', desc: 'Test sensor wave signals, CAN-bus communications, and voltage ripple.' },
-      { title: '3. Harness Isolation & Trace', desc: 'Isolate malfunctioning circuit branch using factory wiring schematics.' },
-      { title: '4. Component Repair or Replacement', desc: 'Rebuild alternator, replace faulty actuator, or repair broken wiring harness.' },
-      { title: '5. Full System Re-Scan & Load Test', desc: 'Perform full electrical load test under headlights, AC, and high demand.' },
-    ],
-    faqs: [
-      {
-        question: 'Why does my car battery discharge overnight even with a new battery?',
-        answer: 'This is caused by a parasitic drain — an electronic module (such as an audio amp, tracker, door lock actuator, or ECU) remaining active after the engine is turned off. We trace the exact circuit using milliamp meters.',
-      },
-      {
-        question: 'Can you fix burnt wiring without replacing the whole harness?',
-        answer: 'Yes! We isolate damaged wires, solder military-grade splices with heat-shrink insulation, and protect lines with flame-retardant conduit.',
-      },
-    ],
-    seo: {
-      seoTitle: 'Auto Electrical Repair & Wiring Specialists Islamabad & Rawalpindi | HyperTune',
-      metaDescription: 'Expert auto electricians in Islamabad & Rawalpindi for CAN-bus diagnostics, battery drain testing, ECU wiring repair, alternator rebuilds & sensor fixes.',
-      h1Heading: 'Auto Electrical & Electronics Specialists in Islamabad & Rawalpindi',
-      targetKeywords: [
-        'Auto electrician Islamabad',
-        'Car wiring repair Rawalpindi',
-        'Car battery drain fix',
-        'Alternator repair Islamabad',
-        'Starter motor repair',
-        'ECU repair Pakistan'
-      ],
-      keywordParagraph: 'Solve tricky electrical issues with certified Auto Electrical & Wiring Diagnostics in Islamabad & Rawalpindi at HyperTune Garage. Specializing in battery drain traces, starter overhauls, CAN-bus repair, and OEM module coding.',
-    },
-  },
-
-  {
-    id: 'cooling-fuel-exhaust',
-    slug: 'cooling-fuel-exhaust',
-    title: 'Cooling System, Fuel Injection & Exhaust',
-    shortDesc: 'Ultrasonic fuel injector cleaning, radiator flushing, water pump replacement, thermostat testing, and catalytic converter cleaning in Islamabad & Rawalpindi.',
-    fullDesc: 'HyperTune Garage provides specialized Engine Cooling, Fuel Delivery, and Exhaust System maintenance in Islamabad & Rawalpindi. We prevent catastrophic engine overheating, rough idling, fuel waste, and catalytic converter clogging using ultrasonic injector testing benches and closed-loop radiator flushing rigs.',
-    subServices: ['Ultrasonic Fuel Injector Cleaning & Flow Match', 'Radiator Chemical Flush & Coolant Swap', 'Water Pump & Thermostat Replacement', 'Catalytic Converter Chemical Wash & O2 Sensors'],
-    subServicePrices: [
-      { name: 'Injector Cleaning & Chemical Radiator Flush', price: 'PKR 8,000 - 18,000' },
-      { name: 'Water Pump, Thermostat & Cooling Overhaul', price: 'PKR 15,000 - 55,000' }
-    ],
-    category: 'engine',
-    icon: 'Cpu',
-    image: images.serviceCooling,
-    priceRange: 'PKR 8,000 - PKR 55,000',
-    estimatedTime: '2 - 6 Hours',
-    isFeatured: false,
-    symptoms: [
-      'Engine temperature gauge climbing toward red mark in city traffic',
-      'Engine jerking, hesitation during acceleration, or poor fuel economy',
-      'Rotten egg sulfur smell or black smoke from exhaust tailpipe',
-      'Sweet-smelling coolant puddles underneath vehicle engine bay',
-    ],
-    keyBenefits: [
-      'Prevents warped cylinder heads, blown head gaskets, and engine seizures',
-      'Ultrasonic injector pulse spray pattern restores crisp throttle response',
-      'Restores 2 to 4 km/L fuel economy lost to clogged injectors',
-      'Cleans catalytic converter to clear P0420 catalyst efficiency codes',
-    ],
-    whyChooseUs: [
-      'Computerized multi-injector flow testing bench with dynamic spray comparison',
-      'Closed-loop pressure radiator flush machine with organic long-life coolant',
-      'Original OEM water pumps, dual-stage thermostats, and radiator caps',
-      'Emission and exhaust backpressure diagnostic gauges',
-    ],
-    processSteps: [
-      { title: '1. Radiator & Pressure Cap Test', desc: 'Pressurize cooling system to 1.5 bar to inspect hoses, radiator core, and cap seal.' },
-      { title: '2. Ultrasonic Injector Cleaning', desc: 'Remove fuel injectors and bathe in ultrasonic cleaning tank while pulsing nozzles.' },
-      { title: '3. Spray Pattern & Flow Rate Balancing', desc: 'Mount injectors on test bench to verify equal flow volumes across all cylinders.' },
-      { title: '4. Chemical Radiator Flush & Purge', desc: 'Flush old rust/scale from engine block and refill with genuine 50/50 OAT coolant.' },
-      { title: '5. Catalytic Converter Foam Wash', desc: 'Inject specialized decarb cleaner into exhaust manifold to dissolve carbon deposits.' },
-    ],
-    faqs: [
-      {
-        question: 'Why should I use organic coolant instead of tap water in my radiator?',
-        answer: 'Tap water contains minerals that create corrosion, rust, and scale inside the engine block, destroying water pumps and causing head gasket failure. Genuine coolant elevates the boiling point to 108°C and lubricates the pump.',
-      },
-      {
-        question: 'How often should fuel injectors be ultrasonically cleaned?',
-        answer: 'Due to local fuel quality in Pakistan, we recommend ultrasonic fuel injector cleaning and flow testing every 30,000 km for optimal fuel efficiency and throttle response.',
-      },
-    ],
-    seo: {
-      seoTitle: 'Radiator Flush, Injector Cleaning & Exhaust Islamabad & Rawalpindi | HyperTune',
-      metaDescription: 'Specialized radiator flushing, ultrasonic fuel injector cleaning, water pump replacement, and catalytic converter care in Islamabad & Rawalpindi.',
-      h1Heading: 'Engine Cooling, Fuel Injection & Exhaust Services in Islamabad & Rawalpindi',
-      targetKeywords: [
-        'Radiator flush Islamabad',
-        'Injector cleaning Rawalpindi',
-        'Car overheating fix',
-        'Catalytic converter cleaning',
-        'Water pump replacement Islamabad',
-        'Fuel pump repair'
-      ],
-      keywordParagraph: 'Protect your engine from overheating and restore optimal fuel economy with professional Cooling System, Fuel Injector Cleaning, and Exhaust Care at HyperTune Garage in Islamabad & Rawalpindi.',
-    },
   }
 ];
 
 /**
- * Exact or alias lookup helper that returns undefined if no valid match is found
+ * Helper function to match any main category slug or alias/sub-service slug
  */
-export function findServiceBySlug(slug?: string): ServiceItem | undefined {
-  if (!slug) return undefined;
-  const normalized = slug.toLowerCase().trim().replace(/^\/+|\/+$/g, '');
-  if (!normalized) return undefined;
+export function getServiceBySlug(slug?: string): ServiceItem {
+  if (!slug) return servicesData[0];
+  const normalized = slug.toLowerCase().trim();
 
   // Direct slug match
   const direct = servicesData.find((s) => s.slug === normalized || s.id === normalized);
   if (direct) return direct;
 
-  // Exact known alias mappings
-  const aliases: Record<string, string> = {
-    'paint-protection-film': 'paint-protection-film-ppf',
-    'ppf': 'paint-protection-film-ppf',
-    'ppf-coating': 'paint-protection-film-ppf',
-    'ceramic-coating': 'car-detailing',
-    'detailing': 'car-detailing',
-    'vinyl-wrap': 'vehicle-wrap',
-    'car-wrap': 'vehicle-wrap',
-    'denting-painting': 'body-repair-paint',
-    'body-repair': 'body-repair-paint',
-    'car-modification': 'body-modification',
-    'body-kit': 'body-modification',
-    'engine-repair': 'engine-services',
-    'engine-overhaul': 'engine-services',
-    'car-servicing': 'maintenance-servicing',
-    'oil-change': 'maintenance-servicing',
-    'suspension': 'brake-suspension-steering',
-    'brakes': 'brake-suspension-steering',
-    'wheel-alignment': 'brake-suspension-steering',
-    'gearbox-repair': 'transmission-drivetrain',
-    'cvt-repair': 'transmission-drivetrain',
-    'ac-repair': 'car-ac-repair',
-    'car-ac': 'car-ac-repair',
-    'ac-gas-refill': 'car-ac-repair',
-    'auto-electrician': 'electrical-electronics',
-    'car-wiring': 'electrical-electronics',
-    'radiator-repair': 'cooling-fuel-exhaust',
-    'injector-cleaning': 'cooling-fuel-exhaust',
-    'pre-purchase-inspection': 'inspection-diagnostics',
-    'car-diagnostic': 'inspection-diagnostics',
-    'hybrid-battery': 'hybrid-ev-battery-services',
-    'prius-battery': 'hybrid-ev-battery-services',
-  };
-
-  if (aliases[normalized]) {
-    const targetId = aliases[normalized];
-    return servicesData.find((s) => s.id === targetId || s.slug === targetId);
+  // Keyword / Subservice alias resolution
+  if (normalized.includes('ppf') || normalized.includes('paint-protection')) {
+    return servicesData.find((s) => s.id === 'paint-protection-film-ppf') || servicesData[0];
   }
 
-  return undefined;
-}
+  if (normalized.includes('detailing') || normalized.includes('ceramic') || normalized.includes('polishing')) {
+    return servicesData.find((s) => s.id === 'car-detailing') || servicesData[1];
+  }
 
-/**
- * Safe helper function that always returns a ServiceItem (with fallback to default if not found)
- */
-export function getServiceBySlug(slug?: string): ServiceItem {
-  const found = findServiceBySlug(slug);
-  if (found) return found;
+  if (normalized.includes('wrap') || normalized.includes('vinyl')) {
+    return servicesData.find((s) => s.id === 'vehicle-wrap') || servicesData[7];
+  }
+
+  if (normalized.includes('body-repair') || normalized.includes('paint') || normalized.includes('dent') || normalized.includes('collision')) {
+    return servicesData.find((s) => s.id === 'body-repair-paint') || servicesData[8];
+  }
+
+  if (normalized.includes('modification') || normalized.includes('body-kit') || normalized.includes('spoiler') || normalized.includes('lip')) {
+    return servicesData.find((s) => s.id === 'body-modification') || servicesData[9];
+  }
+
+  if (normalized.includes('hybrid') || normalized.includes('prius') || normalized.includes('battery')) {
+    return servicesData.find((s) => s.id === 'hybrid-ev-battery-services') || servicesData[10];
+  }
+
+  if (normalized.includes('ac') || normalized.includes('air-condition') || normalized.includes('electric') || normalized.includes('wiring') || normalized.includes('compressor')) {
+    return servicesData.find((s) => s.id === 'car-ac-electrical') || servicesData[11];
+  }
+
+  if (normalized.includes('diagnostic') || normalized.includes('inspection') || normalized.includes('scan')) {
+    return servicesData.find((s) => s.id === 'inspection-diagnostics') || servicesData[3];
+  }
+
+  if (normalized.includes('transmission') || normalized.includes('gear') || normalized.includes('cvt') || normalized.includes('clutch')) {
+    return servicesData.find((s) => s.id === 'transmission-drivetrain') || servicesData[6];
+  }
+
+  if (normalized.includes('brake') || normalized.includes('suspension') || normalized.includes('steering') || normalized.includes('alignment')) {
+    return servicesData.find((s) => s.id === 'brake-suspension-steering') || servicesData[5];
+  }
+
+  if (normalized.includes('maintenance') || normalized.includes('oil') || normalized.includes('periodic')) {
+    return servicesData.find((s) => s.id === 'maintenance-servicing') || servicesData[4];
+  }
+
+  if (normalized.includes('engine') || normalized.includes('overhaul') || normalized.includes('cooling') || normalized.includes('radiator')) {
+    return servicesData.find((s) => s.id === 'engine-services') || servicesData[2];
+  }
+
   return servicesData[0];
 }
-
