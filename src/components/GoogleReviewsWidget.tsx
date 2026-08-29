@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Star, CheckCircle2, RefreshCw, ExternalLink, MessageSquare, ShieldCheck, ThumbsUp } from 'lucide-react';
+import { Star, CheckCircle2, ExternalLink, MessageSquare } from 'lucide-react';
 
 export interface GoogleReviewItem {
   id: string;
@@ -22,9 +22,8 @@ export interface GoogleBusinessData {
   ratingDistribution?: { [key: number]: number };
   googleMapsUrl: string;
   writeReviewUrl: string;
-  lastSyncedAt: string;
-  isLiveSynced: boolean;
-  source: string;
+  lastSyncedAt?: string;
+  source?: string;
   reviews: GoogleReviewItem[];
 }
 
@@ -41,11 +40,9 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
 }) => {
   const [data, setData] = useState<GoogleBusinessData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
   const [filterRating, setFilterRating] = useState<number | 'all'>('all');
 
-  const fetchReviews = async (isManual = false) => {
-    if (isManual) setIsRefreshing(true);
+  const fetchReviews = async () => {
     try {
       const res = await fetch('/api/google-reviews');
       if (res.ok) {
@@ -58,21 +55,11 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
       console.error('Failed to fetch Google reviews:', err);
     } finally {
       setLoading(false);
-      if (isManual) {
-        setTimeout(() => setIsRefreshing(false), 600);
-      }
     }
   };
 
   useEffect(() => {
     fetchReviews();
-
-    // Auto-update every 30 seconds
-    const interval = setInterval(() => {
-      fetchReviews();
-    }, 30000);
-
-    return () => clearInterval(interval);
   }, []);
 
   const reviewsToDisplay = data
@@ -97,9 +84,8 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
 
   const rating = data?.rating || 4.9;
   const totalReviews = data?.totalReviews || 348;
-  const lastUpdatedFormatted = data?.lastSyncedAt
-    ? new Date(data.lastSyncedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
-    : 'Just now';
+  const writeReviewUrl = data?.writeReviewUrl || 'https://search.google.com/local/writereview?placeid=ChIJgy296uXt3zgRaWvyhpPZsvM';
+  const googleMapsUrl = data?.googleMapsUrl || 'https://www.google.com/maps/search/?api=1&query=HyperTune+Garage&query_place_id=ChIJgy296uXt3zgRaWvyhpPZsvM';
 
   return (
     <div className="space-y-6">
@@ -135,30 +121,16 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
                 <div>
                   <div className="flex items-center gap-2">
                     <h3 className="text-xl font-black text-white">HyperTune Garage Google Business Profile</h3>
-                    <span className="inline-flex items-center gap-1.5 bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 font-bold text-[10px] uppercase px-2.5 py-0.5 rounded-full shrink-0">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      Auto-Updated Live
-                    </span>
                   </div>
                   <p className="text-slate-400 text-xs">Verified Google Business Profile • Islamabad & Rawalpindi Hubs</p>
                 </div>
               </div>
             </div>
 
-            {/* Live Auto Sync Action & Link */}
+            {/* Action Link to Google Review */}
             <div className="flex flex-wrap items-center gap-3">
-              <button
-                onClick={() => fetchReviews(true)}
-                disabled={isRefreshing}
-                className="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 font-bold text-xs flex items-center gap-2 transition-all active:scale-95"
-              >
-                <RefreshCw className={`w-3.5 h-3.5 text-cyan-400 ${isRefreshing ? 'animate-spin' : ''}`} />
-                <span>Sync Now</span>
-                <span className="text-[10px] text-slate-500">({lastUpdatedFormatted})</span>
-              </button>
-
               <a
-                href={data?.writeReviewUrl || 'https://search.google.com/local/writereview?placeid=ChIJg2296t7t3z8RabZyjT3Zsg8'}
+                href={writeReviewUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-xs flex items-center gap-1.5 shadow-lg shadow-cyan-500/20 active:scale-95 transition-all"
@@ -218,7 +190,7 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
                     : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
                 }`}
               >
-                All Reviews ({data?.reviews.length || 5})
+                All Reviews ({data?.reviews.length || 15})
               </button>
               <button
                 onClick={() => setFilterRating(5)}
@@ -234,7 +206,7 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
             </div>
 
             <a
-              href={data?.googleMapsUrl || 'https://www.google.com/maps?cid=17560337124718439273&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en&gl=PK&source=embed'}
+              href={googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 shrink-0"

@@ -210,6 +210,26 @@ export const servicesDataSSR: ServiceItemSSR[] = [
     estimatedTime: '1 Day',
     subServices: ['AC Gas Recharging (R134a / R1234yf)', 'Compressor & Clutch Overhaul', 'Evaporator / Cooling Coil Leak Repair', 'Computerized Electrical & Wiring Trace'],
   },
+  {
+    slug: 'car-ac-repair',
+    title: 'Air Conditioning (AC) & R134a Gas Recharge',
+    category: 'Climate',
+    shortDesc: 'Automated refrigerant recovery, cooling coil leak detection, compressor overhaul, and climate control servicing in Islamabad & Rawalpindi.',
+    fullDesc: 'HyperTune Garage provides precision Automotive Air Conditioning repair and R134a / R1234yf refrigerant gas recharging in Islamabad and Rawalpindi. We utilize automated digital recovery stations, electronic halogen leak detectors, and nitrogen pressure testing to solve warm air blowing, compressor clutch failure, and evaporator leaks.',
+    priceRange: 'PKR 6,000 - PKR 45,000',
+    estimatedTime: '2 - 6 Hours',
+    subServices: ['Automated R134a / R1234yf Refrigerant Recharge', 'Compressor Rebuild & Clutch Repair', 'Evaporator / Cooling Coil Leak Fix', 'Odor Removal & Antibacterial Vent Ozone Treatment'],
+  },
+  {
+    slug: 'electrical-electronics',
+    title: 'Auto Electrical & Electronics Diagnostics',
+    category: 'Electrical',
+    shortDesc: 'Master auto electricians for ECU programming, wiring harness repairs, sensor diagnostics, alternator/starter overhaul, and battery health audits in Islamabad & Rawalpindi.',
+    fullDesc: 'HyperTune Garage features certified master auto electricians equipped with digital oscilloscopes, CAN-bus analyzers, and factory diagnostic computers in Islamabad and Rawalpindi. We diagnose complex parasitic battery drains, short circuits, airbag SRS faults, body control module (BCM) glitches, and blown fuse networks.',
+    priceRange: 'PKR 5,000 - PKR 65,000',
+    estimatedTime: '2 - 8 Hours',
+    subServices: ['CAN-Bus & Wiring Harness Trace', 'ECU / BCM Module Repair & Coding', 'Alternator & Starter Motor Rebuild', 'Parasitic Battery Drain Diagnosis'],
+  },
 ];
 
 export function findServiceSSR(slug?: string): ServiceItemSSR | undefined {
@@ -282,12 +302,13 @@ export function findServiceSSR(slug?: string): ServiceItemSSR | undefined {
 }
 
 export const brandsDataSSR: BrandItemSSR[] = [
-{
+  {
     slug: 'bmw-repair-islamabad',
     name: 'BMW Repair & Maintenance Specialist Islamabad',
     tagline: 'BMW ISTA Diagnostics, VANOS & Valvetronic Servicing, B48/B58 Engine Overhauls & ZF 8-Speed Fluid Service',
     logoBadge: 'BMW Master Specialist',
-    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent German automotive workshop specializing in BMW M-Power, xDrive, and core Series models (3 Series, 5 Series, 7 Series, X3, X5, X6, X7, M3, M5). Utilizing genuine BMW ISTA-D diagnostic software, ISTA-P programming suites, and dealer-grade optical ICOM interfaces, our factory-certified BMW technicians perform precision diagnostics, VANOS camshaft timing solenoid repairs, Valvetronic eccentric shaft servo motor calibration, cooling system thermostat replacements, oil leak remediations (valve cover, oil filter housing gasket), and ZF 8HP transmission servicing backed by written warranties.',
+    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent German automotive workshop specializing in BMW M-Power, xDrive, and core Series models (3 Series, 5 Series, 7 Series, X3, X5, X6, X7, M3, M5). Utilizing genuine BMW ISTA-D diagnostic software, ISTA-P programming suites, and dealer-grade optical ICOM interfaces, our factory-certified BMW technicians perform precision diagnostics, VANOS camshaft timing solenoid repairs, Valvetronic eccentric shaft servo motor calibration, cooling system thermostat replacements, oil leak remediations, and ZF 8HP transmission servicing backed by written warranties.',
+    diagnosticSoftware: 'BMW ISTA-D, BMW ISTA-P, ICOM Next Optical Diagnostic Rig',
     modelsCovered: [
       'BMW 3 Series (E46, E90, F30, G20 - 318i, 320i, 328i, 330e Hybrid, M340i)',
       'BMW 5 Series (E60, F10, G30 - 520i, 528i, 530e, 535i, 540i, M550i)',
@@ -296,7 +317,15 @@ export const brandsDataSSR: BrandItemSSR[] = [
       'BMW M Performance (M2, M3, M4, M5, X5M with S55/S58/S63 V8 Biturbo)',
       'BMW 4 Series & 6 Series Gran Coupé',
     ],
-    diagnosticSoftware: 'BMW ISTA-D (Integrated Service Technical Application - Diagnostics), BMW ISTA-P (Programming), ICOM Next Optical Diagnostic Rig',
+    specializedServices: [
+      'BMW ISTA-D & ISTA-P Factory Dealer Diagnostics & ECU Module Coding',
+      'B38 / B48 / B58 / N20 / N55 / S58 Master Engine Rebuilding & Timing Calibration',
+      'ZF 6HP & 8HP Transmission Fluid Flush & Mechatronic Repair',
+      'BMW Dynamic Drive & Adaptive M Air Suspension Calibration',
+      'VANOS Camshaft Phasing & Valvetronic Eccentric Shaft Rebuild',
+      'High-Pressure Fuel System (HPFP) & Piezo/Solenoid Injector Flow Testing',
+      'Self-Healing TPU Paint Protection Film (PPF) for BMW M & X Series',
+    ],
     commonIssuesAndFixes: [
       {
         issue: 'BMW "Drivetrain Malfunction - Drive Moderately" & Limp Mode',
@@ -315,42 +344,14 @@ export const brandsDataSSR: BrandItemSSR[] = [
         solution: 'Full transmission fluid flush using genuine ZF Lifeguard Fluid 8, pan filter replacement, and mechatronic adaptive shift recalibration.',
       },
     ],
-    specializedServices: [
-      'BMW ISTA-D & ISTA-P Factory Dealer Diagnostics & ECU Module Coding',
-      'B38 / B48 / B58 / N20 / N55 / S58 Master Engine Rebuilding & Timing Calibration',
-      'ZF 6HP & 8HP Transmission Fluid Flush & Mechatronic Repair',
-      'BMW Dynamic Drive & Adaptive M Air Suspension Calibration',
-      'VANOS Camshaft Phasing & Valvetronic Eccentric Shaft Rebuild',
-      'High-Pressure Fuel System (HPFP) & Piezo/Solenoid Injector Flow Testing',
-      'Self-Healing TPU Paint Protection Film (PPF) for BMW M & X Series',
-    ],
-    pricingRange: 'PKR 6,000 - PKR 350,000 (Based on Model & Service)',
-    faqs: [
-      {
-        question: 'Do you use genuine BMW ISTA diagnostic software in Islamabad?',
-        answer: 'Yes, we use the official BMW ISTA diagnostic and programming system with ICOM Next interfaces to diagnose all electrical, mechanical, and hybrid systems down to individual sensor telemetry.',
-      },
-      {
-        question: 'How often should the ZF 8HP transmission fluid be changed on a BMW?',
-        answer: 'While marketed as lifetime by some dealers, ZF explicitly recommends transmission fluid and integrated pan-filter replacement every 60,000 to 80,000 km to prevent solenoid wear and shuddering.',
-      },
-      {
-        question: 'Can you fix oil leaks on BMW N20, B48, and B58 engines in Islamabad?',
-        answer: 'Yes! We specialize in resolving oil filter housing gasket, valve cover, oil pan, and turbocharger oil feed line leaks using OEM Victor Reinz and genuine BMW seals.',
-      },
-    ],
-    seo: {
-      title: 'BMW Repair & Maintenance Specialist Islamabad | HyperTune Garage',
-      description: 'Certified BMW workshop in Islamabad & Rawalpindi. BMW ISTA diagnostics, 3 Series, 5 Series, 7 Series, X5, M Power engine overhauls & ZF transmission service.',
-      keywords: ['bmw repair islamabad', 'bmw specialist rawalpindi', 'bmw ista diagnostics', 'bmw workshop police foundation', 'bmw transmission service', 'bmw oil leak repair'],
-    },
   },
-{
+  {
     slug: 'mercedes-service-islamabad',
     name: 'Mercedes-Benz Luxury & AMG Specialist Workshop Islamabad',
     tagline: 'Mercedes Xentry Diagnostics, 7G/9G-Tronic Gearbox Care, Airmatic Air Suspension & M274/M264 Engine Tuning',
     logoBadge: 'Mercedes-Benz Master Specialist',
-    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent workshop for Mercedes-Benz passenger, luxury limousine, and AMG performance vehicles. Armed with dealer-grade Mercedes-Benz Xentry Diagnostics, DAS, Star Diagnosis hardware, and certified European master engineers, we deliver comprehensive solutions for C-Class, E-Class, S-Class, CLA, GLA, GLC, GLE, GLS, and G-Wagon (G63 AMG). From diagnosing Check Engine fault codes and repairing Airmatic air suspension strut leaks to 7G-Tronic and 9G-Tronic automatic transmission overhauls, M274/M264 camshaft timing gear rattle fixes, and genuine 229.5 / 229.51 engine oil servicing, we provide dealership-level precision at honest rates.',
+    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent workshop for Mercedes-Benz passenger, luxury limousine, and AMG performance vehicles. Armed with dealer-grade Mercedes-Benz Xentry Diagnostics, DAS, Star Diagnosis hardware, and certified European master engineers, we deliver comprehensive solutions for C-Class, E-Class, S-Class, CLA, GLA, GLC, GLE, GLS, and G-Wagon (G63 AMG).',
+    diagnosticSoftware: 'Mercedes-Benz Xentry Diagnosis, DAS, Star Diagnosis C4/C6 DoIP Rig',
     modelsCovered: [
       'Mercedes-Benz C-Class (W203, W204, W205, W206 - C180, C200, C250, C300, C43 AMG)',
       'Mercedes-Benz E-Class (W211, W212, W213 - E200, E220d, E250, E300, E350e Hybrid, E63s)',
@@ -359,7 +360,15 @@ export const brandsDataSSR: BrandItemSSR[] = [
       'Mercedes-AMG Performance Line (A45, C63s, E63s, G63 AMG 4.0L V8 Biturbo)',
       'Mercedes-Benz CLA & CLS 4-Door Coupé',
     ],
-    diagnosticSoftware: 'Mercedes-Benz Xentry Diagnosis, DAS (Diagnostic Assistance System), Star Diagnosis C4/C6 DoIP Rig',
+    specializedServices: [
+      'Mercedes-Benz Xentry Dealer Diagnostics & SCN Online Module Coding',
+      'M270 / M274 / M264 / M276 / M177 AMG V8 Biturbo Master Engine Overhaul',
+      '7G-Tronic (722.9) & 9G-Tronic (725.0) Transmission Fluid Flush & Valve Body Repair',
+      'Airmatic & ABC Hydraulic/Air Suspension Overhaul',
+      'Mercedes ME9 / MED17 Engine ECU Diagnostics & Electronic Key/EIS Repair',
+      'Distronic Plus Radar, 360-Camera & Active Brake Assist Calibration',
+      'Self-Healing TPU Paint Protection Film (PPF) for Mercedes G63 & S-Class',
+    ],
     commonIssuesAndFixes: [
       {
         issue: 'Mercedes-Benz Airmatic Air Suspension "Car Rising / Stop Vehicle Too Low" Error',
@@ -373,47 +382,15 @@ export const brandsDataSSR: BrandItemSSR[] = [
         issue: '7G-Tronic / 9G-Tronic Transmission Hesitation & Conductor Plate Fault',
         solution: 'Conductor plate speed sensor repair, valve body solenoid ultrasonic cleaning, genuine Mercedes ATF fluid flush, and adaptation drive.',
       },
-      {
-        issue: 'Auxiliary Battery Malfunction Warning on Dashboard',
-        solution: 'Auxiliary capacitor / AGM voltage regulator replacement and electronic SAM module error reset.',
-      },
     ],
-    specializedServices: [
-      'Mercedes-Benz Xentry Dealer Diagnostics & SCN Online Module Coding',
-      'M270 / M274 / M264 / M276 / M177 AMG V8 Biturbo Master Engine Overhaul',
-      '7G-Tronic (722.9) & 9G-Tronic (725.0) Transmission Fluid Flush & Valve Body Repair',
-      'Airmatic & ABC (Active Body Control) Hydraulic/Air Suspension Overhaul',
-      'Mercedes ME9 / MED17 Engine ECU Diagnostics & Electronic Key/EIS Repair',
-      'Distronic Plus Radar, 360-Camera & Active Brake Assist Calibration',
-      'Self-Healing TPU Paint Protection Film (PPF) for Mercedes G63 & S-Class',
-    ],
-    pricingRange: 'PKR 6,000 - PKR 380,000 (Based on Model & Service)',
-    faqs: [
-      {
-        question: 'Do you have official Mercedes Xentry Star Diagnostic scanners in Islamabad?',
-        answer: 'Yes, our workshop uses authentic Mercedes-Benz Xentry and DAS Star Diagnostic hardware with DoIP support for comprehensive electronic scanning, live telemetry, and module adaptations.',
-      },
-      {
-        question: 'How do you fix Mercedes Airmatic suspension problems in Islamabad?',
-        answer: 'We diagnose pneumatic leaks with soapy nitrogen leak testing and Xentry pressure readouts, repair leaking air springs or valve blocks, and calibrate level sensors.',
-      },
-      {
-        question: 'Can you service Mercedes-AMG G63 and V8 Biturbo engines in Rawalpindi / Islamabad?',
-        answer: 'Yes! Our master technicians are trained on Mercedes-AMG Handcrafted V8 biturbo engines (M177/M178), twin turbochargers, and high-performance carbon-ceramic braking systems.',
-      },
-    ],
-    seo: {
-      title: 'Mercedes-Benz Repair & Service Specialist Islamabad | HyperTune Garage',
-      description: 'Certified Mercedes-Benz workshop in Islamabad & Rawalpindi. Mercedes Xentry diagnostics, C-Class, E-Class, S-Class, G-Wagon, AMG repairs, Airmatic & 7G/9G transmission care.',
-      keywords: ['mercedes repair islamabad', 'mercedes specialist rawalpindi', 'mercedes xentry diagnostic', 'mercedes workshop police foundation', 'mercedes airmatic repair', 'mercedes amg service'],
-    },
   },
-{
+  {
     slug: 'audi-repair-islamabad',
     name: 'Audi & German VAG Specialist Workshop Islamabad',
     tagline: 'ODIS Factory Diagnostics, S-Tronic / DSG Dual-Clutch Repair, EA888 TFSI Carbon Cleaning & Quattro Servicing',
     logoBadge: 'Audi Master Specialist',
-    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist for Audi and Volkswagen Group (VAG) vehicles. Equipped with the official Audi ODIS (Offboard Diagnostic Information System), VCDS / VAG-COM interfaces, and VAS specialty toolsets, our certified European technicians deliver comprehensive engineering solutions for Audi A3, A4, A5, A6, A7, A8, Q2, Q3, Q5, Q7, Q8, TT, and RS models. From diagnosing TFSI carbon buildup and solving excessive oil consumption to rebuilding S-Tronic (DQ200, DQ250, DQ381, DQ500, DL501) mechatronic units and servicing Quattro differentials, we provide dealer-grade expertise.',
+    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist for Audi and Volkswagen Group (VAG) vehicles. Equipped with official Audi ODIS (Offboard Diagnostic Information System), VCDS / VAG-COM interfaces, and VAS specialty toolsets, our certified European technicians deliver comprehensive engineering solutions for Audi A3, A4, A5, A6, A7, A8, Q2, Q3, Q5, Q7, Q8, TT, and RS models.',
+    diagnosticSoftware: 'Audi ODIS, VAS 6154 DoIP Interface & Ross-Tech VCDS Hex-V2',
     modelsCovered: [
       'Audi A3 & S3 (1.4L TFSI, 1.8L TFSI, 2.0L TFSI S-Tronic)',
       'Audi A4 & S4 (B7, B8, B9 - 1.8T, 2.0 TFSI, 3.0T V6 Supercharged / Turbo)',
@@ -423,7 +400,15 @@ export const brandsDataSSR: BrandItemSSR[] = [
       'Audi Q-Series (Q2, Q3, Q5, Q7 3.0T / TDI, Q8 Coupé SUV)',
       'Audi RS Performance (RS3, RS5, RS6 Avant, RS7, Audi R8 V10)',
     ],
-    diagnosticSoftware: 'Audi ODIS (Offboard Diagnostic Information System), VAS 6154 DoIP Interface & Ross-Tech VCDS Hex-V2',
+    specializedServices: [
+      'Audi ODIS Factory Dealer Diagnostics & Component Protection Removal',
+      'EA888 Gen 2 / Gen 3 / Gen 4 TFSI Master Engine Rebuilding & Oil Consumption Rectification',
+      'S-Tronic & DSG (DQ200 / DQ250 / DQ381 / DL501) Mechatronic Unit Overhaul',
+      'Intake Valve Direct-Injection Carbon Removal via Walnut Blasting',
+      'Adaptive Air Suspension Compressor & Strut Calibration',
+      'Quattro AWD Differential & Transfer Case Servicing with OEM Fluids',
+      'Self-Healing TPU Paint Protection Film (PPF) for Audi A5, A7 & Q8',
+    ],
     commonIssuesAndFixes: [
       {
         issue: 'Audi S-Tronic / DSG Transmission "Gearbox Malfunction: You Can Continue Driving"',
@@ -437,47 +422,15 @@ export const brandsDataSSR: BrandItemSSR[] = [
         issue: 'Intake Valve Carbon Fouling Causing Cold-Start Misfires (P0300)',
         solution: 'Precision walnut shell abrasive blasting of intake ports and valves, ultrasonic direct-injection fuel injector cleansing, and throttle body relearn.',
       },
-      {
-        issue: 'Quattro Haldex / Torsen All-Wheel Drive Binding Noise & Shudder',
-        solution: 'Quattro differential and Haldex AWD coupling fluid flush with OEM Audi G055 / G060 gear lubricants and clutch pump filter cleaning.',
-      },
     ],
-    specializedServices: [
-      'Audi ODIS Factory Dealer Diagnostics & Component Protection Removal',
-      'EA888 Gen 2 / Gen 3 / Gen 4 TFSI Master Engine Rebuilding & Oil Consumption Rectification',
-      'S-Tronic & DSG (DQ200 / DQ250 / DQ381 / DL501) Mechatronic Unit Overhaul',
-      'Intake Valve Direct-Injection Carbon Removal via Walnut Blasting',
-      'Adaptive Air Suspension Compressor & Strut Calibration',
-      'Quattro AWD Differential & Transfer Case Servicing with OEM Fluids',
-      'Self-Healing TPU Paint Protection Film (PPF) for Audi A5, A7 & Q8',
-    ],
-    pricingRange: 'PKR 5,000 - PKR 360,000 (Based on Model & Service)',
-    faqs: [
-      {
-        question: 'Do you have official Audi ODIS dealer diagnostic tools in Islamabad?',
-        answer: 'Yes! We use the genuine Audi ODIS diagnostic platform with VAS 6154 hardware for deep module flashing, parameter adaptation, and guided fault finding.',
-      },
-      {
-        question: 'How do you fix DSG / S-Tronic gearbox shudder and mechatronic faults on Audi cars?',
-        answer: 'We specialize in repairing the mechatronic electronic solenoid circuit board, replacing worn multi-plate dual clutch packs, and completing clutch kiss-point adaptation.',
-      },
-      {
-        question: 'Why do Audi TFSI engines consume oil and how does HyperTune fix it?',
-        answer: 'Older EA888 engines have thin oil control rings. We rebuild the engine with modified OEM pistons and updated wider scraper rings, eliminating oil consumption permanently.',
-      },
-    ],
-    seo: {
-      title: 'Audi Repair & Maintenance Specialist Islamabad | HyperTune Garage',
-      description: 'Certified Audi workshop in Islamabad & Rawalpindi. Audi ODIS diagnostics, A3, A4, A6, A7, Q7, S-Tronic DSG transmission repair, TFSI engine overhaul & Quattro service.',
-      keywords: ['audi repair islamabad', 'audi specialist rawalpindi', 'audi odis diagnostic', 'audi dsg repair', 'audi stronic workshop', 'audi tfsi carbon cleaning'],
-    },
   },
-{
+  {
     slug: 'porsche-repair-islamabad',
     name: 'Porsche High-Performance Engineering Specialist Islamabad',
     tagline: 'Porsche PIWIS III Diagnostics, PDK Dual-Clutch Gearbox Overhauls, PASM Air Suspension & 911 / Cayenne Care',
     logoBadge: 'Porsche Master Specialist',
-    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s dedicated high-performance engineering studio for Porsche sports cars and luxury performance SUVs. Equipped with official Porsche PIWIS III dealer diagnostic rigs, specialized engine micrometer toolsets, and certified master technicians, we cater to Porsche 911 (996, 997, 991, 992), 718 Boxster & Cayman, Cayenne (9PA, 92A, 9YA - V6, S, GTS, Turbo), Panamera, Macan, and Taycan EV models. From PDK dual-clutch transmission dual-chamber fluid flushes and PASM air suspension accelerometer calibrations to V6/V8 twin-turbo cooling tube upgrades and 6-piston Brembo / PCCB ceramic brake maintenance, we deliver Stuttgart-standard precision.',
+    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s dedicated high-performance engineering studio for Porsche sports cars and luxury performance SUVs. Equipped with official Porsche PIWIS III dealer diagnostic rigs, specialized engine micrometer toolsets, and certified master technicians, we cater to Porsche 911 (996, 997, 991, 992), 718 Boxster & Cayman, Cayenne, Panamera, Macan, and Taycan EV models.',
+    diagnosticSoftware: 'Porsche PIWIS Tester III & VCI Diagnostic Rig',
     modelsCovered: [
       'Porsche 911 (997, 991, 992 - Carrera, Carrera S, 4S, Turbo, Turbo S, GT3)',
       'Porsche 718 Cayman & Boxster (2.0T, 2.5T, GTS 4.0)',
@@ -486,54 +439,29 @@ export const brandsDataSSR: BrandItemSSR[] = [
       'Porsche Macan (Macan 2.0T, Macan S 3.0T, Macan GTS, Turbo)',
       'Porsche Taycan 100% Electric (4S, Turbo, Turbo S)',
     ],
-    diagnosticSoftware: 'Porsche PIWIS Tester III (Porsche Integrated Workshop Information System) & VCI Diagnostic Rig',
+    specializedServices: [
+      'Porsche PIWIS III Dealer-Level Diagnostics, Live Telemetry & Handover Handshake',
+      'PDK (Porsche Doppelkupplung) 7-Speed & 8-Speed Fluid Servicing & Calibration',
+      'Flat-6 (3.0T, 3.8L, 4.0L) & V6 / V8 Twin-Turbo Master Engine Rebuilding',
+      'PASM Air Suspension Calibration & Strut Repair',
+      'Porsche Ceramic Composite Brakes (PCCB) & Multi-Piston Brembo Caliper Overhaul',
+      'Sport Chrono Package Launch Control Telemetry & ECU Stage 1/2 Tuning',
+      'Self-Healing TPU Paint Protection Film (PPF) for Porsche 911, GT3, Cayman & Cayenne',
+    ],
     commonIssuesAndFixes: [
       {
         issue: 'Porsche PDK Transmission "Transmission Emergency Run" Warning',
-        solution: 'PDK dual-chamber fluid flush (gear & clutch oil), distance sensor / temperature sensor telemetry check, and PIWIS clutch calibration relearn.',
+        solution: 'PDK dual-chamber fluid flush (gear & clutch oil), distance sensor telemetry check, and PIWIS clutch calibration relearn.',
       },
       {
         issue: 'Cayenne / Panamera V8 Coolant Valley Pipe Leak & Engine Overheating',
         solution: 'Replacement of plastic valley coolant pipes with upgraded aluminum lines, thermostat housing renewal, and vacuum bleed with genuine Porsche G40 coolant.',
       },
       {
-        issue: 'PASM (Porsche Active Suspension Management) Chassis System Fault',
+        issue: 'PASM Chassis System Fault',
         solution: 'PASM valve solenoid testing, air spring strut bladder leak detection, height sensor replacement, and PIWIS corner weighting calibration.',
       },
-      {
-        issue: 'Porsche Direct-Injection (DFI) Spark Plug & Ignition Coil Breakdown',
-        solution: 'Installation of genuine Porsche OEM Bosch/Beru spark plugs, heat shield verification, and high-energy coil pack replacement.',
-      },
     ],
-    specializedServices: [
-      'Porsche PIWIS III Dealer-Level Diagnostics, Live Telemetry & Handover Handshake',
-      'PDK (Porsche Doppelkupplung) 7-Speed & 8-Speed Fluid Servicing & Calibration',
-      'Flat-6 (3.0T, 3.8L, 4.0L) & V6 / V8 Twin-Turbo Master Engine Rebuilding',
-      'PASM (Porsche Active Suspension Management) Air Suspension Calibration & Strut Repair',
-      'Porsche Ceramic Composite Brakes (PCCB) & Multi-Piston Brembo Caliper Overhaul',
-      'Sport Chrono Package Launch Control Telemetry & ECU Stage 1/2 Tuning',
-      'Self-Healing TPU Paint Protection Film (PPF) for Porsche 911, GT3, Cayman & Cayenne',
-    ],
-    pricingRange: 'PKR 10,000 - PKR 500,000 (Based on Model & Service)',
-    faqs: [
-      {
-        question: 'Do you have official Porsche PIWIS III diagnostic equipment in Islamabad?',
-        answer: 'Yes! We possess the official Porsche PIWIS Tester III system, allowing dealer-grade guided diagnostics, PDK transmission calibrations, PASM resets, and ECU coding on all modern Porsche models.',
-      },
-      {
-        question: 'How do you service Porsche PDK transmissions in Pakistan?',
-        answer: 'We use genuine Porsche dual-chamber transmission lubricants (PDK clutch oil and hypoid gear oil), change the integrated sump pan filter, and run computerized PIWIS adaptation cycles.',
-      },
-      {
-        question: 'Can you install Paint Protection Film (PPF) on Porsche sports cars and GT3s?',
-        answer: 'Yes! Our climate-controlled cleanroom studio applies pre-cut computer CAD plotter TPU self-healing PPF with wrapped edges, protecting expensive factory Porsche paint from high-speed motorway stone chips.',
-      },
-    ],
-    seo: {
-      title: 'Porsche Repair & High-Performance Specialist Islamabad | HyperTune Garage',
-      description: 'Premier Porsche workshop in Islamabad & Rawalpindi. Porsche PIWIS III diagnostics, 911, Cayenne, Panamera, Macan & Cayman service, PDK transmission fluid flush & PASM repair.',
-      keywords: ['porsche repair islamabad', 'porsche specialist rawalpindi', 'porsche piwis diagnostic', 'porsche 911 service', 'porsche cayenne maintenance', 'porsche pdk transmission repair'],
-    },
   },
   {
     slug: 'toyota-repair-islamabad',
