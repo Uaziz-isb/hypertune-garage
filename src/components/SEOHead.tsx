@@ -21,9 +21,9 @@ interface SEOProps {
 }
 
 export const SEOHead: React.FC<SEOProps> = ({
-  title = 'HyperTune Garage - Premium Automotive Workshop in Islamabad',
-  description = 'Specialist automotive repair, diagnostics, engine overhauls, car AC and electrical repair at HyperTune Garage in Islamabad. Rawalpindi branch coming soon.',
-  keywords = 'car workshop islamabad, car detailing islamabad, paint protection film ppf islamabad, bmw repair islamabad, mercedes garage islamabad, audi service center, engine overhaul islamabad, car ac repair islamabad, auto electrical specialist, 3d laser wheel alignment, car mechanic near me, hypertune garage',
+  title = 'HyperTune Garage - Premium Automotive Workshop in Islamabad & Rawalpindi',
+  description = 'Pakistan’s top automotive workshop specializing in Toyota, Honda, Suzuki, BMW, Mercedes, Audi, engine overhauls, car AC & electrical repair at HyperTune Garage - Islamabad Flagship Hub and Rawalpindi.',
+  keywords = 'car workshop islamabad, auto repair rawalpindi, car detailing islamabad, paint protection film ppf islamabad, ceramic coating rawalpindi, bmw repair islamabad, mercedes garage rawalpindi, audi service center, engine overhaul islamabad, car ac repair islamabad, auto electrical specialist, 3d laser wheel alignment, car mechanic near me, hypertune garage',
   canonicalUrl,
   path = '/',
   ogImage = '/images/hypertune_hero_banner_1787965822146.webp',
@@ -100,8 +100,8 @@ export const SEOHead: React.FC<SEOProps> = ({
       '@type': 'AutoRepair',
       name: 'HyperTune Garage',
       image: ogImage,
-      '@id': 'https://hypertunegarage.pk/#business',
-      url: 'https://hypertunegarage.pk/',
+      '@id': targetCanonicalUrl,
+      url: targetCanonicalUrl,
       telephone: '+923330177717',
       priceRange: '$$$',
       address: {

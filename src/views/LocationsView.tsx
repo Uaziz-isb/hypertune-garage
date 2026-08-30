@@ -171,7 +171,7 @@ export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate }) => {
                     }}
                     className="flex-1 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-xs flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 cursor-pointer"
                   >
-                    <span>Rawalpindi Workshop Page</span>
+                    <span>Rawalpindi Branch (Coming Soon)</span>
                     <ArrowRight className="w-4 h-4" />
                   </a>
 

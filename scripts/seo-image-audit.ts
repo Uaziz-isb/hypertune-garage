@@ -22,11 +22,10 @@ async function runImageAudit() {
   console.log('======================================================================\n');
 
   const publicImgDir = path.resolve(process.cwd(), 'public/images');
-
   const publicFiles = fs.existsSync(publicImgDir) ? fs.readdirSync(publicImgDir) : [];
 
-  console.log(`📁 Authoritative image directory:`);
-  console.log(`   - public/images: ${publicFiles.length} files\n`);
+  console.log(`📁 Asset Directory:`);
+  console.log(`   - public/images:     ${publicFiles.length} files\n`);
 
   // 1. Collect all referenced image strings across data and registry
   const referencedImages = new Map<string, string[]>();

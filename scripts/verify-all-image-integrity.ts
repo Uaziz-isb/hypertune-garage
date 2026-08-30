@@ -11,7 +11,9 @@ interface ImageVerifyResult {
 }
 
 function verifyImages() {
-  const dirs = [path.resolve('public/images')];
+  const dirs = [
+    path.resolve('public/images'),
+  ];
 
   console.log('======================================================================');
   console.log('🖼️  FINAL COMPREHENSIVE IMAGE INTEGRITY & CORRUPTION AUDIT');
@@ -69,7 +71,7 @@ function verifyImages() {
     }
   }
 
-  console.log(`📁 Authoritative image directory scanned:`);
+  console.log(`📁 Asset Directory Scanned:`);
   console.log(`   - public/images: ${fs.readdirSync('public/images').length} files`);
   console.log(`\n🔍 Image Files Inspected: ${totalChecked}`);
   console.log(`❌ Corrupted Files Found: ${totalCorrupt}`);
@@ -102,14 +104,12 @@ function verifyImages() {
 
   for (const cf of codeFiles) {
     const content = fs.readFileSync(cf, 'utf-8');
-    // Match import or url paths
-    const regex = /['"]([^'"]*\/(?:assets\/images|images)\/[^'"]+\.(?:webp|jpg|jpeg|png|svg|ico))['"]/g;
+    // Match /images/ url paths
+    const regex = /['"](\/images\/[^'"]+\.(?:webp|jpg|jpeg|png|svg|ico))['"]/g;
     let m;
     while ((m = regex.exec(content)) !== null) {
       const ref = m[1];
-      const target = ref.includes('/images/')
-        ? path.resolve('public/images', path.basename(ref))
-        : path.resolve(path.dirname(cf), ref);
+      const target = path.join(process.cwd(), 'public', ref);
       if (!fs.existsSync(target)) {
         brokenRefs.push({ source: path.relative(process.cwd(), cf), ref });
       }

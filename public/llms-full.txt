@@ -1,6 +1,6 @@
 # HyperTune Garage - Full Automotive Technical Knowledge Base & Service Specifications
 
-> HyperTune Garage is Pakistan's premier specialized automotive workshop, computerized diagnostics studio, Paint Protection Film (PPF) application center, and European/Japanese luxury car care facility located in Islamabad and Rawalpindi.
+> HyperTune Garage is Pakistan's premier specialized automotive workshop, computerized diagnostics studio, Paint Protection Film (PPF) application center, and European/Japanese luxury car care facility located in Islamabad (with our new Rawalpindi facility currently under development).
 
 ## Business Profile & Metadata
 
@@ -8,10 +8,10 @@
 - **Industry:** Automotive Repair, Car Detailing, Paint Protection Film (PPF), German Vehicle Diagnostics, Body Modification
 - **Hotline / Phone:** +92 333 0177717 (WhatsApp & Call)
 - **Email:** info@hypertunegarage.pk
-- **Operating Hours:** Saturday - Thursday: 10:00 AM - 10:00 PM (Friday Closed)
+- **Operating Hours:** Saturday - Thursday: 10:00 AM - 10:00 PM (Friday Closed - applies to Islamabad Flagship Hub)
 - **Locations:**
-  - **Islamabad Studio:** Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
-  - **Rawalpindi Workshop:** Sector I-9 Industrial Area, Islamabad/Rawalpindi Border, Pakistan (Postal Code 46000)
+  - **Islamabad Flagship Hub (Fully Operational):** Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
+  - **Rawalpindi Branch (Coming Soon):** Facility currently under development. Current appointments are handled at our Islamabad Flagship Hub.
 - **Primary Website:** https://hypertunegarage.pk/
 - **Google Rating:** 4.9 / 5.0 Stars (348+ Verified Reviews)
 

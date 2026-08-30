@@ -34,13 +34,13 @@ export function normalizeCanonicalUrl(inputPathOrUrl: string, baseUrl: string = 
   return `${cleanBase}/${trimmed}/`;
 }
 
-const BASE_BUSINESS_SCHEMA = (baseUrl: string, ogImage: string) => ({
+const BASE_BUSINESS_SCHEMA = (ogImage: string) => ({
   '@context': 'https://schema.org',
   '@type': 'AutoRepair',
   name: 'HyperTune Garage',
   image: ogImage,
-  '@id': `${baseUrl.replace(/\/+$/, '')}/#business`,
-  url: `${baseUrl.replace(/\/+$/, '')}/`,
+  '@id': 'https://hypertunegarage.pk/#business',
+  url: 'https://hypertunegarage.pk/',
   telephone: '+923330177717',
   priceRange: '$$$',
   address: {
@@ -84,10 +84,10 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
   const root = pathParts[0] || '';
   const sub = pathParts[1] || '';
 
-  let title = 'HyperTune Garage - Specialized Automotive Workshop in Islamabad';
-  let description = 'Specialist automotive repair, diagnostics, engine overhauls, hybrid battery repair and PPF at HyperTune Garage in Islamabad. Rawalpindi branch coming soon.';
-  let keywords = 'car workshop islamabad, toyota repair islamabad, suzuki garage, haval specialist, byd ev service, hybrid battery repair, engine overhaul islamabad';
-  const schemas: object[] = [BASE_BUSINESS_SCHEMA(baseUrl, ogImage)];
+  let title = 'HyperTune Garage - Specialized Automotive Workshop in Islamabad & Rawalpindi';
+  let description = 'Pakistan’s premier automotive workshop specializing in Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Lexus, Land Rover, Master Engine Overhauls, Hybrid Battery Repair & PPF at HyperTune Garage - Islamabad Flagship Hub and Rawalpindi.';
+  let keywords = 'car workshop islamabad, auto repair rawalpindi, toyota repair islamabad, honda service rawalpindi, suzuki garage, haval specialist, byd ev service, hybrid battery repair, engine overhaul islamabad';
+  const schemas: object[] = [BASE_BUSINESS_SCHEMA(ogImage)];
   let isNotFound = false;
 
   const breadcrumbItems: any[] = [
@@ -207,21 +207,23 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       const location = locationsDataSSR.find((l) => l.slug === sub);
       if (location) {
         title = `${location.branchName} | HyperTune Garage`;
-        description = location.isOperational
-          ? `${location.branchName} - ${location.address}`
-          : 'HyperTune Garage Rawalpindi is coming soon. All current appointments and enquiries are handled by the Islamabad Flagship Hub.';
+        description = `${location.branchName} - ${location.address || 'Islamabad & Rawalpindi'}`;
         keywords = `${location.branchName.toLowerCase()}, workshop islamabad, auto repair police foundation`;
 
         if (!location.isOperational) {
           schemas[0] = {
             '@context': 'https://schema.org',
             '@type': 'WebPage',
-            name: 'HyperTune Garage - Rawalpindi Expansion (Opening Soon)',
+            name: 'HyperTune Garage - Rawalpindi Hub (Coming Soon)',
             image: ogImage,
-            '@id': canonicalUrl,
             url: canonicalUrl,
-            description: 'Upcoming state-of-the-art precision automotive facility in Rawalpindi. Currently served by Islamabad Flagship Hub with insured valet vehicle pickup.',
-            about: { '@id': `${baseUrl.replace(/\/+$/, '')}/#business` },
+            description: 'Upcoming state-of-the-art precision automotive facility in Rawalpindi. Currently under development and served by our Islamabad Flagship Hub.',
+            isPartOf: {
+              '@type': 'AutoRepair',
+              '@id': 'https://hypertunegarage.pk/#business',
+              name: 'HyperTune Garage',
+              url: 'https://hypertunegarage.pk/',
+            },
           };
         }
 
@@ -286,7 +288,9 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
           },
           publisher: {
             '@type': 'AutoRepair',
+            '@id': 'https://hypertunegarage.pk/#business',
             name: 'HyperTune Garage',
+            url: 'https://hypertunegarage.pk/',
             logo: {
               '@type': 'ImageObject',
               url: ogImage,
@@ -334,16 +338,10 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
     schemas.push({
       '@context': 'https://schema.org',
       '@type': 'AutoRepair',
+      '@id': 'https://hypertunegarage.pk/#business',
       name: 'HyperTune Garage',
-      url: 'https://hypertunegarage.pk',
-      telephone: '+92 333 0177717',
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        bestRating: '5.0',
-        worstRating: '1.0',
-        reviewCount: '348',
-      },
+      url: 'https://hypertunegarage.pk/',
+      telephone: '+923330177717',
       review: googleBusinessData.reviews.slice(0, 5).map((r) => ({
         '@type': 'Review',
         author: {

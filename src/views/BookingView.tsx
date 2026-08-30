@@ -375,7 +375,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
                 Book Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500">Service Appointment</span>
               </h1>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                Reserve your dedicated repair bay at our default primary workshop: <strong>HyperTune Garage - Islamabad Flagship Hub</strong> (Block E Police Foundation) or our <strong>Rawalpindi I-9 Branch</strong>. Zero waiting time, certified diagnostic engineers, and 100% genuine OEM parts.
+                Reserve your dedicated repair bay at our primary workshop: <strong>HyperTune Garage - Islamabad Flagship Hub</strong> (Block E Police Foundation). Zero waiting time, certified diagnostic engineers, and 100% genuine OEM parts. (Our Rawalpindi facility is currently under development).
               </p>
             </div>
 

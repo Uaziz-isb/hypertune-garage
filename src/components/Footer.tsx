@@ -95,7 +95,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               <div className="flex items-center gap-1 text-amber-400">
                 ★★★★★ <span className="text-white font-bold">4.9 / 5.0</span>
               </div>
-              <span className="text-slate-500">(340+ Reviews)</span>
+              <span className="text-slate-500">(348+ Reviews)</span>
             </div>
 
             {/* Social Media Links next to Google Rating */}
