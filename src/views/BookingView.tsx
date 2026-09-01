@@ -75,7 +75,7 @@ const SYMPTOM_TAGS = [
   'Hybrid Battery Warning / P0A80',
   'Transmission Jerk / Delay',
   '3D Laser Wheel Alignment',
-  'ECU Stage 1 / Stage 2 Tuning',
+  'Computer Diagnostic Health Scan',
 ];
 
 const TIME_SLOTS = [
@@ -166,7 +166,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
         setSelectedServices([match.id]);
       }
     } else if (selectedServices.length === 0) {
-      setSelectedServices(['ecu-tuning']);
+      setSelectedServices(['engine-services']);
     }
   }, [initialServiceId]);
 

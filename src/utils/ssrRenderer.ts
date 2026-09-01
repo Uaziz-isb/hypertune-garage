@@ -85,7 +85,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
   const sub = pathParts[1] || '';
 
   let title = 'HyperTune Garage - Specialized Automotive Workshop in Islamabad & Rawalpindi';
-  let description = 'Pakistan’s premier automotive workshop specializing in Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Lexus, Land Rover, Master Engine Overhauls, Hybrid Battery Repair & PPF at HyperTune Garage - Islamabad Flagship Hub and Rawalpindi.';
+  let description = 'Pakistan’s premier automotive workshop for Japanese, European & German vehicles. Precision engine overhauls, hybrid repairs & PPF at HyperTune Garage Islamabad.';
   let keywords = 'car workshop islamabad, auto repair rawalpindi, toyota repair islamabad, honda service rawalpindi, suzuki garage, haval specialist, byd ev service, hybrid battery repair, engine overhaul islamabad';
   const schemas: object[] = [BASE_BUSINESS_SCHEMA(ogImage)];
   let isNotFound = false;
@@ -107,7 +107,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       const service = findServiceSSR(sub);
       if (service) {
         title = `${service.title} in Islamabad & Rawalpindi | HyperTune Garage`;
-        description = service.shortDesc.slice(0, 155);
+        description = service.seo?.metaDescription || (service.shortDesc.length > 155 ? service.shortDesc.slice(0, 152).trim().replace(/[.,;:\s]+$/, '') + '...' : service.shortDesc);
         keywords = `${service.title.toLowerCase()}, car repair islamabad, ${service.subServices.join(', ')}`;
         breadcrumbItems.push({
           '@type': 'ListItem',
@@ -157,7 +157,10 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       const brand = brandsDataSSR.find((b) => b.slug === sub);
       if (brand) {
         title = `${brand.name} | HyperTune Garage`;
-        description = brand.tagline.slice(0, 155);
+        const cleanTagline = brand.tagline.replace(/\.+$/, '').trim();
+        description = cleanTagline.length <= 110
+          ? `${cleanTagline} at HyperTune Garage Islamabad.`
+          : (cleanTagline.length > 155 ? cleanTagline.slice(0, 152).trim().replace(/[.,;:\s]+$/, '') + '...' : cleanTagline);
         keywords = `${brand.name.toLowerCase()}, ${brand.diagnosticSoftware}, car specialist islamabad`;
         breadcrumbItems.push({
           '@type': 'ListItem',
@@ -193,7 +196,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       }
     } else {
       title = 'Vehicle Brand Specialists in Islamabad & Rawalpindi | HyperTune Garage';
-      description = 'Certified specialist repair and maintenance for Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Chery, Isuzu, FAW, Daihatsu, Nissan, Mitsubishi, Mazda, Subaru, Lexus, Land Rover, Range Rover, Jeep, Ford, Chevrolet & Volvo in Islamabad.';
+      description = 'Certified specialist repair for Japanese, German, European & American brands including Toyota, Honda, BMW, Mercedes, Porsche, Haval & BYD in Islamabad.';
       keywords = 'toyota repair islamabad, honda specialist rawalpindi, suzuki maintenance, hyundai tucson repair, kia sportage service, changan workshop, haval specialist, byd ev service, lexus hybrid repair, land rover workshop islamabad';
       breadcrumbItems.push({
         '@type': 'ListItem',
@@ -260,7 +263,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       const post = blogDataSSR.find((b) => b.slug === sub);
       if (post) {
         title = `${post.title} | HyperTune Garage`;
-        description = post.excerpt.slice(0, 155);
+        description = post.excerpt.length > 155 ? post.excerpt.slice(0, 152).trim().replace(/[.,;:\s]+$/, '') + '...' : post.excerpt;
         keywords = post.tags.join(', ');
         breadcrumbItems.push({
           '@type': 'ListItem',
@@ -410,7 +413,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
     });
   } else if (root === 'terms-conditions' || root === 'terms') {
     title = 'Terms & Conditions | HyperTune Garage Islamabad';
-    description = 'Terms of service, warranty coverage guidelines, and workshop service policies for HyperTune Garage.';
+    description = 'Terms of service, repair warranty coverage guidelines, and workshop service policies for HyperTune Garage Islamabad.';
     breadcrumbItems.push({
       '@type': 'ListItem',
       position: 2,
@@ -930,7 +933,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
       </p>
       <div style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:32px;text-align:center;">
         <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:12px;">Explore Our Live Work on Instagram</h2>
-        <p style="color:#94a3b8;font-size:14px;margin-bottom:20px;">Follow our daily automotive transformations and live dyno runs.</p>
+        <p style="color:#94a3b8;font-size:14px;margin-bottom:20px;">Follow our daily automotive transformations and master workshop projects.</p>
         <a href="https://instagram.com/hypertunegarage" target="_blank" rel="noopener noreferrer" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;display:inline-block;">View Instagram Gallery</a>
       </div>
     </main>`;

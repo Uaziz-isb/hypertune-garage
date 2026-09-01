@@ -3,6 +3,7 @@ import { PageId } from '../types';
 import { locationsData } from '../data/locationsData';
 import { images } from '../data/images';
 import { ArrowLeft, MapPin, Phone, Clock, Navigation, CheckCircle2, MessageCircle, Sparkles, Building2 } from 'lucide-react';
+import { GoogleMapEmbed } from '../components/GoogleMapEmbed';
 
 interface LocationDetailProps {
   slug?: string;
@@ -149,18 +150,13 @@ export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavi
         {/* Right side: Map or Image */}
         <div className="lg:col-span-5">
           {loc.isOperational && loc.googleMapEmbedUrl ? (
-            <div className="rounded-3xl overflow-hidden border border-slate-800 h-96 lg:h-full min-h-[380px] shadow-2xl">
-              <iframe
-                src={loc.googleMapEmbedUrl}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title={loc.branchName}
-              />
-            </div>
+            <GoogleMapEmbed
+              title={loc.branchName}
+              src={loc.googleMapEmbedUrl}
+              containerHeight="h-96 lg:h-full min-h-[380px]"
+              googleMapsUrl={loc.googleMapsDirectionsUrl}
+              address={loc.address}
+            />
           ) : (
             <div className="rounded-3xl overflow-hidden border border-slate-800 h-96 lg:h-full min-h-[380px] shadow-2xl relative bg-[#0b121e] flex flex-col justify-end p-8">
               <img

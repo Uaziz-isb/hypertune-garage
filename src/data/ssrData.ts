@@ -12,6 +12,11 @@ export interface ServiceItemSSR {
   subServices: string[];
   processSteps?: { title: string; desc: string }[];
   faqs?: { question: string; answer: string }[];
+  seo?: {
+    metaTitle?: string;
+    metaDescription?: string;
+    metaKeywords?: string[];
+  };
 }
 
 export interface BrandItemSSR {
@@ -113,13 +118,13 @@ export const servicesDataSSR: ServiceItemSSR[] = [
   },
   {
     slug: 'engine-services',
-    title: 'Engine Overhaul & Performance Tuning',
+    title: 'Engine Services & Overhaul',
     category: 'Engine',
-    shortDesc: 'Complete engine rebuilding to 0.001mm micro-tolerances, cylinder head resurfacing, timing chain replacement, and ECU Stage 1/2 performance tuning.',
+    shortDesc: 'Precision engine rebuilding to 0.001mm micro-tolerances, cylinder head resurfacing, timing chain replacement, and computerized sensor diagnostics.',
     fullDesc: 'Engine building excellence in Islamabad and Rawalpindi. We overhaul petrol, diesel, and turbocharged engines with micrometer tolerance calibration and written 12-month warranties.',
     priceRange: 'PKR 15,000 - PKR 350,000',
     estimatedTime: '3 - 10 Days',
-    subServices: ['Complete Engine Overhauls & Rebuilds', 'Cylinder Head & Valve Resurfacing', 'Timing Chain & Belt Overhaul', 'ECU Stage 1 & Stage 2 Remapping', 'Turbocharger Rebuilding & Boost Calibration'],
+    subServices: ['Complete Engine Overhauls & Rebuilds', 'Cylinder Head & Valve Resurfacing', 'Timing Chain & Belt Overhaul', 'Computerized Diagnostic & Sensor Calibration', 'Turbocharger Rebuilding & Boost Diagnostics'],
   },
   {
     slug: 'maintenance-servicing',
@@ -184,7 +189,7 @@ export const servicesDataSSR: ServiceItemSSR[] = [
     slug: 'inspection-diagnostics',
     title: 'OBD-II Computer Diagnostics & Pre-Purchase Inspection',
     category: 'Diagnostics',
-    shortDesc: 'Dealer-grade diagnostic scans and 200-point comprehensive pre-purchase vehicle audits.',
+    shortDesc: 'Dealer-grade OBD-II diagnostic scanning and comprehensive 200-point pre-purchase vehicle inspections in Islamabad & Rawalpindi with digital health reports.',
     fullDesc: 'Complete vehicle forensic evaluation. We utilize factory OEM scanner tools, paint thickness depth gauges, chassis alignment inspection, and compression tests.',
     priceRange: 'PKR 3,000 - PKR 18,000',
     estimatedTime: '1 - 3 Hours',
@@ -306,7 +311,7 @@ export const brandsDataSSR: BrandItemSSR[] = [
   {
     slug: 'mercedes-service-islamabad',
     name: 'Mercedes-Benz Luxury & AMG Specialist Workshop Islamabad',
-    tagline: 'Mercedes Xentry Diagnostics, 7G/9G-Tronic Gearbox Care, Airmatic Air Suspension & M274/M264 Engine Tuning',
+    tagline: 'Mercedes Xentry Diagnostics, 7G/9G-Tronic Gearbox Care, Airmatic Air Suspension & M274/M264 Engine Care',
     logoBadge: 'Mercedes-Benz Master Specialist',
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent workshop for Mercedes-Benz passenger, luxury limousine, and AMG performance vehicles. Armed with dealer-grade Mercedes-Benz Xentry Diagnostics, DAS, Star Diagnosis hardware, and certified European master engineers, we deliver comprehensive solutions for C-Class, E-Class, S-Class, CLA, GLA, GLC, GLE, GLS, and G-Wagon (G63 AMG).',
     diagnosticSoftware: 'Mercedes-Benz Xentry Diagnosis, DAS, Star Diagnosis C4/C6 DoIP Rig',
@@ -403,7 +408,7 @@ export const brandsDataSSR: BrandItemSSR[] = [
       'Flat-6 (3.0T, 3.8L, 4.0L) & V6 / V8 Twin-Turbo Master Engine Rebuilding',
       'PASM Air Suspension Calibration & Strut Repair',
       'Porsche Ceramic Composite Brakes (PCCB) & Multi-Piston Brembo Caliper Overhaul',
-      'Sport Chrono Package Launch Control Telemetry & ECU Stage 1/2 Tuning',
+      'Sport Chrono Package Calibration & Diagnostic Telemetry',
       'Self-Healing TPU Paint Protection Film (PPF) for Porsche 911, GT3, Cayman & Cayenne',
     ],
     commonIssuesAndFixes: [
@@ -493,7 +498,7 @@ export const brandsDataSSR: BrandItemSSR[] = [
   },
   {
     slug: 'changan-repair-islamabad',
-    name: 'Changan Specialist Workshop & Tuning Islamabad',
+    name: 'Changan Specialist Workshop Islamabad',
     tagline: 'Changan Diagnostic System, Oshan X7 Blue Core Turbo, Alsvin DCT Servicing & Karvaan Fleet Care',
     logoBadge: 'Changan Master Specialist',
     overview: 'HyperTune Garage is the leading independent Changan specialist in Islamabad and Rawalpindi. Equipped with Changan OEM computerized diagnostic rigs, our technicians expertly maintain Oshan X7, Alsvin, Karvaan, and Deepal EV/EREV models.',
@@ -651,7 +656,7 @@ export const brandsDataSSR: BrandItemSSR[] = [
     tagline: 'Subaru SSM4 Diagnostics, Boxer Engine Overhaul, Lineartronic CVT & WRX STI Care',
     logoBadge: 'Subaru Master Specialist',
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist for Subaru Boxer engines and Symmetrical All-Wheel Drive (AWD) vehicles. Utilizing official Subaru Select Monitor (SSM4) diagnostics, our master mechanics service Forester, Outback, XV, Legacy, WRX, and WRX STI.',
-    diagnosticSoftware: 'Subaru Select Monitor 4 (SSM4), DST-i Interface & Symmetrical AWD Dyno Telemetry',
+    diagnosticSoftware: 'Subaru Select Monitor 4 (SSM4), DST-i Interface & Symmetrical AWD Computer Telemetry',
     modelsCovered: ['Subaru Forester 2.0L/2.5L & 2.0T DIT AWD', 'Subaru Outback & Legacy 2.5L / 3.6L Flat-6', 'Subaru XV / Crosstrek e-Boxer Hybrid', 'Subaru WRX & WRX STI Turbo AWD', 'Subaru BRZ Boxer Coupe'],
     specializedServices: ['Subaru SSM4 Diagnostics & EyeSight ADAS Calibration', 'Boxer 4-Cylinder & Flat-6 Master Engine Rebuilding', 'Subaru Lineartronic CVT Fluid Flush', 'Symmetrical AWD Center Transfer Clutch Service', 'Brembo Brake Overhauls'],
     commonIssuesAndFixes: [
@@ -717,7 +722,7 @@ export const brandsDataSSR: BrandItemSSR[] = [
   },
   {
     slug: 'ford-service-islamabad',
-    name: 'Ford Specialist Workshop & EcoBoost Tuning Islamabad',
+    name: 'Ford Specialist Workshop Islamabad',
     tagline: 'Ford FDRS / IDS Diagnostics, F-150 Raptor, Ranger, Everest, Mustang & EcoBoost Care',
     logoBadge: 'Ford Master Specialist',
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist workshop for Ford vehicles. Utilizing official Ford FDRS and IDS platforms, our technicians service Ford F-150 / Raptor, Ranger, Everest, Mustang, Explorer, and EcoSport.',
@@ -838,17 +843,6 @@ export const blogDataSSR: BlogPostSSR[] = [
     tags: ['Audi Repair', 'S-Tronic', 'DSG Transmission', 'Mechatronics', 'Audi A4', 'Audi A6', 'Audi Q5'],
     author: { name: 'HyperTune Drivetrain Lab', role: 'Dual-Clutch Transmission Engineers' },
     content: `## Understanding Audi S-Tronic / DSG Dual-Clutch Issues\nAudi's S-Tronic Dual-Clutch Transmission provides lightning-fast shifts, but stop-and-go traffic heat strains the electro-hydraulic Mechatronics control unit.\n\n### Mechatronic Refurbishment\n- Accumulator pressure housing reinforcement.\n- Proportional solenoid valve resistance testing.\n- Genuine dual-clutch fluid flush & basic settings clutch calibration.`,
-  },
-  {
-    slug: 'what-is-ecu-remapping-stage-1-stage-2-pakistan',
-    title: 'What is ECU Remapping? Stage 1 vs Stage 2 Engine Tuning Guide in Islamabad & Pakistan',
-    excerpt: 'Learn how custom dyno-tested ECU remapping unlocks +20% to +45% horsepower and torque, improves throttle response, and enhances fuel efficiency safely on turbocharged petrol and diesel engines.',
-    category: 'Engine Care',
-    publishedDate: 'July 19, 2026',
-    readTime: '7 min read',
-    tags: ['ECU Remap', 'Engine Tuning', 'Stage 1', 'Stage 2', 'Horsepower', 'Fuel Economy', 'Islamabad'],
-    author: { name: 'HyperTune Performance Lab', role: 'Calibration & Dyno Tuning Division' },
-    content: `## How Custom ECU Remapping Unlocks Hidden Engine Performance\nECU remapping customizes ignition timing, boost targets, and air-fuel maps to safely extract optimal performance and responsiveness.\n\n### Stage 1 vs Stage 2\n- Stage 1: Stock hardware, +20-35% BHP gain, improved cruising mileage.\n- Stage 2: High-flow downpipe and intercooler, +35-50% BHP gain.`,
   },
   {
     slug: 'ceramic-coating-vs-ppf-pakistan-guide',

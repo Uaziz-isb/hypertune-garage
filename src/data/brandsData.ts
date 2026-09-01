@@ -239,7 +239,7 @@ export const brandsData: BrandItem[] = [
       'Flat-6 (3.0T, 3.8L, 4.0L) & V6 / V8 Twin-Turbo Master Engine Rebuilding',
       'PASM (Porsche Active Suspension Management) Air Suspension Calibration & Strut Repair',
       'Porsche Ceramic Composite Brakes (PCCB) & Multi-Piston Brembo Caliper Overhaul',
-      'Sport Chrono Package Launch Control Telemetry & ECU Stage 1/2 Tuning',
+      'Sport Chrono Package Calibration & Diagnostic Telemetry',
       'Self-Healing TPU Paint Protection Film (PPF) for Porsche 911, GT3, Cayman & Cayenne',
     ],
     pricingRange: 'PKR 10,000 - PKR 500,000 (Based on Model & Service)',
@@ -598,11 +598,11 @@ export const brandsData: BrandItem[] = [
   {
     id: 'changan-specialist',
     slug: 'changan-repair-islamabad',
-    name: 'Changan Specialist Workshop & Tuning Islamabad',
+    name: 'Changan Specialist Workshop Islamabad',
     tagline: 'Changan Diagnostic System, Oshan X7 Blue Core Turbo, Alsvin DCT Servicing & Karvaan Fleet Care',
     logoBadge: 'Changan Master Specialist',
     heroImage: images.brandChanganService,
-    overview: 'HyperTune Garage is the leading independent Changan specialist in Islamabad and Rawalpindi. Equipped with Changan OEM computerized diagnostic rigs, our technicians expertly maintain Oshan X7 (FutureSense & Comfort 1.5T), Alsvin (1.3L & 1.5L Dual-Clutch), Karvaan, and Deepal EV/EREV models. We provide specialized care for Changan’s high-output Blue Core turbocharged engines, 7-speed wet dual-clutch transmissions (DCT), ADAS sensor calibrations, and suspension tuning.',
+    overview: 'HyperTune Garage is the leading independent Changan specialist in Islamabad and Rawalpindi. Equipped with Changan OEM computerized diagnostic rigs, our technicians expertly maintain Oshan X7 (FutureSense & Comfort 1.5T), Alsvin (1.3L & 1.5L Dual-Clutch), Karvaan, and Deepal EV/EREV models. We provide specialized care for Changan’s high-output Blue Core turbocharged engines, 7-speed wet dual-clutch transmissions (DCT), ADAS sensor calibrations, and suspension setup.',
     modelsCovered: [
       'Changan Oshan X7 (1.5L Blue Core Turbo 7-Speed Wet DCT FutureSense/Comfort)',
       'Changan Alsvin (1.37L Manual, 1.5L 5-Speed Dual-Clutch DCT Lumiere)',
@@ -655,7 +655,7 @@ export const brandsData: BrandItem[] = [
       },
     ],
     seo: {
-      title: 'Changan Specialist Workshop & Tuning Islamabad | HyperTune Garage',
+      title: 'Changan Specialist Workshop Islamabad | HyperTune Garage',
       description: 'Premier Changan workshop in Islamabad & Rawalpindi. Changan OEM diagnostics, Oshan X7 Blue Core turbo service, Alsvin DCT transmission repairs & Karvaan maintenance.',
       keywords: ['changan repair islamabad', 'changan specialist rawalpindi', 'oshan x7 service', 'changan alsvin dct repair', 'changan deepal s07', 'changan workshop police foundation'],
     },
@@ -926,7 +926,7 @@ export const brandsData: BrandItem[] = [
     tagline: 'Isuzu G-IDSS Factory Diagnostics, D-Max 3.0L / 1.9L Ddi BluePower, V-Cross & NPR Fleet Care',
     logoBadge: 'Isuzu Master Specialist',
     heroImage: images.brandIsuzuService,
-    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent diesel and 4x4 workshop for Isuzu vehicles. Utilizing the official Isuzu G-IDSS (Global Isuzu Diagnostic Service System), our master diesel mechanics specialize in Isuzu D-Max (V-Cross 3.0L 4JJ1/4JJ3, Hi-Spark 2.5L, and 1.9L Ddi BluePower), Isuzu MU-X, and Isuzu N-Series/NPR commercial fleets. We excel in 4JJ1/4JJ3 common rail diesel tuning, turbocharger rebuilding, heavy-duty 4x4 transmission servicing, leaf spring suspension upgrades, and PPF armor.',
+    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent diesel and 4x4 workshop for Isuzu vehicles. Utilizing the official Isuzu G-IDSS (Global Isuzu Diagnostic Service System), our master diesel mechanics specialize in Isuzu D-Max (V-Cross 3.0L 4JJ1/4JJ3, Hi-Spark 2.5L, and 1.9L Ddi BluePower), Isuzu MU-X, and Isuzu N-Series/NPR commercial fleets. We excel in 4JJ1/4JJ3 common rail diesel servicing, turbocharger rebuilding, heavy-duty 4x4 transmission servicing, leaf spring suspension upgrades, and PPF armor.',
     modelsCovered: [
       'Isuzu D-Max V-Cross (3.0L 4JJ1-TCX & 4JJ3-TCX 4x4 AT/MT)',
       'Isuzu D-Max Hi-Lander & Hi-Spark (2.5L 4JK1-TC & 1.9L RZ4E-TC BluePower)',
@@ -1019,7 +1019,7 @@ export const brandsData: BrandItem[] = [
     ],
     specializedServices: [
       'FAW Computer Diagnostic Health Scans & Sensor Reset',
-      'FAW V2 1.3L VCT-i Engine Tuning & Overhauls',
+      'FAW V2 1.3L VCT-i Engine Overhauls & Servicing',
       'Manual Transmission Gearbox Rebuilding & Clutch Pack Replacement',
       'Heavy-Duty Cooling System Radiator Flush & High-Temp Coolant Upgrade',
       'Suspension, Steering Rack & Bushing Refresh',
@@ -1254,7 +1254,7 @@ export const brandsData: BrandItem[] = [
     tagline: 'Mazda IDS Diagnostics, SkyActiv-G / SkyActiv-D Engine Care, Mazda 3, Mazda 6, CX-3 & CX-5',
     logoBadge: 'Mazda Master Specialist',
     heroImage: images.brandMazdaService,
-    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist workshop for Mazda SkyActiv vehicles. Equipped with official Mazda IDS and M-MDS diagnostic interfaces, our certified technicians expertly service Mazda 3 (Axela), Mazda 6 (Atenza), CX-3, CX-5, CX-9, Demio (Mazda 2), and MX-5 Miata. From de-coking SkyActiv-G high-compression direct injection intake valves and servicing 6-speed SkyActiv-Drive automatic transmissions to i-ELOOP capacitor checks and suspension tuning, we deliver refined driving dynamics.',
+    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist workshop for Mazda SkyActiv vehicles. Equipped with official Mazda IDS and M-MDS diagnostic interfaces, our certified technicians expertly service Mazda 3 (Axela), Mazda 6 (Atenza), CX-3, CX-5, CX-9, Demio (Mazda 2), and MX-5 Miata. From de-coking SkyActiv-G high-compression direct injection intake valves and servicing 6-speed SkyActiv-Drive automatic transmissions to i-ELOOP capacitor checks and suspension calibration, we deliver refined driving dynamics.',
     modelsCovered: [
       'Mazda 3 / Axela (1.5L, 2.0L, 2.5L SkyActiv-G & SkyActiv-X)',
       'Mazda 6 / Atenza (2.0L & 2.5L SkyActiv-G Sedan / Estate)',
@@ -1329,7 +1329,7 @@ export const brandsData: BrandItem[] = [
       'Subaru Impreza & Levorg (1.6T & 2.0T DIT Sport Tourer)',
       'Subaru BRZ (2.0L FA20 & 2.4L FA24 Boxer RWD Coupe)',
     ],
-    diagnosticSoftware: 'Subaru Select Monitor 4 (SSM4), DST-i Interface & Symmetrical AWD Dyno Telemetry',
+    diagnosticSoftware: 'Subaru Select Monitor 4 (SSM4), DST-i Interface & Symmetrical AWD Computer Telemetry',
     commonIssuesAndFixes: [
       {
         issue: 'Boxer Engine Oil Leaks from Valve Covers & Cam Carrier Gaskets',
@@ -1640,7 +1640,7 @@ export const brandsData: BrandItem[] = [
   {
     id: 'ford-specialist',
     slug: 'ford-service-islamabad',
-    name: 'Ford Specialist Workshop & EcoBoost Tuning Islamabad',
+    name: 'Ford Specialist Workshop Islamabad',
     tagline: 'Ford FDRS / IDS Diagnostics, F-150 Raptor, Ranger, Everest, Mustang & EcoBoost Care',
     logoBadge: 'Ford Master Specialist',
     heroImage: images.brandFordService,
@@ -1697,7 +1697,7 @@ export const brandsData: BrandItem[] = [
       },
     ],
     seo: {
-      title: 'Ford Specialist Workshop & EcoBoost Tuning Islamabad | HyperTune Garage',
+      title: 'Ford Specialist Workshop Islamabad | HyperTune Garage',
       description: 'Expert Ford workshop in Islamabad & Rawalpindi. Ford FDRS diagnostics, Ranger Raptor maintenance, F-150 EcoBoost service, Mustang 5.0L V8 repairs & 10R80 transmission flush.',
       keywords: ['ford repair islamabad', 'ford specialist rawalpindi', 'ford ranger raptor service', 'ford mustang maintenance', 'ford fdrs diagnostic', 'ford workshop police foundation'],
     },
@@ -1709,7 +1709,7 @@ export const brandsData: BrandItem[] = [
     tagline: 'GM GDS2 Diagnostics, Tahoe, Suburban, Silverado, Corvette, Camaro & Joy / Optra Care',
     logoBadge: 'Chevrolet Master Specialist',
     heroImage: images.brandChevroletService,
-    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist for Chevrolet and General Motors (GM) vehicles. Equipped with the official GM GDS2 and Tech2 diagnostic platforms, our American vehicle technicians expertly service Tahoe, Suburban, Silverado, Corvette (C7 & C8), Camaro (SS & ZL1), Captiva, Optra, and classic Joy/Exclusive models. From Small Block V8 (5.3L, 6.2L LT1/LT4) lifter repairs and Active Fuel Management (AFM) tuning to Magnetic Ride Control calibrations and heavy-duty transmission overhauls, we ensure peak performance.',
+    overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist for Chevrolet and General Motors (GM) vehicles. Equipped with the official GM GDS2 and Tech2 diagnostic platforms, our American vehicle technicians expertly service Tahoe, Suburban, Silverado, Corvette (C7 & C8), Camaro (SS & ZL1), Captiva, Optra, and classic Joy/Exclusive models. From Small Block V8 (5.3L, 6.2L LT1/LT4) lifter repairs and Active Fuel Management (AFM) calibration to Magnetic Ride Control calibrations and heavy-duty transmission overhauls, we ensure peak performance.',
     modelsCovered: [
       'Chevrolet Tahoe & Suburban (5.3L & 6.2L EcoTec3 V8 Luxury SUV)',
       'Chevrolet Silverado & Colorado (5.3L, 6.2L V8 & 2.8L Duramax Diesel 4x4)',

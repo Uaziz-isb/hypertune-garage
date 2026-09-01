@@ -151,65 +151,6 @@ export const blogData: BlogPost[] = [
     `,
   },
   {
-    id: 'what-is-ecu-remapping-stage-1-stage-2-pakistan',
-    slug: 'what-is-ecu-remapping-stage-1-stage-2-pakistan',
-    title: 'What is ECU Remapping? Stage 1 vs Stage 2 Engine Tuning Guide in Islamabad & Pakistan',
-    excerpt: 'Learn how custom dyno-tested ECU remapping unlocks +20% to +45% horsepower and torque, improves throttle response, and enhances fuel efficiency safely on turbocharged petrol and diesel engines.',
-    category: 'Engine Care',
-    author: {
-      name: 'HyperTune Performance Lab',
-      role: 'Calibration & Dyno Tuning Division',
-      avatar: images.logo,
-    },
-    publishedDate: 'July 19, 2026',
-    readTime: '7 min read',
-    featuredImage: images.heroEcuTuning,
-    tags: ['ECU Remap', 'Engine Tuning', 'Stage 1', 'Stage 2', 'Horsepower', 'Fuel Economy', 'Islamabad'],
-    relatedServices: ['engine-services', 'inspection-diagnostics'],
-    content: `
-      <h2>How Custom ECU Remapping Unlocks Hidden Engine Performance</h2>
-      <p>Factory vehicle manufacturers program Engine Control Units (ECUs) with conservative global safety margins to accommodate low-grade fuels, sub-zero Siberian winters, and irregular maintenance routines worldwide.</p>
-
-      <p>At HyperTune Garage Islamabad, our custom <strong>Stage 1 and Stage 2 ECU Remapping</strong> precisely recalibrates ignition timing maps, turbocharger boost pressure targets, air-fuel stoichiometric ratios, and electronic throttle response—safely unlocking substantial horsepower and torque gains while maintaining factory engine safety parameters.</p>
-
-      <h3>Stage 1 vs. Stage 2 ECU Tuning Comparison</h3>
-      <table className="w-full text-xs text-left border border-slate-800 my-4">
-        <thead>
-          <tr className="bg-slate-900 text-cyan-400 font-bold border-b border-slate-800">
-            <th className="p-3">Feature</th>
-            <th className="p-3">Stage 1 Custom Remap</th>
-            <th className="p-3">Stage 2 Custom Remap</th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-slate-800 text-slate-300">
-          <tr>
-            <td className="p-3 font-semibold text-white">Hardware Requirements</td>
-            <td className="p-3">100% Stock Factory Hardware</td>
-            <td className="p-3">High-Flow Downpipe & Upgraded Intercooler / Intake</td>
-          </tr>
-          <tr>
-            <td className="p-3 font-semibold text-white">Power & Torque Gain</td>
-            <td className="p-3">+20% to +35% BHP / +25% Torque</td>
-            <td className="p-3">+35% to +50% BHP / +45% Torque</td>
-          </tr>
-          <tr>
-            <td className="p-3 font-semibold text-white">Fuel Economy (KM/L)</td>
-            <td className="p-3">+5% to +10% Better at cruising speeds</td>
-            <td className="p-3">Optimized for high performance output</td>
-          </tr>
-          <tr>
-            <td className="p-3 font-semibold text-white">Daily Reliability</td>
-            <td className="p-3">100% OEM Daily Drivability</td>
-            <td className="p-3">High-performance enthusiast spec</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Popular Tuned Platforms at HyperTune Garage</h3>
-      <p>We tune Honda Civic 1.5L Turbo, BMW 320i/330i/530i (B48/B58), Audi A4/A5 2.0 TFSI, Toyota Fortuner / Revo 1GD-FTV 2.8L Diesel, and Mercedes C200/C300.</p>
-    `,
-  },
-  {
     id: 'ceramic-coating-vs-ppf-pakistan-guide',
     slug: 'ceramic-coating-vs-ppf-pakistan-guide',
     title: 'PPF vs Ceramic Coating in Pakistan: Complete Comparison for Stone Chips, UV & Swirl Protection',

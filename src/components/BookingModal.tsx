@@ -15,7 +15,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
   const [model, setModel] = useState('Fortuner');
   const [year, setYear] = useState('2023');
   const [selectedServices, setSelectedServices] = useState<string[]>(
-    initialServiceId ? [initialServiceId] : ['ecu-tuning']
+    initialServiceId ? [initialServiceId] : ['engine-services']
   );
   const [customNotes, setCustomNotes] = useState('');
   const [locationId, setLocationId] = useState('islamabad-hub');

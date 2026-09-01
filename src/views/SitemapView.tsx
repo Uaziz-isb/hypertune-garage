@@ -425,7 +425,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
           </div>
           <div>
             <h2 className="text-xl font-extrabold text-white">Car Care Blog & Technical Articles</h2>
-            <p className="text-xs text-slate-400">Engineering guides, PPF maintenance & ECU tuning articles ({filteredBlogPosts.length} posts)</p>
+            <p className="text-xs text-slate-400">Engineering guides, PPF maintenance & vehicle care articles ({filteredBlogPosts.length} posts)</p>
           </div>
         </div>
 

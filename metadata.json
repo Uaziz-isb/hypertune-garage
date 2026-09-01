@@ -1,6 +1,6 @@
 {
   "name": "HyperTune Garage - Premium Automotive Workshop",
-  "description": "Premier automotive repair, ECU tuning, maintenance & diagnostic workshop in Islamabad & Rawalpindi, Pakistan.",
+  "description": "Premier automotive repair, mechanical overhaul, maintenance & diagnostic workshop in Islamabad & Rawalpindi, Pakistan.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

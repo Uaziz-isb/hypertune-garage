@@ -59,7 +59,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search services (ECU tuning, oil change), advice, FAQs..."
+            placeholder="Search services (Engine overhaul, PPF, AC repair), advice, FAQs..."
             className="w-full bg-transparent text-white placeholder-slate-500 text-sm focus:outline-none"
           />
           {query && (

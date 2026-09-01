@@ -3,9 +3,12 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
-export default defineConfig(() => {
+export default defineConfig(({ command }) => {
   return {
     base: '/',
+    define: {
+      'process.env.NODE_ENV': JSON.stringify(command === 'build' ? 'production' : (process.env.NODE_ENV || 'development')),
+    },
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
@@ -26,6 +29,9 @@ export default defineConfig(() => {
               }
               if (id.includes('/react/') || id.includes('/react-dom/') || id.includes('/scheduler/')) {
                 return 'vendor-react';
+              }
+              if (id.includes('motion')) {
+                return 'vendor-motion';
               }
               return 'vendor';
             }

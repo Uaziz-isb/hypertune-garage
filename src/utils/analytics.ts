@@ -34,19 +34,31 @@ export const initGA = (measurementId: string = GA_MEASUREMENT_ID) => {
     };
   }
 
-  let script = (document.getElementById('ga-gtag-script') || document.getElementById('gtag-js')) as HTMLScriptElement | null;
-  if (!script) {
-    script = document.createElement('script');
-    script.id = 'ga-gtag-script';
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-    document.head.appendChild(script);
+  // Check if GTM script or inline loader is already registered
+  const existingScript = document.getElementById('ga-gtag-script') || document.getElementById('gtag-js');
+  if (!existingScript) {
+    // Defer loading to idle/post-load so it never blocks FCP, LCP, or TBT
+    const scheduleLoad = () => {
+      if (document.getElementById('ga-gtag-script') || document.getElementById('gtag-js')) return;
+      const script = document.createElement('script');
+      script.id = 'ga-gtag-script';
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+      document.head.appendChild(script);
 
-    window.gtag('js', new Date());
-    window.gtag('config', measurementId, {
-      send_page_view: false, // SPA handles page views manually
-      transport_type: 'beacon',
-    });
+      window.gtag?.('js', new Date());
+      window.gtag?.('config', measurementId, {
+        send_page_view: false, // SPA handles page views manually
+        transport_type: 'beacon',
+      });
+    };
+
+    const win = window as any;
+    if (typeof win.requestIdleCallback === 'function') {
+      win.requestIdleCallback(() => setTimeout(scheduleLoad, 1200), { timeout: 3500 });
+    } else {
+      window.addEventListener('load', () => setTimeout(scheduleLoad, 1200), { once: true });
+    }
   }
 };
 

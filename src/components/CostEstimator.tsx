@@ -27,7 +27,7 @@ const estimatorBrands = [
 
 export const CostEstimator: React.FC<CostEstimatorProps> = ({ onBookService }) => {
   const [selectedBrand, setSelectedBrand] = useState('toyota');
-  const [selectedServiceId, setSelectedServiceId] = useState('ecu-tuning');
+  const [selectedServiceId, setSelectedServiceId] = useState('engine-services');
 
   const activeService = servicesData.find((s) => s.id === selectedServiceId) || servicesData[0];
   const activeBrand = estimatorBrands.find((b) => b.id === selectedBrand) || estimatorBrands[0];

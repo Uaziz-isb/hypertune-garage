@@ -4,13 +4,9 @@ import { SEOHead } from './components/SEOHead';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
-import { HomeView } from './views/HomeView';
-import { findServiceBySlug } from './data/servicesData';
-import { brandsData } from './data/brandsData';
-import { locationsData } from './data/locationsData';
-import { blogData } from './data/blogData';
 
-// Dynamic Lazy Imports for Non-Critical Views & Modals (Mobile Performance Optimization)
+// Dynamic Lazy Imports for Views & Modals (Ultra-Fast Initial Shell & Zero TBT)
+const HomeView = lazy(() => import('./views/HomeView').then((m) => ({ default: m.HomeView })));
 const AboutView = lazy(() => import('./views/AboutView').then((m) => ({ default: m.AboutView })));
 const ServicesView = lazy(() => import('./views/ServicesView').then((m) => ({ default: m.ServicesView })));
 const ServiceDetailView = lazy(() => import('./views/ServiceDetailView').then((m) => ({ default: m.ServiceDetailView })));
@@ -100,35 +96,19 @@ export function App() {
 
     if (root === 'about' || root === 'about-us') return { page: 'about' };
     if (root === 'services') {
-      if (sub) {
-        const found = findServiceBySlug(sub);
-        if (found) return { page: 'service-detail', slug: found.slug };
-        return { page: 'not-found' };
-      }
+      if (sub) return { page: 'service-detail', slug: sub };
       return { page: 'services' };
     }
     if (root === 'brands' || root === 'specialists') {
-      if (sub) {
-        const found = brandsData.find((b) => b.slug === sub);
-        if (found) return { page: 'brand-detail', slug: found.slug };
-        return { page: 'not-found' };
-      }
+      if (sub) return { page: 'brand-detail', slug: sub };
       return { page: 'brands' };
     }
     if (root === 'locations') {
-      if (sub) {
-        const found = locationsData.find((l) => l.slug === sub);
-        if (found) return { page: 'location-detail', slug: found.slug };
-        return { page: 'not-found' };
-      }
+      if (sub) return { page: 'location-detail', slug: sub };
       return { page: 'locations' };
     }
     if (root === 'blog') {
-      if (sub) {
-        const found = blogData.find((p) => p.slug === sub);
-        if (found) return { page: 'blog-post', slug: found.slug };
-        return { page: 'not-found' };
-      }
+      if (sub) return { page: 'blog-post', slug: sub };
       return { page: 'blog' };
     }
     if (root === 'booking' || root === 'book-appointment' || root === 'book-service' || root === 'book-service-appointment' || root === 'book-online') {
