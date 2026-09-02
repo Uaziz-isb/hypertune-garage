@@ -173,7 +173,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <div className="relative h-[290px] sm:h-[380px] md:h-[430px] w-full bg-slate-950">
                 <img
                   key={activeHero.title + currentSlide}
-                  src={activeHero.image}
+                  src={currentSlide === 0 ? images.heroPorscheStudio800w : activeHero.image}
+                  srcSet={currentSlide === 0 ? `${images.heroPorscheStudio800w} 800w, ${images.heroPorscheStudio} 1280w` : undefined}
+                  sizes={currentSlide === 0 ? "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 640px" : undefined}
                   alt={activeHero.title}
                   width={640}
                   height={430}
@@ -450,8 +452,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
           <BeforeAfterSlider
             title="Toyota Land Cruiser TPU PPF & Ceramic Coating"
-            beforeImage={images.toyotaStudioBefore}
-            afterImage={images.toyotaStudioAfter}
+            beforeImage={images.toyotaStudioBefore600w || images.toyotaStudioBefore}
+            afterImage={images.toyotaStudioAfter600w || images.toyotaStudioAfter}
             topBeforeTag="Before PPF"
             topAfterTag="After PPF"
             beforeLabel="Factory Metallic Grey"
@@ -563,7 +565,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <div key={loc.id} className="bg-[#0b121e] border border-slate-800 rounded-3xl overflow-hidden shadow-2xl grid grid-cols-1 sm:grid-cols-12">
               <div className="sm:col-span-5 h-56 sm:h-auto relative">
                 <img
-                  src={loc.image}
+                  src={loc.imageSmall || loc.image}
+                  srcSet={loc.imageSmall ? `${loc.imageSmall} 500w, ${loc.image} 1000w` : undefined}
+                  sizes="(max-width: 640px) 100vw, 400px"
                   alt={loc.branchName}
                   width={400}
                   height={300}

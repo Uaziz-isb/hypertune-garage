@@ -478,69 +478,118 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
   const sub = pathParts[1] || '';
 
   const headerHtml = `
-  <header style="background:#05080e;border-bottom:1px solid #1e293b;padding:12px 16px;">
-    <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-      <a href="/" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:#ffffff;">
-        <span style="font-weight:900;font-size:20px;letter-spacing:1px;color:#06b6d4;">HYPERTUNE</span>
-        <span style="font-weight:700;font-size:16px;color:#f8fafc;">GARAGE</span>
-      </a>
-      <nav style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-size:14px;font-weight:600;">
-        <a href="/" style="color:#f8fafc;text-decoration:none;">Home</a>
-        <a href="/services/" style="color:#cbd5e1;text-decoration:none;">Services</a>
-        <a href="/brands/" style="color:#cbd5e1;text-decoration:none;">Brand Specialists</a>
-        <a href="/locations/" style="color:#cbd5e1;text-decoration:none;">Locations</a>
-        <a href="/testimonials/" style="color:#cbd5e1;text-decoration:none;">Reviews (4.9★)</a>
-        <a href="/blog/" style="color:#cbd5e1;text-decoration:none;">Technical Blog</a>
-        <a href="/faq/" style="color:#cbd5e1;text-decoration:none;">FAQ</a>
-        <a href="/contact/" style="color:#cbd5e1;text-decoration:none;">Contact</a>
-      </nav>
-      <div style="display:flex;align-items:center;gap:12px;">
-        <a href="tel:+923330177717" style="color:#06b6d4;font-weight:700;text-decoration:none;font-size:14px;">📞 +92 333 0177717</a>
-        <a href="/book-appointment/" style="background:#06b6d4;color:#030712;padding:8px 16px;border-radius:8px;font-weight:800;text-decoration:none;font-size:13px;">Book Service</a>
+  <header class="w-full">
+    <div class="bg-[#05080e] text-slate-300 text-[11px] sm:text-xs py-1 sm:py-1.5 px-2.5 sm:px-4 border-b border-cyan-500/20">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
+        <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+          <a href="tel:+923330177717" class="flex items-center gap-1 sm:gap-1.5 hover:text-cyan-400 transition-colors font-semibold shrink-0" title="Call HyperTune Garage at 0333-0177717">
+            <span>Call Now: <strong class="text-white font-extrabold tracking-wide">0333-0177717</strong></span>
+          </a>
+          <div class="hidden lg:flex items-center gap-1.5 text-slate-400 shrink-0">
+            <span>Sat - Thu: 10:00 AM - 10:00 PM <strong class="text-amber-400 font-bold ml-1">(Friday Off)</strong></span>
+          </div>
+        </div>
+        <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <span class="hidden sm:inline text-[11px] text-slate-400 font-semibold mr-0.5">Follow us:</span>
+          <a href="https://wa.me/923330177717" target="_blank" rel="noopener noreferrer" class="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-md sm:rounded-lg bg-slate-900 text-[#25D366] border border-[#25D366]/30 text-[10px] sm:text-[11px] font-bold">WhatsApp</a>
+        </div>
       </div>
     </div>
+    <nav class="bg-[#070b12]/95 backdrop-blur-sm border-b border-slate-800/80 py-2 sm:py-3 transition-all duration-300 relative z-30">
+      <div class="max-w-7xl mx-auto px-2.5 sm:px-4 flex items-center justify-between gap-2 sm:gap-4">
+        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+          <a href="/" class="flex items-center gap-2 sm:gap-2.5 group focus:outline-none">
+            <span class="text-xl sm:text-2xl font-black tracking-tight text-white flex items-center">
+              HYPER<span class="text-cyan-400">TUNE</span>
+            </span>
+          </a>
+        </div>
+        <div class="hidden xl:flex items-center gap-1 lg:gap-1.5">
+          <a href="/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-white bg-slate-900 border border-cyan-500/30">Home</a>
+          <a href="/services/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Services</a>
+          <a href="/brands/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Brand Specialists</a>
+          <a href="/locations/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Locations</a>
+          <a href="/gallery/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Gallery</a>
+          <a href="/testimonials/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Reviews (4.9★)</a>
+          <a href="/blog/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Blog</a>
+          <a href="/about/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">About Us</a>
+          <a href="/contact/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Contact</a>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-3">
+          <a href="tel:+923330177717" class="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-xs font-bold">
+            <span>0333-0177717</span>
+          </a>
+          <a href="/book-appointment/" class="px-3.5 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-extrabold text-xs sm:text-sm">
+            Book Appointment
+          </a>
+        </div>
+      </div>
+    </nav>
   </header>`;
 
   const footerHtml = `
-  <footer style="background:#05080e;border-top:1px solid #1e293b;padding:48px 16px;color:#94a3b8;font-size:13px;margin-top:48px;">
-    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:32px;">
+  <footer class="bg-[#05080e] text-slate-400 text-sm border-t border-cyan-500/20">
+    <div class="bg-gradient-to-r from-[#09111e] via-[#0d1627] to-cyan-950/40 border-b border-cyan-500/20 py-12 px-4">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-1 text-center md:text-left">
+          <div class="flex items-center justify-center md:justify-start gap-2 text-cyan-400 font-extrabold text-xs uppercase tracking-widest">
+            <span>PERFORMANCE • PROTECTION • PERFECTION</span>
+          </div>
+          <h3 class="text-2xl md:text-3xl font-black text-white">
+            Ready to Experience Peak Automotive Performance?
+          </h3>
+          <p class="text-slate-400 text-sm max-w-xl">
+            Book your diagnostic scan, detailing, or periodic maintenance today. 100% Genuine OEM Parts with 12-Month / 15,000 km Warranty.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="/book-appointment/" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black text-sm tracking-wide shadow-lg shadow-cyan-500/25">
+            Book Service Appointment
+          </a>
+          <a href="https://wa.me/923330177717" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 rounded-xl bg-emerald-600 text-white font-black text-sm flex items-center gap-2 shadow-lg shadow-emerald-600/20">
+            WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
       <div>
-        <h3 style="color:#ffffff;font-size:16px;font-weight:800;margin-bottom:12px;">HyperTune Garage</h3>
-        <p style="line-height:1.6;margin-bottom:16px;">Islamabad's premier automotive engineering and car care facility. Certified technicians, German OEM diagnostics, and 12-month warranties.</p>
-        <p style="color:#06b6d4;font-weight:700;">📍 Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad</p>
+        <h3 class="text-white font-extrabold text-lg tracking-tight mb-4">HyperTune Garage</h3>
+        <p class="text-slate-400 text-xs leading-relaxed mb-4">Islamabad's premier automotive engineering and car care facility. Certified technicians, German OEM diagnostics, and 12-month warranties.</p>
+        <p class="text-cyan-400 font-bold text-xs">📍 Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad</p>
       </div>
       <div>
-        <h4 style="color:#ffffff;font-size:14px;font-weight:700;margin-bottom:12px;">Popular Services</h4>
-        <ul style="list-style:none;padding:0;margin:0;line-height:2;">
-          <li><a href="/services/paint-protection-film-ppf/" style="color:#94a3b8;text-decoration:none;">Self-Healing TPU PPF</a></li>
-          <li><a href="/services/car-detailing/" style="color:#94a3b8;text-decoration:none;">9H Ceramic Coating</a></li>
-          <li><a href="/services/engine-services/" style="color:#94a3b8;text-decoration:none;">Engine Overhauls</a></li>
-          <li><a href="/services/car-ac-repair/" style="color:#94a3b8;text-decoration:none;">AC Repair &amp; Electrical</a></li>
-          <li><a href="/services/brake-suspension-steering/" style="color:#94a3b8;text-decoration:none;">3D Laser Alignment</a></li>
+        <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4">Popular Services</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="/services/paint-protection-film-ppf/" class="text-slate-400 hover:text-cyan-400 transition-colors">Self-Healing TPU PPF</a></li>
+          <li><a href="/services/car-detailing/" class="text-slate-400 hover:text-cyan-400 transition-colors">9H Ceramic Coating</a></li>
+          <li><a href="/services/engine-services/" class="text-slate-400 hover:text-cyan-400 transition-colors">Engine Overhauls</a></li>
+          <li><a href="/services/car-ac-repair/" class="text-slate-400 hover:text-cyan-400 transition-colors">AC Repair &amp; Electrical</a></li>
+          <li><a href="/services/brake-suspension-steering/" class="text-slate-400 hover:text-cyan-400 transition-colors">3D Laser Alignment</a></li>
         </ul>
       </div>
       <div>
-        <h4 style="color:#ffffff;font-size:14px;font-weight:700;margin-bottom:12px;">Brand Specialists</h4>
-        <ul style="list-style:none;padding:0;margin:0;line-height:2;">
-          <li><a href="/brands/toyota-repair-islamabad/" style="color:#94a3b8;text-decoration:none;">Toyota &amp; Lexus Hybrid</a></li>
-          <li><a href="/brands/honda-service-islamabad/" style="color:#94a3b8;text-decoration:none;">Honda Specialists</a></li>
-          <li><a href="/brands/bmw-repair-islamabad/" style="color:#94a3b8;text-decoration:none;">BMW ISTA Diagnostics</a></li>
-          <li><a href="/brands/mercedes-service-islamabad/" style="color:#94a3b8;text-decoration:none;">Mercedes-Benz Xentry</a></li>
-          <li><a href="/brands/audi-repair-islamabad/" style="color:#94a3b8;text-decoration:none;">Audi &amp; Porsche Care</a></li>
+        <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4">Brand Specialists</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="/brands/toyota-repair-islamabad/" class="text-slate-400 hover:text-cyan-400 transition-colors">Toyota &amp; Lexus Hybrid</a></li>
+          <li><a href="/brands/honda-service-islamabad/" class="text-slate-400 hover:text-cyan-400 transition-colors">Honda Specialists</a></li>
+          <li><a href="/brands/bmw-repair-islamabad/" class="text-slate-400 hover:text-cyan-400 transition-colors">BMW ISTA Diagnostics</a></li>
+          <li><a href="/brands/mercedes-service-islamabad/" class="text-slate-400 hover:text-cyan-400 transition-colors">Mercedes-Benz Xentry</a></li>
+          <li><a href="/brands/audi-repair-islamabad/" class="text-slate-400 hover:text-cyan-400 transition-colors">Audi &amp; Porsche Care</a></li>
         </ul>
       </div>
       <div>
-        <h4 style="color:#ffffff;font-size:14px;font-weight:700;margin-bottom:12px;">Quick Links</h4>
-        <ul style="list-style:none;padding:0;margin:0;line-height:2;">
-          <li><a href="/blog/" style="color:#94a3b8;text-decoration:none;">Technical Blog &amp; Guides</a></li>
-          <li><a href="/sitemap/" style="color:#94a3b8;text-decoration:none;">HTML Sitemap</a></li>
-          <li><a href="/warranty-specs/" style="color:#94a3b8;text-decoration:none;">12-Month Warranty Policy</a></li>
-          <li><a href="/privacy-policy/" style="color:#94a3b8;text-decoration:none;">Privacy Policy</a></li>
-          <li><a href="/terms-conditions/" style="color:#94a3b8;text-decoration:none;">Terms &amp; Conditions</a></li>
+        <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4">Quick Links</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="/blog/" class="text-slate-400 hover:text-cyan-400 transition-colors">Technical Blog &amp; Guides</a></li>
+          <li><a href="/sitemap/" class="text-slate-400 hover:text-cyan-400 transition-colors">HTML Sitemap</a></li>
+          <li><a href="/warranty-specs/" class="text-slate-400 hover:text-cyan-400 transition-colors">12-Month Warranty Policy</a></li>
+          <li><a href="/privacy-policy/" class="text-slate-400 hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
+          <li><a href="/terms-conditions/" class="text-slate-400 hover:text-cyan-400 transition-colors">Terms &amp; Conditions</a></li>
         </ul>
       </div>
     </div>
-    <div style="max-width:1280px;margin:32px auto 0;padding-top:24px;border-top:1px solid #1e293b;text-align:center;font-size:12px;color:#64748b;">
+    <div class="max-w-7xl mx-auto px-4 py-6 border-t border-slate-800/80 text-center text-xs text-slate-500">
       © ${new Date().getFullYear()} HyperTune Garage Islamabad. All Rights Reserved.
     </div>
   </footer>`;
@@ -1118,141 +1167,201 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
       </section>
     </main>`;
   } else if (!root) {
-    // HOME PAGE FULL STABLE SSR TO PREVENT CLS AND OPTIMIZE SEO
+    // HOME PAGE FULL STABLE SSR MATCHING REACT DESKTOP & MOBILE LAYOUT TO PREVENT CLS AND OPTIMIZE SEO
     mainContentHtml = `
-    <main style="max-width:1280px;margin:32px auto;padding:0 16px;">
-      <!-- Hero Section -->
-      <section style="text-align:center;margin-bottom:48px;">
-        <span style="display:inline-block;background:rgba(6,182,212,0.1);color:#06b6d4;padding:6px 16px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:1px;margin-bottom:16px;">
-          ISLAMABAD'S PREMIER AUTOMOTIVE WORKSHOP
-        </span>
-        <h1 style="font-size:42px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;max-width:960px;margin-left:auto;margin-right:auto;">
-          Specialized Automotive Workshop &amp; Paint Protection Film (PPF) Studio
-        </h1>
-        <p style="font-size:18px;color:#94a3b8;max-width:840px;margin:0 auto 28px;line-height:1.6;">
-          Master Engine Overhauls, Hybrid Battery Balancing, S-Tronic/DSG Transmissions, Climate-Controlled TPU PPF Bays &amp; 9H Ceramic Coatings at HyperTune Garage - Islamabad Flagship Hub &amp; Rawalpindi.
-        </p>
-        <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
-          <a href="/book-appointment/" style="background:#06b6d4;color:#030712;padding:12px 28px;border-radius:8px;font-weight:800;text-decoration:none;font-size:15px;">Book Inspection Slot</a>
-          <a href="/services/" style="border:1px solid #334155;color:#ffffff;padding:12px 24px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px;">Explore All Services</a>
+    <div class="space-y-20 pb-16">
+      <!-- HERO SECTION -->
+      <section class="relative min-h-[85vh] flex items-center pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16 px-3 sm:px-4 bg-slate-950 overflow-hidden">
+        <!-- Atmospheric Workshop Gradient Backdrop -->
+        <div class="absolute inset-0 z-0 pointer-events-none">
+          <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-[#060c16] to-slate-950"></div>
+          <div class="absolute top-0 right-1/4 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[140px]"></div>
+          <div class="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px]"></div>
+        </div>
+
+        <div class="relative z-30 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <!-- Left Column: Copy & Actions -->
+          <div class="lg:col-span-6 space-y-5 sm:space-y-6 text-center lg:text-left">
+            <!-- Trust Badge -->
+            <div class="inline-flex items-center gap-1.5 sm:gap-2 bg-cyan-950/70 border border-cyan-500/30 px-3 py-1 sm:py-1.5 rounded-full text-cyan-400 font-bold text-[11px] sm:text-xs uppercase tracking-wider max-w-full text-left">
+              <span>★ Pakistan’s Premier PPF &amp; Precision Automotive Workshop</span>
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15] sm:leading-[1.1] break-words">
+              Paint Protection Film (PPF) &amp; <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500">Detailing Studio</span>
+            </h1>
+
+            <!-- Subhead -->
+            <p class="text-slate-300 text-sm sm:text-base lg:text-lg font-normal leading-relaxed mx-auto lg:mx-0 max-w-2xl">
+              Self-healing Paint Protection Film (PPF), Ceramic Coating, and mechanical repairs for Pakistan’s famous vehicle brands (Honda, Nissan, Changan, MG, Toyota, Suzuki, Hyundai, Kia, Haval) in <strong>Islamabad Flagship Hub</strong> &amp; <strong>Rawalpindi</strong>.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 pt-2">
+              <a
+                href="/book-appointment/"
+                class="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-sm shadow-xl shadow-cyan-500/30 flex items-center justify-center gap-2.5 transition-all text-center"
+              >
+                Book Service Appointment
+              </a>
+
+              <a
+                href="https://wa.me/923330177717?text=Hi%20HyperTune%20Garage%2C%20I%20want%20to%20get%20an%20instant%20PPF%20and%20repair%20estimate."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-xl shadow-emerald-600/20 transition-all text-center"
+              >
+                Instant WhatsApp Estimate
+              </a>
+            </div>
+
+            <!-- Micro Trust Specs -->
+            <div class="pt-3 sm:pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-6 text-xs text-slate-400 border-t border-slate-800/80">
+              <div class="flex items-center gap-1.5">
+                <span class="text-cyan-400 font-bold">✔</span>
+                <span>Self-Healing TPU (10-Yr Warranty)</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-cyan-400 font-bold">🛡</span>
+                <span>100% Dust-Free Studio Installation</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-amber-400 font-bold">★</span>
+                <span>4.9 Star Rating (340+ Reviews)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Premium Interactive PPF Studio Carousel -->
+          <div class="lg:col-span-6 relative">
+            <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-cyan-500/30 shadow-2xl shadow-cyan-500/10 group">
+              <!-- Animated Slide Container -->
+              <div class="relative h-[290px] sm:h-[380px] md:h-[430px] w-full bg-slate-950">
+                <img
+                  src="/images/hero_porsche_studio_1787240154464_800w.webp"
+                  srcset="/images/hero_porsche_studio_1787240154464_800w.webp 800w, /images/hero_porsche_studio_1787240154464.webp 1280w"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 640px"
+                  alt="HyperTune Garage Precision PPF Studio"
+                  width="640"
+                  height="430"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#05080e] via-transparent to-black/30 opacity-90"></div>
+              </div>
+
+              <!-- Floating Slide Details Box -->
+              <div class="absolute bottom-2.5 sm:bottom-4 left-2.5 sm:left-4 right-2.5 sm:right-4 bg-slate-950/92 backdrop-blur-md p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-slate-800 space-y-2 sm:space-y-3 shadow-2xl z-20">
+                <div class="flex items-center justify-between gap-2">
+                  <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-black shrink-0">
+                      🛡
+                    </div>
+                    <div class="min-w-0">
+                      <h4 class="text-white font-extrabold text-xs sm:text-sm leading-tight truncate">HyperTune Garage Precision PPF Studio</h4>
+                      <p class="text-slate-300 text-[11px] sm:text-xs mt-0.5 line-clamp-1">Ultra-Clear Self-Healing TPU • 10-Year Yellowing &amp; Scratch Defense</p>
+                    </div>
+                  </div>
+                  <span class="hidden xs:inline-flex bg-cyan-500 text-slate-950 font-extrabold text-[9px] sm:text-[10px] uppercase px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg shrink-0">
+                    HyperTune Garage Paint Protection
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- Trust Standards -->
-      <section style="margin-bottom:48px;">
-        <div style="text-align:center;margin-bottom:32px;">
-          <span style="color:#06b6d4;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Uncompromising Standards</span>
-          <h2 style="font-size:28px;font-weight:900;color:#ffffff;margin-top:6px;">Why Vehicle Owners Trust HyperTune Garage</h2>
-          <p style="color:#94a3b8;font-size:14px;max-width:640px;margin:8px auto 0;">We bridge the gap between expensive dealership overhead and substandard roadside mechanics.</p>
+      <section class="max-w-7xl mx-auto px-4 space-y-10">
+        <div class="text-center space-y-3 max-w-2xl mx-auto">
+          <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Uncompromising Standards</span>
+          <h2 class="text-3xl font-black text-white">Why Vehicle Owners Trust HyperTune Garage</h2>
+          <p class="text-slate-400 text-sm">We bridge the gap between expensive dealership overhead and substandard roadside mechanics.</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px;">
-          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
-            <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin-bottom:8px;">Dealer-Level Diagnostics</h3>
-            <p style="font-size:13px;color:#94a3b8;line-height:1.6;">Toyota Techstream, Honda HDS, Suzuki SDT-II, Hyundai GDS, and JLR Pathfinder OEM scanners.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
+            <h3 class="text-lg font-bold text-white">Official Dealer-Level Diagnostics</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Equipped with Toyota Techstream, Honda HDS, Suzuki SDT-II, Hyundai GDS, Kia KDS, JLR Pathfinder, and OEM diagnostic scanners.</p>
           </div>
-          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
-            <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin-bottom:8px;">Climate-Controlled PPF Studio</h3>
-            <p style="font-size:13px;color:#94a3b8;line-height:1.6;">Dust-free installation bays with positive air pressure and 95+ CRI optical lighting for mirror finishes.</p>
+          <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
+            <h3 class="text-lg font-bold text-white">Climate-Controlled PPF Studio</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Dust-free installation bays with positive air pressure, clean filtered air, and high-CRI lighting for zero-defect wrap finishes.</p>
           </div>
-          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
-            <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin-bottom:8px;">12-Month Warranty</h3>
-            <p style="font-size:13px;color:#94a3b8;line-height:1.6;">Comprehensive written warranty on internal engine components, transmissions, and genuine OEM parts.</p>
+          <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
+            <h3 class="text-lg font-bold text-white">12-Month / 15,000 km Warranty</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Every mechanical overhaul, suspension component, and electrical module comes with our written nationwide warranty.</p>
           </div>
         </div>
       </section>
 
       <!-- Core Services Showcase (All 13 Services) -->
-      <section style="margin-bottom:48px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <section class="max-w-7xl mx-auto px-4 space-y-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <h2 style="font-size:24px;font-weight:800;color:#ffffff;">All Main Automotive Services</h2>
-            <p style="font-size:14px;color:#94a3b8;">Precision mechanical overhauls, electronics, body tuning &amp; detailing</p>
+            <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Automotive Engineering &amp; Studio Offerings</span>
+            <h2 class="text-3xl font-black text-white mt-1">All Main Services</h2>
           </div>
-          <a href="/services/" style="color:#06b6d4;font-weight:700;text-decoration:none;">All Services &rarr;</a>
+          <a href="/services/" class="text-cyan-400 font-bold text-sm hover:underline">All Services &rarr;</a>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px;">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           ${servicesDataSSR.map((s) => `
-            <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
-              <span style="font-size:11px;font-weight:700;color:#06b6d4;text-transform:uppercase;">${escapeHtml(s.category)}</span>
-              <h3 style="font-size:18px;font-weight:700;color:#ffffff;margin:6px 0 8px;">${escapeHtml(s.title)}</h3>
-              <p style="font-size:13px;color:#94a3b8;line-height:1.5;margin-bottom:12px;">${escapeHtml(s.shortDesc)}</p>
-              <a href="/services/${s.slug}/" style="color:#06b6d4;font-weight:700;text-decoration:none;font-size:13px;">Technical Details &rarr;</a>
+            <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
+              <span class="text-cyan-400 font-bold text-xs uppercase">${escapeHtml(s.category)}</span>
+              <h3 class="text-lg font-bold text-white">${escapeHtml(s.title)}</h3>
+              <p class="text-slate-400 text-xs leading-relaxed">${escapeHtml(s.shortDesc)}</p>
+              <a href="/services/${s.slug}/" class="text-cyan-400 font-bold text-xs hover:underline inline-block pt-1">Technical Details &rarr;</a>
             </div>
           `).join('')}
         </div>
       </section>
 
       <!-- Vehicle Brand Specialists -->
-      <section style="margin-bottom:48px;background:#070c14;border:1px solid #1e293b;border-radius:16px;padding:32px 24px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
-          <div>
-            <h2 style="font-size:24px;font-weight:800;color:#ffffff;">24 Vehicle Brand Specialist Hubs</h2>
-            <p style="font-size:14px;color:#94a3b8;">Factory diagnostic software &amp; master technicians for Japanese, German, European &amp; American brands</p>
+      <section class="max-w-7xl mx-auto px-4">
+        <div class="bg-[#0b121e] border border-slate-800 rounded-3xl p-8 space-y-6">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Expert Technicians &amp; OEM Software</span>
+              <h2 class="text-2xl md:text-3xl font-black text-white mt-1">24 Vehicle Brand Specialist Hubs</h2>
+            </div>
+            <a href="/brands/" class="text-cyan-400 font-bold text-sm hover:underline">View All Brands &rarr;</a>
           </div>
-          <a href="/brands/" style="color:#06b6d4;font-weight:700;text-decoration:none;">View All Brands &rarr;</a>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:12px;">
-          ${brandsDataSSR.map((b) => `
-            <a href="/brands/${b.slug}/" style="color:#cbd5e1;text-decoration:none;display:block;padding:12px 16px;background:#0b121e;border:1px solid #1e293b;border-radius:8px;">
-              <strong style="color:#ffffff;display:block;font-size:14px;">${escapeHtml(b.name)}</strong>
-              <span style="font-size:11px;color:#06b6d4;">${escapeHtml(b.diagnosticSoftware)}</span>
-            </a>
-          `).join('')}
-        </div>
-      </section>
-
-      <!-- 4-Step Repair & Service Process -->
-      <section style="margin-bottom:48px;">
-        <div style="text-align:center;margin-bottom:32px;">
-          <span style="color:#06b6d4;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Transparent Workflow</span>
-          <h2 style="font-size:28px;font-weight:900;color:#ffffff;margin-top:6px;">Our 4-Step Repair &amp; Service Process</h2>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:16px;">
-          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
-            <span style="font-size:24px;font-weight:900;color:rgba(6,182,212,0.4);">01</span>
-            <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin:8px 0;">Book Appointment</h3>
-            <p style="font-size:13px;color:#94a3b8;line-height:1.5;">Reserve online or via WhatsApp. Flexible appointment scheduling across Islamabad &amp; Rawalpindi.</p>
-          </div>
-          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
-            <span style="font-size:24px;font-weight:900;color:rgba(6,182,212,0.4);">02</span>
-            <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin:8px 0;">Computer Diagnostic</h3>
-            <p style="font-size:13px;color:#94a3b8;line-height:1.5;">Our master technicians execute an OEM scanner health audit and create an itemized estimate.</p>
-          </div>
-          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
-            <span style="font-size:24px;font-weight:900;color:rgba(6,182,212,0.4);">03</span>
-            <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin:8px 0;">Video Approval</h3>
-            <p style="font-size:13px;color:#94a3b8;line-height:1.5;">Receive HD video proof of worn parts. Work only starts upon your explicit digital authorization.</p>
-          </div>
-          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
-            <span style="font-size:24px;font-weight:900;color:rgba(6,182,212,0.4);">04</span>
-            <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin:8px 0;">Road Test &amp; Warranty</h3>
-            <p style="font-size:13px;color:#94a3b8;line-height:1.5;">High-speed verification test, final cleaning, and delivery with 12-Month Written Warranty.</p>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            ${brandsDataSSR.map((b) => `
+              <a href="/brands/${b.slug}/" class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 text-center transition-all">
+                <strong class="text-white text-xs font-bold block truncate">${escapeHtml(b.name)}</strong>
+                <span class="text-[10px] text-cyan-400 block mt-0.5 truncate">${escapeHtml(b.diagnosticSoftware)}</span>
+              </a>
+            `).join('')}
           </div>
         </div>
       </section>
 
       <!-- Workshop Locations -->
-      <section style="margin-bottom:48px;">
-        <div style="text-align:center;margin-bottom:32px;">
-          <span style="color:#06b6d4;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Visit Our Workshops</span>
-          <h2 style="font-size:28px;font-weight:900;color:#ffffff;margin-top:6px;">Islamabad &amp; Rawalpindi Locations</h2>
-          <p style="color:#94a3b8;font-size:14px;">Experience dealer-grade automotive care at our active Islamabad Flagship Hub.</p>
+      <section class="max-w-7xl mx-auto px-4 space-y-8">
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+          <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Visit Our Workshops</span>
+          <h2 class="text-3xl font-black text-white">Islamabad &amp; Rawalpindi Locations</h2>
+          <p class="text-slate-400 text-sm">Experience dealer-grade automotive care at our active Islamabad Flagship Hub.</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:20px;">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           ${locationsDataSSR.map((loc) => `
-            <div style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;">
-              <span style="display:inline-block;background:rgba(6,182,212,0.15);color:#06b6d4;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;margin-bottom:12px;">${escapeHtml(loc.city)} Hub</span>
-              <h3 style="font-size:18px;font-weight:800;color:#ffffff;margin-bottom:8px;">${escapeHtml(loc.branchName)}</h3>
-              <p style="font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:16px;">${escapeHtml(loc.address)}</p>
-              <div style="display:flex;gap:12px;flex-wrap:wrap;">
-                <a href="tel:${loc.phone.replace(/[^0-9+]/g, '')}" style="background:#06b6d4;color:#030712;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:700;text-decoration:none;">Call: ${loc.phone}</a>
-                <a href="/locations/${loc.slug}/" style="border:1px solid #334155;color:#ffffff;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:700;text-decoration:none;">Branch Details &rarr;</a>
+            <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-4 shadow-xl">
+              <span class="inline-block bg-cyan-950/70 border border-cyan-500/30 text-cyan-400 px-3 py-1 rounded-full text-xs font-bold uppercase">${escapeHtml(loc.city)} Hub</span>
+              <h3 class="text-xl font-bold text-white">${escapeHtml(loc.branchName)}</h3>
+              <p class="text-slate-400 text-xs leading-relaxed">${escapeHtml(loc.address)}</p>
+              <div class="flex gap-3 pt-2">
+                <a href="tel:${loc.phone.replace(/[^0-9+]/g, '')}" class="px-4 py-2 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs">Call: ${loc.phone}</a>
+                <a href="/locations/${loc.slug}/" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white font-bold text-xs">Branch Details &rarr;</a>
               </div>
             </div>
           `).join('')}
         </div>
       </section>
-    </main>`;
+    </div>`;
   } else {
     // 404 NOT FOUND PAGE
     mainContentHtml = `
@@ -1273,7 +1382,16 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
     </main>`;
   }
 
-  return `${headerHtml}\n${mainContentHtml}\n${footerHtml}`;
+  return `
+  <div class="min-h-screen bg-[#070b12] text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-950 flex flex-col justify-between">
+    <div class="sticky top-0 z-40">
+      ${headerHtml}
+    </div>
+    <main class="flex-grow">
+      ${mainContentHtml}
+    </main>
+    ${footerHtml}
+  </div>`;
 }
 
 export function injectSSRHtml(

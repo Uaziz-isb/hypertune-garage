@@ -32,6 +32,7 @@ export const locationsData: LocationItem[] = [
     landmarks: ['Central Avenue', 'Block E Police Foundation', 'Sector O-9 Islamabad'],
     managerName: 'HyperTune Workshop Team',
     image: images.workshopIslamabad,
+    imageSmall: images.workshopIslamabad500w,
   },
   {
     id: 'rawalpindi-hub',
@@ -51,5 +52,6 @@ export const locationsData: LocationItem[] = [
     ],
     managerName: 'HyperTune Project Development Team',
     image: images.workshopRawalpindi,
+    imageSmall: images.workshopRawalpindi500w,
   },
 ];

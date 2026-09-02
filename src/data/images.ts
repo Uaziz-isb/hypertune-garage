@@ -63,6 +63,13 @@ const havalStudioAfter = '/images/haval_maroon_after_1788042137567.webp';
 const toyotaStudioBefore = '/images/toyota_grey_before_1788042150340.webp';
 const toyotaStudioAfter = '/images/toyota_grey_after_1788042164355.webp';
 
+// Optimized Responsive Variants for High-Traffic Landing Sections
+const heroPorscheStudio800w = '/images/hero_porsche_studio_1787240154464_800w.webp';
+const workshopIslamabad500w = '/images/about_cleanroom_studio_1787241321616_500w.webp';
+const workshopRawalpindi500w = '/images/rawalpindi_hub_bay_1787965865804_500w.webp';
+const toyotaStudioBefore600w = '/images/toyota_grey_before_1788042150340_600w.webp';
+const toyotaStudioAfter600w = '/images/toyota_grey_after_1788042164355_600w.webp';
+
 // 24 Dedicated Distinct Brand Specialists Hero Images (Zero repetition)
 const brandToyotaService = '/images/brand_toyota_service_1787494386869.webp';
 const brandHondaService = '/images/brand_honda_service_1787601769426.webp';
@@ -162,6 +169,13 @@ export const images = {
   havalStudioAfter,
   toyotaStudioBefore,
   toyotaStudioAfter,
+
+  // Optimized Responsive Variants
+  heroPorscheStudio800w,
+  workshopIslamabad500w,
+  workshopRawalpindi500w,
+  toyotaStudioBefore600w,
+  toyotaStudioAfter600w,
 
   // 24 Dedicated Distinct Brand Specialists Hero Images
   brandToyotaService,

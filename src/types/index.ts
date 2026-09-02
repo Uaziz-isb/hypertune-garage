@@ -113,6 +113,7 @@ export interface LocationItem {
   landmarks?: string[];
   managerName?: string;
   image: string;
+  imageSmall?: string;
 }
 
 export interface BlogPost {

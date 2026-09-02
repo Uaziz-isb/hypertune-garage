@@ -5,8 +5,9 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 
-// Dynamic Lazy Imports for Views & Modals (Ultra-Fast Initial Shell & Zero TBT)
-const HomeView = lazy(() => import('./views/HomeView').then((m) => ({ default: m.HomeView })));
+import { HomeView } from './views/HomeView';
+
+// Dynamic Lazy Imports for Other Views & Modals (Ultra-Fast Shell for Deep Routes & Zero TBT)
 const AboutView = lazy(() => import('./views/AboutView').then((m) => ({ default: m.AboutView })));
 const ServicesView = lazy(() => import('./views/ServicesView').then((m) => ({ default: m.ServicesView })));
 const ServiceDetailView = lazy(() => import('./views/ServiceDetailView').then((m) => ({ default: m.ServiceDetailView })));
@@ -342,27 +343,27 @@ export function App() {
         />
       </div>
 
-      {/* Main View Router with Suspense Boundary */}
+      {/* Main View Router */}
       <main className="flex-grow">
-        <Suspense
-          fallback={
-            <div className="min-h-[60vh] flex items-center justify-center pt-28">
-              <div className="w-8 h-8 border-3 border-cyan-500/20 border-t-cyan-400 rounded-full animate-spin" />
-            </div>
-          }
-        >
-          {currentPage === 'home' && (
-            <HomeView
-              onNavigate={navigateTo}
-              onOpenBooking={handleOpenBooking}
-            />
-          )}
-          {currentPage === 'about' && (
-            <AboutView
-              onNavigate={navigateTo}
-              onOpenBooking={() => handleOpenBooking()}
-            />
-          )}
+        {currentPage === 'home' ? (
+          <HomeView
+            onNavigate={navigateTo}
+            onOpenBooking={handleOpenBooking}
+          />
+        ) : (
+          <Suspense
+            fallback={
+              <div className="min-h-[60vh] flex items-center justify-center pt-28">
+                <div className="w-8 h-8 border-3 border-cyan-500/20 border-t-cyan-400 rounded-full animate-spin" />
+              </div>
+            }
+          >
+            {currentPage === 'about' && (
+              <AboutView
+                onNavigate={navigateTo}
+                onOpenBooking={() => handleOpenBooking()}
+              />
+            )}
           {currentPage === 'services' && (
             <ServicesView
               onNavigate={navigateTo}
@@ -470,6 +471,7 @@ export function App() {
             />
           )}
         </Suspense>
+        )}
       </main>
 
       {/* Footer */}

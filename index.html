@@ -68,8 +68,16 @@
     <meta name="twitter:description" content="Pakistan’s top automotive workshop specializing in BMW, Mercedes, Audi, Porsche, Toyota, engine overhauls, PPF & hybrid battery repair." />
     <meta name="twitter:image" content="https://hypertunegarage.pk/images/hypertune_logo.webp" />
 
-    <!-- Preload Critical Above-The-Fold LCP Image -->
-    <link rel="preload" as="image" type="image/webp" href="/images/hero_porsche_studio_1787240154464.webp" fetchpriority="high" />
+    <!-- Preload Critical Above-The-Fold LCP Image (Responsive WebP) -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="/images/hero_porsche_studio_1787240154464_800w.webp"
+      imagesrcset="/images/hero_porsche_studio_1787240154464_800w.webp 800w, /images/hero_porsche_studio_1787240154464.webp 1280w"
+      imagesizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 640px"
+      fetchpriority="high"
+    />
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
@@ -95,17 +103,17 @@
         }
       }
       function cleanupGtagListeners() {
-        ['scroll', 'touchstart', 'mousemove', 'keydown', 'click'].forEach(function(ev) {
+        ['click', 'touchstart', 'keydown'].forEach(function(ev) {
           window.removeEventListener(ev, loadGtagScript, { passive: true });
         });
       }
-      ['scroll', 'touchstart', 'mousemove', 'keydown', 'click'].forEach(function(ev) {
+      ['click', 'touchstart', 'keydown'].forEach(function(ev) {
         window.addEventListener(ev, loadGtagScript, { passive: true, once: true });
       });
       if ('requestIdleCallback' in window) {
-        requestIdleCallback(function() { setTimeout(loadGtagScript, 4000); }, { timeout: 7000 });
+        requestIdleCallback(function() { setTimeout(loadGtagScript, 6000); }, { timeout: 9000 });
       } else {
-        window.addEventListener('load', function() { setTimeout(loadGtagScript, 4500); });
+        window.addEventListener('load', function() { setTimeout(loadGtagScript, 6000); });
       }
     </script>
   </head>
