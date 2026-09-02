@@ -70,6 +70,8 @@ export interface ServiceItem {
   category: 'engine' | 'maintenance' | 'suspension' | 'transmission' | 'diagnostics' | 'protection' | 'detailing' | 'wrap' | 'body' | 'modification' | 'hybrid' | 'tuning' | 'electrical' | 'ac';
   icon: string;
   image: string;
+  imageSmall?: string;
+  imageSrcSet?: string;
   priceRange: string;
   estimatedTime: string;
   symptoms: string[];

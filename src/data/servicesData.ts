@@ -1,7 +1,7 @@
 import { ServiceItem } from '../types';
-import { images } from './images';
+import { images, serviceImageVariants } from './images';
 
-export const servicesData: ServiceItem[] = [
+const baseServicesData: ServiceItem[] = [
   {
     id: 'paint-protection-film-ppf',
     slug: 'paint-protection-film-ppf',
@@ -883,6 +883,15 @@ export const servicesData: ServiceItem[] = [
     },
   }
 ];
+
+export const servicesData: ServiceItem[] = baseServicesData.map((s) => {
+  const variant = serviceImageVariants[s.image];
+  return {
+    ...s,
+    imageSmall: variant?.small || s.image,
+    imageSrcSet: variant?.srcSet,
+  };
+});
 
 /**
  * Exact or alias lookup helper that returns undefined if no valid match is found

@@ -122,7 +122,9 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate, onOpenBo
                   {/* Card Image Banner */}
                   <div className="relative h-56 overflow-hidden">
                     <img
-                      src={service.image}
+                      src={service.imageSmall || service.image}
+                      srcSet={service.imageSrcSet}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 400px"
                       alt={`${service.title} - HyperTune Garage`}
                       width={400}
                       height={224}

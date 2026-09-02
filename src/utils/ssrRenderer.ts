@@ -1118,7 +1118,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
       </section>
     </main>`;
   } else if (!root) {
-    // HOME PAGE ONLY
+    // HOME PAGE FULL STABLE SSR TO PREVENT CLS AND OPTIMIZE SEO
     mainContentHtml = `
     <main style="max-width:1280px;margin:32px auto;padding:0 16px;">
       <!-- Hero Section -->
@@ -1138,22 +1138,116 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         </div>
       </section>
 
-      <!-- Core Services Showcase -->
+      <!-- Trust Standards -->
+      <section style="margin-bottom:48px;">
+        <div style="text-align:center;margin-bottom:32px;">
+          <span style="color:#06b6d4;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Uncompromising Standards</span>
+          <h2 style="font-size:28px;font-weight:900;color:#ffffff;margin-top:6px;">Why Vehicle Owners Trust HyperTune Garage</h2>
+          <p style="color:#94a3b8;font-size:14px;max-width:640px;margin:8px auto 0;">We bridge the gap between expensive dealership overhead and substandard roadside mechanics.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px;">
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
+            <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin-bottom:8px;">Dealer-Level Diagnostics</h3>
+            <p style="font-size:13px;color:#94a3b8;line-height:1.6;">Toyota Techstream, Honda HDS, Suzuki SDT-II, Hyundai GDS, and JLR Pathfinder OEM scanners.</p>
+          </div>
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
+            <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin-bottom:8px;">Climate-Controlled PPF Studio</h3>
+            <p style="font-size:13px;color:#94a3b8;line-height:1.6;">Dust-free installation bays with positive air pressure and 95+ CRI optical lighting for mirror finishes.</p>
+          </div>
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
+            <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin-bottom:8px;">12-Month Warranty</h3>
+            <p style="font-size:13px;color:#94a3b8;line-height:1.6;">Comprehensive written warranty on internal engine components, transmissions, and genuine OEM parts.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Services Showcase (All 13 Services) -->
       <section style="margin-bottom:48px;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
           <div>
-            <h2 style="font-size:24px;font-weight:800;color:#ffffff;">Core Automotive Services</h2>
-            <p style="font-size:14px;color:#94a3b8;">Engine rebuilding, PPF armor, diagnostics &amp; periodic maintenance</p>
+            <h2 style="font-size:24px;font-weight:800;color:#ffffff;">All Main Automotive Services</h2>
+            <p style="font-size:14px;color:#94a3b8;">Precision mechanical overhauls, electronics, body tuning &amp; detailing</p>
           </div>
           <a href="/services/" style="color:#06b6d4;font-weight:700;text-decoration:none;">All Services &rarr;</a>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px;">
-          ${servicesDataSSR.slice(0, 6).map((s) => `
+          ${servicesDataSSR.map((s) => `
             <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
               <span style="font-size:11px;font-weight:700;color:#06b6d4;text-transform:uppercase;">${escapeHtml(s.category)}</span>
               <h3 style="font-size:18px;font-weight:700;color:#ffffff;margin:6px 0 8px;">${escapeHtml(s.title)}</h3>
               <p style="font-size:13px;color:#94a3b8;line-height:1.5;margin-bottom:12px;">${escapeHtml(s.shortDesc)}</p>
               <a href="/services/${s.slug}/" style="color:#06b6d4;font-weight:700;text-decoration:none;font-size:13px;">Technical Details &rarr;</a>
+            </div>
+          `).join('')}
+        </div>
+      </section>
+
+      <!-- Vehicle Brand Specialists -->
+      <section style="margin-bottom:48px;background:#070c14;border:1px solid #1e293b;border-radius:16px;padding:32px 24px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+          <div>
+            <h2 style="font-size:24px;font-weight:800;color:#ffffff;">24 Vehicle Brand Specialist Hubs</h2>
+            <p style="font-size:14px;color:#94a3b8;">Factory diagnostic software &amp; master technicians for Japanese, German, European &amp; American brands</p>
+          </div>
+          <a href="/brands/" style="color:#06b6d4;font-weight:700;text-decoration:none;">View All Brands &rarr;</a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:12px;">
+          ${brandsDataSSR.map((b) => `
+            <a href="/brands/${b.slug}/" style="color:#cbd5e1;text-decoration:none;display:block;padding:12px 16px;background:#0b121e;border:1px solid #1e293b;border-radius:8px;">
+              <strong style="color:#ffffff;display:block;font-size:14px;">${escapeHtml(b.name)}</strong>
+              <span style="font-size:11px;color:#06b6d4;">${escapeHtml(b.diagnosticSoftware)}</span>
+            </a>
+          `).join('')}
+        </div>
+      </section>
+
+      <!-- 4-Step Repair & Service Process -->
+      <section style="margin-bottom:48px;">
+        <div style="text-align:center;margin-bottom:32px;">
+          <span style="color:#06b6d4;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Transparent Workflow</span>
+          <h2 style="font-size:28px;font-weight:900;color:#ffffff;margin-top:6px;">Our 4-Step Repair &amp; Service Process</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:16px;">
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <span style="font-size:24px;font-weight:900;color:rgba(6,182,212,0.4);">01</span>
+            <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin:8px 0;">Book Appointment</h3>
+            <p style="font-size:13px;color:#94a3b8;line-height:1.5;">Reserve online or via WhatsApp. Flexible appointment scheduling across Islamabad &amp; Rawalpindi.</p>
+          </div>
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <span style="font-size:24px;font-weight:900;color:rgba(6,182,212,0.4);">02</span>
+            <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin:8px 0;">Computer Diagnostic</h3>
+            <p style="font-size:13px;color:#94a3b8;line-height:1.5;">Our master technicians execute an OEM scanner health audit and create an itemized estimate.</p>
+          </div>
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <span style="font-size:24px;font-weight:900;color:rgba(6,182,212,0.4);">03</span>
+            <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin:8px 0;">Video Approval</h3>
+            <p style="font-size:13px;color:#94a3b8;line-height:1.5;">Receive HD video proof of worn parts. Work only starts upon your explicit digital authorization.</p>
+          </div>
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <span style="font-size:24px;font-weight:900;color:rgba(6,182,212,0.4);">04</span>
+            <h3 style="font-size:16px;font-weight:700;color:#ffffff;margin:8px 0;">Road Test &amp; Warranty</h3>
+            <p style="font-size:13px;color:#94a3b8;line-height:1.5;">High-speed verification test, final cleaning, and delivery with 12-Month Written Warranty.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Workshop Locations -->
+      <section style="margin-bottom:48px;">
+        <div style="text-align:center;margin-bottom:32px;">
+          <span style="color:#06b6d4;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Visit Our Workshops</span>
+          <h2 style="font-size:28px;font-weight:900;color:#ffffff;margin-top:6px;">Islamabad &amp; Rawalpindi Locations</h2>
+          <p style="color:#94a3b8;font-size:14px;">Experience dealer-grade automotive care at our active Islamabad Flagship Hub.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:20px;">
+          ${locationsDataSSR.map((loc) => `
+            <div style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;">
+              <span style="display:inline-block;background:rgba(6,182,212,0.15);color:#06b6d4;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;margin-bottom:12px;">${escapeHtml(loc.city)} Hub</span>
+              <h3 style="font-size:18px;font-weight:800;color:#ffffff;margin-bottom:8px;">${escapeHtml(loc.branchName)}</h3>
+              <p style="font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:16px;">${escapeHtml(loc.address)}</p>
+              <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                <a href="tel:${loc.phone.replace(/[^0-9+]/g, '')}" style="background:#06b6d4;color:#030712;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:700;text-decoration:none;">Call: ${loc.phone}</a>
+                <a href="/locations/${loc.slug}/" style="border:1px solid #334155;color:#ffffff;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:700;text-decoration:none;">Branch Details &rarr;</a>
+              </div>
             </div>
           `).join('')}
         </div>

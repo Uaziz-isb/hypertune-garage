@@ -4,6 +4,7 @@
 // Brand
 const logo = '/images/hypertune_logo.webp';
 const logoNew = '/images/hypertune_logo.webp';
+const logoSmall = '/images/hypertune_logo_small.webp';
 
 // Global & Page Banners
 const heroBanner = '/images/hypertune_hero_banner_1787965822146.webp';
@@ -92,6 +93,7 @@ export const images = {
   // Brand
   logo,
   logoNew,
+  logoSmall,
 
   // Global & General Banners
   heroBanner,
@@ -186,4 +188,80 @@ export const images = {
   brandFordService,
   brandChevroletService,
   brandVolvoService,
+};
+
+// Responsive Service Card Image Variants (450w & 800w for ~344px card display)
+export const serviceImageVariants: Record<string, { small: string; medium: string; original: string; srcSet: string }> = {
+  [servicePpf]: {
+    small: '/images/ppf_hero_banner_1787965710518_450w.webp',
+    medium: '/images/ppf_hero_banner_1787965710518_800w.webp',
+    original: servicePpf,
+    srcSet: '/images/ppf_hero_banner_1787965710518_450w.webp 450w, /images/ppf_hero_banner_1787965710518_800w.webp 800w, /images/ppf_hero_banner_1787965710518.webp 1280w',
+  },
+  [serviceDetailing]: {
+    small: '/images/hypertune_ceramic_detailing_1787965750616_450w.webp',
+    medium: '/images/hypertune_ceramic_detailing_1787965750616_800w.webp',
+    original: serviceDetailing,
+    srcSet: '/images/hypertune_ceramic_detailing_1787965750616_450w.webp 450w, /images/hypertune_ceramic_detailing_1787965750616_800w.webp 800w, /images/hypertune_ceramic_detailing_1787965750616.webp 1000w',
+  },
+  [serviceEngine]: {
+    small: '/images/hypertune_banner_engine_1787965807591_450w.webp',
+    medium: '/images/hypertune_banner_engine_1787965807591_800w.webp',
+    original: serviceEngine,
+    srcSet: '/images/hypertune_banner_engine_1787965807591_450w.webp 450w, /images/hypertune_banner_engine_1787965807591_800w.webp 800w, /images/hypertune_banner_engine_1787965807591.webp 1280w',
+  },
+  [serviceDiagnostics]: {
+    small: '/images/service_diagnostics_live_1787240184785_450w.webp',
+    medium: '/images/service_diagnostics_live_1787240184785_800w.webp',
+    original: serviceDiagnostics,
+    srcSet: '/images/service_diagnostics_live_1787240184785_450w.webp 450w, /images/service_diagnostics_live_1787240184785_800w.webp 800w, /images/service_diagnostics_live_1787240184785.webp 960w',
+  },
+  [serviceMaintenance]: {
+    small: '/images/hypertune_banner_dyno_1787965778539_450w.webp',
+    medium: '/images/hypertune_banner_dyno_1787965778539_800w.webp',
+    original: serviceMaintenance,
+    srcSet: '/images/hypertune_banner_dyno_1787965778539_450w.webp 450w, /images/hypertune_banner_dyno_1787965778539_800w.webp 800w, /images/hypertune_banner_dyno_1787965778539.webp 1280w',
+  },
+  [serviceSuspension]: {
+    small: '/images/car_suspension_brakes_1787164569835_450w.webp',
+    medium: '/images/car_suspension_brakes_1787164569835_800w.webp',
+    original: serviceSuspension,
+    srcSet: '/images/car_suspension_brakes_1787164569835_450w.webp 450w, /images/car_suspension_brakes_1787164569835_800w.webp 800w, /images/car_suspension_brakes_1787164569835.webp 1000w',
+  },
+  [serviceTransmission]: {
+    small: '/images/car_transmission_gearbox_1787164584141_450w.webp',
+    medium: '/images/car_transmission_gearbox_1787164584141_800w.webp',
+    original: serviceTransmission,
+    srcSet: '/images/car_transmission_gearbox_1787164584141_450w.webp 450w, /images/car_transmission_gearbox_1787164584141_800w.webp 800w, /images/car_transmission_gearbox_1787164584141.webp 1000w',
+  },
+  [serviceWrap]: {
+    small: '/images/car_vinyl_wrap_1787965685845_450w.webp',
+    medium: '/images/car_vinyl_wrap_1787965685845_800w.webp',
+    original: serviceWrap,
+    srcSet: '/images/car_vinyl_wrap_1787965685845_450w.webp 450w, /images/car_vinyl_wrap_1787965685845_800w.webp 800w, /images/car_vinyl_wrap_1787965685845.webp 1000w',
+  },
+  [servicePaint]: {
+    small: '/images/car_paint_booth_1787965665925_450w.webp',
+    medium: '/images/car_paint_booth_1787965665925_800w.webp',
+    original: servicePaint,
+    srcSet: '/images/car_paint_booth_1787965665925_450w.webp 450w, /images/car_paint_booth_1787965665925_800w.webp 800w, /images/car_paint_booth_1787965665925.webp 1280w',
+  },
+  [serviceBodyMod]: {
+    small: '/images/service_body_kit_1787240237280_450w.webp',
+    medium: '/images/service_body_kit_1787240237280_800w.webp',
+    original: serviceBodyMod,
+    srcSet: '/images/service_body_kit_1787240237280_450w.webp 450w, /images/service_body_kit_1787240237280_800w.webp 800w, /images/service_body_kit_1787240237280.webp 960w',
+  },
+  [serviceCooling]: {
+    small: '/images/service_hybrid_battery_1787965698487_450w.webp',
+    medium: '/images/service_hybrid_battery_1787965698487_800w.webp',
+    original: serviceCooling,
+    srcSet: '/images/service_hybrid_battery_1787965698487_450w.webp 450w, /images/service_hybrid_battery_1787965698487_800w.webp 800w, /images/service_hybrid_battery_1787965698487.webp 960w',
+  },
+  [serviceElectrical]: {
+    small: '/images/service_ac_electrical_1787240223565_450w.webp',
+    medium: '/images/service_ac_electrical_1787240223565_800w.webp',
+    original: serviceElectrical,
+    srcSet: '/images/service_ac_electrical_1787240223565_450w.webp 450w, /images/service_ac_electrical_1787240223565_800w.webp 800w, /images/service_ac_electrical_1787240223565.webp 960w',
+  },
 };

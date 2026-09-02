@@ -20,8 +20,9 @@ export const Logo: React.FC<LogoProps> = ({
   const [fallbackIndex, setFallbackIndex] = useState(0);
 
   const fallbackSources = [
+    '/images/hypertune_logo_small.webp',
     '/images/hypertune_logo.webp',
-    'https://hypertunegarage.pk/images/hypertune_logo.webp',
+    'https://hypertunegarage.pk/images/hypertune_logo_small.webp',
   ];
 
   const textColor = variant === 'dark' ? 'text-white' : 'text-slate-950';
@@ -55,6 +56,7 @@ export const Logo: React.FC<LogoProps> = ({
         {!imgError ? (
           <img
             src={currentLogoSrc}
+            srcSet="/images/hypertune_logo_small.webp 1x, /images/hypertune_logo.webp 2x"
             alt="HyperTune Garage Official Logo"
             width={boxSize}
             height={boxSize}

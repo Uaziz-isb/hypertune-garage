@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { images } from '../src/data/images';
+import { images, serviceImageVariants } from '../src/data/images';
 import { servicesData } from '../src/data/servicesData';
 import { brandsData } from '../src/data/brandsData';
 import { locationsData } from '../src/data/locationsData';
@@ -47,12 +47,21 @@ async function runImageAudit() {
   // Services
   servicesData.forEach((s) => {
     recordRef(`servicesData[${s.slug}].image`, s.image);
+    if (s.imageSmall) {
+      recordRef(`servicesData[${s.slug}].imageSmall`, s.imageSmall);
+    }
     if ((s as any).bannerImage) {
       recordRef(`servicesData[${s.slug}].bannerImage`, (s as any).bannerImage);
     }
     if (s.processSteps) {
       s.processSteps.forEach((st, i) => recordRef(`servicesData[${s.slug}].process[${i}]`, (st as any).image));
     }
+  });
+
+  // Responsive Variants Registry
+  Object.entries(serviceImageVariants).forEach(([orig, variant]) => {
+    if (variant.small) recordRef(`serviceImageVariants[${orig}].small`, variant.small);
+    if (variant.medium) recordRef(`serviceImageVariants[${orig}].medium`, variant.medium);
   });
 
   // Brands

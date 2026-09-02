@@ -13,10 +13,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Off-screen rendering optimization for Mobile PageSpeed & Core Web Vitals */
+/* Layout stability optimization to eliminate Cumulative Layout Shift (CLS) */
 .cv-auto {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 700px;
+  content-visibility: visible;
 }
 
 /* Custom scrollbar for electric cyan workshop theme */

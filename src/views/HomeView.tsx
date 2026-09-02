@@ -1,14 +1,12 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageId } from '../types';
 import { servicesData } from '../data/servicesData';
 import { locationsData } from '../data/locationsData';
 import { images } from '../data/images';
 import { GoogleMapEmbed } from '../components/GoogleMapEmbed';
-
-// Dynamic Lazy Imports for Below-the-Fold Heavy Widgets (Mobile Speed Optimization)
-const CostEstimator = lazy(() => import('../components/CostEstimator').then((m) => ({ default: m.CostEstimator })));
-const BeforeAfterSlider = lazy(() => import('../components/BeforeAfterSlider').then((m) => ({ default: m.BeforeAfterSlider })));
-const GoogleReviewsWidget = lazy(() => import('../components/GoogleReviewsWidget').then((m) => ({ default: m.GoogleReviewsWidget })));
+import { CostEstimator } from '../components/CostEstimator';
+import { BeforeAfterSlider } from '../components/BeforeAfterSlider';
+import { GoogleReviewsWidget } from '../components/GoogleReviewsWidget';
 import {
   Wrench,
   ShieldCheck,
@@ -250,7 +248,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* WHY CHOOSE HYPERTUNE GARAGE */}
-      <section className="max-w-7xl mx-auto px-4 space-y-10 cv-auto">
+      <section className="max-w-7xl mx-auto px-4 space-y-10">
         <div className="text-center space-y-3 max-w-2xl mx-auto">
           <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
             Uncompromising Standards
@@ -314,7 +312,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* CORE SERVICES OVERVIEW */}
-      <section className="max-w-7xl mx-auto px-4 space-y-8 cv-auto">
+      <section className="max-w-7xl mx-auto px-4 space-y-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="space-y-2">
             <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest flex items-center gap-1.5">
@@ -366,10 +364,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <div>
                 <div className="relative h-48 overflow-hidden">
                   <img
-                    src={service.image}
+                    src={service.imageSmall || service.image}
+                    srcSet={service.imageSrcSet}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 344px"
                     alt={service.title}
                     width={400}
-                    height={250}
+                    height={192}
                     loading="lazy"
                     decoding="async"
                     referrerPolicy="no-referrer"
@@ -421,14 +421,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* INTERACTIVE COST ESTIMATOR */}
-      <section className="max-w-7xl mx-auto px-4 cv-auto">
-        <Suspense fallback={<div className="h-96 rounded-3xl bg-[#0b121e] animate-pulse border border-slate-800" />}>
-          <CostEstimator onBookService={(serviceId) => onOpenBooking(serviceId)} />
-        </Suspense>
+      <section className="max-w-7xl mx-auto px-4">
+        <CostEstimator onBookService={(serviceId) => onOpenBooking(serviceId)} />
       </section>
 
       {/* BEFORE & AFTER REPAIR RESTORATIONS */}
-      <section className="max-w-7xl mx-auto px-4 space-y-8 cv-auto">
+      <section className="max-w-7xl mx-auto px-4 space-y-8">
         <div className="text-center space-y-2 max-w-xl mx-auto">
           <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
             Craftsmanship Proof
@@ -439,33 +437,31 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </p>
         </div>
 
-        <Suspense fallback={<div className="h-96 rounded-3xl bg-[#0b121e] animate-pulse border border-slate-800" />}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <BeforeAfterSlider
-              title="Haval H6 GT Full Body TPU Paint Protection Film (PPF)"
-              beforeImage={images.havalStudioBefore}
-              afterImage={images.havalStudioAfter}
-              topBeforeTag="Before PPF"
-              topAfterTag="After PPF"
-              beforeLabel="Factory Maroon Finish"
-              afterLabel="Self-Healing Mirror Armor"
-            />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <BeforeAfterSlider
+            title="Haval H6 GT Full Body TPU Paint Protection Film (PPF)"
+            beforeImage={images.havalStudioBefore}
+            afterImage={images.havalStudioAfter}
+            topBeforeTag="Before PPF"
+            topAfterTag="After PPF"
+            beforeLabel="Factory Maroon Finish"
+            afterLabel="Self-Healing Mirror Armor"
+          />
 
-            <BeforeAfterSlider
-              title="Toyota Land Cruiser TPU PPF & Ceramic Coating"
-              beforeImage={images.toyotaStudioBefore}
-              afterImage={images.toyotaStudioAfter}
-              topBeforeTag="Before PPF"
-              topAfterTag="After PPF"
-              beforeLabel="Factory Metallic Grey"
-              afterLabel="9H Hydrophobic Mirror Gloss"
-            />
-          </div>
-        </Suspense>
+          <BeforeAfterSlider
+            title="Toyota Land Cruiser TPU PPF & Ceramic Coating"
+            beforeImage={images.toyotaStudioBefore}
+            afterImage={images.toyotaStudioAfter}
+            topBeforeTag="Before PPF"
+            topAfterTag="After PPF"
+            beforeLabel="Factory Metallic Grey"
+            afterLabel="9H Hydrophobic Mirror Gloss"
+          />
+        </div>
       </section>
 
       {/* CUSTOMER REVIEWS & GOOGLE RATINGS + HYPERTUNE PERFORMANCE METRICS */}
-      <section className="bg-[#070c14] border-y border-slate-800/80 py-16 px-4 cv-auto">
+      <section className="bg-[#070c14] border-y border-slate-800/80 py-16 px-4">
         <div className="max-w-7xl mx-auto space-y-12">
           {/* HyperTune Performance Metrics */}
           <div className="bg-[#0b121e] border border-cyan-500/20 rounded-3xl p-6 md:p-8 backdrop-blur-md shadow-2xl space-y-6">
@@ -519,16 +515,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </button>
             </div>
 
-            <Suspense fallback={<div className="h-64 rounded-3xl bg-[#0b121e] animate-pulse border border-slate-800" />}>
-              <GoogleReviewsWidget compact={true} limit={3} showTitle={false} />
-            </Suspense>
+            <GoogleReviewsWidget compact={true} limit={3} showTitle={false} />
           </div>
 
         </div>
       </section>
 
       {/* 4-STEP SERVICE PROCESS */}
-      <section className="max-w-7xl mx-auto px-4 space-y-10 cv-auto">
+      <section className="max-w-7xl mx-auto px-4 space-y-10">
         <div className="text-center space-y-2 max-w-xl mx-auto">
           <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
             Transparent Workflow
@@ -553,7 +547,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* WORKSHOP LOCATIONS */}
-      <section className="max-w-7xl mx-auto px-4 space-y-8 cv-auto">
+      <section className="max-w-7xl mx-auto px-4 space-y-8">
         <div className="text-center space-y-2 max-w-xl mx-auto">
           <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
             Visit Our Workshops
@@ -668,7 +662,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* GOOGLE MAP LOCATION AT BOTTOM OF HOME PAGE */}
-      <section className="max-w-7xl mx-auto px-4 space-y-6 cv-auto">
+      <section className="max-w-7xl mx-auto px-4 space-y-6">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-[#0b121e] border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl">
           <div className="space-y-2">
             <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest flex items-center gap-1.5">

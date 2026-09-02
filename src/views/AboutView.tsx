@@ -106,7 +106,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
       </section>
 
       {/* Core Specialized Services */}
-      <section className="bg-[#0b121e] border-y border-slate-800 py-16 px-4 cv-auto">
+      <section className="bg-[#0b121e] border-y border-slate-800 py-16 px-4">
         <div className="max-w-7xl mx-auto space-y-10">
           <div className="text-center space-y-2 max-w-2xl mx-auto">
             <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
@@ -222,7 +222,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
       </section>
 
       {/* Why Choose HyperTune Garage */}
-      <section className="max-w-7xl mx-auto px-4 space-y-10 cv-auto">
+      <section className="max-w-7xl mx-auto px-4 space-y-10">
         <div className="text-center space-y-2 max-w-xl mx-auto">
           <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
             The HyperTune Standard
