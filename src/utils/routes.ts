@@ -59,8 +59,8 @@ export function getSiteRoutes(): SiteRoute[] {
       path: '/testimonials/',
       priority: '0.7',
       changefreq: 'monthly',
-      title: 'Customer Reviews & Google Ratings (4.9 / 5.0) | HyperTune Garage',
-      desc: 'Read verified customer reviews and 4.9-star Google ratings for HyperTune Garage Islamabad & Rawalpindi automotive workshop.',
+      title: 'Customer Reviews & Google Ratings (4.8 / 5.0) | HyperTune Garage',
+      desc: 'Read verified customer reviews and 4.8-star Google ratings for HyperTune Garage Islamabad & Rawalpindi automotive workshop.',
     },
     {
       path: '/faq/',

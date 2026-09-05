@@ -161,7 +161,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </div>
               <div className="flex items-center gap-1.5">
                 <Star className="w-4 h-4 text-amber-400 fill-amber-400 shrink-0" />
-                <span>4.9 Star Rating (340+ Reviews)</span>
+                <span>4.8 / 5.0 Star Rating</span>
               </div>
             </div>
           </div>
@@ -499,20 +499,20 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </div>
           </div>
 
-          {/* Live Google Business Profile Auto-Updating Reviews */}
+          {/* Verified Customer Reviews */}
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
-                  Live Customer Ratings
+                  Customer Reviews
                 </span>
-                <h2 className="text-3xl font-black text-white">Google Business Reviews (4.9 / 5.0)</h2>
+                <h2 className="text-3xl font-black text-white">Verified Customer Reviews (4.8 / 5.0)</h2>
               </div>
               <button
                 onClick={() => onNavigate('testimonials')}
                 className="px-4 py-2 rounded-xl bg-[#0b121e] border border-slate-800 text-slate-300 font-bold text-xs hover:text-white transition-colors flex items-center gap-1.5"
               >
-                <span>Read All 348+ Reviews</span>
+                <span>Read All Customer Reviews</span>
                 <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
               </button>
             </div>

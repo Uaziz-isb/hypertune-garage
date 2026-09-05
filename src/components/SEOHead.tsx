@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { trackPageView, initGA } from '../utils/analytics';
 import { normalizeCanonicalUrl } from '../utils/ssrRenderer';
+import { staticCustomerReviews } from '../data/reviewsData';
 
 declare global {
   interface Window {
@@ -104,10 +105,32 @@ export const SEOHead: React.FC<SEOProps> = ({
       url: targetCanonicalUrl,
       telephone: '+923330177717',
       priceRange: '$$$',
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.8',
+        reviewCount: '27',
+        bestRating: '5',
+        worstRating: '1',
+      },
+      review: staticCustomerReviews.map((r) => ({
+        '@type': 'Review',
+        author: {
+          '@type': 'Person',
+          name: r.authorName,
+        },
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: String(r.rating),
+          bestRating: '5',
+          worstRating: '1',
+        },
+        reviewBody: r.text,
+      })),
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
         addressLocality: 'Islamabad',
+        addressRegion: 'PK-IS',
         postalCode: '44000',
         addressCountry: 'PK',
       },

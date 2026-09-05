@@ -38,7 +38,7 @@ export const galleryData: GalleryItem[] = [
     id: 'gal-5',
     title: 'Audi A6 Matrix LED & Electrical Module Coding',
     category: 'Popular Brands Repair',
-    image: images.galleryAudiModule,
+    image: images.galleryAudiService,
     vehicle: 'Audi A6 3.0 TFSI Quattro',
     description: 'ODIS online coding for body control module and Matrix LED headlight replacement.',
   },

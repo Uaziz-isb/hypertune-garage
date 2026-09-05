@@ -6,7 +6,6 @@ import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import { getRouteMetadataAndSchema, renderSSRBody, injectSSRHtml } from "./src/utils/ssrRenderer";
 import { getSiteRoutes } from "./src/utils/routes";
-import { googleBusinessData } from "./src/data/reviewsData";
 
 const app = express();
 const PORT = parseInt(process.env.PORT || "3000", 10);
@@ -134,49 +133,6 @@ Return a helpful JSON object with the following fields:
   }
 });
 
-// API Google Reviews Endpoint
-app.get("/api/google-reviews", async (req, res) => {
-  const apiKey = process.env.GOOGLE_PLACES_API_KEY;
-  const placeId = process.env.GOOGLE_PLACE_ID || "ChIJgy296uXt3zgRaWvyhpPZsvM";
-
-  if (apiKey && apiKey !== "MY_GOOGLE_PLACES_API_KEY") {
-    try {
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,rating,user_ratings_total,reviews,url&key=${apiKey}`
-      );
-      const data = await response.json();
-
-      if (data.status === "OK" && data.result) {
-        return res.json({
-          success: true,
-          source: "google-places-live",
-          placeName: data.result.name,
-          rating: data.result.rating || 4.9,
-          totalReviews: data.result.user_ratings_total || 348,
-          googleMapsUrl: data.result.url || `https://www.google.com/maps/search/?api=1&query=HyperTune+Garage&query_place_id=${placeId}`,
-          writeReviewUrl: `https://search.google.com/local/writereview?placeid=${placeId}`,
-          lastSyncedAt: new Date().toISOString(),
-          reviews: (data.result.reviews || []).map((r: any, idx: number) => ({
-            id: `g-live-${idx}`,
-            authorName: r.author_name,
-            authorPhoto: r.profile_photo_url,
-            rating: r.rating,
-            relativeTimeText: r.relative_time_description,
-            text: r.text,
-            time: r.time,
-            verified: true,
-          })),
-        });
-      }
-    } catch (err) {
-      console.error("Error fetching Google Places API:", err);
-    }
-  }
-
-  // Real verified Google Business Profile representation for HyperTune Garage
-  return res.json(googleBusinessData);
-});
-
 // XML Sitemap Endpoint for Google Search Console & Webmasters
 app.get(["/sitemap.xml", "/sitemap.xml/"], (req, res) => {
   const host = req.headers.host || "hypertunegarage.pk";
@@ -226,7 +182,7 @@ app.get(["/llms.txt", "/.well-known/llms.txt"], (req, res) => {
 - [About Us](${baseUrl}/about/): Learn about HyperTune Garage, certified master technicians, state-of-the-art dust-free PPF bays, and laser diagnostic equipment.
 - [Services Directory](${baseUrl}/services/): Comprehensive catalog of automotive services for German, European, Japanese, and hybrid vehicles.
 - [Workshop Locations](${baseUrl}/locations/): Physical studio address, GPS directions, operational hours, and contact details for Islamabad Flagship Hub and upcoming Rawalpindi branch.
-- [Customer Reviews & Testimonials](${baseUrl}/testimonials/): Real verified customer reviews, Google Business ratings (4.9/5 from 348+ reviews), and client case studies.
+- [Customer Reviews & Testimonials](${baseUrl}/testimonials/): Real verified customer reviews, Google Business ratings (4.8/5), and client case studies.
 - [Transformation Gallery](${baseUrl}/gallery/): Before & after showcase of full-body PPF installations, 9H Ceramic coatings, engine overhauls, and body kit modifications.
 - [Frequently Asked Questions (FAQ)](${baseUrl}/faq/): Answers to questions regarding PPF lifespan, warranty coverage, engine rebuild turnaround times, and pricing.
 - [Contact & Booking](${baseUrl}/contact/): Inquire, request personalized price quotes, or book workshop appointments via phone, WhatsApp, or instant online form.
@@ -278,7 +234,7 @@ app.get(["/llms-full.txt", "/.well-known/llms-full.txt"], (req, res) => {
   - **Islamabad Flagship Hub (Fully Operational):** Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
   - **Rawalpindi Branch (Coming Soon):** Expansion facility currently under development. All current appointments are handled at Islamabad Flagship Hub.
 - **Primary Website:** ${baseUrl}/
-- **Google Rating:** 4.9 / 5.0 Stars (348+ Verified Reviews)
+- **Google Rating:** 4.8 / 5.0 Stars
 `;
 
   res.setHeader("Content-Type", "text/markdown; charset=utf-8");

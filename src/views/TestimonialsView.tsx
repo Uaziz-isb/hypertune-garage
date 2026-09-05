@@ -30,20 +30,26 @@ export const TestimonialsView: React.FC<TestimonialsViewProps> = ({ onNavigate, 
           {/* Quick Metrics Pills */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <div className="bg-[#0b121e] border border-slate-800 rounded-xl px-4 py-2 flex items-center gap-2 text-xs">
-              <span className="text-amber-400 font-black text-sm">4.9 / 5.0</span>
-              <div className="flex text-amber-400">
-                {Array.from({ length: 5 }).map((_, i) => (
+              <span className="text-amber-400 font-black text-sm">4.8 / 5.0</span>
+              <div className="flex text-amber-400 items-center gap-0.5">
+                {[0, 1, 2, 3].map((i) => (
                   <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
                 ))}
+                <div className="relative w-3.5 h-3.5">
+                  <Star className="w-3.5 h-3.5 text-slate-700 fill-slate-800" />
+                  <div className="absolute top-0 left-0 overflow-hidden w-[80%]">
+                    <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400 max-w-none" />
+                  </div>
+                </div>
               </div>
             </div>
             <div className="bg-[#0b121e] border border-slate-800 rounded-xl px-4 py-2 flex items-center gap-2 text-xs text-slate-300">
               <CheckCircle2 className="w-4 h-4 text-cyan-400" />
-              <span><strong>348+</strong> Verified Customer Reviews</span>
+              <span><strong>Verified</strong> Google Business Profile</span>
             </div>
             <div className="bg-[#0b121e] border border-slate-800 rounded-xl px-4 py-2 flex items-center gap-2 text-xs text-slate-300">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span><strong>94%</strong> 5-Star Rating Ratio</span>
+              <span><strong>Top Rated</strong> Automotive Workshop</span>
             </div>
           </div>
         </div>

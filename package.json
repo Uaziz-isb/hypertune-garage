@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "NODE_ENV=production vite build && tsx scripts/prerender.ts && tsx scripts/generate-sitemap.ts && tsx scripts/verify-all-image-integrity.ts && tsx scripts/seo-audit.ts && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "build": "NODE_ENV=production vite build && tsx scripts/prerender.ts && tsx scripts/generate-sitemap.ts && tsx scripts/verify-all-image-integrity.ts && tsx scripts/seo-audit.ts && tsx scripts/performance-guard.ts && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "preview": "vite preview",
     "clean": "rm -rf dist server.cjs",
     "lint": "tsc --noEmit",
+    "guard": "tsx scripts/performance-guard.ts",
     "image:verify": "tsx scripts/verify-all-image-integrity.ts",
     "seo:audit": "tsx scripts/seo-audit.ts",
     "image:audit": "tsx scripts/seo-image-audit.ts"

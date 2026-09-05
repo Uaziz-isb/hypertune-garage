@@ -38,7 +38,7 @@ const BASE_BUSINESS_SCHEMA = (ogImage: string) => ({
   '@context': 'https://schema.org',
   '@type': 'AutoRepair',
   name: 'HyperTune Garage',
-  image: ogImage,
+  image: ogImage || 'https://hypertunegarage.pk/images/hypertune_logo.webp',
   '@id': 'https://hypertunegarage.pk/#business',
   url: 'https://hypertunegarage.pk/',
   telephone: '+923330177717',
@@ -47,6 +47,7 @@ const BASE_BUSINESS_SCHEMA = (ogImage: string) => ({
     '@type': 'PostalAddress',
     streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
     addressLocality: 'Islamabad',
+    addressRegion: 'PK-IS',
     postalCode: '44000',
     addressCountry: 'PK',
   },
@@ -63,6 +64,27 @@ const BASE_BUSINESS_SCHEMA = (ogImage: string) => ({
       closes: '22:00',
     },
   ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.8',
+    reviewCount: '27',
+    bestRating: '5',
+    worstRating: '1',
+  },
+  review: googleBusinessData.reviews.map((r) => ({
+    '@type': 'Review',
+    author: {
+      '@type': 'Person',
+      name: r.authorName,
+    },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: String(r.rating),
+      bestRating: '5',
+      worstRating: '1',
+    },
+    reviewBody: r.text,
+  })),
 });
 
 function escapeHtml(str: string): string {
@@ -330,37 +352,51 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       item: canonicalUrl,
     });
   } else if (root === 'testimonials' || root === 'reviews') {
-    title = 'Customer Reviews & Google Ratings (4.9 / 5.0) | HyperTune Garage';
-    description = 'Read verified customer reviews and 4.9-star Google ratings for HyperTune Garage Islamabad & Rawalpindi automotive workshop.';
+    title = 'Customer Reviews & Google Ratings (4.8 / 5.0) | HyperTune Garage';
+    description = 'Read verified customer reviews and 4.8-star Google ratings for HyperTune Garage Islamabad & Rawalpindi automotive workshop.';
     breadcrumbItems.push({
       '@type': 'ListItem',
       position: 2,
       name: 'Customer Reviews',
       item: canonicalUrl,
     });
-    schemas.push({
+    schemas[0] = {
       '@context': 'https://schema.org',
       '@type': 'AutoRepair',
-      '@id': 'https://hypertunegarage.pk/#business',
       name: 'HyperTune Garage',
+      image: ogImage || 'https://hypertunegarage.pk/images/hypertune_logo.webp',
       url: 'https://hypertunegarage.pk/',
       telephone: '+923330177717',
-      review: googleBusinessData.reviews.slice(0, 5).map((r) => ({
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
+        addressLocality: 'Islamabad',
+        addressRegion: 'PK-IS',
+        postalCode: '44000',
+        addressCountry: 'PK',
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.8',
+        reviewCount: '27',
+        bestRating: '5',
+        worstRating: '1',
+      },
+      review: googleBusinessData.reviews.map((r) => ({
         '@type': 'Review',
         author: {
           '@type': 'Person',
           name: r.authorName,
         },
-        datePublished: '2026-08-20',
-        reviewBody: r.text,
         reviewRating: {
           '@type': 'Rating',
           ratingValue: String(r.rating),
           bestRating: '5',
           worstRating: '1',
         },
+        reviewBody: r.text,
       })),
-    });
+    };
   } else if (root === 'faq' || root === 'faqs') {
     title = 'Frequently Asked Questions (FAQ) | HyperTune Garage';
     description = 'Find answers about PPF lifespan, ceramic coating benefits, engine overhaul warranties, repair pricing, and booking appointments in Pakistan.';
@@ -510,7 +546,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <a href="/brands/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Brand Specialists</a>
           <a href="/locations/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Locations</a>
           <a href="/gallery/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Gallery</a>
-          <a href="/testimonials/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Reviews (4.9★)</a>
+          <a href="/testimonials/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Reviews (4.8★)</a>
           <a href="/blog/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Blog</a>
           <a href="/about/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">About Us</a>
           <a href="/contact/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Contact</a>
@@ -994,14 +1030,14 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           VERIFIED GOOGLE BUSINESS PROFILE
         </span>
         <h1 style="font-size:36px;font-weight:900;color:#ffffff;margin-bottom:12px;">
-          Customer Reviews &amp; 4.9★ Google Ratings
+          Customer Reviews &amp; 4.8★ Google Ratings
         </h1>
         <p style="font-size:16px;color:#94a3b8;max-width:800px;margin:0 auto 24px;line-height:1.6;">
-          Authentic, verified customer reviews and 4.9-star ratings directly from Google Business Profile submitted by vehicle owners across Islamabad and Rawalpindi.
+          Authentic, verified customer reviews and 4.8-star ratings directly from Google Business Profile submitted by vehicle owners across Islamabad and Rawalpindi.
         </p>
         <div style="display:inline-flex;align-items:center;gap:12px;background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:10px 20px;">
-          <span style="font-size:24px;font-weight:900;color:#f59e0b;">4.9 / 5.0</span>
-          <span style="color:#cbd5e1;font-size:14px;">★★★★★ (348+ Verified Google Reviews)</span>
+          <span style="font-size:24px;font-weight:900;color:#f59e0b;">4.8 / 5.0</span>
+          <span style="color:#cbd5e1;font-size:14px;">★★★★★</span>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
@@ -1017,9 +1053,9 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
               ${r.vehicle ? `<span style="display:inline-block;background:rgba(6,182,212,0.1);color:#06b6d4;font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px;margin-bottom:8px;">${escapeHtml(r.vehicle)}</span>` : ''}
             </div>
             ${r.ownerResponse ? `
-              <div style="margin-top:12px;padding-top:12px;border-top:1px solid #1e293b;background:#070c14;padding:12px;border-radius:8px;">
-                <span style="font-size:11px;font-weight:700;color:#06b6d4;display:block;margin-bottom:4px;">Response from HyperTune Garage:</span>
-                <p style="font-size:12px;color:#94a3b8;line-height:1.5;margin:0;font-style:italic;">"${escapeHtml(r.ownerResponse)}"</p>
+              <div style="margin-top:12px;padding:14px;border-top:1px solid #1e293b;background:#111b2b;border-radius:10px;border-left:4px solid #06b6d4;">
+                <span style="font-size:11px;font-weight:700;color:#06b6d4;display:block;margin-bottom:4px;">HyperTune Garage — Owner</span>
+                <p style="font-size:12px;color:#cbd5e1;line-height:1.5;margin:0;font-style:italic;">"${escapeHtml(r.ownerResponse)}"</p>
               </div>
             ` : ''}
           </div>
@@ -1132,7 +1168,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <a href="/services/" style="color:#cbd5e1;text-decoration:none;">🔧 All Services Directory</a>
           <a href="/brands/" style="color:#cbd5e1;text-decoration:none;">🏎️ Brand Specialists</a>
           <a href="/locations/" style="color:#cbd5e1;text-decoration:none;">📍 Workshop Locations</a>
-          <a href="/testimonials/" style="color:#cbd5e1;text-decoration:none;">⭐ Customer Reviews (4.9★)</a>
+          <a href="/testimonials/" style="color:#cbd5e1;text-decoration:none;">⭐ Customer Reviews (4.8★)</a>
           <a href="/gallery/" style="color:#cbd5e1;text-decoration:none;">📸 Project Gallery</a>
           <a href="/blog/" style="color:#cbd5e1;text-decoration:none;">📝 Technical Blog</a>
           <a href="/about/" style="color:#cbd5e1;text-decoration:none;">ℹ️ About HyperTune</a>
@@ -1228,7 +1264,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
               </div>
               <div class="flex items-center gap-1.5">
                 <span class="text-amber-400 font-bold">★</span>
-                <span>4.9 Star Rating (340+ Reviews)</span>
+                <span>4.8 / 5.0 Star Rating</span>
               </div>
             </div>
           </div>

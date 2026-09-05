@@ -138,7 +138,7 @@ export const brandsData: BrandItem[] = [
     name: 'Audi & German VAG Specialist Workshop Islamabad',
     tagline: 'ODIS Factory Diagnostics, S-Tronic / DSG Dual-Clutch Repair, EA888 TFSI Carbon Cleaning & Quattro Servicing',
     logoBadge: 'Audi Master Specialist',
-    heroImage: images.galleryAudiModule,
+    heroImage: images.galleryAudiService,
     overview: 'HyperTune Garage is Islamabad and Rawalpindi’s premier independent specialist for Audi and Volkswagen Group (VAG) vehicles. Equipped with the official Audi ODIS (Offboard Diagnostic Information System), VCDS / VAG-COM interfaces, and VAS specialty toolsets, our certified European technicians deliver comprehensive engineering solutions for Audi A3, A4, A5, A6, A7, A8, Q2, Q3, Q5, Q7, Q8, TT, and RS models. From diagnosing TFSI carbon buildup and solving excessive oil consumption to rebuilding S-Tronic (DQ200, DQ250, DQ381, DQ500, DL501) mechatronic units and servicing Quattro differentials, we provide dealer-grade expertise.',
     modelsCovered: [
       'Audi A3 & S3 (1.4L TFSI, 1.8L TFSI, 2.0L TFSI S-Tronic)',

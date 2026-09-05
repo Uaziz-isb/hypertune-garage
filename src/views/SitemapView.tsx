@@ -52,7 +52,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
     { label: 'Workshop Locations', page: 'locations', path: '/locations/', desc: 'HyperTune Garage - Islamabad Flagship Hub directions, facilities and contacts.', icon: MapPin },
     { label: 'Work Gallery & Restorations', page: 'gallery', path: '/gallery/', desc: 'Before & after high-resolution portfolio of PPF, paint & engine rebuilds.', icon: Sparkles },
     { label: 'Car Care Blog & Guides', page: 'blog', path: '/blog/', desc: 'Technical guides, engine care tips, and maintenance articles by engineers.', icon: BookOpen },
-    { label: 'Customer Reviews & Rating', page: 'testimonials', path: '/testimonials/', desc: 'Genuine 4.9-star Google reviews from verified vehicle owners across Islamabad & Rawalpindi.', icon: ShieldCheck },
+    { label: 'Customer Reviews & Rating', page: 'testimonials', path: '/testimonials/', desc: 'Genuine 4.8-star Google reviews from verified vehicle owners across Islamabad & Rawalpindi.', icon: ShieldCheck },
     { label: 'Frequently Asked Questions', page: 'faq', path: '/faq/', desc: 'Detailed answers on repair warranties, pricing, turnaround, and parts.', icon: FileText },
     { label: 'About HyperTune Garage', page: 'about', path: '/about/', desc: 'Company history, master technician credentials, and workshop specs.', icon: Layers },
     { label: 'Contact Us', page: 'contact', path: '/contact/', desc: 'Direct phone lines, WhatsApp links, email, and location maps.', icon: Phone },

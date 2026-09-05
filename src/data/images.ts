@@ -37,7 +37,7 @@ const galleryPorscheGt3 = '/images/gallery_porsche_gt3_1787240250876.webp';
 const galleryCayenneEngine = '/images/gallery_cayenne_engine_1787240264648.webp';
 const galleryAmgDetailing = '/images/gallery_amg_detailing_1787240277953.webp';
 const galleryLc300Lift = '/images/gallery_lc300_lift_1787965916877.webp';
-const galleryAudiModule = '/images/gallery_audi_module_1787164659237.webp';
+const galleryAudiService = '/images/gallery_audi_service_1788387931168.webp';
 const galleryHybridBench = '/images/gallery_hybrid_bench_1787965901266.webp';
 const galleryBmwBrakes = '/images/gallery_bmw_brakes_1787164674953.webp';
 const galleryFortunerArmor = '/images/gallery_fortuner_armor_1787965879388.webp';
@@ -133,7 +133,7 @@ export const images = {
   galleryCayenneEngine,
   galleryAmgDetailing,
   galleryLc300Lift,
-  galleryAudiModule,
+  galleryAudiService,
   galleryHybridBench,
   galleryBmwBrakes,
   galleryFortunerArmor,

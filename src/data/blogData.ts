@@ -131,7 +131,7 @@ export const blogData: BlogPost[] = [
     },
     publishedDate: 'July 26, 2026',
     readTime: '8 min read',
-    featuredImage: images.galleryAudiModule,
+    featuredImage: images.galleryAudiService,
     tags: ['Audi Repair', 'S-Tronic', 'DSG Transmission', 'Mechatronics', 'Audi A4', 'Audi A6', 'Audi Q5'],
     relatedServices: ['transmission-drivetrain', 'inspection-diagnostics'],
     content: `

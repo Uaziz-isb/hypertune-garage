@@ -287,7 +287,7 @@ export function App() {
     pagePath = '/gallery/';
   } else if (currentPage === 'testimonials') {
     seoTitle = 'Customer Reviews & Google Ratings | HyperTune Garage';
-    seoDesc = 'Read genuine 4.9-star reviews from BMW, Audi, Mercedes, and Toyota owners who trust HyperTune Garage in Islamabad.';
+    seoDesc = 'Read genuine 4.8-star reviews from BMW, Audi, Mercedes, and Toyota owners who trust HyperTune Garage in Islamabad.';
     seoKeywords = 'hypertune garage reviews, best rated car workshop islamabad, customer feedback auto repair';
     pagePath = '/testimonials/';
   } else if (currentPage === 'faq') {
