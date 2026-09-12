@@ -14,7 +14,6 @@ import {
   HelpCircle,
   ArrowRight,
   Sparkles,
-  MapPin,
   Tag,
   Award
 } from 'lucide-react';
@@ -140,7 +139,7 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
       </div>
 
       {/* Hero Header Section */}
-      <section className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <section className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         <div className="lg:col-span-7 space-y-6">
           <div className="inline-flex items-center gap-2 bg-cyan-950/60 border border-cyan-500/30 px-3.5 py-1.5 rounded-full text-cyan-400 font-bold text-xs uppercase tracking-wider">
             <ShieldCheck className="w-4 h-4 text-cyan-400" />
@@ -235,31 +234,22 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
         </div>
 
         {/* Hero Image */}
-        <div className="lg:col-span-5 relative">
-          <div className="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl relative group">
+        <div className="lg:col-span-5 relative self-start lg:sticky lg:top-36">
+          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-cyan-500/30 shadow-2xl shadow-cyan-500/10 group">
             <img
               src={service.image}
               alt={`${service.title} - HyperTune Garage Islamabad & Rawalpindi`}
-              width={600}
-              height={420}
+              width={640}
+              height={430}
               fetchPriority="high"
               decoding="async"
               referrerPolicy="no-referrer"
               onError={(e) => {
                 (e.currentTarget as HTMLImageElement).src = images.islamabadPpfStudio;
               }}
-              className="w-full h-80 sm:h-[420px] object-cover group-hover:scale-105 transition-transform duration-500"
+              className="w-full h-[290px] sm:h-[380px] md:h-[430px] object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
-            <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-slate-950/80 backdrop-blur-md border border-slate-800 text-xs space-y-1">
-              <span className="text-cyan-400 font-extrabold uppercase tracking-wide flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5" />
-                Available at Both Branches
-              </span>
-              <p className="text-slate-300 font-semibold">
-                Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad & Rawalpindi Hub
-              </p>
-            </div>
           </div>
         </div>
       </section>

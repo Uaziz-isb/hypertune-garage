@@ -394,10 +394,6 @@ export const BookingView: React.FC<BookingViewProps> = ({
                 >
                   0333-0177717
                 </a>
-                <span className="text-[11px] text-emerald-400 flex items-center gap-1 font-semibold">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  Workshop Team Active Now
-                </span>
               </div>
             </div>
           </div>
