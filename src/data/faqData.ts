@@ -29,10 +29,10 @@ export const faqData: FAQItem[] = [
     id: 'faq-gen-1',
     category: 'General & Workshop',
     question: 'Where is HyperTune Garage located, and what areas of Islamabad and Rawalpindi do you serve?',
-    answer: 'Our operational Flagship Workshop is located at Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad (near PWD, DHA Phases 1–5, and Bahria Town). We serve clients across all Islamabad sectors (F-6 to F-11, E-11, G-11) and Rawalpindi, offering dedicated customer lounges with live workshop video feeds.',
+    answer: 'Our operational Islamabad Flagship Hub is located at Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad (near PWD, DHA Phases 1–5, and Bahria Town). We serve clients across all Islamabad sectors (F-6 to F-11, E-11, G-11) and Rawalpindi (via our Islamabad Flagship Hub with insured valet pickup), offering dedicated customer lounges with live workshop video feeds.',
     keyHighlights: [
-      'Operational Flagship Studio: Block E Police Foundation, Sector O-9, Islamabad (accessible via Islamabad Expressway)',
-      'Rawalpindi Expansion Hub: Currently in development to further expand our service network across Rawalpindi',
+      'Islamabad Flagship Hub — Open & Operating: Block E Police Foundation, Sector O-9, Islamabad (accessible via Islamabad Expressway)',
+      'Rawalpindi Hub — Coming Soon: Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup',
       'Operating Hours: Saturday – Thursday: 10:00 AM – 10:00 PM | Friday: CLOSED (Weekly Maintenance)',
     ],
     details: [
@@ -150,13 +150,13 @@ export const faqData: FAQItem[] = [
     keyHighlights: [
       'Pressurized Dust-Free Rebuild Lab: Clean-air filtration prevents airborne sand and grit from contaminating bearing journals',
       '100% Genuine OEM Internals: Brand-new factory pistons, rings, rod bearings, main bearings, timing chain kit, and gaskets',
-      '12-Month / 20,000 km Warranty: Written warranty coverage with included 1,000 km break-in service and compression verification',
+      '12-Month / 15,000 km Warranty: Written warranty coverage with included 1,000 km break-in service and compression verification',
     ],
     details: [
       'Cylinder heads undergo pressure crack testing, multi-angle valve seat cutting, and precision deck resurfacing.',
       'All fasteners are torqued with calibrated digital angle wrenches in accordance with factory torque-to-yield sequences.',
     ],
-    comprehensiveOverview: 'Engine rebuilding in Pakistan often fails prematurely due to dirty street workshop assembly where airborne road dust contaminates fresh bearing shells. At HyperTune Garage, all engine overhauls are conducted inside a climate-controlled, pressurized rebuild lab. Every engine block and cylinder head undergoes ultrasonic hot-tank cleaning before precision micrometer measurement down to 0.001mm. We install only authentic OEM internal components and follow factory torque-angle bolt tightening sequences. Every rebuild includes specialized high-zinc break-in oil, a complimentary 1,000 km inspection, and our 12-Month / 20,000 km mechanical warranty.',
+    comprehensiveOverview: 'Engine rebuilding in Pakistan often fails prematurely due to dirty street workshop assembly where airborne road dust contaminates fresh bearing shells. At HyperTune Garage, all engine overhauls are conducted inside a climate-controlled, pressurized rebuild lab. Every engine block and cylinder head undergoes ultrasonic hot-tank cleaning before precision micrometer measurement down to 0.001mm. We install only authentic OEM internal components and follow factory torque-angle bolt tightening sequences. Every rebuild includes specialized high-zinc break-in oil, a complimentary 1,000 km inspection, and our 12-Month / 15,000 km mechanical warranty.',
     relatedService: { title: 'Engine Services & Overhaul', href: '/services/engine-services/' },
     tags: ['engine rebuild', 'overhaul', 'clean room', 'compression test', 'warranty'],
   },
@@ -297,8 +297,8 @@ export const faqData: FAQItem[] = [
   {
     id: 'faq-prc-1',
     category: 'Pricing & Booking',
-    question: 'What is included in a 120-Point Pre-Purchase Vehicle Inspection (PPI) before buying a used car in Pakistan?',
-    answer: 'Our 120-point Pre-Purchase Inspection includes a full computerized ECU scan for cleared fault codes, paint depth meter readings across all panels to detect hidden accidental filler and resprays, undercarriage structural chassis inspection, engine compression check, road test, and a comprehensive digital report sent to your WhatsApp.',
+    question: 'What is included in a 200-Point Pre-Purchase Vehicle Inspection (PPI) before buying a used car in Pakistan?',
+    answer: 'Our 200-point Pre-Purchase Inspection includes a full computerized ECU scan for cleared fault codes, paint depth meter readings across all panels to detect hidden accidental filler and resprays, undercarriage structural chassis inspection, engine compression check, road test, and a comprehensive digital report sent to your WhatsApp.',
     keyHighlights: [
       'Paint Depth Gauge Measurement: Digital ultrasonic micron readings revealing hidden accidental body filler and non-factory resprays',
       'ECU Odometer & Freeze-Frame Audit: Detecting reversed odometers and historic shadow fault codes in transmission and engine modules',
@@ -308,7 +308,7 @@ export const faqData: FAQItem[] = [
       'Our inspection takes 60–90 minutes and gives prospective car buyers complete peace of mind before transferring payment.',
       'We inspect Japanese auction sheet verification and local CKD vehicle maintenance history.',
     ],
-    comprehensiveOverview: 'Purchasing a used car in Pakistan carries substantial risk of altered odometers, concealed structural accident damage, and failing hybrid batteries. HyperTune Garage provides an independent 120-Point Pre-Purchase Inspection (PPI) that removes the guesswork. Our master technicians use digital paint depth gauges to verify factory clear coat thickness on every panel, connect manufacturer scanners to uncover cleared error codes and genuine mileage stamps, inspect the chassis for alignment pulls, and compression-test the cylinders. You receive a detailed digital health certificate highlighting immediate and upcoming repair costs.',
+    comprehensiveOverview: 'Purchasing a used car in Pakistan carries substantial risk of altered odometers, concealed structural accident damage, and failing hybrid batteries. HyperTune Garage provides an independent 200-Point Pre-Purchase Inspection (PPI) that removes the guesswork. Our master technicians use digital paint depth gauges to verify factory clear coat thickness on every panel, connect manufacturer scanners to uncover cleared error codes and genuine mileage stamps, inspect the chassis for alignment pulls, and compression-test the cylinders. You receive a detailed digital health certificate highlighting immediate and upcoming repair costs.',
     relatedService: { title: 'Inspection & Diagnostics', href: '/services/inspection-diagnostics/' },
     tags: ['pre-purchase inspection', 'ppi', 'used car', 'paint depth', 'odometer check'],
   },

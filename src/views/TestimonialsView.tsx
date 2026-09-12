@@ -100,7 +100,7 @@ export const TestimonialsView: React.FC<TestimonialsViewProps> = ({ onNavigate, 
               </div>
               <h4 className="font-bold text-white text-sm">12-Month Repair Warranty</h4>
               <p className="text-slate-400 text-xs leading-relaxed">
-                All major engine overhauls, mechatronics rebuilds, and electrical repairs come backed with our 12-month / 20,000 km warranty.
+                All major engine overhauls, mechatronics rebuilds, and electrical repairs come backed with our 12-month / 15,000 km warranty.
               </p>
             </div>
           </div>

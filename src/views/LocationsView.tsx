@@ -171,7 +171,7 @@ export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate }) => {
                     }}
                     className="flex-1 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-xs flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 cursor-pointer"
                   >
-                    <span>Rawalpindi Branch (Coming Soon)</span>
+                    <span>Rawalpindi Hub (Coming Soon)</span>
                     <ArrowRight className="w-4 h-4" />
                   </a>
 
@@ -253,9 +253,9 @@ export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate }) => {
             <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800/80">
               <div className="flex items-center justify-between mb-2">
                 <h3 className="text-sm font-bold text-white">Rawalpindi Cantt, Saddar & Chaklala</h3>
-                <span className="text-[10px] bg-amber-950 text-amber-300 px-2 py-0.5 rounded border border-amber-800/50 font-bold">Expansion Hub</span>
+                <span className="text-[10px] bg-amber-950 text-amber-300 px-2 py-0.5 rounded border border-amber-800/50 font-bold">Coming Soon</span>
               </div>
-              <p className="text-xs text-slate-400 mb-3">Expansion hub under development. Doorstep valet collection active for Rawalpindi residents.</p>
+              <p className="text-xs text-slate-400 mb-3">Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.</p>
               <div className="text-[11px] text-cyan-300 font-medium">Areas: Saddar, Mall Road, Chaklala 3, Westridge</div>
             </div>
           </div>

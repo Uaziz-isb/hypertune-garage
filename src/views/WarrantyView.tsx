@@ -90,7 +90,7 @@ export const WarrantyView: React.FC<WarrantyViewProps> = ({ onNavigate, onOpenBo
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-2xl bg-cyan-950/30 border border-cyan-500/20 text-xs">
           <div>
             <span className="text-white font-bold block">Warranty Document Reference: HPG-WRN-2025</span>
-            <span className="text-slate-400">Valid across Islamabad G-8 Hub & Rawalpindi / I-9 Industrial Branch</span>
+            <span className="text-slate-400">Valid at HyperTune Garage Islamabad Flagship Hub (serving Islamabad & Rawalpindi)</span>
           </div>
           <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-extrabold text-[11px]">
             ● Verified Workshop Protection
@@ -190,7 +190,7 @@ export const WarrantyView: React.FC<WarrantyViewProps> = ({ onNavigate, onOpenBo
             <div className="p-4 rounded-2xl bg-[#09111e] border border-slate-800 space-y-2">
               <span className="text-cyan-400 font-black text-lg block">Step 2</span>
               <span className="font-bold text-white block">Workshop Inspection</span>
-              <p className="text-slate-400">Bring the vehicle to any HyperTune location in Islamabad or Rawalpindi for quick computer diagnostic verification.</p>
+              <p className="text-slate-400">Bring the vehicle to our HyperTune Garage Islamabad Flagship Hub (with insured valet pickup available for Rawalpindi clients) for quick computer diagnostic verification.</p>
             </div>
             <div className="p-4 rounded-2xl bg-[#09111e] border border-slate-800 space-y-2">
               <span className="text-cyan-400 font-black text-lg block">Step 3</span>

@@ -128,7 +128,7 @@ export const sectorsData: SectorItem[] = [
     landmarks: ['Rawalpindi Saddar', 'Cantt Mall Road', 'Chaklala Scheme 3', 'Westridge Cantt'],
     seo: {
       title: 'Rawalpindi Hub & Valet Service (Cantt, Saddar, Chaklala) | HyperTune Garage',
-      description: 'HyperTune Garage Rawalpindi Hub expansion under development. Enjoy doorstep valet vehicle collection & delivery across Rawalpindi Cantt, Saddar & Chaklala.',
+      description: 'HyperTune Garage Rawalpindi Hub under development. Enjoy doorstep valet vehicle collection & delivery across Rawalpindi Cantt, Saddar & Chaklala.',
       keywords: [
         'car workshop rawalpindi',
         'auto repair rawalpindi saddar',

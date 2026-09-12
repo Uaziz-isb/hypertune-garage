@@ -213,7 +213,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
             name: 'HyperTune Garage - Rawalpindi Hub (Coming Soon)',
             image: ogImage,
             url: canonicalUrl,
-            description: 'Upcoming state-of-the-art precision automotive facility in Rawalpindi. Currently under development and served by our Islamabad Flagship Hub.',
+            description: 'Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.',
             isPartOf: {
               '@type': 'AutoRepair',
               '@id': 'https://hypertunegarage.pk/#business',
@@ -429,7 +429,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
     });
   } else if (root === 'warranty-specs' || root === 'warranty') {
     title = '12-Month Repair Warranty Specs | HyperTune Garage';
-    description = 'Comprehensive details on HyperTune Garage 12-month / 20,000 km bumper-to-bumper automotive repair warranty.';
+    description = 'Comprehensive details on HyperTune Garage 12-month / 15,000 km automotive repair warranty.';
     breadcrumbItems.push({
       '@type': 'ListItem',
       position: 2,
@@ -885,7 +885,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         HyperTune Garage Workshop Locations
       </h1>
       <p style="font-size:16px;color:#94a3b8;text-align:center;max-width:800px;margin:0 auto 40px;line-height:1.6;">
-        Visit our state-of-the-art HyperTune Garage - Islamabad Flagship Hub or learn about our upcoming Rawalpindi expansion.
+        Visit our state-of-the-art HyperTune Garage - Islamabad Flagship Hub or learn about our upcoming Rawalpindi Hub.
       </p>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
@@ -1154,7 +1154,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
       <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;margin-bottom:24px;">
         <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:12px;">Warranty Coverage Highlights</h2>
         <ul style="color:#cbd5e1;font-size:14px;line-height:2;padding-left:20px;">
-          <li>Engine Rebuilds: 12-Month / 20,000 km warranty on internal mechanical components.</li>
+          <li>Engine Rebuilds: 12-Month / 15,000 km warranty on internal mechanical components.</li>
           <li>Automatic &amp; CVT Transmissions: 6-Month warranty on rebuilt valve bodies and clutches.</li>
           <li>Hybrid Battery Packs: Up to 12-Month warranty on reconditioned cell modules.</li>
           <li>TPU Paint Protection Film: 5 to 10-Year manufacturer warranty against yellowing and bubbling.</li>

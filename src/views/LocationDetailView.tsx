@@ -81,10 +81,10 @@ export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavi
                 Upcoming Facility Announcement
               </p>
               <p>
-                {loc.statusNotice || 'Opening soon — our new Rawalpindi branch is currently under development. Stay tuned for the official opening announcement.'}
+                {loc.statusNotice || 'Opening soon — our new Rawalpindi Hub is currently under development. Stay tuned for the official opening announcement.'}
               </p>
               <p className="text-xs text-slate-300">
-                All Rawalpindi clients are currently served by our active Islamabad Flagship Hub. We provide insured valet vehicle pick-up & drop-off across all sectors of Rawalpindi (Saddar, Cantt, Bahria Town, DHA, Chaklala, Westridge).
+                Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup across all sectors of Rawalpindi (Saddar, Cantt, Bahria Town, DHA, Chaklala, Westridge).
               </p>
             </div>
           )}
@@ -131,7 +131,7 @@ export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavi
                 onClick={onOpenBooking}
                 className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-sm flex items-center gap-2 shadow-lg shadow-cyan-500/30"
               >
-                <span>Book Service at Islamabad Hub</span>
+                <span>Book Service at Islamabad Flagship Hub</span>
               </button>
             )}
 

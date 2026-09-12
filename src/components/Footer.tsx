@@ -192,10 +192,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
           </a>
           <ul className="space-y-2 text-xs">
             {[
-              { label: 'Home Page', page: 'home' as PageId, path: '/' },
-              { label: 'Brand Specialists Directory', page: 'brands' as PageId, path: '/brands/' },
-              { label: 'Book Service Appointment', page: 'booking' as PageId, path: '/book-appointment/' },
               { label: 'Services Catalogue', page: 'services' as PageId, path: '/services/' },
+              { label: 'Brand Specialists Directory', page: 'brands' as PageId, path: '/brands/' },
               { label: 'Workshop Locations', page: 'locations' as PageId, path: '/locations/' },
               { label: 'Work Gallery & Restorations', page: 'gallery' as PageId, path: '/gallery/' },
               { label: 'Customer Reviews & Ratings', page: 'testimonials' as PageId, path: '/testimonials/' },
@@ -203,6 +201,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               { label: 'Frequently Asked Questions (FAQ)', page: 'faq' as PageId, path: '/faq/' },
               { label: 'About HyperTune Garage', page: 'about' as PageId, path: '/about/' },
               { label: 'Contact Us', page: 'contact' as PageId, path: '/contact/' },
+              { label: 'Book Service Appointment', page: 'booking' as PageId, path: '/book-appointment/' },
             ].map((link) => (
               <li key={link.page}>
                 <a
@@ -277,11 +276,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
                 <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                 <span>Rawalpindi Hub</span>
                 <span className="text-[10px] bg-amber-500/20 text-amber-300 px-1.5 py-0.2 rounded font-semibold ml-1">
-                  Opening Soon
+                  Coming Soon
                 </span>
               </a>
-              <p className="text-amber-200/80 italic leading-relaxed text-[11px]">
-                Opening soon — our new facility is currently under development. Stay tuned for the official announcement.
+              <p className="text-amber-200/80 leading-relaxed text-[11px]">
+                Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.
               </p>
             </div>
           </div>

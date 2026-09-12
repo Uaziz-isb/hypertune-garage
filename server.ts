@@ -205,8 +205,8 @@ app.get(["/llms.txt", "/.well-known/llms.txt"], (req, res) => {
 
 ## Workshop Branches & Contact Info
 
-- [Islamabad Flagship Hub](${baseUrl}/locations/islamabad-workshop/): Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan. Phone: +92 333 0177717 (Fully Operational).
-- [Rawalpindi Branch (Coming Soon)](${baseUrl}/locations/rawalpindi-workshop/): Expansion facility currently under development. All current inquiries and appointments are serviced at Islamabad Flagship Hub.
+- [Islamabad Flagship Hub](${baseUrl}/locations/islamabad-workshop/): Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan. Phone: +92 333 0177717 (Open & Operating).
+- [Rawalpindi Hub (Coming Soon)](${baseUrl}/locations/rawalpindi-workshop/): Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.
 `;
 
   res.setHeader("Content-Type", "text/markdown; charset=utf-8");
@@ -231,8 +231,8 @@ app.get(["/llms-full.txt", "/.well-known/llms-full.txt"], (req, res) => {
 - **Email:** info@hypertunegarage.pk
 - **Operating Hours:** Saturday - Thursday: 10:00 AM - 10:00 PM (Friday Closed - applies to Islamabad Flagship Hub)
 - **Locations:**
-  - **Islamabad Flagship Hub (Fully Operational):** Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
-  - **Rawalpindi Branch (Coming Soon):** Expansion facility currently under development. All current appointments are handled at Islamabad Flagship Hub.
+  - **Islamabad Flagship Hub (Open & Operating):** Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
+  - **Rawalpindi Hub (Coming Soon):** Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.
 - **Primary Website:** ${baseUrl}/
 - **Google Rating:** 4.8 / 5.0 Stars
 `;

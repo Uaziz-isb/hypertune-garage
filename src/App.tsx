@@ -312,7 +312,7 @@ export function App() {
     pagePath = '/terms-conditions/';
   } else if (currentPage === 'warranty') {
     seoTitle = '12-Month Warranty Specs & Policy | HyperTune Garage';
-    seoDesc = 'Details on HyperTune Garage 12-month / 20,000 km bumper-to-bumper repair warranty covering parts and labor across Islamabad.';
+    seoDesc = 'Details on HyperTune Garage 12-month / 15,000 km automotive repair warranty covering parts and labor across Islamabad.';
     seoKeywords = 'car repair warranty islamabad, 12 month auto warranty pakistan, hypertune warranty specs';
     pagePath = '/warranty-specs/';
   } else if (currentPage === 'sitemap') {

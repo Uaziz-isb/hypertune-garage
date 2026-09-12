@@ -241,7 +241,7 @@ const baseBlogData: BlogPost[] = [
         <li><strong>100% Brand New Internal Components:</strong> New OEM pistons, rings, crankshaft bearings, valve guides, timing chain kits, and multi-layer steel (MLS) head gaskets.</li>
         <li><strong>Precision Micrometer Machining:</strong> Cylinder blocks are precision-honed to 0.001mm tolerances, ensuring factory cylinder compression and zero oil consumption.</li>
         <li><strong>Legal Engine Number Matching:</strong> No legal paperwork or excise vehicle registration hassle since your original engine block and serial number remain unchanged.</li>
-        <li><strong>12-Month / 20,000 KM Written Warranty:</strong> We provide a comprehensive written warranty on every master engine rebuild completed in our dust-free mechanical bay.</li>
+        <li><strong>12-Month / 15,000 KM Written Warranty:</strong> We provide a comprehensive written warranty on every master engine rebuild completed in our dust-free mechanical bay.</li>
       </ul>
     `,
   },

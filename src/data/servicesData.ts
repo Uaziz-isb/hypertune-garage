@@ -209,7 +209,7 @@ const baseServicesData: ServiceItem[] = [
       '0.001mm micrometer precision block honing & deck resurfacing',
       '100% genuine OEM pistons, rings, valves, timing chain kits, and head gaskets',
       'Computerized sensor calibration & fuel injector balance for Pakistani conditions',
-      '12-Month / 20,000 km Written Warranty on complete engine rebuilds',
+      '12-Month / 15,000 km Written Warranty on complete engine rebuilds',
       'Complimentary break-in inspection & 1,000 km oil service check',
     ],
     whyChooseUs: [
@@ -248,7 +248,7 @@ const baseServicesData: ServiceItem[] = [
       },
       {
         question: 'What warranty do you offer on master engine overhauls?',
-        answer: 'All master engine overhauls and internal mechanical rebuilds performed at HyperTune Garage are backed by a comprehensive 12-month or 20,000 km written warranty covering workmanship and installed internal components.',
+        answer: 'All master engine overhauls and internal mechanical rebuilds performed at HyperTune Garage are backed by a comprehensive 12-month or 15,000 km written warranty covering workmanship and installed internal components.',
       },
     ],
     seo: {
@@ -271,8 +271,8 @@ const baseServicesData: ServiceItem[] = [
     id: 'inspection-diagnostics',
     slug: 'inspection-diagnostics',
     title: 'Inspection & Diagnostics',
-    shortDesc: 'Computerized dealer-level OBD2 diagnostic scanning and detailed 150+ point pre-purchase car inspection in Islamabad & Rawalpindi. Get an honest digital health report covering engine compression, transmission codes, accident body damage, paint thickness microns, and electrical diagnostics before buying any car.',
-    fullDesc: 'Buying a used car in Pakistan without a thorough professional inspection can lead to hidden financial nightmares—such as flood damage, rolled-back odometers, concealed accident body repairs, or failing hybrid batteries. HyperTune Garage offers dealer-grade 150+ Point Pre-Purchase Car Inspections and Computerized Diagnostic Scanning across Islamabad and Rawalpindi. We provide an un-biased, comprehensive digital report complete with paint meter micron readings, camera scope cylinder checks, and ECU diagnostic logs.',
+    shortDesc: 'Computerized dealer-level OBD2 diagnostic scanning and detailed 200-point pre-purchase car inspection in Islamabad & Rawalpindi. Get an honest digital health report covering engine compression, transmission codes, accident body damage, paint thickness microns, and electrical diagnostics before buying any car.',
+    fullDesc: 'Buying a used car in Pakistan without a thorough professional inspection can lead to hidden financial nightmares—such as flood damage, rolled-back odometers, concealed accident body repairs, or failing hybrid batteries. HyperTune Garage offers dealer-grade 200-Point Pre-Purchase Car Inspections and Computerized Diagnostic Scanning across Islamabad and Rawalpindi. We provide an un-biased, comprehensive digital report complete with paint meter micron readings, camera scope cylinder checks, and ECU diagnostic logs.',
     subServices: ['Car Diagnostics', 'Pre-Purchase Car Inspection'],
     subServicePrices: [
       { name: 'Car Diagnostics', price: 'PKR 1,500 to 2,500 per Diagnostics' },
@@ -292,7 +292,7 @@ const baseServicesData: ServiceItem[] = [
       'Verifying mileage integrity & historic ECU fault code records',
     ],
     keyBenefits: [
-      '150+ Point Comprehensive Inspection Report sent directly to your phone',
+      '200-Point Comprehensive Inspection Report sent directly to your phone',
       'Dealer-level diagnostic scanners (BMW ISTA+, Mercedes Xentry, Audi ODIS, Toyota Techstream)',
       'Digital magnetic paint thickness meter audit (detects body filler & repainted panels)',
       'Engine cylinder scope camera inspection & compression test option',
@@ -314,7 +314,7 @@ const baseServicesData: ServiceItem[] = [
     faqs: [
       {
         question: 'Can your pre-purchase inspection detect if a car has been in a major accident?',
-        answer: 'Yes. Our 150-point pre-purchase inspection utilizes digital paint depth gauges to measure clear coat microns on every metal and plastic panel, detecting hidden body filler (poti) and repainted sections. We also inspect chassis frame rail straightness on our hydraulic lifts, factory spot welds, radiator support pillars, and airbag deployment history.',
+        answer: 'Yes. Our 200-point pre-purchase inspection utilizes digital paint depth gauges to measure clear coat microns on every metal and plastic panel, detecting hidden body filler (poti) and repainted sections. We also inspect chassis frame rail straightness on our hydraulic lifts, factory spot welds, radiator support pillars, and airbag deployment history.',
       },
       {
         question: 'Do you offer mobile on-site pre-purchase car inspections in Islamabad/Rawalpindi?',
@@ -339,7 +339,7 @@ const baseServicesData: ServiceItem[] = [
     ],
     seo: {
       seoTitle: 'Car Diagnostics & Pre-Purchase Inspection | HyperTune',
-      metaDescription: 'Dealer-level computer diagnostics & 150+ point pre-purchase car inspection in Islamabad & Rawalpindi. Digital health report & paint thickness audit.',
+      metaDescription: 'Dealer-level computer diagnostics & 200-point pre-purchase car inspection in Islamabad & Rawalpindi. Digital health report & paint thickness audit.',
       h1Heading: 'Computerized Car Diagnostics & Pre-Purchase Inspection in Islamabad & Rawalpindi',
       targetKeywords: [
         'Car Diagnostics Islamabad',
@@ -351,7 +351,7 @@ const baseServicesData: ServiceItem[] = [
         'Car Health Report Islamabad',
         'Used Car Verification Pakistan'
       ],
-      keywordParagraph: 'Make informed automotive decisions with dealer-level Car Diagnostics in Islamabad and comprehensive Pre Purchase Car Inspection in Rawalpindi. HyperTune Garage utilizes advanced OBD2 Diagnostic Scan and computerized car scan rigs to audit all control modules for engine fault codes, transmission issues, and electrical warnings. Before buying a used car in Pakistan, rely on our detailed used car inspection report—including paint meter car inspection micron readings and cylinder scope checks—for a complete car health report in G-8 Islamabad.',
+      keywordParagraph: 'Make informed automotive decisions with dealer-level Car Diagnostics in Islamabad and comprehensive Pre Purchase Car Inspection in Rawalpindi. HyperTune Garage utilizes advanced OBD2 Diagnostic Scan and computerized car scan rigs to audit all control modules for engine fault codes, transmission issues, and electrical warnings. Before buying a used car in Pakistan, rely on our detailed used car inspection report—including paint meter car inspection micron readings and cylinder scope checks—for a complete car health report in Islamabad.',
     },
   },
 
@@ -439,7 +439,7 @@ const baseServicesData: ServiceItem[] = [
         'Car Inspection Islamabad',
         'Periodic Maintenance Service'
       ],
-      keywordParagraph: 'Ensure your vehicle stays in peak condition with our top-rated Oil Change in Islamabad and complete Periodic Maintenance in Rawalpindi. At HyperTune Garage, we deliver premium Car Maintenance in Pakistan using 100% authentic imported lubricants for every Synthetic Oil Change in Islamabad. Our comprehensive periodic service includes genuine oil filter installation, Spark Plug Replacement, air/cabin filter renewal, Liqui Moly oil changes, and a thorough 50 Point Car Inspection. Visit our modern facility for Car Servicing in G-8 Islamabad to enjoy long-term reliability and complete Preventive Car Care for all Asian, Japanese, and European car models.',
+      keywordParagraph: 'Ensure your vehicle stays in peak condition with our top-rated Oil Change in Islamabad and complete Periodic Maintenance in Rawalpindi. At HyperTune Garage, we deliver premium Car Maintenance in Pakistan using 100% authentic imported lubricants for every Synthetic Oil Change in Islamabad. Our comprehensive periodic service includes genuine oil filter installation, Spark Plug Replacement, air/cabin filter renewal, Liqui Moly oil changes, and a thorough 50 Point Car Inspection. Visit our modern facility for Car Servicing in Islamabad to enjoy long-term reliability and complete Preventive Car Care for all Asian, Japanese, and European car models.',
     },
   },
 
@@ -511,7 +511,7 @@ const baseServicesData: ServiceItem[] = [
       },
       {
         question: 'What warranty is provided on suspension bushings, control arms, and shock absorbers?',
-        answer: 'All genuine OEM and premium aftermarket suspension components installed by HyperTune Garage (such as Lemförder, 555, Kayaba, Bilstein, and TRW) come backed by our 12-month or 20,000 km warranty against premature wear or knocking.',
+        answer: 'All genuine OEM and premium aftermarket suspension components installed by HyperTune Garage (such as Lemförder, 555, Kayaba, Bilstein, and TRW) come backed by our 12-month or 15,000 km warranty against premature wear or knocking.',
       },
     ],
     seo: {

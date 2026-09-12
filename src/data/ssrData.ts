@@ -784,9 +784,9 @@ export const locationsDataSSR: LocationItemSSR[] = [
   },
   {
     slug: 'rawalpindi-workshop',
-    branchName: 'HyperTune Garage - Rawalpindi Express Hub (Expansion)',
+    branchName: 'HyperTune Garage - Rawalpindi Hub',
     city: 'Rawalpindi',
-    address: 'Serving Rawalpindi clients via Islamabad Flagship Hub with Insured Valet Pickup',
+    address: 'Rawalpindi Hub — Coming Soon (Serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup)',
     phone: '+92 333 0177717',
     whatsapp: '923330177717',
     isOperational: false,
