@@ -2,6 +2,7 @@ import React from 'react';
 import { PageId } from '../types';
 import { brandsData } from '../data/brandsData';
 import { SEOHead } from '../components/SEOHead';
+import { FAQSection } from '../components/FAQSection';
 import {
   Wrench,
   ShieldCheck,
@@ -218,19 +219,17 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
             </div>
 
             {/* Frequently Asked Questions */}
-            <div className="bg-slate-900/50 rounded-2xl p-6 sm:p-8 border border-slate-800">
-              <h2 className="text-2xl font-bold text-white flex items-center gap-3 mb-6">
-                <HelpCircle className="w-6 h-6 text-cyan-400" />
-                Frequently Asked Questions ({brand.name.split(' ')[0]})
-              </h2>
-              <div className="space-y-4">
-                {brand.faqs.map((faq, idx) => (
-                  <div key={idx} className="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
-                    <h3 className="text-base font-bold text-cyan-300 mb-2">{faq.question}</h3>
-                    <p className="text-sm text-slate-300 leading-relaxed">{faq.answer}</p>
-                  </div>
-                ))}
-              </div>
+            <div className="bg-slate-900/50 rounded-2xl p-4 sm:p-6 border border-slate-800">
+              <FAQSection
+                title={`Frequently Asked Questions (${brand.name.split(' ')[0]})`}
+                subtitle="Brand Specialist Procedures"
+                contextName={brand.name}
+                faqs={brand.faqs}
+                pageType="brand"
+                onNavigate={onNavigate}
+                onOpenBooking={() => onNavigate('booking')}
+                centralFaqAnchorText="Browse all HyperTune Garage FAQs"
+              />
             </div>
           </div>
 

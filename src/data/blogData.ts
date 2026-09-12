@@ -1,7 +1,8 @@
 import { BlogPost } from '../types';
 import { images } from './images';
+import { getRouteMetadata } from './metadataRegistry';
 
-export const blogData: BlogPost[] = [
+const baseBlogData: BlogPost[] = [
   {
     id: 'p0a80-hybrid-battery-repair-guide-pakistan',
     slug: 'p0a80-hybrid-battery-repair-guide-pakistan',
@@ -427,3 +428,14 @@ export const blogData: BlogPost[] = [
     `,
   },
 ];
+
+export const blogData: BlogPost[] = baseBlogData.map((p) => {
+  const meta = getRouteMetadata(`/blog/${p.slug}/`);
+  return {
+    ...p,
+    seo: {
+      title: meta ? meta.title : `${p.title} | HyperTune Garage`,
+      description: meta ? meta.description : p.excerpt,
+    },
+  };
+});

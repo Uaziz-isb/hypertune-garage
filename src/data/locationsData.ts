@@ -1,7 +1,8 @@
 import { LocationItem } from '../types';
 import { images } from './images';
+import { getRouteMetadata } from './metadataRegistry';
 
-export const locationsData: LocationItem[] = [
+const baseLocationsData: LocationItem[] = [
   {
     id: 'islamabad-hub',
     slug: 'islamabad-workshop',
@@ -55,3 +56,14 @@ export const locationsData: LocationItem[] = [
     imageSmall: images.workshopRawalpindi500w,
   },
 ];
+
+export const locationsData: LocationItem[] = baseLocationsData.map((l) => {
+  const meta = getRouteMetadata(`/locations/${l.slug}/`);
+  return {
+    ...l,
+    seo: {
+      title: meta ? meta.title : `${l.branchName} | HyperTune Garage`,
+      description: meta ? meta.description : `${l.branchName} - ${l.address || 'Islamabad & Rawalpindi'}`,
+    },
+  };
+});

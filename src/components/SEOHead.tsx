@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { trackPageView, initGA } from '../utils/analytics';
 import { normalizeCanonicalUrl } from '../utils/ssrRenderer';
-import { staticCustomerReviews } from '../data/reviewsData';
+import { staticCustomerReviews, googleBusinessData } from '../data/reviewsData';
 
 declare global {
   interface Window {
@@ -14,7 +14,7 @@ declare global {
 interface SEOProps {
   title?: string;
   description?: string;
-  keywords?: string;
+  keywords?: string; // Maintained for backwards compatibility but not rendered to DOM
   canonicalUrl?: string;
   path?: string;
   ogImage?: string;
@@ -22,9 +22,9 @@ interface SEOProps {
 }
 
 export const SEOHead: React.FC<SEOProps> = ({
-  title = 'HyperTune Garage - Premium Automotive Workshop in Islamabad & Rawalpindi',
-  description = 'Pakistan’s top automotive workshop specializing in Toyota, Honda, Suzuki, BMW, Mercedes, Audi, engine overhauls, car AC & electrical repair at HyperTune Garage - Islamabad Flagship Hub and Rawalpindi.',
-  keywords = 'car workshop islamabad, auto repair rawalpindi, car detailing islamabad, paint protection film ppf islamabad, ceramic coating rawalpindi, bmw repair islamabad, mercedes garage rawalpindi, audi service center, engine overhaul islamabad, car ac repair islamabad, auto electrical specialist, 3d laser wheel alignment, car mechanic near me, hypertune garage',
+  title = 'PPF & Auto Workshop Islamabad | HyperTune Garage',
+  description = 'HyperTune Garage is an automotive workshop in Islamabad for PPF, detailing, diagnostics, repairs, servicing and vehicle care. Serving Islamabad & Rawalpindi.',
+  keywords,
   canonicalUrl,
   path = '/',
   ogImage = '/images/hypertune_hero_banner_1787965822146.webp',
@@ -47,14 +47,11 @@ export const SEOHead: React.FC<SEOProps> = ({
     }
     metaDesc.setAttribute('content', description);
 
-    // Update Meta Keywords
-    let metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (!metaKeywords) {
-      metaKeywords = document.createElement('meta');
-      metaKeywords.setAttribute('name', 'keywords');
-      document.head.appendChild(metaKeywords);
+    // Modern SEO Standards: Remove any obsolete meta keywords tags
+    const existingKeywords = document.querySelector('meta[name="keywords"]');
+    if (existingKeywords) {
+      existingKeywords.remove();
     }
-    metaKeywords.setAttribute('content', keywords);
 
     const targetCanonicalUrl = normalizeCanonicalUrl(canonicalUrl || path, 'https://hypertunegarage.pk');
 
@@ -108,7 +105,7 @@ export const SEOHead: React.FC<SEOProps> = ({
       aggregateRating: {
         '@type': 'AggregateRating',
         ratingValue: '4.8',
-        reviewCount: '27',
+        reviewCount: String(googleBusinessData.totalReviews),
         bestRating: '5',
         worstRating: '1',
       },

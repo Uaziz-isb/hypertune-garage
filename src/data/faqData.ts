@@ -1,168 +1,333 @@
 export interface FAQItem {
   id: string;
-  category: 'PPF & Paint Protection' | 'Popular Car Brands' | 'Engine & Overhaul' | 'Hybrid & EV' | 'General & Booking';
+  category:
+    | 'General & Workshop'
+    | 'PPF & Detailing'
+    | 'Engine & Diagnostics'
+    | 'Transmission & Drivetrain'
+    | 'Hybrid & EV Care'
+    | 'Brakes & Suspension'
+    | 'AC & Electrical'
+    | 'Brand Specialists & Parts'
+    | 'Pricing & Booking';
   question: string;
   answer: string;
   keyHighlights?: string[];
   details?: string[];
   comprehensiveOverview?: string;
+  relatedService?: { title: string; href: string };
+  relatedBrand?: { name: string; href: string };
+  relatedLocation?: { name: string; href: string };
+  tags?: string[];
 }
 
 export const faqData: FAQItem[] = [
+  // -------------------------------------------------------------
+  // 1. GENERAL & WORKSHOP OPERATIONS
+  // -------------------------------------------------------------
   {
-    id: 'faq-1',
-    category: 'PPF & Paint Protection',
-    question: 'What is Paint Protection Film (PPF) and how does it protect my car in Pakistan?',
-    answer: 'Paint Protection Film (PPF) is an advanced self-healing optical barrier engineered to preserve your vehicle aesthetic and resale value against Pakistan harsh environmental conditions:',
+    id: 'faq-gen-1',
+    category: 'General & Workshop',
+    question: 'Where is HyperTune Garage located, and what areas of Islamabad and Rawalpindi do you serve?',
+    answer: 'Our operational Flagship Workshop is located at Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad (near PWD, DHA Phases 1–5, and Bahria Town). We serve clients across all Islamabad sectors (F-6 to F-11, E-11, G-11) and Rawalpindi, offering dedicated customer lounges with live workshop video feeds.',
     keyHighlights: [
-      'PPF: 8.5 mil Ultra-Clear Thermoplastic Polyurethane (TPU) physical armor against stone chips & deep scratches',
-      'Ceramic Topcoat: 9H Hardness Hydrophobic Nano-Ceramic Sealant that protects microscopic paint pores against acid rain, tree sap, and UV rays',
-      'Complete Protection: We recommend full front-end PPF combined with Ceramic Coating across the vehicle for total peace of mind',
+      'Operational Flagship Studio: Block E Police Foundation, Sector O-9, Islamabad (accessible via Islamabad Expressway)',
+      'Rawalpindi Expansion Hub: Currently in development to further expand our service network across Rawalpindi',
+      'Operating Hours: Saturday – Thursday: 10:00 AM – 10:00 PM | Friday: CLOSED (Weekly Maintenance)',
     ],
     details: [
-      'PPF (Paint Protection Film): An 8.5 mil optical-grade TPU film engineered with an elastomeric self-healing topcoat. It acts as an impact-absorbing shield against highway gravel, road salt, key marks, and flying debris on Islamabad Highway and Motorway (M2).',
-      'Ceramic Shielding: A 9H liquid glass ceramic matrix that permanently bonds to your clear coat. It creates an extreme hydrophobic surface (110° water contact angle) that prevents water spots, industrial fallout, bird droppings, and UV-induced oxidation in 45°C summer heat.',
-      'Durability & Care: PPF comes backed by a 10-Year Anti-Yellowing & Delamination Warranty with annual maintenance top-ups at our Islamabad and Rawalpindi studios.',
+      'Our facility features dedicated bays for computerized diagnostics, 3D laser wheel alignment, mechanical overhauls, and pressurized clean rooms for PPF and ceramic detailing.',
+      'Clients enjoy high-speed Wi-Fi, private workstation desks, espresso, and real-time CCTV monitors showing their vehicle being serviced.',
     ],
-    comprehensiveOverview: `When choosing paint preservation for your vehicle at HyperTune Garage, understanding the benefits of Paint Protection Film (PPF) and 9H ceramic nano-coating is essential for maximizing long-term protection and vehicle resale value in Pakistan. Paint Protection Film (PPF) is an 8.5 mil thick, optically transparent Thermoplastic Polyurethane (TPU) membrane physically applied over your car's exterior body panels. Engineered with an advanced elastomeric self-healing top layer, PPF operates as a heavy-duty physical shield against high-velocity highway gravel, stone chips, road debris, parking lot door dings, and malicious key scratches. On major thoroughfares like the Islamabad Highway, Kashmir Highway, and the M-2 Motorway, flying stone chips are the primary cause of permanent paint chipping—PPF absorbs the kinetic energy of these impacts, preventing the stone from reaching your factory clear coat. Conversely, Ceramic Nano-Coating is a liquid formula containing silicon dioxide (SiO2) and titanium dioxide (TiO2) that chemically bonds with the microscopic pores of your automotive clear coat to create a permanent 9H hardness glass layer. While ceramic coating does not prevent deep physical stone chips, it offers superior chemical defense against environmental contaminants prevalent in Islamabad and Rawalpindi, such as intense ultraviolet (UV) solar radiation, acidic bird droppings, tree sap, industrial fallout, and hard water minerals. The extreme hydrophobic surface produces a 110-degree water contact angle, causing rainwater, mud, and road grime to slide off effortlessly during routine maintenance washes. At HyperTune Garage, our certified master applicators routinely install the ultimate protection package: wrapping high-impact front-end zones (front bumper, bonnet, fenders, side mirrors, and headlights) in 8.5 mil Aliphatic TPU PPF, while applying 9H ceramic coating across all remaining painted surfaces, wheels, glass, and exterior trim. This dual-layer strategy ensures 360-degree defense against physical chips and atmospheric weathering for up to 10 years.`,
+    comprehensiveOverview: 'HyperTune Garage operates its flagship automotive workshop at the Police Foundation automotive district in Sector O-9, Islamabad. Situated directly adjacent to PWD Housing Society, Bahria Town Phases 1–8, and DHA Islamabad, the facility provides rapid access for vehicle owners across the twin cities. The workshop houses computerized diagnostic labs, hydraulic lift bays, and a pressurized dust-free booth dedicated to Paint Protection Film (PPF) application. Our customer lounge offers full transparency with live video monitors streaming each technician’s work.',
+    relatedLocation: { name: 'Islamabad Flagship Hub', href: '/locations/islamabad-workshop/' },
+    tags: ['location', 'islamabad', 'rawalpindi', 'pwd', 'police foundation', 'hours'],
   },
   {
-    id: 'faq-2',
-    category: 'PPF & Paint Protection',
-    question: 'Will installing Paint Protection Film (PPF) damage my vehicle original factory paint during application or removal?',
-    answer: 'No, absolute paint safety is guaranteed when done at HyperTune Garage. We follow strict zero-contact blade procedures and use museum-grade installation techniques:',
+    id: 'faq-gen-2',
+    category: 'General & Workshop',
+    question: 'How does your Executive Valet Concierge pick-up and delivery service work?',
+    answer: 'We provide fully insured, professional vehicle pick-up and delivery across Islamabad (including Sectors F-6, F-7, F-8, F-10, F-11, DHA, and Bahria Town). A verified driver collects your vehicle, conducts a digital 360° walkaround inspection with fuel and mileage logging on WhatsApp, and delivers it back sanitized upon job completion.',
     keyHighlights: [
-      '100% Blade-Free Installation: CAD computerized vinyl plotters pre-cut panels according to exact manufacturer blueprints',
-      'Paint-Safe Adhesives: Optical acrylic pressure-sensitive adhesive (PSA) formulated specifically for automotive OEM clear coats',
-      'Safe Removal Guarantee: Can be safely peeled off after 5-10 years without pulling clear coat or leaving sticky residue',
+      'Digital Intake Video Walkaround: Instant condition, fuel, and odometer logging sent to your smartphone',
+      'Transit Insurance Coverage: Complete insurance protection while your vehicle is in transit and on our premises',
+      'Convenient Scheduling: Request valet concierge directly during online reservation or via WhatsApp',
     ],
     details: [
-      'Computer Plotting Technology: Unlike budget installers who use razor blades directly on your car panels, HyperTune Garage utilizes Graphtec 7000-Series Plotters and official manufacturer CAD software. Every pattern for headlights, bonnet, bumpers, and side mirrors is pre-cut before reaching your vehicle.',
-      'Surface Preparation Protocol: Prior to PPF application, your vehicle undergoes a 5-step decontamination process: pH-neutral foam wash, iron-decontaminant spray, clay bar treatment, single-stage paint correction polish, and isopropyl alcohol (IPA) panel wipe-down in our dust-free clean booth.',
-      'Tucked Edges & Stealth Fit: Where possible, our certified installers wrap edges inside panel seams (door edges, bonnet lip, trunk lid) so the film is virtually invisible with zero exposed seams.',
+      'Our concierge service is ideal for busy executives, embassies, and vehicle owners who require routine servicing, detailing, or repairs without leaving their office or home.',
+      'Upon completion of quality assurance checks, your vehicle is washed, detailed, and safely returned to your chosen address.',
     ],
-    comprehensiveOverview: `At HyperTune Garage, we guarantee that the application, lifetime wear, and eventual removal of our Paint Protection Film (PPF) will never compromise your vehicle's original factory paintwork. The primary concern among vehicle owners is whether razor blades used during installation will score the underlying clear coat. We eliminate this risk entirely by employing 100% blade-free digital CAD computer plotting technology. Utilizing industrial Graphtec 7000-Series plotters paired with official manufacturer design blueprints, every pattern—including front bumpers, intricate intake grilles, side mirror caps, and door handles—is precision pre-cut prior to being brought anywhere near your vehicle. In addition, the adhesive technology used in our Aliphatic TPU PPF consists of ultra-clear, pressure-sensitive acrylic adhesives (PSA) specifically formulated for automotive OEM clear coats. This low-tack initial formula allows our technicians to position panels with surgical accuracy using slip solutions before squeegeeing out moisture, forming a cohesive bond that flexes with the metal bodywork through temperature fluctuations from 0°C winter mornings to 45°C summer heatwaves in Islamabad. Before any film touches the vehicle, your car undergoes a rigorous 5-stage paint decontamination protocol in our pressurized, dust-free installation studio. This includes a pH-balanced snow foam wash, chemical iron-decontaminant fallout removal, synthetic clay bar smoothing, single-stage machine polish to eliminate existing swirl marks, and a 99% isopropyl alcohol panel wipe-down. When the film reaches the end of its 10-year service life or if you decide to sell the vehicle, our technicians heat the film using controlled infrared lamps, allowing the TPU membrane and adhesive to lift off cleanly in large sheets without pulling factory paint, leaving zero adhesive residue behind, and revealing pristine, factory-fresh paint beneath.`,
+    comprehensiveOverview: 'For clients unable to visit our workshop in person, HyperTune Garage offers an Executive Valet Concierge service throughout Islamabad and surrounding areas. A vetted, professional driver arrives at your home or workplace, completes a photographic and video intake report on our mobile workshop portal, and logs initial vehicle condition before transport. All vehicles are protected under our comprehensive commercial garage policy during transit and maintenance.',
+    relatedService: { title: 'Maintenance & Servicing', href: '/services/maintenance-servicing/' },
+    tags: ['valet', 'concierge', 'pick-up', 'delivery', 'islamabad', 'dha', 'bahria town'],
+  },
+
+  // -------------------------------------------------------------
+  // 2. PPF & DETAILING
+  // -------------------------------------------------------------
+  {
+    id: 'faq-ppf-1',
+    category: 'PPF & Detailing',
+    question: 'What is the difference between 8.5 mil TPU Paint Protection Film (PPF) and 9H Ceramic Coating?',
+    answer: 'PPF is an 8.5 mil thick, optically clear Thermoplastic Polyurethane (TPU) physical armor with an elastomeric self-healing topcoat designed to absorb high-velocity stone chips and highway debris. In contrast, 9H Ceramic Coating is a chemical nano-sealant that bonds to clear coat to provide hydrophobic water-beading, chemical resistance, and UV protection against Islamabad’s 45°C summer heat.',
+    keyHighlights: [
+      'PPF: 8.5 mil physical impact barrier against stone chips, scratches, and door dings on Motorway (M-2) & Islamabad Expressway',
+      'Ceramic Coating: 9H hardness liquid glass matrix repelling acid rain, industrial fallout, tree sap, and road grime',
+      'Ultimate Combination: Full front-end TPU PPF paired with 9H ceramic coating across remaining bodywork, glass, and wheels',
+    ],
+    details: [
+      'PPF absorbs kinetic impacts that would otherwise puncture factory clear coat down to bare metal.',
+      'Ceramic coating provides high-gloss slickness with a 110° water contact angle, reducing wash effort by 70%.',
+    ],
+    comprehensiveOverview: 'Choosing between Paint Protection Film (PPF) and Ceramic Coating depends on whether you seek physical impact resistance or chemical environmental defense. In Pakistan, high-speed stone chips on the Islamabad Highway and M-2 Motorway cause severe rock pitting on front bumpers and bonnets. Only 8.5 mil TPU film possesses sufficient tensile strength to absorb gravel impacts without puncturing factory clear coat. Meanwhile, 9H ceramic coating provides chemical defense against intense ultraviolet (UV) oxidation and hard water mineral stains. For optimal vehicle preservation, HyperTune Garage recommends wrapping high-impact front panels in TPU PPF while ceramic coating all remaining bodywork.',
+    relatedService: { title: 'Paint Protection Film (PPF)', href: '/services/paint-protection-film-ppf/' },
+    tags: ['ppf', 'ceramic coating', 'tpu', 'paint protection', 'detailing'],
   },
   {
-    id: 'faq-3',
-    category: 'PPF & Paint Protection',
-    question: 'Does your PPF self-heal minor scratches and resist yellowing under Pakistan sun and heat?',
-    answer: 'Yes, our premium TPU Paint Protection Film is engineered specifically to withstand Pakistan extreme climatic conditions:',
+    id: 'faq-ppf-2',
+    category: 'PPF & Detailing',
+    question: 'Will installing or removing Paint Protection Film damage my car’s original factory paint?',
+    answer: 'No. Absolute paint safety is guaranteed when installed and removed at HyperTune Garage. We use 100% blade-free digital CAD computer plotting software to pre-cut patterns off the car, and optical-grade pressure-sensitive acrylic adhesives that lift cleanly with infrared heat without pulling factory clear coat.',
     keyHighlights: [
-      'Elastomeric Self-Healing: Swirl marks and light surface scratches automatically melt away under direct sunlight or hot water (above 60°C)',
-      'UV-Stabilized Aliphatic TPU: Resistant to harsh UV radiation, preventing yellowing, clouding, or embrittlement in 45°C+ summer heat',
-      'Self-Cleaning Hydrophobic Topcoat: Repels dust, mud, and rain spots, keeping your car looking freshly detailed after every wash',
+      '100% Blade-Free Installation: Digital Graphtec plotters pre-cut panels before film touches vehicle paintwork',
+      'OEM Clear Coat Safe: High-tack optical acrylic adhesive formulated specifically for automotive factory paint',
+      'Residue-Free Removal: Clean removal after 5–10 years under controlled infrared heat lamps',
     ],
     details: [
-      'Self-Healing Science: The top layer of our film consists of a thermo-plastic polymer with shape memory. When scratched by wash mitts, bushes, or fingernails around door cups, warmth from sunlight or hot tap water causes the polymers to re-align, erasing scratches within minutes.',
-      'Anti-Yellowing Formula: Lower-grade PVC or aromatic TPU films turn yellow within 6 to 12 months due to intense UV exposure. HyperTune Garage exclusively installs imported Aliphatic TPU films with UV block technology tested against Islamabad UV index levels.',
-      'Infrared Curing: After installation, every vehicle undergoes a 2-hour low-temperature infrared lamp cure to lock down edges and eliminate moisture pockets.',
+      'Pre-installation includes a 5-step decontamination: pH-neutral foam wash, fallout remover, clay bar, machine polish, and IPA panel wipe.',
+      'Edges are tucked inside panel seams wherever possible for an invisible, seamless finish.',
     ],
-    comprehensiveOverview: `Yes, the Aliphatic TPU Paint Protection Film installed at HyperTune Garage features advanced self-healing elastomeric topcoat technology and optical UV-stabilization designed specifically for the extreme weather conditions experienced in Islamabad, Rawalpindi, and across Pakistan. Conventional car paint and low-grade vinyl wraps suffer from wash swirls, micro-scratches, and severe UV degradation when exposed to dust storms, harsh wash sponges, and intense summer sunshine. Our premium 8.5 mil TPU film utilizes a heat-sensitive elastomeric polymer topcoat with shape-memory properties. When light scratches, swirl marks, or micro-abrasions occur—such as those caused by dusty cleaning cloths or roadside bushes—the polymer chain flexes without breaking. Upon exposure to natural heat from direct sunlight (or poured hot water above 60°C), the thermo-plastic layer relaxes and flows back into its smooth original orientation, completely erasing fine scratches within minutes. Furthermore, anti-yellowing performance is where low-quality films fail rapidly in Asian climates. Cheaper PVC or aromatic polyurethane films degrade when exposed to ultraviolet spectrum radiation, turning yellow, brittle, and cloudy within 6 to 12 months. HyperTune Garage exclusively imports non-yellowing Aliphatic TPU films manufactured with embedded UV inhibitors and anti-oxidant stabilizers. This specialized chemical structure resists UV photo-oxidation, preserving 99% optical clarity and high-gloss transparency even after years of parking under the harsh Islamabad sun. After installation in our temperature-controlled clean room, every protected panel undergoes a 2-hour low-temperature infrared lamp curing session to bond panel edges securely and eliminate residual moisture pockets. Backed by our 10-Year Anti-Yellowing Warranty, your vehicle retains a permanent showroom gloss with minimal maintenance effort.`,
+    comprehensiveOverview: 'At HyperTune Garage, we ensure complete factory paint integrity through blade-free computerized installation. Budget workshops frequently use manual utility razor blades directly over car panels, creating hidden score lines in the clear coat that rust over time. We eliminate this by utilizing computerized plotters programmed with exact manufacturer panel schematics. Furthermore, our optical-grade pressure-sensitive adhesives are engineered to flex with body panels through thermal expansion, allowing clean removal after years of sun exposure without leaving adhesive residue or stripping clear coat.',
+    relatedService: { title: 'Paint Protection Film (PPF)', href: '/services/paint-protection-film-ppf/' },
+    tags: ['blade free', 'cad plotting', 'paint safe', 'removal guarantee'],
   },
   {
-    id: 'faq-4',
-    category: 'Popular Car Brands',
-    question: 'Why choose HyperTune Garage for Toyota, Honda, Suzuki, Hyundai & Kia repairs over local 3S dealerships?',
-    answer: 'HyperTune Garage provides vehicle owners in Pakistan with dealer-level technical perfection at 40% to 50% lower prices, combined with complete repair transparency:',
+    id: 'faq-ppf-3',
+    category: 'PPF & Detailing',
+    question: 'Does your TPU film resist yellowing and self-heal swirl marks in Pakistan’s climate?',
+    answer: 'Yes. We install non-yellowing Aliphatic TPU films manufactured with embedded UV block stabilizers and shape-memory elastomeric topcoats. Surface swirl marks and light wash scratches automatically disappear under natural sunlight or warm water (above 60°C), while resisting clouding under 45°C summer UV indexes.',
     keyHighlights: [
-      'Dealer Diagnostic Scanning: Factory diagnostic software for Toyota, Honda, Suzuki, Hyundai, Kia, Changan, and Haval platforms',
-      '40% to 50% Cost Savings: Genuine OEM parts sourced with transparent itemized estimates and 0% artificial dealership markups',
-      'WhatsApp Live Video Proof: Receive HD videos & photos of worn components and diagnostic scans prior to job approval',
+      'Elastomeric Self-Healing: Swirl marks and light wash scratches melt away in sunlight or warm water',
+      'Aliphatic TPU Chemistry: Resists UV photo-oxidation and yellowing unlike budget aromatic PVC films',
+      '10-Year Warranty: Backed by written warranty coverage against bubbling, cracking, or delamination',
     ],
     details: [
-      'Diagnostic Precision: 3S Dealerships often replace entire expensive assemblies. We perform component-level diagnostics, ECU sensor testing, calibration, and wiring repairs using factory scanners.',
-      'Master Technicians: Our senior engineers possess over 15 years of dedicated experience servicing Pakistan’s most popular vehicles including Toyota Yaris/Corolla/Fortuner, Honda Civic/City/Vezel, Suzuki Cultus/Swift/Alto, Hyundai Tucson/Sonata, and Kia Sportage.',
-      'Itemized Transparent Estimates: You receive a digital breakdown on your phone specifying OEM part numbers, brand manufacturers, exact labor charges, and estimated completion times. No mystery line items or surprise surcharges.',
+      'After application, every vehicle undergoes a 2-hour low-temperature infrared lamp cure to eliminate moisture and lock down edges.',
+      'Hydrophobic topcoats repel road grime, making routine maintenance washing fast and swirl-free.',
     ],
-    comprehensiveOverview: `Choosing HyperTune Garage over authorized 3S dealerships provides vehicle owners in Islamabad and Rawalpindi with dealer-grade engineering expertise, authentic original spare parts, and complete pricing transparency at 40% to 50% lower total costs. Authorized dealerships carry massive operational overheads, passing exorbitant labor rates and heavy markups on spare parts down to vehicle owners. Furthermore, dealership personnel frequently insist on replacing expensive, complete component assemblies when a simple sensor, solenoid, bushing, or fluid service would fully restore function. HyperTune Garage bridges this gap by operating with factory-level diagnostic scanner suites for Toyota (Techstream), Honda (HDS), Suzuki (SDT-II), Hyundai & Kia (GDS), Changan, and Haval. This allows our certified diagnostic engineers to perform ECU diagnostics, sensor calibration, transmission adaptation, and guided troubleshooting with pinpoint factory accuracy. In terms of parts supply, we source genuine original equipment manufacturer (OEM) components directly with barcode verification. Above all, HyperTune Garage prioritizes client trust through absolute visual transparency. Before any work begins, we conduct a comprehensive digital health check and send a detailed itemized estimate directly to your WhatsApp, accompanied by high-definition videos showing worn components, play in suspension bushings, or live diagnostic data graphs. You maintain total control over your repair budget with direct WhatsApp communication with our workshop technical team throughout the repair process.`,
+    comprehensiveOverview: 'The extreme summer temperatures and intense UV radiation in Islamabad and Rawalpindi quickly degrade low-grade PVC or aromatic polyurethane wraps, turning them yellow and brittle within 6 to 12 months. HyperTune Garage exclusively installs premium Aliphatic TPU films engineered with optical UV inhibitors. The elastomeric topcoat features shape memory: when scratched by dusty cloths or roadside shrubs, warmth from ambient sunlight or warm water triggers the polymer chains to realign, erasing blemishes in minutes.',
+    relatedService: { title: 'Paint Protection Film (PPF)', href: '/services/paint-protection-film-ppf/' },
+    tags: ['self-healing', 'anti-yellowing', 'uv protection', 'warranty'],
+  },
+
+  // -------------------------------------------------------------
+  // 3. ENGINE & DIAGNOSTICS
+  // -------------------------------------------------------------
+  {
+    id: 'faq-eng-1',
+    category: 'Engine & Diagnostics',
+    question: 'How do you diagnose Check Engine Lights and electronic sensor faults without guessing?',
+    answer: 'We deploy a 4-stage diagnostic protocol using dealer-level diagnostic software (BMW ISTA, Mercedes Xentry, Toyota Techstream, Honda HDS, ODIS). We read active and shadow DTC codes, graph live sensor operating parameters under load, conduct EVAP smoke tests for vacuum leaks, and verify circuit integrity before replacing any component.',
+    keyHighlights: [
+      'Dealer Diagnostic Software: Deep ECU scans including historic freeze-frame telemetry and shadow fault memory',
+      'Live Sensor Data Graphing: Real-time analysis of short/long term fuel trims, boost pressure, and O2 sensor response',
+      'No Parts Guesswork: We pinpoint the exact root cause and send video proof to your WhatsApp before repairs begin',
+    ],
+    details: [
+      'Smoke testing isolates intake manifold leaks, vacuum hose splits, and PCV valve failures causing rough idling.',
+      'Oscilloscope waveform analysis verifies crankshaft/camshaft sensor synchronization and ignition coil firing curves.',
+    ],
+    comprehensiveOverview: 'Modern electronic engine management systems cannot be diagnosed with generic handheld code scanners. When a Check Engine or EPC warning illuminates, HyperTune Garage deploys dedicated manufacturer diagnostic suites. We retrieve freeze-frame telemetry that records exact vehicle speed, engine RPM, coolant temperature, and fuel rail pressure at the millisecond the error triggered. By coupling live sensor telemetry graphing with physical diagnostic tools like calibrated smoke machines and digital oscilloscopes, our engineers identify faulty components with surgical precision, avoiding costly part swaps.',
+    relatedService: { title: 'Inspection & Diagnostics', href: '/services/inspection-diagnostics/' },
+    relatedBrand: { name: 'BMW Repair Specialist Islamabad', href: '/brands/bmw-repair-islamabad/' },
+    tags: ['check engine light', 'diagnostics', 'ecu scan', 'smoke test', 'bmw ista', 'techstream'],
   },
   {
-    id: 'faq-5',
-    category: 'Popular Car Brands',
-    question: 'How do you diagnose check engine lights, CVT transmission jerks, or suspension noises on popular Pakistani cars?',
-    answer: 'We deploy a rigorous 4-step diagnostic methodology that pinpoints root causes without guessing or unnecessarily replacing good parts:',
+    id: 'faq-eng-2',
+    category: 'Engine & Diagnostics',
+    question: 'What is included in a master engine rebuild at HyperTune Garage, and why is a clean room essential?',
+    answer: 'A master overhaul includes complete engine extraction, ultrasonic chemical cleaning, 0.001mm micrometer measurement of cylinder taper and crankshaft runout, cylinder boring/sleeving, and replacement of all pistons, rings, bearings, timing chains, oil pumps, and seals with genuine OEM parts inside our pressurized, dust-free engine lab.',
     keyHighlights: [
-      'Step 1 - Full OBD-II & System Scan: Reading factory fault codes, freeze-frame data, and sensor parameters',
-      'Step 2 - Live Sensor Data Graphing: Analyzing short/long term fuel trims, boost pressures, CVT fluid deterioration index, and wheel speeds',
-      'Step 3 - Physical & Smoke Inspection: Smoke testing intake vacuum leaks, testing ignition coils, and inspecting suspension bushings',
-      'Step 4 - Digital Fault Report: Detailed report with HD videos sent to your smartphone before any repair work commences',
+      'Pressurized Dust-Free Rebuild Lab: Clean-air filtration prevents airborne sand and grit from contaminating bearing journals',
+      '100% Genuine OEM Internals: Brand-new factory pistons, rings, rod bearings, main bearings, timing chain kit, and gaskets',
+      '12-Month / 20,000 km Warranty: Written warranty coverage with included 1,000 km break-in service and compression verification',
     ],
     details: [
-      'Intake & EVAP Leak Detection: We use calibrated smoke machines to detect minute vacuum or intake leaks in Toyota, Honda, Suzuki, and Hyundai engines that cause rough idling and high fuel consumption.',
-      'Suspension & Steering Diagnostics: We test control arm bushings, tie rod ends, stabilizer links, and shock absorbers to eliminate thumping or knocking noises over rough Pakistani road surfaces.',
-      'CVT & Automatic Transmission Adaptation: Gearbox hesitation or jerking in CVT, DCT, or automatic transmissions are diagnosed via live sensor data and fluid degradation checks before recommending fluid service or clutch actuator relearns.',
+      'Cylinder heads undergo pressure crack testing, multi-angle valve seat cutting, and precision deck resurfacing.',
+      'All fasteners are torqued with calibrated digital angle wrenches in accordance with factory torque-to-yield sequences.',
     ],
-    comprehensiveOverview: `Diagnosing modern vehicles in Pakistan requires far more than plugging in a generic code reader; it demands deep system comprehension, live data graphing, and multi-stage physical testing to isolate complex root causes. When a check engine warning, drive hesitation message, transmission malfunction, or ABS fault code illuminates on your dashboard, HyperTune Garage executes a structured 4-phase diagnostic protocol. First, we connect dedicated dealer scanners to query the entire CAN-bus network, extracting active fault codes, shadow fault memory, freeze-frame operating parameters (engine RPM, coolant temperature, fuel pressure at time of failure), and historic mileage stamps. Second, our engineers perform dynamic live sensor data graphing while operating the vehicle under specific load conditions. For engines across Toyota, Honda, Suzuki, Hyundai, and Kia vehicles, we evaluate short-term and long-term fuel trims, mass air flow rates, and fuel rail pressures to differentiate between vacuum leaks, failing fuel pumps, or ignition misfires. If intake leaks are suspected, we deploy a digital EVAP smoke machine that pressurizes the intake tract with dense mineral smoke, pinpointing hairline cracks in intake hoses or PCV valves without disassembling the engine. For automatic, CVT, and dual-clutch transmission issues, we evaluate fluid quality, pressure adaptation limits, and oil temperature logs to determine whether an issue requires a fluid service, solenoid valve replacement, or mechanical repair. Finally, for suspension noise, we perform physical play checks and 3D laser alignment checks. Every client receives a comprehensive digital report featuring sensor graphs, inspection images, and explanatory video clips, ensuring complete clarity before any repairs commence.`,
+    comprehensiveOverview: 'Engine rebuilding in Pakistan often fails prematurely due to dirty street workshop assembly where airborne road dust contaminates fresh bearing shells. At HyperTune Garage, all engine overhauls are conducted inside a climate-controlled, pressurized rebuild lab. Every engine block and cylinder head undergoes ultrasonic hot-tank cleaning before precision micrometer measurement down to 0.001mm. We install only authentic OEM internal components and follow factory torque-angle bolt tightening sequences. Every rebuild includes specialized high-zinc break-in oil, a complimentary 1,000 km inspection, and our 12-Month / 20,000 km mechanical warranty.',
+    relatedService: { title: 'Engine Services & Overhaul', href: '/services/engine-services/' },
+    tags: ['engine rebuild', 'overhaul', 'clean room', 'compression test', 'warranty'],
+  },
+
+  // -------------------------------------------------------------
+  // 4. TRANSMISSION & DRIVETRAIN
+  // -------------------------------------------------------------
+  {
+    id: 'faq-trans-1',
+    category: 'Transmission & Drivetrain',
+    question: 'Why do CVT and Dual-Clutch (DCT) gearboxes jerk or overheat in Pakistani traffic, and how do you repair them?',
+    answer: 'Continuous stop-and-go driving in 40°C+ summer heat causes severe thermal fluid degradation in CVT and DCT gearboxes. This leads to solenoid sticking, clutch slip, and valve body pressure loss. We diagnose fluid degradation index values via diagnostic scanners, perform temperature-controlled fluid flushes with genuine OEM fluids, and rebuild valve bodies or mechatronics units when needed.',
+    keyHighlights: [
+      'Diagnostic Fluid Indexing: Reading electronic transmission fluid deterioration index and clutch pressure adaptations',
+      'Genuine OEM Fluid Sourcing: Exact viscosity fluids for Toyota Super CVT-FE, Honda HCF-2/DW-1, Nissan NS-3, and German DCTF',
+      'Mechatronic & Valve Body Restoration: In-house solenoid testing, pressure transducer renewal, and clutch adaptation relearns',
+    ],
+    details: [
+      'We perform computerized clutch calibration and pressure adaptation relearns for Honda Vezel i-DCD and VW/Audi DSG gearboxes.',
+      'Routine fluid and filter replacement every 30,000 to 40,000 km prevents costly premature transmission failure.',
+    ],
+    comprehensiveOverview: 'Modern automatic, CVT, and dual-clutch transmissions are highly sensitive to fluid temperature and contamination. In Islamabad and Rawalpindi stop-and-go congestion, transmission oil temperatures can exceed 110°C, breaking down hydraulic shear stability. This triggers symptoms such as low-speed shuddering, delayed gear engagement, and transmission overheating error messages. HyperTune Garage checks live transmission line pressures and fluid deterioration parameters before recommending targeted solutions—from precision multi-step fluid flushes using factory-specified fluids to mechatronics solenoid refurbishment and computer adaptation resets.',
+    relatedService: { title: 'Transmission & Drivetrain', href: '/services/transmission-drivetrain/' },
+    relatedBrand: { name: 'Honda Specialist Workshop Islamabad', href: '/brands/honda-service-islamabad/' },
+    tags: ['cvt', 'dct', 'gearbox jerk', 'transmission fluid', 'mechatronics', 'vezel'],
+  },
+
+  // -------------------------------------------------------------
+  // 5. HYBRID & EV CARE
+  // -------------------------------------------------------------
+  {
+    id: 'faq-hyb-1',
+    category: 'Hybrid & EV Care',
+    question: 'Can individual hybrid battery cells be reconditioned, or must I replace the entire battery pack?',
+    answer: 'In over 85% of cases, you do not need an expensive new battery. We test individual cell modules under computerized CADEX load testers, replace only weak modules with capacity-matched OEM cells, ultrasonic-clean corroded copper busbars, and balance pack voltage within 0.02V, saving vehicle owners 50% to 70% compared to dealership quotes.',
+    keyHighlights: [
+      'Computerized Module Testing: Automated charge/discharge load cycling measuring milliamp-hour (mAh) capacity and internal resistance',
+      'Ultrasonic Busbar Cleaning: Restoring 100% electrical conductivity on oxidized copper connectors to eliminate heat bottlenecks',
+      'Cooling Blower Decontamination: Deep chemical cleaning of intake fan ducts to prevent thermal throttling and cell degradation',
+    ],
+    details: [
+      'We service Toyota (Prius, Aqua, Camry, Corolla Cross), Honda (Vezel, Fit, Grace), and Lexus (RX450h, CT200h) hybrid platforms.',
+      'Restored voltage uniformity brings back electric EV driving duration and restores fuel economy back to 20–25 km/L.',
+    ],
+    comprehensiveOverview: 'When the "Check Hybrid System" warning light or diagnostic error codes P0A80/P0A7F trigger on Toyota or Honda hybrids, authorized 3S dealerships routinely advise replacing the entire high-voltage assembly at exorbitant costs. In reality, typically only 2 or 3 individual modules out of 28+ have degraded. HyperTune Garage’s specialized Hybrid Lab extracts the pack, measures the exact internal resistance of every cell, replaces degraded cells with matched OEM modules, deoxidizes corroded busbars, and cleans clogged cooling blowers, restoring complete factory battery efficiency with written warranty coverage.',
+    relatedService: { title: 'Inspection & Diagnostics', href: '/services/inspection-diagnostics/' },
+    relatedBrand: { name: 'Toyota Specialist Workshop Islamabad', href: '/brands/toyota-repair-islamabad/' },
+    tags: ['hybrid battery', 'cell balancing', 'prius', 'aqua', 'vezel', 'p0a80', 'ev care'],
+  },
+
+  // -------------------------------------------------------------
+  // 6. BRAKES & SUSPENSION
+  // -------------------------------------------------------------
+  {
+    id: 'faq-brk-1',
+    category: 'Brakes & Suspension',
+    question: 'What causes steering vibration or pulling, and how does 3D laser wheel alignment fix uneven tire wear?',
+    answer: 'Steering vibrations at highway speeds (80–120 km/h) are typically caused by dynamic wheel unbalance, warped brake rotors, or worn control arm bushings. Vehicle pulling is caused by camber or caster misalignment from rough road impacts. We use high-precision 3D digital camera alignment racks and on-car brake disc skimming to restore laser-straight stability.',
+    keyHighlights: [
+      '3D Digital Laser Alignment: High-resolution camera sensors measuring camber, caster, and toe angles to 0.01° factory tolerances',
+      'On-Car Brake Disc Skimming: Precision rotor resurfacing eliminating brake pedal pulsation without rotor removal',
+      'Suspension Bushing Replacement: Hydraulic press replacement of degraded rubber bushings without replacing entire control arms',
+    ],
+    details: [
+      'Proper 4-wheel alignment extends tire tread life by up to 25,000 km and reduces rolling resistance for better fuel economy.',
+      'We test electronic power steering (EPS) steering angle sensor calibration to ensure stability control systems operate accurately.',
+    ],
+    comprehensiveOverview: 'The uneven road conditions, speed breakers, and potholes across Islamabad and Rawalpindi place high stress on steering racks, tie rods, ball joints, and control arm bushings. Misalignment causes rapid tire edge scrubbing and compromises highway braking stability. HyperTune Garage utilizes computer-guided 3D optical wheel alignment systems that calibrate suspension geometry against official manufacturer specifications. For brake pulsation, our on-car lathe skims warped brake discs to exact runout tolerances, ensuring smooth, vibration-free stopping power.',
+    relatedService: { title: 'Brake, Suspension & Steering', href: '/services/brake-suspension-steering/' },
+    tags: ['wheel alignment', 'suspension', 'brake skimming', 'steering vibration', 'tire wear'],
+  },
+
+  // -------------------------------------------------------------
+  // 7. AC & ELECTRICAL
+  // -------------------------------------------------------------
+  {
+    id: 'faq-ac-1',
+    category: 'AC & Electrical',
+    question: 'Why does car air conditioning fail during peak summer heat in Islamabad, and how do you test for refrigerant leaks?',
+    answer: 'Car AC performance degrades when condenser fins get clogged with dust, cooling fan clutches weaken, or microscopic refrigerant leaks develop in evaporator coils. We use computerized vacuum decay testing, electronic halogen sniffing, and ultraviolet (UV) fluorescent dye under darkroom inspection to pinpoint micro-leaks, followed by high-purity R134a/R1234yf charging.',
+    keyHighlights: [
+      'Electronic Halogen & UV Dye Leak Detection: Pinpointing micro-leaks in evaporator cores, condenser joints, and compressor seals',
+      'Dual-Stage Vacuum Recovery: Deep vacuum evacuation removing moisture before precision digital refrigerant scale charging',
+      'Compressor Performance Analysis: Verifying high/low pressure differentials and electronic control valve (ECV) duty cycles',
+    ],
+    details: [
+      'We perform chemical antibacterial cabin evaporator coil flushing to eliminate unpleasant damp odors and mildew.',
+      'We service both conventional belt-driven compressors and high-voltage electric AC compressors in hybrid and EV models.',
+    ],
+    comprehensiveOverview: 'During Islamabad’s intense 42°C–46°C summer months, vehicle air conditioning systems operate under extreme thermal head pressures. A slight drop in refrigerant charge or a dust-clogged condenser causes the compressor to overheat and disengage. Rather than simply adding gas—which fails again if leaks persist—HyperTune Garage performs electronic vacuum decay tests and UV dye inspections to locate and seal leaks. We then charge the exact factory weight of refrigerant and PAG compressor oil using computerized digital charging stations.',
+    relatedService: { title: 'AC Repair & Electrical Specialist', href: '/services/car-ac-repair/' },
+    tags: ['car ac', 'ac repair', 'refrigerant leak', 'uv dye', 'compressor', 'cooling'],
+  },
+
+  // -------------------------------------------------------------
+  // 8. BRAND SPECIALISTS & GENUINE PARTS
+  // -------------------------------------------------------------
+  {
+    id: 'faq-brd-1',
+    category: 'Brand Specialists & Parts',
+    question: 'Why choose HyperTune Garage over authorized 3S dealerships for German and Japanese vehicles?',
+    answer: 'HyperTune Garage provides dealer-grade diagnostic software and master technician expertise at 40% to 50% lower cost than authorized dealerships, combined with component-level repairs instead of replacing entire expensive assemblies, 100% itemized estimates, and real-time WhatsApp video proof.',
+    keyHighlights: [
+      '40% to 50% Cost Savings: Genuine OEM parts sourced transparently with 0% inflated dealership overhead markups',
+      'Component-Level Diagnostics: We repair mechatronics, sensors, and wiring harnesses rather than forcing assembly replacements',
+      'Dealer-Level Software: Full diagnostics using BMW ISTA, Mercedes Xentry, Audi ODIS, Porsche PIWIS, and Toyota Techstream',
+    ],
+    details: [
+      'Dealerships carry massive administrative overheads passed directly to clients in inflated labor rates.',
+      'Every repair at HyperTune Garage receives an upfront digital quote with barcode-verifiable OEM part numbers.',
+    ],
+    comprehensiveOverview: 'Vehicle owners often feel compelled to visit authorized 3S dealerships for luxury and imported cars out of fear that local mechanics lack proper diagnostic equipment. HyperTune Garage bridges this gap as an independent master specialist. We operate with official manufacturer diagnostic systems for German, European, Japanese, Korean, and Chinese vehicles. Unlike dealerships that routinely quote whole assembly replacements for minor sensor or solenoid faults, we diagnose and rebuild sub-components with factory accuracy, saving clients substantial expense while maintaining uncompromised quality.',
+    relatedBrand: { name: 'Mercedes-Benz Specialist Workshop Islamabad', href: '/brands/mercedes-service-islamabad/' },
+    tags: ['dealership alternative', 'cost savings', 'oem parts', 'bmw', 'mercedes', 'audi'],
   },
   {
-    id: 'faq-6',
-    category: 'Engine & Overhaul',
-    question: 'What is included in a complete engine or transmission rebuild at HyperTune Garage?',
-    answer: 'Our engine and gearbox overhauls are conducted inside a dedicated, pressurized dust-free rebuild lab according to strict factory assembly tolerances:',
+    id: 'faq-brd-2',
+    category: 'Brand Specialists & Parts',
+    question: 'Do you service emerging Chinese vehicle brands like Haval, Changan, Chery, and MG?',
+    answer: 'Yes. We provide specialized maintenance, computerized scanning, and OEM parts sourcing for Haval (H6, Jolion), Changan (Alsvin, Oshan X7, Karvaan), Chery (Tiggo 4/8 Pro), and MG (HS, ZS, 4 EV), addressing common turbo lag, DCT transmission heat, and electronic sensor issues.',
     keyHighlights: [
-      'Precision Measuring: Cylinder bore alignment, crankshaft journal play, and valve guide clearances measured to 0.001mm precision',
-      '100% Genuine OEM Internal Replacement: New pistons, rings, rod bearings, main bearings, timing chain kit, oil pump, and gasket seals',
-      'Pressure Testing & Machining: Cylinder head hot tank cleaning, pressure crack testing, multi-angle valve seat cutting, and deck resurfacing',
-      'Post-Overhaul Testing: 1,000 km break-in protocol, oil pressure verification graph, and follow-up compression check',
+      'Dedicated Diagnostic Scanning: Full DTC interrogation for Chinese domestic market (CDM) and localized CKD control modules',
+      'DCT & Turbo Maintenance: Specific fluid changes and intercooler cleaning for 1.5T and 2.0T turbocharged crossover engines',
+      'Authentic OEM Spares: Fast procurement of authentic brake pads, suspension bushings, and body electronics',
     ],
     details: [
-      'Dust-Free Rebuild Lab: Contamination during assembly is the #1 cause of premature engine overhaul failure. Our clean room uses filtered airflow to prevent airborne dust particles from settling on open cylinder walls and bearing shells.',
-      'Torque & Angle Tightening: All main cap bolts, rod bolts, and cylinder head studs are tightened using digital torque-angle wrenches following exact factory torque-to-yield manufacturer specifications.',
-      'Break-In Service Included: Every overhauled engine receives specialized break-in mineral oil for initial run-in, followed by a complimentary 1,000 km filter change, valve timing check, and computer diagnostics to certify engine health.',
+      'We resolve common DCT clutch calibration errors and electronic parking brake (EPB) initialization faults.',
+      'Scheduled periodic maintenance packages maintain engine health and protect manufacturer warranty compliance.',
     ],
-    comprehensiveOverview: `An engine or transmission overhaul at HyperTune Garage represents the highest standard of mechanical restoration available in Pakistan, executed inside a climate-controlled, dust-free engine build room according to exact manufacturer factory specifications. When an engine suffers from low compression, severe oil burning, rod knock, or timing chain failure, a haphazard street workshop rebuild will result in quick repeat failure. At HyperTune Garage, every engine overhaul begins with complete engine extraction and complete disassembly down to the bare engine block. The block, cylinder head, and oil galleries undergo ultrasonic hot-tank cleaning to remove carbon deposits and sludge. Next, our machinist engineers utilize precision digital micrometers, bore gauges, and dial indicators to measure cylinder taper, main bearing clearance, and crankshaft journal runout down to 0.001 millimeter accuracy. If cylinder walls exhibit wear, the block is micro-honed or resleeved to factory specifications. We replace 100% of internal wearing components with brand-new original OEM parts: forged pistons, piston rings, main bearings, connecting rod bearings, complete timing chain assemblies with tensioners and guides, high-flow oil pumps, valve stem seals, and full engine gasket kits. Cylinder heads are pressure-tested at high temperature to detect hidden internal coolant passage cracks, followed by multi-angle valve seat cutting and deck resurfacing for a perfect head gasket seal. During reassembly, every fastener—including cylinder head studs, main cap bolts, and rod cap bolts—is torqued using digital angle torque wrenches in strict accordance with factory torque-to-yield sequences. For gearbox overhauls, valve bodies are bench-tested, solenoid packs rebuilt, friction clutch plates renewed, and torque converters remanufactured. Upon completion, the engine receives high-zinc break-in oil and undergoes controlled bench testing before vehicle installation. We include a complimentary 1,000 km break-in inspection, oil change, and compression test, backed by our written 12-Month / 15,000 km Overhaul Warranty.`,
+    comprehensiveOverview: 'The rapid rise of Chinese SUVs and sedans in Pakistan has created a major service gap, with dealership service centers struggling with long wait times and parts shortages. HyperTune Garage houses diagnostic scanners equipped with updated software protocols for Great Wall Motors / Haval, Changan Auto, Chery, and MG platforms. Our technicians are trained in the specific maintenance demands of direct-injection turbo engines and dual-clutch transmissions, ensuring reliable daily performance across the twin cities.',
+    relatedBrand: { name: 'Haval & Great Wall Motors Specialist Islamabad', href: '/brands/haval-service-islamabad/' },
+    tags: ['changan', 'haval', 'mg', 'chery', 'chinese cars', 'turbo', 'dct'],
+  },
+
+  // -------------------------------------------------------------
+  // 9. PRICING & BOOKING
+  // -------------------------------------------------------------
+  {
+    id: 'faq-prc-1',
+    category: 'Pricing & Booking',
+    question: 'What is included in a 120-Point Pre-Purchase Vehicle Inspection (PPI) before buying a used car in Pakistan?',
+    answer: 'Our 120-point Pre-Purchase Inspection includes a full computerized ECU scan for cleared fault codes, paint depth meter readings across all panels to detect hidden accidental filler and resprays, undercarriage structural chassis inspection, engine compression check, road test, and a comprehensive digital report sent to your WhatsApp.',
+    keyHighlights: [
+      'Paint Depth Gauge Measurement: Digital ultrasonic micron readings revealing hidden accidental body filler and non-factory resprays',
+      'ECU Odometer & Freeze-Frame Audit: Detecting reversed odometers and historic shadow fault codes in transmission and engine modules',
+      'Undercarriage & Rust Analysis: Examining subframe alignment, suspension joints, steering play, and oil/coolant seal leaks',
+    ],
+    details: [
+      'Our inspection takes 60–90 minutes and gives prospective car buyers complete peace of mind before transferring payment.',
+      'We inspect Japanese auction sheet verification and local CKD vehicle maintenance history.',
+    ],
+    comprehensiveOverview: 'Purchasing a used car in Pakistan carries substantial risk of altered odometers, concealed structural accident damage, and failing hybrid batteries. HyperTune Garage provides an independent 120-Point Pre-Purchase Inspection (PPI) that removes the guesswork. Our master technicians use digital paint depth gauges to verify factory clear coat thickness on every panel, connect manufacturer scanners to uncover cleared error codes and genuine mileage stamps, inspect the chassis for alignment pulls, and compression-test the cylinders. You receive a detailed digital health certificate highlighting immediate and upcoming repair costs.',
+    relatedService: { title: 'Inspection & Diagnostics', href: '/services/inspection-diagnostics/' },
+    tags: ['pre-purchase inspection', 'ppi', 'used car', 'paint depth', 'odometer check'],
   },
   {
-    id: 'faq-7',
-    category: 'Hybrid & EV',
-    question: 'Do you repair and recondition Toyota, Honda, and Lexus hybrid battery packs, or just replace them?',
-    answer: 'We specialize in component-level hybrid battery reconditioning, saving vehicle owners 60% to 70% compared to full battery replacement costs:',
+    id: 'faq-prc-2',
+    category: 'Pricing & Booking',
+    question: 'How do I book an appointment, and what payment methods do you accept?',
+    answer: 'Booking is simple: reserve online via our interactive website booking portal, call our workshop helpline at 0333-0177717, or message us on WhatsApp. Booking in advance reserves a dedicated lift bay and assigns a master technician to your car. We accept cash, major credit/debit cards (Visa, Mastercard), PayPak, online bank transfers, and corporate account invoicing.',
     keyHighlights: [
-      'Individual Cell Module Testing: Automated CADEX battery analyzer load testing to isolate weak or failing modules',
-      'Cell Re-Balancing: Equalizing voltage profiles across all 28+ modules to within 0.02V for maximum energy efficiency',
-      'Busbar De-Oxidation: Ultrasonic cleaning and nickel plating of corroded copper busbars to prevent resistance overheating',
-      'Cooling Blower Service: Deep cleaning hybrid battery cooling fans and ducting to prevent heat degradation',
+      'Online & WhatsApp Reservation: Instant booking confirmation with preferred time slot and technician assignment',
+      'Multiple Payment Methods: Cash, debit/credit cards, direct 1Link bank transfer, and corporate invoicing',
+      'Transparent Digital Estimates: Detailed itemized invoice with zero hidden charges or unapproved work',
     ],
     details: [
-      'Diagnostic Analysis: When a "Check Hybrid System" or error code P0A80 appears (Toyota Prius, Aqua, Camry, Vezel, Lexus RX), dealerships typically quote 400,000+ PKR for a new pack. At HyperTune, we run deep discharge and internal resistance tests on each module.',
-      'Module Replacement & Matching: Only degraded modules falling below 65% capacity are replaced with tested, capacity-matched Panasonic or Primearth EV cells, ensuring uniform load distribution across the battery pack.',
-      'Restored Fuel Efficiency: Proper battery balancing restores electric EV mode duration, improves acceleration response, and brings fuel average back to factory figures (20-25 km/L).',
+      'Same-day emergency drive-ins are accepted based on bay availability, though prior booking is strongly advised.',
+      'All payments receive official computer-generated receipts and warranty registration certificates.',
     ],
-    comprehensiveOverview: `At HyperTune Garage, we specialize in high-voltage hybrid battery reconditioning and module-level repair for Toyota (Prius, Aqua, Camry, Corolla Cross), Honda (Vezel, Fit, Grace, Accord), and Lexus (RX450h, CT200h) hybrid vehicles. When the dreaded "Check Hybrid System" warning light or diagnostic fault codes P0A80 / P0A7F appear on your dashboard, main dealerships routinely inform owners that the entire battery assembly must be replaced at costs exceeding 400,000 to 700,000 PKR. However, in over 85% of cases, the entire pack has not failed; rather, only 2 or 3 individual module cells out of 28 to 34 total modules have lost milliampere-hour (mAh) capacity or developed elevated internal electrical resistance. Our specialized Hybrid Tech Laboratory resolves this at a fraction of the cost through a scientific 5-stage reconditioning process. First, the high-voltage pack is safely isolated and extracted by certified high-voltage technicians. Second, each individual Nickel-Metal Hydride (NiMH) or Lithium-ion module is connected to automated CADEX computerized battery analyzers to conduct deep charge/discharge cycles, measuring exact amp-hour capacity, internal resistance (mΩ), and thermal expansion under heavy load. Third, defective or low-capacity modules are replaced with fresh, laboratory-tested Panasonic or Primearth EV cells that are carefully matched for voltage, internal resistance, and capacity curve to ensure equal load sharing. Fourth, copper busbars connecting the battery modules—which heavily oxidize in humid Pakistani weather causing electrical bottlenecks and heat build-up—undergo ultrasonic acid cleaning and nickel electroplating to restore 100% electrical conductivity. Fifth, the entire battery cooling fan assembly and ventilation ducts are thoroughly dismantled and chemical-cleaned to eliminate dust blockages that cause thermal throttling. Finally, the reassembled pack undergoes high-current active cell balancing until module voltage variations are locked within 0.02 Volts. This restores factory EV electric drive mode, smooth engine auto-stop transitions, and original fuel averages (20-25 km/L) with a 12-Month Warranty.`,
-  },
-  {
-    id: 'faq-8',
-    category: 'General & Booking',
-    question: 'Where are your workshop locations, and how do I schedule service?',
-    answer: 'Our operational Flagship Hub is in Islamabad, and our Rawalpindi Hub is currently under development:',
-    keyHighlights: [
-      'Islamabad Flagship Hub (Operational): Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan - Full-service studio with PPF clean room, 3D alignment, and diagnostics lab',
-      'Rawalpindi Hub (Opening Soon): Currently under development. Stay tuned for the official launch announcement',
-      'Operating Hours (Islamabad Hub): Saturday – Thursday: 10:00 AM – 10:00 PM | Friday: CLOSED (Weekly Holiday)',
-    ],
-    details: [
-      'Booking Process: You can reserve your service slot online via our website booking tool, call our direct helpline, or send a WhatsApp message. Booking in advance reserves a dedicated lift bay and assigns a master engineer to your vehicle upon arrival.',
-      'Customer Lounge Amenities: Enjoy complimentary espresso, high-speed Wi-Fi, private workstation desks, and live HD video monitors showing your car being serviced in real-time.',
-      'Payment Methods: We accept cash, major credit/debit cards (Visa, MasterCard), bank wire transfers, and corporate account invoicing.',
-    ],
-    comprehensiveOverview: `HyperTune Garage provides premium automotive care and computerized diagnostics for vehicle owners across the twin cities. Our fully operational Islamabad Flagship Studio is situated at the Police Foundation Automotive Hub (offering quick access from Sectors E-11, F-10, F-11, PWD, and DHA). This location features pressurized dust-free clean rooms, climate-controlled infrared paint curing booths, and specialized vehicle detailing bays dedicated to Paint Protection Film (PPF), 9H Ceramic coatings, and executive vehicle maintenance. Our new Rawalpindi Hub is currently under development to expand our footprint. In the meantime, all vehicle services and inquiries are fulfilled at our Islamabad Flagship Hub. Scheduling an appointment is quick: you can utilize the online booking tool, call 0333-0177717, or connect via WhatsApp.`,
-  },
-  {
-    id: 'faq-9',
-    category: 'General & Booking',
-    question: 'Do you offer executive vehicle pick-up and drop-off service in Islamabad?',
-    answer: 'Yes! We provide safe, insured concierge valet pick-up and drop-off services across Islamabad:',
-    keyHighlights: [
-      'Valet Concierge Pick-Up: Professional, background-checked drivers pick up your vehicle directly from your home or office',
-      'Digital Intake Video Walkaround: 360-degree inspection report with fuel and odometer logs sent immediately to your phone',
-      'Coverage Sectors: Islamabad (F-6, F-7, F-8, F-10, F-11, G-11, E-11, DHA Phase 1-5, Bahria Town)',
-    ],
-    details: [
-      'Service Booking: Simply request Concierge Pick-Up during your online reservation or via WhatsApp customer support.',
-      'Vehicle Intake Inspection: When our valet driver picks up your vehicle, a digital 360-degree walkaround video and inventory report (odometer reading, fuel level, existing minor blemishes) is generated and sent to your WhatsApp.',
-      'Drop-off Delivery: Once servicing or PPF application is complete, your vehicle undergoes a final QA inspection, detailing wipe-down, and is delivered back to your doorstep in pristine condition.',
-    ],
-    comprehensiveOverview: `Yes, HyperTune Garage provides premium executive concierge vehicle pick-up and drop-off services across residential and commercial sectors of Islamabad. For routine maintenance, PPF application, brake servicing, or scheduled repairs, we offer our Executive Concierge Valet Service. A uniformed, background-checked, and fully insured HyperTune professional driver will pick up your vehicle directly from your residence, office, or embassy anywhere in Islamabad (F-6, F-7, F-8, F-10, F-11, G-11, E-11, Diplomatic Enclave, DHA Phases 1–5, Bahria Town). Upon arrival at your location, our driver conducts a comprehensive digital 360-degree intake walkaround, logging odometer readings, fuel levels, and existing exterior conditions into a digital report sent instantly to your phone. Throughout transit and workshop servicing, your vehicle is fully covered under our garage transit insurance policy. Once all servicing, quality assurance testing, and final detailing cleanups are finalized, your vehicle is delivered back to your specified location in spotless, road-ready condition.`,
+    comprehensiveOverview: 'Scheduling vehicle service at HyperTune Garage is quick and transparent. Customers can utilize our online appointment scheduler to pick their desired date, time slot, and required service category, or send a quick WhatsApp message to our service reception. Before any physical work begins, an itemized digital estimate is issued for client approval. We accept all major payment avenues including digital banking and cards, providing itemized invoices and official warranty certificates.',
+    relatedService: { title: 'Maintenance & Servicing', href: '/services/maintenance-servicing/' },
+    tags: ['booking', 'appointment', 'payment', 'whatsapp', 'pricing', 'transparent'],
   },
 ];

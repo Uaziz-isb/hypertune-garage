@@ -74,7 +74,7 @@ function verifyImages() {
   console.log(`📁 Asset Directory Scanned:`);
   console.log(`   - public/images: ${fs.readdirSync('public/images').length} files`);
   console.log(`\n🔍 Image Files Inspected: ${totalChecked}`);
-  console.log(`❌ Corrupted Files Found: ${totalCorrupt}`);
+  console.log(totalCorrupt === 0 ? '   ✅ Corrupted Files Found: 0' : `❌ Corrupted Files Found: ${totalCorrupt}`);
 
   if (totalCorrupt > 0) {
     console.log('\nCorrupted files details:');

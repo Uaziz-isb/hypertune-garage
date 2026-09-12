@@ -1,5 +1,6 @@
 import { ServiceItem } from '../types';
 import { images, serviceImageVariants } from './images';
+import { getRouteMetadata } from './metadataRegistry';
 
 const baseServicesData: ServiceItem[] = [
   {
@@ -46,11 +47,27 @@ const baseServicesData: ServiceItem[] = [
     faqs: [
       {
         question: 'What is Paint Protection Film (PPF) and how does self-healing work?',
-        answer: 'PPF is a thick elastomeric TPU film that physically absorbs stone chips. The clear topcoat self-heals minor scratches and swirl marks when exposed to heat or sunlight.',
+        answer: 'Paint Protection Film (PPF) is an optical-grade thermoplastic polyurethane (TPU) barrier engineered with an elastomeric clear coat. When exposed to sunlight or heat from warm water, the polymer chains re-align to erase swirl marks, wash scratches, and stone abrasions automatically.',
       },
       {
-        question: 'Will PPF damage my original paint when removed?',
-        answer: 'Not at all! We use premium imported acrylic adhesives that peel away cleanly with zero sticky residue, preserving original factory paint.',
+        question: 'Will PPF damage my original factory paint when removed?',
+        answer: 'Not at all. We utilize premium imported films formulated with ultra-stable, repositionable acrylic adhesives that peel away cleanly with zero sticky residue or clear coat peeling, preserving 100% of your factory paint thickness and resale value.',
+      },
+      {
+        question: 'What is the difference between TPU and PVC PPF in Pakistan’s climate?',
+        answer: 'Cheap PVC (vinyl) films turn yellow, crack, and bake onto the clear coat within 6 to 12 months under Islamabad’s intense UV rays and 45°C summer heat. Our premium aliphatic TPU films resist UV degradation, remain crystal clear, and carry a 5 to 10-year manufacturer warranty against yellowing and bubbling.',
+      },
+      {
+        question: 'How do you install PPF without cutting on the vehicle’s paint?',
+        answer: 'We employ precision computerized CAD plotters pre-loaded with digital templates for your exact vehicle make and model. Every panel is pre-cut before reaching the vehicle, eliminating the need for razor blades on your original paintwork, and edges are wrapped seamlessly around panel borders.',
+      },
+      {
+        question: 'How long does a full vehicle PPF wrap take and what warranty is provided?',
+        answer: 'A full exterior TPU PPF installation takes 2 to 4 business days. This timeframe covers decontamination foam washing, clay-bar prep, two-stage paint correction, computerized film plotting, clean-room installation, and infrared thermal curing backed by a 5 to 10-year warranty.',
+      },
+      {
+        question: 'Can I wash and wax my car normally after installing PPF?',
+        answer: 'Yes. After a 7-day initial curing period, you can wash your car normally. Because our TPU films feature an integrated hydrophobic topcoat, dirt and water slide off easily without requiring traditional paste waxes, though ceramic booster sprays are recommended for maximum gloss.',
       },
     ],
     seo: {
@@ -120,11 +137,27 @@ const baseServicesData: ServiceItem[] = [
     faqs: [
       {
         question: 'What is included in full Car Detailing at HyperTune Garage?',
-        answer: 'Full detailing includes exterior paint decontamination, multi-stage machine paint correction, 9H ceramic coating layer, deep interior steam cleaning, leather conditioning, engine bay wash, and headlight restoration.',
+        answer: 'Full detailing includes snow foam decontamination, iron fallout removal, clay-bar cleansing, multi-stage dual-action paint correction to remove 95%+ of swirl marks, 9H nano-ceramic coating, hot steam cabin extraction, leather nourishment, engine bay cleaning, and headlight UV restoration.',
       },
       {
-        question: 'How long does 9H Ceramic Coating last?',
-        answer: 'Our professional 9H ceramic glass coatings provide extreme water beading and high-gloss protection for 2 to 5 years depending on maintenance.',
+        question: 'How long does 9H Ceramic Coating last in Islamabad’s climate?',
+        answer: 'Our professional-grade 9H nano-ceramic coatings provide durable hydrophobic protection, UV defense, and deep optical gloss for 2 to 5 years, provided the vehicle is washed with pH-neutral shampoo and maintained with periodic ceramic booster sprays.',
+      },
+      {
+        question: 'What is the difference between Ceramic Coating and Paint Protection Film (PPF)?',
+        answer: 'Ceramic coating is a liquid silica polymer that chemically bonds to clear coat, providing extreme slickness, hydrophobic water beading, and UV gloss, but it cannot prevent physical stone chips. PPF is a thick 8-mil physical TPU shield that absorbs stone impact. Many clients apply PPF on high-impact front zones and ceramic coating on remaining panels.',
+      },
+      {
+        question: 'Can interior steam detailing remove stubborn smoke, pet, and damp odors?',
+        answer: 'Yes. We utilize high-temperature 140°C dry steam extraction that penetrates deep into carpet fibers and seat foam to kill odor-causing bacteria, mold spores, and allergens, followed by an industrial ozone generator treatment that neutralizes organic odors at the molecular level.',
+      },
+      {
+        question: 'How many microns of paint are removed during multi-stage paint correction?',
+        answer: 'We measure paint thickness across every panel using digital magnetic gauge meters before polishing. Professional dual-action correction removes only 1 to 3 microns of the standard 35 to 50-micron factory clear coat, safely eliminating swirl marks while preserving maximum protective depth.',
+      },
+      {
+        question: 'How should I maintain my car after receiving a ceramic coating treatment?',
+        answer: 'Avoid washing the vehicle for 7 days while the ceramic layer fully cures. Afterwards, use a two-bucket wash technique with microfiber mitts and pH-neutral car wash shampoo. Avoid harsh roadside degreasers, acid-based wheel cleaners, and abrasive dry wiping that can scratch the surface.',
       },
     ],
     seo: {
@@ -194,12 +227,28 @@ const baseServicesData: ServiceItem[] = [
     ],
     faqs: [
       {
-        question: 'How do I know if my engine needs a repair or a full overhaul?',
-        answer: 'Our technicians conduct a 4-point diagnostic test including cylinder compression, leak-down test, oil pressure check, and scope camera inspection. If wear is limited to gaskets or sensors, we perform targeted repair; if internal pistons or bearings are damaged, a full rebuild is recommended.',
+        question: 'How do I know if my engine needs a minor repair or a full overhaul?',
+        answer: 'Our master technicians perform comprehensive diagnostics including cylinder compression testing, cylinder leak-down analysis, oil pressure measurement, and borescope camera inspection. If issues are isolated to valve cover gaskets, oil cooler seals, or timing sensors, we perform targeted repairs. If piston rings, cylinder walls, or crankshaft main bearings show heavy scoring, a precision rebuild is recommended.',
       },
       {
         question: 'What is included in HyperTune Garage Engine Maintenance & Overhaul?',
-        answer: 'Engine overhaul includes block resurfacing, precision cylinder honing, new OEM pistons, rings, bearings, timing chain replacement, valve clearance adjustment, and ultrasonic fuel injector servicing.',
+        answer: 'A master engine overhaul includes engine block ultrasonic cleaning, precision line boring and cylinder honing, brand new OEM pistons, rings, rod bearings, crankshaft polishing, complete cylinder head valve seat re-cutting, new valve stem seals, OEM timing chain kits, water pump replacement, and full gasket renewal.',
+      },
+      {
+        question: 'What is the recommended break-in protocol after an engine rebuild?',
+        answer: 'We recommend driving moderately below 3,000 RPM for the first 1,000 km without towing or harsh acceleration. At the 1,000 km milestone, return to HyperTune Garage for a complimentary oil and filter change, torque check on head studs, and diagnostic sensor review to ensure optimal piston ring seating.',
+      },
+      {
+        question: 'Why does my car engine overheat in Islamabad summer traffic?',
+        answer: 'Overheating in 40°C+ twin-city traffic is frequently caused by mineral scale clogging the radiator core from tap water usage, a weakened water pump impeller, a stuck thermostat, or failed electric radiator fan relays. We pressure-test the cooling circuit and refill with genuine 50/50 organic coolant.',
+      },
+      {
+        question: 'Do you use genuine OEM engine components for Japanese and German vehicles?',
+        answer: 'Yes. We strictly source genuine OEM engine parts with verifiable part numbers (Toyota Genuine, Honda OEM, BMW Genuine, Mercedes-Benz OEM) and premium Tier-1 Japanese and German component manufacturers such as Mahle, Victor Reinz, Aisin, and Denso.',
+      },
+      {
+        question: 'What warranty do you offer on master engine overhauls?',
+        answer: 'All master engine overhauls and internal mechanical rebuilds performed at HyperTune Garage are backed by a comprehensive 12-month or 20,000 km written warranty covering workmanship and installed internal components.',
       },
     ],
     seo: {
@@ -265,11 +314,27 @@ const baseServicesData: ServiceItem[] = [
     faqs: [
       {
         question: 'Can your pre-purchase inspection detect if a car has been in a major accident?',
-        answer: 'Yes! We measure panel paint thickness in microns to identify body filler (poti), inspect factory spot welds, check frame rail straightness, and verify airbag module deployment history.',
+        answer: 'Yes. Our 150-point pre-purchase inspection utilizes digital paint depth gauges to measure clear coat microns on every metal and plastic panel, detecting hidden body filler (poti) and repainted sections. We also inspect chassis frame rail straightness on our hydraulic lifts, factory spot welds, radiator support pillars, and airbag deployment history.',
       },
       {
         question: 'Do you offer mobile on-site pre-purchase car inspections in Islamabad/Rawalpindi?',
-        answer: 'We strongly recommend bringing the vehicle to our workshop where we can lift it on hydraulic ramps for undercarriage checks, but we also offer mobile inspection teams across Islamabad & Rawalpindi upon request.',
+        answer: 'Yes. While an in-workshop inspection is recommended because it allows full undercarriage hydraulic lift access, our mobile inspection vans equipped with portable diagnostic scanners, paint depth gauges, and battery analyzers can inspect vehicles across Islamabad and Rawalpindi at dealerships or seller residences.',
+      },
+      {
+        question: 'What is the difference between a cheap OBD2 code reader and your dealer-level diagnostic scanners?',
+        answer: 'Basic handheld scanners only read generic engine emissions fault codes (P-codes). HyperTune Garage utilizes authentic dealer-level diagnostic software suites (BMW ISTA, Mercedes Xentry, Audi ODIS, Porsche PIWIS III, Toyota Techstream, and Autel MaxiSys Elite) that communicate with all vehicle modules including ABS, transmission, airbag, body control, and suspension.',
+      },
+      {
+        question: 'Can you detect tampered or reversed digital odometers during inspection?',
+        answer: 'Yes. Dishonest sellers often alter the instrument cluster mileage, but vehicle control units such as the Transmission Control Module (TCM), ABS control module, Airbag module, and ignition key immobilizer store independent operational hours and distance logs that our dealer software cross-checks to reveal discrepancies.',
+      },
+      {
+        question: 'How detailed is your pre-purchase inspection report and how is it delivered?',
+        answer: 'Clients receive a comprehensive digital PDF report within 60 minutes of inspection completion. The report includes 50+ high-resolution photos, paint micron readings for every panel, computerized ECU scan printouts, tire and brake wear measurements, and an estimated repair cost breakdown.',
+      },
+      {
+        question: 'What does your high-voltage hybrid battery health diagnostic check?',
+        answer: 'For hybrid vehicles (Prius, Aqua, Vezel, Cross, Camry, Lexus), our scan tools read individual battery block voltages, internal cell resistance (milliohms), state-of-charge delta variation, hybrid cooling fan airflow, and inverter coolant pump speed to detect failing battery packs before buying.',
       },
     ],
     seo: {
@@ -337,11 +402,27 @@ const baseServicesData: ServiceItem[] = [
     faqs: [
       {
         question: 'Which engine oil viscosity should I use for Pakistani summer temperatures?',
-        answer: 'We recommend 0W-20 for modern Japanese hybrid cars, and 5W-30 or 5W-40 fully synthetic oils for turbo gasoline and European vehicles to withstand summer ambient heat exceeding 45°C in Islamabad and Rawalpindi.',
+        answer: 'For modern Japanese hybrid vehicles, 0W-20 or 5W-20 fully synthetic oils provide optimal fuel efficiency and cold-start lubrication. For turbocharged gasoline engines, modern crossovers, and European vehicles operating in 40°C to 47°C summer ambient heat, we recommend 5W-30 or 5W-40 full synthetic oils meeting API SP and European ACEA specs.',
       },
       {
-        question: 'What is included in the 50-Point Inspection?',
-        answer: 'The audit covers brake pad thickness, battery cold-cranking amps, suspension play, coolant freezing/boiling point, transmission fluid condition, drive belt tension, tire tread depth, and computerized diagnostic fault scan.',
+        question: 'What is included in the 50-Point Periodic Maintenance Inspection?',
+        answer: 'Our 50-point checklist inspects engine oil and filter condition, air intake filter, cabin pollen microfilter, brake pad thickness, brake fluid moisture percentage, cooling system pressure and boiling point, battery health and cranking voltage, suspension play, tire pressure, and a comprehensive computerized diagnostic scan.',
+      },
+      {
+        question: 'How frequently should spark plugs, fuel filters, and cabin air filters be replaced?',
+        answer: 'Standard nickel spark plugs should be changed every 20,000 km, while OEM Iridium/Platinum plugs last 80,000 to 100,000 km. Due to heavy airborne dust in the twin cities, engine air and cabin pollen filters should be inspected every 5,000 km and replaced every 10,000 to 15,000 km.',
+      },
+      {
+        question: 'Why is tap water dangerous for radiators in Islamabad and Rawalpindi?',
+        answer: 'Tap water contains dissolved minerals and chlorine that cause severe rust, electrolysis, and scaling inside the engine block, clogging narrow radiator passages and eroding water pump seals. We use 50/50 premixed demineralized ethylene glycol coolant with organic acid technology (OAT) that protects up to 108°C boiling point.',
+      },
+      {
+        question: 'Do you reset vehicle maintenance service reminder lights and electronic monitors?',
+        answer: 'Yes. After completing routine servicing, we hook up our diagnostic interface to reset maintenance reminder intervals, oil life monitors, brake pad wear sensors, and inspection countdowns in your instrument cluster according to factory reset procedures.',
+      },
+      {
+        question: 'How long does a standard periodic maintenance service take at your workshop?',
+        answer: 'A routine synthetic oil change, OEM filter replacement, and full 50-point vehicle inspection is typically completed within 45 to 60 minutes. You can relax in our air-conditioned customer lounge with Wi-Fi while our technicians service your vehicle.',
       },
     ],
     seo: {
@@ -409,12 +490,28 @@ const baseServicesData: ServiceItem[] = [
     ],
     faqs: [
       {
-        question: 'How often should I align my car wheels in Islamabad & Rawalpindi?',
-        answer: 'We recommend 3D laser wheel alignment every 10,000 km or immediately after hitting deep road potholes or installing new tires/suspension parts.',
+        question: 'How often should I align my car wheels and check suspension in Islamabad & Rawalpindi?',
+        answer: 'We recommend computerized 3D laser wheel alignment and suspension inspection every 10,000 km, or immediately after hitting deep road potholes, curbs, or installing new tires. Proper alignment prevents uneven tire wear and ensures straight highway tracking.',
       },
       {
-        question: 'What causes squealing brake noises?',
-        answer: 'Brake squeal occurs due to worn friction pads, glazed brake rotors, or missing anti-squeal shims. We inspect pad thickness, rotor runout, and install premium ceramic brake pads with anti-vibration lubricant.',
+        question: 'What causes squealing or grinding brake noises and pedal pulsation?',
+        answer: 'High-pitched squealing indicates that brake pads have reached their minimum wear indicator. Grinding noises signal metal-to-metal contact between worn backing plates and brake rotors. Pulsating pedals during braking are caused by warped brake rotors due to rapid temperature cycling.',
+      },
+      {
+        question: 'What is the difference between brake rotor resurfacing (lathe skimming) and replacement?',
+        answer: 'If brake rotors exhibit surface grooves or minor warping but remain safely above the manufacturer’s minimum discarded thickness stamp, our on-car and off-car precision brake lathe skims the surface flat. If the rotor is below minimum thickness or heavily heat-cracked, brand new OEM rotors must be installed.',
+      },
+      {
+        question: 'Why does my steering wheel vibrate at highway speeds on the Islamabad Highway?',
+        answer: 'Highway steering vibration between 80 km/h and 120 km/h is commonly caused by unbalanced front wheels, bent wheel rims, worn inner or outer tie rod ends, or loose steering rack bushings. We perform high-speed dynamic wheel balancing and inspect steering linkage tolerance.',
+      },
+      {
+        question: 'Can you rebuild air suspension struts for Mercedes Airmatic, Audi Adaptive, and Range Rover?',
+        answer: 'Yes. Instead of purchasing expensive whole strut assemblies, our suspension specialists rebuild leaking air suspension rubber bellows, replace internal seals, repair suspension air compressors, and calibrate ride height sensors using dealer computer software.',
+      },
+      {
+        question: 'What warranty is provided on suspension bushings, control arms, and shock absorbers?',
+        answer: 'All genuine OEM and premium aftermarket suspension components installed by HyperTune Garage (such as Lemförder, 555, Kayaba, Bilstein, and TRW) come backed by our 12-month or 20,000 km warranty against premature wear or knocking.',
       },
     ],
     seo: {
@@ -480,12 +577,28 @@ const baseServicesData: ServiceItem[] = [
     ],
     faqs: [
       {
-        question: 'Why does Honda Vezel or Grace transmission jerk during summer?',
-        answer: 'Honda Dual-Clutch (DCT) gearboxes experience clutch actuator fluid breakdown in Pakistani heat. We perform a specialized DOT4 clutch fluid flush and computerized actuator relearn to restore smooth gear shifts.',
+        question: 'Why does Honda Vezel, Grace, or Fit dual-clutch transmission jerk or show high temperature warnings?',
+        answer: 'Honda i-DCD dry dual-clutch transmissions overheat in Pakistani stop-and-go summer traffic due to degraded clutch actuator brake fluid (DOT 4) and clutch friction wear. HyperTune Garage performs a specialized clutch actuator fluid flush, high-pressure bleeding, and Honda diagnostic computer clutch kiss-point adaptation relearn to restore smooth shifting.',
       },
       {
         question: 'How often should CVT transmission fluid be changed in Pakistan?',
-        answer: 'We recommend replacing CVT fluid and internal filters every 40,000 km to prevent belt slippage and costly transmission failure.',
+        answer: 'Due to extreme summer ambient temperatures and twin-city stop-and-go traffic, CVT fluid degrades significantly faster. We recommend replacing CVT fluid and internal pan filters every 30,000 to 40,000 km using only genuine factory-specified fluids (Toyota TC/FE, Honda HCF-2, Nissan NS-3, Suzuki Green 2) with computer deterioration index resets.',
+      },
+      {
+        question: 'What are the warning signs of mechatronic or clutch failure in German DSG/S-Tronic gearboxes?',
+        answer: 'Common symptoms include violent juddering when pulling away in 1st or 2nd gear, delayed reverse engagement, sudden transmission emergency mode warnings, or oil leaks from the mechatronic breather valve. We repair mechatronic hydraulic pressure circuits and replace dual-clutch packs.',
+      },
+      {
+        question: 'Do you perform transmission computer adaptations and clutch point relearns?',
+        answer: 'Yes. After any transmission fluid replacement, solenoid service, or clutch overhaul, we hook up OEM diagnostic software to perform clutch touch-point calibration, shift drum relearn, and line pressure adaptation drive cycles.',
+      },
+      {
+        question: 'What is the difference between a transmission fluid drain-and-fill versus a pressurized flush?',
+        answer: 'A standard gravity drain-and-fill replaces 40% to 50% of the fluid resting in the pan, which is safe for regular maintenance. For neglected transmissions with burnt fluid, our automated transmission exchanger gently exchanges 100% of the fluid throughout the torque converter and cooler lines without harming delicate internal seals.',
+      },
+      {
+        question: 'Can you repair differential whine and transfer case clunking on 4x4 vehicles like Prado and Fortuner?',
+        answer: 'Yes. We inspect differential ring-and-pinion gear backlash, replace worn carrier bearings and pinion seals, and service electronic 4WD transfer case actuator motors with genuine synthetic gear lubricants (75W-90 / 80W-90 GL-5).',
       },
     ],
     seo: {
@@ -549,12 +662,28 @@ const baseServicesData: ServiceItem[] = [
     ],
     faqs: [
       {
-        question: 'Will a vehicle wrap damage my car’s original paint?',
-        answer: 'No! Automotive cast vinyl wraps protect your original paint from UV rays and road debris. When removed professionally, the wrap leaves no adhesive residue and leaves paint intact.',
+        question: 'Will a vehicle vinyl wrap damage my car’s original paint?',
+        answer: 'No. Premium cast automotive vinyl wraps from Avery Dennison, 3M, and Inozetek actually safeguard your factory paintwork from UV sun bleaching, minor rock chips, and bird droppings. When peeled professionally, the wrap comes off cleanly without leaving adhesive residue or damaging clear coat.',
       },
       {
-        question: 'How long does a car wrap last in Pakistan?',
-        answer: 'High-quality cast vinyl wraps (Avery/3M) last 3 to 5 years under Pakistani sun when cared for properly.',
+        question: 'How long does a car wrap last in Pakistan’s climate?',
+        answer: 'High-quality cast vinyl wraps last between 3 to 5 years under Pakistani sun when properly maintained. Horizontal surfaces (hood, roof, and trunk) endure the highest UV exposure, so regular washing and parking in covered shade extends wrap longevity.',
+      },
+      {
+        question: 'What is the difference between a color change vinyl wrap and Paint Protection Film (PPF)?',
+        answer: 'Color change vinyl wrap is a thin 3 to 4-mil PVC film primarily designed to alter vehicle color, finish (satin, matte, gloss, metallic), and appearance. PPF is a much thicker 8-mil thermoplastic polyurethane (TPU) film engineered specifically for impact absorption and self-healing rock chip defense.',
+      },
+      {
+        question: 'How do you prep the paintwork before applying a vehicle wrap?',
+        answer: 'Surface preparation is vital for wrap longevity. We perform a full exterior decontamination wash, chemical clay bar extraction to eliminate embedded tar and road grime, panel alcohol wipe-down, and trim disassembly to tuck edges deeply behind rubbers and moldings.',
+      },
+      {
+        question: 'Can individual damaged wrap panels be replaced without wrapping the whole car?',
+        answer: 'Yes. If a fender, bumper, or door panel gets scratched in an accident, we can remove the vinyl from that specific panel and install a fresh piece matching your vinyl roll batch code without disturbing the rest of the vehicle wrap.',
+      },
+      {
+        question: 'Can wrapped vehicles be washed at standard commercial car wash stations?',
+        answer: 'We recommend hand washing wrapped vehicles using microfiber wash mitts and pH-neutral automotive soap. High-pressure jet washers should be kept at least 12 to 18 inches away from panel edges and seams to prevent film lifting.',
       },
     ],
     seo: {
@@ -620,12 +749,28 @@ const baseServicesData: ServiceItem[] = [
     ],
     faqs: [
       {
-        question: 'How do you guarantee an exact paint color match?',
-        answer: 'We use digital spectrophotometers to analyze your car’s current paint tint and mix custom Standox European paint formulas to guarantee 100% seamless color matching.',
+        question: 'How do you guarantee an exact paint color match for factory and metallic colors?',
+        answer: 'We utilize digital optical spectrophotometers to scan your vehicle’s exact current paint condition and clear coat oxidation. We then formulate precision paint codes using premium European Standox and Glasurit computerized mixing systems to guarantee an undetectable, seamless match across adjacent panels.',
       },
       {
-        question: 'Do you help with car insurance collision claims?',
-        answer: 'Yes, we assist with insurance claim estimates, surveyor inspections, and repairs for all major insurance companies in Pakistan.',
+        question: 'Do you assist with private and corporate car insurance collision claims in Islamabad?',
+        answer: 'Yes. We work directly with all major insurance companies across Pakistan (including Adamjee, Jubilee, EFU, TPL, and Askari). We prepare official surveyor repair estimates, manage insurance inspection visits, and execute factory-standard collision repairs with zero stress for the car owner.',
+      },
+      {
+        question: 'What is computerized bake booth painting and why is it superior to open-air spray painting?',
+        answer: 'Our pressurized, downdraft thermal spray booth filters out 99.9% of dust particles, airborne bugs, and moisture before air touches wet paint. After spraying European high-solid clear coat, the booth bakes the vehicle at 65°C to 70°C, ensuring hard curing, high gloss, and factory durability.',
+      },
+      {
+        question: 'What is Paintless Dent Repair (PDR) and can it fix door dings without repainting?',
+        answer: 'PDR is a specialized metal sculpting technique using surgical-grade rods and suction tools to massage minor dents, door dings, and hail damage from behind the body panel without disturbing or repainting the factory clear coat, preserving 100% original vehicle paint value.',
+      },
+      {
+        question: 'What warranty is provided against clear coat peeling, bubbling, and color fading?',
+        answer: 'All full-panel paint jobs and collision repairs executed in our heated bake booth come backed by our written warranty guaranteeing against clear coat flaking, cracking, bubbling, and premature UV color fading.',
+      },
+      {
+        question: 'How do you treat rust and corrosion before repainting body panels?',
+        answer: 'We grind away oxidized metal down to clean virgin steel, apply chemical rust convertors, and seal with high-adhesion anti-corrosion zinc epoxy primers before applying any body fillers or basecoats, ensuring rust never bubbles back through the finished paintwork.',
       },
     ],
     seo: {
@@ -689,12 +834,28 @@ const baseServicesData: ServiceItem[] = [
     ],
     faqs: [
       {
-        question: 'What body kit modifications do you install?',
-        answer: 'We supply and install front lips, side skirts, rear diffusers, trunk spoilers, carbon fiber hoods, wide body kits, sports bumpers, and custom grilles for sedans, sports cars, and SUVs.',
+        question: 'What body kit modifications and aerodynamic styling components do you install?',
+        answer: 'We supply and install front bumper splitters, side skirt extensions, aggressive rear diffusers, ducktail and GT trunk spoilers, carbon fiber vented hoods, wide-body fender flares, honeycomb mesh grilles, and complete body conversion packages (e.g. M-Sport for BMW, AMG styling for Mercedes, and Lexus F-Sport kits).',
       },
       {
-        question: 'Can you custom paint match body kits to my vehicle?',
-        answer: 'Yes! All body kit parts are painted in our computerized thermal spray booth to match your car’s exact paint shade.',
+        question: 'Can you custom paint match body kits to my vehicle’s factory color code?',
+        answer: 'Yes. All body kit parts (whether ABS plastic, polyurethane, or fiberglass) undergo thorough surface sanding, adhesion promotion primer application, and computerized spectrophotometer color matching inside our dust-free heated bake booth to guarantee exact factory alignment.',
+      },
+      {
+        question: 'Do body kit installations require permanent drilling into the factory bodywork?',
+        answer: 'Whenever possible, we utilize factory underside mounting holes, existing chassis brackets, and 3M VHB industrial automotive adhesive tapes. If structural fasteners are required for high-downforce spoilers or splitters, we drill precision holes treated with anti-rust zinc primers to protect factory metal.',
+      },
+      {
+        question: 'Can you upgrade standard headlights and taillights to modern LED / Matrix projector units?',
+        answer: 'Yes. We install OEM-style LED projector headlights, sequential dynamic turn signal taillights, and laser fog light conversions with plug-and-play wiring harnesses and CAN-bus decoders to eliminate dashboard bulb failure warnings.',
+      },
+      {
+        question: 'Can aftermarket exhaust tips and diffusers be safely installed without heat damage?',
+        answer: 'Yes. We custom weld stainless steel exhaust tips and install heat-reflective thermal insulation shielding behind rear bumpers and diffusers to ensure hot exhaust gases never melt or discolor aftermarket aero parts.',
+      },
+      {
+        question: 'Do your modifications comply with local Islamabad traffic inspection regulations?',
+        answer: 'Yes. We ensure all aerodynamic body components are securely bolted, do not exceed legal track width boundaries, and maintain proper ground clearance for safe navigation over twin-city speed breakers and ramp inclines.',
       },
     ],
     seo: {
@@ -780,19 +941,27 @@ const baseServicesData: ServiceItem[] = [
     faqs: [
       {
         question: 'Why is my car AC blowing warm air even after a gas recharge?',
-        answer: 'Gas loss indicates a microscopic leak in the cooling coil, condenser, or compressor seals. We perform nitrogen pressure testing to locate and permanently repair the leak before refilling.',
+        answer: 'Refrigerant gas only escapes if there is a physical leak in the AC circuit — such as an oxidized aluminum cooling coil (evaporator), stone-damaged condenser, loose O-ring seal, or leaking compressor shaft seal. Recharging gas without fixing the leak guarantees failure within days. We pressure-test with dry nitrogen to pinpoint and repair leaks before recharging.',
       },
       {
-        question: 'How long does a complete AC service and gas refill take?',
-        answer: 'Standard AC gas recharging and pressure testing takes 1 to 2 hours. Dashboard removal for evaporator cooling coil replacement is completed within 1 business day.',
+        question: 'How long does a complete AC service, leak test, and gas refill take?',
+        answer: 'A routine AC vacuum test, compressor oil injection, and precision refrigerant gas recharge takes 1 to 2 hours. If dashboard removal is necessary to replace an evaporator cooling coil, our technicians complete the entire teardown, replacement, and reassembly within 1 business day.',
       },
       {
-        question: 'Why does my car battery discharge overnight even with a new battery?',
-        answer: 'This is caused by a parasitic drain — an electronic module (such as an audio amp, tracker, door lock actuator, or ECU) remaining active after the engine is turned off. We trace the exact circuit using precision milliamp meters.',
+        question: 'Why does my car battery discharge overnight even with a brand new battery?',
+        answer: 'Overnight battery drain is caused by a parasitic electrical draw — an electronic control module, aftermarket tracker, infotainment amplifier, or interior door latch switch failing to enter low-power sleep mode after the ignition is switched off. We isolate the offending circuit using precision milliamp clamps.',
       },
       {
-        question: 'Can you fix automotive wiring shorts without replacing the whole harness?',
-        answer: 'Yes! Our master auto-electricians isolate damaged wires, solder military-grade splices with heat-shrink insulation, and protect lines with flame-retardant conduit.',
+        question: 'Can you fix automotive wiring shorts without replacing the entire dashboard harness?',
+        answer: 'Yes. Our senior auto-electricians trace wiring breaks, melted circuits, and rodent damage using digital oscilloscopes and factory wiring schematics. We solder repairs with military-grade splice crimps, heat-shrink insulation, and flame-retardant loom tape without unnecessary complete harness replacement.',
+      },
+      {
+        question: 'What type of AC compressor oil and refrigerant gas do you use?',
+        answer: 'We strictly use 100% pure virgin R134a and R1234yf refrigerants along with OEM-specified polyalkylene glycol (PAG) synthetic compressor oils (PAG 46, PAG 100) or non-conductive POE oils for hybrid/EV electric scroll compressors.',
+      },
+      {
+        question: 'Why does my car AC smell foul or musty when turned on in the morning?',
+        answer: 'Musty odors are caused by mold and bacterial mildew growing on the damp evaporator coil fins inside the dark ventilation box. We perform high-temperature steam duct cleaning, install an antibacterial activated charcoal cabin filter, and run an ozone gas purification cycle to eliminate odors.',
       },
     ],
     seo: {
@@ -859,12 +1028,28 @@ const baseServicesData: ServiceItem[] = [
     ],
     faqs: [
       {
-        question: 'Why should I use organic coolant instead of tap water in my radiator?',
-        answer: 'Tap water contains minerals that create corrosion, rust, and scale inside the engine block, destroying water pumps and causing head gasket failure. Genuine coolant elevates the boiling point to 108°C and lubricates the pump.',
+        question: 'Why should I use organic OAT coolant instead of tap water in my radiator?',
+        answer: 'Tap water boils at 100°C and contains hard minerals that corrode aluminum cylinder heads, dissolve water pump impellers, and coat radiator tubes in insulating limescale. High-performance Organic Acid Technology (OAT) coolant elevates boiling temperature to 108°C under pressure and protects against rust and cavitation.',
       },
       {
-        question: 'How often should fuel injectors be ultrasonically cleaned?',
-        answer: 'Due to local fuel quality in Pakistan, we recommend ultrasonic fuel injector cleaning and flow testing every 30,000 km for optimal fuel efficiency and throttle response.',
+        question: 'How often should fuel injectors be ultrasonically cleaned and flow-tested?',
+        answer: 'Due to variable fuel quality, high sulfur content, and dust in Pakistan, we recommend ultrasonic fuel injector cleaning every 30,000 to 40,000 km. We bathe injectors in heated ultrasonic tanks while pulsing nozzles, then measure spray patterns and flow balance on a digital test bench.',
+      },
+      {
+        question: 'What causes a choked catalytic converter and how does HyperTune restore exhaust flow?',
+        answer: 'Catalytic converters choke with unburnt carbon deposits and oil ash from dirty spark plugs or worn valve seals, causing sluggish acceleration and check engine codes (P0420). We use pressurized chemical decarbonizing foam to dissolve carbon build-up without requiring costly converter replacement.',
+      },
+      {
+        question: 'What causes coolant boiling and bubbling in the expansion reservoir?',
+        answer: 'Coolant boiling is typically caused by a blown head gasket allowing high-pressure exhaust gas into the water jacket, a defective radiator pressure cap failing to hold 0.9 to 1.1 bar pressure, or air pockets trapped inside the cooling circuit. We perform chemical combustion leak tests to verify head gasket integrity.',
+      },
+      {
+        question: 'Why does my car produce black, blue, or white exhaust smoke?',
+        answer: 'Black smoke indicates an overly rich air-fuel mixture caused by clogged fuel injectors, a faulty mass airflow (MAF) sensor, or dirty air filter. Blue smoke indicates engine oil burning from worn piston rings or valve stem seals. Thick sweet-smelling white smoke indicates coolant entering combustion chambers from a blown head gasket.',
+      },
+      {
+        question: 'Can a faulty oxygen sensor or stuck thermostat cause high fuel consumption?',
+        answer: 'Yes. An oxygen sensor reading falsely lean causes the engine computer to inject excessive fuel, increasing fuel consumption by 20% to 30%. Similarly, a thermostat stuck open prevents the engine from reaching its 90°C operating temperature, keeping the ECU in cold enrichment mode permanently.',
       },
     ],
     seo: {
@@ -886,10 +1071,17 @@ const baseServicesData: ServiceItem[] = [
 
 export const servicesData: ServiceItem[] = baseServicesData.map((s) => {
   const variant = serviceImageVariants[s.image];
+  const meta = getRouteMetadata(`/services/${s.slug}/`);
   return {
     ...s,
     imageSmall: variant?.small || s.image,
     imageSrcSet: variant?.srcSet,
+    seo: {
+      ...s.seo,
+      seoTitle: meta ? meta.title : (s.seo?.seoTitle || `${s.title} in Islamabad & Rawalpindi | HyperTune Garage`),
+      metaDescription: meta ? meta.description : (s.seo?.metaDescription || s.shortDesc),
+      h1Heading: s.seo?.h1Heading || s.title,
+    },
   };
 });
 

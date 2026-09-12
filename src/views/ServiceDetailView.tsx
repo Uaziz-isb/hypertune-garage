@@ -3,6 +3,7 @@ import { PageId } from '../types';
 import { getServiceBySlug, servicesData } from '../data/servicesData';
 import { images } from '../data/images';
 import { SEOHead } from '../components/SEOHead';
+import { FAQSection } from '../components/FAQSection';
 import {
   Wrench,
   ShieldCheck,
@@ -399,25 +400,16 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
 
       {/* FAQs Section */}
       {service.faqs.length > 0 && (
-        <section className="max-w-4xl mx-auto px-4 space-y-6">
-          <div className="text-center space-y-2">
-            <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
-              Expert Answers
-            </span>
-            <h2 className="text-2xl font-black text-white">Frequently Asked Questions</h2>
-          </div>
-          <div className="space-y-3">
-            {service.faqs.map((faq, i) => (
-              <div key={i} className="bg-[#0b121e] border border-slate-800 rounded-2xl p-5 space-y-2">
-                <h3 className="font-bold text-sm text-white flex items-center gap-2">
-                  <HelpCircle className="w-4 h-4 text-cyan-400 shrink-0" />
-                  <span>{faq.question}</span>
-                </h3>
-                <p className="text-xs text-slate-300 leading-relaxed pl-6">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <FAQSection
+          title={`${service.title} FAQs`}
+          subtitle="Expert Answers & Procedures"
+          contextName={service.title}
+          faqs={service.faqs}
+          pageType="service"
+          onNavigate={onNavigate}
+          onOpenBooking={() => onOpenBooking(service.id)}
+          centralFaqAnchorText="Browse all HyperTune Garage FAQs"
+        />
       )}
 
       {/* Internal Links to Related Services */}

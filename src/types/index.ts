@@ -114,6 +114,10 @@ export interface LocationItem {
   managerName?: string;
   image: string;
   imageSmall?: string;
+  seo?: {
+    title: string;
+    description: string;
+  };
 }
 
 export interface BlogPost {
@@ -133,6 +137,10 @@ export interface BlogPost {
   featuredImage: string;
   tags: string[];
   relatedServices: string[];
+  seo?: {
+    title: string;
+    description: string;
+  };
 }
 
 export interface ReviewItem {

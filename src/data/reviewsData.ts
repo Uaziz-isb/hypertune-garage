@@ -180,15 +180,15 @@ export const staticCustomerReviews: GoogleReviewItem[] = [
 export const googleBusinessData: GoogleBusinessData = {
   placeName: 'HyperTune Garage - PPF, Ceramic & German Automotive Specialists',
   rating: 4.8,
-  totalReviews: 27,
-  ratingDistribution: { 5: 25, 4: 2, 3: 0, 2: 0, 1: 0 },
+  totalReviews: 28,
+  ratingDistribution: { 5: 26, 4: 2, 3: 0, 2: 0, 1: 0 },
   googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=HyperTune+Garage',
   writeReviewUrl: 'https://search.google.com/local/writereview',
   source: 'static-curated-reviews',
   reviews: staticCustomerReviews,
 };
 
-// Legacy reviewsData array mapped directly from the 15 static reviews
+// Legacy reviewsData array mapped directly from the static customer reviews
 export const reviewsData: ReviewItem[] = staticCustomerReviews.map((r) => ({
   id: r.id,
   customerName: r.authorName,

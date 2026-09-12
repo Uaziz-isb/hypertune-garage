@@ -1,6 +1,7 @@
 import { servicesDataSSR, brandsDataSSR, locationsDataSSR, blogDataSSR, findServiceSSR } from '../data/ssrData';
 import { googleBusinessData } from '../data/reviewsData';
 import { faqData } from '../data/faqData';
+import { getRouteMetadata } from '../data/metadataRegistry';
 
 export interface RouteMetaInfo {
   title: string;
@@ -67,7 +68,7 @@ const BASE_BUSINESS_SCHEMA = (ogImage: string) => ({
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: '4.8',
-    reviewCount: '27',
+    reviewCount: String(googleBusinessData.totalReviews),
     bestRating: '5',
     worstRating: '1',
   },
@@ -143,21 +144,6 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
           name: service.title,
           item: canonicalUrl,
         });
-
-        if (service.faqs && service.faqs.length > 0) {
-          schemas.push({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: service.faqs.map((f) => ({
-              '@type': 'Question',
-              name: f.question,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: f.answer,
-              },
-            })),
-          });
-        }
       } else {
         isNotFound = true;
         title = '404 - Service Not Found | HyperTune Garage Islamabad';
@@ -196,21 +182,6 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
           name: brand.name,
           item: canonicalUrl,
         });
-
-        if (brand.faqs && brand.faqs.length > 0) {
-          schemas.push({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: brand.faqs.map((f) => ({
-              '@type': 'Question',
-              name: f.question,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: f.answer,
-              },
-            })),
-          });
-        }
       } else {
         isNotFound = true;
         title = '404 - Brand Specialist Not Found | HyperTune Garage';
@@ -378,7 +349,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       aggregateRating: {
         '@type': 'AggregateRating',
         ratingValue: '4.8',
-        reviewCount: '27',
+        reviewCount: String(googleBusinessData.totalReviews),
         bestRating: '5',
         worstRating: '1',
       },
@@ -406,20 +377,20 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       name: 'FAQ',
       item: canonicalUrl,
     });
-    if (faqData && faqData.length > 0) {
-      schemas.push({
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: faqData.map((f) => ({
-          '@type': 'Question',
-          name: f.question,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: f.comprehensiveOverview || f.details?.join(' ') || f.answer,
-          },
-        })),
-      });
-    }
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': canonicalUrl,
+      url: canonicalUrl,
+      name: 'Frequently Asked Questions (FAQ) | HyperTune Garage',
+      description: 'Comprehensive technical guidance covering Paint Protection Film (PPF), diagnostics, engine overhaul, suspension, AC repair, and booking in Islamabad.',
+      isPartOf: {
+        '@type': 'AutoRepair',
+        name: 'HyperTune Garage',
+        url: normalizeCanonicalUrl('/', baseUrl),
+        telephone: '+923330177717',
+      },
+    });
   } else if (root === 'contact' || root === 'contact-us') {
     title = 'Contact Us & Book Service | HyperTune Garage Islamabad';
     description = 'Get in touch with HyperTune Garage. Call 0333-0177717, chat on WhatsApp, or send an inquiry for vehicle repairs and PPF quotes.';
@@ -488,6 +459,12 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
     isNotFound = true;
     title = '404 - Page Not Found | HyperTune Garage Islamabad';
     description = 'The requested page could not be found. Explore HyperTune Garage automotive services, brand specialists, and workshop locations in Islamabad & Rawalpindi.';
+  }
+
+  const registryMeta = getRouteMetadata(rawPath);
+  if (registryMeta && !isNotFound) {
+    title = registryMeta.title;
+    description = registryMeta.description;
   }
 
   schemas.push({
@@ -750,6 +727,18 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
             </div>
           `).join('')}
         </div>
+
+        ${brand.faqs && brand.faqs.length > 0 ? `
+        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Frequently Asked Questions (${escapeHtml(brand.name.split(' ')[0])})</h2>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
+          ${brand.faqs.map((faq) => `
+            <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:16px;">
+              <h3 style="font-size:15px;font-weight:700;color:#ffffff;margin-bottom:6px;">${escapeHtml(faq.question)}</h3>
+              <p style="font-size:13px;color:#94a3b8;line-height:1.5;">${escapeHtml(faq.answer)}</p>
+            </div>
+          `).join('')}
+        </div>
+        ` : ''}
 
         <div style="background:#0b121e;border:1px solid #06b6d4;border-radius:16px;padding:24px;text-align:center;">
           <h3 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:8px;">Schedule ${escapeHtml(brand.name.split(' ')[0])} Service</h3>
@@ -1068,25 +1057,72 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
   } else if (root === 'faq' || root === 'faqs') {
     mainContentHtml = `
     <main style="max-width:1000px;margin:32px auto;padding:0 16px;">
-      <h1 style="font-size:36px;font-weight:900;color:#ffffff;text-align:center;margin-bottom:12px;">
-        Frequently Asked Questions (FAQ)
-      </h1>
-      <p style="font-size:16px;color:#94a3b8;text-align:center;margin-bottom:40px;">
-        Answers to common questions about auto repair warranties, PPF packages, booking slots, and payment methods.
-      </p>
-      <div style="display:flex;flex-direction:column;gap:16px;">
-        <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
-          <h2 style="font-size:18px;font-weight:700;color:#ffffff;margin-bottom:8px;">What warranty is offered on mechanical repairs?</h2>
-          <p style="font-size:14px;color:#cbd5e1;line-height:1.6;">We offer up to a 12-month / 20,000 km warranty on master engine overhauls, transmission rebuilds, and genuine OEM parts installations.</p>
-        </div>
-        <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
-          <h2 style="font-size:18px;font-weight:700;color:#ffffff;margin-bottom:8px;">How long does Paint Protection Film (PPF) take to install?</h2>
-          <p style="font-size:14px;color:#cbd5e1;line-height:1.6;">A full vehicle TPU PPF wrap takes 2 to 4 days, which includes multi-stage paint correction, panel disassembly, edge wrapping, and infrared heat curing.</p>
-        </div>
-        <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
-          <h2 style="font-size:18px;font-weight:700;color:#ffffff;margin-bottom:8px;">Do I need to make an appointment before visiting?</h2>
-          <p style="font-size:14px;color:#cbd5e1;line-height:1.6;">While we accept emergency drive-ins, we highly recommend booking online or via WhatsApp to guarantee dedicated technician time and diagnostic bay availability.</p>
-        </div>
+      <div style="text-align:center;margin-bottom:40px;">
+        <span style="color:#06b6d4;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;display:inline-block;margin-bottom:8px;">
+          Authoritative Technical Knowledge Base
+        </span>
+        <h1 style="font-size:36px;font-weight:900;color:#ffffff;margin:0 0 12px 0;">
+          Frequently Asked Questions (FAQ)
+        </h1>
+        <p style="font-size:15px;color:#94a3b8;max-width:700px;margin:0 auto;line-height:1.6;">
+          Detailed technical procedures, warranty guarantees, diagnostic protocols, and workshop guidelines for car owners across Islamabad and Rawalpindi.
+        </p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        ${faqData.map((f) => `
+          <article style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+              <span style="background:rgba(6,182,212,0.1);color:#06b6d4;font-size:11px;font-weight:700;padding:3px 10px;border-radius:6px;border:1px solid rgba(6,182,212,0.25);text-transform:uppercase;">
+                ${escapeHtml(f.category)}
+              </span>
+            </div>
+            <h2 style="font-size:18px;font-weight:800;color:#ffffff;margin:0 0 12px 0;line-height:1.4;">
+              ${escapeHtml(f.question)}
+            </h2>
+            <p style="font-size:14px;color:#cbd5e1;line-height:1.6;margin:0 0 16px 0;">
+              ${escapeHtml(f.answer)}
+            </p>
+            ${f.keyHighlights && f.keyHighlights.length > 0 ? `
+              <div style="background:#070c14;border:1px solid rgba(6,182,212,0.2);border-radius:10px;padding:14px;margin-bottom:16px;">
+                <span style="color:#06b6d4;font-size:11px;font-weight:700;text-transform:uppercase;display:block;margin-bottom:8px;">Technical Standards</span>
+                <ul style="margin:0;padding-left:18px;color:#cbd5e1;font-size:12px;line-height:1.6;">
+                  ${f.keyHighlights.map((h) => `<li style="margin-bottom:4px;">${escapeHtml(h)}</li>`).join('')}
+                </ul>
+              </div>
+            ` : ''}
+            ${f.comprehensiveOverview ? `
+              <div style="background:#080e1a;border:1px solid rgba(30,41,59,0.8);border-radius:10px;padding:16px;margin-bottom:16px;">
+                <span style="color:#06b6d4;font-size:11px;font-weight:700;text-transform:uppercase;display:block;margin-bottom:6px;">Engineering Methodology</span>
+                <p style="font-size:13px;color:#cbd5e1;line-height:1.6;margin:0;">${escapeHtml(f.comprehensiveOverview)}</p>
+              </div>
+            ` : ''}
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding-top:12px;border-top:1px solid #1e293b;">
+              ${f.relatedService ? `
+                <a href="${f.relatedService.href}" style="display:inline-flex;align-items:center;gap:6px;background:#0f172a;color:#06b6d4;border:1px solid rgba(6,182,212,0.3);padding:6px 12px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;">
+                  <span>Service: ${escapeHtml(f.relatedService.title)} →</span>
+                </a>
+              ` : ''}
+              ${f.relatedBrand ? `
+                <a href="${f.relatedBrand.href}" style="display:inline-flex;align-items:center;gap:6px;background:#0f172a;color:#06b6d4;border:1px solid rgba(6,182,212,0.3);padding:6px 12px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;">
+                  <span>Specialist: ${escapeHtml(f.relatedBrand.name)} →</span>
+                </a>
+              ` : ''}
+              ${f.relatedLocation ? `
+                <a href="${f.relatedLocation.href}" style="display:inline-flex;align-items:center;gap:6px;background:#0f172a;color:#06b6d4;border:1px solid rgba(6,182,212,0.3);padding:6px 12px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;">
+                  <span>Hub: ${escapeHtml(f.relatedLocation.name)} →</span>
+                </a>
+              ` : ''}
+            </div>
+          </article>
+        `).join('')}
+      </div>
+
+      <div style="text-align:center;margin-top:40px;background:#0b121e;border:1px solid rgba(6,182,212,0.3);border-radius:16px;padding:32px;">
+        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin:0 0 10px 0;">Need a Workshop Diagnosis or Custom Quote?</h2>
+        <p style="font-size:14px;color:#94a3b8;margin:0 0 20px 0;">Our certified master technicians at Police Foundation, Sector O-9, Islamabad are ready to inspect your vehicle.</p>
+        <a href="/booking/" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;font-size:14px;display:inline-block;margin-right:12px;">Book Inspection Bay</a>
+        <a href="https://wa.me/923330177717?text=Hi%20HyperTune%20Garage,%20I%20have%20a%20technical%20question" target="_blank" rel="noopener noreferrer" style="background:#10b981;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;font-size:14px;display:inline-block;">WhatsApp Master Tech</a>
       </div>
     </main>`;
   } else if (root === 'book-appointment' || root === 'booking') {
@@ -1456,6 +1492,9 @@ export function injectSSRHtml(
     /<meta\s+name=["']description["'][^>]*>/i,
     `<meta name="description" content="${metaInfo.description.replace(/"/g, '&quot;')}" />`
   );
+
+  // Ensure NO meta keywords tag exists in rendered HTML (Google does not use it)
+  updatedHtml = updatedHtml.replace(/<meta\s+name=["']keywords["'][^>]*>\s*/gi, '');
 
   // Replace Canonical
   updatedHtml = updatedHtml.replace(

@@ -1,7 +1,8 @@
 import { BrandItem } from '../types';
 import { images } from './images';
+import { getRouteMetadata } from './metadataRegistry';
 
-export const brandsData: BrandItem[] = [
+const baseBrandsData: BrandItem[] = [
   {
     id: 'bmw-specialist',
     slug: 'bmw-repair-islamabad',
@@ -54,11 +55,23 @@ export const brandsData: BrandItem[] = [
       },
       {
         question: 'How often should the ZF 8HP transmission fluid be changed on a BMW?',
-        answer: 'While marketed as lifetime by some dealers, ZF explicitly recommends transmission fluid and integrated pan-filter replacement every 60,000 to 80,000 km to prevent solenoid wear and shuddering.',
+        answer: 'While marketed as lifetime by some dealers, ZF explicitly recommends transmission fluid and integrated pan-filter replacement every 60,000 to 80,000 km to prevent solenoid wear, shift flares, and shuddering.',
       },
       {
         question: 'Can you fix oil leaks on BMW N20, B48, and B58 engines in Islamabad?',
-        answer: 'Yes! We specialize in resolving oil filter housing gasket, valve cover, oil pan, and turbocharger oil feed line leaks using OEM Victor Reinz and genuine BMW seals.',
+        answer: 'Yes! We specialize in resolving oil filter housing gasket, valve cover, oil pan, and turbocharger oil feed line leaks using OEM Victor Reinz, Elring, and genuine BMW seals.',
+      },
+      {
+        question: 'How do you fix BMW Drivetrain Malfunction warnings and boost pressure faults?',
+        answer: 'We connect BMW ISTA to read DME shadow codes, test boost pressure solenoids, inspect electronic wastegate actuators, check charge pipes for hairline cracks, and evaluate high-pressure fuel pump pressures.',
+      },
+      {
+        question: 'Can you service and calibrate BMW Dynamic Drive and Adaptive M suspension?',
+        answer: 'Yes. Our technicians service BMW active anti-roll stabilizer bars, replace Adaptive M electronic dampers, and perform factory ride-height calibration using ISTA software.',
+      },
+      {
+        question: 'Do you source authentic BMW OEM parts with warranty in Pakistan?',
+        answer: 'All replacement parts installed at HyperTune Garage are either genuine BMW OEM boxed components with verifiable hologram seals or Tier-1 German OEM suppliers (Bosch, Lemförder, ZF, Mahle), backed by our written warranty.',
       },
     ],
     seo: {
@@ -115,15 +128,27 @@ export const brandsData: BrandItem[] = [
     faqs: [
       {
         question: 'Do you have official Mercedes Xentry Star Diagnostic scanners in Islamabad?',
-        answer: 'Yes, our workshop uses authentic Mercedes-Benz Xentry and DAS Star Diagnostic hardware with DoIP support for comprehensive electronic scanning, live telemetry, and module adaptations.',
+        answer: 'Yes. We run authentic Mercedes-Benz Xentry Star Diagnosis systems with C4/C6 DoIP interfaces, enabling deep control unit adaptation, SCN coding, and module programming for all C, E, S, and G-Class vehicles.',
       },
       {
-        question: 'How do you fix Mercedes Airmatic suspension problems in Islamabad?',
-        answer: 'We diagnose pneumatic leaks with soapy nitrogen leak testing and Xentry pressure readouts, repair leaking air springs or valve blocks, and calibrate level sensors.',
+        question: 'How do you fix Mercedes Airmatic and E-Active Body Control suspension problems?',
+        answer: 'We pinpoint leaks using ultrasonic leak detectors and Xentry pneumatic pressure test routines. We replace failing air bellows, rebuild valve blocks, and install heavy-duty suspension compressors at a fraction of dealership cost.',
       },
       {
-        question: 'Can you service Mercedes-AMG G63 and V8 Biturbo engines in Rawalpindi / Islamabad?',
-        answer: 'Yes! Our master technicians are trained on Mercedes-AMG Handcrafted V8 biturbo engines (M177/M178), twin turbochargers, and high-performance carbon-ceramic braking systems.',
+        question: 'Can you service Mercedes-AMG G63, C63, and V8 Biturbo engines in Islamabad & Rawalpindi?',
+        answer: 'Yes. Our master mechanics specialize in M177 / M178 4.0L V8 Biturbo and M157 5.5L AMG powerplants, handling intercooler auxiliary water pumps, turbo oil scavenge lines, and high-performance Brembo carbon/steel braking systems.',
+      },
+      {
+        question: 'How do you resolve M274 / M271 camshaft adjuster phaser rattles on cold start?',
+        answer: 'Cold start rattling on M271 and M274 4-cylinder engines indicates worn camshaft adjuster sprockets and stretched timing chains. We replace sprockets with upgraded hardened units, install new hydraulic chain tensioners, and reset adaptation angles.',
+      },
+      {
+        question: 'How often should Mercedes 7G-Tronic and 9G-Tronic transmission fluid be replaced?',
+        answer: 'We recommend servicing Mercedes 7G-Tronic (Blue ATF 134 FE) and 9G-Tronic (ATF 9134) gearboxes every 60,000 km, including new integrated oil pans, pan filters, and torque converter drain plugs.',
+      },
+      {
+        question: 'Do you service Mercedes EQ electric models and plug-in hybrid powertrains?',
+        answer: 'Yes. Our certified high-voltage technicians diagnose Mercedes EQ (EQA, EQB, EQC, EQS) and hybrid battery cooling loops, electric drive units, and onboard AC/DC charging electronics.',
       },
     ],
     seo: {
@@ -181,15 +206,27 @@ export const brandsData: BrandItem[] = [
     faqs: [
       {
         question: 'Do you have official Audi ODIS dealer diagnostic tools in Islamabad?',
-        answer: 'Yes! We use the genuine Audi ODIS diagnostic platform with VAS 6154 hardware for deep module flashing, parameter adaptation, and guided fault finding.',
+        answer: 'Yes. We operate official Audi ODIS (Offboard Diagnostic Information System) with VAS 6154 interfaces, enabling factory component protection removal, module flashing, and guided fault finding.',
       },
       {
         question: 'How do you fix DSG / S-Tronic gearbox shudder and mechatronic faults on Audi cars?',
-        answer: 'We specialize in repairing the mechatronic electronic solenoid circuit board, replacing worn multi-plate dual clutch packs, and completing clutch kiss-point adaptation.',
+        answer: 'We repair internal mechatronic solenoid circuit boards, replace dual clutch packs, flush dual-circuit hydraulic transmission fluids, and perform ODIS basic settings clutch kiss-point calibration.',
       },
       {
         question: 'Why do Audi TFSI engines consume oil and how does HyperTune fix it?',
-        answer: 'Older EA888 engines have thin oil control rings. We rebuild the engine with modified OEM pistons and updated wider scraper rings, eliminating oil consumption permanently.',
+        answer: 'Excessive oil consumption in 1.8 and 2.0 TFSI engines is typically caused by clogged oil scraper piston rings or failing crankcase breather PCV valves. We replace PCV assemblies and, if needed, install upgraded modified Mahle pistons with wider oil control rings.',
+      },
+      {
+        question: 'How do you fix carbon buildup on 2.0 TFSI and 3.0 TFSI direct injection intake valves?',
+        answer: 'Because direct-injected engines do not wash intake valves with gasoline, carbon builds up and causes misfires. We perform walnut shell blasting on intake ports and valves, restoring lost horsepower and smooth idling without damaging metal surfaces.',
+      },
+      {
+        question: 'Can you service Audi Quattro differentials and electronic sports differentials?',
+        answer: 'Yes. We change center Torsen differential fluids, crown-gear differential oils, and service Haldex / Ultra clutch packs with genuine Audi high-performance lubricants and new internal filter screens.',
+      },
+      {
+        question: 'What warranty is provided on Audi electronic module repairs and mechatronics?',
+        answer: 'All Audi mechatronic overhauls and electronic control module repairs completed by HyperTune Garage come with a 6 to 12-month written warranty covering parts and diagnostic labor.',
       },
     ],
     seo: {
@@ -246,15 +283,27 @@ export const brandsData: BrandItem[] = [
     faqs: [
       {
         question: 'Do you have official Porsche PIWIS III diagnostic equipment in Islamabad?',
-        answer: 'Yes! We possess the official Porsche PIWIS Tester III system, allowing dealer-grade guided diagnostics, PDK transmission calibrations, PASM resets, and ECU coding on all modern Porsche models.',
+        answer: 'Yes. We utilize official Porsche PIWIS III diagnostic systems with authentic PT3G VCI interfaces, allowing full access to all DME, PDK, PASM, PDCC, and PTV control modules.',
       },
       {
         question: 'How do you service Porsche PDK transmissions in Pakistan?',
-        answer: 'We use genuine Porsche dual-chamber transmission lubricants (PDK clutch oil and hypoid gear oil), change the integrated sump pan filter, and run computerized PIWIS adaptation cycles.',
+        answer: 'We perform clutch fluid and gear oil services on 7-speed and 8-speed PDK transmissions using genuine Porsche Mobilube and Pentosin FFL fluids, replacing integrated pan-filters and running automated calibration drive routines.',
       },
       {
         question: 'Can you install Paint Protection Film (PPF) on Porsche sports cars and GT3s?',
-        answer: 'Yes! Our climate-controlled cleanroom studio applies pre-cut computer CAD plotter TPU self-healing PPF with wrapped edges, protecting expensive factory Porsche paint from high-speed motorway stone chips.',
+        answer: 'Yes! We specialize in custom computerized CAD pattern-cutting for 911, 718 Cayman/Boxster, Taycan, and Macan/Cayenne models, wrapping all edges seamlessly around curvaceous aerodynamic body panels.',
+      },
+      {
+        question: 'How do you maintain Cayenne and Macan air suspension and transfer case systems?',
+        answer: 'We service Cayenne and Macan multi-plate clutch transfer cases to eliminate low-speed binding shudder, and diagnose Porsche Active Suspension Management (PASM) air struts and nitrogen charging circuits.',
+      },
+      {
+        question: 'Can you perform Porsche IMS bearing inspection and coolant pipe pinning?',
+        answer: 'Yes. For naturally aspirated 996, 997, and Boxster engines, we inspect intermediate shaft (IMS) bearing tolerance, install dual-row ceramic retrofits, and pin or weld aluminum coolant pipes on GT3 and Turbo models.',
+      },
+      {
+        question: 'What engine oil and service intervals are recommended for Porsche flat-6 and V8 engines?',
+        answer: 'We exclusively use Porsche A40 and C40 homologated fully synthetic motor oils (Mobil 1 FS 0W-40 / ESP X3 0W-40) with OEM Mahle filter elements, recommending intervals of 7,500 to 10,000 km.',
       },
     ],
     seo: {
@@ -313,15 +362,27 @@ export const brandsData: BrandItem[] = [
     faqs: [
       {
         question: 'Do you use genuine Toyota OEM parts and oils?',
-        answer: 'Yes! We only use 100% genuine Toyota Indus / Japan OEM replacement parts, Toyota Genuine Motor Oil (0W-20, 5W-30, 15W-40), Super Long Life Coolant, and authentic Toyota CVT/ATF transmission fluids.',
+        answer: 'Yes. We strictly source genuine Toyota OEM parts (imported from Japan and Toyota Indus) with verifiable part numbers, including Toyota Genuine Motor Oils (0W-20, 5W-30), Super Long Life Coolant, and CVT-FE fluids.',
       },
       {
-        question: 'How do you fix P0A80 Hybrid Battery errors on Prius and Aqua?',
-        answer: 'We test each module under artificial load on our high-voltage bench to isolate degraded cells, replace them with matched high-capacity cells, balance the pack voltage, and clean the cooling fan.',
+        question: 'How do you fix P0A80 Hybrid Battery errors on Prius, Aqua, and Cross?',
+        answer: 'We test individual nickel-metal hydride (NiMH) and lithium-ion cells under discharge load using Toyota Techstream. We replace degraded modules with balanced OEM cells, clean cooling blower fans, and recondition the high-voltage pack.',
       },
       {
-        question: 'Can you service Toyota Fortuner Sigma 4 and Land Cruiser LC300 in Islamabad?',
-        answer: 'Yes, our heavy-duty hydraulic lifts and master diesel diagnostic technicians handle all Fortuner Legender, Revo Rocco, Prado, and Land Cruiser LC300 service and suspension maintenance.',
+        question: 'Can you service Toyota Fortuner Sigma 4 and Land Cruiser LC200 / LC300 in Islamabad?',
+        answer: 'Yes. We are the premier facility for Toyota SUVs, offering 1GD-FTV and 1VD-FTV turbo diesel servicing, electronic KDSS suspension balancing, common-rail injector calibration, and 4WD transfer case rebuilding.',
+      },
+      {
+        question: 'How often should Toyota Super Long Life Coolant and CVT-FE fluid be changed?',
+        answer: 'Toyota factory CVT fluid should be replaced every 40,000 km in Pakistan’s hot climate, and pink Super Long Life Coolant flushed every 80,000 km or 4 years to prevent aluminum head erosion and water pump cavitation.',
+      },
+      {
+        question: 'Can you repair KD and GD series common rail diesel injector knocking on Hilux and Fortuner?',
+        answer: 'Yes. We test common rail piezo and solenoid injectors on our digital test bench, measure injector pilot quantity learning values, replace worn nozzles, and reprogram injector compensation codes into the engine ECU.',
+      },
+      {
+        question: 'Do you perform 4WD transfer case actuator and differential servicing for Land Cruisers?',
+        answer: 'Yes. We repair stuck electronic 4WD high/low actuator motors, replace leaking axle pinion seals, and flush front and rear differentials with genuine Toyota LT 75W-85 GL-5 synthetic gear oil.',
       },
     ],
     seo: {
@@ -380,15 +441,27 @@ export const brandsData: BrandItem[] = [
     faqs: [
       {
         question: 'Can you fix the dreaded Vezel dual-clutch transmission warning in Islamabad?',
-        answer: 'Yes! We specialize in Honda i-DCD dual-clutch actuator repairs, master/slave cylinder rebuilding, DOT 4 hydraulic clutch bleeding, and computer-guided clutch adaptation.',
+        answer: 'Yes! We are Islamabad’s leading authority on Honda i-DCD dual-clutch gearboxes (Vezel, Grace, Fit, Shuttle). We flush actuator clutch fluid (DOT 4), bleed the hydraulic release system, and run computerized clutch kiss-point adaptations.',
       },
       {
-        question: 'Why does my Honda Civic 1.5 Turbo hesitate during boost?',
-        answer: 'Direct injection engines accumulate carbon crust on the intake valves over time. Our walnut shell blasting cleans the valves back to factory metal, restoring instant throttle response.',
+        question: 'Why does my Honda Civic 1.5 Turbo hesitate during boost or throw knock sensor codes?',
+        answer: 'Civic Turbo hesitation in Pakistan is frequently caused by carbon deposits on direct injectors, low fuel octane knock retard, or leaking turbo blow-off valves. We test fuel trim live data, clean GDI injectors ultrasonically, and check intercooler piping.',
       },
       {
         question: 'Do you use genuine Honda HCF-2 transmission fluid for CVTs?',
-        answer: 'Always. We only use 100% genuine Honda OEM fluids including HCF-2 for CVTs, DW-1 for ATFs, and genuine Honda Type-2 All Season Coolant.',
+        answer: 'Yes. Using incorrect transmission fluid in a Honda CVT destroys the steel push belt. We strictly use genuine Honda HCF-2 (or Ultra ATF-DW1 for traditional automatics) with new internal pan and paper filters.',
+      },
+      {
+        question: 'How do you resolve steering rack clicking and EPS motor noise on Civic X and XI?',
+        answer: 'Steering clunks on Civic X/XI are caused by worn steering rack guide sliders or loose EPS motor dampeners. We overhaul the steering rack with upgraded Teflon guide bushings and re-grease the EPS worm gear to eliminate rattles.',
+      },
+      {
+        question: 'How often should valve clearances and spark plugs be tuned on Honda i-VTEC engines?',
+        answer: 'Honda mechanical valve clearances should be checked and adjusted using feeler gauges every 40,000 km, while OEM NGK Laser Iridium spark plugs should be inspected and replaced every 60,000 to 80,000 km.',
+      },
+      {
+        question: 'Can you service Honda e:HEV hybrid systems on new Civic and HR-V models?',
+        answer: 'Yes. We connect Honda HDS diagnostic software to service e:HEV dual-motor hybrid powertrains, inspect the Intelligent Power Unit (IPU) lithium battery pack, and flush electric motor inverter cooling loops.',
       },
     ],
     seo: {
@@ -446,15 +519,27 @@ export const brandsData: BrandItem[] = [
     faqs: [
       {
         question: 'Can you solve the jerky shifting on Suzuki Alto and Cultus AGS models?',
-        answer: 'Yes! Using our Suzuki SDT-II scanner, we recalibrate the AGS clutch engagement point and actuator hydraulic pump to restore buttery-smooth gear changes.',
+        answer: 'Yes! Suzuki Auto Gear Shift (AGS) jerkiness is caused by misaligned clutch actuator learn values or hydraulic accumulator pressure drops. We perform full AGS actuator relearns and clutch calibration using specialized Suzuki diagnostic software.',
       },
       {
-        question: 'Do you service imported Japanese 660cc Suzuki Hustler and Every models?',
-        answer: 'Absolutely. We carry genuine filters, spark plugs, turbo gaskets, and sensors for Japanese Suzuki models like Hustler, Spacia, Every, and Jimny.',
+        question: 'Do you service imported Japanese 660cc Suzuki Hustler, Spacia, and Every models?',
+        answer: 'Yes. We cater to Japanese imported Kei cars, offering turbocharger inspections, Suzuki Ene-Charge lithium auxiliary battery testing, CVT fluid replacements with Suzuki Green-2 oil, and computer scans.',
       },
       {
         question: 'How long does a routine Suzuki periodic maintenance oil service take?',
-        answer: 'A routine 50-point maintenance service with genuine synthetic engine oil, oil filter, air filter, and brake check takes approximately 45 to 60 minutes.',
+        answer: 'A routine maintenance service—including genuine synthetic engine oil, OEM oil filter, air filter cleaning/replacement, and 50-point suspension and brake check—is completed in approximately 45 minutes.',
+      },
+      {
+        question: 'How do you repair Suzuki EPS electric power steering column vibration and rattle?',
+        answer: 'Vibration and clattering on rough roads is caused by worn rubber star couplers inside the electric power steering column motor. We disassemble the column and install upgraded heavy-duty polyurethane couplers.',
+      },
+      {
+        question: 'What coolant and engine oil viscosity is best for Suzuki K-Series engines in Pakistan?',
+        answer: 'For Suzuki K10B, K10C, and K12M engines, we recommend 0W-20 or 5W-30 API SP fully synthetic engine oil paired with genuine blue or green long-life ethylene glycol coolant to protect the aluminum block.',
+      },
+      {
+        question: 'Can you resolve Suzuki catalytic converter choking and low mileage issues?',
+        answer: 'Yes. Due to low-quality fuel and dusty conditions, Suzuki catalytic converters choke quickly. We measure exhaust backpressure, clean the converter using pressurized decarbonizing foam, and test oxygen sensor response times.',
       },
     ],
     seo: {
@@ -511,16 +596,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 4,000 - PKR 150,000',
     faqs: [
       {
-        question: 'Do you have official diagnostic tools for Hyundai Sonata and Tucson in Islamabad?',
-        answer: 'Yes! We use the official Hyundai GDS scanner to perform deep-system scans, live sensor logging, DCT clutch adaptations, and module resets identical to authorized dealership standards.',
+        question: 'Do you have official diagnostic tools for Hyundai Sonata, Tucson, and Elantra in Islamabad?',
+        answer: 'Yes. We run Hyundai GDS-Mobile and advanced bi-directional diagnostic scanners capable of scanning all Smartstream engine control units, ADAS radar calibration, and electronic transmission modules.',
       },
       {
-        question: 'Can you service the new Hyundai Santa Fe Hybrid in Rawalpindi / Islamabad?',
-        answer: 'Yes, our high-voltage certified electrical technicians handle the Santa Fe Hybrid powertrain, electric water pumps, hybrid cooling packs, and turbocharged petrol engines.',
+        question: 'Can you service the new Hyundai Santa Fe Hybrid and Tucson Hybrid in Islamabad?',
+        answer: 'Yes. Our high-voltage technicians service Hyundai 1.6T Hybrid powertrains, inspect hybrid starter-generators (HSG), test traction battery health, and flush specialized low-conductivity EV coolant loops.',
       },
       {
-        question: 'What engine oil is recommended for Hyundai Elantra and Sonata?',
-        answer: 'We use high-grade 100% fully synthetic API SP / ILSAC GF-6 oils (0W-20 or 5W-30) matching Hyundai factory engineering specifications.',
+        question: 'What engine oil is recommended for Hyundai Elantra and Sonata in Pakistan?',
+        answer: 'We recommend API SP / ILSAC GF-6 fully synthetic 5W-20 or 5W-30 engine oils formulated to protect against Low-Speed Pre-Ignition (LSPI) in Nu 2.0L and Theta II / Smartstream 2.5L engines.',
+      },
+      {
+        question: 'How do you diagnose and prevent Theta II and Smartstream engine oil consumption?',
+        answer: 'We perform cylinder borescope inspections to inspect cylinder wall cross-hatching, test PCV oil separation, and measure compression. We use high-shear synthetic lubricants to prevent ring gumming.',
+      },
+      {
+        question: 'Can you service Hyundai 7-speed and 8-speed dual-clutch transmissions (DCT)?',
+        answer: 'Yes. We service dry and wet dual-clutch transmissions on Hyundai Tucson and Sonata, replacing clutch gear fluid, adjusting clutch actuator rods, and running diagnostic touch-point adaptation cycles.',
+      },
+      {
+        question: 'How do you service Hyundai Tucson electronic AWD coupling units?',
+        answer: 'We inspect the Magna electronic AWD coupling on all-wheel-drive Tucsons, replace the synthetic differential oil, and repair electric hydraulic pump pressure seals to eliminate rear-axle binding noises.',
       },
     ],
     seo: {
@@ -578,15 +675,27 @@ export const brandsData: BrandItem[] = [
     faqs: [
       {
         question: 'Why does my Kia Sportage AWD shudder when making sharp turns in parking?',
-        answer: 'This is commonly caused by degraded rear AWD coupling fluid or differential binding. We flush the coupling with genuine OEM lubricant and recalibrate the system to eliminate binding.',
+        answer: 'This is a well-known issue with the electro-hydraulic AWD rear differential coupling. We inspect the coupling clutch pack, flush the differential gear oil with genuine OEM synthetic lubricant, and replace worn coupling units.',
       },
       {
-        question: 'Do you service the Kia Grand Carnival V6 and 2.2 Diesel in Islamabad?',
-        answer: 'Yes! We regularly service both the 3.5L V6 Petrol and 2.2L CRDi Diesel Kia Grand Carnivals with specialized lifts and genuine filters.',
+        question: 'Do you service the Kia Grand Carnival 3.3 / 3.5 V6 and 2.2 CRDi Diesel in Islamabad?',
+        answer: 'Yes. We service all generations of Kia Grand Carnival, handling diesel common-rail injectors, DPF cleaning, V6 timing chain replacements, water pumps, and multi-zone rear air conditioning lines.',
       },
       {
         question: 'Can I get my Kia serviced without voiding my routine driving peace of mind?',
-        answer: 'Absolutely. We follow strict OEM factory procedures and provide written 12-month warranties on all mechanical workmanship.',
+        answer: 'Absolutely. We follow strict Kia factory service schedules, install genuine OEM filters and parts with verifiable numbers, and stamp maintenance logs with full computerized records.',
+      },
+      {
+        question: 'How do you fix the steering wheel MDPS flexible coupler knocking noise on Kia Sportage?',
+        answer: 'A clicking sound in the steering wheel over bumps is caused by a disintegrated Motor Driven Power Steering (MDPS) rubber star coupler. We replace it with an OEM reinforced dampener in under 90 minutes.',
+      },
+      {
+        question: 'How often should Kia 6-speed and 8-speed automatic transmission fluid be serviced?',
+        answer: 'We recommend changing ATF (SP-IV / SP-IV-RR) every 50,000 km in Pakistan to maintain silky smooth shifts and prevent torque converter lock-up clutch slippage.',
+      },
+      {
+        question: 'Do you service Kia Sorento 3.5 V6 and hybrid powertrain models?',
+        answer: 'Yes. We offer complete mechanical, electrical, and computer support for Kia Sorento 2.4L, 3.5L Lambda V6, and 1.6T Hybrid models across Islamabad and Rawalpindi.',
       },
     ],
     seo: {
@@ -643,15 +752,27 @@ export const brandsData: BrandItem[] = [
     faqs: [
       {
         question: 'Can you service Changan Oshan X7 7-speed Wet DCT transmission in Islamabad?',
-        answer: 'Yes! We have specialized diagnostic tools and approved DCT fluid to service Changan 7-speed wet dual-clutch transmissions and calibrate smooth clutch shifts.',
+        answer: 'Yes. We specialize in the Changan Oshan X7 1.5T Blue Core with 7-speed wet dual-clutch transmission. We flush specialized wet DCT fluids, replace filters, and perform computerized clutch adaptation cycles.',
       },
       {
         question: 'Do you carry genuine spare parts and filters for Changan Alsvin and Oshan X7?',
-        answer: 'Yes, we source 100% genuine Changan OEM oil filters, air filters, cabin filters, spark plugs, and brake pads.',
+        answer: 'Yes. We stock genuine Changan OEM engine oil filters, air filters, cabin microfilters, spark plugs, brake pads, and suspension components directly sourced from authorized supply channels.',
       },
       {
         question: 'Can you work on the new Changan Deepal S07 and L07 electric models?',
-        answer: 'Yes, our EV diagnostic technicians handle high-voltage battery health scans, electrical electronics, brake regen systems, and suspension for Deepal vehicles.',
+        answer: 'Yes. Our high-voltage EV specialists service Changan Deepal electric SUVs and sedans, testing traction battery status, electric drive axle fluids, and electronic braking recuperation.',
+      },
+      {
+        question: 'How do you diagnose Blue Core turbocharger boost pressure and intercooler leaks?',
+        answer: 'We run digital boost pressure smoke tests across the charge air intake tract, test electronic wastegate solenoids, and inspect intercooler rubber couplers for boost leaks on Alsvin and Oshan models.',
+      },
+      {
+        question: 'Can you calibrate Changan ADAS radar and 360-degree camera systems?',
+        answer: 'Yes. If your 360-degree cameras are misaligned or the forward collision radar shows error alerts after a bumper repair, our computerized calibration targets re-align all optical sensors.',
+      },
+      {
+        question: 'How often should the wet dual-clutch transmission fluid be changed on an Oshan X7?',
+        answer: 'We recommend changing the wet DCT oil every 40,000 km to prevent clutch debris from contaminating the sensitive mechatronic hydraulic valve body in summer stop-and-go driving.',
       },
     ],
     seo: {
@@ -707,16 +828,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 4,500 - PKR 165,000',
     faqs: [
       {
-        question: 'Do you specialize in the Haval H6 HEV (Hybrid) in Islamabad?',
-        answer: 'Yes! We have specialized diagnostic test equipment for Haval H6 HEV Dedicated Hybrid Transmissions (DHT), high-voltage lithium battery packs, and 1.5T hybrid engines.',
+        question: 'Can you service Haval H6 1.5T and 2.0T 7-speed dual-clutch gearboxes in Islamabad?',
+        answer: 'Yes. We service the Great Wall Motor (GWM) 7DCT wet dual-clutch transmission used in Haval H6 and Jolion, executing fluid exchanges and clutch kiss-point adaptations with factory diagnostic software.',
       },
       {
-        question: 'Can you install Paint Protection Film (PPF) on my new Haval H6 / Jolion?',
-        answer: 'Yes! We are Pakistan’s top studio for self-healing TPU PPF. Our CAD computer plotter cuts patterns with millimeter precision so no razor blades touch your Haval factory paint.',
+        question: 'Do you service Haval H6 HEV and Jolion Hybrid battery systems?',
+        answer: 'Yes. We diagnose and service Haval Direct Hybrid Transmission (DHT) powertrains, inspecting the high-voltage lithium battery pack, hybrid cooling circuits, and electric drive motors.',
       },
       {
-        question: 'What transmission fluid does Haval H6 use?',
-        answer: 'We strictly use authentic GWM factory-approved wet DCT and DHT transmission fluids matching exact viscosity and friction coefficient specifications.',
+        question: 'Can you calibrate Haval Level 2 autonomous driving radars and cameras?',
+        answer: 'Yes. We perform precision calibration on Haval front millimeter-wave radar sensors, lane departure cameras, and blind-spot monitors using computerized optical calibration boards.',
+      },
+      {
+        question: 'How do you troubleshoot Haval infotainment screen freezing and instrument cluster lag?',
+        answer: 'We perform factory firmware updates, hard module reboots, and verify CAN-bus power grounds to eliminate infotainment reboots and instrument display glitches.',
+      },
+      {
+        question: 'What synthetic engine oil and maintenance schedule does HyperTune use for Haval engines?',
+        answer: 'We use API SP / ACEA C2/C5 0W-20 and 5W-30 fully synthetic lubricants designed for GWM direct-injection turbo engines, protecting against LSPI and turbo bearing heat coking.',
+      },
+      {
+        question: 'Do you stock genuine GWM Haval brake pads, air filters, and cooling components?',
+        answer: 'Yes. We maintain inventory of genuine OEM Haval H6 and Jolion consumables including ceramic brake pads, oil filters, spark plugs, and coolant hoses.',
       },
     ],
     seo: {
@@ -772,16 +905,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 4,000 - PKR 160,000',
     faqs: [
       {
-        question: 'Can you fix the sluggish shifting on MG HS dual-clutch transmission in Islamabad?',
-        answer: 'Yes! We perform TCU adaptations, fluid replacements with high-grade DCT fluid, and clutch position calibrations using our MG VDS system to ensure crisp, smooth shifts.',
+        question: 'How do you fix DCT transmission lag and jerky acceleration on MG HS in Islamabad?',
+        answer: 'MG HS 1.5T dry dual-clutch hesitation is resolved by updating the Transmission Control Module (TCM) firmware, adjusting clutch clearance values, and flushing clutch actuator fluid to eliminate gear hunting.',
       },
       {
-        question: 'Do you service MG ZS EV and MG 4 pure electric cars in Rawalpindi / Islamabad?',
-        answer: 'Yes! We have high-voltage certified technicians equipped to perform EV health checks, inverter cooling flushes, regenerative braking repairs, and suspension overhauls.',
+        question: 'Can you service MG ZS EV and MG4 electric vehicle high-voltage batteries?',
+        answer: 'Yes. Our high-voltage EV technicians perform cell balancing, battery health percentage reports, insulation resistance checks, and electric drive reduction gearbox oil changes on MG EVs.',
       },
       {
-        question: 'What warranty is offered on MG repairs at HyperTune Garage?',
-        answer: 'We provide a 12-month / 15,000 km written warranty on all mechanical repairs and replacement OEM parts.',
+        question: 'Why does the MG HS 1.5T engine run hot in summer and how do you resolve it?',
+        answer: 'The MG HS turbo generates immense under-hood heat. Overheating is typically linked to air pockets in the dual cooling circuit or delayed radiator fan speeds. We vacuum-bleed the coolant and recalibrate fan trigger thresholds.',
+      },
+      {
+        question: 'How do you repair MG electric tailgate actuator and panoramic sunroof squeaks?',
+        answer: 'We service panoramic sunroof sliding tracks using specialized dry Teflon lubricant and replace failing electric tailgate spindle struts to restore smooth motorized opening and closing.',
+      },
+      {
+        question: 'Do you use official MG VDS computer diagnostic software?',
+        answer: 'Yes. We utilize official MG Vehicle Diagnostic Software (VDS) to read proprietary fault codes, perform adaptation resets, and program electronic modules across all MG HS, ZS, and GT models.',
+      },
+      {
+        question: 'Can you supply genuine MG OEM spark plugs, ignition coils, and brake pads?',
+        answer: 'Yes. We stock genuine SAIC MG factory parts, including laser iridium spark plugs, high-output ignition coils, and low-dust ceramic brake pads.',
       },
     ],
     seo: {
@@ -836,16 +981,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 4,500 - PKR 175,000',
     faqs: [
       {
-        question: 'Do you have diagnostic equipment for BYD Seal and BYD Atto 3 in Islamabad?',
-        answer: 'Yes! We have the dedicated BYD VDS3.0 diagnostic system capable of communicating with all e-Platform 3.0 modules, Blade Battery BMS, and DiPilot safety units.',
+        question: 'Can HyperTune Garage service BYD Atto 3, Seal, and Dolphin in Islamabad & Rawalpindi?',
+        answer: 'Yes! We are equipped to service BYD electric vehicles, providing full diagnostic scans, high-voltage battery health verification, air conditioning heat pump servicing, and chassis maintenance.',
       },
       {
-        question: 'Can you install PPF on BYD Seal and Atto 3 glass-roof and bodywork?',
-        answer: 'Yes, our cleanroom studio provides precision CAD pre-cut self-healing TPU PPF, protecting BYD’s high-gloss paintwork from stone chips on Islamabad motorways.',
+        question: 'How do you inspect and balance BYD Blade Battery cell health?',
+        answer: 'We connect our specialized EV diagnostic interfaces to read individual lithium iron phosphate (LFP) cell voltages, state of health (SOH), internal resistance, and module temperature sensors to verify battery life.',
       },
       {
-        question: 'How do you test the health of BYD Blade Batteries?',
-        answer: 'We run live voltage delta scans under regenerative and discharge load, verify internal cell resistance, and inspect thermal management pump efficiency.',
+        question: 'Can you service BYD electric vehicle high-voltage coolant and gear reduction oil?',
+        answer: 'Yes. BYD thermal management systems require specialized low-conductivity dielectric coolant and synthetic reduction gear oil, which we replace following strict factory bleed procedures.',
+      },
+      {
+        question: 'How do you diagnose high-voltage insulation warnings and charging port errors?',
+        answer: 'We utilize 1,000V megohmmeter insulation testers to verify high-voltage cable shielding, inspect DC fast-charging contactors, and replace damaged GB/T or CCS2 charging port pins.',
+      },
+      {
+        question: 'Can you calibrate BYD DiPilot radar, ultrasonic sensors, and emergency braking?',
+        answer: 'Yes. We perform radar alignment and camera calibration for BYD DiPilot driver assistance systems to ensure autonomous emergency braking and adaptive cruise operate accurately.',
+      },
+      {
+        question: 'Do you install self-healing Paint Protection Film (PPF) on BYD electric vehicles?',
+        answer: 'Yes. We offer pre-cut computerized TPU PPF kits for BYD Atto 3, Seal, and Dolphin, protecting their sleek aerodynamic bumpers, hoods, and door panels from highway stone chips.',
       },
     ],
     seo: {
@@ -901,16 +1058,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 3,500 - PKR 150,000',
     faqs: [
       {
-        question: 'Can you service Chery Tiggo 8 Pro 1.6T DCT transmission in Islamabad?',
-        answer: 'Yes! We have specialized diagnostic tools to service Chery 7-speed wet dual-clutch transmissions, flush the oil, and calibrate clutch bite points for seamless shifts.',
+        question: 'Can you service Chery Tiggo 4 Pro and Tiggo 8 Pro in Islamabad?',
+        answer: 'Yes. We provide complete maintenance and repair for Chery Tiggo 4 Pro and Tiggo 8 Pro, including 1.5T, 1.6T, and 2.0T TGDI engine diagnostics, dual-clutch transmission flushes, and suspension work.',
       },
       {
-        question: 'Do you carry genuine replacement filters for Chery Tiggo 4 Pro and 8 Pro?',
-        answer: 'Yes, we stock 100% genuine Chery OEM oil filters, air filters, cabin filters, spark plugs, and brake components.',
+        question: 'How do you maintain the 1.6T and 2.0T TGDI engines on Chery Tiggo models?',
+        answer: 'We utilize API SP full synthetic oils to prevent turbo coking and timing chain wear, inspect intercooler charge piping, and ultrasonically clean high-pressure direct injectors.',
       },
       {
-        question: 'What motor oil should be used in Chery ACTECO Turbocharged engines?',
-        answer: 'We use high-performance 100% fully synthetic 5W-30 or 0W-20 API SP oils designed specifically for direct-injection turbocharged engines to prevent Low-Speed Pre-Ignition (LSPI).',
+        question: 'How often should the 7-speed wet dual-clutch transmission fluid be changed on Chery?',
+        answer: 'We recommend replacing the wet DCT transmission fluid and internal filter element every 40,000 km to guarantee smooth shifting and prevent clutch shudder.',
+      },
+      {
+        question: 'Can you diagnose Chery electronic parking brake and auto-hold glitches?',
+        answer: 'Yes. We test electronic parking brake (EPB) actuator caliper motors, inspect wheel speed sensors, and calibrate auto-hold engagement thresholds using computer diagnostics.',
+      },
+      {
+        question: 'Do you stock OEM oil filters and genuine lubricants for Chery vehicles?',
+        answer: 'Yes. We maintain genuine Chery OEM replacement filters, spark plugs, ceramic brake pads, and approved synthetic lubricants at our Islamabad workshop.',
+      },
+      {
+        question: 'Can you service Chery Tiggo dual-zone automatic climate control systems?',
+        answer: 'Yes. We service Tiggo HVAC systems, repairing digital blend door actuators, leak-testing condensers, and refilling pure R134a refrigerant gas.',
       },
     ],
     seo: {
@@ -965,16 +1134,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 4,000 - PKR 220,000',
     faqs: [
       {
-        question: 'Do you have official Isuzu G-IDSS software for D-Max in Islamabad?',
-        answer: 'Yes! We use official Isuzu G-IDSS diagnostic hardware to read engine live telemetry, program injector codes, test turbo boost pressures, and calibrate transfer cases.',
+        question: 'Can you service Isuzu D-Max 3.0L and 1.9L BluePower turbo diesel engines in Islamabad?',
+        answer: 'Yes. We are experts in Isuzu 4JJ1, 4JJ3 3.0L, and RZ4E 1.9L D-Max diesel engines, handling common-rail injection pumps, turbochargers, and heavy-duty valve train servicing.',
       },
       {
-        question: 'Can you rebuild the 4JJ1 and 4JJ3 3.0L Turbo Diesel engines in D-Max?',
-        answer: 'Yes, our diesel machine shop handles complete 4JJ1/4JJ3 engine overhauls including cylinder sleeving, crankshaft micrometer balancing, and head gasket replacements.',
+        question: 'How do you clean and regenerate choked Isuzu D-Max DPF filters and EGR valves?',
+        answer: 'We perform chemical on-car and off-car DPF cleaning to dissolve soot and ash without damaging platinum washcoats, clean carbon-choked EGR coolers, and run forced computer regenerations.',
       },
       {
-        question: 'What maintenance is needed for Isuzu D-Max before Northern off-road trips?',
-        answer: 'We provide a comprehensive 50-point 4x4 audit: differential oils, transfer case fluid, steering knuckles, leaf spring shackles, brake inspection, and air/fuel filters.',
+        question: 'How do you service Isuzu 4x4 Terrain Command shift-on-the-fly transfer cases?',
+        answer: 'We service electronic 4WD shift actuators, rebuild transfer case planetary gears, replace output shaft seals, and refill with genuine high-viscosity synthetic gear lubricants.',
+      },
+      {
+        question: 'How often should diesel fuel filters and water separators be replaced on D-Max?',
+        answer: 'Given diesel fuel quality in Pakistan, fuel filters and sediment water separators should be drained every 5,000 km and replaced every 15,000 to 20,000 km to protect high-pressure fuel injectors.',
+      },
+      {
+        question: 'Can you overhaul Isuzu heavy-duty leaf spring and independent front suspensions?',
+        answer: 'Yes. We replace worn leaf spring bushings, greaseable shackles, front control arm ball joints, and install upgraded heavy-duty shock absorbers (Old Man Emu, Ironman 4x4, Bilstein).',
+      },
+      {
+        question: 'What engine oil spec is required for Isuzu common-rail diesel engines in Pakistan?',
+        answer: 'We use premium API CK-4 / CJ-4 15W-40 and 5W-40 heavy-duty synthetic diesel motor oils formulated to control soot dispersion, resist thermal oxidation, and protect camshaft lobes.',
       },
     ],
     seo: {
@@ -1029,16 +1210,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 2,500 - PKR 65,000',
     faqs: [
       {
-        question: 'Do you carry spare parts and filters for FAW V2 in Islamabad?',
-        answer: 'Yes, we stock genuine OEM and certified high-quality replacement parts including oil filters, air filters, clutch plates, sensors, and brake pads for FAW V2 and X-PV.',
+        question: 'Can you service FAW V2 1.3L engines and manual transmissions in Islamabad?',
+        answer: 'Yes. We provide comprehensive mechanical and electrical servicing for FAW V2 hatchbacks, including 1.3L 4-cylinder engine tuning, clutch plate replacement, and gearbox overhauls.',
       },
       {
-        question: 'How do you fix overheating issues on FAW X-PV vans?',
-        answer: 'We inspect the complete cooling circuit: flush and descale the radiator, replace stuck thermostats, verify electric fan speeds, and use 50/50 ethylene glycol coolant.',
+        question: 'How do you fix FAW Carrier and X-PV commercial van overheating in summer?',
+        answer: 'Summer overheating in under-seat engines is resolved by flushing mineral scale from the cooling system, replacing jammed thermostats, installing high-flow aluminum radiators, and checking electric fan relays.',
       },
       {
-        question: 'Can you handle fleet maintenance for FAW Carrier commercial delivery vans?',
-        answer: 'Yes! We offer customized preventive maintenance schedules and priority bays for corporate and delivery fleet operators across Rawalpindi and Islamabad.',
+        question: 'Where do you source genuine FAW spare parts and suspension components?',
+        answer: 'We maintain direct access to genuine FAW OEM spare parts, including suspension tie rods, ball joints, brake rotors, brake master cylinders, and engine mountings.',
+      },
+      {
+        question: 'How do you troubleshoot FAW electronic fuel injection and throttle body idling?',
+        answer: 'We clean motorized electronic throttle bodies, test manifold absolute pressure (MAP) sensors, and calibrate idle air control steps to ensure stable 800 RPM idling.',
+      },
+      {
+        question: 'Can you repair FAW air conditioning compressor leaks and weak cooling?',
+        answer: 'Yes. We test AC compressor suction and discharge pressures, replace failing front and rear evaporator cooling coils, and recharge with pure R134a refrigerant gas.',
+      },
+      {
+        question: 'What maintenance schedule does HyperTune recommend for FAW vehicles?',
+        answer: 'We recommend oil and filter changes every 5,000 km, gear oil and brake fluid inspections every 20,000 km, and periodic suspension greasing every 10,000 km.',
       },
     ],
     seo: {
@@ -1096,16 +1289,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 2,500 - PKR 75,000',
     faqs: [
       {
-        question: 'Why is the Eco-Idle light flashing on my Daihatsu Mira ES?',
-        answer: 'An orange flashing Eco-Idle light indicates low secondary battery voltage or an uncalibrated current sensor. We test and calibrate the system with our Daihatsu DST-i scanner.',
+        question: 'Can you service Japanese imported Daihatsu Mira, Move, Cast, and Taft in Islamabad?',
+        answer: 'Yes. We service all imported Japanese 660cc Daihatsu models, handling KF-VE naturally aspirated and KF-DET turbocharged engines, Eco-Idle circuits, and CVTs.',
       },
       {
-        question: 'Do you carry genuine Japanese filters for Daihatsu Move and Cast?',
-        answer: 'Yes! We stock genuine Daihatsu / Toyota OEM oil filters, air filters, CVT transmission fluids, and spark plugs for all JDM 660cc models.',
+        question: 'How do you diagnose and repair Daihatsu KF engine oil consumption?',
+        answer: 'Daihatsu 660cc engines develop stuck piston oil control rings when operated with mineral oils. We chemically decarbonize piston rings, replace valve stem oil seals, and use 0W-20 API SP synthetic oils.',
       },
       {
-        question: 'Can you rebuild the 660cc 3-cylinder Daihatsu engine if it burns oil?',
-        answer: 'Yes, our machine shop specializes in micro-tolerance rebuilding of KF-VE and KF-DET 3-cylinder engines to permanently resolve oil consumption.',
+        question: 'How often should CVT transmission fluid be replaced on Daihatsu 660cc cars?',
+        answer: 'Due to small CVT sump capacity (under 3 liters) and high engine RPMs, Daihatsu CVT fluid should be replaced every 25,000 to 30,000 km with genuine Daihatsu Amix CVT Fluid-DC.',
+      },
+      {
+        question: 'Can you calibrate Daihatsu Smart Assist stereo camera emergency braking systems?',
+        answer: 'Yes. If your windshield was replaced or camera error warnings illuminate on the dashboard, we calibrate the Smart Assist forward camera optical alignment targets.',
+      },
+      {
+        question: 'How do you repair Daihatsu front lower control arm and engine mount vibrations?',
+        answer: 'Heavy idle vibration is caused by collapsed hydraulic right-hand engine mounts. We replace collapsed mounts and press in high-durability polyurethane control arm bushings.',
+      },
+      {
+        question: 'Do you stock genuine Daihatsu spark plugs, air filters, and brake shoes?',
+        answer: 'Yes. We stock genuine Daihatsu Japan filters, specialized NGK bi-hex iridium spark plugs, and low-wear Japanese brake friction materials.',
       },
     ],
     seo: {
@@ -1163,16 +1368,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 3,500 - PKR 250,000',
     faqs: [
       {
-        question: 'How do you fix the shuddering on Nissan Xtronic CVT transmissions?',
-        answer: 'We perform a full transmission fluid drain and flush with authentic Nissan NS-3 fluid, replace the fine paper filter and pan strainer, clean the magnets, and reset the TCM fluid deterioration counter.',
+        question: 'How do you prevent and repair Nissan X-Trail, Juke, and Note CVT transmission shudder?',
+        answer: 'Nissan Xtronic CVTs suffer from stepper motor and flow control valve sticking caused by degraded fluid. We replace internal paper and pan filters, flush genuine Nissan NS-3 fluid, and clear CVT degradation data.',
       },
       {
-        question: 'Do you service Nissan Note e-Power hybrid vehicles in Islamabad?',
-        answer: 'Yes! We specialize in Nissan e-Power systems including the 1.2L generator engine, EM57 traction electric motor, inverter cooling, and lithium battery management.',
+        question: 'Do you service Nissan Note e-Power series hybrid generators and inverters in Islamabad?',
+        answer: 'Yes. We service Nissan e-Power systems, diagnosing the HR12DE range-extender generator engine, testing high-voltage inverter coolant pumps, and evaluating the lithium battery pack.',
       },
       {
-        question: 'Can you work on Nissan Patrol Y62 V8 in Rawalpindi / Islamabad?',
-        answer: 'Yes, our heavy-duty bays handle full mechanical maintenance, HBMC suspension checks, and VK56 engine overhauls for Nissan Patrol Y62 V8s.',
+        question: 'Do you use official Nissan Consult III+ computer diagnostic software?',
+        answer: 'Yes. We use authentic Nissan Consult III+ diagnostic software with VI2 interfaces to program keys, read BCM fault codes, calibrate CVT clutches, and adjust idle timing.',
+      },
+      {
+        question: 'How often should genuine Nissan NS-2 / NS-3 CVT fluid be changed in Pakistan?',
+        answer: 'In Pakistan’s 40°C+ summer weather, Nissan CVT fluid must be changed every 35,000 to 40,000 km to prevent belt slippage, overheating limp mode, and metal pulley scouring.',
+      },
+      {
+        question: 'Can you service Nissan Patrol Y61 and Y62 V8 4x4 drivetrains and hydraulic suspension?',
+        answer: 'Yes. We specialize in Nissan Patrol VK56VD 5.6L V8 maintenance, hydraulic Body Motion Control (HBMC) pressure balancing, and heavy-duty 4WD transfer case rebuilding.',
+      },
+      {
+        question: 'How do you resolve Nissan electronic throttle actuator and mass airflow sensor faults?',
+        answer: 'We clean throttle valve plates, run automated Idle Air Volume Learn (IAVL) routines via Consult III+, and test mass airflow sensor voltage response to eliminate erratic idling.',
       },
     ],
     seo: {
@@ -1229,16 +1446,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 3,500 - PKR 220,000',
     faqs: [
       {
-        question: 'Can you fix the flashing 4WD center differential light on Mitsubishi Pajero?',
-        answer: 'Yes! This is a classic vacuum actuator or solenoid fault in the Super Select 4WD-II system. We test each solenoid with MUT-III diagnostics and restore flawless 4WD shifting.',
+        question: 'Can you service Mitsubishi Pajero 3.2 DiD diesel and 3.8 V6 gasoline engines?',
+        answer: 'Yes. We provide complete overhauls and tuning for Mitsubishi Pajero 4M41 3.2L common-rail diesel and 6G75 3.8L MIVEC V6 engines, including timing chain guides and high-pressure fuel pumps.',
       },
       {
-        question: 'Do you service Mitsubishi Outlander PHEV plug-in hybrids in Islamabad?',
-        answer: 'Yes! We handle Outlander PHEV high-voltage lithium battery diagnostics, S-AWC twin-motor electric drives, and Atkinson-cycle generator engines.',
+        question: 'How do you maintain Mitsubishi Super Select 4WD-II transfer cases and center differentials?',
+        answer: 'We diagnose transfer case indicator flashing lights, replace vacuum actuator switches on the front differential, and flush synthetic GL-5 transfer case and differential fluids.',
       },
       {
-        question: 'What transmission fluid does Mitsubishi Ek Wagon and Mirage require?',
-        answer: 'We strictly use authentic Mitsubishi DiaQueen CVT Fluid J1/J4 to prevent belt slip and ensure smooth acceleration.',
+        question: 'Do you service imported Mitsubishi Ek Wagon and Outlander PHEV hybrid systems?',
+        answer: 'Yes. We service Japanese Ek Wagon 660cc CVTs as well as Outlander Plug-In Hybrid twin electric motors, lithium drive battery cooling loops, and regenerative brake systems.',
+      },
+      {
+        question: 'How do you fix Mitsubishi INVECS-III CVT transmission slippage and fluid overheating?',
+        answer: 'We replace clogged CVT oil cooler filters, flush genuine Mitsubishi DiaQueen CVTF-J4 fluid, and inspect torque converter lockup solenoids to restore immediate throttle response.',
+      },
+      {
+        question: 'Can you overhaul Mitsubishi front torsion bar and multi-link coil suspensions?',
+        answer: 'Yes. We replace worn upper and lower control arm ball joints, stabilizer bar links, and shock absorbers to restore smooth off-road and highway handling.',
+      },
+      {
+        question: 'Do you source genuine Mitsubishi OEM timing belts, tensioners, and water pumps?',
+        answer: 'Yes. All timing belt kits installed on Pajero and Lancer models are genuine Mitsubishi parts with hydraulic tensioners and Japanese GMB/Aisin water pumps.',
       },
     ],
     seo: {
@@ -1295,16 +1524,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 3,500 - PKR 160,000',
     faqs: [
       {
-        question: 'Why does my Mazda 3 / CX-5 hesitate under acceleration in hot weather?',
-        answer: 'High-compression SkyActiv direct injection engines accumulate carbon crust on the intake valves. Our walnut blasting removes 100% of carbon, restoring crisp throttle response.',
+        question: 'Can you service Mazda SkyActiv-G and SkyActiv-D engines in Islamabad & Rawalpindi?',
+        answer: 'Yes. We service high-compression SkyActiv-G gasoline (1.5L, 2.0L, 2.5L) and SkyActiv-D twin-turbo diesel engines across Mazda 3, Mazda 6, CX-3, CX-5, and CX-9 models.',
       },
       {
-        question: 'Do you carry genuine Mazda FZ automatic transmission fluid?',
-        answer: 'Yes! SkyActiv-Drive transmissions require specific low-viscosity Mazda Genuine ATF FZ fluid (blue color). We always use original factory fluid.',
+        question: 'How do you clean carbon buildup from Mazda direct-injection intake valves?',
+        answer: 'Because SkyActiv-G engines use high-pressure direct injection, intake valves accumulate carbon over time. We perform non-abrasive walnut shell blasting to restore airflow and throttle crispness.',
       },
       {
-        question: 'Can you protect Mazda Soul Red Crystal paint with PPF in Islamabad?',
-        answer: 'Yes! Mazda’s multi-stage Soul Red paint is notoriously prone to stone chipping. Our self-healing TPU PPF provides an invisible armor shield with up to 10-year warranty.',
+        question: 'Do you service Mazda 6-speed SkyActiv-Drive automatic transmissions with genuine FZ fluid?',
+        answer: 'Yes. SkyActiv-Drive gearboxes require specialized ultra-low-viscosity blue Mazda ATF-FZ fluid. We perform full fluid exchanges and filter replacements to prevent shift shudder.',
+      },
+      {
+        question: 'Can you diagnose Mazda i-Stop capacitor systems and dual-battery charging circuits?',
+        answer: 'Yes. We test Mazda EFB (Enhanced Flooded Batteries) and i-ELOOP capacitor energy storage modules, resetting battery management counters after replacement.',
+      },
+      {
+        question: 'How do you calibrate Mazda i-ActivSense radar cruise and blind-spot monitors?',
+        answer: 'We utilize computerized target boards to re-align Mazda radar cruise control and front camera sensors following windshield replacement or bumper repairs.',
+      },
+      {
+        question: 'Can you repair Mazda electric power steering motor and suspension clunks?',
+        answer: 'Yes. We overhaul steering rack guide bushings and replace worn front lower control arm rear hydraulic bushings to eliminate clunking over speed bumps.',
       },
     ],
     seo: {
@@ -1360,16 +1601,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 4,500 - PKR 240,000',
     faqs: [
       {
-        question: 'Do you have official Subaru SSM4 diagnostic tools in Islamabad?',
-        answer: 'Yes! We use the official Subaru Select Monitor 4 (SSM4) to diagnose all Boxer engine sensors, Lineartronic CVTs, and EyeSight safety cameras.',
+        question: 'Can you service Subaru Boxer engines (EJ20, FA20, FB20, FA24) in Islamabad?',
+        answer: 'Yes. We specialize in horizontally-opposed Subaru Boxer engines, providing spark plug replacements, valve cover gasket reseals, oil separator servicing, and full internal rebuilds.',
       },
       {
-        question: 'Can you rebuild Boxer engines (EJ25, FB20, FA20) without pulling them improperly?',
-        answer: 'Yes, our technicians specialize in horizontally-opposed Boxer engine overhauls using proper Subaru factory alignment rigs, precision torquing, and OEM multi-layer steel head gaskets.',
+        question: 'How do you resolve Subaru Boxer head gasket oil and coolant weeping?',
+        answer: 'We remove the Boxer engine to install multi-layer steel (MLS) Six-Star / Cometic head gaskets, verify cylinder head flatness on our surface grinder, and replace cylinder head bolts.',
       },
       {
-        question: 'What fluid should be used in Subaru Lineartronic CVT transmissions?',
-        answer: 'We strictly use genuine Subaru High-Torque CVTF / Lineartronic Fluid matching your specific Subaru model year and transmission code.',
+        question: 'How do you service Subaru Symmetrical All-Wheel Drive (AWD) and Lineartronic CVTs?',
+        answer: 'We service Subaru Lineartronic CVTs with genuine Subaru High Torque CVTF, inspect viscous coupling center differentials, and replace worn rear differential carrier bearings.',
+      },
+      {
+        question: 'Can you inspect and replace Subaru timing belts, pulleys, and water pumps?',
+        answer: 'Yes. We install complete OEM Gates / Aisin timing belt component kits including hydraulic tensioners, idler pulleys, camshaft seals, and water pumps.',
+      },
+      {
+        question: 'How do you calibrate Subaru EyeSight dual-camera driver assistance systems?',
+        answer: 'We utilize official Subaru diagnostic interfaces and optical alignment charts to calibrate stereo cameras for pre-collision braking and adaptive lane keep assistance.',
+      },
+      {
+        question: 'What oil viscosity and coolant specs are recommended for Subaru Boxer engines in Pakistan?',
+        answer: 'We recommend 0W-20 or 5W-30 API SP synthetic oils with high thermal resistance and genuine Subaru Super Coolant formulated with non-amine phosphate additives.',
       },
     ],
     seo: {
@@ -1426,16 +1679,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 5,000 - PKR 260,000',
     faqs: [
       {
-        question: 'How do you repair hybrid battery failure (P0A80) on Lexus RX450h and ES300h?',
-        answer: 'We test each module under artificial load on our high-voltage bench, replace degraded cell blocks with matched capacity OEM cells, balance the complete pack voltage, and clean the cooling fan.',
+        question: 'Can you service Lexus RX450h, ES300h, and NX300h hybrid systems in Islamabad?',
+        answer: 'Yes! We are Islamabad’s leading Lexus hybrid specialists, servicing high-voltage batteries, electric motor transaxles, inverter cooling systems, and electronic regenerative brakes.',
       },
       {
-        question: 'Can you service the Active Height Control (AHC) suspension on Lexus LX570?',
-        answer: 'Yes! We carry genuine Lexus AHC hydraulic fluid, test accumulator globes, and bleed the system using Techstream pressure step calibration for a plush, cloud-like ride.',
+        question: 'How do you inspect and recondition Lexus high-voltage hybrid battery packs?',
+        answer: 'We run module-by-module load testing via Techstream to detect weak cells, replace defective blocks with matched OEM cells, clean internal nickel busbars, and service the battery cooling fan.',
       },
       {
-        question: 'Do you offer pickup and delivery for Lexus owners in Islamabad & Rawalpindi?',
-        answer: 'Yes, we provide insured VIP valet pickup and drop-off across Islamabad (DHA, Bahria, F-6, F-7, E-7) and Rawalpindi.',
+        question: 'Do you service Lexus LX570 / LX600 V8 and Twin-Turbo V6 engines and AHC hydraulic suspension?',
+        answer: 'Yes. We service 3UR-FE 5.7L V8 and V35A-FTS 3.5L Twin-Turbo V6 engines, flush Active Height Control (AHC) suspension hydraulic fluid, and calibrate ride-height accumulators.',
+      },
+      {
+        question: 'How do you fix Lexus Mark Levinson premium audio amplifier failure and water ingress?',
+        answer: 'We diagnose and repair Mark Levinson DSP amplifier circuit boards damaged by trunk moisture or capacitor degradation, restoring surround-sound audio clarity.',
+      },
+      {
+        question: 'Do you use official Toyota/Lexus Techstream diagnostic equipment with live data logging?',
+        answer: 'Yes. We connect authentic Lexus Techstream software with Mongoose and Denso VCIs to execute live data graphing, active test actuations, and custom body electronics personalization.',
+      },
+      {
+        question: 'Can you apply self-healing Paint Protection Film (PPF) on Lexus spindle grilles and bodywork?',
+        answer: 'Yes. We offer computer CAD pre-cut TPU PPF kits for intricate Lexus spindle grilles, headlights, hoods, and door cups, safeguarding against paint chipping.',
       },
     ],
     seo: {
@@ -1490,16 +1755,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 6,000 - PKR 320,000',
     faqs: [
       {
-        question: 'Do you have official JLR Pathfinder diagnostic software in Islamabad?',
-        answer: 'Yes! We use the genuine Jaguar Land Rover Pathfinder system with DoIP (Diagnostics over Internet Protocol) hardware to service all modern Land Rover models.',
+        question: 'Do you have official Land Rover Pathfinder and SDD diagnostic scanners in Islamabad?',
+        answer: 'Yes. We operate Land Rover Symptom Driven Diagnostics (SDD) for older models and JLR Pathfinder / Topix Cloud for newer DoIP architectures (2017+), enabling full module programming.',
       },
       {
-        question: 'How do you fix air suspension sag on Land Rover Discovery and Defender?',
-        answer: 'We pressure-test the air lines, replace leaking air struts or valve blocks, rebuild the compressor pump, and calibrate ride height sensors back to factory levels.',
+        question: 'How do you service Land Rover Defender and Discovery Terrain Response air suspension?',
+        answer: 'We test air suspension spring bellows, repair valve blocks, replace desiccants in air compressor dryers, and recalibrate corner ride-height sensors to eliminate suspension fault warnings.',
       },
       {
-        question: 'Can you service the timing chain on Land Rover Ingenium engines?',
-        answer: 'Yes, our British vehicle master mechanics specialize in Ingenium 2.0L and 3.0L timing chain replacements using specialized JLR locking toolsets.',
+        question: 'How do you prevent Ingenium 2.0L diesel and petrol timing chain stretch and failure?',
+        answer: 'We measure timing chain elongation using diagnostic cam-crank phase correlation and replace worn rear timing chain assemblies with upgraded OEM Land Rover guides and tensioners.',
+      },
+      {
+        question: 'Can you service Land Rover ZF 8HP and 9HP automatic transmissions and transfer cases?',
+        answer: 'Yes. We perform complete transmission fluid flushes with genuine ZF Lifeguard Fluid, install new integrated sump pan-filters, and service electronic twin-speed transfer cases.',
+      },
+      {
+        question: 'How do you repair Land Rover active anti-roll bar hydraulic actuator leaks?',
+        answer: 'We service Dynamic Response high-pressure hydraulic pumps, replace leaking front and rear roll-control actuator bars, and bleed the system with genuine Pentosin CHF 11S fluid.',
+      },
+      {
+        question: 'Do you source genuine Land Rover OEM parts and oil filters with warranty?',
+        answer: 'Yes. All parts installed at HyperTune Garage are authentic Land Rover OEM parts or Tier-1 German OEM suppliers, backed by a comprehensive warranty.',
       },
     ],
     seo: {
@@ -1554,16 +1831,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 6,500 - PKR 350,000',
     faqs: [
       {
-        question: 'Why does my Range Rover sag on one side when parked overnight?',
-        answer: 'This is usually caused by a micro-leak in the air strut rubber bladder or an internal valve block leak. We pressure-test each corner to identify the exact leaking component.',
+        question: 'How do you repair Range Rover Autobiography and Sport air suspension compressor and airbag leaks?',
+        answer: 'We identify microscopic air bladder leaks using ultrasonic acoustic detectors, replace failing air struts, rebuild pneumatic valve blocks, and install heavy-duty AMK compressors.',
       },
       {
-        question: 'How do you fix coolant leaks on the 5.0L Supercharged V8 Range Rover?',
-        answer: 'The factory plastic coolant crossover pipes under the supercharger become brittle with heat. We replace them with lifetime upgraded aluminum pipes and vacuum-bleed the cooling system.',
+        question: 'Can you service Range Rover 5.0L Supercharged V8 and 3.0L Inline-6 Mild Hybrid engines?',
+        answer: 'Yes. We service AJ133 5.0L Supercharged V8s (timing chains, supercharger isolator couplers, coolant crossover pipes) and newer 3.0L Ingenium MHEV turbocharged powertrains.',
       },
       {
-        question: 'Do you offer pickup and delivery for Range Rover Vogue in Islamabad?',
-        answer: 'Yes, we provide insured VIP flatbed and valet pickup and drop-off across Islamabad and Rawalpindi.',
+        question: 'Do you have official JLR Topix Cloud and Pathfinder diagnostic equipment in Islamabad?',
+        answer: 'Yes. We have full factory JLR diagnostic capabilities to perform CCF (Car Configuration File) programming, key learning, and module software updates.',
+      },
+      {
+        question: 'How do you resolve Range Rover dual touchscreen infotainment and digital cluster blackouts?',
+        answer: 'We diagnose InControl Touch Pro and Pivi Pro screen blackouts, update audio head unit (AAM) software, verify optical MOST bus continuity, and resolve power ground faults.',
+      },
+      {
+        question: 'How often should Range Rover Brembo high-performance brake pads and rotors be replaced?',
+        answer: 'Due to vehicle curb weight (over 2.5 tons), 6-piston front Brembo brake pads typically require replacement every 25,000 to 35,000 km, paired with high-carbon composite rotors.',
+      },
+      {
+        question: 'Do you provide insured valet vehicle pickup for Range Rover owners in Islamabad & DHA?',
+        answer: 'Yes. We offer white-glove flatbed and insured valet vehicle pickup and delivery across Islamabad, Rawalpindi, DHA, and Bahria Town for luxury vehicle services.',
       },
     ],
     seo: {
@@ -1619,16 +1908,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 4,500 - PKR 250,000',
     faqs: [
       {
-        question: 'How do you permanently eliminate "Death Wobble" on Jeep Wranglers in Islamabad?',
-        answer: 'We perform a complete front-end diagnostic: replacing worn track bar bushings, drag links, ball joints, installing high-strength steering stabilizers, and setting precise caster alignment.',
+        question: 'Can you service Jeep Wrangler, Grand Cherokee, and Gladiator 4x4 systems in Islamabad?',
+        answer: 'Yes. We provide complete maintenance and upgrades for Jeep Wrangler JL/JK, Grand Cherokee WK2/WL, and Gladiator models, including engines, transmissions, and heavy-duty axles.',
       },
       {
-        question: 'Can you fix the common oil filter housing leak on 3.6L Pentastar V6 engines?',
-        answer: 'Yes! The factory plastic oil filter adapter cracks with engine heat. We replace it with an upgraded all-aluminum oil cooler housing that never cracks.',
+        question: 'How do you diagnose and fix Jeep Grand Cherokee air suspension (Quadra-Lift) sagging?',
+        answer: 'Quadra-Lift uses a closed-loop pressurized nitrogen system. We leak-test air bags, service valve manifolds, and recharge the system with pure 99.9% nitrogen to 14 bar factory pressure.',
       },
       {
-        question: 'Do you service Jeep Grand Cherokee Quadra-Lift air suspension?',
-        answer: 'Yes, we have specialized nitrogen refill rigs and wiTECH 2.0 diagnostics to bleed and calibrate closed-loop Quadra-Lift systems.',
+        question: 'How do you resolve the infamous Jeep Wrangler front solid axle death wobble vibration?',
+        answer: 'We inspect track bar mounting bracket ovalization, replace worn drag links and tie rod ends, check steering box play, and install heavy-duty Fox steering stabilizers.',
+      },
+      {
+        question: 'How do you service 3.6L Pentastar V6 rocker arm ticking and oil cooler housing leaks?',
+        answer: 'Ticking on Pentastar engines is caused by collapsed roller rocker needle bearings. We replace rocker arms and camshafts before lobes wipe out, and install upgraded aluminum oil filter housings.',
+      },
+      {
+        question: 'Can you rebuild Jeep Dana 44 heavy-duty differentials and electronic locker solenoids?',
+        answer: 'Yes. We set ring-and-pinion gear backlash, install replacement Timken carrier bearings, service Tru-Lok electronic locker solenoids, and refill with 75W-140 synthetic gear oil.',
+      },
+      {
+        question: 'Do you install heavy-duty suspension lift kits, off-road winches, and steel bumpers?',
+        answer: 'Yes. We professionally install Rubicon Express, Fox, and Falcon suspension lift kits, heavy-duty recovery winches, high-clearance steel bumpers, and snorkel intakes.',
       },
     ],
     seo: {
@@ -1684,16 +1985,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 4,500 - PKR 260,000',
     faqs: [
       {
-        question: 'Do you have official Ford FDRS diagnostic equipment in Islamabad?',
-        answer: 'Yes! We use the genuine Ford Diagnostic & Repair System (FDRS) and VCM-3 hardware to service modern Ford Ranger, F-150, Everest, and Mustang models.',
+        question: 'Can you service Ford F-150 Raptor, Ranger, and Everest EcoBoost engines in Islamabad?',
+        answer: 'Yes. We service 2.0L, 2.3L, 2.7L, and 3.5L Twin-Turbo EcoBoost engines, handling high-pressure fuel pumps, direct injectors, turbochargers, and cam phasers.',
       },
       {
-        question: 'How do you fix shifting issues on Ford 10-speed automatic transmissions?',
-        answer: 'We reprogram the Transmission Control Module (TCM), perform solenoid strategy relearns, and flush with genuine Motorcraft Mercon ULV fluid.',
+        question: 'How do you prevent and fix Ford 10-speed (10R80) automatic transmission harsh shifting?',
+        answer: '10R80 harsh downshifts are resolved by updating TCM software calibrations, flushing with genuine Ford Motorcraft Mercon ULV fluid, and clearing adaptive shift tables.',
       },
       {
-        question: 'Can you service Ford Ranger Raptor and F-150 Raptor in Rawalpindi / Islamabad?',
-        answer: 'Yes, our heavy-duty bays handle full mechanical maintenance, EcoBoost bi-turbo diagnostics, and Fox Live Valve suspension checks for Ford Raptors.',
+        question: 'Do you have official Ford FDRS and IDS diagnostic equipment with VCM interfaces?',
+        answer: 'Yes. We utilize Ford Diagnostic & Repair System (FDRS) and Integrated Diagnostic Software (IDS) with genuine VCM II/III interfaces for factory module programming and PATS key coding.',
+      },
+      {
+        question: 'Can you service Ford EcoBoost twin-turbochargers, high-pressure fuel pumps, and direct injectors?',
+        answer: 'Yes. We inspect twin-turbo wastegate play, clean carbon-fouled direct injectors, and test rail pressure sensors to ensure peak horsepower and fuel efficiency.',
+      },
+      {
+        question: 'How do you maintain Ford Fox Racing internal bypass suspension shocks on Raptor models?',
+        answer: 'We service Fox Live Valve shocks, inspecting high-pressure nitrogen charge valves, replacing oil seals, and recalibrating electronic active damping sensors.',
+      },
+      {
+        question: 'Do you stock genuine Ford Motorcraft synthetic fluids, filters, and brake components?',
+        answer: 'Yes. We import and stock authentic Ford Motorcraft engine oils, Mercon transmission fluids, genuine oil filters, and heavy-duty brake pads.',
       },
     ],
     seo: {
@@ -1750,16 +2063,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 3,500 - PKR 260,000',
     faqs: [
       {
-        question: 'Can you fix the AFM lifter tick on Chevrolet Tahoe and Silverado V8 engines?',
-        answer: 'Yes! We specialize in diagnosing and resolving Active Fuel Management (AFM/DFM) lifter failure on GM 5.3L and 6.2L V8 engines with genuine upgraded GM parts.',
+        question: 'Can you service Chevrolet Corvette, Camaro, Tahoe, and Suburban V8 engines in Islamabad?',
+        answer: 'Yes. We specialize in GM Small Block V8 powerplants (5.3L, 6.2L LT1, LT4, L86), handling complete mechanical maintenance, cooling systems, and drivelines.',
       },
       {
-        question: 'Do you have official GM diagnostic software for Corvette C8 and Camaro in Islamabad?',
-        answer: 'Yes, we use the official GM GDS2 with MDI-2 hardware to communicate with all electronic modules in modern Corvettes, Camaros, and Tahoes.',
+        question: 'How do you diagnose and repair GM Active Fuel Management (AFM / DFM) lifter failure?',
+        answer: 'Misfires and lifter ticking on GM V8s are caused by collapsed AFM/DFM displacement-on-demand lifters. We replace collapsed lifters, install upgraded VLOM oil manifolds, or perform full mechanical AFM deletes.',
       },
       {
-        question: 'Can you still service classic Chevrolet Joy and Optra cars in Rawalpindi / Islamabad?',
-        answer: 'Yes! We carry diagnostic scanners and service parts for classic Chevrolet Joy, Exclusive, and Optra vehicles.',
+        question: 'Do you have official GM GDS2 and Tech2 computer diagnostic software?',
+        answer: 'Yes. We utilize GM Global Diagnostic System 2 (GDS2) and Tech2 scanners with MDI interfaces to scan all engine, body, suspension, and transmission modules.',
+      },
+      {
+        question: 'Can you service GM 6-speed, 8-speed, and 10-speed automatic transmissions?',
+        answer: 'Yes. We resolve 8L90 torque converter shudder by executing full Mobil 1 Synthetic LV ATF HP fluid exchanges and servicing 10L80 10-speed gearboxes.',
+      },
+      {
+        question: 'How do you repair Chevrolet Magnetic Ride Control (MagneRide) active shock absorbers?',
+        answer: 'We inspect magnetorheological fluid shock absorbers for leaks, verify electronic damper coil resistance, and calibrate ride-height trim values.',
+      },
+      {
+        question: 'Can you source genuine ACDelco and GM Genuine replacement parts in Pakistan?',
+        answer: 'Yes. We strictly install authentic ACDelco Gold/GM Genuine filters, spark plugs, sensors, brake pads, and suspension parts backed by warranty.',
       },
     ],
     seo: {
@@ -1815,16 +2140,28 @@ export const brandsData: BrandItem[] = [
     pricingRange: 'PKR 6,000 - PKR 320,000',
     faqs: [
       {
-        question: 'Do you have official Volvo VIDA diagnostic tools in Islamabad?',
-        answer: 'Yes! We use the genuine Volvo VIDA platform with DiCE / VOE DoIP hardware to perform deep diagnostics, module resets, and hybrid system calibrations on all modern Volvos.',
+        question: 'Do you have official Volvo VIDA diagnostic software and DiCE interfaces in Islamabad?',
+        answer: 'Yes. We operate authentic Volvo VIDA (Vehicle Information & Diagnostics for Aftersales) with DiCE hardware, enabling factory fault isolation and software module downloads.',
       },
       {
-        question: 'Can you service the complex T8 Twin-Engine (Supercharged + Turbocharged + Electric) hybrid system?',
-        answer: 'Yes, our European master technicians specialize in the complete Volvo T8 hybrid powertrain, high-voltage battery cooling, and Electric Rear Axle Drive (ERAD) motors.',
+        question: 'Can you service Volvo Drive-E 2.0L Turbo and Twin-Engine T8 Plug-in Hybrid powertrains?',
+        answer: 'Yes. We service turbocharged and supercharged Drive-E engines as well as T8 Recharge plug-in hybrids, inspecting rear electric drive axles (ERAD) and high-voltage hybrid batteries.',
       },
       {
-        question: 'How do you fix air suspension failure on Volvo XC90?',
-        answer: 'We pressure-test the air lines, inspect Four-C active dampers, replace leaking air bellows or valve blocks, and calibrate ride height levels via VIDA.',
+        question: 'How do you diagnose Volvo XC90 and XC60 air suspension compressor and valve block faults?',
+        answer: 'We test air compressor duty cycle and pneumatic valve block seals using VIDA diagnostics, replacing leaky air bellows and recalibrating chassis ride height.',
+      },
+      {
+        question: 'Can you calibrate Volvo City Safety radar, IntelliSafe cameras, and emergency collision braking?',
+        answer: 'Yes. We perform precision camera and radar target alignment for Volvo City Safety and Pilot Assist semi-autonomous driving systems.',
+      },
+      {
+        question: 'How often should Volvo Aisin 8-speed automatic transmission fluid be serviced?',
+        answer: 'We recommend flushing Volvo Aisin 8-speed (AWF8F45) transmissions every 50,000 km with genuine Volvo ATF fluid to preserve shift quality and prevent valve body stickiness.',
+      },
+      {
+        question: 'Do you source genuine Volvo OEM brake pads, pollen filters, and hybrid cooling pumps?',
+        answer: 'Yes. We import authentic Volvo OEM service kits, high-filtration CleanZone cabin pollen filters, ceramic brake pads, and electric cooling pumps.',
       },
     ],
     seo: {
@@ -1834,6 +2171,18 @@ export const brandsData: BrandItem[] = [
     },
   },
 ];
+
+export const brandsData: BrandItem[] = baseBrandsData.map((b) => {
+  const meta = getRouteMetadata(`/brands/${b.slug}/`);
+  return {
+    ...b,
+    seo: {
+      ...b.seo,
+      title: meta ? meta.title : (b.seo?.title || `${b.name} | HyperTune Garage`),
+      description: meta ? meta.description : (b.seo?.description || b.tagline),
+    },
+  };
+});
 
 export function getBrandBySlug(slug?: string): BrandItem | undefined {
   if (!slug) return undefined;
