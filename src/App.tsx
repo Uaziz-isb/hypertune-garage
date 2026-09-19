@@ -191,8 +191,8 @@ export function App() {
     setCurrentPage(initialRoute.page);
     setCurrentSlug(initialRoute.slug);
 
-    // Clean up legacy hash if present by replacing with modern path
-    if (window.location.hash) {
+    // Clean up legacy hash or legacy booking path if present by replacing with modern path
+    if (window.location.hash || window.location.pathname === '/booking' || window.location.pathname === '/booking/') {
       const targetPath = getPathFromRoute(initialRoute.page, initialRoute.slug);
       window.history.replaceState({ page: initialRoute.page, slug: initialRoute.slug }, '', targetPath);
     }

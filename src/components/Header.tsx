@@ -20,6 +20,7 @@ import {
   Wind,
   Facebook,
   Instagram,
+  Youtube,
   Video,
   MessageCircle,
   Car,
@@ -149,6 +150,16 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Video className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#00F2FE]" />
               <span className="hidden xs:inline">TikTok</span>
+            </a>
+            <a
+              href="https://www.youtube.com/@HyperTuneGarage"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1 sm:p-1.5 rounded-md sm:rounded-lg bg-slate-900 hover:bg-[#FF0000] text-[#FF0000] hover:text-white border border-[#FF0000]/30 transition-all flex items-center justify-center"
+              title="YouTube"
+              aria-label="YouTube"
+            >
+              <Youtube className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
             </a>
           </div>
         </div>

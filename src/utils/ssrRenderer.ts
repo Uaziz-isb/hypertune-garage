@@ -595,6 +595,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4">Quick Links</h4>
         <ul class="space-y-2 text-xs">
           <li><a href="/blog/" class="text-slate-400 hover:text-cyan-400 transition-colors">Technical Blog &amp; Guides</a></li>
+          <li><a href="/faq/" class="text-slate-400 hover:text-cyan-400 transition-colors">Frequently Asked Questions (FAQ)</a></li>
           <li><a href="/sitemap/" class="text-slate-400 hover:text-cyan-400 transition-colors">HTML Sitemap</a></li>
           <li><a href="/warranty-specs/" class="text-slate-400 hover:text-cyan-400 transition-colors">12-Month Warranty Policy</a></li>
           <li><a href="/privacy-policy/" class="text-slate-400 hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
@@ -663,13 +664,16 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
 
         ${service.faqs && service.faqs.length > 0 ? `
         <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Frequently Asked Questions</h2>
-        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;">
           ${service.faqs.map((faq) => `
             <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:16px;">
               <h3 style="font-size:15px;font-weight:700;color:#ffffff;margin-bottom:6px;">${escapeHtml(faq.question)}</h3>
               <p style="font-size:13px;color:#94a3b8;line-height:1.5;">${escapeHtml(faq.answer)}</p>
             </div>
           `).join('')}
+        </div>
+        <div style="margin-bottom:32px;">
+          <a href="/faq/" style="color:#06b6d4;font-size:14px;font-weight:700;text-decoration:none;">Explore all ${escapeHtml(service.title)} &amp; Workshop FAQs &rarr;</a>
         </div>
         ` : ''}
 
@@ -730,13 +734,16 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
 
         ${brand.faqs && brand.faqs.length > 0 ? `
         <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Frequently Asked Questions (${escapeHtml(brand.name.split(' ')[0])})</h2>
-        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;">
           ${brand.faqs.map((faq) => `
             <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:16px;">
               <h3 style="font-size:15px;font-weight:700;color:#ffffff;margin-bottom:6px;">${escapeHtml(faq.question)}</h3>
               <p style="font-size:13px;color:#94a3b8;line-height:1.5;">${escapeHtml(faq.answer)}</p>
             </div>
           `).join('')}
+        </div>
+        <div style="margin-bottom:32px;">
+          <a href="/faq/" style="color:#06b6d4;font-size:14px;font-weight:700;text-decoration:none;">Explore all ${escapeHtml(brand.name.split(' ')[0])} &amp; Workshop FAQs &rarr;</a>
         </div>
         ` : ''}
 
@@ -1121,7 +1128,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
       <div style="text-align:center;margin-top:40px;background:#0b121e;border:1px solid rgba(6,182,212,0.3);border-radius:16px;padding:32px;">
         <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin:0 0 10px 0;">Need a Workshop Diagnosis or Custom Quote?</h2>
         <p style="font-size:14px;color:#94a3b8;margin:0 0 20px 0;">Our certified master technicians at Police Foundation, Sector O-9, Islamabad are ready to inspect your vehicle.</p>
-        <a href="/booking/" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;font-size:14px;display:inline-block;margin-right:12px;">Book Inspection Bay</a>
+        <a href="/book-appointment/" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;font-size:14px;display:inline-block;margin-right:12px;">Book Inspection Bay</a>
         <a href="https://wa.me/923330177717?text=Hi%20HyperTune%20Garage,%20I%20have%20a%20technical%20question" target="_blank" rel="noopener noreferrer" style="background:#10b981;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;font-size:14px;display:inline-block;">WhatsApp Master Tech</a>
       </div>
     </main>`;
@@ -1209,6 +1216,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <a href="/blog/" style="color:#cbd5e1;text-decoration:none;">📝 Technical Blog</a>
           <a href="/about/" style="color:#cbd5e1;text-decoration:none;">ℹ️ About HyperTune</a>
           <a href="/contact/" style="color:#cbd5e1;text-decoration:none;">📞 Contact Us</a>
+          <a href="/faq/" style="color:#cbd5e1;text-decoration:none;">❓ Frequently Asked Questions</a>
           <a href="/book-appointment/" style="color:#cbd5e1;text-decoration:none;">📅 Book Appointment</a>
           <a href="/warranty-specs/" style="color:#cbd5e1;text-decoration:none;">🛡️ Warranty Policy</a>
         </div>
@@ -1409,6 +1417,20 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
               </a>
             `).join('')}
           </div>
+        </div>
+      </section>
+
+      <!-- Workshop FAQ Teaser -->
+      <section class="max-w-7xl mx-auto px-4">
+        <div class="bg-[#0b121e] border border-slate-800 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+          <div>
+            <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest block">Got Questions?</span>
+            <h3 class="text-white text-lg font-bold mt-1">Workshop Repair, Warranty &amp; Booking FAQs</h3>
+            <p class="text-slate-400 text-xs mt-1">Get instant answers on genuine OEM parts, 12-month warranty coverage, turnaround times, and workshop procedures.</p>
+          </div>
+          <a href="/faq/" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-cyan-500/30 text-cyan-400 font-bold text-xs hover:bg-slate-800 shrink-0 transition-colors">
+            Browse Workshop FAQs &rarr;
+          </a>
         </div>
       </section>
 

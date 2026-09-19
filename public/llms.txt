@@ -12,6 +12,7 @@
 - [Transformation Gallery](https://hypertunegarage.pk/gallery/): Before & after showcase of full-body PPF installations, 9H Ceramic coatings, engine overhauls, and body kit modifications.
 - [Frequently Asked Questions (FAQ)](https://hypertunegarage.pk/faq/): Answers to questions regarding PPF lifespan, warranty coverage, engine rebuild turnaround times, and pricing.
 - [Contact & Booking](https://hypertunegarage.pk/contact/): Inquire, request personalized price quotes, or book workshop appointments via phone, WhatsApp, or instant online form.
+- [Book Service Appointment](https://hypertunegarage.pk/book-appointment/): Reserve diagnostic scans, PPF installations, periodic maintenance, or mechanical repair slots online with instant confirmation.
 - [Warranty & Specifications](https://hypertunegarage.pk/warranty-specs/): Official warranty terms for TPU PPF, Ceramic coating packages, OEM spare parts, and engine work.
 - [XML Sitemap](https://hypertunegarage.pk/sitemap.xml): Complete machine-readable XML sitemap for web crawlers.
 

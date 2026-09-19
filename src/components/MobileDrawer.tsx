@@ -58,6 +58,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
   const mainLinks: { id: PageId; label: string; icon: React.ElementType }[] = [
     { id: 'gallery', label: 'Restoration Gallery', icon: Image },
     { id: 'blog', label: 'Car Care Guides & Blog', icon: FileText },
+    { id: 'faq', label: 'Frequently Asked Questions', icon: HelpCircle },
     { id: 'about', label: 'About HyperTune Garage', icon: Info },
     { id: 'contact', label: 'Contact Us', icon: Phone },
   ];

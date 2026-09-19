@@ -82,6 +82,18 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/booking",
+      "destination": "/book-appointment/",
+      "permanent": true
+    },
+    {
+      "source": "/booking/",
+      "destination": "/book-appointment/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

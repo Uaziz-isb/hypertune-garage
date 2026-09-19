@@ -186,6 +186,7 @@ app.get(["/llms.txt", "/.well-known/llms.txt"], (req, res) => {
 - [Transformation Gallery](${baseUrl}/gallery/): Before & after showcase of full-body PPF installations, 9H Ceramic coatings, engine overhauls, and body kit modifications.
 - [Frequently Asked Questions (FAQ)](${baseUrl}/faq/): Answers to questions regarding PPF lifespan, warranty coverage, engine rebuild turnaround times, and pricing.
 - [Contact & Booking](${baseUrl}/contact/): Inquire, request personalized price quotes, or book workshop appointments via phone, WhatsApp, or instant online form.
+- [Book Service Appointment](${baseUrl}/book-appointment/): Reserve diagnostic scans, PPF installations, periodic maintenance, or mechanical repair slots online with instant confirmation.
 - [Warranty & Specifications](${baseUrl}/warranty-specs/): Official warranty terms for TPU PPF, Ceramic coating packages, OEM spare parts, and engine work.
 - [XML Sitemap](${baseUrl}/sitemap.xml): Complete machine-readable XML sitemap for web crawlers.
 
@@ -311,8 +312,14 @@ async function startServer() {
       const protocol = req.headers["x-forwarded-proto"] || "https";
       const baseUrl = `${protocol}://${host}`;
 
-      // Trailing-slash redirect for clean SEO URLs (excluding files with extensions)
+      // 301 Permanent Redirect: /booking/ -> /book-appointment/
       const parsedPath = url.split("?")[0];
+      if (parsedPath === "/booking" || parsedPath === "/booking/") {
+        const query = url.includes("?") ? `?${url.split("?")[1]}` : "";
+        return res.redirect(301, `/book-appointment/${query}`);
+      }
+
+      // Trailing-slash redirect for clean SEO URLs (excluding files with extensions)
       if (parsedPath !== "/" && !parsedPath.endsWith("/") && !parsedPath.includes(".")) {
         const query = url.includes("?") ? `?${url.split("?")[1]}` : "";
         return res.redirect(301, `${parsedPath}/${query}`);
@@ -360,8 +367,14 @@ async function startServer() {
       const protocol = req.headers["x-forwarded-proto"] || "https";
       const baseUrl = `${protocol}://${host}`;
 
-      // Trailing-slash redirect for clean SEO URLs (excluding files with extensions)
+      // 301 Permanent Redirect: /booking/ -> /book-appointment/
       const parsedPath = url.split("?")[0];
+      if (parsedPath === "/booking" || parsedPath === "/booking/") {
+        const query = url.includes("?") ? `?${url.split("?")[1]}` : "";
+        return res.redirect(301, `/book-appointment/${query}`);
+      }
+
+      // Trailing-slash redirect for clean SEO URLs (excluding files with extensions)
       if (parsedPath !== "/" && !parsedPath.endsWith("/") && !parsedPath.includes(".")) {
         const query = url.includes("?") ? `?${url.split("?")[1]}` : "";
         return res.redirect(301, `${parsedPath}/${query}`);

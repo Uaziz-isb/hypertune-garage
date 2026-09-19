@@ -28,6 +28,7 @@ import {
   Shield,
   ExternalLink,
   Navigation,
+  HelpCircle,
 } from 'lucide-react';
 
 interface HomeViewProps {
@@ -545,6 +546,31 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <p className="text-slate-400 text-xs leading-relaxed">{s.desc}</p>
             </div>
           ))}
+        </div>
+
+        {/* Workshop FAQ Knowledge Hub Bar */}
+        <div className="bg-[#0b121e] border border-slate-800 rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+          <div className="space-y-1 text-center sm:text-left">
+            <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest flex items-center justify-center sm:justify-start gap-1.5">
+              <HelpCircle className="w-3.5 h-3.5 text-cyan-400" />
+              Got Questions?
+            </span>
+            <h3 className="text-white text-base sm:text-lg font-bold">Workshop Repair, Warranty &amp; Booking FAQs</h3>
+            <p className="text-slate-400 text-xs">
+              Get instant answers on genuine OEM parts, 12-month warranty coverage, turnaround times, and workshop procedures.
+            </p>
+          </div>
+          <a
+            href="/faq/"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('faq');
+            }}
+            className="px-5 py-2.5 rounded-xl bg-slate-900 border border-cyan-500/30 text-cyan-400 hover:text-white hover:bg-slate-800 font-bold text-xs flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer"
+          >
+            <span>Browse Workshop FAQs</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
         </div>
       </section>
 
