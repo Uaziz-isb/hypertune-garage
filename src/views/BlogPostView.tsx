@@ -13,6 +13,14 @@ interface BlogPostProps {
 
 export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpenBooking }) => {
   const post = blogData.find((b) => b.slug === slug) || blogData[0];
+  const [contentHtml, setContentHtml] = React.useState<string>(post.content);
+
+  React.useEffect(() => {
+    fetch(`/articles/${post.slug}.html`)
+      .then((res) => (res.ok ? res.text() : ''))
+      .then((html) => html && setContentHtml(html))
+      .catch(() => {});
+  }, [post.slug]);
 
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -120,7 +128,7 @@ export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpen
         {/* Article Content */}
         <div
           className="prose prose-invert max-w-none text-slate-300 text-sm leading-relaxed space-y-6"
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
 
         {/* Tags & Share */}

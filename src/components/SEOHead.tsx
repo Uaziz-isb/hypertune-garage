@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { trackPageView, initGA } from '../utils/analytics';
-import { normalizeCanonicalUrl } from '../utils/ssrRenderer';
+import { normalizeCanonicalUrl } from '../utils/canonical';
 import { staticCustomerReviews, googleBusinessData } from '../data/reviewsData';
 
 declare global {

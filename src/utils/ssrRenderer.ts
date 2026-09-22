@@ -1,7 +1,13 @@
+import fs from 'fs';
+import path from 'path';
 import { servicesDataSSR, brandsDataSSR, locationsDataSSR, blogDataSSR, findServiceSSR } from '../data/ssrData';
+import { serviceGuideMap, serviceShortLabels } from '../data/guideData';
 import { googleBusinessData } from '../data/reviewsData';
 import { faqData } from '../data/faqData';
 import { getRouteMetadata } from '../data/metadataRegistry';
+import { normalizeCanonicalUrl } from './canonical';
+
+export { normalizeCanonicalUrl };
 
 export interface RouteMetaInfo {
   title: string;
@@ -11,28 +17,6 @@ export interface RouteMetaInfo {
   ogImage: string;
   schemas: object[];
   isNotFound?: boolean;
-}
-
-export function normalizeCanonicalUrl(inputPathOrUrl: string, baseUrl: string = 'https://hypertunegarage.pk'): string {
-  const cleanBase = baseUrl.replace(/\/+$/, '');
-  let path = inputPathOrUrl || '/';
-  if (path.startsWith('http://') || path.startsWith('https://')) {
-    try {
-      const u = new URL(path);
-      path = u.pathname;
-    } catch {
-      path = path.replace(/^https?:\/\/[^/]+/, '');
-    }
-  }
-
-  path = path.split('?')[0].split('#')[0];
-  const trimmed = path.replace(/^\/+|\/+$/g, '');
-
-  if (!trimmed) {
-    return `${cleanBase}/`;
-  }
-
-  return `${cleanBase}/${trimmed}/`;
 }
 
 const BASE_BUSINESS_SCHEMA = (ogImage: string) => ({
@@ -677,6 +661,19 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         </div>
         ` : ''}
 
+        ${(() => {
+          const guide = serviceGuideMap[service.slug];
+          if (!guide) return '';
+
+          return `
+          <div style="background:#070c14;border:1px solid rgba(6,182,212,0.3);border-radius:16px;padding:24px;margin-bottom:32px;">
+            <span style="font-size:11px;font-weight:700;color:#06b6d4;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">Featured Workshop Technical Guide</span>
+            <h3 style="font-size:18px;font-weight:800;color:#ffffff;margin:0 0 8px 0;">${escapeHtml(guide.title)}</h3>
+            <p style="font-size:13px;color:#cbd5e1;line-height:1.6;margin-bottom:14px;">${escapeHtml(guide.desc)}</p>
+            <a href="/blog/${guide.slug}/" style="color:#06b6d4;font-size:13px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">${escapeHtml(guide.buttonText)} &rarr;</a>
+          </div>`;
+        })()}
+
         <div style="background:#0b121e;border:1px solid #06b6d4;border-radius:16px;padding:24px;text-align:center;">
           <h3 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:8px;">Ready to Book Your Service?</h3>
           <p style="font-size:14px;color:#94a3b8;margin-bottom:16px;">Reserve a workshop slot at HyperTune Garage Islamabad.</p>
@@ -787,8 +784,34 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
   } else if (root === 'blog' && sub) {
     const post = blogDataSSR.find((b) => b.slug === sub);
     if (post) {
+      let articleBody = '';
+      const staticArticlePath = path.join(process.cwd(), 'public', 'articles', `${post.slug}.html`);
+      if (fs.existsSync(staticArticlePath)) {
+        articleBody = fs.readFileSync(staticArticlePath, 'utf-8');
+      } else {
+        articleBody = post.content.split('\n\n').map((para) => {
+          if (para.startsWith('## ')) {
+            return `<h2 style="font-size:22px;font-weight:800;color:#ffffff;margin:24px 0 12px;">${escapeHtml(para.replace('## ', ''))}</h2>`;
+          }
+          if (para.startsWith('### ')) {
+            return `<h3 style="font-size:18px;font-weight:700;color:#ffffff;margin:20px 0 8px;">${escapeHtml(para.replace('### ', ''))}</h3>`;
+          }
+          if (para.startsWith('- ')) {
+            const items = para.split('\n').map((item) => {
+              const text = escapeHtml(item.replace('- ', ''))
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:#06b6d4;text-decoration:none;">$1</a>');
+              return `<li>${text}</li>`;
+            }).join('');
+            return `<ul style="padding-left:20px;margin-bottom:16px;">${items}</ul>`;
+          }
+          const renderedPara = escapeHtml(para)
+            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:#06b6d4;text-decoration:none;">$1</a>');
+          return `<p style="margin-bottom:16px;">${renderedPara}</p>`;
+        }).join('');
+      }
+
       mainContentHtml = `
-      <main style="max-width:900px;margin:32px auto;padding:0 16px;">
+      <main id="blog-post-content" style="max-width:900px;margin:32px auto;padding:0 16px;">
         <nav style="font-size:12px;color:#64748b;margin-bottom:16px;">
           <a href="/" style="color:#06b6d4;text-decoration:none;">Home</a> &gt;
           <a href="/blog/" style="color:#06b6d4;text-decoration:none;">Technical Blog</a> &gt;
@@ -809,25 +832,13 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <p style="font-size:18px;font-weight:600;color:#06b6d4;margin-bottom:24px;">
             ${escapeHtml(post.excerpt)}
           </p>
-          ${post.content.split('\n\n').map((para) => {
-            if (para.startsWith('## ')) {
-              return `<h2 style="font-size:22px;font-weight:800;color:#ffffff;margin:24px 0 12px;">${escapeHtml(para.replace('## ', ''))}</h2>`;
-            }
-            if (para.startsWith('### ')) {
-              return `<h3 style="font-size:18px;font-weight:700;color:#ffffff;margin:20px 0 8px;">${escapeHtml(para.replace('### ', ''))}</h3>`;
-            }
-            if (para.startsWith('- ')) {
-              const items = para.split('\n').map((item) => `<li>${escapeHtml(item.replace('- ', ''))}</li>`).join('');
-              return `<ul style="padding-left:20px;margin-bottom:16px;">${items}</ul>`;
-            }
-            return `<p style="margin-bottom:16px;">${escapeHtml(para)}</p>`;
-          }).join('')}
+          ${articleBody}
         </div>
 
         <div style="background:#070c14;border:1px solid #06b6d4;border-radius:16px;padding:24px;text-align:center;">
-          <h3 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:8px;">Need Expert Diagnostic Help?</h3>
-          <p style="font-size:14px;color:#94a3b8;margin-bottom:16px;">Schedule a live scanner evaluation at HyperTune Garage Islamabad.</p>
-          <a href="/book-appointment/" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;display:inline-block;">Book Diagnostic Scan</a>
+          <h3 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:8px;">${post.category.includes('PPF') || post.category.includes('Paint') ? 'Need Expert Paint Protection Advice?' : 'Need Expert Diagnostic Help?'}</h3>
+          <p style="font-size:14px;color:#94a3b8;margin-bottom:16px;">${post.category.includes('PPF') || post.category.includes('Paint') ? 'Schedule an in-person paint inspection and digital thickness audit at HyperTune Garage Islamabad.' : 'Schedule a live scanner evaluation at HyperTune Garage Islamabad.'}</p>
+          <a href="/book-appointment/" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;display:inline-block;">${post.category.includes('PPF') || post.category.includes('Paint') ? 'Book Paint Protection Consultation' : 'Book Diagnostic Scan'}</a>
         </div>
       </main>`;
     }
@@ -913,9 +924,20 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
       </div>
     </main>`;
   } else if (root === 'blog') {
+    const serviceGuidesSSR = servicesDataSSR
+      .map((s) => {
+        const guide = serviceGuideMap[s.slug];
+        if (!guide) return null;
+        return { service: s, guide };
+      })
+      .filter((item): item is { service: typeof servicesDataSSR[0]; guide: (typeof serviceGuideMap)[string] } => item !== null);
+
+    const serviceGuideSlugsSSR = new Set(Object.values(serviceGuideMap).map((g) => g.slug));
+    const blogArticlesListingSSR = blogDataSSR.filter((b) => !serviceGuideSlugsSSR.has(b.slug));
+
     mainContentHtml = `
     <main style="max-width:1280px;margin:32px auto;padding:0 16px;">
-      <div style="text-align:center;margin-bottom:40px;">
+      <div style="text-align:center;margin-bottom:48px;">
         <span style="display:inline-block;background:rgba(6,182,212,0.1);color:#06b6d4;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:12px;">
           DIAGNOSTIC &amp; MAINTENANCE KNOWLEDGE HUB
         </span>
@@ -927,28 +949,100 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         </p>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
-        ${blogDataSSR.map((b) => `
-          <article style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;">
-            <div>
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-                <span style="font-size:11px;font-weight:700;color:#06b6d4;text-transform:uppercase;">${escapeHtml(b.category)}</span>
-                <span style="font-size:11px;color:#64748b;">${escapeHtml(b.readTime)}</span>
-              </div>
-              <h2 style="font-size:18px;font-weight:800;color:#ffffff;margin:0 0 12px;line-height:1.4;">${escapeHtml(b.title)}</h2>
-              <p style="font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:16px;">${escapeHtml(b.excerpt)}</p>
-            </div>
-            <div>
-              <div style="font-size:11px;color:#64748b;margin-bottom:12px;">
-                <span>By ${escapeHtml(b.author.name)}</span> • <span>${escapeHtml(b.publishedDate)}</span>
-              </div>
-              <a href="/blog/${b.slug}/" style="color:#06b6d4;font-weight:700;text-decoration:none;font-size:14px;display:inline-block;">
-                Read Full Technical Guide &rarr;
+      <!-- Dedicated Service Guides Section -->
+      <section style="margin-bottom:64px;" id="service-guides">
+        <div style="margin-bottom:28px;border-bottom:1px solid #1e293b;padding-bottom:16px;">
+          <span style="font-size:11px;font-weight:700;color:#06b6d4;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">
+            Workshop Service Manuals
+          </span>
+          <h2 style="font-size:26px;font-weight:800;color:#ffffff;margin:0 0 8px 0;">
+            Service Guides
+          </h2>
+          <p style="font-size:14px;color:#94a3b8;max-width:800px;margin:0 0 16px 0;line-height:1.6;">
+            Every HyperTune Garage service features a dedicated technical diagnostic &amp; maintenance guide covering Pakistani climate adaptations, OEM tolerances, and troubleshooting.
+          </p>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-top:4px;">
+            ${serviceGuidesSSR.map(({ service: s, guide }) => `
+              <a href="/blog/${guide.slug}/" style="display:inline-block;padding:8px 16px;border-radius:12px;font-size:12px;font-weight:700;background:#0b121e;color:#cbd5e1;border:1px solid #1e293b;text-decoration:none;">
+                ${escapeHtml(serviceShortLabels[s.slug] || s.title)}
               </a>
-            </div>
-          </article>
-        `).join('')}
-      </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
+          ${serviceGuidesSSR.map(({ service, guide }) => `
+            <article style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;">
+              <div>
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                  <a href="/services/${service.slug}/" style="font-size:11px;font-weight:700;color:#06b6d4;text-decoration:none;text-transform:uppercase;letter-spacing:0.5px;">
+                    Service: ${escapeHtml(service.title)}
+                  </a>
+                  <span style="font-size:10px;color:#64748b;font-family:monospace;text-transform:uppercase;">Service Guide</span>
+                </div>
+                <h3 style="font-size:18px;font-weight:800;color:#ffffff;margin:0 0 12px;line-height:1.4;">
+                  <a href="/blog/${guide.slug}/" style="color:#ffffff;text-decoration:none;">
+                    ${escapeHtml(guide.title)}
+                  </a>
+                </h3>
+                <p style="font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:16px;">
+                  ${escapeHtml(guide.desc)}
+                </p>
+              </div>
+              <div style="padding-top:16px;border-top:1px solid #1e293b;display:flex;align-items:center;justify-content:space-between;">
+                <a href="/services/${service.slug}/" style="font-size:12px;color:#94a3b8;text-decoration:none;">
+                  View Service &rarr;
+                </a>
+                <a href="/blog/${guide.slug}/" style="color:#06b6d4;font-weight:700;text-decoration:none;font-size:13px;display:inline-block;">
+                  ${escapeHtml(guide.buttonText || 'Read Technical Guide')} &rarr;
+                </a>
+              </div>
+            </article>
+          `).join('')}
+        </div>
+      </section>
+
+      <!-- All Guides & Articles Section -->
+      <section id="all-articles">
+        <div style="margin-bottom:28px;border-bottom:1px solid #1e293b;padding-bottom:16px;">
+          <span style="font-size:11px;font-weight:700;color:#06b6d4;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">
+            Complete Technical Library
+          </span>
+          <h2 style="font-size:26px;font-weight:800;color:#ffffff;margin:0 0 8px 0;">
+            Blogs &amp; Articles
+          </h2>
+          <p style="font-size:14px;color:#94a3b8;max-width:800px;margin:0;line-height:1.6;">
+            Explore diagnostic breakdowns, German vehicle troubleshooting, hybrid high-voltage rebalancing, and pre-purchase inspection checklists.
+          </p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
+          ${blogArticlesListingSSR.map((b) => `
+            <article style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;">
+              <div>
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                  <span style="font-size:11px;font-weight:700;color:#06b6d4;text-transform:uppercase;">${escapeHtml(b.category)}</span>
+                  <span style="font-size:11px;color:#64748b;">${escapeHtml(b.readTime)}</span>
+                </div>
+                <h3 style="font-size:18px;font-weight:800;color:#ffffff;margin:0 0 12px;line-height:1.4;">
+                  <a href="/blog/${b.slug}/" style="color:#ffffff;text-decoration:none;">
+                    ${escapeHtml(b.title)}
+                  </a>
+                </h3>
+                <p style="font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:16px;">${escapeHtml(b.excerpt)}</p>
+              </div>
+              <div>
+                <div style="font-size:11px;color:#64748b;margin-bottom:12px;">
+                  <span>By ${escapeHtml(b.author.name)}</span> • <span>${escapeHtml(b.publishedDate)}</span>
+                </div>
+                <a href="/blog/${b.slug}/" style="color:#06b6d4;font-weight:700;text-decoration:none;font-size:14px;display:inline-block;">
+                  Read Full Technical Guide &rarr;
+                </a>
+              </div>
+            </article>
+          `).join('')}
+        </div>
+      </section>
     </main>`;
   } else if (root === 'about' || root === 'about-us') {
     mainContentHtml = `
@@ -1108,6 +1202,11 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
               ${f.relatedService ? `
                 <a href="${f.relatedService.href}" style="display:inline-flex;align-items:center;gap:6px;background:#0f172a;color:#06b6d4;border:1px solid rgba(6,182,212,0.3);padding:6px 12px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;">
                   <span>Service: ${escapeHtml(f.relatedService.title)} →</span>
+                </a>
+              ` : ''}
+              ${f.relatedArticle ? `
+                <a href="${f.relatedArticle.href}" style="display:inline-flex;align-items:center;gap:6px;background:#0f172a;color:#06b6d4;border:1px solid rgba(6,182,212,0.3);padding:6px 12px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;">
+                  <span>Guide: ${escapeHtml(f.relatedArticle.title)} →</span>
                 </a>
               ` : ''}
               ${f.relatedBrand ? `

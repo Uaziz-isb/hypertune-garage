@@ -219,8 +219,8 @@ export const METADATA_REGISTRY: Record<string, RouteMetadata> = {
   },
   '/blog/ceramic-coating-vs-ppf-pakistan-guide/': {
     path: '/blog/ceramic-coating-vs-ppf-pakistan-guide/',
-    title: 'Ceramic Coating vs PPF in Pakistan: Which Is Better?',
-    description: 'Compare ceramic coating and PPF for Pakistani driving conditions, including paint protection, scratches, stone chips, maintenance, durability and cost factors.',
+    title: 'PPF vs Ceramic Coating in Pakistan: Complete Comparison',
+    description: 'Compare PPF and ceramic coating in Pakistan for stone chips, UV heat, swirls and daily driving. Discover which protection fits your car and driving priorities.',
     canonicalUrl: 'https://hypertunegarage.pk/blog/ceramic-coating-vs-ppf-pakistan-guide/',
   },
   '/blog/car-ac-cooling-troubleshooting-pakistan-summer/': {
@@ -270,6 +270,36 @@ export const METADATA_REGISTRY: Record<string, RouteMetadata> = {
     title: 'Toyota Prado V8 Maintenance Guide Pakistan',
     description: 'Learn key Toyota Land Cruiser Prado V8 maintenance requirements, service intervals, fluids, engine care, suspension checks and common issues.',
     canonicalUrl: 'https://hypertunegarage.pk/blog/toyota-land-cruiser-prado-v8-maintenance-guide/',
+  },
+  '/blog/car-vinyl-wrap-guide-pakistan-cost-care/': {
+    path: '/blog/car-vinyl-wrap-guide-pakistan-cost-care/',
+    title: 'Car Vinyl Wrap Guide Pakistan: Cost, Care & Longevity',
+    description: 'Complete guide to vehicle vinyl wrapping in Pakistan covering cast vs calendered vinyl, color change options, installation workflow, costs and maintenance.',
+    canonicalUrl: 'https://hypertunegarage.pk/blog/car-vinyl-wrap-guide-pakistan-cost-care/',
+  },
+  '/blog/car-paint-booth-denting-repair-guide-pakistan/': {
+    path: '/blog/car-paint-booth-denting-repair-guide-pakistan/',
+    title: 'Car Paint Booth & Denting Repair Guide Pakistan',
+    description: 'Learn how thermal bake spray booths, computerized spectrophotometer color matching, PDR and frame alignment restore accident-damaged cars in Pakistan.',
+    canonicalUrl: 'https://hypertunegarage.pk/blog/car-paint-booth-denting-repair-guide-pakistan/',
+  },
+  '/blog/car-body-kit-modification-guide-pakistan/': {
+    path: '/blog/car-body-kit-modification-guide-pakistan/',
+    title: 'Car Body Kit & Modification Guide Pakistan | Styling',
+    description: 'A practical guide to car body kits and styling in Pakistan covering ABS vs carbon fiber, speed breaker clearance, bumper fitment and paint matching.',
+    canonicalUrl: 'https://hypertunegarage.pk/blog/car-body-kit-modification-guide-pakistan/',
+  },
+  '/blog/ceramic-coating-maintenance-guide-pakistan/': {
+    path: '/blog/ceramic-coating-maintenance-guide-pakistan/',
+    title: 'Ceramic Coating Maintenance Guide Pakistan | Detailing',
+    description: 'Learn how to maintain 9H ceramic coatings in Pakistan, multi-stage paint correction levels, safe two-bucket washing and preventing water-spot etching.',
+    canonicalUrl: 'https://hypertunegarage.pk/blog/ceramic-coating-maintenance-guide-pakistan/',
+  },
+  '/blog/car-overheating-radiator-flush-coolant-guide-pakistan/': {
+    path: '/blog/car-overheating-radiator-flush-coolant-guide-pakistan/',
+    title: 'Car Overheating & Radiator Flush Guide Pakistan',
+    description: 'Prevent summer engine overheating in Pakistan with our complete guide on OAT coolant vs tap water, ultrasonic injector cleaning and radiator flushing.',
+    canonicalUrl: 'https://hypertunegarage.pk/blog/car-overheating-radiator-flush-coolant-guide-pakistan/',
   },
 
   // 6. Brand Specialist Hubs (28)

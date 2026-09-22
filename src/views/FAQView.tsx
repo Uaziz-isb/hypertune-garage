@@ -285,7 +285,7 @@ export const FAQView: React.FC<FAQViewProps> = ({ onNavigate, onOpenBooking }) =
                       )}
 
                       {/* Two-Way Topical Internal Links Section */}
-                      {(faq.relatedService || faq.relatedBrand || faq.relatedLocation) && (
+                      {(faq.relatedService || faq.relatedBrand || faq.relatedLocation || faq.relatedArticle) && (
                         <div className="pt-2 border-t border-slate-800/80 flex flex-wrap items-center gap-2.5">
                           <span className="text-[11px] text-slate-400 font-semibold uppercase tracking-wider mr-1">
                             Explore Dedicated Hubs:
@@ -299,6 +299,22 @@ export const FAQView: React.FC<FAQViewProps> = ({ onNavigate, onOpenBooking }) =
                             >
                               <Wrench className="w-3.5 h-3.5 text-cyan-400" />
                               <span>{faq.relatedService.title}</span>
+                              <ArrowRight className="w-3 h-3" />
+                            </a>
+                          )}
+
+                          {faq.relatedArticle && (
+                            <a
+                              href={faq.relatedArticle.href}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                const slug = faq.relatedArticle!.href.replace('/blog/', '').replace('/', '');
+                                onNavigate('blog-post', slug);
+                              }}
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-400 border border-cyan-500/30 font-bold text-xs transition-colors"
+                            >
+                              <FileText className="w-3.5 h-3.5 text-cyan-400" />
+                              <span>{faq.relatedArticle.title}</span>
                               <ArrowRight className="w-3 h-3" />
                             </a>
                           )}

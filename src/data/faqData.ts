@@ -18,6 +18,7 @@ export interface FAQItem {
   relatedService?: { title: string; href: string };
   relatedBrand?: { name: string; href: string };
   relatedLocation?: { name: string; href: string };
+  relatedArticle?: { title: string; href: string };
   tags?: string[];
 }
 
@@ -81,6 +82,7 @@ export const faqData: FAQItem[] = [
     ],
     comprehensiveOverview: 'Choosing between Paint Protection Film (PPF) and Ceramic Coating depends on whether you seek physical impact resistance or chemical environmental defense. In Pakistan, high-speed stone chips on the Islamabad Highway and M-2 Motorway cause severe rock pitting on front bumpers and bonnets. Only 8.5 mil TPU film possesses sufficient tensile strength to absorb gravel impacts without puncturing factory clear coat. Meanwhile, 9H ceramic coating provides chemical defense against intense ultraviolet (UV) oxidation and hard water mineral stains. For optimal vehicle preservation, HyperTune Garage recommends wrapping high-impact front panels in TPU PPF while ceramic coating all remaining bodywork.',
     relatedService: { title: 'Paint Protection Film (PPF)', href: '/services/paint-protection-film-ppf/' },
+    relatedArticle: { title: 'PPF vs Ceramic Coating Comparison', href: '/blog/ceramic-coating-vs-ppf-pakistan-guide/' },
     tags: ['ppf', 'ceramic coating', 'tpu', 'paint protection', 'detailing'],
   },
   {
