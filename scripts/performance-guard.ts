@@ -315,32 +315,33 @@ export async function runPerformanceRegressionGuard(): Promise<boolean> {
       level: 'CRITICAL',
       category: 'Agentic Browsing',
       metric: 'Sitemap Generation',
-      expected: 'dist/sitemap.xml exists with 70 routes',
+      expected: 'dist/sitemap.xml exists with all canonical routes',
       actual: 'Missing',
       details: 'sitemap.xml must be generated at build time.',
     });
   } else {
     const sitemap = fs.readFileSync(sitemapXmlPath, 'utf-8');
     const urlCount = (sitemap.match(/<loc>/g) || []).length;
-    if (urlCount < 70) {
+    const siteRoutes = getSiteRoutes();
+    if (urlCount < siteRoutes.length) {
       violations.push({
         level: 'CRITICAL',
         category: 'Route Protection',
         metric: 'Sitemap URL Count',
-        expected: '70 registered canonical routes',
+        expected: `${siteRoutes.length} registered canonical routes`,
         actual: `${urlCount} URLs found`,
-        details: 'All 70 services, brands, locations, and blog routes must be present in sitemap.xml.',
+        details: `All ${siteRoutes.length} services, brands, locations, and blog routes must be present in sitemap.xml.`,
       });
     } else {
-      console.log(`   ✅ dist/sitemap.xml contains all ${urlCount}/70 canonical URLs.`);
+      console.log(`   ✅ dist/sitemap.xml contains all ${urlCount}/${siteRoutes.length} canonical URLs.`);
     }
   }
 
   // -------------------------------------------------------------
-  // 6. ROUTE INTEGRITY & STATIC PRE-RENDERING (70 ROUTES)
+  // 6. ROUTE INTEGRITY & STATIC PRE-RENDERING (ALL CANONICAL ROUTES)
   // -------------------------------------------------------------
-  console.log('\n🌐 6. Verifying Static Pre-rendering for all 70 Routes...');
   const siteRoutes = getSiteRoutes();
+  console.log(`\n🌐 6. Verifying Static Pre-rendering for all ${siteRoutes.length} Routes...`);
   let missingRoutes = 0;
 
   for (const route of siteRoutes) {
@@ -547,7 +548,7 @@ export async function runPerformanceRegressionGuard(): Promise<boolean> {
       details: 'Modern SEO standard: meta keywords are obsolete and must be completely purged from all rendered HTML.',
     });
   } else {
-    console.log('   ✅ Point 7a: Zero obsolete meta keywords tags across all 70 routes verified.');
+    console.log(`   ✅ Point 7a: Zero obsolete meta keywords tags across all ${siteRoutes.length} routes verified.`);
   }
 
   if (metadataMismatchCount > 0) {
@@ -560,7 +561,7 @@ export async function runPerformanceRegressionGuard(): Promise<boolean> {
       details: 'All pre-rendered pages must use the exact approved titles and meta descriptions from metadataRegistry.ts.',
     });
   } else {
-    console.log('   ✅ Point 7b: 100% metadata alignment with central registry across all 70 canonical routes verified.');
+    console.log(`   ✅ Point 7b: 100% metadata alignment with central registry across all ${siteRoutes.length} canonical routes verified.`);
   }
 
   console.log('\n======================================================================');
@@ -572,7 +573,7 @@ export async function runPerformanceRegressionGuard(): Promise<boolean> {
   console.log('   [✔] Point 4: Search Console & Real Search Intent Grounding (Zero fabricated queries)');
   console.log('   [✔] Point 5: Google Structured Data Policy Compliance (0 deprecated commercial FAQPage, compliant WebPage)');
   console.log('   [✔] Point 6: Static Crawlable Content & Zero-Popping Hydration Parity');
-  console.log('   [✔] Point 7: Centralized Metadata Registry & Complete Meta Keywords Purge (All 70 routes)');
+  console.log(`   [✔] Point 7: Centralized Metadata Registry & Complete Meta Keywords Purge (All ${siteRoutes.length} routes)`);
   console.log('======================================================================\n');
 
   // -------------------------------------------------------------
