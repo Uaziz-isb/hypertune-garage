@@ -84,6 +84,33 @@
   ],
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.hypertunegarage.pk"
+        }
+      ],
+      "destination": "https://hypertunegarage.pk/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "hypertunegarage.pk"
+        },
+        {
+          "type": "header",
+          "key": "x-forwarded-proto",
+          "value": "http"
+        }
+      ],
+      "destination": "https://hypertunegarage.pk/:path*",
+      "statusCode": 301
+    },
+    {
       "source": "/booking",
       "destination": "/book-appointment/",
       "permanent": true

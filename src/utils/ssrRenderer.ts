@@ -1617,6 +1617,14 @@ export function injectSSRHtml(
   // Ensure NO meta keywords tag exists in rendered HTML (Google does not use it)
   updatedHtml = updatedHtml.replace(/<meta\s+name=["']keywords["'][^>]*>\s*/gi, '');
 
+  // Robots meta tag: If 404 / Not Found, inject noindex to prevent indexing of error pages
+  if (metaInfo.isNotFound || cleanPath === '/404' || cleanPath === '/404.html') {
+    updatedHtml = updatedHtml.replace(
+      /<meta\s+name=["']robots["'][^>]*>/i,
+      '<meta name="robots" content="noindex, follow" />'
+    );
+  }
+
   // Replace Canonical
   updatedHtml = updatedHtml.replace(
     /<link\s+rel=["']canonical["'][^>]*>/i,

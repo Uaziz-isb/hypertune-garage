@@ -31,6 +31,27 @@ app.use((_req, res, next) => {
   next();
 });
 
+// Canonical Domain & Protocol 301 Redirects (Single Direct Hop to https://hypertunegarage.pk/)
+app.use((req, res, next) => {
+  const host = (req.headers.host || "").toLowerCase();
+  const rawProto = (req.headers["x-forwarded-proto"] || req.protocol || "https").toString().toLowerCase();
+  const proto = rawProto.split(",")[0].trim();
+
+  const isWww = host.startsWith("www.hypertunegarage.pk");
+  const isApex = host === "hypertunegarage.pk" || host.startsWith("hypertunegarage.pk:");
+  const isHttp = proto === "http";
+
+  // Enforce single direct 301 hop:
+  // 1. http://www.hypertunegarage.pk/ -> 301 -> https://hypertunegarage.pk/
+  // 2. http://hypertunegarage.pk/     -> 301 -> https://hypertunegarage.pk/
+  // 3. https://www.hypertunegarage.pk/ -> 301 -> https://hypertunegarage.pk/
+  if ((isWww || isApex) && (isWww || isHttp)) {
+    const cleanUrl = req.originalUrl || "/";
+    return res.redirect(301, `https://hypertunegarage.pk${cleanUrl}`);
+  }
+  next();
+});
+
 app.use(express.json({ limit: "2mb" }));
 
 // Lazy Gemini AI Client Initialization

@@ -123,20 +123,16 @@ async function run() {
     }
   }
 
-  // Also check 404.html exclusion
-  const has404 = fs.existsSync(path.join(distDir, '404.html'));
-  if (has404) {
-    excludedByRule.push({ route: '/404.html', reason: 'error page (non-indexable)' });
-  }
-
-  // Redirects from vercel.json
+  // Redirects from vercel.json (concrete static routes only, not wildcard/domain patterns)
   const vercelJsonPath = path.resolve(process.cwd(), 'vercel.json');
   if (fs.existsSync(vercelJsonPath)) {
     try {
       const vercelConfig = JSON.parse(fs.readFileSync(vercelJsonPath, 'utf-8'));
       if (Array.isArray(vercelConfig.redirects)) {
         vercelConfig.redirects.forEach((r: { source: string }) => {
-          excludedByRule.push({ route: r.source, reason: '301 permanent redirect' });
+          if (!r.source.includes('*') && !r.source.includes(':')) {
+            excludedByRule.push({ route: r.source, reason: '301 permanent redirect' });
+          }
         });
       }
     } catch {
