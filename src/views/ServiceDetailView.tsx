@@ -71,6 +71,7 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
         serviceType: service.subServices.join(', '),
         provider: {
           '@type': 'AutoRepair',
+          '@id': 'https://hypertunegarage.pk/#business',
           name: 'HyperTune Garage',
           telephone: '+923330177717',
           address: {

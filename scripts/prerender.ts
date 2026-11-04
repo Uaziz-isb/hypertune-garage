@@ -62,6 +62,20 @@ async function prerender() {
   fs.writeFileSync(path.join(distDir, '404.html'), notFoundHtml, 'utf-8');
   console.log('✅ Generated dist/404.html');
 
+  // Ensure .well-known static files are present in dist/
+  const publicWellKnown = path.join(process.cwd(), 'public', '.well-known');
+  const distWellKnown = path.join(distDir, '.well-known');
+  if (fs.existsSync(publicWellKnown)) {
+    if (!fs.existsSync(distWellKnown)) {
+      fs.mkdirSync(distWellKnown, { recursive: true });
+    }
+    const wellKnownFiles = fs.readdirSync(publicWellKnown);
+    for (const f of wellKnownFiles) {
+      fs.copyFileSync(path.join(publicWellKnown, f), path.join(distWellKnown, f));
+    }
+    console.log(`✅ Synced ${wellKnownFiles.length} .well-known files to dist/.well-known`);
+  }
+
   console.log(`✅ Prerendered ${renderedCount} routes into dist/`);
   console.log(`✅ Total unique titles verified: ${titles.size}/${routes.length}`);
 }

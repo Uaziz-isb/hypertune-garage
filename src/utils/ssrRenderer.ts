@@ -49,27 +49,6 @@ const BASE_BUSINESS_SCHEMA = (ogImage: string) => ({
       closes: '22:00',
     },
   ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.8',
-    reviewCount: String(googleBusinessData.totalReviews),
-    bestRating: '5',
-    worstRating: '1',
-  },
-  review: googleBusinessData.reviews.map((r) => ({
-    '@type': 'Review',
-    author: {
-      '@type': 'Person',
-      name: r.authorName,
-    },
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: String(r.rating),
-      bestRating: '5',
-      worstRating: '1',
-    },
-    reviewBody: r.text,
-  })),
 });
 
 function escapeHtml(str: string): string {
@@ -199,8 +178,8 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
             url: canonicalUrl,
             description: 'Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.',
             isPartOf: {
-              '@type': 'AutoRepair',
-              '@id': 'https://hypertunegarage.pk/#business',
+              '@type': 'WebSite',
+              '@id': 'https://hypertunegarage.pk/#website',
               name: 'HyperTune Garage',
               url: 'https://hypertunegarage.pk/',
             },
@@ -315,43 +294,6 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       name: 'Customer Reviews',
       item: canonicalUrl,
     });
-    schemas[0] = {
-      '@context': 'https://schema.org',
-      '@type': 'AutoRepair',
-      name: 'HyperTune Garage',
-      image: ogImage || 'https://hypertunegarage.pk/images/hypertune_logo.webp',
-      url: 'https://hypertunegarage.pk/',
-      telephone: '+923330177717',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
-        addressLocality: 'Islamabad',
-        addressRegion: 'PK-IS',
-        postalCode: '44000',
-        addressCountry: 'PK',
-      },
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.8',
-        reviewCount: String(googleBusinessData.totalReviews),
-        bestRating: '5',
-        worstRating: '1',
-      },
-      review: googleBusinessData.reviews.map((r) => ({
-        '@type': 'Review',
-        author: {
-          '@type': 'Person',
-          name: r.authorName,
-        },
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: String(r.rating),
-          bestRating: '5',
-          worstRating: '1',
-        },
-        reviewBody: r.text,
-      })),
-    };
   } else if (root === 'faq' || root === 'faqs') {
     title = 'Frequently Asked Questions (FAQ) | HyperTune Garage';
     description = 'Find answers about PPF lifespan, ceramic coating benefits, engine overhaul warranties, repair pricing, and booking appointments in Pakistan.';
