@@ -29,7 +29,9 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
   const brandSchema = {
     '@context': 'https://schema.org',
     '@type': 'AutoRepair',
-    name: brand.name,
+    '@id': 'https://hypertunegarage.pk/#business',
+    name: 'HyperTune Garage',
+    alternateName: brand.name,
     description: brand.seo.description,
     url: `https://hypertunegarage.pk/brands/${brand.slug}/`,
     telephone: '+923330177717',
@@ -38,6 +40,7 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
       '@type': 'PostalAddress',
       streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
       addressLocality: 'Islamabad',
+      addressRegion: 'PK-IS',
       postalCode: '44000',
       addressCountry: 'PK',
     },

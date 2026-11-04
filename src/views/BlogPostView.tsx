@@ -34,13 +34,7 @@ export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpen
       name: post.author.name,
     },
     publisher: {
-      '@type': 'AutoRepair',
       '@id': 'https://hypertunegarage.pk/#business',
-      name: 'HyperTune Garage',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://hypertunegarage.pk/images/hypertune_logo.webp',
-      },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',

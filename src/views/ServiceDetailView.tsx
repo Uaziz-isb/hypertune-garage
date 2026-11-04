@@ -78,7 +78,7 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
             '@type': 'PostalAddress',
             streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
             addressLocality: 'Islamabad',
-            addressRegion: 'ICT',
+            addressRegion: 'PK-IS',
             postalCode: '44000',
             addressCountry: 'PK',
           },

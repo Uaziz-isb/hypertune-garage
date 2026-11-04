@@ -246,14 +246,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
             name: post.author.name,
           },
           publisher: {
-            '@type': 'AutoRepair',
             '@id': 'https://hypertunegarage.pk/#business',
-            name: 'HyperTune Garage',
-            url: 'https://hypertunegarage.pk/',
-            logo: {
-              '@type': 'ImageObject',
-              url: ogImage,
-            },
           },
           mainEntityOfPage: {
             '@type': 'WebPage',
@@ -311,10 +304,13 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       name: 'Frequently Asked Questions (FAQ) | HyperTune Garage',
       description: 'Comprehensive technical guidance covering Paint Protection Film (PPF), diagnostics, engine overhaul, suspension, AC repair, and booking in Islamabad.',
       isPartOf: {
-        '@type': 'AutoRepair',
+        '@type': 'WebSite',
+        '@id': 'https://hypertunegarage.pk/#website',
         name: 'HyperTune Garage',
-        url: normalizeCanonicalUrl('/', baseUrl),
-        telephone: '+923330177717',
+        url: 'https://hypertunegarage.pk/',
+      },
+      about: {
+        '@id': 'https://hypertunegarage.pk/#business',
       },
     });
   } else if (root === 'contact' || root === 'contact-us') {
