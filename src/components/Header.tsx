@@ -169,7 +169,7 @@ export const Header: React.FC<HeaderProps> = ({
       <nav
         className={`transition-all duration-300 relative z-30 ${
           isScrolled
-            ? 'bg-[#070b12]/98 backdrop-blur-md shadow-2xl border-b border-cyan-500/20 py-2 sm:py-2.5'
+            ? 'bg-[#070b12]/98 backdrop-blur-md shadow-2xl border-b border-cyan-500/20 py-2 sm:py-3'
             : 'bg-[#070b12]/95 backdrop-blur-sm border-b border-slate-800/80 py-2 sm:py-3'
         }`}
       >

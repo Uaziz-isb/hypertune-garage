@@ -413,49 +413,116 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
   const sub = pathParts[1] || '';
 
   const headerHtml = `
-  <header class="w-full">
+  <header class="w-full relative transition-all duration-300">
     <div class="bg-[#05080e] text-slate-300 text-[11px] sm:text-xs py-1 sm:py-1.5 px-2.5 sm:px-4 border-b border-cyan-500/20">
       <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
         <div class="flex items-center gap-3 sm:gap-4 min-w-0">
           <a href="tel:+923330177717" class="flex items-center gap-1 sm:gap-1.5 hover:text-cyan-400 transition-colors font-semibold shrink-0" title="Call HyperTune Garage at 0333-0177717">
-            <span>Call Now: <strong class="text-white font-extrabold tracking-wide">0333-0177717</strong></span>
+            <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-cyan-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span class="truncate">Call Now: <strong class="text-white font-extrabold tracking-wide">0333-0177717</strong></span>
           </a>
           <div class="hidden lg:flex items-center gap-1.5 text-slate-400 shrink-0">
+            <svg class="w-3.5 h-3.5 text-cyan-400/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
             <span>Sat - Thu: 10:00 AM - 10:00 PM <strong class="text-amber-400 font-bold ml-1">(Friday Off)</strong></span>
           </div>
         </div>
         <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <span class="hidden sm:inline text-[11px] text-slate-400 font-semibold mr-0.5">Follow us:</span>
-          <a href="https://wa.me/923330177717" target="_blank" rel="noopener noreferrer" class="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-md sm:rounded-lg bg-slate-900 text-[#25D366] border border-[#25D366]/30 text-[10px] sm:text-[11px] font-bold">WhatsApp</a>
+          <a href="https://wa.me/923330177717" target="_blank" rel="noopener noreferrer" class="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-md sm:rounded-lg bg-slate-900 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/30 transition-all flex items-center gap-1 text-[10px] sm:text-[11px] font-bold" title="WhatsApp +92 333 0177717" aria-label="WhatsApp">
+            <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+            <span class="hidden xs:inline">WhatsApp</span>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61569421832049" target="_blank" rel="noopener noreferrer" class="p-1 sm:p-1.5 rounded-md sm:rounded-lg bg-slate-900 hover:bg-[#1877F2] text-[#1877F2] hover:text-white border border-[#1877F2]/30 transition-all flex items-center justify-center" title="Facebook" aria-label="Facebook">
+            <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="https://www.instagram.com/hypertune.garage/" target="_blank" rel="noopener noreferrer" class="p-1 sm:p-1.5 rounded-md sm:rounded-lg bg-slate-900 hover:bg-[#E4405F] text-[#E4405F] hover:text-white border border-[#E4405F]/30 transition-all flex items-center justify-center" title="Instagram" aria-label="Instagram">
+            <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+          </a>
+          <a href="https://www.tiktok.com/@hypertune.garage" target="_blank" rel="noopener noreferrer" class="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-md sm:rounded-lg bg-slate-900 hover:bg-black text-slate-200 hover:text-white border border-slate-700 hover:border-[#00F2FE] transition-all flex items-center gap-1 text-[10px] sm:text-[11px] font-bold" title="TikTok" aria-label="TikTok">
+            <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#00F2FE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"></path><rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect></svg>
+            <span class="hidden xs:inline">TikTok</span>
+          </a>
+          <a href="https://www.youtube.com/@HyperTuneGarage" target="_blank" rel="noopener noreferrer" class="p-1 sm:p-1.5 rounded-md sm:rounded-lg bg-slate-900 hover:bg-[#FF0000] text-[#FF0000] hover:text-white border border-[#FF0000]/30 transition-all flex items-center justify-center" title="YouTube" aria-label="YouTube">
+            <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3v6Z"></path></svg>
+          </a>
         </div>
       </div>
     </div>
     <nav class="bg-[#070b12]/95 backdrop-blur-sm border-b border-slate-800/80 py-2 sm:py-3 transition-all duration-300 relative z-30">
       <div class="max-w-7xl mx-auto px-2.5 sm:px-4 flex items-center justify-between gap-2 sm:gap-4">
+        <!-- Left Side: Mobile Menu Button on the LEFT + Logo -->
         <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-          <a href="/" class="flex items-center gap-2 sm:gap-2.5 group focus:outline-none">
-            <span class="text-xl sm:text-2xl font-black tracking-tight text-white flex items-center">
-              HYPER<span class="text-cyan-400">TUNE</span>
-            </span>
+          <button class="flex xl:hidden items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 text-slate-950 shadow-md shadow-cyan-500/25 border border-cyan-400/50 cursor-pointer shrink-0" aria-label="Open Navigation Menu" title="Open Navigation Menu">
+            <svg class="w-4 h-4 sm:w-4.5 sm:h-4.5 text-slate-950 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+          </button>
+          <a href="/" class="shrink-0 cursor-pointer" title="HyperTune Garage Home">
+            <!-- Mobile Logo -->
+            <div class="flex sm:hidden items-center gap-2.5 sm:gap-3 font-bold tracking-tight select-none cursor-pointer group" role="banner">
+              <div style="width:44px;height:44px;" class="relative flex items-center justify-center rounded-xl overflow-hidden border border-slate-700/80 shadow-md shadow-sky-500/10 shrink-0 bg-black p-0">
+                <img src="/images/hypertune_logo_small.webp" srcset="/images/hypertune_logo_small.webp 1x, /images/hypertune_logo.webp 2x" alt="HyperTune Garage Official Logo" width="44" height="44" loading="eager" decoding="async" class="w-full h-full object-cover object-center block rounded-[inherit]" />
+              </div>
+              <div class="flex flex-col justify-center leading-none">
+                <div class="flex items-center">
+                  <span style="font-size:20.2px;" class="font-black tracking-tight uppercase flex items-center text-white">
+                    <span>HYPER</span><span class="text-red-500 ml-0.5">TUNE</span>
+                  </span>
+                </div>
+                <span style="font-size:9.7px;" class="font-bold tracking-widest uppercase mt-1 flex items-center gap-1.5 text-slate-400">
+                  <span>HYPERTUNEGARAGE.PK</span><span class="text-red-500 font-black">•</span><span>ISLAMABAD</span>
+                </span>
+              </div>
+            </div>
+            <!-- Desktop Logo -->
+            <div class="hidden sm:flex items-center gap-2.5 sm:gap-3 font-bold tracking-tight select-none cursor-pointer group" role="banner">
+              <div style="width:52px;height:52px;" class="relative flex items-center justify-center rounded-xl overflow-hidden border border-slate-700/80 shadow-md shadow-sky-500/10 shrink-0 bg-black p-0">
+                <img src="/images/hypertune_logo_small.webp" srcset="/images/hypertune_logo_small.webp 1x, /images/hypertune_logo.webp 2x" alt="HyperTune Garage Official Logo" width="52" height="52" loading="eager" decoding="async" class="w-full h-full object-cover object-center block rounded-[inherit]" />
+              </div>
+              <div class="flex flex-col justify-center leading-none">
+                <div class="flex items-center">
+                  <span style="font-size:23.8px;" class="font-black tracking-tight uppercase flex items-center text-white">
+                    <span>HYPER</span><span class="text-red-500 ml-0.5">TUNE</span>
+                  </span>
+                </div>
+                <span style="font-size:11.3px;" class="font-bold tracking-widest uppercase mt-1 flex items-center gap-1.5 text-slate-400">
+                  <span>HYPERTUNEGARAGE.PK</span><span class="text-red-500 font-black">•</span><span>ISLAMABAD</span>
+                </span>
+              </div>
+            </div>
           </a>
         </div>
-        <div class="hidden xl:flex items-center gap-1 lg:gap-1.5">
-          <a href="/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-white bg-slate-900 border border-cyan-500/30">Home</a>
-          <a href="/services/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Services</a>
-          <a href="/brands/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Brand Specialists</a>
-          <a href="/locations/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Locations</a>
-          <a href="/gallery/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Gallery</a>
-          <a href="/testimonials/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Reviews (4.8★)</a>
-          <a href="/blog/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Blog</a>
-          <a href="/about/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">About Us</a>
-          <a href="/contact/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Contact</a>
-        </div>
-        <div class="flex items-center gap-2 sm:gap-3">
-          <a href="tel:+923330177717" class="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-xs font-bold">
-            <span>0333-0177717</span>
+
+        <!-- Desktop Nav Items (xl and above) -->
+        <div class="hidden xl:flex items-center gap-1">
+          <a href="/" class="${!root ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30' : 'text-slate-200 hover:text-cyan-400 hover:bg-slate-900/80'} px-3 py-2 rounded-lg text-[15px] font-bold transition-all">Home</a>
+          <a href="/services/" class="${root === 'services' ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30' : 'text-slate-200 hover:text-cyan-400 hover:bg-slate-900/80'} flex items-center gap-1.5 px-3 py-2 rounded-lg text-[15px] font-bold transition-all">
+            <span>Services</span>
+            <svg class="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </a>
-          <a href="/book-appointment/" class="px-3.5 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-extrabold text-xs sm:text-sm">
-            Book Appointment
+          <a href="/brands/" class="${root === 'brands' ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30' : 'text-slate-200 hover:text-cyan-400 hover:bg-slate-900/80'} flex items-center gap-1.5 px-3 py-2 rounded-lg text-[15px] font-bold transition-all">
+            <span>Brand Specialists</span>
+            <svg class="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <a href="/gallery/" class="${root === 'gallery' ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30' : 'text-slate-200 hover:text-cyan-400 hover:bg-slate-900/80'} px-3 py-2 rounded-lg text-[15px] font-bold transition-all">Gallery</a>
+          <a href="/blog/" class="${root === 'blog' ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30' : 'text-slate-200 hover:text-cyan-400 hover:bg-slate-900/80'} px-3 py-2 rounded-lg text-[15px] font-bold transition-all">Blog</a>
+          <a href="/about/" class="${root === 'about' ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30' : 'text-slate-200 hover:text-cyan-400 hover:bg-slate-900/80'} px-3 py-2 rounded-lg text-[15px] font-bold transition-all">About Us</a>
+          <a href="/contact/" class="${root === 'contact' ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30' : 'text-slate-200 hover:text-cyan-400 hover:bg-slate-900/80'} px-3 py-2 rounded-lg text-[15px] font-bold transition-all">Contact Us</a>
+        </div>
+
+        <!-- Right Side Header Action Buttons -->
+        <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <button class="p-2 sm:p-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-cyan-400 border border-slate-800 transition-colors" title="Search Services, Brands & Advice" aria-label="Search">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+          </button>
+          <a href="https://wa.me/923330177717" target="_blank" rel="noopener noreferrer" class="hidden xs:flex items-center justify-center p-2 sm:px-3 sm:py-2 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-400 font-bold text-xs transition-all" aria-label="WhatsApp" title="WhatsApp +92 333 0177717">
+            <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+            <span class="hidden sm:inline ml-1.5">WhatsApp</span>
+          </a>
+          <a href="tel:+923330177717" class="flex sm:hidden items-center justify-center p-2 rounded-xl bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 transition-all" aria-label="Call HyperTune Garage" title="Call HyperTune Garage">
+            <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </a>
+          <a href="/book-appointment/" class="hidden sm:flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-xs sm:text-sm shadow-md shadow-cyan-500/20 transition-all">
+            <svg class="w-4 h-4 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            <span>Book Service</span>
           </a>
         </div>
       </div>
@@ -1392,47 +1459,336 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         </div>
       </section>
 
-      <!-- Trust Standards -->
+      <!-- WHY CHOOSE HYPERTUNE GARAGE -->
       <section class="max-w-7xl mx-auto px-4 space-y-10">
         <div class="text-center space-y-3 max-w-2xl mx-auto">
-          <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Uncompromising Standards</span>
+          <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">
+            Uncompromising Standards
+          </span>
           <h2 class="text-3xl font-black text-white">Why Vehicle Owners Trust HyperTune Garage</h2>
-          <p class="text-slate-400 text-sm">We bridge the gap between expensive dealership overhead and substandard roadside mechanics.</p>
+          <p class="text-slate-400 text-sm">
+            We bridge the gap between expensive dealership overhead and substandard roadside mechanics.
+          </p>
         </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="16" x="4" y="4" rx="2"></rect><rect width="6" height="6" x="9" y="9" rx="1"></rect><path d="M15 2v2"></path><path d="M15 20v2"></path><path d="M2 15h2"></path><path d="M2 9h2"></path><path d="M20 15h2"></path><path d="M20 9h2"></path><path d="M9 2v2"></path><path d="M9 20v2"></path></svg>
+            </div>
             <h3 class="text-lg font-bold text-white">Official Dealer-Level Diagnostics</h3>
             <p class="text-slate-400 text-xs leading-relaxed">Equipped with Toyota Techstream, Honda HDS, Suzuki SDT-II, Hyundai GDS, Kia KDS, JLR Pathfinder, and OEM diagnostic scanners.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
-            <h3 class="text-lg font-bold text-white">Climate-Controlled PPF Studio</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">Dust-free installation bays with positive air pressure, clean filtered air, and high-CRI lighting for zero-defect wrap finishes.</p>
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white">100% Genuine Barcode Sourced Parts</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Direct import of Bosch, Lemförder, Sachs, Bilstein, and OEM manufacturer parts with full trace safety.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
             <h3 class="text-lg font-bold text-white">12-Month / 15,000 km Warranty</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">Every mechanical overhaul, suspension component, and electrical module comes with our written nationwide warranty.</p>
+            <p class="text-slate-400 text-xs leading-relaxed">Every mechanical overhaul, suspension component, and electrical module comes with our written guarantee.</p>
+          </div>
+          <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white">Master Certified Engineers</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Our technical team includes mechanical engineers and ECU software specialists trained on European standards.</p>
+          </div>
+          <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 8-6 4 6 4V8Z"></path><rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white">Live Video Inspection Reports</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Never pay for unverified work. Receive direct HD video proof of component wear before repair authorization.</p>
+          </div>
+          <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white">State-of-the-Art Diagnostics &amp; Alignment</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Featuring dealership-grade OEM diagnostic scanners, 3D laser wheel alignment rigs, and ultrasonic cleaners.</p>
           </div>
         </div>
       </section>
 
-      <!-- Core Services Showcase (All 13 Services) -->
+      <!-- CORE SERVICES OVERVIEW -->
       <section class="max-w-7xl mx-auto px-4 space-y-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-            <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Automotive Engineering &amp; Studio Offerings</span>
-            <h2 class="text-3xl font-black text-white mt-1">All Main Services</h2>
+          <div class="space-y-2">
+            <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest flex items-center gap-1.5">
+              Automotive Engineering &amp; Studio Offerings
+            </span>
+            <h2 class="text-3xl font-black text-white">All Main Services</h2>
           </div>
-          <a href="/services/" class="text-cyan-400 font-bold text-sm hover:underline">All Services &rarr;</a>
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-3.5 py-2 rounded-xl text-xs font-extrabold bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/30">All Services</span>
+            <a href="/services/" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#0b121e] text-slate-300 border border-slate-800 hover:bg-slate-800">★ 5 Premium Services</a>
+            <a href="/services/paint-protection-film-ppf/" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#0b121e] text-slate-300 border border-slate-800 hover:bg-slate-800">PPF</a>
+            <a href="/services/car-detailing/" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#0b121e] text-slate-300 border border-slate-800 hover:bg-slate-800">Detailing</a>
+            <a href="/services/engine-services/" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#0b121e] text-slate-300 border border-slate-800 hover:bg-slate-800">Engine</a>
+          </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          ${servicesDataSSR.map((s) => `
-            <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
-              <span class="text-cyan-400 font-bold text-xs uppercase">${escapeHtml(s.category)}</span>
-              <h3 class="text-lg font-bold text-white">${escapeHtml(s.title)}</h3>
-              <p class="text-slate-400 text-xs leading-relaxed">${escapeHtml(s.shortDesc)}</p>
-              <a href="/services/${s.slug}/" class="text-cyan-400 font-bold text-xs hover:underline inline-block pt-1">Technical Details &rarr;</a>
+
+        <!-- Service Cards Grid matching React (grid-cols-1 md:grid-cols-2 lg:grid-cols-4) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          ${servicesDataSSR.map((s) => {
+            const serviceImageLookup: Record<string, string> = {
+              'paint-protection-film-ppf': '/images/ppf_hero_banner_1787965710518.webp',
+              'car-detailing': '/images/hypertune_ceramic_detailing_1787965750616.webp',
+              'vehicle-wrap': '/images/car_vinyl_wrap_1787965685845.webp',
+              'body-repair-paint': '/images/car_paint_booth_1787965665925.webp',
+              'body-modification': '/images/service_body_kit_1787240237280.webp',
+              'engine-services': '/images/hypertune_banner_engine_1787965807591.webp',
+              'maintenance-servicing': '/images/hypertune_banner_dyno_1787965778539.webp',
+              'brake-suspension-steering': '/images/car_suspension_brakes_1787164569835.webp',
+              'transmission-drivetrain': '/images/car_transmission_gearbox_1787164584141.webp',
+              'car-ac-repair': '/images/service_ac_electrical_1787240223565.webp',
+              'cooling-fuel-exhaust': '/images/service_hybrid_battery_1787965698487.webp',
+              'inspection-diagnostics': '/images/service_diagnostics_live_1787240184785.webp',
+            };
+            const cardImg = serviceImageLookup[s.slug] || '/images/about_cleanroom_studio_1787241321616.webp';
+            return `
+            <div class="bg-[#0b121e] border border-slate-800 rounded-3xl overflow-hidden flex flex-col justify-between shadow-xl">
+              <div>
+                <div class="relative h-48 overflow-hidden bg-slate-950">
+                  <img
+                    src="${cardImg}"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 344px"
+                    alt="${escapeHtml(s.title)}"
+                    width="400"
+                    height="192"
+                    loading="lazy"
+                    decoding="async"
+                    class="w-full h-full object-cover"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#0b121e] via-transparent to-transparent"></div>
+                  <span class="absolute top-3 right-3 bg-[#05080e]/90 text-cyan-400 border border-cyan-500/30 font-bold text-[10px] uppercase px-2.5 py-1 rounded-lg">
+                    ${escapeHtml(s.category)}
+                  </span>
+                </div>
+                <div class="p-5 space-y-3">
+                  <h3 class="text-base font-bold text-white line-clamp-2">${escapeHtml(s.title)}</h3>
+                  <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">${escapeHtml(s.shortDesc)}</p>
+                  <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs">
+                    <span class="text-slate-400">Est Range:</span>
+                    <span class="font-extrabold text-cyan-400">${escapeHtml(s.priceRange.split('-')[0])}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5 pt-0 flex items-center gap-2">
+                <a href="/services/${s.slug}/" class="flex-1 py-2.5 rounded-xl bg-[#070c14] hover:bg-slate-800 text-slate-200 font-bold text-xs border border-slate-800 text-center transition-colors">
+                  Read Technical Specs
+                </a>
+                <a href="/book-appointment/?service=${s.slug}" class="p-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold flex items-center justify-center transition-colors" aria-label="Book ${escapeHtml(s.title)}">
+                  <svg class="w-4 h-4 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                </a>
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
+      </section>
+
+      <!-- INTERACTIVE COST ESTIMATOR -->
+      <section class="max-w-7xl mx-auto px-4">
+        <div class="bg-[#0b121e] border border-cyan-500/20 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 flex items-center justify-center font-bold">
+              <svg class="w-5 h-5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="20" x="4" y="2" rx="2"></rect><line x1="8" x2="16" y1="6" y2="6"></line><line x1="16" x2="16" y1="14" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg>
             </div>
-          `).join('')}
+            <div>
+              <h3 class="text-xl font-bold text-white">Instant Repair &amp; Maintenance Cost Estimator</h3>
+              <p class="text-xs text-slate-400">Select your vehicle &amp; required service to view estimated repair costs</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div class="lg:col-span-6 space-y-4">
+              <div>
+                <span class="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">1. Popular Vehicle Makes</span>
+                <div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                  <span class="p-2 rounded-xl text-xs font-bold border transition-all text-center bg-cyan-500/20 border-cyan-500 text-cyan-400">Toyota</span>
+                  <span class="p-2 rounded-xl text-xs font-bold border transition-all text-center bg-slate-900 border-slate-800 text-slate-300">Honda</span>
+                  <span class="p-2 rounded-xl text-xs font-bold border transition-all text-center bg-slate-900 border-slate-800 text-slate-300">Suzuki</span>
+                  <span class="p-2 rounded-xl text-xs font-bold border transition-all text-center bg-slate-900 border-slate-800 text-slate-300">Hyundai</span>
+                  <span class="p-2 rounded-xl text-xs font-bold border transition-all text-center bg-slate-900 border-slate-800 text-slate-300">Kia</span>
+                  <span class="p-2 rounded-xl text-xs font-bold border transition-all text-center bg-slate-900 border-slate-800 text-slate-300">Haval</span>
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-span-6 bg-slate-950/80 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                  <span class="text-xs text-slate-400 uppercase font-bold">Estimated Cost Range:</span>
+                  <span class="text-xl font-black text-cyan-400">PKR 5,000 - PKR 85,000</span>
+                </div>
+                <p class="text-xs text-slate-300">Transparent itemized estimate with computerized diagnostic verification and 12-Month Written Warranty.</p>
+              </div>
+              <a href="/book-appointment/" class="w-full mt-4 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-extrabold text-xs text-center block">
+                Book Verified Inspection Appointment
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BEFORE & AFTER REPAIR RESTORATIONS -->
+      <section class="max-w-7xl mx-auto px-4 space-y-8">
+        <div class="text-center space-y-2 max-w-xl mx-auto">
+          <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">
+            Craftsmanship Proof
+          </span>
+          <h2 class="text-3xl font-black text-white">Real Restoration &amp; Tuning Work</h2>
+          <p class="text-slate-400 text-sm">
+            Drag the interactive slider to compare original vehicle condition with HyperTune Garage precision results.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-white text-base md:text-lg">Haval H6 GT Full Body TPU Paint Protection Film (PPF)</h4>
+              <span class="text-[11px] font-semibold text-cyan-400 bg-cyan-950/70 border border-cyan-500/30 px-2.5 py-1 rounded-full">Interactive Slider</span>
+            </div>
+            <div class="relative w-full h-80 sm:h-[400px] rounded-2xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-950">
+              <img
+                src="/images/haval_maroon_after_1788042137567.webp"
+                alt="Haval H6 GT After PPF"
+                width="600"
+                height="400"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-white text-base md:text-lg">Toyota Land Cruiser TPU PPF &amp; Ceramic Coating</h4>
+              <span class="text-[11px] font-semibold text-cyan-400 bg-cyan-950/70 border border-cyan-500/30 px-2.5 py-1 rounded-full">Interactive Slider</span>
+            </div>
+            <div class="relative w-full h-80 sm:h-[400px] rounded-2xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-950">
+              <img
+                src="/images/toyota_grey_after_1788042164355_600w.webp"
+                alt="Toyota Land Cruiser After PPF"
+                width="600"
+                height="400"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUSTOMER REVIEWS & GOOGLE RATINGS -->
+      <section class="bg-[#070c14] border-y border-slate-800/80 py-16 px-4">
+        <div class="max-w-7xl mx-auto space-y-6">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Customer Reviews</span>
+              <h2 class="text-3xl font-black text-white">Verified Customer Reviews (4.8 / 5.0)</h2>
+            </div>
+            <a href="/testimonials/" class="px-4 py-2 rounded-xl bg-[#0b121e] border border-slate-800 text-slate-300 font-bold text-xs hover:text-white transition-colors flex items-center gap-1.5">
+              <span>Read All Customer Reviews</span>
+              <span class="text-cyan-400">&rarr;</span>
+            </a>
+          </div>
+
+          <!-- 3 Customer Review Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-xl">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h4 class="font-extrabold text-white text-sm">Malik Tariq Mehmood</h4>
+                  <span class="text-[11px] text-slate-400">Islamabad • 3 weeks ago</span>
+                </div>
+                <span class="text-amber-400 text-xs font-bold">★ 5.0</span>
+              </div>
+              <p class="text-slate-300 text-xs leading-relaxed italic">
+                "Got complete TPU Paint Protection Film (PPF) done on my new Toyota Fortuner Legender. The edge tucking is completely invisible, clean climate-controlled studio, and professional team."
+              </p>
+            </div>
+            <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-xl">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h4 class="font-extrabold text-white text-sm">Dr. Farhan Qureshi</h4>
+                  <span class="text-[11px] text-slate-400">Rawalpindi • 1 month ago</span>
+                </div>
+                <span class="text-amber-400 text-xs font-bold">★ 5.0</span>
+              </div>
+              <p class="text-slate-300 text-xs leading-relaxed italic">
+                "Outstanding diagnostic capability on my Honda Civic RS turbo check engine light. They sent HD video proof of the faulty sensor before changing it. Honest and prompt service."
+              </p>
+            </div>
+            <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-xl">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h4 class="font-extrabold text-white text-sm">Hamza Bilal</h4>
+                  <span class="text-[11px] text-slate-400">Islamabad • 2 months ago</span>
+                </div>
+                <span class="text-amber-400 text-xs font-bold">★ 5.0</span>
+              </div>
+              <p class="text-slate-300 text-xs leading-relaxed italic">
+                "Master technicians who truly understand European vehicles. Handled my Audi A6 suspension overhaul with genuine OEM parts and issued a written 12-month warranty certificate."
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4-STEP SERVICE PROCESS -->
+      <section class="max-w-7xl mx-auto px-4 space-y-10">
+        <div class="text-center space-y-2 max-w-xl mx-auto">
+          <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">
+            Transparent Workflow
+          </span>
+          <h2 class="text-3xl font-black text-white">Our 4-Step Repair &amp; Service Process</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 relative shadow-lg">
+            <span class="text-4xl font-black text-cyan-500/30 block">01</span>
+            <h3 class="text-base font-bold text-white">Book Appointment</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Reserve online or via WhatsApp. Flexible appointment scheduling across Islamabad &amp; Rawalpindi.</p>
+          </div>
+          <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 relative shadow-lg">
+            <span class="text-4xl font-black text-cyan-500/30 block">02</span>
+            <h3 class="text-base font-bold text-white">Computer Diagnostic</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Our master technicians execute an OEM scanner health audit and create an itemized estimate.</p>
+          </div>
+          <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 relative shadow-lg">
+            <span class="text-4xl font-black text-cyan-500/30 block">03</span>
+            <h3 class="text-base font-bold text-white">Video Approval</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Receive HD video proof of worn parts. Work only starts upon your explicit digital authorization.</p>
+          </div>
+          <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 relative shadow-lg">
+            <span class="text-4xl font-black text-cyan-500/30 block">04</span>
+            <h3 class="text-base font-bold text-white">Road Test &amp; Warranty</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">High-speed highway verification test, final cleaning, and delivery with 12-Month Written Warranty.</p>
+          </div>
+        </div>
+
+        <!-- Workshop FAQ Knowledge Hub Bar -->
+        <div class="bg-[#0b121e] border border-slate-800 rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+          <div class="space-y-1 text-center sm:text-left">
+            <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest flex items-center justify-center sm:justify-start gap-1.5">
+              Got Questions?
+            </span>
+            <h3 class="text-white text-base sm:text-lg font-bold">Workshop Repair, Warranty &amp; Booking FAQs</h3>
+            <p class="text-slate-400 text-xs">
+              Get instant answers on genuine OEM parts, 12-month warranty coverage, turnaround times, and workshop procedures.
+            </p>
+          </div>
+          <a href="/faq/" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-cyan-500/30 text-cyan-400 hover:text-white hover:bg-slate-800 font-bold text-xs flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer">
+            <span>Browse Workshop FAQs</span>
+            <span>&rarr;</span>
+          </a>
         </div>
       </section>
 
@@ -1457,39 +1813,105 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         </div>
       </section>
 
-      <!-- Workshop FAQ Teaser -->
-      <section class="max-w-7xl mx-auto px-4">
-        <div class="bg-[#0b121e] border border-slate-800 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
-          <div>
-            <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest block">Got Questions?</span>
-            <h3 class="text-white text-lg font-bold mt-1">Workshop Repair, Warranty &amp; Booking FAQs</h3>
-            <p class="text-slate-400 text-xs mt-1">Get instant answers on genuine OEM parts, 12-month warranty coverage, turnaround times, and workshop procedures.</p>
-          </div>
-          <a href="/faq/" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-cyan-500/30 text-cyan-400 font-bold text-xs hover:bg-slate-800 shrink-0 transition-colors">
-            Browse Workshop FAQs &rarr;
-          </a>
+      <!-- Workshop Locations -->
+      <section class="max-w-7xl mx-auto px-4 space-y-8">
+        <div class="text-center space-y-2 max-w-xl mx-auto">
+          <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">
+            Visit Our Workshops
+          </span>
+          <h2 class="text-3xl font-black text-white">Islamabad &amp; Rawalpindi Locations</h2>
+          <p class="text-slate-400 text-xs">
+            Experience dealer-grade automotive care at our active Islamabad Flagship Hub and upcoming Rawalpindi Hub.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          ${locationsDataSSR.map((loc) => {
+            const locImg = loc.city.toLowerCase().includes('rawalpindi')
+              ? '/images/rawalpindi_hub_bay_1787965865804.webp'
+              : '/images/about_cleanroom_studio_1787241321616.webp';
+            return `
+            <div class="bg-[#0b121e] border border-slate-800 rounded-3xl overflow-hidden shadow-2xl grid grid-cols-1 sm:grid-cols-12">
+              <div class="sm:col-span-5 h-56 sm:h-auto relative">
+                <img
+                  src="${locImg}"
+                  sizes="(max-width: 640px) 100vw, 400px"
+                  alt="${escapeHtml(loc.branchName)}"
+                  width="400"
+                  height="300"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-[#05080e]/40"></div>
+                <div class="absolute top-3 left-3 flex items-center gap-1.5">
+                  <span class="bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-extrabold text-xs px-2.5 py-1 rounded-lg">
+                    ${escapeHtml(loc.city)} Hub
+                  </span>
+                  ${loc.isOperational ? `
+                    <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 font-bold text-[10px] px-2 py-0.5 rounded-md">
+                      Operational
+                    </span>` : `
+                    <span class="bg-amber-500 text-slate-950 font-black text-[10px] uppercase px-2 py-0.5 rounded-md">
+                      Opening Soon
+                    </span>`}
+                </div>
+              </div>
+
+              <div class="sm:col-span-7 p-6 space-y-4 flex flex-col justify-between">
+                <div class="space-y-2">
+                  <h3 class="font-bold text-lg text-white">${escapeHtml(loc.branchName)}</h3>
+                  <p class="text-slate-300 text-xs leading-relaxed font-medium">${escapeHtml(loc.address)}</p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-2 pt-2">
+                  <a href="tel:${loc.phone.replace(/[^0-9+]/g, '')}" class="flex-1 py-2.5 px-3 rounded-xl bg-[#070c14] hover:bg-slate-800 text-white font-bold text-xs border border-slate-800 flex items-center justify-center gap-1.5 transition-colors">
+                    <span>Call: ${escapeHtml(loc.phone)}</span>
+                  </a>
+                  <a href="/locations/${loc.slug}/" class="py-2.5 px-4 rounded-xl bg-slate-900 border border-slate-700 text-white font-bold text-xs">
+                    Branch Details &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>`;
+          }).join('')}
         </div>
       </section>
 
-      <!-- Workshop Locations -->
-      <section class="max-w-7xl mx-auto px-4 space-y-8">
-        <div class="text-center space-y-2 max-w-2xl mx-auto">
-          <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Visit Our Workshops</span>
-          <h2 class="text-3xl font-black text-white">Islamabad &amp; Rawalpindi Locations</h2>
-          <p class="text-slate-400 text-sm">Experience dealer-grade automotive care at our active Islamabad Flagship Hub.</p>
+      <!-- GOOGLE MAP LOCATION AT BOTTOM OF HOME PAGE -->
+      <section class="max-w-7xl mx-auto px-4 space-y-6">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-[#0b121e] border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl">
+          <div class="space-y-2">
+            <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest flex items-center gap-1.5">
+              Workshop Navigation &amp; Pin
+            </span>
+            <h2 class="text-2xl md:text-3xl font-black text-white">Find HyperTune Garage on Google Maps</h2>
+            <p class="text-xs text-slate-400 max-w-xl">
+              Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan.
+            </p>
+          </div>
+          <a
+            href="https://www.google.com/maps?cid=17560337124718439273&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en&gl=PK&source=embed"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-xs flex items-center gap-2 shadow-lg shadow-cyan-500/20 shrink-0 transition-all active:scale-95"
+          >
+            <span>Open in Google Maps &rarr;</span>
+          </a>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          ${locationsDataSSR.map((loc) => `
-            <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-4 shadow-xl">
-              <span class="inline-block bg-cyan-950/70 border border-cyan-500/30 text-cyan-400 px-3 py-1 rounded-full text-xs font-bold uppercase">${escapeHtml(loc.city)} Hub</span>
-              <h3 class="text-xl font-bold text-white">${escapeHtml(loc.branchName)}</h3>
-              <p class="text-slate-400 text-xs leading-relaxed">${escapeHtml(loc.address)}</p>
-              <div class="flex gap-3 pt-2">
-                <a href="tel:${loc.phone.replace(/[^0-9+]/g, '')}" class="px-4 py-2 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs">Call: ${loc.phone}</a>
-                <a href="/locations/${loc.slug}/" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white font-bold text-xs">Branch Details &rarr;</a>
-              </div>
-            </div>
-          `).join('')}
+
+        <div class="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl h-[400px] w-full relative bg-[#070c14]">
+          <iframe
+            title="HyperTune Garage Google Map Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.215!2d73.1345365!3d33.5622113!2m3!1f0!1f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfede5eabd2d83%3A0xf3b2d99386f26b69!2sHyperTune%20Garage!5e1!3m2!1sen!2spk!4v1710000000000!5m2!1sen!2spk&maptype=satellite"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="w-full h-full filter brightness-90 contrast-105"
+          ></iframe>
         </div>
       </section>
     </div>`;
@@ -1515,7 +1937,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
 
   return `
   <div class="min-h-screen bg-[#070b12] text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-950 flex flex-col justify-between">
-    <div class="sticky top-0 z-40">
+    <div class="fixed top-0 left-0 right-0 z-40">
       ${headerHtml}
     </div>
     <main class="flex-grow">
