@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { trackPageView, initGA } from '../utils/analytics';
 import { normalizeCanonicalUrl } from '../utils/canonical';
+import { staticCustomerReviews, googleBusinessData } from '../data/reviewsData';
 
 declare global {
   interface Window {
@@ -92,52 +93,58 @@ export const SEOHead: React.FC<SEOProps> = ({
     });
 
     // Default LocalBusiness Schema
-    const defaultSchema = targetCanonicalUrl.includes('/locations/rawalpindi')
-      ? {
-          '@context': 'https://schema.org',
-          '@type': 'WebPage',
-          name: 'HyperTune Garage - Rawalpindi Hub (Coming Soon)',
-          image: ogImage,
-          url: targetCanonicalUrl,
-          description: 'Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.',
-          isPartOf: {
-            '@type': 'WebSite',
-            '@id': 'https://hypertunegarage.pk/#website',
-            name: 'HyperTune Garage',
-            url: 'https://hypertunegarage.pk/',
-          },
-        }
-      : {
-          '@context': 'https://schema.org',
-          '@type': 'AutoRepair',
-          name: 'HyperTune Garage',
-          image: ogImage,
-          '@id': 'https://hypertunegarage.pk/#business',
-          url: 'https://hypertunegarage.pk/',
-          telephone: '+923330177717',
-          priceRange: '$$$',
-          address: {
-            '@type': 'PostalAddress',
-            streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
-            addressLocality: 'Islamabad',
-            addressRegion: 'PK-IS',
-            postalCode: '44000',
-            addressCountry: 'PK',
-          },
-          geo: {
-            '@type': 'GeoCoordinates',
-            latitude: 33.5651,
-            longitude: 73.1362,
-          },
-          openingHoursSpecification: [
-            {
-              '@type': 'OpeningHoursSpecification',
-              dayOfWeek: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-              opens: '10:00',
-              closes: '22:00',
-            },
-          ],
-        };
+    const defaultSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'AutoRepair',
+      name: 'HyperTune Garage',
+      image: ogImage,
+      '@id': targetCanonicalUrl,
+      url: targetCanonicalUrl,
+      telephone: '+923330177717',
+      priceRange: '$$$',
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.8',
+        reviewCount: String(googleBusinessData.totalReviews),
+        bestRating: '5',
+        worstRating: '1',
+      },
+      review: staticCustomerReviews.map((r) => ({
+        '@type': 'Review',
+        author: {
+          '@type': 'Person',
+          name: r.authorName,
+        },
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: String(r.rating),
+          bestRating: '5',
+          worstRating: '1',
+        },
+        reviewBody: r.text,
+      })),
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
+        addressLocality: 'Islamabad',
+        addressRegion: 'PK-IS',
+        postalCode: '44000',
+        addressCountry: 'PK',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 33.5651,
+        longitude: 73.1362,
+      },
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+          opens: '10:00',
+          closes: '22:00',
+        },
+      ],
+    };
 
     const finalSchema = schema || defaultSchema;
 

@@ -308,20 +308,6 @@ Sitemap: ${baseUrl}/sitemap.xml
   res.status(200).send(robotsContent);
 });
 
-// Agentic Resource Discovery (ARD) Endpoint
-app.get(["/.well-known/ard.json", "/.well-known/ard.json/"], (_req, res) => {
-  res.setHeader("Content-Type", "application/ard+json; charset=utf-8");
-  res.setHeader("Cache-Control", "public, max-age=3600");
-  res.status(200).send(JSON.stringify({ entries: [] }));
-});
-
-// AI Catalog Compatibility Endpoint
-app.get(["/.well-known/ai-catalog.json", "/.well-known/ai-catalog.json/"], (_req, res) => {
-  res.setHeader("Content-Type", "application/json; charset=utf-8");
-  res.setHeader("Cache-Control", "public, max-age=3600");
-  res.status(200).send(JSON.stringify({ entries: [] }));
-});
-
 // Helper function to inject rich SSR metadata & pre-rendered HTML into response for Googlebot & Crawlers
 function injectSSRMeta(htmlTemplate: string, reqUrl: string, host: string, protocol: string): string {
   const baseUrl = `${protocol}://${host}`;

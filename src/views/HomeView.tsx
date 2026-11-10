@@ -463,27 +463,64 @@ export const HomeView: React.FC<HomeViewProps> = ({
         </div>
       </section>
 
-      {/* CUSTOMER REVIEWS & GOOGLE RATINGS */}
+      {/* CUSTOMER REVIEWS & GOOGLE RATINGS + HYPERTUNE PERFORMANCE METRICS */}
       <section className="bg-[#070c14] border-y border-slate-800/80 py-16 px-4">
-        <div className="max-w-7xl mx-auto space-y-6">
-          {/* Verified Customer Reviews */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div>
+        <div className="max-w-7xl mx-auto space-y-12">
+          {/* HyperTune Performance Metrics */}
+          <div className="bg-[#0b121e] border border-cyan-500/20 rounded-3xl p-6 md:p-8 backdrop-blur-md shadow-2xl space-y-6">
+            <div className="border-b border-slate-800 pb-4">
               <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
-                Customer Reviews
+                Proven Operations & Track Record
               </span>
-              <h2 className="text-3xl font-black text-white">Verified Customer Reviews (4.8 / 5.0)</h2>
+              <h3 className="text-2xl font-black text-white mt-1">HyperTune Performance Metrics</h3>
+              <p className="text-xs text-cyan-400 font-semibold mt-0.5">HyperTune Garage - Islamabad Flagship Hub</p>
             </div>
-            <button
-              onClick={() => onNavigate('testimonials')}
-              className="px-4 py-2 rounded-xl bg-[#0b121e] border border-slate-800 text-slate-300 font-bold text-xs hover:text-white transition-colors flex items-center gap-1.5"
-            >
-              <span>Read All Customer Reviews</span>
-              <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
-            </button>
+
+            <p className="text-slate-300 text-sm leading-relaxed">
+              HyperTune Garage operates on rigorous engineering standards, pairing dealer-level diagnostic protocols with precision craftsmanship — and every service is measured, not guessed. Our diagnostic bays run dealer-grade German scan tools capable of reading OEM fault codes down to the millivolt, giving us a data-backed baseline before a single wrench turns. From computerized engine diagnostics and precision AC & auto electrical repair to blade-free Paint Protection Film (PPF) application in a certified dust-free cleanroom, our benchmark metrics reflect an unwavering commitment to automotive excellence. Combined with fully transparent, itemized pricing on every invoice, these benchmarks aren't marketing claims; they're the operating standard behind every vehicle that leaves our shop, engineered for measurable, long-term performance and superior longevity.
+            </p>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+              <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800">
+                <span className="text-3xl font-black text-cyan-400 block">15,000+</span>
+                <span className="text-xs font-semibold text-slate-300">Vehicles Serviced</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800">
+                <span className="text-3xl font-black text-white block">99.4%</span>
+                <span className="text-xs font-semibold text-slate-300">Client Satisfaction</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800">
+                <span className="text-3xl font-black text-white block">15+</span>
+                <span className="text-xs font-semibold text-slate-300">Certified Master Techs</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800">
+                <span className="text-3xl font-black text-cyan-400 block">2</span>
+                <span className="text-xs font-semibold text-slate-300">Mega Workshop Hubs</span>
+              </div>
+            </div>
           </div>
 
-          <GoogleReviewsWidget compact={true} limit={3} showTitle={false} />
+          {/* Verified Customer Reviews */}
+          <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
+                  Customer Reviews
+                </span>
+                <h2 className="text-3xl font-black text-white">Verified Customer Reviews (4.8 / 5.0)</h2>
+              </div>
+              <button
+                onClick={() => onNavigate('testimonials')}
+                className="px-4 py-2 rounded-xl bg-[#0b121e] border border-slate-800 text-slate-300 font-bold text-xs hover:text-white transition-colors flex items-center gap-1.5"
+              >
+                <span>Read All Customer Reviews</span>
+                <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
+              </button>
+            </div>
+
+            <GoogleReviewsWidget compact={true} limit={3} showTitle={false} />
+          </div>
+
         </div>
       </section>
 

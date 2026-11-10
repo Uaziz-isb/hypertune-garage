@@ -337,61 +337,6 @@ export async function runPerformanceRegressionGuard(): Promise<boolean> {
     }
   }
 
-  // 5b. Agentic Resource Discovery (ARD) Verification
-  const ardPath = path.resolve(process.cwd(), 'public/.well-known/ard.json');
-  const aiCatalogPath = path.resolve(process.cwd(), 'public/.well-known/ai-catalog.json');
-  const distArdPath = path.resolve(distDir, '.well-known/ard.json');
-  const distAiCatalogPath = path.resolve(distDir, '.well-known/ai-catalog.json');
-
-  if (!fs.existsSync(ardPath) || !fs.existsSync(distArdPath)) {
-    violations.push({
-      level: 'CRITICAL',
-      category: 'Agentic Browsing',
-      metric: 'ARD Manifest Specification',
-      expected: 'public/.well-known/ard.json & dist/.well-known/ard.json exist',
-      actual: 'Missing',
-      details: 'ard.json is required for Agentic Resource Discovery discovery protocols.',
-    });
-  } else {
-    try {
-      const parsedArd = JSON.parse(fs.readFileSync(ardPath, 'utf-8'));
-      if (!Array.isArray(parsedArd.entries)) {
-        violations.push({
-          level: 'CRITICAL',
-          category: 'Agentic Browsing',
-          metric: 'ARD Manifest Format',
-          expected: 'Valid JSON with entries array',
-          actual: 'Invalid schema',
-          details: 'ard.json must contain {"entries": []}',
-        });
-      } else {
-        console.log('   ✅ public/.well-known/ard.json & dist/.well-known/ard.json verified.');
-      }
-    } catch {
-      violations.push({
-        level: 'CRITICAL',
-        category: 'Agentic Browsing',
-        metric: 'ARD Manifest Syntax',
-        expected: 'Valid JSON',
-        actual: 'Parse error',
-        details: 'ard.json must be valid JSON.',
-      });
-    }
-  }
-
-  if (!fs.existsSync(aiCatalogPath) || !fs.existsSync(distAiCatalogPath)) {
-    violations.push({
-      level: 'WARNING',
-      category: 'Agentic Browsing',
-      metric: 'AI Catalog Compatibility Specification',
-      expected: 'public/.well-known/ai-catalog.json & dist/.well-known/ai-catalog.json exist',
-      actual: 'Missing',
-      details: 'ai-catalog.json is required for AI catalog discovery compatibility.',
-    });
-  } else {
-    console.log('   ✅ public/.well-known/ai-catalog.json & dist/.well-known/ai-catalog.json verified.');
-  }
-
   // -------------------------------------------------------------
   // 6. ROUTE INTEGRITY & STATIC PRE-RENDERING (ALL CANONICAL ROUTES)
   // -------------------------------------------------------------

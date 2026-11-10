@@ -71,14 +71,13 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
         serviceType: service.subServices.join(', '),
         provider: {
           '@type': 'AutoRepair',
-          '@id': 'https://hypertunegarage.pk/#business',
           name: 'HyperTune Garage',
           telephone: '+923330177717',
           address: {
             '@type': 'PostalAddress',
             streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
             addressLocality: 'Islamabad',
-            addressRegion: 'PK-IS',
+            addressRegion: 'ICT',
             postalCode: '44000',
             addressCountry: 'PK',
           },
