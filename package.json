@@ -44,5 +44,14 @@
     "qs": "^6.16.3",
     "source-map-js": "^1.2.2",
     "vite": "^6.4.6"
+  },
+  "pnpm": {
+    "overrides": {
+      "proxy-addr": "^2.0.8",
+      "body-parser": "^1.20.9",
+      "qs": "^6.16.3",
+      "source-map-js": "^1.2.2",
+      "vite": "^6.4.6"
+    }
   }
 }
