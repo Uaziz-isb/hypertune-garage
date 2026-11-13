@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "NODE_ENV=production vite build && tsx scripts/prerender.ts && tsx scripts/generate-sitemap.ts && tsx scripts/verify-all-image-integrity.ts && tsx scripts/seo-audit.ts && tsx scripts/performance-guard.ts && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
-    "start": "node dist/server.cjs",
+    "build": "NODE_ENV=production vite build && tsx scripts/prerender.ts && tsx scripts/generate-sitemap.ts && tsx scripts/verify-all-image-integrity.ts && tsx scripts/seo-audit.ts && tsx scripts/performance-guard.ts && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --outfile=.server/server.cjs",
+    "start": "node .server/server.cjs",
     "preview": "vite preview",
-    "clean": "rm -rf dist server.cjs",
+    "clean": "rm -rf dist .server server.cjs",
     "lint": "tsc --noEmit",
     "guard": "tsx scripts/performance-guard.ts",
     "image:verify": "tsx scripts/verify-all-image-integrity.ts",
@@ -23,7 +23,7 @@
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.4",
     "autoprefixer": "^10.4.21",
-    "compression": "^1.8.1",
+    "compression": "^1.8.2",
     "dotenv": "^17.2.3",
     "esbuild": "^0.25.0",
     "express": "^4.21.2",
@@ -35,7 +35,23 @@
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
-    "vite": "^6.2.3"
+    "vite": "^6.4.6"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "overrides": {
+    "proxy-addr": "^2.0.8",
+    "body-parser": "^1.20.9",
+    "qs": "^6.16.3",
+    "source-map-js": "^1.2.2",
+    "vite": "^6.4.6"
+  },
+  "pnpm": {
+    "overrides": {
+      "proxy-addr": "^2.0.8",
+      "body-parser": "^1.20.9",
+      "qs": "^6.16.3",
+      "source-map-js": "^1.2.2",
+      "vite": "^6.4.6"
+    }
+  }
 }
