@@ -17,11 +17,15 @@ declare global {
     dataLayer?: any[];
     gtag?: (...args: any[]) => void;
     GA_MEASUREMENT_ID?: string;
+    __htgGtagManaged?: boolean;
   }
 }
 
+const configuredMeasurementIds = new Set<string>(['G-PPQJEQSLVE']);
+let lastTrackedPageKey: string | null = null;
+
 /**
- * Initialize Google Tag if not already loaded
+ * Sync GA measurement ID and ensure gtag queue exists without duplicating the index.html loader
  */
 export const initGA = (measurementId: string = GA_MEASUREMENT_ID) => {
   if (typeof window === 'undefined') return;
@@ -34,42 +38,57 @@ export const initGA = (measurementId: string = GA_MEASUREMENT_ID) => {
     };
   }
 
-  // Check if GTM script or inline loader is already registered
-  const existingScript = document.getElementById('ga-gtag-script') || document.getElementById('gtag-js');
-  if (!existingScript) {
-    // Defer loading to idle/post-load so it never blocks FCP, LCP, or TBT
-    const scheduleLoad = () => {
-      if (document.getElementById('ga-gtag-script') || document.getElementById('gtag-js')) return;
-      const script = document.createElement('script');
-      script.id = 'ga-gtag-script';
-      script.async = true;
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-      document.head.appendChild(script);
+  window.GA_MEASUREMENT_ID = measurementId;
 
-      window.gtag?.('js', new Date());
-      window.gtag?.('config', measurementId, {
-        send_page_view: false, // SPA handles page views manually
-        transport_type: 'beacon',
-      });
-    };
+  if (!configuredMeasurementIds.has(measurementId)) {
+    configuredMeasurementIds.add(measurementId);
+    window.gtag('config', measurementId, {
+      send_page_view: false,
+      transport_type: 'beacon',
+    });
+  }
 
-    const win = window as any;
-    if (typeof win.requestIdleCallback === 'function') {
-      win.requestIdleCallback(() => setTimeout(scheduleLoad, 1200), { timeout: 3500 });
-    } else {
-      window.addEventListener('load', () => setTimeout(scheduleLoad, 1200), { once: true });
-    }
+  if (window.__htgGtagManaged || document.getElementById('gtag-js')) {
+    return;
+  }
+
+  // Fallback only if index.html inline loader is absent
+  const scheduleLoad = () => {
+    if (window.__htgGtagManaged || document.getElementById('gtag-js')) return;
+    const script = document.createElement('script');
+    script.id = 'gtag-js';
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+    document.head.appendChild(script);
+
+    window.gtag?.('js', new Date());
+    window.gtag?.('config', measurementId, {
+      send_page_view: false,
+      transport_type: 'beacon',
+    });
+  };
+
+  const win = window as any;
+  if (typeof win.requestIdleCallback === 'function') {
+    win.requestIdleCallback(() => setTimeout(scheduleLoad, 6000), { timeout: 9000 });
+  } else {
+    window.addEventListener('load', () => setTimeout(scheduleLoad, 6000), { once: true });
   }
 };
 
 /**
- * Track SPA Page Views across all existing and future pages
+ * Track SPA Page Views once per route change
  */
 export const trackPageView = (path: string, title?: string) => {
   if (typeof window === 'undefined') return;
 
   const currentTitle = title || document.title;
   const currentPath = path || window.location.pathname + window.location.search;
+  if (lastTrackedPageKey === currentPath) {
+    return;
+  }
+  lastTrackedPageKey = currentPath;
+
   const fullUrl = window.location.origin + currentPath;
 
   if (typeof window.gtag === 'function') {
@@ -80,7 +99,6 @@ export const trackPageView = (path: string, title?: string) => {
       send_to: GA_MEASUREMENT_ID,
     });
   } else {
-    // Queue if gtag is initializing
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: 'page_view',
@@ -184,6 +202,16 @@ export const trackPhoneClick = (source: string, phoneNumber: string = '0333-0177
     event_category: 'Engagement',
     click_source: source,
     phone_number: phoneNumber,
+  });
+};
+
+/**
+ * Track Contact Form Submission without PII or form field contents
+ */
+export const trackContactFormSubmit = (source: string = 'contact_page') => {
+  trackEvent('contact_form_submit', {
+    event_category: 'Engagement',
+    form_location: source,
   });
 };
 

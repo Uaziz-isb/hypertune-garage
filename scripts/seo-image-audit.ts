@@ -141,10 +141,10 @@ async function runImageAudit() {
   const blogImages = new Set(blogData.map((b) => path.basename(b.featuredImage || '')));
   const galleryImagesList = galleryData.map((g) => path.basename(g.image || ''));
 
-  console.log(`   - 12 Dedicated Service Hub Images:    ${serviceImages.size} unique / 12 total`);
-  console.log(`   - 24 Brand Specialist Hero Images:   ${brandImages.size} unique / 24 total`);
-  console.log(`   - 14 Technical Blog Cover Images:    ${blogImages.size} unique / 14 total`);
-  console.log(`   - 12 Gallery Transformation Items:   ${new Set(galleryImagesList).size} unique / 12 total\n`);
+  console.log(`   - ${servicesData.length} Dedicated Service Hub Images:    ${serviceImages.size} unique / ${servicesData.length} total`);
+  console.log(`   - ${brandsData.length} Brand Specialist Hero Images:   ${brandImages.size} unique / ${brandsData.length} total`);
+  console.log(`   - ${blogData.length} Technical Blog Cover Images:    ${blogImages.size} unique / ${blogData.length} total`);
+  console.log(`   - ${galleryData.length} Gallery Transformation Items:   ${new Set(galleryImagesList).size} unique / ${galleryData.length} total\n`);
 
   // 5. File Size Distribution & Optimization Analysis
   console.log('⚡ 3. Image Optimization & Format Analysis:');

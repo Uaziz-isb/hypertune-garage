@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageId } from '../types';
+import { servicesData } from '../data/servicesData';
 import { SEOHead } from '../components/SEOHead';
 import {
   Wrench,
@@ -23,6 +24,7 @@ export const NotFoundView: React.FC<NotFoundViewProps> = ({ onNavigate }) => {
         title="404 - Page Not Found | HyperTune Garage Islamabad"
         description="The requested page could not be found. Explore HyperTune Garage automotive services, brand specialists, and workshop locations in Islamabad & Rawalpindi."
         path="/404/"
+        robots="noindex, follow"
       />
 
       <div className="text-center space-y-6">
@@ -69,7 +71,7 @@ export const NotFoundView: React.FC<NotFoundViewProps> = ({ onNavigate }) => {
             <Wrench className="w-6 h-6" />
           </div>
           <h2 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
-            13 Core Services
+            {servicesData.length} Core Services
           </h2>
           <p className="text-xs text-slate-400 leading-relaxed">
             Paint Protection Film (PPF), ceramic detailing, engine overhauls, transmissions, AC recharging & diagnostics.

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { MessageCircle, X, Send } from 'lucide-react';
+import { trackWhatsAppClick } from '../utils/analytics';
 
 export const FloatingWhatsApp: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [customMsg, setCustomMsg] = useState('');
 
   const handleSend = () => {
+    trackWhatsAppClick('floating_whatsapp_widget');
     const text = encodeURIComponent(
       customMsg || 'Assalam-o-Alaikum! How can HyperTune Garage help me with my car today?'
     );

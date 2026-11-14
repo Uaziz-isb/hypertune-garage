@@ -28,7 +28,8 @@ import {
   HelpCircle,
   RefreshCw,
   Search,
-  Building2
+  Building2,
+  AlertTriangle
 } from 'lucide-react';
 
 interface BookingViewProps {
@@ -37,6 +38,10 @@ interface BookingViewProps {
 }
 
 const POPULAR_BRANDS = [
+  'BMW',
+  'Mercedes-Benz',
+  'Audi',
+  'Porsche',
   'Toyota',
   'Honda',
   'Suzuki',
@@ -62,6 +67,31 @@ const POPULAR_BRANDS = [
   'Chevrolet',
   'Volvo',
   'Other',
+];
+
+const HYBRID_SERVICE_IDS = new Set([
+  'inspection-diagnostics',
+  'maintenance-servicing',
+  'car-ac-repair',
+  'transmission-drivetrain',
+  'cooling-fuel-exhaust',
+  'engine-services',
+]);
+
+const BOOKING_CATEGORIES = [
+  { id: 'all', label: 'All Services' },
+  { id: 'protection', label: 'PPF' },
+  { id: 'detailing', label: 'Detailing' },
+  { id: 'engine', label: 'Engine & Cooling' },
+  { id: 'diagnostics', label: 'Diagnostics' },
+  { id: 'maintenance', label: 'Maintenance' },
+  { id: 'suspension', label: 'Suspension & Brakes' },
+  { id: 'transmission', label: 'Transmission' },
+  { id: 'hybrid', label: 'Hybrid Tech' },
+  { id: 'electrical', label: 'AC & Electrical' },
+  { id: 'wrap', label: 'Vehicle Wrap' },
+  { id: 'body', label: 'Body & Paint' },
+  { id: 'modification', label: 'Body Kits' },
 ];
 
 const SYMPTOM_TAGS = [
@@ -146,6 +176,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
 
   // Submission State
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [formError, setFormError] = useState<string>('');
   const [bookingResult, setBookingResult] = useState<{
     ref: string;
     whatsappUrl: string;
@@ -172,6 +203,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
 
   // Toggle service selection
   const toggleService = (id: string) => {
+    setFormError('');
     setSelectedServices((prev) =>
       prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]
     );
@@ -187,13 +219,19 @@ export const BookingView: React.FC<BookingViewProps> = ({
 
   // Filtered services
   const filteredServices = useMemo(() => {
+    const q = serviceSearch.trim().toLowerCase();
     return servicesData.filter((s) => {
       const matchesSearch =
-        s.title.toLowerCase().includes(serviceSearch.toLowerCase()) ||
-        s.shortDesc.toLowerCase().includes(serviceSearch.toLowerCase());
-      
+        !q ||
+        s.title.toLowerCase().includes(q) ||
+        s.shortDesc.toLowerCase().includes(q) ||
+        s.subServices.some((sub) => sub.toLowerCase().includes(q));
+
       const matchesCategory =
-        serviceCategoryFilter === 'all' || s.category === serviceCategoryFilter;
+        serviceCategoryFilter === 'all' ||
+        (serviceCategoryFilter === 'hybrid'
+          ? HYBRID_SERVICE_IDS.has(s.id)
+          : s.category === serviceCategoryFilter);
 
       return matchesSearch && matchesCategory;
     });
@@ -206,9 +244,10 @@ export const BookingView: React.FC<BookingViewProps> = ({
 
   // Form validation before proceeding to next step
   const handleNextStep = (stepNumber: number) => {
+    setFormError('');
     if (stepNumber === 2) {
       if (selectedServices.length === 0) {
-        alert('Please select at least one workshop service.');
+        setFormError('Please select at least one workshop service to continue.');
         return;
       }
       trackAppointmentStep(2, 'Branch & Schedule', {
@@ -218,7 +257,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
     }
     if (stepNumber === 3) {
       if (!date) {
-        alert('Please select your preferred appointment date.');
+        setFormError('Please select your preferred appointment date.');
         return;
       }
       trackAppointmentStep(3, 'Customer Details & Review', {
@@ -234,12 +273,16 @@ export const BookingView: React.FC<BookingViewProps> = ({
   // Handle final submission
   const handleSubmitBooking = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!customerName.trim()) {
-      alert('Please enter your full name.');
+    setFormError('');
+
+    const cleanName = customerName.trim();
+    const cleanPhone = phone.trim();
+    if (cleanName.length < 2) {
+      setFormError('Please enter your full name (at least 2 characters).');
       return;
     }
-    if (!phone.trim()) {
-      alert('Please enter your WhatsApp or phone number.');
+    if (cleanPhone.replace(/\D/g, '').length < 7) {
+      setFormError('Please enter a valid WhatsApp or phone number.');
       return;
     }
 
@@ -252,9 +295,18 @@ export const BookingView: React.FC<BookingViewProps> = ({
     const selectedServiceTitles =
       selectedServiceObjects.map((s) => s.title).join(', ') || 'Diagnostic Evaluation';
 
+    const isNightExpress = /\(\s*Night Express\s*\)/i.test(time);
+    const priority = isUrgent
+      ? isNightExpress
+        ? 'URGENT / EXPRESS'
+        : 'URGENT'
+      : isNightExpress
+        ? 'EXPRESS'
+        : 'STANDARD';
+
     const fullNotes = [
       symptoms ? `Symptoms/Issues: ${symptoms}` : '',
-      isUrgent ? 'URGENT/EXPRESS PRIORITY' : '',
+      priority !== 'STANDARD' ? `${priority} PRIORITY` : '',
       `Preferred Contact: ${preferredContact.toUpperCase()}`,
     ]
       .filter(Boolean)
@@ -265,9 +317,9 @@ export const BookingView: React.FC<BookingViewProps> = ({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: customerName,
-          phone,
-          email,
+          name: cleanName,
+          phone: cleanPhone,
+          email: email.trim(),
           vehicleMake: vehicleMakeName,
           vehicleModel: model || 'Standard Spec',
           year,
@@ -275,12 +327,20 @@ export const BookingView: React.FC<BookingViewProps> = ({
           service: selectedServiceTitles,
           date,
           time,
+          isUrgent,
+          priority,
           notes: fullNotes,
         }),
       });
 
-      const data = await res.json();
-      if (data.success) {
+      let data: any = null;
+      try {
+        data = await res.json();
+      } catch {
+        data = null;
+      }
+
+      if (res.ok && data?.success) {
         const resultPayload = {
           ref: data.bookingRef,
           whatsappUrl: data.whatsappUrl,
@@ -295,43 +355,22 @@ export const BookingView: React.FC<BookingViewProps> = ({
         setCurrentStep(4);
         window.scrollTo({ top: 100, behavior: 'smooth' });
       } else {
-        throw new Error(data.error || 'Submission error');
+        setFormError(
+          data?.error ||
+            `We could not confirm your booking (status ${res.status}). Please verify your details or contact us at +92 333 0177717.`
+        );
       }
-    } catch (err) {
-      console.warn('Using fallback booking handler:', err);
-      const fallbackRef = `HTG-${Math.floor(100000 + Math.random() * 900000)}`;
-      const msg = encodeURIComponent(
-        `*NEW SERVICE APPOINTMENT - HYPERTUNE GARAGE*\n` +
-        `*Ref #:* ${fallbackRef}\n` +
-        `*Customer:* ${customerName} (${phone})\n` +
-        `*Vehicle:* ${vehicleFull}\n` +
-        `*Branch:* ${branchName}\n` +
-        `*Scheduled:* ${date} (${time})\n` +
-        `*Services:* ${selectedServiceTitles}\n` +
-        `${symptoms ? `*Notes:* ${symptoms}\n` : ''}` +
-        `*Priority:* ${isUrgent ? 'URGENT / EXPRESS' : 'STANDARD'}`
+    } catch {
+      setFormError(
+        'Network error while submitting your booking. Your appointment was not confirmed — please try again or call/WhatsApp +92 333 0177717.'
       );
-      const waUrl = `https://wa.me/923330177717?text=${msg}`;
-
-      const resultPayload = {
-        ref: fallbackRef,
-        whatsappUrl: waUrl,
-        date,
-        time,
-        branch: branchName,
-        services: selectedServiceTitles,
-        vehicle: vehicleFull,
-      };
-      trackAppointmentCompleted(fallbackRef, selectedServiceTitles, branchName, vehicleFull);
-      setBookingResult(resultPayload);
-      setCurrentStep(4);
-      window.scrollTo({ top: 100, behavior: 'smooth' });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleResetForm = () => {
+    setFormError('');
     setCurrentStep(1);
     setBookingResult(null);
     setCustomerName('');
@@ -390,6 +429,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
                 </span>
                 <a
                   href="tel:+923330177717"
+                  onClick={() => trackPhoneClick('booking_assistance_banner')}
                   className="text-lg font-black text-white hover:text-cyan-400 transition-colors block"
                 >
                   0333-0177717
@@ -588,18 +628,8 @@ export const BookingView: React.FC<BookingViewProps> = ({
                     </div>
 
                     {/* Category Filter Pills */}
-                    <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs scrollbar-none">
-                      {[
-                        { id: 'all', label: 'All Services' },
-                        { id: 'protection', label: 'PPF & Wrap' },
-                        { id: 'detailing', label: 'Detailing' },
-                        { id: 'engine', label: 'Engine & Tuning' },
-                        { id: 'maintenance', label: 'Maintenance' },
-                        { id: 'suspension', label: 'Suspension & Brakes' },
-                        { id: 'hybrid', label: 'Hybrid Tech' },
-                        { id: 'electrical', label: 'AC & Electrical' },
-                        { id: 'body', label: 'Body & Paint' },
-                      ].map((cat) => (
+                    <div className="flex flex-wrap items-center gap-1.5 pb-1 text-xs">
+                      {BOOKING_CATEGORIES.map((cat) => (
                         <button
                           key={cat.id}
                           type="button"
@@ -688,6 +718,13 @@ export const BookingView: React.FC<BookingViewProps> = ({
                       className="w-full bg-[#070c14] border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-cyan-500 focus:outline-none resize-none"
                     />
                   </div>
+
+                  {formError && (
+                    <div role="alert" className="p-3.5 rounded-xl bg-red-950/50 border border-red-500/40 text-red-200 text-xs flex items-start gap-2.5">
+                      <AlertTriangle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                      <span>{formError}</span>
+                    </div>
+                  )}
 
                   {/* Step 1 Actions */}
                   <div className="pt-4 flex justify-end">
@@ -864,11 +901,21 @@ export const BookingView: React.FC<BookingViewProps> = ({
                     </div>
                   </div>
 
+                  {formError && (
+                    <div role="alert" className="p-3.5 rounded-xl bg-red-950/50 border border-red-500/40 text-red-200 text-xs flex items-start gap-2.5">
+                      <AlertTriangle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                      <span>{formError}</span>
+                    </div>
+                  )}
+
                   {/* Step 2 Navigation Actions */}
                   <div className="pt-4 flex items-center justify-between">
                     <button
                       type="button"
-                      onClick={() => setCurrentStep(1)}
+                      onClick={() => {
+                        setFormError('');
+                        setCurrentStep(1);
+                      }}
                       className="px-6 py-3.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white font-bold text-sm flex items-center gap-2 transition-colors"
                     >
                       <ArrowLeft className="w-4 h-4" />
@@ -992,11 +1039,21 @@ export const BookingView: React.FC<BookingViewProps> = ({
                     />
                   </div>
 
+                  {formError && (
+                    <div role="alert" className="p-3.5 rounded-xl bg-red-950/50 border border-red-500/40 text-red-200 text-xs flex items-start gap-2.5">
+                      <AlertTriangle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                      <span>{formError}</span>
+                    </div>
+                  )}
+
                   {/* Step 3 Navigation Actions */}
                   <div className="pt-4 flex items-center justify-between">
                     <button
                       type="button"
-                      onClick={() => setCurrentStep(2)}
+                      onClick={() => {
+                        setFormError('');
+                        setCurrentStep(2);
+                      }}
                       className="px-6 py-3.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white font-bold text-sm flex items-center gap-2 transition-colors"
                     >
                       <ArrowLeft className="w-4 h-4" />
@@ -1115,6 +1172,12 @@ export const BookingView: React.FC<BookingViewProps> = ({
                     href="https://wa.me/923330177717?text=Hi%20HyperTune%20Garage%2C%20I%20have%20a%20question%20before%20booking%20my%20service%20appointment."
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() =>
+                      trackWhatsAppClick(
+                        'booking_sidebar',
+                        selectedServiceObjects.map((s) => s.title).join(', ') || undefined
+                      )
+                    }
                     className="w-full py-2.5 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-400 font-bold text-xs flex items-center justify-center gap-2 transition-colors"
                   >
                     <MessageCircle className="w-4 h-4" />
@@ -1186,6 +1249,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
                   href={bookingResult.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppClick('booking_confirmation_step', bookingResult.services)}
                   className="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-xl shadow-emerald-600/30 transition-all active:scale-95"
                 >
                   <MessageCircle className="w-5 h-5" />
@@ -1268,6 +1332,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
             </button>
             <a
               href="tel:+923330177717"
+              onClick={() => trackPhoneClick('booking_locations_strip')}
               className="px-6 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-white font-bold text-xs sm:text-sm hover:border-cyan-500/40 transition-colors"
             >
               Call 0333-0177717

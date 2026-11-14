@@ -5,7 +5,7 @@ import { serviceGuideMap, serviceShortLabels } from '../data/guideData';
 import { googleBusinessData } from '../data/reviewsData';
 import { faqData } from '../data/faqData';
 import { getRouteMetadata } from '../data/metadataRegistry';
-import { normalizeCanonicalUrl } from './canonical';
+import { normalizeCanonicalUrl, toIsoDate, toAbsoluteImageUrl } from './canonical';
 
 export { normalizeCanonicalUrl };
 
@@ -84,7 +84,7 @@ function escapeHtml(str: string): string {
 
 export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): RouteMetaInfo {
   const canonicalUrl = normalizeCanonicalUrl(rawPath, baseUrl);
-  const ogImage = `${baseUrl.replace(/\/+$/, '')}/images/hypertune_logo.webp`;
+  let ogImage = `${baseUrl.replace(/\/+$/, '')}/images/hypertune_logo.webp`;
 
   const routePath = (rawPath.split('?')[0].split('#')[0] || '/').replace(/^\/+|\/+$/g, '');
   const pathParts = routePath ? routePath.split('/') : [];
@@ -113,9 +113,64 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
     if (sub) {
       const service = findServiceSSR(sub);
       if (service) {
+        const SERVICE_IMAGE_MAP: Record<string, string> = {
+          'paint-protection-film-ppf': '/images/ppf_hero_banner_1787965710518.webp',
+          'car-detailing': '/images/hypertune_ceramic_detailing_1787965750616.webp',
+          'engine-services': '/images/hypertune_banner_engine_1787965807591.webp',
+          'inspection-diagnostics': '/images/service_diagnostics_live_1787240184785.webp',
+          'maintenance-servicing': '/images/hypertune_banner_dyno_1787965778539.webp',
+          'brake-suspension-steering': '/images/car_suspension_brakes_1787164569835.webp',
+          'transmission-drivetrain': '/images/car_transmission_gearbox_1787164584141.webp',
+          'vehicle-wrap': '/images/car_vinyl_wrap_1787965685845.webp',
+          'body-repair-paint': '/images/car_paint_booth_1787965665925.webp',
+          'body-modification': '/images/service_body_kit_1787240237280.webp',
+          'car-ac-repair': '/images/service_ac_electrical_1787240223565.webp',
+          'cooling-fuel-exhaust': '/images/service_hybrid_battery_1787965698487.webp',
+        };
+        const serviceImage = toAbsoluteImageUrl(SERVICE_IMAGE_MAP[service.slug] || ogImage, baseUrl);
+        ogImage = serviceImage;
         title = `${service.title} in Islamabad & Rawalpindi | HyperTune Garage`;
         description = service.seo?.metaDescription || (service.shortDesc.length > 155 ? service.shortDesc.slice(0, 152).trim().replace(/[.,;:\s]+$/, '') + '...' : service.shortDesc);
         keywords = `${service.title.toLowerCase()}, car repair islamabad, ${service.subServices.join(', ')}`;
+        const priceNums = service.priceRange.replace(/,/g, '').match(/\d+/g)?.map(Number) || [];
+        const priceSpecification =
+          priceNums.length >= 2
+            ? { '@type': 'PriceSpecification', priceCurrency: 'PKR', minPrice: priceNums[0], maxPrice: priceNums[1] }
+            : priceNums.length === 1
+              ? { '@type': 'PriceSpecification', priceCurrency: 'PKR', price: priceNums[0] }
+              : undefined;
+        schemas.push({
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: service.title,
+          serviceType: service.subServices.join(', '),
+          image: serviceImage,
+          provider: {
+            '@type': 'AutoRepair',
+            '@id': 'https://hypertunegarage.pk/#business',
+            name: 'HyperTune Garage',
+            url: 'https://hypertunegarage.pk/',
+            telephone: '+923330177717',
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
+              addressLocality: 'Islamabad',
+              addressRegion: 'PK-IS',
+              postalCode: '44000',
+              addressCountry: 'PK',
+            },
+          },
+          areaServed: [
+            { '@type': 'City', name: 'Islamabad' },
+            { '@type': 'City', name: 'Rawalpindi' },
+          ],
+          description: service.shortDesc,
+          offers: {
+            '@type': 'Offer',
+            priceCurrency: 'PKR',
+            ...(priceSpecification ? { priceSpecification } : {}),
+          },
+        });
         breadcrumbItems.push({
           '@type': 'ListItem',
           position: 2,
@@ -131,7 +186,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       } else {
         isNotFound = true;
         title = '404 - Service Not Found | HyperTune Garage Islamabad';
-        description = 'The requested automotive service could not be found. Explore our 13 core specialized repair services in Islamabad.';
+        description = `The requested automotive service could not be found. Explore our ${servicesDataSSR.length} core specialized repair services in Islamabad.`;
       }
     } else {
       title = 'Automotive Services & Maintenance Packages | HyperTune Garage';
@@ -169,7 +224,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       } else {
         isNotFound = true;
         title = '404 - Brand Specialist Not Found | HyperTune Garage';
-        description = 'The requested brand specialist page could not be found. Explore our 24 vehicle brand specialist hubs in Islamabad & Rawalpindi.';
+        description = `The requested brand specialist page could not be found. Explore our ${brandsDataSSR.length} vehicle brand specialist hubs in Islamabad & Rawalpindi.`;
       }
     } else {
       title = 'Vehicle Brand Specialists in Islamabad & Rawalpindi | HyperTune Garage';
@@ -255,13 +310,18 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
           item: canonicalUrl,
         });
 
+        const isoDate = toIsoDate(post.publishedDate);
+        const postImage = toAbsoluteImageUrl(post.featuredImage || ogImage, baseUrl);
+        ogImage = postImage;
+
         schemas.push({
           '@context': 'https://schema.org',
           '@type': 'BlogPosting',
           headline: post.title,
           description: post.excerpt,
-          image: ogImage,
-          datePublished: post.publishedDate,
+          image: postImage,
+          datePublished: isoDate,
+          dateModified: isoDate,
           author: {
             '@type': 'Organization',
             name: post.author.name,
@@ -273,7 +333,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
             url: 'https://hypertunegarage.pk/',
             logo: {
               '@type': 'ImageObject',
-              url: ogImage,
+              url: `${baseUrl.replace(/\/+$/, '')}/images/hypertune_logo.webp`,
             },
           },
           mainEntityOfPage: {
@@ -431,7 +491,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
     });
   } else if (root === 'sitemap' || root === 'site-map') {
     title = 'HTML Sitemap & Complete Site Index | HyperTune Garage';
-    description = 'Explore the complete directory of HyperTune Garage pages, specialized services, 24 vehicle brand specialist hubs, workshop locations, and technical blog guides.';
+    description = `Explore the complete directory of HyperTune Garage pages, specialized services, ${brandsDataSSR.length} vehicle brand specialist hubs, workshop locations, and technical blog guides.`;
     keywords = 'hypertune garage sitemap, car workshop site index islamabad, automotive services directory';
     breadcrumbItems.push({
       '@type': 'ListItem',
@@ -1063,7 +1123,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Dust-free PPF installation bays and downdraft thermal spray booth ensuring flawless mirror glass finishes.</p>
         </div>
         <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
-          <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:8px;">12-Month / 20k KM Warranty</h2>
+          <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:8px;">12-Month / 15,000 km Warranty</h2>
           <p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Comprehensive nationwide warranty on major mechanical overhauls, hybrid batteries, and genuine parts.</p>
         </div>
       </div>
@@ -1109,7 +1169,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
       <div style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:32px;text-align:center;">
         <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:12px;">Explore Our Live Work on Instagram</h2>
         <p style="color:#94a3b8;font-size:14px;margin-bottom:20px;">Follow our daily automotive transformations and master workshop projects.</p>
-        <a href="https://instagram.com/hypertunegarage" target="_blank" rel="noopener noreferrer" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;display:inline-block;">View Instagram Gallery</a>
+        <a href="https://www.instagram.com/hyper.tunegarage" target="_blank" rel="noopener noreferrer" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;display:inline-block;">View Instagram Gallery</a>
       </div>
     </main>`;
   } else if (root === 'testimonials' || root === 'reviews') {
@@ -1298,7 +1358,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           HTML Site Map &amp; Complete Directory
         </h1>
         <p style="font-size:16px;color:#94a3b8;max-width:800px;margin:0 auto;line-height:1.6;">
-          Complete index of all pages, 13 core automotive repair services, 24 vehicle brand specialist hubs, workshop locations, and technical diagnostic guides at HyperTune Garage.
+          Complete index of all pages, ${servicesDataSSR.length} core automotive repair services, ${brandsDataSSR.length} vehicle brand specialist hubs, workshop locations, and technical diagnostic guides at HyperTune Garage.
         </p>
       </div>
 
@@ -1323,7 +1383,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
 
       <!-- Services Section -->
       <section style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;margin-bottom:24px;">
-        <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:16px;">🛠️ 13 Core Automotive Repair Services</h2>
+        <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:16px;">🛠️ ${servicesDataSSR.length} Core Automotive Repair Services</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:12px;">
           ${servicesDataSSR.map((s) => `
             <a href="/services/${s.slug}/" style="color:#cbd5e1;text-decoration:none;display:block;padding:8px;background:#05080e;border-radius:8px;">
@@ -1335,7 +1395,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
 
       <!-- Brand Specialists Section -->
       <section style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;margin-bottom:24px;">
-        <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:16px;">🚗 24 Vehicle Brand Specialist Hubs</h2>
+        <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:16px;">🚗 ${brandsDataSSR.length} Vehicle Brand Specialist Hubs</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:12px;">
           ${brandsDataSSR.map((b) => `
             <a href="/brands/${b.slug}/" style="color:#cbd5e1;text-decoration:none;display:block;padding:8px;background:#05080e;border-radius:8px;">
@@ -1477,7 +1537,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         </div>
       </section>
 
-      <!-- Core Services Showcase (All 13 Services) -->
+      <!-- Core Services Showcase (All ${servicesDataSSR.length} Services) -->
       <section class="max-w-7xl mx-auto px-4 space-y-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
@@ -1504,7 +1564,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
               <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Expert Technicians &amp; OEM Software</span>
-              <h2 class="text-2xl md:text-3xl font-black text-white mt-1">24 Vehicle Brand Specialist Hubs</h2>
+              <h2 class="text-2xl md:text-3xl font-black text-white mt-1">${brandsDataSSR.length} Vehicle Brand Specialist Hubs</h2>
             </div>
             <a href="/brands/" class="text-cyan-400 font-bold text-sm hover:underline">View All Brands &rarr;</a>
           </div>
@@ -1644,8 +1704,12 @@ export function injectSSRHtml(
     /<meta\s+property=["']og:url["'][^>]*>/i,
     `<meta property="og:url" content="${metaInfo.canonicalUrl}" />`
   );
+  updatedHtml = updatedHtml.replace(
+    /<meta\s+property=["']og:image["'][^>]*>/i,
+    `<meta property="og:image" content="${metaInfo.ogImage}" />`
+  );
 
-  // Replace Twitter Title & Desc
+  // Replace Twitter Title & Desc & Image
   updatedHtml = updatedHtml.replace(
     /<meta\s+name=["']twitter:title["'][^>]*>/i,
     `<meta name="twitter:title" content="${metaInfo.title.replace(/"/g, '&quot;')}" />`
@@ -1653,6 +1717,10 @@ export function injectSSRHtml(
   updatedHtml = updatedHtml.replace(
     /<meta\s+name=["']twitter:description["'][^>]*>/i,
     `<meta name="twitter:description" content="${metaInfo.description.replace(/"/g, '&quot;')}" />`
+  );
+  updatedHtml = updatedHtml.replace(
+    /<meta\s+name=["']twitter:image["'][^>]*>/i,
+    `<meta name="twitter:image" content="${metaInfo.ogImage}" />`
   );
 
   // Inject Schemas before </head>

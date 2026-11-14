@@ -26,47 +26,48 @@ interface BrandDetailViewProps {
 export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNavigate }) => {
   const brand = brandsData.find((b) => b.slug === slug) || brandsData[0];
 
-  const brandSchema = {
+  const brandUrl = `https://hypertunegarage.pk/brands/${brand.slug}/`;
+  const customSchema = {
     '@context': 'https://schema.org',
-    '@type': 'AutoRepair',
-    name: brand.name,
-    description: brand.seo.description,
-    url: `https://hypertunegarage.pk/brands/${brand.slug}/`,
-    telephone: '+923330177717',
-    priceRange: '$$$',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
-      addressLocality: 'Islamabad',
-      postalCode: '44000',
-      addressCountry: 'PK',
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: 33.5651,
-      longitude: 73.1362,
-    },
-    openingHoursSpecification: [
+    '@graph': [
       {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-        opens: '10:00',
-        closes: '22:00',
+        '@type': 'AutoRepair',
+        '@id': 'https://hypertunegarage.pk/#business',
+        name: 'HyperTune Garage',
+        url: 'https://hypertunegarage.pk/',
+        telephone: '+923330177717',
+        priceRange: '$$$',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
+          addressLocality: 'Islamabad',
+          addressRegion: 'PK-IS',
+          postalCode: '44000',
+          addressCountry: 'PK',
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: 33.5651,
+          longitude: 73.1362,
+        },
+        openingHoursSpecification: [
+          {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+            opens: '10:00',
+            closes: '22:00',
+          },
+        ],
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://hypertunegarage.pk/' },
+          { '@type': 'ListItem', position: 2, name: 'Brand Specialists', item: 'https://hypertunegarage.pk/brands/' },
+          { '@type': 'ListItem', position: 3, name: brand.name, item: brandUrl },
+        ],
       },
     ],
-  };
-
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: brand.faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
   };
 
   return (
@@ -74,12 +75,10 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
       <SEOHead
         title={brand.seo.title}
         description={brand.seo.description}
-        keywords={brand.seo.keywords.join(', ')}
+        canonicalUrl={brandUrl}
         path={`/brands/${brand.slug}/`}
-        schema={{
-          '@context': 'https://schema.org',
-          '@graph': [brandSchema, faqSchema],
-        }}
+        ogImage={brand.heroImage}
+        schema={customSchema}
       />
 
       {/* Breadcrumb Navigation */}
@@ -297,7 +296,7 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
             onClick={() => onNavigate('brands')}
             className="text-cyan-400 hover:text-cyan-300 text-xs font-bold inline-flex items-center gap-1 self-start sm:self-auto"
           >
-            View All (24) Brands &rarr;
+            View All ({brandsData.length}) Brands &rarr;
           </button>
         </div>
 

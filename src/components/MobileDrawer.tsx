@@ -3,6 +3,7 @@ import { PageId } from '../types';
 import { Logo } from './Logo';
 import { servicesData } from '../data/servicesData';
 import { brandsData } from '../data/brandsData';
+import { trackPhoneClick, trackWhatsAppClick } from '../utils/analytics';
 import {
   X,
   Phone,
@@ -120,6 +121,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
           <div className="grid grid-cols-2 gap-2">
             <a
               href="tel:+923330177717"
+              onClick={() => trackPhoneClick('mobile_drawer')}
               className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-slate-900 border border-slate-800 text-cyan-400 font-bold text-xs hover:bg-slate-800 active:scale-95 transition-all"
             >
               <Phone className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
@@ -129,6 +131,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
               href="https://wa.me/923330177717"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('mobile_drawer')}
               className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-emerald-600/20 border border-emerald-500/40 text-emerald-400 font-bold text-xs hover:bg-emerald-600/30 active:scale-95 transition-all"
             >
               <MessageCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
@@ -171,7 +174,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
             >
               <div className="flex items-center gap-3">
                 <Wrench className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>Services Catalogue (13)</span>
+                <span>Services Catalogue ({servicesData.length})</span>
               </div>
               <ChevronDown
                 className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${

@@ -4,7 +4,6 @@ import { blogArticlesListingData } from '../data/blogData';
 import { servicesData } from '../data/servicesData';
 import { serviceGuideMap, serviceShortLabels } from '../data/guideData';
 import { images } from '../data/images';
-import { SEOHead } from '../components/SEOHead';
 import { Clock, ArrowRight, Wrench } from 'lucide-react';
 
 interface BlogViewProps {
@@ -36,11 +35,6 @@ export const BlogView: React.FC<BlogViewProps> = ({ onNavigate }) => {
 
   return (
     <div className="pt-28 sm:pt-32 md:pt-36 pb-16 space-y-16">
-      <SEOHead
-        title="Automotive Repair & Car Care Guides | HyperTune Garage"
-        description="Read technical car care guides, diagnostic advice, maintenance tips, PPF comparisons and vehicle repair insights from HyperTune Garage in Islamabad."
-        path="/blog/"
-      />
 
       {/* Header Banner */}
       <section className="bg-[#05080e] border-b border-slate-800 py-16 px-4">

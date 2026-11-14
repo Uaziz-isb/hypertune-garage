@@ -46,7 +46,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
   // Main high-level site pages
   const mainPages: { label: string; page: PageId; path: string; desc: string; icon: React.ElementType }[] = [
     { label: 'Home Page', page: 'home', path: '/', desc: 'Main workshop overview, hero service highlights, and instant booking.', icon: Globe },
-    { label: 'Brand Specialists Directory', page: 'brands', path: '/brands/', desc: 'Dedicated engineering hubs and factory diagnostic scan facilities for 24 vehicle brands.', icon: Award },
+    { label: 'Brand Specialists Directory', page: 'brands', path: '/brands/', desc: `Dedicated engineering hubs and factory diagnostic scan facilities for ${brandsData.length} vehicle brands.`, icon: Award },
     { label: 'Book Service Appointment', page: 'booking', path: '/book-appointment/', desc: 'Online workshop appointment scheduling at our Islamabad Flagship Hub with instant time slot reservation.', icon: Calendar },
     { label: 'Services Catalogue', page: 'services', path: '/services/', desc: 'Full catalogue of precision repair, protection, and overhaul services.', icon: Wrench },
     { label: 'Workshop Locations', page: 'locations', path: '/locations/', desc: 'HyperTune Garage - Islamabad Flagship Hub directions, facilities and contacts.', icon: MapPin },
@@ -94,10 +94,10 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
     if (!searchQuery.trim()) return locationsData;
     const q = searchQuery.toLowerCase();
     return locationsData.filter(l =>
-      l.branchName.toLowerCase().includes(q) ||
-      l.address.toLowerCase().includes(q) ||
-      l.area.toLowerCase().includes(q) ||
-      l.city.toLowerCase().includes(q)
+      (l.branchName || '').toLowerCase().includes(q) ||
+      (l.address || '').toLowerCase().includes(q) ||
+      (l.area || '').toLowerCase().includes(q) ||
+      (l.city || '').toLowerCase().includes(q)
     );
   }, [searchQuery]);
 

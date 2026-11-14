@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { trackPageView, initGA } from '../utils/analytics';
-import { normalizeCanonicalUrl } from '../utils/canonical';
+import { normalizeCanonicalUrl, toAbsoluteImageUrl } from '../utils/canonical';
 import { staticCustomerReviews, googleBusinessData } from '../data/reviewsData';
 
 declare global {
@@ -18,6 +18,7 @@ interface SEOProps {
   canonicalUrl?: string;
   path?: string;
   ogImage?: string;
+  robots?: string;
   schema?: object;
 }
 
@@ -27,18 +28,18 @@ export const SEOHead: React.FC<SEOProps> = ({
   keywords,
   canonicalUrl,
   path = '/',
-  ogImage = '/images/hypertune_hero_banner_1787965822146.webp',
+  ogImage = '/images/hypertune_logo.webp',
+  robots,
   schema,
 }) => {
   useEffect(() => {
-    // Update Title
-    document.title = title;
-
-    // Ensure Google Analytics is initialized and trigger SPA page view
     initGA();
     trackPageView(path, title);
+  }, [path, title]);
 
-    // Update Meta Description
+  useEffect(() => {
+    document.title = title;
+
     let metaDesc = document.querySelector('meta[name="description"]');
     if (!metaDesc) {
       metaDesc = document.createElement('meta');
@@ -47,15 +48,25 @@ export const SEOHead: React.FC<SEOProps> = ({
     }
     metaDesc.setAttribute('content', description);
 
-    // Modern SEO Standards: Remove any obsolete meta keywords tags
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
+    }
+    metaRobots.setAttribute(
+      'content',
+      robots || 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+    );
+
     const existingKeywords = document.querySelector('meta[name="keywords"]');
     if (existingKeywords) {
       existingKeywords.remove();
     }
 
     const targetCanonicalUrl = normalizeCanonicalUrl(canonicalUrl || path, 'https://hypertunegarage.pk');
+    const resolvedOgImage = toAbsoluteImageUrl(ogImage, 'https://hypertunegarage.pk');
 
-    // Update Canonical Tag
     let canonicalTag = document.querySelector('link[rel="canonical"]');
     if (!canonicalTag) {
       canonicalTag = document.createElement('link');
@@ -64,18 +75,17 @@ export const SEOHead: React.FC<SEOProps> = ({
     }
     canonicalTag.setAttribute('href', targetCanonicalUrl);
 
-    // Update Open Graph & Twitter Tags
     const metaTagsList = [
       { property: 'og:title', content: title },
       { property: 'og:description', content: description },
       { property: 'og:url', content: targetCanonicalUrl },
       { property: 'og:type', content: 'website' },
-      { property: 'og:image', content: ogImage },
+      { property: 'og:image', content: resolvedOgImage },
       { property: 'og:site_name', content: 'HyperTune Garage' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: title },
       { name: 'twitter:description', content: description },
-      { name: 'twitter:image', content: ogImage },
+      { name: 'twitter:image', content: resolvedOgImage },
     ];
 
     metaTagsList.forEach((tagInfo) => {
@@ -92,14 +102,13 @@ export const SEOHead: React.FC<SEOProps> = ({
       tag.setAttribute('content', tagInfo.content || '');
     });
 
-    // Default LocalBusiness Schema
     const defaultSchema = {
       '@context': 'https://schema.org',
       '@type': 'AutoRepair',
       name: 'HyperTune Garage',
-      image: ogImage,
-      '@id': targetCanonicalUrl,
-      url: targetCanonicalUrl,
+      image: resolvedOgImage,
+      '@id': 'https://hypertunegarage.pk/#business',
+      url: 'https://hypertunegarage.pk/',
       telephone: '+923330177717',
       priceRange: '$$$',
       aggregateRating: {
@@ -146,9 +155,11 @@ export const SEOHead: React.FC<SEOProps> = ({
       ],
     };
 
+    // Remove static SSR schema script tags before writing authoritative hydrated schema
+    document.querySelectorAll('script[id^="server-schema-"]').forEach((el) => el.remove());
+
     const finalSchema = schema || defaultSchema;
 
-    // Inject JSON-LD
     let scriptTag = document.getElementById('json-ld-schema') as HTMLScriptElement | null;
     if (!scriptTag) {
       scriptTag = document.createElement('script');
@@ -157,7 +168,8 @@ export const SEOHead: React.FC<SEOProps> = ({
       document.head.appendChild(scriptTag);
     }
     scriptTag.text = JSON.stringify(finalSchema);
-  }, [title, description, keywords, canonicalUrl, path, ogImage, schema]);
+  }, [title, description, keywords, canonicalUrl, path, ogImage, robots, schema]);
 
   return null;
 };
+

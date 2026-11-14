@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PageId } from '../types';
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send, CheckCircle2, ExternalLink, Navigation } from 'lucide-react';
 import { GoogleMapEmbed } from '../components/GoogleMapEmbed';
+import { trackWhatsAppClick, trackPhoneClick, trackContactFormSubmit } from '../utils/analytics';
 
 interface ContactViewProps {
   onNavigate: (page: PageId, slug?: string) => void;
@@ -13,14 +14,16 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [waUrl, setWaUrl] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
     const waText = encodeURIComponent(
-      `*New Contact Message - HyperTune Garage*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Message:* ${message}`
+      `*New Contact Message - HyperTune Garage*\n\n*Name:* ${name.trim()}\n*Phone:* ${phone.trim()}\n*Message:* ${message.trim()}`
     );
-    window.open(`https://wa.me/923330177717?text=${waText}`, '_blank');
+    setWaUrl(`https://wa.me/923330177717?text=${waText}`);
+    trackContactFormSubmit('contact_page');
+    setSubmitted(true);
   };
 
   return (
@@ -53,7 +56,11 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
               <p className="text-xs text-slate-300 leading-relaxed font-medium">
                 Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
               </p>
-              <a href="tel:+923330177717" className="text-base font-black text-white hover:text-cyan-400 block pt-1">
+              <a
+                href="tel:+923330177717"
+                onClick={() => trackPhoneClick('contact_hotline_card')}
+                className="text-base font-black text-white hover:text-cyan-400 block pt-1"
+              >
                 +92 333 0177717
               </a>
             </div>
@@ -75,6 +82,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
                 href="https://wa.me/923330177717?text=Hi%20HyperTune%20Garage%2C%20I%20have%20an%20inquiry."
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('contact_hotline_card')}
                 className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20"
               >
                 <MessageCircle className="w-4 h-4" />
@@ -135,18 +143,31 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
               </button>
             </form>
           ) : (
-            <div className="text-center py-12 space-y-4">
+            <div className="text-center py-10 space-y-4">
               <CheckCircle2 className="w-16 h-16 text-cyan-400 mx-auto" />
-              <h3 className="text-2xl font-black text-white">Message Delivered!</h3>
+              <h3 className="text-2xl font-black text-white">Message Ready for WhatsApp</h3>
               <p className="text-xs text-slate-400 max-w-sm mx-auto">
-                Thank you, {name}. Our customer support representative will call or WhatsApp you within 15 minutes.
+                Thank you, {name}. Click below to send your pre-filled inquiry directly on WhatsApp, or call us at +92 333 0177717.
               </p>
-              <button
-                onClick={() => setSubmitted(false)}
-                className="px-6 py-2.5 rounded-xl bg-slate-800 text-white font-bold text-xs"
-              >
-                Send Another Message
-              </button>
+              <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
+                <a
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppClick('contact_form_confirmation')}
+                  className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs inline-flex items-center gap-2 shadow-lg shadow-emerald-600/20"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Open WhatsApp Chat</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+                <button
+                  onClick={() => setSubmitted(false)}
+                  className="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs"
+                >
+                  Edit Message
+                </button>
+              </div>
             </div>
           )}
         </div>

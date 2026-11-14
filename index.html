@@ -84,19 +84,22 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){window.dataLayer.push(arguments);}
+      window.GA_MEASUREMENT_ID = window.GA_MEASUREMENT_ID || 'G-PPQJEQSLVE';
+      window.__htgGtagManaged = true;
       gtag('js', new Date());
-      gtag('config', 'G-PPQJEQSLVE', {
+      gtag('config', window.GA_MEASUREMENT_ID, {
         send_page_view: false,
         transport_type: 'beacon'
       });
 
-      // Deferred load of external GTM/GA4 script after user interaction or extended idle
+      // Single deferred loader for external GA4 script after user interaction or extended idle
       function loadGtagScript() {
         if (!document.getElementById('gtag-js')) {
+          var gaId = window.GA_MEASUREMENT_ID || 'G-PPQJEQSLVE';
           var s = document.createElement('script');
           s.id = 'gtag-js';
           s.async = true;
-          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-PPQJEQSLVE';
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(gaId);
           document.head.appendChild(s);
           cleanupGtagListeners();
         }

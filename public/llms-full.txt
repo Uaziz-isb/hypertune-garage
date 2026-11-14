@@ -1,86 +1,105 @@
 # HyperTune Garage - Full Automotive Technical Knowledge Base & Service Specifications
 
-> HyperTune Garage is Pakistan's premier specialized automotive workshop, computerized diagnostics studio, Paint Protection Film (PPF) application center, and European/Japanese luxury car care facility located in Islamabad (with our new Rawalpindi facility currently under development).
+> HyperTune Garage is Pakistan's premier specialized automotive workshop, computerized diagnostics studio, Paint Protection Film (PPF) application center, and European/Japanese luxury car care facility located in Islamabad (with Rawalpindi coverage via insured valet pickup while our Rawalpindi branch is under development).
 
 ## Business Profile & Metadata
 
 - **Name:** HyperTune Garage
-- **Industry:** Automotive Repair, Car Detailing, Paint Protection Film (PPF), German Vehicle Diagnostics, Body Modification
+- **Industry:** Automotive Repair, Car Detailing, Paint Protection Film (PPF), German & Hybrid Vehicle Diagnostics, Body Modification
 - **Hotline / Phone:** +92 333 0177717 (WhatsApp & Call)
 - **Email:** info@hypertunegarage.pk
 - **Operating Hours:** Saturday - Thursday: 10:00 AM - 10:00 PM (Friday Closed - applies to Islamabad Flagship Hub)
 - **Locations:**
-  - **Islamabad Flagship Hub (Open & Operating):** Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
-  - **Rawalpindi Hub (Coming Soon):** Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.
+  - **Islamabad Flagship Hub (Open & Operating):** Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan — https://hypertunegarage.pk/locations/islamabad-workshop/
+  - **Rawalpindi Hub (Coming Soon):** Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup — https://hypertunegarage.pk/locations/rawalpindi-workshop/
 - **Primary Website:** https://hypertunegarage.pk/
 - **Google Rating:** 4.8 / 5.0 Stars
 
 ---
 
-## Detailed Service Catalog
+## Detailed Service Catalog (All 12 Core Services)
 
 ### 1. Paint Protection Film (PPF) Installation
-- **URL:** https://hypertunegarage.pk/services/paint-protection-film-ppf
-- **Description:** High-grade optical TPU (Thermoplastic Polyurethane) film application offering scratch self-healing, stain resistance, and UV rejection.
-- **Technology:** Computer-aided design (CAD) plotter pre-cut film to ensure 100% blade-free installation on vehicle paintwork.
-- **Warranty:** 5 to 10 Year Written Warranty against bubbling, cracking, and yellowing.
+- **URL:** https://hypertunegarage.pk/services/paint-protection-film-ppf/
+- **Description:** High-grade optical TPU (Thermoplastic Polyurethane) film application offering heat-activated scratch self-healing, stain resistance, and UV rejection.
+- **Technology:** Computer-aided design (CAD) plotter pre-cut film to ensure blade-free installation on vehicle paintwork.
+- **Warranty:** Written warranty coverage against bubbling, cracking, and yellowing.
 - **Packages:**
   - Front Package (Bumper, Hood, Fenders, Side Mirrors, Headlights)
   - Full Vehicle Wrap (Gloss or Stealth Satin Matte Finish)
   - Interior Screen & Piano Black Trim Protection
 
-### 2. PPS Paint Protection System & 9H Ceramic Coating
-- **URL:** https://hypertunegarage.pk/services/pps-paint-protection-system
-- **Description:** Multi-layer liquid quartz glass and graphene ceramic coating forming a permanent chemical bond with factory clear coat.
-- **Features:** 9H pencil hardness, 110-degree water contact angle (super-hydrophobic), high gloss mirror reflection, and chemical protection (pH 2 - pH 12).
-- **Warranty:** 2 to 5 Year Warranty with complimentary periodic inspection.
+### 2. Car Detailing & 9H Ceramic Coating
+- **URL:** https://hypertunegarage.pk/services/car-detailing/
+- **Description:** Multi-stage rotary and dual-action paint correction followed by liquid quartz / graphene 9H ceramic coating, interior leather conditioning, steam sanitization, and engine bay detailing.
+- **Features:** Swirl & oxidation removal, high-angle hydrophobic water beading, UV protection, and deep cabin restoration.
 
-### 3. German & Luxury Vehicle Diagnostics
-- **URL:** https://hypertunegarage.pk/services/computer-diagnostics-scanning
+### 3. Engine Repair & Mechanical Overhauls
+- **URL:** https://hypertunegarage.pk/services/engine-services/
+- **Description:** Complete rebuilds and repairs for petrol, turbocharged, hybrid, and diesel engines to factory torque specs with OEM pistons, rings, bearings, timing kits, and gaskets.
+- **Precision Equipment:** Cylinder honing, micrometer crank inspection, compression & leak-down testing, and cylinder head resurfacing.
+
+### 4. Computerized Diagnostics & Pre-Purchase Inspection
+- **URL:** https://hypertunegarage.pk/services/inspection-diagnostics/
 - **OEM Diagnostic Systems:**
   - BMW ISTA+ & INPA
   - Mercedes-Benz XENTRY & DAS
-  - Audi / Porsche / VW VAG ODIS
+  - Audi / Porsche / VW VAG ODIS & PIWIS
   - Toyota / Lexus Techstream
-- **Capabilities:** ECU coding, transmission adaptation, active sensor testing, electronic module programming, and key synchronization.
+- **Capabilities:** ECU coding, module programming, paint-thickness micrometer inspection, and digital pre-purchase vehicle health reports.
 
-### 4. Engine & Mechanical Overhauls
-- **URL:** https://hypertunegarage.pk/services/engine-services
-- **Description:** Complete rebuilds of petrol, turbo, and diesel engines to factory torque specs with OEM pistons, rings, bearings, and gaskets.
-- **Precision Equipment:** Computerized cylinder honing, micrometer crank inspection, pressure-tested cylinder heads.
-
-### 5. AC Repair & Electrical Specialist
-- **URL:** https://hypertunegarage.pk/services/car-ac-repair
-- **Vehicles Serviced:** All Japanese, German, European, and local market vehicles.
-- **Services:** Automated R134a/R1234yf refrigerant charging, compressor overhaul, cooling coil leak detection, computerized auto electrical wiring diagnostics, and sensor calibration.
+### 5. Periodic Maintenance & Lube Service
+- **URL:** https://hypertunegarage.pk/services/maintenance-servicing/
+- **Description:** Factory-scheduled periodic servicing using genuine synthetic motor oils, OEM oil/air/cabin filters, spark plugs, brake fluid flushes, and multi-point mechanical inspections.
 
 ### 6. Brakes, Suspension & 3D Wheel Alignment
-- **URL:** https://hypertunegarage.pk/services/brakes-suspension-alignment
-- **Features:** High-definition 3D camera wheel alignment, brake disc skim lathe machining, polyurethane and OEM rubber bushing overhaul.
+- **URL:** https://hypertunegarage.pk/services/brake-suspension-steering/
+- **Features:** High-definition 3D camera wheel alignment, brake pad & rotor servicing, AIRMATIC / hydraulic air suspension diagnostics, steering rack repair, and control-arm bushing overhauls.
 
-### 7. Transmission & Gearbox Overhaul
-- **URL:** https://hypertunegarage.pk/services/transmission-gearbox-services
-- **Gearbox Types:** CVT, Dual Clutch Transmission (DSG/DCT), Traditional Torque Converter, and Manual Gearboxes.
-- **Services:** Complete solenoid testing, valve body repair, mechatronics programming, and full synthetic fluid flushing.
+### 7. Transmission & Automatic Gearbox Services
+- **URL:** https://hypertunegarage.pk/services/transmission-drivetrain/
+- **Gearbox Types:** CVT, Dual-Clutch Transmission (DSG / S-Tronic / DCT / PDK / i-DCD), Traditional Torque Converter, and AWD/4x4 drivetrains.
+- **Services:** Solenoid testing, valve body repair, mechatronics adaptation & programming, clutch pack replacement, and full fluid servicing.
 
-### 8. Custom Body Kits & Aerodynamics
-- **URL:** https://hypertunegarage.pk/services/body-kit-custom-modification
-- **Modifications:** FRP and ABS body kits, carbon fiber front splitters, rear diffusers, ducktail spoilers, and custom sports exhaust systems.
+### 8. Vehicle Wrap & Vinyl Color Change
+- **URL:** https://hypertunegarage.pk/services/vehicle-wrap/
+- **Capabilities:** Cast vinyl color-change wraps in gloss, satin, matte, and metallic finishes, roof wraps, de-chrome / chrome-delete trims, and partial accent styling.
+
+### 9. Denting, Painting & Accident Body Repair
+- **URL:** https://hypertunegarage.pk/services/body-repair-paint/
+- **Capabilities:** Downdraft thermal-bake spray booth, computerized spectrophotometer OEM paint color matching, Paintless Dent Repair (PDR), panel beating, and structural frame realignment.
+
+### 10. Body Modification & Custom Body Kits
+- **URL:** https://hypertunegarage.pk/services/body-modification/
+- **Modifications:** OEM and aftermarket ABS, PP, and carbon fiber body kits, front splitters, rear diffusers, side skirts, spoilers, and custom facelift conversions.
+
+### 11. Car AC Repair & Auto Electrical Specialist
+- **URL:** https://hypertunegarage.pk/services/car-ac-repair/
+- **Vehicles Serviced:** All German, European, Japanese, Korean, Chinese, and hybrid/EV market vehicles.
+- **Services:** Automated R134a / R1234yf refrigerant recovery and recharge, compressor overhaul, cooling coil leak detection, climate-control flap repair, and computerized auto-electrical wiring diagnostics.
+
+### 12. Cooling, Fuel Injection & Exhaust Systems
+- **URL:** https://hypertunegarage.pk/services/cooling-fuel-exhaust/
+- **Services:** Radiator flushing and OAT coolant conversion, thermostat & water pump replacement, ultrasonic fuel injector testing & cleaning, catalytic converter care, and exhaust repair.
 
 ---
 
 ## Direct Links & Resource Map
 
 - **Home:** https://hypertunegarage.pk/
-- **About:** https://hypertunegarage.pk/about
-- **Services:** https://hypertunegarage.pk/services
-- **Locations:** https://hypertunegarage.pk/locations
-- **Gallery:** https://hypertunegarage.pk/gallery
-- **Testimonials:** https://hypertunegarage.pk/testimonials
-- **FAQ:** https://hypertunegarage.pk/faq
-- **Contact:** https://hypertunegarage.pk/contact
-- **Warranty Specs:** https://hypertunegarage.pk/warranty-specs
-- **Privacy Policy:** https://hypertunegarage.pk/privacy-policy
-- **Terms & Conditions:** https://hypertunegarage.pk/terms-conditions
-- **Sitemap Index:** https://hypertunegarage.pk/sitemap.xml
+- **About:** https://hypertunegarage.pk/about/
+- **Services Directory:** https://hypertunegarage.pk/services/
+- **Brand Specialists:** https://hypertunegarage.pk/brands/
+- **Locations:** https://hypertunegarage.pk/locations/
+- **Transformation Gallery:** https://hypertunegarage.pk/gallery/
+- **Customer Testimonials:** https://hypertunegarage.pk/testimonials/
+- **FAQ Knowledge Hub:** https://hypertunegarage.pk/faq/
+- **Contact:** https://hypertunegarage.pk/contact/
+- **Book Appointment:** https://hypertunegarage.pk/book-appointment/
+- **Automotive Blog & Guides:** https://hypertunegarage.pk/blog/
+- **Warranty Specs:** https://hypertunegarage.pk/warranty-specs/
+- **Privacy Policy:** https://hypertunegarage.pk/privacy-policy/
+- **Terms & Conditions:** https://hypertunegarage.pk/terms-conditions/
+- **HTML Sitemap:** https://hypertunegarage.pk/sitemap/
+- **XML Sitemap:** https://hypertunegarage.pk/sitemap.xml
 - **LLMs Summary:** https://hypertunegarage.pk/llms.txt

@@ -791,43 +791,54 @@ app.get(["/sitemap.xml", "/sitemap.xml/"], (req, res) => {
 // LLMs.txt Endpoint for Agentic Browsing & AI Crawlers
 app.get(["/llms.txt", "/.well-known/llms.txt"], (req, res) => {
   const baseUrl = getCanonicalBaseUrl(req);
+  const llmsFilePath = path.resolve(process.cwd(), "public/llms.txt");
+
+  if (fs.existsSync(llmsFilePath)) {
+    const fileContent = fs.readFileSync(llmsFilePath, "utf-8");
+    const llmsContent = fileContent.replace(/https:\/\/hypertunegarage\.pk/g, baseUrl);
+    res.setHeader("Content-Type", "text/markdown; charset=utf-8");
+    return res.status(200).send(llmsContent);
+  }
 
   const llmsContent = `# HyperTune Garage - Automotive Detailing, PPF, Tuning & Maintenance
 
-> HyperTune Garage is Pakistan's premier specialized automotive workshop, computerized diagnostics studio, Paint Protection Film (PPF) application center, and European/Japanese luxury car care facility located in Islamabad (with our new Rawalpindi branch currently under development).
+> HyperTune Garage is Pakistan's premier specialized automotive workshop, computerized diagnostics studio, Paint Protection Film (PPF) application center, and European/Japanese luxury car care facility located in Islamabad (with Rawalpindi coverage via insured valet pickup while our Rawalpindi hub is under development).
 
 ## Primary Pages
 
-- [Home Page](${baseUrl}/): Overview of HyperTune Garage workshops, specialized services, instant cost estimator, Google customer reviews, and booking system.
-- [About Us](${baseUrl}/about/): Learn about HyperTune Garage, certified master technicians, state-of-the-art dust-free PPF bays, and laser diagnostic equipment.
-- [Services Directory](${baseUrl}/services/): Comprehensive catalog of automotive services for German, European, Japanese, and hybrid vehicles.
-- [Workshop Locations](${baseUrl}/locations/): Physical studio address, GPS directions, operational hours, and contact details for Islamabad Flagship Hub and upcoming Rawalpindi branch.
-- [Customer Reviews & Testimonials](${baseUrl}/testimonials/): Real verified customer reviews, Google Business ratings (4.8/5), and client case studies.
-- [Transformation Gallery](${baseUrl}/gallery/): Before & after showcase of full-body PPF installations, 9H Ceramic coatings, engine overhauls, and body kit modifications.
-- [Frequently Asked Questions (FAQ)](${baseUrl}/faq/): Answers to questions regarding PPF lifespan, warranty coverage, engine rebuild turnaround times, and pricing.
-- [Contact & Booking](${baseUrl}/contact/): Inquire, request personalized price quotes, or book workshop appointments via phone, WhatsApp, or instant online form.
-- [Book Service Appointment](${baseUrl}/book-appointment/): Reserve diagnostic scans, PPF installations, periodic maintenance, or mechanical repair slots online with instant confirmation.
-- [Warranty & Specifications](${baseUrl}/warranty-specs/): Official warranty terms for TPU PPF, Ceramic coating packages, OEM spare parts, and engine work.
+- [Home Page](${baseUrl}/): Overview of HyperTune Garage workshops, specialized services, instant cost estimator, Google customer reviews, and online booking system.
+- [About Us](${baseUrl}/about/): Learn about HyperTune Garage, certified master technicians, dust-free PPF bays, and OEM diagnostic equipment.
+- [Services Directory](${baseUrl}/services/): Comprehensive catalog of all 12 automotive services for German, European, Japanese, Korean, Chinese, and hybrid vehicles.
+- [Car Brand Specialists](${baseUrl}/brands/): Dedicated repair and servicing hubs for 28 automotive brands.
+- [Workshop Locations](${baseUrl}/locations/): Physical studio address, GPS directions, operational hours, and contact details for our Islamabad Flagship Hub and Rawalpindi service coverage.
+- [Transformation Gallery](${baseUrl}/gallery/): Showcase of full-body PPF installations, 9H ceramic coatings, engine overhauls, and body kit modifications.
+- [Customer Reviews & Testimonials](${baseUrl}/testimonials/): Verified customer reviews, Google Business ratings (4.8/5), and client case studies.
+- [Frequently Asked Questions (FAQ)](${baseUrl}/faq/): Detailed technical answers regarding PPF lifespan, warranty coverage, diagnostics, and maintenance pricing.
+- [Contact Us](${baseUrl}/contact/): Inquire, request personalized price quotes, or contact our Islamabad workshop via phone, WhatsApp, or online form.
+- [Book Service Appointment](${baseUrl}/book-appointment/): Reserve diagnostic scans, PPF installations, periodic maintenance, or mechanical repair slots online.
+- [Automotive Guides & Blog](${baseUrl}/blog/): Technical car care guides, fault troubleshooting, and maintenance insights tailored for Pakistan's climate.
+- [Warranty & Specifications](${baseUrl}/warranty-specs/): Official warranty terms for TPU PPF, ceramic coating packages, OEM spare parts, and mechanical work.
 - [XML Sitemap](${baseUrl}/sitemap.xml): Complete machine-readable XML sitemap for web crawlers.
 
 ## Specialized Automotive Services
 
-- [Paint Protection Film (PPF)](${baseUrl}/services/paint-protection-film-ppf/): 100% self-healing, anti-yellowing optical TPU paint protection film with computerized blade-free CAD plotter cut precision.
-- [Detailing & 9H Ceramic Coating](${baseUrl}/services/detailing-ceramic-coating/): 3-step paint correction, deep hydrophobic graphene/ceramic coating, and interior steam deep cleaning.
-- [PPS Paint Protection System](${baseUrl}/services/pps-paint-protection-system/): Multi-stage ceramic shield and polymer armor.
-- [Engine Overhaul & Mechanical Services](${baseUrl}/services/engine-services/): Precision engine rebuilding, cylinder head resurfacing, and performance tuning.
-- [Periodic Maintenance & Lube Service](${baseUrl}/services/periodic-maintenance/): Factory-scheduled oil changes with genuine synthetic oils and 45-point inspection.
-- [Brakes, Suspension & 3D Alignment](${baseUrl}/services/brakes-suspension-alignment/): Ceramic brake pads, suspension bushing overhaul, and computerized 3D laser wheel alignment.
-- [Transmission & Automatic Gearbox Services](${baseUrl}/services/transmission-gearbox-services/): Automatic, CVT, and Dual-Clutch (DCT) gearbox overhaul and fluid flush.
-- [Computerized Diagnostics & OBD Scanning](${baseUrl}/services/computer-diagnostics-scanning/): OEM-grade diagnostic tools (BMW ISTA, Mercedes Xentry, VAG ODIS, Toyota Techstream).
-- [Denting, Painting & Body Repair](${baseUrl}/services/denting-painting-body-repair/): Computerized paint booth, OEM color matching, and paintless dent repair.
-- [Custom Body Kits & Aerodynamics](${baseUrl}/services/body-kit-custom-modification/): Premium body kit fabrication, diffuser installation, and aerodynamic styling.
-- [AC Repair & Electrical Specialist](${baseUrl}/services/car-ac-repair/): Compressor repairs, condenser service, leak detection, R134a/R1234yf refrigerant recharge, and wiring diagnostics.
+- [Paint Protection Film (PPF)](${baseUrl}/services/paint-protection-film-ppf/): Self-healing, anti-yellowing optical TPU paint protection film with computerized blade-free CAD plotter cut precision.
+- [Car Detailing & 9H Ceramic Coating](${baseUrl}/services/car-detailing/): Multi-stage paint correction, hydrophobic 9H ceramic coating, interior deep cleaning, and steam sanitization.
+- [Engine Repair & Overhaul](${baseUrl}/services/engine-services/): Precision engine rebuilding, cylinder head resurfacing, timing belt/chain replacement, and turbocharger servicing.
+- [Car Diagnostics & Pre-Purchase Inspection](${baseUrl}/services/inspection-diagnostics/): Dealer-level OEM diagnostic systems (BMW ISTA, Mercedes Xentry, VAG ODIS, Toyota Techstream) and digital pre-purchase inspections.
+- [Periodic Maintenance & Lube Service](${baseUrl}/services/maintenance-servicing/): Factory-scheduled synthetic oil changes, genuine filter renewals, fluid checks, and multi-point health inspections.
+- [Brakes, Suspension & 3D Alignment](${baseUrl}/services/brake-suspension-steering/): Brake servicing, AIRMATIC/hydraulic suspension overhaul, steering rack repair, and computerized 3D laser wheel alignment.
+- [Transmission & Gearbox Services](${baseUrl}/services/transmission-drivetrain/): Dual-clutch (DSG/DCT), CVT, and automatic torque-converter gearbox diagnostics, mechatronic repair, and fluid servicing.
+- [Vehicle Wrap & Color Change](${baseUrl}/services/vehicle-wrap/): Cast vinyl color-change wraps, stealth satin/gloss finishes, roof wraps, and chrome-delete styling.
+- [Denting, Painting & Body Repair](${baseUrl}/services/body-repair-paint/): Computerized spectrophotometer color matching, downdraft paint booth finishing, PDR, and chassis alignment.
+- [Body Modification & Custom Body Kits](${baseUrl}/services/body-modification/): OEM and aftermarket body kit installation, splitters, diffusers, spoilers, and custom fabrication.
+- [Car AC Repair & Auto Electrical](${baseUrl}/services/car-ac-repair/): Climate control servicing, R134a/R1234yf refrigerant recharge, cooling coil leak detection, and master auto-electrical wiring diagnostics.
+- [Cooling, Fuel & Exhaust Systems](${baseUrl}/services/cooling-fuel-exhaust/): Radiator flushing and OAT coolant service, ultrasonic fuel injector cleaning, catalytic converter care, and exhaust repair.
 
 ## Workshop Branches & Contact Info
 
 - [Islamabad Flagship Hub](${baseUrl}/locations/islamabad-workshop/): Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan. Phone: +92 333 0177717 (Open & Operating).
-- [Rawalpindi Hub (Coming Soon)](${baseUrl}/locations/rawalpindi-workshop/): Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.
+- [Rawalpindi Coverage Hub](${baseUrl}/locations/rawalpindi-workshop/): Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.
 `;
 
   res.setHeader("Content-Type", "text/markdown; charset=utf-8");
@@ -837,21 +848,29 @@ app.get(["/llms.txt", "/.well-known/llms.txt"], (req, res) => {
 // LLMs-full.txt Endpoint
 app.get(["/llms-full.txt", "/.well-known/llms-full.txt"], (req, res) => {
   const baseUrl = getCanonicalBaseUrl(req);
+  const llmsFullFilePath = path.resolve(process.cwd(), "public/llms-full.txt");
+
+  if (fs.existsSync(llmsFullFilePath)) {
+    const fileContent = fs.readFileSync(llmsFullFilePath, "utf-8");
+    const llmsFullContent = fileContent.replace(/https:\/\/hypertunegarage\.pk/g, baseUrl);
+    res.setHeader("Content-Type", "text/markdown; charset=utf-8");
+    return res.status(200).send(llmsFullContent);
+  }
 
   const llmsFullContent = `# HyperTune Garage - Full Automotive Technical Knowledge Base & Service Specifications
 
-> HyperTune Garage is Pakistan's premier specialized automotive workshop, computerized diagnostics studio, Paint Protection Film (PPF) application center, and European/Japanese luxury car care facility located in Islamabad (with our new Rawalpindi branch currently under development).
+> HyperTune Garage is Pakistan's premier specialized automotive workshop, computerized diagnostics studio, Paint Protection Film (PPF) application center, and European/Japanese luxury car care facility located in Islamabad (with Rawalpindi coverage via insured valet pickup while our Rawalpindi branch is under development).
 
 ## Business Profile & Metadata
 
 - **Name:** HyperTune Garage
-- **Industry:** Automotive Repair, Car Detailing, Paint Protection Film (PPF), German Vehicle Diagnostics, Body Modification
+- **Industry:** Automotive Repair, Car Detailing, Paint Protection Film (PPF), German & Hybrid Vehicle Diagnostics, Body Modification
 - **Hotline / Phone:** +92 333 0177717 (WhatsApp & Call)
 - **Email:** info@hypertunegarage.pk
 - **Operating Hours:** Saturday - Thursday: 10:00 AM - 10:00 PM (Friday Closed - applies to Islamabad Flagship Hub)
 - **Locations:**
-  - **Islamabad Flagship Hub (Open & Operating):** Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
-  - **Rawalpindi Hub (Coming Soon):** Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.
+  - **Islamabad Flagship Hub (Open & Operating):** Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan — ${baseUrl}/locations/islamabad-workshop/
+  - **Rawalpindi Hub (Coming Soon):** Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup — ${baseUrl}/locations/rawalpindi-workshop/
 - **Primary Website:** ${baseUrl}/
 - **Google Rating:** 4.8 / 5.0 Stars
 `;
@@ -929,6 +948,11 @@ async function startServer() {
       appType: "custom",
     });
 
+    app.use("/articles", (_req, res, next) => {
+      res.setHeader("X-Robots-Tag", "noindex, follow");
+      next();
+    });
+
     app.use(vite.middlewares);
 
     // Custom HTML routing with SSR meta injection for all non-asset paths
@@ -977,7 +1001,10 @@ async function startServer() {
         etag: true,
         lastModified: true,
         setHeaders: (res, filePath) => {
-          if (filePath.endsWith("index.html") || filePath.endsWith(".txt") || filePath.endsWith(".xml")) {
+          if (filePath.includes(`${path.sep}articles${path.sep}`) && filePath.endsWith(".html")) {
+            res.setHeader("X-Robots-Tag", "noindex, follow");
+            res.setHeader("Cache-Control", "public, max-age=3600");
+          } else if (filePath.endsWith("index.html") || filePath.endsWith(".txt") || filePath.endsWith(".xml")) {
             res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
           } else if (filePath.match(/\.(webp|jpg|jpeg|png|svg|ico|webmanifest)$/)) {
             res.setHeader("Cache-Control", "public, max-age=2592000, stale-while-revalidate=86400");

@@ -1,8 +1,9 @@
 import React from 'react';
 import { PageId } from '../types';
 import { locationsData } from '../data/locationsData';
-import { images } from '../data/images';
-import { ArrowLeft, MapPin, Phone, Clock, Navigation, CheckCircle2, MessageCircle, Sparkles, Building2 } from 'lucide-react';
+import { toAbsoluteImageUrl } from '../utils/canonical';
+import { SEOHead } from '../components/SEOHead';
+import { ArrowLeft, MapPin, Phone, Clock, Navigation, CheckCircle2, MessageCircle, Sparkles } from 'lucide-react';
 import { GoogleMapEmbed } from '../components/GoogleMapEmbed';
 
 interface LocationDetailProps {
@@ -13,9 +14,73 @@ interface LocationDetailProps {
 
 export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavigate, onOpenBooking }) => {
   const loc = locationsData.find((l) => l.slug === slug) || locationsData[0];
+  const locUrl = `https://hypertunegarage.pk/locations/${loc.slug}/`;
+  const locTitle = loc.seo?.title || `${loc.branchName} | HyperTune Garage`;
+  const locDesc =
+    loc.seo?.description ||
+    loc.statusNotice ||
+    `${loc.branchName} - ${loc.address || 'Islamabad & Rawalpindi'}`;
+
+  const primaryEntity = loc.isOperational
+    ? {
+        '@type': 'AutoRepair',
+        '@id': 'https://hypertunegarage.pk/#business',
+        name: 'HyperTune Garage',
+        image: toAbsoluteImageUrl(loc.image),
+        url: 'https://hypertunegarage.pk/',
+        telephone: '+923330177717',
+        priceRange: '$$$',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
+          addressLocality: 'Islamabad',
+          addressRegion: 'PK-IS',
+          postalCode: '44000',
+          addressCountry: 'PK',
+        },
+        geo: { '@type': 'GeoCoordinates', latitude: 33.5651, longitude: 73.1362 },
+      }
+    : {
+        '@type': 'WebPage',
+        name: 'HyperTune Garage - Rawalpindi Hub (Coming Soon)',
+        image: toAbsoluteImageUrl(loc.image),
+        url: locUrl,
+        description:
+          loc.statusNotice ||
+          'Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.',
+        isPartOf: {
+          '@type': 'AutoRepair',
+          '@id': 'https://hypertunegarage.pk/#business',
+          name: 'HyperTune Garage',
+          url: 'https://hypertunegarage.pk/',
+        },
+      };
+
+  const locationSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      primaryEntity,
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://hypertunegarage.pk/' },
+          { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://hypertunegarage.pk/locations/' },
+          { '@type': 'ListItem', position: 3, name: loc.branchName, item: locUrl },
+        ],
+      },
+    ],
+  };
 
   return (
     <div className="pt-28 sm:pt-32 md:pt-36 pb-16 space-y-12">
+      <SEOHead
+        title={locTitle}
+        description={locDesc}
+        canonicalUrl={locUrl}
+        path={`/locations/${loc.slug}/`}
+        ogImage={loc.image}
+        schema={locationSchema}
+      />
       <div className="max-w-7xl mx-auto px-4">
         <button
           onClick={() => onNavigate('locations')}

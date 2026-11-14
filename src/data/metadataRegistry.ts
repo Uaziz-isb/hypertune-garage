@@ -1,5 +1,5 @@
 // Central Metadata Registry for HyperTune Garage
-// 100% Unique, Approved Titles & Meta Descriptions across all 70 canonical routes
+// 100% Unique, Approved Titles & Meta Descriptions across all 75 canonical routes
 // Strict Zero-Regression SEO Policy Compliance
 
 export interface RouteMetadata {
@@ -126,13 +126,13 @@ export const METADATA_REGISTRY: Record<string, RouteMetadata> = {
   '/services/inspection-diagnostics/': {
     path: '/services/inspection-diagnostics/',
     title: 'Car Diagnostics & Inspection Islamabad | HyperTune',
-    description: 'Dealer-level car diagnostics and pre-purchase inspection in Islamabad using professional OEM diagnostic systems, paint inspection and digital vehicle health reports.',
+    description: 'Dealer-level car diagnostics and pre-purchase inspection in Islamabad using OEM diagnostic systems, paint-depth audits and digital vehicle health reports.',
     canonicalUrl: 'https://hypertunegarage.pk/services/inspection-diagnostics/',
   },
   '/services/maintenance-servicing/': {
     path: '/services/maintenance-servicing/',
     title: 'Car Maintenance & Servicing Islamabad | HyperTune',
-    description: 'Scheduled car maintenance and servicing in Islamabad including synthetic oil changes, genuine filters, fluid checks, diagnostics and comprehensive vehicle health inspections.',
+    description: 'Scheduled car maintenance and servicing in Islamabad with synthetic oil changes, genuine OEM filters, fluid checks, diagnostics and 50-point health audits.',
     canonicalUrl: 'https://hypertunegarage.pk/services/maintenance-servicing/',
   },
   '/services/brake-suspension-steering/': {
@@ -188,11 +188,11 @@ export const METADATA_REGISTRY: Record<string, RouteMetadata> = {
   '/locations/rawalpindi-workshop/': {
     path: '/locations/rawalpindi-workshop/',
     title: 'Car Repair & Services for Rawalpindi | HyperTune Garage',
-    description: 'HyperTune Garage serves Rawalpindi customers with automotive repair, diagnostics, PPF, detailing and servicing through our Islamabad hub and insured valet pickup service.',
+    description: 'HyperTune Garage serves Rawalpindi with auto repair, diagnostics, PPF, detailing and servicing via our Islamabad flagship hub and insured valet pickup.',
     canonicalUrl: 'https://hypertunegarage.pk/locations/rawalpindi-workshop/',
   },
 
-  // 5. Technical Blog Guides (13)
+  // 5. Technical Blog Guides (18)
   '/blog/p0a80-hybrid-battery-repair-guide-pakistan/': {
     path: '/blog/p0a80-hybrid-battery-repair-guide-pakistan/',
     title: 'P0A80 Hybrid Battery Fault: Causes & Repair Guide Pakistan',

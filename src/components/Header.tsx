@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PageId } from '../types';
 import { Logo } from './Logo';
+import { trackWhatsAppClick, trackPhoneClick } from '../utils/analytics';
 import { brandsData } from '../data/brandsData';
 import {
   Phone,
@@ -88,6 +89,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex items-center gap-3 sm:gap-4 min-w-0">
             <a
               href="tel:+923330177717"
+              onClick={() => trackPhoneClick('header_topbar')}
               className="flex items-center gap-1 sm:gap-1.5 hover:text-cyan-400 transition-colors font-semibold shrink-0"
               title="Call HyperTune Garage at 0333-0177717"
             >
@@ -113,6 +115,7 @@ export const Header: React.FC<HeaderProps> = ({
               href="https://wa.me/923330177717"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('header_topbar')}
               className="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-md sm:rounded-lg bg-slate-900 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/30 transition-all flex items-center gap-1 text-[10px] sm:text-[11px] font-bold"
               title="WhatsApp +92 333 0177717"
               aria-label="WhatsApp"
@@ -324,7 +327,7 @@ export const Header: React.FC<HeaderProps> = ({
                               OEM DIAGNOSTIC RIGS &amp; CERTIFIED TECHNICIANS
                             </span>
                             <h4 className="text-sm font-bold text-white mt-1">
-                              24 Dedicated Vehicle Brand Specialist Hubs
+                              {brandsData.length} Dedicated Vehicle Brand Specialist Hubs
                             </h4>
                           </div>
                           <a
@@ -433,6 +436,7 @@ export const Header: React.FC<HeaderProps> = ({
               href="https://wa.me/923330177717"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('header_nav')}
               className="hidden xs:flex items-center justify-center p-2 sm:px-3 sm:py-2 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-400 font-bold text-xs active:scale-95 transition-all"
               aria-label="WhatsApp"
               title="WhatsApp +92 333 0177717"
@@ -444,6 +448,7 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Mobile Quick Call CTA */}
             <a
               href="tel:+923330177717"
+              onClick={() => trackPhoneClick('header_mobile_cta')}
               className="flex sm:hidden items-center justify-center p-2 rounded-xl bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 active:scale-95 transition-all"
               aria-label="Call HyperTune Garage"
               title="Call HyperTune Garage"

@@ -486,11 +486,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <span className="text-xs font-semibold text-slate-300">Vehicles Serviced</span>
               </div>
               <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800">
-                <span className="text-3xl font-black text-white block">99.4%</span>
+                <span className="text-3xl font-black text-cyan-400 block">99.4%</span>
                 <span className="text-xs font-semibold text-slate-300">Client Satisfaction</span>
               </div>
               <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800">
-                <span className="text-3xl font-black text-white block">15+</span>
+                <span className="text-3xl font-black text-cyan-400 block">15+</span>
                 <span className="text-xs font-semibold text-slate-300">Certified Master Techs</span>
               </div>
               <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800">

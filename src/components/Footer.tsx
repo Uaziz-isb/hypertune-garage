@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageId } from '../types';
 import { Logo } from './Logo';
+import { trackWhatsAppClick, trackPhoneClick } from '../utils/analytics';
 import { servicesData } from '../data/servicesData';
 import {
   Phone,
@@ -59,6 +60,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               href="https://wa.me/923330177717?text=Hi%20HyperTune%20Garage%2C%20I%20would%20like%20an%20instant%20repair/tuning%20quote."
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('footer_cta')}
               className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm flex items-center gap-2 shadow-lg shadow-emerald-600/20 transition-all active:scale-95"
             >
               <MessageCircle className="w-4 h-4" />
@@ -90,7 +92,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
             <ShieldCheck className="w-5 h-5 text-cyan-400 shrink-0" />
             <span>100% Genuine OEM Spare Parts • 12-Month Warranty</span>
           </div>
-          <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-semibold">
+          <div className="pt-2 flex flex-col items-start gap-3 text-xs font-semibold">
             <div className="flex items-center gap-2">
               <span className="text-slate-300">Google Rating:</span>
               <div className="flex items-center gap-1 text-amber-400">
@@ -98,39 +100,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               </div>
             </div>
 
-            {/* Social Media Links next to Google Rating */}
-            <div className="flex items-center gap-2 border-l border-slate-800 pl-4">
-              <a
-                href="https://wa.me/923330177717"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-2 py-1 rounded-lg bg-slate-900 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/30 transition-all flex items-center gap-1 text-[11px] font-bold"
-                title="WhatsApp +92 333 0177717"
-                aria-label="WhatsApp"
-              >
-                <MessageCircle className="w-3.5 h-3.5" />
-                <span>WhatsApp</span>
-              </a>
-              <a
-                href="https://www.facebook.com/profile.php?id=61589327521589"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-1.5 rounded-lg bg-slate-900 hover:bg-[#1877F2] text-[#1877F2] hover:text-white border border-[#1877F2]/30 transition-all flex items-center justify-center"
-                title="Facebook"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href="https://www.instagram.com/hyper.tunegarage"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-1.5 rounded-lg bg-slate-900 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-[#E4405F] hover:text-white border border-[#E4405F]/30 hover:border-transparent transition-all flex items-center justify-center"
-                title="Instagram"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-3.5 h-3.5" />
-              </a>
+            {/* Social Media Links aligned on left under Google Rating */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-slate-300">Social Links:</span>
               <a
                 href="https://www.tiktok.com/@hypertune.garage"
                 target="_blank"
@@ -151,6 +123,26 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
                 aria-label="YouTube"
               >
                 <Youtube className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61589327521589"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 rounded-lg bg-slate-900 hover:bg-[#1877F2] text-[#1877F2] hover:text-white border border-[#1877F2]/30 transition-all flex items-center justify-center"
+                title="Facebook"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="https://www.instagram.com/hyper.tunegarage"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 rounded-lg bg-slate-900 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-[#E4405F] hover:text-white border border-[#E4405F]/30 hover:border-transparent transition-all flex items-center justify-center"
+                title="Instagram"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-3.5 h-3.5" />
               </a>
             </div>
           </div>
@@ -246,31 +238,46 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
           </a>
           <div className="space-y-4 text-xs">
             {/* Islamabad Flagship Hub */}
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <a
                 href="/locations/islamabad-workshop/"
                 onClick={(e) => {
                   e.preventDefault();
                   onNavigate('location-detail', 'islamabad-workshop');
                 }}
-                className="font-bold text-white hover:text-cyan-400 flex items-center gap-1 transition-colors text-left"
+                className="font-bold text-white hover:text-cyan-400 flex items-center gap-1.5 transition-colors text-left"
               >
                 <MapPin className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
                 <span>Islamabad Flagship Hub</span>
               </a>
               <p className="text-slate-300 leading-relaxed font-medium">
-                Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
+                <span className="text-slate-400 font-semibold">Address:</span> Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
               </p>
-              <div className="pt-1 flex flex-col gap-1">
+              <div className="pt-1 flex flex-col gap-1.5">
                 <a
                   href="tel:+923330177717"
+                  onClick={() => trackPhoneClick('footer_islamabad_hub')}
                   className="text-cyan-400 hover:text-cyan-300 font-bold inline-flex items-center gap-1.5 hover:underline"
                 >
                   <Phone className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-                  <span>Call Now 0333-0177717</span>
+                  <span>Contact: 0333-0177717</span>
                 </a>
-                <span className="text-slate-400 text-[11px]">Sat - Thu: 10:00 AM - 10:00 PM</span>
-                <span className="text-amber-400 font-bold text-[11px]">Friday: CLOSED (Weekly Holiday)</span>
+                <a
+                  href="mailto:info@hypertunegarage.pk"
+                  className="text-slate-300 hover:text-cyan-400 font-medium inline-flex items-center gap-1.5 transition-colors"
+                >
+                  <Mail className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                  <span>Email: info@hypertunegarage.pk</span>
+                </a>
+                <div className="flex items-start gap-1.5 text-[11px] pt-0.5">
+                  <Clock className="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5" />
+                  <div className="flex flex-col gap-0.5">
+                    <span className="text-slate-300">
+                      <span className="text-slate-400 font-semibold">Timing:</span> Sat - Thu: 10:00 AM - 10:00 PM
+                    </span>
+                    <span className="text-amber-400 font-bold">Friday: CLOSED (Weekly Holiday)</span>
+                  </div>
+                </div>
               </div>
             </div>
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { PageId } from '../types';
 import { brandsData } from '../data/brandsData';
-import { SEOHead } from '../components/SEOHead';
 import { Shield, Wrench, CheckCircle2, ChevronRight, Phone, MessageSquare, Award, ArrowRight } from 'lucide-react';
 
 interface BrandsViewProps {
@@ -11,12 +10,6 @@ interface BrandsViewProps {
 export const BrandsView: React.FC<BrandsViewProps> = ({ onNavigate }) => {
   return (
     <div className="bg-[#030712] text-slate-100 min-h-screen">
-      <SEOHead
-        title="Vehicle Brand Specialists in Islamabad & Rawalpindi | HyperTune Garage"
-        description="Certified master technicians for Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Chery, Isuzu, FAW, Daihatsu, Nissan, Mitsubishi, Mazda, Subaru, Lexus, Land Rover, Range Rover, Jeep, Ford, Chevrolet & Volvo in Islamabad."
-        keywords="toyota repair islamabad, honda specialist rawalpindi, suzuki service center, hyundai maintenance, kia sportage repair, changan workshop, haval specialist, byd ev service, lexus hybrid battery, land rover repair islamabad"
-        path="/brands/"
-      />
 
       {/* Hero Section */}
       <section className="relative pt-28 pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800/80 bg-gradient-to-b from-slate-900/60 via-[#030712] to-[#030712]">
@@ -26,7 +19,7 @@ export const BrandsView: React.FC<BrandsViewProps> = ({ onNavigate }) => {
             Specialized Brand Divisions
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
-            Factory-Grade Specialist Care for <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">24 Vehicle Brands</span>
+            Factory-Grade Specialist Care for <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">{brandsData.length} Vehicle Brands</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-base sm:text-lg text-slate-300">
             Dedicated master technicians, genuine OEM diagnostic scanners (Toyota Techstream, Honda HDS, Suzuki SDT-II, Hyundai GDS, Kia KDS, JLR Pathfinder, BYD VDS3.0, Nissan Consult, Subaru SSM4), and cleanroom overhaul bays in Islamabad and Rawalpindi.

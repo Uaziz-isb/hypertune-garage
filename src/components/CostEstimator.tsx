@@ -7,6 +7,10 @@ interface CostEstimatorProps {
 }
 
 const estimatorBrands = [
+  { id: 'bmw', name: 'BMW' },
+  { id: 'mercedes', name: 'Mercedes-Benz' },
+  { id: 'audi', name: 'Audi' },
+  { id: 'porsche', name: 'Porsche' },
   { id: 'toyota', name: 'Toyota' },
   { id: 'honda', name: 'Honda' },
   { id: 'suzuki', name: 'Suzuki' },
@@ -18,10 +22,18 @@ const estimatorBrands = [
   { id: 'byd', name: 'BYD' },
   { id: 'chery', name: 'Chery' },
   { id: 'isuzu', name: 'Isuzu' },
+  { id: 'faw', name: 'FAW' },
+  { id: 'daihatsu', name: 'Daihatsu' },
   { id: 'nissan', name: 'Nissan' },
+  { id: 'mitsubishi', name: 'Mitsubishi' },
+  { id: 'mazda', name: 'Mazda' },
+  { id: 'subaru', name: 'Subaru' },
   { id: 'lexus', name: 'Lexus' },
-  { id: 'landrover', name: 'Land / Range Rover' },
+  { id: 'landrover', name: 'Land Rover' },
+  { id: 'rangerover', name: 'Range Rover' },
+  { id: 'jeep', name: 'Jeep' },
   { id: 'ford', name: 'Ford' },
+  { id: 'chevrolet', name: 'Chevrolet' },
   { id: 'volvo', name: 'Volvo' },
 ];
 

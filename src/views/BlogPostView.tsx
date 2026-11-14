@@ -3,6 +3,7 @@ import { PageId } from '../types';
 import { blogData } from '../data/blogData';
 import { images } from '../data/images';
 import { SEOHead } from '../components/SEOHead';
+import { toIsoDate, toAbsoluteImageUrl } from '../utils/canonical';
 import { ArrowLeft, Clock, Calendar, User, Share2, Wrench, ChevronRight } from 'lucide-react';
 
 interface BlogPostProps {
@@ -22,39 +23,65 @@ export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpen
       .catch(() => {});
   }, [post.slug]);
 
+  const postUrl = `https://hypertunegarage.pk/blog/${post.slug}/`;
+  const isoDate = toIsoDate(post.publishedDate);
+  const absImage = toAbsoluteImageUrl(post.featuredImage);
+
   const articleSchema = {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.excerpt,
-    image: post.featuredImage,
-    datePublished: post.publishedDate,
-    author: {
-      '@type': 'Organization',
-      name: post.author.name,
-    },
-    publisher: {
-      '@type': 'AutoRepair',
-      name: 'HyperTune Garage',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://hypertunegarage.pk/images/hypertune_logo.webp',
+    '@graph': [
+      {
+        '@type': 'AutoRepair',
+        '@id': 'https://hypertunegarage.pk/#business',
+        name: 'HyperTune Garage',
+        url: 'https://hypertunegarage.pk/',
+        telephone: '+923330177717',
       },
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://hypertunegarage.pk/blog/${post.slug}/`,
-    },
+      {
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.excerpt,
+        image: absImage,
+        datePublished: isoDate,
+        dateModified: isoDate,
+        author: {
+          '@type': 'Organization',
+          name: post.author.name,
+        },
+        publisher: {
+          '@type': 'AutoRepair',
+          '@id': 'https://hypertunegarage.pk/#business',
+          name: 'HyperTune Garage',
+          url: 'https://hypertunegarage.pk/',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://hypertunegarage.pk/images/hypertune_logo.webp',
+          },
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': postUrl,
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://hypertunegarage.pk/' },
+          { '@type': 'ListItem', position: 2, name: 'Technical Blog', item: 'https://hypertunegarage.pk/blog/' },
+          { '@type': 'ListItem', position: 3, name: post.title, item: postUrl },
+        ],
+      },
+    ],
   };
 
   return (
     <div className="pt-28 sm:pt-32 md:pt-36 pb-16 space-y-12">
       <SEOHead
-        title={`${post.title} | HyperTune Garage`}
-        description={post.excerpt.slice(0, 155)}
-        keywords={post.tags.join(', ')}
+        title={post.seo?.title || `${post.title} | HyperTune Garage`}
+        description={post.seo?.description || post.excerpt.slice(0, 155)}
+        canonicalUrl={postUrl}
         path={`/blog/${post.slug}/`}
-        ogImage={post.featuredImage}
+        ogImage={absImage}
         schema={articleSchema}
       />
 

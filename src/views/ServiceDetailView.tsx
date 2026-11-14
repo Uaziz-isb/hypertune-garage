@@ -39,6 +39,14 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
 
   // Generate JSON-LD Schema (LocalBusiness + Service + Breadcrumb)
   const serviceUrl = `https://hypertunegarage.pk/services/${service.slug}/`;
+  const priceNums = service.priceRange.replace(/,/g, '').match(/\d+/g)?.map(Number) || [];
+  const priceSpecification =
+    priceNums.length >= 2
+      ? { '@type': 'PriceSpecification', priceCurrency: 'PKR', minPrice: priceNums[0], maxPrice: priceNums[1] }
+      : priceNums.length === 1
+        ? { '@type': 'PriceSpecification', priceCurrency: 'PKR', price: priceNums[0] }
+        : undefined;
+
   const customSchema = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -71,13 +79,15 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
         serviceType: service.subServices.join(', '),
         provider: {
           '@type': 'AutoRepair',
+          '@id': 'https://hypertunegarage.pk/#business',
           name: 'HyperTune Garage',
+          url: 'https://hypertunegarage.pk/',
           telephone: '+923330177717',
           address: {
             '@type': 'PostalAddress',
             streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
             addressLocality: 'Islamabad',
-            addressRegion: 'ICT',
+            addressRegion: 'PK-IS',
             postalCode: '44000',
             addressCountry: 'PK',
           },
@@ -90,7 +100,7 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
         offers: {
           '@type': 'Offer',
           priceCurrency: 'PKR',
-          price: service.priceRange,
+          ...(priceSpecification ? { priceSpecification } : {}),
         },
       },
     ],
@@ -102,8 +112,8 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
       <SEOHead
         title={service.seo.seoTitle}
         description={service.seo.metaDescription}
-        keywords={service.seo.targetKeywords?.join(', ')}
         canonicalUrl={serviceUrl}
+        path={`/services/${service.slug}/`}
         ogImage={service.image}
         schema={customSchema}
       />

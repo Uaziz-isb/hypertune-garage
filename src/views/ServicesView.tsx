@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { PageId } from '../types';
 import { servicesData } from '../data/servicesData';
 import { images } from '../data/images';
-import { SEOHead } from '../components/SEOHead';
 import {
   Wrench,
   Clock,
@@ -68,11 +67,6 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate, onOpenBo
 
   return (
     <div className="pt-32 md:pt-36 pb-16 space-y-12">
-      <SEOHead
-        title="Automotive Services Catalogue | HyperTune Garage Islamabad & Rawalpindi"
-        description="Explore specialized automotive service categories in Islamabad & Rawalpindi: Engine Overhaul, Maintenance, Brakes, Transmission, AC & Auto Electrical, Diagnostics, Body Repair, PPF & Detailing."
-        canonicalUrl="https://hypertunegarage.pk/services/"
-      />
 
       {/* Header Banner */}
       <section className="bg-[#05080e] border-b border-slate-800 py-16 px-4 relative overflow-hidden">
