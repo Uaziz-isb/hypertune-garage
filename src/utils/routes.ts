@@ -18,7 +18,7 @@ export function getSiteRoutes(): SiteRoute[] {
       path: '/',
       priority: '1.0',
       changefreq: 'daily',
-      title: 'PPF & Auto Workshop Islamabad | HyperTune Garage',
+      title: 'HyperTune Garage | PPF, Detailing, Diagnostics & Tuneup Workshop',
       desc: 'HyperTune Garage is an automotive workshop in Islamabad for PPF, detailing, diagnostics, repairs, servicing and vehicle care. Serving Islamabad & Rawalpindi.',
     },
     {
