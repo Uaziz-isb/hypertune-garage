@@ -227,10 +227,10 @@ export function App() {
     currentPage === 'blog-post' ||
     currentPage === 'not-found';
   const registryMeta = getRouteMetadata(pagePath);
-  const seoTitle = registryMeta?.title || 'HyperTune Garage | PPF, Detailing, Diagnostics & Tuneup Workshop';
+  const seoTitle = registryMeta?.title || 'HyperTune Garage | PPF, Detailing, Diagnostics & Tuneup';
   const seoDesc =
     registryMeta?.description ||
-    'HyperTune Garage is an automotive workshop in Islamabad for PPF, detailing, diagnostics, repairs, servicing and vehicle care. Serving Islamabad & Rawalpindi.';
+    'HyperTune Garage is an Automotive Workshop for PPF, Detailing, Diagnostics, Tune-up, Repair & Care Services Serving Islamabad & Rawalpindi.';
 
   const faqPageSchema =
     currentPage === 'faq'

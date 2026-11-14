@@ -13,8 +13,8 @@ export const METADATA_REGISTRY: Record<string, RouteMetadata> = {
   // 1. Homepage
   '/': {
     path: '/',
-    title: 'HyperTune Garage | PPF, Detailing, Diagnostics & Tuneup Workshop',
-    description: 'HyperTune Garage is an automotive workshop in Islamabad for PPF, detailing, diagnostics, repairs, servicing and vehicle care. Serving Islamabad & Rawalpindi.',
+    title: 'HyperTune Garage | PPF, Detailing, Diagnostics & Tuneup',
+    description: 'HyperTune Garage is an Automotive Workshop for PPF, Detailing, Diagnostics, Tune-up, Repair & Care Services Serving Islamabad & Rawalpindi.',
     canonicalUrl: 'https://hypertunegarage.pk/',
   },
 
