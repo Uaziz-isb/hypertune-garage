@@ -3,7 +3,7 @@ import { PageId } from './types';
 import { SEOHead } from './components/SEOHead';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { BackToTopButton } from './components/BackToTopButton';
 import { getRouteMetadata } from './data/metadataRegistry';
 
 import { HomeView } from './views/HomeView';
@@ -449,7 +449,7 @@ export function App() {
       />
 
       {/* Floating Action Buttons */}
-      <FloatingWhatsApp />
+      <BackToTopButton />
 
       {/* Overlays / Modals with Lazy Load */}
       <Suspense fallback={null}>
