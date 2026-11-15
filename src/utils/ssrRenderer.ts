@@ -1168,29 +1168,118 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
   } else if (root === 'about' || root === 'about-us') {
     mainContentHtml = `
     <main style="max-width:1280px;margin:32px auto;padding:0 16px;">
-      <h1 style="font-size:36px;font-weight:900;color:#ffffff;margin-bottom:16px;">
-        About HyperTune Garage Islamabad
-      </h1>
-      <p style="font-size:16px;color:#94a3b8;line-height:1.8;max-width:900px;margin-bottom:24px;">
-        HyperTune Garage is Pakistan's advanced automotive service center and precision car care laboratory located in Block E Police Foundation (Sector O-9), Islamabad. Founded on engineering rigor, transparent pricing, and dealer-grade diagnostic capabilities, we cater to Japanese, European, German, and luxury vehicle owners across Islamabad and Rawalpindi.
-      </p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:24px;margin-bottom:32px;">
-        <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
-          <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:8px;">Certified Master Technicians</h2>
-          <p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Factory-trained automotive engineers specializing in engine overhauls, transmission rebuilds, and hybrid high-voltage electronics.</p>
+      <section style="margin-bottom:40px;">
+        <h1 style="font-size:36px;font-weight:900;color:#ffffff;margin-bottom:16px;">
+          About HyperTune Garage
+        </h1>
+        <p style="font-size:16px;color:#cbd5e1;line-height:1.8;max-width:900px;">
+          HyperTune Garage delivers precision mechanical engineering, computerized diagnostics, and cleanroom paint protection for drivers across Islamabad and Rawalpindi. Operating from Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad (44000), our workshop brings every automotive discipline together under one roof—built around Performance • Protection • Perfection.
+        </p>
+      </section>
+
+      <section style="margin-bottom:40px;">
+        <h2 style="font-size:28px;font-weight:900;color:#ffffff;margin-bottom:12px;">Who We Are</h2>
+        <p style="font-size:15px;color:#cbd5e1;line-height:1.75;max-width:900px;margin-bottom:12px;">
+          HyperTune Garage is an independent automotive workshop serving car owners in Islamabad and Rawalpindi—including Rawalpindi drivers using insured valet pickup—from our Police Foundation Sector O-9 hub in Islamabad. We run an engineering-led workshop focused on Japanese, German, and luxury vehicles, pairing multi-system diagnostic interfaces and precision measurement tools with transparent itemized pricing and HD WhatsApp inspection proof before any repair proceeds.
+        </p>
+      </section>
+
+      <section style="margin-bottom:40px;">
+        <h2 style="font-size:28px;font-weight:900;color:#ffffff;margin-bottom:16px;">What We Do</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:20px;">
+          <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">1. Automotive Diagnostics and Inspection</h3>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Full-system ECU scans and 200-point pre-purchase inspections with digital paint-depth micron audits and cylinder scope checks.</p>
+            <a href="/services/inspection-diagnostics/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Diagnostics &amp; Inspections</a>
+          </div>
+          <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">2. Engine Repair and Overhaul</h3>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Complete cylinder head work, timing chains, cooling system flushes, ultrasonic injector cleaning, and 0.001 mm micrometer rebuilds.</p>
+            <a href="/services/engine-services/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Engine Services</a>
+          </div>
+          <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">3. Transmission and Drivetrain Services</h3>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Automatic, CVT, manual, and dual-clutch (DCT/DSG) diagnostics, pressurized fluid exchanges, solenoid rebuilds, and clutch adaptation.</p>
+            <a href="/services/transmission-drivetrain/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Transmission Services</a>
+          </div>
+          <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">4. Preventive Maintenance and Mechanical Repair</h3>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Imported synthetic oil changes, genuine OEM filters, spark plug replacement, and a documented 50-point vehicle safety check.</p>
+            <a href="/services/maintenance-servicing/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Maintenance Packages</a>
+          </div>
+          <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">5. Brake, Suspension and Steering Services</h3>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Ceramic brake pads, rotor resurfacing, shock and air-suspension repair, steering rack service, and Italian 3D laser wheel alignment.</p>
+            <a href="/services/brake-suspension-steering/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Brake &amp; Suspension Care</a>
+          </div>
+          <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">6. Automotive AC and Electrical Diagnostics</h3>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Automated R134a/R1234yf recovery, dry nitrogen leak testing, compressor rebuilds, battery drain tracing, oscilloscope testing, and ECU coding.</p>
+            <a href="/services/car-ac-repair/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore AC &amp; Electrical Services</a>
+          </div>
+          <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">7. Paint Protection Film (PPF)</h3>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Blade-free self-healing TPU Paint Protection Film cut via CAD digital plotter and installed inside a dust-free cleanroom studio.</p>
+            <a href="/services/paint-protection-film-ppf/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore PPF Cleanroom Studio</a>
+          </div>
+          <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">8. Ceramic Coating and Detailing</h3>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Multi-stage dual-action paint correction guided by micron gauges, 9H nano-ceramic coating, and 140°C interior steam sanitation.</p>
+            <a href="/services/car-detailing/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Detailing &amp; 9H Ceramic</a>
+          </div>
+          <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">9. Vinyl Wrapping and Vehicle Protection</h3>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Reversible cast vinyl color-change wraps in matte, satin, gloss, and carbon finishes with edge tucking and 90°C post-heating.</p>
+            <a href="/services/vehicle-wrap/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Vinyl Wrapping</a>
+          </div>
+          <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">10. Body Repair, Paint and Restoration</h3>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Paintless Dent Repair (PDR), collision frame alignment, spectrophotometer paint matching, paint booth refinishing, and body kit fitment.</p>
+            <a href="/services/body-repair-paint/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Body Repair &amp; Paint</a>
+          </div>
         </div>
-        <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
-          <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:8px;">Climate-Controlled Clean Room</h2>
-          <p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Dust-free PPF installation bays and downdraft thermal spray booth ensuring flawless mirror glass finishes.</p>
+      </section>
+
+      <section style="margin-bottom:40px;">
+        <h2 style="font-size:28px;font-weight:900;color:#ffffff;margin-bottom:16px;">Workshop Facilities, Inspection Rigor &amp; Quality Standards</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:24px;">
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
+            <h3 style="font-size:18px;font-weight:800;color:#22d3ee;margin-bottom:8px;">Workshop Facilities &amp; Equipment</h3>
+            <ul style="color:#cbd5e1;font-size:13px;line-height:1.6;padding-left:18px;margin:0;">
+              <li style="margin-bottom:6px;"><strong style="color:#ffffff;">Vehicle Inspections &amp; Pre-Purchase Diagnostics:</strong> Comprehensive vehicle health checks, clear diagnostic findings, and itemized repair recommendations to help customers make informed buying and maintenance decisions.</li>
+              <li style="margin-bottom:6px;"><strong style="color:#ffffff;">Catalytic Cleaning:</strong> Specialized cleaning removes carbon deposits and contaminants to support exhaust flow and engine efficiency.</li>
+              <li style="margin-bottom:6px;"><strong style="color:#ffffff;">PPF &amp; Ceramic Cleanroom:</strong> Computerized CAD plotters cut TPU patterns off the vehicle—keeping blades off clear coat—paired with infrared curing lamps.</li>
+              <li><strong style="color:#ffffff;">Vehicle Tuning Service:</strong> Precision ECU diagnostics and calibration optimize engine response, drivability, and vehicle performance.</li>
+            </ul>
+          </div>
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
+            <h3 style="font-size:18px;font-weight:800;color:#22d3ee;margin-bottom:8px;">HD Video Proof &amp; Itemized Quotes</h3>
+            <p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Technicians share diagnostic findings, teardown videos, and line-by-line parts and labor quotes for owner approval before repair work proceeds.</p>
+          </div>
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
+            <h3 style="font-size:18px;font-weight:800;color:#22d3ee;margin-bottom:8px;">Written Warranty Coverage</h3>
+            <p style="color:#cbd5e1;font-size:14px;line-height:1.6;">12-month or 15,000 km warranty on engine and transmission rebuilds plus up to 10-year manufacturer film coverage on self-healing TPU PPF.</p>
+          </div>
         </div>
-        <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
-          <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:8px;">12-Month / 15,000 km Warranty</h2>
-          <p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Comprehensive nationwide warranty on major mechanical overhauls, hybrid batteries, and genuine parts.</p>
+      </section>
+
+      <section style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;">
+        <h2 style="font-size:22px;font-weight:900;color:#ffffff;margin-bottom:10px;">Police Foundation Sector O-9 Flagship Hub</h2>
+        <p style="color:#cbd5e1;font-size:14px;line-height:1.6;margin-bottom:14px;">
+          Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan • Sat – Thu: 10:00 AM – 10:00 PM (Friday Closed)
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+          <a href="tel:+923330177717" style="color:#22d3ee;font-weight:700;text-decoration:none;">+92 333 0177717</a>
+          <a href="mailto:info@hypertunegarage.pk" style="color:#cbd5e1;text-decoration:none;">info@hypertunegarage.pk</a>
+          <a href="https://www.google.com/maps?cid=17560337124718439273&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&amp;hl=en&amp;gl=PK&amp;source=embed" target="_blank" rel="noopener noreferrer" style="color:#22d3ee;font-weight:700;text-decoration:none;">Google Maps Directions</a>
+          <a href="https://wa.me/923330177717?text=Hi%20HyperTune%20Garage,%20I%20want%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" style="color:#34d399;font-weight:700;text-decoration:none;">WhatsApp Consultation</a>
+          <a href="/contact/" style="color:#cbd5e1;font-weight:700;text-decoration:none;">Contact Page</a>
+          <a href="https://www.instagram.com/hyper.tunegarage" target="_blank" rel="noopener noreferrer" style="color:#cbd5e1;text-decoration:none;">Instagram</a>
+          <a href="https://www.facebook.com/profile.php?id=61589327521589" target="_blank" rel="noopener noreferrer" style="color:#cbd5e1;text-decoration:none;">Facebook</a>
+          <a href="https://www.tiktok.com/@hypertune.garage" target="_blank" rel="noopener noreferrer" style="color:#cbd5e1;text-decoration:none;">TikTok</a>
+          <a href="https://www.youtube.com/@HyperTuneGarage" target="_blank" rel="noopener noreferrer" style="color:#cbd5e1;text-decoration:none;">YouTube</a>
         </div>
-      </div>
-      <div style="text-align:center;">
-        <a href="/contact/" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;">Visit Our Workshop</a>
-      </div>
+      </section>
     </main>`;
   } else if (root === 'contact' || root === 'contact-us') {
     mainContentHtml = `
