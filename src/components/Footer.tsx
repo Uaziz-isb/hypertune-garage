@@ -308,7 +308,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
       {/* Bottom Bar & Copyright */}
       <div className="bg-[#030509] border-t border-slate-900 py-6 px-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>HyperTune Garage | Performance • Protection • Perfection | All Rights Reserved © 2026-28 | Developed by Umair Aziz – <a href="https://gridlockit.com/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 underline underline-offset-2 transition-colors">Gridlockit.com</a></p>
+          <p><a href="https://hypertunegarage.pk/" className="hover:text-cyan-400 underline underline-offset-2 transition-colors">HyperTune Garage | Performance • Protection • Perfection</a> | All Rights Reserved © 2026-28 | Developed by Umair Aziz – <a href="https://gridlockit.com/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 underline underline-offset-2 transition-colors">Gridlockit.com</a></p>
           <div className="flex items-center gap-4">
             <a
               href="/sitemap/"
