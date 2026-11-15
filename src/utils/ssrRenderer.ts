@@ -1184,6 +1184,19 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         </p>
       </section>
 
+      <section style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;margin-bottom:40px;">
+        <h2 style="font-size:28px;font-weight:900;color:#ffffff;margin-bottom:12px;">Our Story</h2>
+        <p style="font-size:15px;color:#cbd5e1;line-height:1.75;max-width:900px;margin-bottom:12px;">
+          HyperTune Garage was built around a simple belief: every vehicle deserves professional care, honest advice and attention to detail. Serving Islamabad and Rawalpindi, we bring mechanical expertise, modern diagnostic practices and vehicle protection services together under one roof.
+        </p>
+        <p style="font-size:15px;color:#cbd5e1;line-height:1.75;max-width:900px;margin-bottom:12px;">
+          From routine maintenance and complex repairs to pre-purchase inspections and premium vehicle protection, our focus is on understanding each vehicle's needs and recommending practical solutions. We believe in transparent communication, quality workmanship and helping customers make informed decisions at every stage.
+        </p>
+        <p style="font-size:14px;font-weight:800;color:#22d3ee;margin:0;">
+          Performance • Protection • Perfection
+        </p>
+      </section>
+
       <section style="margin-bottom:40px;">
         <h2 style="font-size:28px;font-weight:900;color:#ffffff;margin-bottom:16px;">What We Do</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:20px;">
@@ -1259,6 +1272,38 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
             <h3 style="font-size:18px;font-weight:800;color:#22d3ee;margin-bottom:8px;">Written Warranty Coverage</h3>
             <p style="color:#cbd5e1;font-size:14px;line-height:1.6;">12-month or 15,000 km warranty on engine and transmission rebuilds plus up to 10-year manufacturer film coverage on self-healing TPU PPF.</p>
+          </div>
+        </div>
+      </section>
+
+      <section style="margin-bottom:40px;">
+        <h2 style="font-size:28px;font-weight:900;color:#ffffff;margin-bottom:12px;">Automotive Experience &amp; Technical Expertise</h2>
+        <p style="font-size:15px;color:#cbd5e1;line-height:1.75;max-width:900px;margin-bottom:12px;">
+          At HyperTune Garage, our experience is built around hands-on automotive care across multiple vehicle brands and service categories. From mechanical repairs and advanced diagnostics to pre-purchase inspections and vehicle protection, we focus on understanding each vehicle's condition before recommending the right solution.
+        </p>
+        <p style="font-size:15px;color:#cbd5e1;line-height:1.75;max-width:900px;margin-bottom:20px;">
+          Our approach combines systematic inspections, modern diagnostic equipment, practical workshop expertise and transparent communication—helping customers make confident decisions about their vehicles.
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:20px;">
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">1. Multi-Brand Vehicle Experience</h3>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;">Experience working with Japanese, German, European and other vehicle makes, from everyday cars to luxury and performance vehicles.</p>
+          </div>
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">2. Diagnostic &amp; Pre-Purchase Expertise</h3>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;">Vehicle health assessments, fault diagnosis, electronic system checks and pre-purchase inspections to help customers make informed decisions.</p>
+          </div>
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">3. Mechanical Repair Experience</h3>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;">Hands-on work covering engine, transmission, suspension, braking, cooling and electrical systems.</p>
+          </div>
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">4. Vehicle Protection &amp; Appearance</h3>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;">Practical experience in paint protection film, ceramic coating, detailing, vinyl wrapping and body refinishing.</p>
+          </div>
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">5. Customer-Focused Workshop Process</h3>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;">Inspection evidence, transparent findings, itemized estimates and customer approval before repair work begins.</p>
           </div>
         </div>
       </section>
