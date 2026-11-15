@@ -699,7 +699,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
     </div>
     <div class="bg-[#030509] border-t border-slate-900 py-6 px-4">
       <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-        <p>© ${new Date().getFullYear()} HyperTune Garage. Drive Better, Drive Worry-Free. • <span class="text-slate-400 font-medium">Developed &amp; Managed by: Umair Aziz</span> •</p>
+        <p>HyperTune Garage | Performance • Protection • Perfection | All Rights Reserved © 2026-28 | Developed by Umair Aziz – <a href="https://gridlockit.com/" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 underline underline-offset-2 transition-colors">Gridlockit.com</a></p>
         <div class="flex items-center gap-4">
           <a href="/sitemap/" class="text-cyan-400 font-semibold">Site Map</a>
           <span>•</span>
