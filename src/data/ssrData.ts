@@ -822,7 +822,7 @@ export const blogDataSSR: BlogPostSSR[] = [
     readTime: '10 min read',
     featuredImage: '/images/gallery_bmw_brakes_1787164674953.webp',
     tags: ['BMW ISTA', 'Drivetrain Malfunction', 'VANOS', 'Valvetronic', 'BMW Repair Islamabad'],
-    author: { name: 'Engr. Zeeshan Tariq', role: 'Master BMW Diagnostic Specialist' },
+    author: { name: 'HyperTune German Auto Division', role: 'Master BMW Diagnostic Certified Engineers' },
     content: `## What Triggers the BMW Drivetrain Malfunction Warning?\nThe Drivetrain Malfunction warning appears on BMW iDrive screens when the Digital Motor Electronics (DME) detects a fault affecting powertrain performance.\n\n### Key Failure Points\n- Ignition coils and spark plug degradation.\n- Valvetronic eccentric shaft sensor resistance drift.\n- VANOS solenoid oil screen sludge clogging.\n- High-pressure fuel pump (HPFP) drop during boost conditions.`,
   },
   {

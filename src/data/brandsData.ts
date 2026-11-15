@@ -2238,3 +2238,10 @@ export function getBrandBySlug(slug?: string): BrandItem | undefined {
   return brandsData.find((b) => b.slug.includes(cleanSlug) || cleanSlug.includes(b.slug));
 }
 
+export function getBrandDisplayName(fullName: string): string {
+  const twoWordMatch = fullName.match(/^(Land Rover|Range Rover)\b/i);
+  if (twoWordMatch) return twoWordMatch[1];
+  return fullName.trim().split(/\s+/)[0] || fullName;
+}
+
+

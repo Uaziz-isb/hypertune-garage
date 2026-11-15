@@ -176,9 +176,9 @@ export const Header: React.FC<HeaderProps> = ({
             : 'bg-[#070b12]/95 backdrop-blur-sm border-b border-slate-800/80 py-2 sm:py-3'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-2.5 sm:px-4 flex items-center justify-between gap-2 sm:gap-4">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 flex items-center justify-between gap-1.5 sm:gap-4">
           {/* Left Side: Mobile Menu Button on the LEFT + Logo */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-3 min-w-0 shrink-0">
             {/* Mobile / Tablet Menu Button - 3 Lines Icon, Half Size, No Text */}
             <button
               onClick={onOpenMobileMenu}
@@ -199,7 +199,7 @@ export const Header: React.FC<HeaderProps> = ({
               className="shrink-0 cursor-pointer"
               title="HyperTune Garage Home"
             >
-              <Logo variant="dark" scale={0.92} className="sm:hidden" />
+              <Logo variant="dark" scale={0.78} className="sm:hidden" />
               <Logo variant="dark" scale={1.08} className="hidden sm:flex" />
             </a>
           </div>
@@ -259,9 +259,9 @@ export const Header: React.FC<HeaderProps> = ({
                                 <IconComp className="w-5 h-5" />
                               </div>
                               <div>
-                                <h4 className="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors">
+                                <span className="block text-sm font-bold text-white group-hover:text-cyan-400 transition-colors">
                                   {cat.title}
-                                </h4>
+                                </span>
                                 <p className="text-xs text-slate-400 line-clamp-1">{cat.desc}</p>
                               </div>
                             </a>
@@ -326,9 +326,9 @@ export const Header: React.FC<HeaderProps> = ({
                             <span className="text-[10px] font-extrabold tracking-wider text-cyan-400 uppercase bg-cyan-950/60 px-2 py-0.5 rounded border border-cyan-500/30">
                               OEM DIAGNOSTIC RIGS &amp; CERTIFIED TECHNICIANS
                             </span>
-                            <h4 className="text-sm font-bold text-white mt-1">
+                            <p className="text-sm font-bold text-white mt-1">
                               {brandsData.length} Dedicated Vehicle Brand Specialist Hubs
-                            </h4>
+                            </p>
                           </div>
                           <a
                             href="/brands/"
@@ -363,9 +363,9 @@ export const Header: React.FC<HeaderProps> = ({
                                   <Car className="w-3.5 h-3.5" />
                                 </div>
                                 <div className="min-w-0 flex-1">
-                                  <h5 className="text-xs font-bold text-white group-hover:text-cyan-400 transition-colors truncate">
+                                  <p className="text-xs font-bold text-white group-hover:text-cyan-400 transition-colors truncate">
                                     {shortName}
-                                  </h5>
+                                  </p>
                                   <p className="text-[10px] text-slate-400 truncate leading-tight">
                                     {shortDiag}
                                   </p>

@@ -242,6 +242,10 @@ export function App() {
               '@id': 'https://hypertunegarage.pk/#business',
               name: 'HyperTune Garage',
               url: 'https://hypertunegarage.pk/',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://hypertunegarage.pk/images/hypertune_logo.webp',
+              },
               telephone: '+923330177717',
               address: {
                 '@type': 'PostalAddress',
@@ -258,6 +262,12 @@ export function App() {
               url: 'https://hypertunegarage.pk/faq/',
               name: seoTitle,
               description: seoDesc,
+              publisher: {
+                '@type': 'AutoRepair',
+                '@id': 'https://hypertunegarage.pk/#business',
+                name: 'HyperTune Garage',
+                url: 'https://hypertunegarage.pk/',
+              },
               isPartOf: {
                 '@type': 'AutoRepair',
                 '@id': 'https://hypertunegarage.pk/#business',

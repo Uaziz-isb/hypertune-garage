@@ -80,7 +80,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate, onOpenBo
             Automotive Services & Specializations
           </h1>
           <p className="text-slate-300 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
-            HyperTune Garage offers comprehensive automotive service categories across Islamabad & Rawalpindi. Each service is executed by certified engineers utilizing state-of-the-art diagnostic equipment and 100% genuine OEM parts.
+            HyperTune Garage delivers PPF, Ceramic Coating, Car Detailing, Vehicle Diagnostics, Engine Tune-up, Auto Repair &amp; Maintenance Services across Islamabad &amp; Rawalpindi. Certified engineers handle every job with OEM diagnostics and genuine parts.
           </p>
         </div>
       </section>

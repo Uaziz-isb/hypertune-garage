@@ -35,6 +35,10 @@ export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpen
         '@id': 'https://hypertunegarage.pk/#business',
         name: 'HyperTune Garage',
         url: 'https://hypertunegarage.pk/',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://hypertunegarage.pk/images/hypertune_logo.webp',
+        },
         telephone: '+923330177717',
       },
       {
@@ -47,6 +51,7 @@ export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpen
         author: {
           '@type': 'Organization',
           name: post.author.name,
+          url: 'https://hypertunegarage.pk/',
         },
         publisher: {
           '@type': 'AutoRepair',

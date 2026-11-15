@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PageId } from '../types';
 import { servicesData } from '../data/servicesData';
+import { brandsData, getBrandDisplayName } from '../data/brandsData';
 import { locationsData } from '../data/locationsData';
 import { images } from '../data/images';
 import { GoogleMapEmbed } from '../components/GoogleMapEmbed';
@@ -126,7 +127,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
             {/* Subhead */}
             <p className="text-slate-300 text-sm sm:text-base lg:text-lg font-normal leading-relaxed mx-auto lg:mx-0 max-w-2xl">
-              Self-healing Paint Protection Film (PPF), Ceramic Coating, and mechanical repairs for Pakistan’s famous vehicle brands (Honda, Nissan, Changan, MG, Toyota, Suzuki, Hyundai, Kia, Haval) in <strong>Islamabad Flagship Hub</strong> & <strong>Rawalpindi</strong>.
+              Get PPF, Ceramic Coating, Car Detailing, Vehicle Diagnostics, Engine Tune-up, Auto Repair &amp; Maintenance Services at our <strong>Islamabad</strong> hub serving <strong>Rawalpindi</strong>. We care for Honda, Toyota, Suzuki, Hyundai, Kia, Haval, MG, Changan, and European cars.
             </p>
 
             {/* CTA Buttons */}
@@ -216,7 +217,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                       <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
                     <div className="min-w-0">
-                      <h4 className="text-white font-extrabold text-xs sm:text-sm leading-tight truncate">{activeHero.title}</h4>
+                      <p className="text-white font-extrabold text-xs sm:text-sm leading-tight truncate">{activeHero.title}</p>
                       <p className="text-slate-300 text-[11px] sm:text-xs mt-0.5 line-clamp-1">{activeHero.tagline}</p>
                     </div>
                   </div>
@@ -258,7 +259,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </span>
           <h2 className="text-3xl font-black text-white">Why Vehicle Owners Trust HyperTune Garage</h2>
           <p className="text-slate-400 text-sm">
-            We bridge the gap between expensive dealership overhead and substandard roadside mechanics.
+            We deliver dealer-grade precision without high dealership costs or guesswork.
           </p>
         </div>
 
@@ -266,32 +267,32 @@ export const HomeView: React.FC<HomeViewProps> = ({
           {[
             {
               title: 'Official Dealer-Level Diagnostics',
-              desc: 'Equipped with Toyota Techstream, Honda HDS, Suzuki SDT-II, Hyundai GDS, Kia KDS, JLR Pathfinder, and OEM diagnostic scanners.',
+              desc: 'Our team uses Toyota Techstream, Honda HDS, Suzuki SDT-II, Hyundai GDS, Kia KDS, JLR Pathfinder, and OEM scan tools.',
               icon: Cpu,
             },
             {
               title: '100% Genuine Barcode Sourced Parts',
-              desc: 'Direct import of Bosch, Lemförder, Sachs, Bilstein, and OEM manufacturer parts with full trace safety.',
+              desc: 'We source Bosch, Lemförder, Sachs, Bilstein, and genuine OEM parts with full barcode trace safety.',
               icon: ShieldCheck,
             },
             {
               title: '12-Month / 15,000 km Warranty',
-              desc: 'Every mechanical overhaul, suspension component, and electrical module comes with our written guarantee.',
+              desc: 'Every engine overhaul, suspension job, and electrical repair includes our written warranty.',
               icon: Shield,
             },
             {
               title: 'Master Certified Engineers',
-              desc: 'Our technical team includes mechanical engineers and ECU software specialists trained on European standards.',
+              desc: 'Trained mechanical engineers and ECU software specialists handle every job to European workshop standards.',
               icon: Settings,
             },
             {
               title: 'Live Video Inspection Reports',
-              desc: 'Never pay for unverified work. Receive direct HD video proof of component wear before repair authorization.',
+              desc: 'You receive HD video proof of worn parts before you approve any repair work.',
               icon: Video,
             },
             {
               title: 'State-of-the-Art Diagnostics & Alignment',
-              desc: 'Featuring dealership-grade OEM diagnostic scanners, 3D laser wheel alignment rigs, and ultrasonic cleaners.',
+              desc: 'Our bays feature OEM diagnostic scanners, 3D laser wheel alignment rigs, and ultrasonic cleaners.',
               icon: Zap,
             },
           ].map((pillar, idx) => {
@@ -424,8 +425,41 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* INTERACTIVE COST ESTIMATOR */}
-      <section className="max-w-7xl mx-auto px-4">
+      <section className="max-w-7xl mx-auto px-4 space-y-6">
         <CostEstimator onBookService={(serviceId) => onOpenBooking(serviceId)} />
+
+        <div className="bg-[#0b121e] border border-slate-800/90 rounded-2xl p-5 md:p-6 space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <p className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+              Dedicated Brand Specialist Hubs ({brandsData.length} Makes)
+            </p>
+            <a
+              href="/brands/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('brands');
+              }}
+              className="text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors"
+            >
+              All 28 Brands →
+            </a>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {brandsData.map((brand) => (
+              <a
+                key={brand.id}
+                href={`/brands/${brand.slug}/`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('brand-detail', brand.slug);
+                }}
+                className="px-3 py-1.5 rounded-xl bg-[#070c14] border border-slate-800 hover:border-cyan-500/40 text-xs font-semibold text-slate-300 hover:text-cyan-400 transition-colors"
+              >
+                {getBrandDisplayName(brand.name)}
+              </a>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* BEFORE & AFTER REPAIR RESTORATIONS */}
@@ -436,7 +470,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </span>
           <h2 className="text-3xl font-black text-white">Real Restoration & Tuning Work</h2>
           <p className="text-slate-400 text-sm">
-            Drag the interactive slider to compare original vehicle condition with HyperTune Garage precision results.
+            Drag the slider to compare each car before and after HyperTune Garage treatment.
           </p>
         </div>
 
@@ -472,12 +506,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
                 Proven Operations & Track Record
               </span>
-              <h3 className="text-2xl font-black text-white mt-1">HyperTune Performance Metrics</h3>
+              <h2 className="text-2xl font-black text-white mt-1">HyperTune Performance Metrics</h2>
               <p className="text-xs text-cyan-400 font-semibold mt-0.5">HyperTune Garage - Islamabad Flagship Hub</p>
             </div>
 
             <p className="text-slate-300 text-sm leading-relaxed">
-              HyperTune Garage operates on rigorous engineering standards, pairing dealer-level diagnostic protocols with precision craftsmanship — and every service is measured, not guessed. Our diagnostic bays run dealer-grade German scan tools capable of reading OEM fault codes down to the millivolt, giving us a data-backed baseline before a single wrench turns. From computerized engine diagnostics and precision AC & auto electrical repair to blade-free Paint Protection Film (PPF) application in a certified dust-free cleanroom, our benchmark metrics reflect an unwavering commitment to automotive excellence. Combined with fully transparent, itemized pricing on every invoice, these benchmarks aren't marketing claims; they're the operating standard behind every vehicle that leaves our shop, engineered for measurable, long-term performance and superior longevity.
+              HyperTune Garage follows strict workshop standards and measures every repair. Our diagnostic bays run dealer-grade German scan tools that read OEM fault codes down to the millivolt. This gives us hard data before we touch a bolt. We handle engine diagnostics, AC and auto electrical repairs, and blade-free PPF in a dust-free cleanroom. You also get clear, itemized pricing on every bill. We build every service for real, lasting vehicle performance.
             </p>
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
@@ -535,10 +569,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { step: '01', title: 'Book Appointment', desc: 'Reserve online or via WhatsApp. Flexible appointment scheduling across Islamabad & Rawalpindi.' },
-            { step: '02', title: 'Computer Diagnostic', desc: 'Our master technicians execute an OEM scanner health audit and create an itemized estimate.' },
-            { step: '03', title: 'Video Approval', desc: 'Receive HD video proof of worn parts. Work only starts upon your explicit digital authorization.' },
-            { step: '04', title: 'Road Test & Warranty', desc: 'High-speed highway verification test, final cleaning, and delivery with 12-Month Written Warranty.' },
+            { step: '01', title: 'Book Appointment', desc: 'Book online or on WhatsApp. Pick a slot that fits your schedule in Islamabad or Rawalpindi.' },
+            { step: '02', title: 'Computer Diagnostic', desc: 'Our master techs run an OEM scanner audit and share a clear, itemized quote.' },
+            { step: '03', title: 'Video Approval', desc: 'Watch HD video proof of worn parts. We start work only after you approve.' },
+            { step: '04', title: 'Road Test & Warranty', desc: 'We complete a road test, wash your car, and hand over a 12-month written warranty.' },
           ].map((s) => (
             <div key={s.step} className="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 relative shadow-lg">
               <span className="text-4xl font-black text-cyan-500/30 block">{s.step}</span>
@@ -557,7 +591,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </span>
             <h3 className="text-white text-base sm:text-lg font-bold">Workshop Repair, Warranty &amp; Booking FAQs</h3>
             <p className="text-slate-400 text-xs">
-              Get instant answers on genuine OEM parts, 12-month warranty coverage, turnaround times, and workshop procedures.
+              Read clear answers on genuine OEM parts, 12-month warranty terms, turnaround times, and booking.
             </p>
           </div>
           <a
@@ -582,7 +616,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </span>
           <h2 className="text-3xl font-black text-white">Islamabad & Rawalpindi Locations</h2>
           <p className="text-slate-400 text-xs">
-            Experience dealer-grade automotive care at our active Islamabad Flagship Hub and upcoming Rawalpindi Hub.
+            Visit our active Islamabad Flagship Hub, or check our upcoming Rawalpindi Hub.
           </p>
         </div>
 

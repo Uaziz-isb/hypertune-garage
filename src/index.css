@@ -18,6 +18,42 @@ body {
   content-visibility: visible;
 }
 
+/* Genuine width-based responsive rules aligned with viewport breakpoints */
+html {
+  scroll-padding-top: 5.5rem;
+}
+
+@media (max-width: 639px) {
+  html {
+    scroll-padding-top: 5rem;
+  }
+  .prose h2 {
+    font-size: 1.375rem;
+    line-height: 1.3;
+  }
+}
+
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 6rem;
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 6.5rem;
+  }
+  .prose {
+    max-width: 72ch;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 7.5rem;
+  }
+}
+
 /* Custom scrollbar for electric cyan workshop theme */
 ::-webkit-scrollbar {
   width: 8px;

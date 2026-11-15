@@ -410,6 +410,12 @@ function validateGeminiDiagnosisPayload(parsed: unknown): {
   };
 }
 
+// Prevent search engine indexing of JSON API endpoints (defense in depth alongside robots.txt Disallow: /api/)
+app.use("/api", (_req, res, next) => {
+  res.setHeader("X-Robots-Tag", "noindex, nofollow");
+  next();
+});
+
 // API Health Check
 app.get("/api/health", (_req, res) => {
   res.json({

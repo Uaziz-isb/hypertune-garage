@@ -27,6 +27,10 @@ export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavi
         '@id': 'https://hypertunegarage.pk/#business',
         name: 'HyperTune Garage',
         image: toAbsoluteImageUrl(loc.image),
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://hypertunegarage.pk/images/hypertune_logo.webp',
+        },
         url: 'https://hypertunegarage.pk/',
         telephone: '+923330177717',
         priceRange: '$$$',
@@ -48,6 +52,12 @@ export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavi
         description:
           loc.statusNotice ||
           'Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.',
+        publisher: {
+          '@type': 'AutoRepair',
+          '@id': 'https://hypertunegarage.pk/#business',
+          name: 'HyperTune Garage',
+          url: 'https://hypertunegarage.pk/',
+        },
         isPartOf: {
           '@type': 'AutoRepair',
           '@id': 'https://hypertunegarage.pk/#business',

@@ -50,7 +50,7 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-black text-white">HyperTune Garage Customer Reviews</h3>
+                  <h2 className="text-xl font-black text-white">HyperTune Garage Customer Reviews</h2>
                   <p className="text-slate-400 text-xs">Verified Customer Feedback • Islamabad & Rawalpindi Hubs</p>
                 </div>
               </div>
@@ -121,10 +121,10 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
                     {review.authorName.charAt(0)}
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-white text-sm flex items-center gap-1.5">
+                    <h3 className="font-extrabold text-white text-sm flex items-center gap-1.5">
                       <span>{review.authorName}</span>
                       <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-                    </h4>
+                    </h3>
                     {review.relativeTimeText && (
                       <span className="text-[11px] text-slate-400 block">{review.relativeTimeText}</span>
                     )}

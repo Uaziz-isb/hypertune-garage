@@ -63,10 +63,10 @@ export const GoogleMapEmbed: React.FC<GoogleMapEmbedProps> = ({
             <MapPin className="w-7 h-7" />
           </div>
           <div className="space-y-1.5 max-w-md">
-            <h4 className="text-white font-black text-base flex items-center justify-center gap-2">
+            <p className="text-white font-black text-base flex items-center justify-center gap-2">
               <span>{title}</span>
               <Sparkles className="w-4 h-4 text-cyan-400" />
-            </h4>
+            </p>
             <p className="text-slate-400 text-xs leading-relaxed">{address}</p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">

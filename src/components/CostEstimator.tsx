@@ -1,44 +1,19 @@
 import React, { useState } from 'react';
 import { Calculator, Clock, ShieldCheck, CheckCircle2, Wrench } from 'lucide-react';
 import { servicesData } from '../data/servicesData';
+import { brandsData, getBrandDisplayName } from '../data/brandsData';
 
 interface CostEstimatorProps {
   onBookService?: (serviceId: string) => void;
 }
 
-const estimatorBrands = [
-  { id: 'bmw', name: 'BMW' },
-  { id: 'mercedes', name: 'Mercedes-Benz' },
-  { id: 'audi', name: 'Audi' },
-  { id: 'porsche', name: 'Porsche' },
-  { id: 'toyota', name: 'Toyota' },
-  { id: 'honda', name: 'Honda' },
-  { id: 'suzuki', name: 'Suzuki' },
-  { id: 'hyundai', name: 'Hyundai' },
-  { id: 'kia', name: 'Kia' },
-  { id: 'changan', name: 'Changan' },
-  { id: 'haval', name: 'Haval' },
-  { id: 'mg', name: 'MG' },
-  { id: 'byd', name: 'BYD' },
-  { id: 'chery', name: 'Chery' },
-  { id: 'isuzu', name: 'Isuzu' },
-  { id: 'faw', name: 'FAW' },
-  { id: 'daihatsu', name: 'Daihatsu' },
-  { id: 'nissan', name: 'Nissan' },
-  { id: 'mitsubishi', name: 'Mitsubishi' },
-  { id: 'mazda', name: 'Mazda' },
-  { id: 'subaru', name: 'Subaru' },
-  { id: 'lexus', name: 'Lexus' },
-  { id: 'landrover', name: 'Land Rover' },
-  { id: 'rangerover', name: 'Range Rover' },
-  { id: 'jeep', name: 'Jeep' },
-  { id: 'ford', name: 'Ford' },
-  { id: 'chevrolet', name: 'Chevrolet' },
-  { id: 'volvo', name: 'Volvo' },
-];
+const estimatorBrands = brandsData.map((b) => ({
+  id: b.slug,
+  name: getBrandDisplayName(b.name),
+}));
 
 export const CostEstimator: React.FC<CostEstimatorProps> = ({ onBookService }) => {
-  const [selectedBrand, setSelectedBrand] = useState('toyota');
+  const [selectedBrand, setSelectedBrand] = useState('toyota-repair-islamabad');
   const [selectedServiceId, setSelectedServiceId] = useState('engine-services');
 
   const activeService = servicesData.find((s) => s.id === selectedServiceId) || servicesData[0];
@@ -54,8 +29,8 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ onBookService }) =
           <Calculator className="w-5 h-5 text-cyan-400" />
         </div>
         <div>
-          <h3 className="text-xl font-bold text-white">Instant Repair & Maintenance Cost Estimator</h3>
-          <p className="text-xs text-slate-400">Select your vehicle & required service to view estimated repair costs</p>
+          <h2 className="text-xl font-bold text-white">Instant Repair & Maintenance Cost Estimator</h2>
+          <p className="text-xs text-slate-400">Select your vehicle make and service to check estimated repair costs.</p>
         </div>
       </div>
 
@@ -116,7 +91,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ onBookService }) =
                 <span className="text-[11px] font-bold text-cyan-400 uppercase tracking-widest">
                   Estimated Repair Cost
                 </span>
-                <h4 className="text-lg font-black text-white">{activeService.title}</h4>
+                <p className="text-lg font-black text-white">{activeService.title}</p>
                 <p className="text-xs text-cyan-400 font-semibold mt-0.5">Vehicle: {activeBrand.name}</p>
               </div>
               <div className="text-right">

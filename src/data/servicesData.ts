@@ -7,7 +7,7 @@ const baseServicesData: ServiceItem[] = [
     id: 'paint-protection-film-ppf',
     slug: 'paint-protection-film-ppf',
     title: 'Paint Protection Film (PPF)',
-    shortDesc: 'Pakistan’s premier studio for self-healing TPU Paint Protection Film (PPF) in Islamabad & Rawalpindi. Defend original paintwork from stone chips, UV fading, road debris, and scratches with up to 10-year warranty protection.',
+    shortDesc: 'We install self-healing TPU Paint Protection Film (PPF) in Islamabad & Rawalpindi. Shield factory paint from stone chips, UV rays, and scratches with up to 10-year coverage.',
     fullDesc: 'HyperTune Garage is Pakistan’s leading studio for self-healing TPU Paint Protection Film (PPF). Located at our Flagship Studio in Block E Police Foundation, Sector O-9, Islamabad and Rawalpindi, our clean, climate-controlled detailing bay utilizes CAD computer digital plotter pre-cut TPU self-healing films. PPF forms an invisible, ultra-durable hydrophobic armor over your vehicle’s paint, self-healing swirl marks under heat or sunlight while preserving original factory paint and high resale value.',
     subServices: ['Paint Protection Film (PPF)', 'Self-Healing TPU Film', 'Clear Bra Armor', 'Luxury Vehicle Armor'],
     subServicePrices: [
@@ -97,7 +97,7 @@ const baseServicesData: ServiceItem[] = [
     id: 'car-detailing',
     slug: 'car-detailing',
     title: 'Car Detailing',
-    shortDesc: 'Professional interior steam extraction & 9H Nano-Ceramic Coating detailing studio in Islamabad & Rawalpindi. Restore showroom shine with multi-stage paint correction, deep leather treatment, and headlight restoration.',
+    shortDesc: 'We offer interior steam care and 9H Nano-Ceramic Coating in Islamabad & Rawalpindi. Bring back deep gloss with paint correction, leather care, and clear headlights.',
     fullDesc: 'HyperTune Garage provides comprehensive professional Car Detailing services in Islamabad and Rawalpindi. Our master detailers use multi-stage paint correction to eliminate 95%+ of swirl marks and scratches, followed by 9H Nano-Ceramic glass coating for hydrophobic mirror clarity. Inside the cabin, we perform deep steam extraction, leather conditioning, ozone anti-bacterial sterilization, and engine bay detailing.',
     subServices: ['Car Detailing', '9H Ceramic Coating', 'Interior Steam Detailing', 'Paint Correction'],
     subServicePrices: [
@@ -184,7 +184,7 @@ const baseServicesData: ServiceItem[] = [
     id: 'engine-services',
     slug: 'engine-services',
     title: 'Engine Services & Overhaul',
-    shortDesc: 'Specialized engine repair and precision mechanical overhaul for all vehicle makes in Islamabad & Rawalpindi. Our certified technicians perform engine overhauls, cylinder head repairs, valve jobs, timing chain replacement, and computerized sensor calibration to restore power, fuel efficiency, and factory smoothness.',
+    shortDesc: 'Get full engine repair and mechanical overhauls for every make in Islamabad & Rawalpindi. We rebuild heads, fit timing chains, and tune sensors for smooth power.',
     fullDesc: 'HyperTune Garage is Islamabad and Rawalpindi’s dedicated center for complete engine repair, overhaul, and precision diagnostics. Whether your engine suffers from overheating damage, blown head gaskets, excessive oil burning, low cylinder compression, or rod knock, our dust-free mechanical bay is equipped with computerized diagnostic rigs and precision micrometer measuring tools. We rebuild engines to strict 0.001mm OEM specifications with guaranteed factory reliability.',
     subServices: ['Engine Repair & Rebuild', 'Engine Health & Diagnostics'],
     subServicePrices: [
@@ -271,7 +271,7 @@ const baseServicesData: ServiceItem[] = [
     id: 'inspection-diagnostics',
     slug: 'inspection-diagnostics',
     title: 'Inspection & Diagnostics',
-    shortDesc: 'Computerized dealer-level OBD2 diagnostic scanning and detailed 200-point pre-purchase car inspection in Islamabad & Rawalpindi. Get an honest digital health report covering engine compression, transmission codes, accident body damage, paint thickness microns, and electrical diagnostics before buying any car.',
+    shortDesc: 'Book OBD2 car scans and 200-point pre-buy checks in Islamabad & Rawalpindi. Check engine compression, fault codes, paint depth, and body damage before you buy.',
     fullDesc: 'Buying a used car in Pakistan without a thorough professional inspection can lead to hidden financial nightmares—such as flood damage, rolled-back odometers, concealed accident body repairs, or failing hybrid batteries. HyperTune Garage offers dealer-grade 200-Point Pre-Purchase Car Inspections and Computerized Diagnostic Scanning across Islamabad and Rawalpindi. We provide an un-biased, comprehensive digital report complete with paint meter micron readings, camera scope cylinder checks, and ECU diagnostic logs.',
     subServices: ['Car Diagnostics', 'Pre-Purchase Car Inspection'],
     subServicePrices: [
@@ -359,7 +359,7 @@ const baseServicesData: ServiceItem[] = [
     id: 'maintenance-servicing',
     slug: 'maintenance-servicing',
     title: 'Maintenance & Servicing',
-    shortDesc: 'Comprehensive periodic maintenance, synthetic oil changes, and preventive inspection services in Islamabad & Rawalpindi. Keep your vehicle running smoothly with genuine filters, high-grade lubricants, spark plug replacement, fluid flushes, and a thorough 50-point safety health audit by expert technicians.',
+    shortDesc: 'Stay ahead with scheduled oil changes and preventive servicing in Islamabad & Rawalpindi. We use genuine filters, fresh fluids, spark plugs, and a 50-point check.',
     fullDesc: 'Regular periodic maintenance is the single most important factor in extending your car’s lifespan and maintaining peak resale value. At HyperTune Garage Islamabad & Rawalpindi, our maintenance packages use 100% authentic imported fully synthetic oils (Liqui Moly, Mobil 1, Shell Helix Ultra, Total Quartz) matched strictly to manufacturer viscosity standards (0W-20, 5W-30, 5W-40). Every periodic service comes with our 50-Point Digital Vehicle Health Report.',
     subServices: ['Oil Change & Periodic Maintenance', 'Preventive Car Maintenance'],
     subServicePrices: [
@@ -447,7 +447,7 @@ const baseServicesData: ServiceItem[] = [
     id: 'brake-suspension-steering',
     slug: 'brake-suspension-steering',
     title: 'Brake, Suspension & Steering',
-    shortDesc: 'Precision brake repair, suspension overhaul, electronic air suspension repair, steering rack restoration, and 3D laser wheel alignment in Islamabad & Rawalpindi. Eliminate thumping noises, spongy braking, steering looseness, and uneven tire wear with factory OEM replacement components.',
+    shortDesc: 'We handle brake repair, suspension work, steering racks, and 3D wheel alignment in Islamabad & Rawalpindi. Stop knocks, pull, and uneven tire wear with OEM parts.',
     fullDesc: 'Pakistani road conditions place severe stress on vehicle undercarriage systems, causing worn shocks, damaged control arm bushings, leaking steering racks, and misaligned wheels. HyperTune Garage houses Italian 3D Laser Wheel Alignment rigs, heavy-duty hydraulic presses, and specialized diagnostic software for electronic air suspension (Mercedes Airmatic, Audi Adaptive Air, BMW Dynamic Drive). We restore factory handling, stopping distance, and ride comfort.',
     subServices: ['Brake Repair', 'Suspension Repair', 'Steering Repair'],
     subServicePrices: [
@@ -536,7 +536,7 @@ const baseServicesData: ServiceItem[] = [
     id: 'transmission-drivetrain',
     slug: 'transmission-drivetrain',
     title: 'Transmission & Drivetrain',
-    shortDesc: 'Expert automatic, CVT, dual-clutch (DCT), and manual transmission repair and rebuilding in Islamabad & Rawalpindi. We resolve gear slipping, shifting jerks, transmission fluid leaks, torque converter faults, and electronic solenoid issues using genuine OEM parts and specialized diagnostic procedures.',
+    shortDesc: 'Fix automatic, CVT, DCT, and manual gearboxes in Islamabad & Rawalpindi. We cure slipping gears, hard shifts, leaks, and solenoid faults using OEM parts.',
     fullDesc: 'Modern automatic gearboxes—including Continuously Variable Transmissions (CVT), Dual-Clutch Transmissions (Honda DCT, VW DSG), and multi-speed torque-converter automatics—require delicate hydraulic and electronic calibration. High summer ambient heat and delayed fluid service lead to jerking, gear slipping, or limp-mode warnings. HyperTune Garage provides complete transmission diagnostics, fluid flushing with OEM specs, valve body solenoid rebuilding, and complete gearbox overhauls.',
     subServices: ['Transmission Repair'],
     subServicePrices: [
@@ -623,7 +623,7 @@ const baseServicesData: ServiceItem[] = [
     id: 'vehicle-wrap',
     slug: 'vehicle-wrap',
     title: 'Vehicle Wrap',
-    shortDesc: 'Full car vinyl wrapping studio in Islamabad & Rawalpindi. Transform your vehicle\'s look with matte, satin, gloss, chrome, and carbon fiber vinyl wraps while preserving original factory paint.',
+    shortDesc: 'Visit our car vinyl wrap studio in Islamabad & Rawalpindi. Choose matte, satin, gloss, chrome, or carbon wraps that keep factory paint safe.',
     fullDesc: 'HyperTune Garage is Islamabad and Rawalpindi’s premier studio for custom Vehicle Wrapping and vinyl styling. Whether you desire a complete color change wrap (matte black, satin gray, gloss Nardo, metallic), roof wraps, carbon fiber accents, or custom vinyl wraps, our skilled technicians disassemble trim for seamless, bubble-free installation with wrapped edge tucking.',
     subServices: ['Vehicle Wrap', 'Color Change Vinyl Wrap', 'Matte & Satin Wrap', 'Carbon Fiber & Roof Wrap'],
     subServicePrices: [
@@ -710,7 +710,7 @@ const baseServicesData: ServiceItem[] = [
     id: 'body-repair-paint',
     slug: 'body-repair-paint',
     title: 'Body Repair & Paint',
-    shortDesc: 'Premier auto body repair, collision denting, paintless dent repair (PDR), and computerized paint booth spraying in Islamabad & Rawalpindi with exact European spectrophotometer color matching.',
+    shortDesc: 'We handle auto body repair, PDR denting, and dust-free paint booth work in Islamabad & Rawalpindi. Get exact OEM color matches on every panel.',
     fullDesc: 'HyperTune Garage operates a state-of-the-art auto body repair and thermal spray paint booth facility in Islamabad and Rawalpindi. From major insurance collision repair and chassis alignment to minor dent removal, scratch repair, and bumper restoration, our skilled craftsmen deliver factory-smooth panel alignment and 100% computerized paint color matching.',
     subServices: ['Body Repair & Paint', 'Collision Denting & Frame Alignment', 'Paintless Dent Repair (PDR)', 'Thermal Paint Booth Spraying'],
     subServicePrices: [
@@ -795,7 +795,7 @@ const baseServicesData: ServiceItem[] = [
     id: 'body-modification',
     slug: 'body-modification',
     title: 'Body Modification',
-    shortDesc: 'Custom car body modification studio in Islamabad & Rawalpindi. Supply & installation of wide body kits, spoilers, front lips, side skirts, rear diffusers, carbon fiber hoods, and sports bumpers.',
+    shortDesc: 'Upgrade your car at our body mod shop in Islamabad & Rawalpindi. We fit wide body kits, spoilers, front lips, skirts, diffusers, and carbon hoods.',
     fullDesc: 'HyperTune Garage is Islamabad and Rawalpindi’s dedicated workshop for custom Body Modification and sports car aerodynamic upgrades. From wide body conversions, lip kits, side skirts, and rear diffusers to carbon fiber hoods, trunk spoilers, performance bumpers, and custom grille upgrades, we turn your car design vision into reality.',
     subServices: ['Body Modification', 'Wide Body Kit Installation', 'Front Lips & Side Skirts', 'Rear Diffuser & Spoilers', 'Carbon Fiber Body Parts'],
     subServicePrices: [
@@ -881,7 +881,7 @@ const baseServicesData: ServiceItem[] = [
     id: 'car-ac-repair',
     slug: 'car-ac-repair',
     title: 'AC Repair & Electrical Specialist',
-    shortDesc: 'Automated R134a/R1234yf refrigerant recovery & recharge, cooling coil leak detection, compressor overhaul, climate control servicing, ECU module programming, and computerized auto electrical wiring diagnostics in Islamabad & Rawalpindi.',
+    shortDesc: 'Book R134a/R1234yf AC gas recharge, leak tests, and compressor repair in Islamabad & Rawalpindi. We also handle ECU coding and auto wiring fault tracing.',
     fullDesc: 'HyperTune Garage provides comprehensive, master-level Automotive Air Conditioning & Electrical System repair in Islamabad & Rawalpindi. We combine automated digital AC refrigerant recovery/recharge stations, dry nitrogen pressure leak testing, and electronic halogen detectors with certified master auto-electrician diagnostics utilizing digital oscilloscopes, CAN-bus analyzers, and factory diagnostic computers to solve cooling loss, compressor noise, evaporator coil leaks, parasitic battery drains, short circuits, and electronic sensor glitches.',
     subServices: [
       'Automated R134a / R1234yf Refrigerant Recharge',
@@ -988,7 +988,7 @@ const baseServicesData: ServiceItem[] = [
     id: 'cooling-fuel-exhaust',
     slug: 'cooling-fuel-exhaust',
     title: 'Cooling System, Fuel Injection & Exhaust',
-    shortDesc: 'Ultrasonic fuel injector cleaning, radiator flushing, water pump replacement, thermostat testing, and catalytic converter cleaning in Islamabad & Rawalpindi.',
+    shortDesc: 'We clean fuel injectors, flush radiators, and service catalytic converters in Islamabad & Rawalpindi. We also replace worn water pumps and thermostats.',
     fullDesc: 'HyperTune Garage provides specialized Engine Cooling, Fuel Delivery, and Exhaust System maintenance in Islamabad & Rawalpindi. We prevent catastrophic engine overheating, rough idling, fuel waste, and catalytic converter clogging using ultrasonic injector testing benches and closed-loop radiator flushing rigs.',
     subServices: ['Ultrasonic Fuel Injector Cleaning & Flow Match', 'Radiator Chemical Flush & Coolant Swap', 'Water Pump & Thermostat Replacement', 'Catalytic Converter Chemical Wash & O2 Sensors'],
     subServicePrices: [

@@ -44,7 +44,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = ({
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <h4 className="font-bold text-white text-base md:text-lg">{title}</h4>
+        <h3 className="font-bold text-white text-base md:text-lg">{title}</h3>
         <span className="text-[11px] font-semibold text-cyan-400 bg-cyan-950/70 border border-cyan-500/30 px-2.5 py-1 rounded-full flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
           Interactive Slider

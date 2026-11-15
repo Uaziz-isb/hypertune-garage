@@ -32,12 +32,27 @@ export const SEOHead: React.FC<SEOProps> = ({
   robots,
   schema,
 }) => {
+  const initialPathRef = React.useRef<string | null>(
+    typeof window !== 'undefined' ? (window.location.pathname.replace(/\/+$/, '') || '/') : null
+  );
+  const hasNavigatedRef = React.useRef<boolean>(false);
+
   useEffect(() => {
     initGA();
     trackPageView(path, title);
   }, [path, title]);
 
   useEffect(() => {
+    const normalizedPath = path.split('?')[0].replace(/\/+$/, '') || '/';
+    if (!hasNavigatedRef.current && initialPathRef.current !== null) {
+      if (normalizedPath !== initialPathRef.current) {
+        hasNavigatedRef.current = true;
+      } else if (document.getElementById('server-schema-0')) {
+        // Preserve authoritative SSR-rendered title, description, canonical, and JSON-LD on initial hydration
+        return;
+      }
+    }
+
     document.title = title;
 
     let metaDesc = document.querySelector('meta[name="description"]');
@@ -66,6 +81,7 @@ export const SEOHead: React.FC<SEOProps> = ({
 
     const targetCanonicalUrl = normalizeCanonicalUrl(canonicalUrl || path, 'https://hypertunegarage.pk');
     const resolvedOgImage = toAbsoluteImageUrl(ogImage, 'https://hypertunegarage.pk');
+    const isBlogArticle = normalizedPath.startsWith('/blog/') && normalizedPath !== '/blog';
 
     let canonicalTag = document.querySelector('link[rel="canonical"]');
     if (!canonicalTag) {
@@ -79,7 +95,7 @@ export const SEOHead: React.FC<SEOProps> = ({
       { property: 'og:title', content: title },
       { property: 'og:description', content: description },
       { property: 'og:url', content: targetCanonicalUrl },
-      { property: 'og:type', content: 'website' },
+      { property: 'og:type', content: isBlogArticle ? 'article' : 'website' },
       { property: 'og:image', content: resolvedOgImage },
       { property: 'og:site_name', content: 'HyperTune Garage' },
       { name: 'twitter:card', content: 'summary_large_image' },
@@ -106,11 +122,21 @@ export const SEOHead: React.FC<SEOProps> = ({
       '@context': 'https://schema.org',
       '@type': 'AutoRepair',
       name: 'HyperTune Garage',
+      description:
+        'HyperTune Garage provides PPF, Ceramic Coating, Car Detailing, Vehicle Diagnostics, Engine Tune-up, Auto Repair & Maintenance Services in Islamabad and serving Rawalpindi.',
       image: resolvedOgImage,
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://hypertunegarage.pk/images/hypertune_logo.webp',
+      },
       '@id': 'https://hypertunegarage.pk/#business',
       url: 'https://hypertunegarage.pk/',
       telephone: '+923330177717',
       priceRange: '$$$',
+      areaServed: [
+        { '@type': 'City', name: 'Islamabad' },
+        { '@type': 'City', name: 'Rawalpindi' },
+      ],
       aggregateRating: {
         '@type': 'AggregateRating',
         ratingValue: '4.8',
@@ -155,7 +181,7 @@ export const SEOHead: React.FC<SEOProps> = ({
       ],
     };
 
-    // Remove static SSR schema script tags before writing authoritative hydrated schema
+    // Remove static SSR schema script tags before writing hydrated schema on SPA route change
     document.querySelectorAll('script[id^="server-schema-"]').forEach((el) => el.remove());
 
     const finalSchema = schema || defaultSchema;
