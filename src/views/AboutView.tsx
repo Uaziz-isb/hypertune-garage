@@ -44,6 +44,9 @@ const IC4 = 'w-4 h-4 text-cyan-400';
 const IC4S = `${IC4} shrink-0`;
 const IFLEX = 'inline-flex items-center gap-1.5';
 const BTN_DARK = 'px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 font-bold text-xs inline-flex items-center transition-colors';
+const CH_CLS = 'px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 hover:text-white text-xs font-bold flex items-center justify-center gap-2 transition-colors';
+const LI_CLS = 'flex items-start gap-2.5';
+const EXT_PROPS = { target: '_blank', rel: 'noopener noreferrer' } as const;
 
 const fallbackImg = (e: React.SyntheticEvent<HTMLImageElement>) => {
   e.currentTarget.src = images.workshopIslamabad;
@@ -103,7 +106,7 @@ const SOCIALS: [string, string, typeof Instagram, string][] = [
 
 const renderChecklist = (items: [string, string][]) =>
   items.map(([title, body]) => (
-    <li key={title} className="flex items-start gap-2.5">
+    <li key={title} className={LI_CLS}>
       <CheckCircle2 className={`${IC4S} mt-0.5`} />
       <span>
         <strong className="text-white">{title}</strong> {body}
@@ -321,7 +324,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
             ShieldCheck,
             'Transparent Inspection & Warranty Process',
             PROCESS_ITEMS,
-            <li className="flex items-start gap-2.5">
+            <li className={LI_CLS}>
               <CheckCircle2 className={`${IC4S} mt-0.5`} />
               <span>
                 <strong className="text-white">Written Warranty Protection:</strong> Engine and transmission rebuilds carry a written 12-month or 15,000 km warranty (plus a 1,000 km checkup), and TPU PPF includes up to a 10-year manufacturer film warranty.{' '}
@@ -434,9 +437,8 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
                 <a
                   key={name}
                   href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 hover:text-white text-xs font-bold flex items-center justify-between transition-colors"
+                  {...EXT_PROPS}
+                  className={CH_CLS}
                   aria-label={`HyperTune Garage on ${name}`}
                 >
                   <span className="inline-flex items-center gap-2">
@@ -446,6 +448,25 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
                   <ExternalLink className="w-3 h-3 text-slate-500" />
                 </a>
               ))}
+              <a
+                href="https://hypertunegarage.pk/"
+                className={`col-span-2 ${CH_CLS}`}
+                aria-label="HyperTuneGarage.pk Official Website"
+              >
+                <span className="inline-flex items-center gap-2">
+                  <img
+                    src={images.logoSmall}
+                    alt="HyperTune Garage Logo"
+                    width={18}
+                    height={18}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-[18px] h-[18px] rounded object-cover border border-slate-700/80 bg-black shrink-0"
+                  />
+                  <span>HyperTuneGarage.pk</span>
+                </span>
+                <ExternalLink className="w-3 h-3 text-slate-500" />
+              </a>
             </div>
           </div>
         </div>
@@ -476,8 +497,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
             </button>
             <a
               href="https://wa.me/923330177717?text=Hi%20HyperTune%20Garage,%20I%20want%20to%20inquire%20about%20your%20services."
-              target="_blank"
-              rel="noopener noreferrer"
+              {...EXT_PROPS}
               className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm flex items-center gap-2 shadow-lg hover:scale-105 transition-all"
             >
               <MessageCircle className="w-4 h-4" />
