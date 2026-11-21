@@ -630,6 +630,39 @@ app.post("/api/ai-diagnostic", createRateLimiter("aiDiagnostic", 10, 60000), asy
   }
 });
 
+function isFridayAppointmentDate(rawDate: string): boolean {
+  const value = rawDate.trim();
+  if (!value || value.toLowerCase() === "flexible") return false;
+  if (/\bfri(?:day)?\b/i.test(value)) return true;
+
+  const isoMatch = /^(\d{4})[-/](\d{1,2})[-/](\d{1,2})(?:[T\s].*)?$/.exec(value);
+  if (isoMatch) {
+    const y = Number(isoMatch[1]);
+    const mo = Number(isoMatch[2]);
+    const day = Number(isoMatch[3]);
+    const d = new Date(Date.UTC(y, mo - 1, day));
+    return d.getUTCFullYear() === y && d.getUTCMonth() === mo - 1 && d.getUTCDate() === day && d.getUTCDay() === 5;
+  }
+
+  const dmyMatch = /^(\d{1,2})[-/](\d{1,2})[-/](\d{4})$/.exec(value);
+  if (dmyMatch) {
+    const a = Number(dmyMatch[1]);
+    const b = Number(dmyMatch[2]);
+    const y = Number(dmyMatch[3]);
+    const [day, mo] = a <= 12 && b > 12 ? [b, a] : [a, b];
+    const d = new Date(Date.UTC(y, mo - 1, day));
+    return d.getUTCFullYear() === y && d.getUTCMonth() === mo - 1 && d.getUTCDate() === day && d.getUTCDay() === 5;
+  }
+
+  const hasExplicitTz = /(?:Z|[+-]\d{2}:?\d{2}|GMT|UTC)$/i.test(value);
+  const parsedMs = Date.parse(hasExplicitTz ? value : `${value} UTC`);
+  if (!Number.isNaN(parsedMs)) {
+    return new Date(parsedMs).getUTCDay() === 5;
+  }
+
+  return false;
+}
+
 // API Appointment Booking Handler (Validated, rate-limited, preserves WhatsApp workflow contract)
 app.post("/api/booking", createRateLimiter("booking", 15, 60000), (req, res) => {
   try {
@@ -687,6 +720,12 @@ app.post("/api/booking", createRateLimiter("booking", 15, 60000), (req, res) => 
       typeof date === "string" && date.trim().length > 0
         ? sanitizeSingleLine(date, 30, /[\u0000-\u001F\u007F]/g)
         : "Flexible";
+    if (isFridayAppointmentDate(cleanDate)) {
+      return res.json({
+        success: false,
+        error: "Bookings are unavailable on Fridays. Please select another appointment date.",
+      });
+    }
     const cleanTime =
       typeof time === "string" && time.trim().length > 0
         ? sanitizeSingleLine(time, 45, /[\u0000-\u001F\u007F]/g)

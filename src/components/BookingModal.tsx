@@ -9,6 +9,26 @@ interface BookingModalProps {
   initialServiceId?: string;
 }
 
+const FRIDAY_CLOSED_MSG = 'Friday is closed. Please select another appointment date.';
+
+const formatLocalYmd = (d: Date): string =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+const getDefaultBookingDate = (): string => {
+  const now = new Date();
+  const d = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  if (d.getDay() === 5) d.setDate(d.getDate() + 1);
+  return formatLocalYmd(d);
+};
+
+const isFridayDate = (ymd: string): boolean => {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(ymd.trim());
+  if (!m) return false;
+  const y = Number(m[1]), mo = Number(m[2]), day = Number(m[3]);
+  const d = new Date(Date.UTC(y, mo - 1, day));
+  return d.getUTCFullYear() === y && d.getUTCMonth() === mo - 1 && d.getUTCDate() === day && d.getUTCDay() === 5;
+};
+
 export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, initialServiceId }) => {
   const [step, setStep] = useState(1);
   const [make, setMake] = useState('Toyota');
@@ -19,7 +39,9 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
   );
   const [customNotes, setCustomNotes] = useState('');
   const [locationId, setLocationId] = useState('islamabad-hub');
-  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+  const minBookingDate = getDefaultBookingDate();
+  const [date, setDate] = useState(minBookingDate);
+  const [dateError, setDateError] = useState('');
   const [time, setTime] = useState('11:00 AM');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -39,8 +61,22 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
     );
   };
 
+  const handleDateChange = (nextDate: string) => {
+    if (nextDate && isFridayDate(nextDate)) {
+      setDateError(FRIDAY_CLOSED_MSG);
+      return;
+    }
+    setDateError('');
+    setDate(nextDate);
+  };
+
   const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!date || isFridayDate(date)) {
+      setDateError(FRIDAY_CLOSED_MSG);
+      setStep(3);
+      return;
+    }
     if (!name || !phone) {
       alert('Please fill in your name and phone number.');
       return;
@@ -342,10 +378,17 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
                   <label className="block text-xs font-bold text-slate-300 mb-1">Preferred Date</label>
                   <input
                     type="date"
+                    min={minBookingDate}
                     value={date}
-                    onChange={(e) => setDate(e.target.value)}
+                    onChange={(e) => handleDateChange(e.target.value)}
+                    aria-invalid={Boolean(dateError)}
                     className="w-full bg-[#070c14] border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-cyan-500 focus:outline-none"
                   />
+                  {dateError && (
+                    <p role="alert" className="text-[11px] text-red-400 font-semibold mt-1">
+                      {dateError}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -371,7 +414,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
                   <span>Back</span>
                 </button>
                 <button
-                  onClick={() => setStep(4)}
+                  onClick={() => {
+                    if (!date || isFridayDate(date)) {
+                      setDateError(FRIDAY_CLOSED_MSG);
+                      return;
+                    }
+                    setDateError('');
+                    setStep(4);
+                  }}
                   className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-sm flex items-center gap-2 transition-all shadow-md shadow-cyan-500/20"
                 >
                   <span>Next: Contact Info</span>

@@ -141,6 +141,20 @@ const APPOINTMENT_FAQS = [
   },
 ];
 
+const FRIDAY_MSG = 'Friday is closed. Please select another appointment date.';
+
+const getDefaultDate = () => {
+  const d = new Date();
+  return new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate() + (d.getDay() === 5 ? 1 : 0))).toISOString().slice(0, 10);
+};
+
+const isFridayDate = (s: string) => {
+  const p = s.split('-').map(Number);
+  if (p.length !== 3) return false;
+  const d = new Date(Date.UTC(p[0], p[1] - 1, p[2]));
+  return d.getUTCFullYear() === p[0] && d.getUTCMonth() === p[1] - 1 && d.getUTCDate() === p[2] && d.getUTCDay() === 5;
+};
+
 export const BookingView: React.FC<BookingViewProps> = ({
   onNavigate,
   initialServiceId,
@@ -161,10 +175,8 @@ export const BookingView: React.FC<BookingViewProps> = ({
   
   // Location & Schedule State - Default: 'islamabad-hub' (HyperTune Garage - Islamabad Flagship Hub)
   const [locationId, setLocationId] = useState<string>('islamabad-hub');
-  const [date, setDate] = useState<string>(() => {
-    const today = new Date();
-    return today.toISOString().split('T')[0];
-  });
+  const [minDate] = useState<string>(getDefaultDate);
+  const [date, setDate] = useState<string>(minDate);
   const [time, setTime] = useState<string>(TIME_SLOTS[0]);
 
   // Customer State
@@ -256,8 +268,8 @@ export const BookingView: React.FC<BookingViewProps> = ({
       });
     }
     if (stepNumber === 3) {
-      if (!date) {
-        setFormError('Please select your preferred appointment date.');
+      if (!date || isFridayDate(date)) {
+        setFormError(date ? FRIDAY_MSG : 'Please select your preferred appointment date.');
         return;
       }
       trackAppointmentStep(3, 'Customer Details & Review', {
@@ -283,6 +295,10 @@ export const BookingView: React.FC<BookingViewProps> = ({
     }
     if (cleanPhone.replace(/\D/g, '').length < 7) {
       setFormError('Please enter a valid WhatsApp or phone number.');
+      return;
+    }
+    if (!date || isFridayDate(date)) {
+      setFormError(FRIDAY_MSG);
       return;
     }
 
@@ -378,6 +394,13 @@ export const BookingView: React.FC<BookingViewProps> = ({
     setEmail('');
     setSymptoms('');
   };
+
+  const errorBanner = formError ? (
+    <div role="alert" className="p-3.5 rounded-xl bg-red-950/50 border border-red-500/40 text-red-200 text-xs flex items-start gap-2.5">
+      <AlertTriangle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+      <span>{formError}</span>
+    </div>
+  ) : null;
 
   return (
     <div className="pt-24 pb-20 space-y-12">
@@ -719,12 +742,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
                     />
                   </div>
 
-                  {formError && (
-                    <div role="alert" className="p-3.5 rounded-xl bg-red-950/50 border border-red-500/40 text-red-200 text-xs flex items-start gap-2.5">
-                      <AlertTriangle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
-                      <span>{formError}</span>
-                    </div>
-                  )}
+                  {errorBanner}
 
                   {/* Step 1 Actions */}
                   <div className="pt-4 flex justify-end">
@@ -784,7 +802,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
                             </div>
 
                             <p className="text-xs text-amber-200/90 italic leading-relaxed bg-amber-500/10 p-3 rounded-xl border border-amber-500/20">
-                              &ldquo;{loc.statusNotice || 'Opening soon — our new branch is currently under development. Stay tuned for the official opening announcement.'}&rdquo;
+                              &ldquo;{loc.statusNotice}&rdquo;
                             </p>
 
                             <p className="text-[11px] text-slate-400">
@@ -869,13 +887,21 @@ export const BookingView: React.FC<BookingViewProps> = ({
                       </label>
                       <input
                         type="date"
-                        min={new Date().toISOString().split('T')[0]}
+                        min={minDate}
                         value={date}
-                        onChange={(e) => setDate(e.target.value)}
+                        onChange={(e) => {
+                          const v = e.target.value;
+                          if (v && isFridayDate(v)) {
+                            setFormError(FRIDAY_MSG);
+                            return;
+                          }
+                          setFormError('');
+                          setDate(v);
+                        }}
                         className="w-full bg-[#070c14] border border-slate-800 rounded-xl p-3.5 text-sm text-white focus:border-cyan-500 focus:outline-none"
                       />
-                      <p className="text-[11px] text-amber-400 mt-1">
-                        Note: Fridays are weekly maintenance off days.
+                      <p className={`text-[11px] mt-1 ${formError === FRIDAY_MSG ? 'text-red-400 font-semibold' : 'text-amber-400'}`}>
+                        {formError === FRIDAY_MSG ? FRIDAY_MSG : 'Note: Fridays are weekly maintenance off days.'}
                       </p>
                     </div>
 
@@ -901,12 +927,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
                     </div>
                   </div>
 
-                  {formError && (
-                    <div role="alert" className="p-3.5 rounded-xl bg-red-950/50 border border-red-500/40 text-red-200 text-xs flex items-start gap-2.5">
-                      <AlertTriangle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
-                      <span>{formError}</span>
-                    </div>
-                  )}
+                  {errorBanner}
 
                   {/* Step 2 Navigation Actions */}
                   <div className="pt-4 flex items-center justify-between">
@@ -1039,12 +1060,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
                     />
                   </div>
 
-                  {formError && (
-                    <div role="alert" className="p-3.5 rounded-xl bg-red-950/50 border border-red-500/40 text-red-200 text-xs flex items-start gap-2.5">
-                      <AlertTriangle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
-                      <span>{formError}</span>
-                    </div>
-                  )}
+                  {errorBanner}
 
                   {/* Step 3 Navigation Actions */}
                   <div className="pt-4 flex items-center justify-between">

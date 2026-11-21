@@ -670,13 +670,17 @@ export const HomeView: React.FC<HomeViewProps> = ({
                       {loc.hours && (
                         <p className="text-slate-400 text-xs flex items-center gap-1.5">
                           <Clock className="w-4 h-4 text-slate-500 shrink-0" />
-                          <span>{loc.hours.weekdays}</span>
+                          <span>
+                            Timing: Sat - Thu: 10:00 AM - 10:00 PM
+                            <br />
+                            Friday: {loc.hours.friday}
+                          </span>
                         </p>
                       )}
                     </>
                   ) : (
                     <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-200 text-xs leading-relaxed italic">
-                      &ldquo;{loc.statusNotice || 'Opening soon — our new branch is currently under development. Stay tuned for the official opening announcement.'}&rdquo;
+                      &ldquo;{loc.statusNotice}&rdquo;
                     </div>
                   )}
                 </div>
