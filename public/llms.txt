@@ -1,68 +1,90 @@
-# HyperTune Garage - Automotive Detailing, PPF, Tuning & Maintenance
+# HyperTune Garage — Performance • Protection • Perfection
 
-> HyperTune Garage is Pakistan's premier specialized automotive workshop, computerized diagnostics studio, Paint Protection Film (PPF) application center, and European/Japanese luxury car care facility located in Islamabad (with Rawalpindi coverage via insured valet pickup while our Rawalpindi hub is under development).
+> HyperTune Garage is an independent automotive workshop, computerized diagnostics center, Paint Protection Film (PPF) studio, detailing bay, and multi-brand mechanical repair facility located in Islamabad and serving Islamabad and Rawalpindi. Official website: https://hypertunegarage.pk/
 
-## Primary Pages
+## Business Identity & Workshop Overview
 
-- [Home Page](https://hypertunegarage.pk/): Overview of HyperTune Garage workshops, specialized services, instant cost estimator, Google customer reviews, and online booking system.
-- [About Us](https://hypertunegarage.pk/about/): Learn about HyperTune Garage, certified master technicians, dust-free PPF bays, and OEM diagnostic equipment.
-- [Services Directory](https://hypertunegarage.pk/services/): Comprehensive catalog of all 12 automotive services for German, European, Japanese, Korean, Chinese, and hybrid vehicles.
-- [Car Brand Specialists](https://hypertunegarage.pk/brands/): Dedicated repair and servicing hubs for 28 automotive brands including BMW, Mercedes-Benz, Audi, Porsche, Toyota, Honda, BYD, and Land Rover.
-- [Workshop Locations](https://hypertunegarage.pk/locations/): Physical studio address, GPS directions, operational hours, and contact details for our Islamabad Flagship Hub and Rawalpindi service coverage.
-- [Transformation Gallery](https://hypertunegarage.pk/gallery/): Showcase of full-body PPF installations, 9H ceramic coatings, engine overhauls, and body kit modifications.
-- [Customer Reviews & Testimonials](https://hypertunegarage.pk/testimonials/): Verified customer reviews, Google Business ratings (4.8/5), and client case studies.
-- [Frequently Asked Questions (FAQ)](https://hypertunegarage.pk/faq/): Detailed technical answers regarding PPF lifespan, warranty coverage, diagnostics, and maintenance pricing.
-- [Contact Us](https://hypertunegarage.pk/contact/): Inquire, request personalized price quotes, or contact our Islamabad workshop via phone, WhatsApp, or online form.
-- [Book Service Appointment](https://hypertunegarage.pk/book-appointment/): Reserve diagnostic scans, PPF installations, periodic maintenance, or mechanical repair slots online.
-- [Automotive Guides & Blog](https://hypertunegarage.pk/blog/): Technical car care guides, fault troubleshooting, and maintenance insights tailored for Pakistan's climate.
-- [Warranty & Specifications](https://hypertunegarage.pk/warranty-specs/): Official warranty terms for TPU PPF, ceramic coating packages, OEM spare parts, and mechanical work.
-- [Privacy Policy](https://hypertunegarage.pk/privacy-policy/): Website privacy practices and customer data handling policy.
-- [Terms & Conditions](https://hypertunegarage.pk/terms-conditions/): Terms governing use of the HyperTune Garage website and workshop services.
-- [HTML Sitemap](https://hypertunegarage.pk/sitemap/): Interactive directory of all services, brand hubs, locations, and technical guides.
-- [XML Sitemap](https://hypertunegarage.pk/sitemap.xml): Complete machine-readable XML sitemap for web crawlers.
+- **Business Name:** HyperTune Garage (Independent Automotive Workshop)
+- **Official Website:** https://hypertunegarage.pk/
+- **Official Slogan:** Performance • Protection • Perfection
+- **Service Coverage:** Islamabad and Rawalpindi (in-workshop service at Islamabad Flagship Hub and insured valet pickup across Islamabad and Rawalpindi, including DHA and Bahria Town)
+- **Phone / WhatsApp:** +92 333 0177717
+- **Email:** info@hypertunegarage.pk
+- **Operating Hours:** Saturday – Thursday, 10:00 AM – 10:00 PM (Friday Closed)
+- **Google Rating:** 4.8 / 5.0 Stars
 
-## Specialized Automotive Services
+## Workshop Locations
 
-- [Paint Protection Film (PPF)](https://hypertunegarage.pk/services/paint-protection-film-ppf/): Self-healing, anti-yellowing optical TPU paint protection film with computerized blade-free CAD plotter cut precision.
-- [Car Detailing & 9H Ceramic Coating](https://hypertunegarage.pk/services/car-detailing/): Multi-stage paint correction, hydrophobic 9H ceramic coating, interior deep cleaning, and steam sanitization.
-- [Engine Repair & Overhaul](https://hypertunegarage.pk/services/engine-services/): Precision engine rebuilding, cylinder head resurfacing, timing belt/chain replacement, and turbocharger servicing.
-- [Car Diagnostics & Pre-Purchase Inspection](https://hypertunegarage.pk/services/inspection-diagnostics/): Dealer-level OEM diagnostic systems (BMW ISTA, Mercedes Xentry, VAG ODIS, Toyota Techstream) and digital pre-purchase inspections.
-- [Periodic Maintenance & Lube Service](https://hypertunegarage.pk/services/maintenance-servicing/): Factory-scheduled synthetic oil changes, genuine filter renewals, fluid checks, and multi-point health inspections.
-- [Brakes, Suspension & 3D Alignment](https://hypertunegarage.pk/services/brake-suspension-steering/): Brake servicing, AIRMATIC/hydraulic suspension overhaul, steering rack repair, and computerized 3D laser wheel alignment.
-- [Transmission & Gearbox Services](https://hypertunegarage.pk/services/transmission-drivetrain/): Dual-clutch (DSG/DCT), CVT, and automatic torque-converter gearbox diagnostics, mechatronic repair, and fluid servicing.
-- [Vehicle Wrap & Color Change](https://hypertunegarage.pk/services/vehicle-wrap/): Cast vinyl color-change wraps, stealth satin/gloss finishes, roof wraps, and chrome-delete styling.
-- [Denting, Painting & Body Repair](https://hypertunegarage.pk/services/body-repair-paint/): Computerized spectrophotometer color matching, downdraft paint booth finishing, PDR, and chassis alignment.
-- [Body Modification & Custom Body Kits](https://hypertunegarage.pk/services/body-modification/): OEM and aftermarket body kit installation, splitters, diffusers, spoilers, and custom fabrication.
-- [Car AC Repair & Auto Electrical](https://hypertunegarage.pk/services/car-ac-repair/): Climate control servicing, R134a/R1234yf refrigerant recharge, cooling coil leak detection, and master auto-electrical wiring diagnostics.
-- [Cooling, Fuel & Exhaust Systems](https://hypertunegarage.pk/services/cooling-fuel-exhaust/): Radiator flushing and OAT coolant service, ultrasonic fuel injector cleaning, catalytic converter care, and exhaust repair.
+- **[Islamabad Flagship Hub](https://hypertunegarage.pk/locations/islamabad-workshop/):** Open & Operating — Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan. Features 8 hydraulic lifts, Italian 3D laser wheel alignment, dust-free PPF & 9H ceramic coating studio, computerized CAD plotter, and electronics diagnostics lab.
+- **[Rawalpindi Coverage Hub](https://hypertunegarage.pk/locations/rawalpindi-workshop/):** Coming Soon — Currently serving Rawalpindi customers through the Islamabad Flagship Hub with insured valet vehicle pickup.
 
-## Workshop Branches & Contact Info
+## Key Business & Information Pages
 
-- [Islamabad Flagship Hub](https://hypertunegarage.pk/locations/islamabad-workshop/): Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan. Phone: +92 333 0177717 (Open & Operating).
-- [Rawalpindi Coverage Hub](https://hypertunegarage.pk/locations/rawalpindi-workshop/): Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.
+- [Home](https://hypertunegarage.pk/): Workshop overview, 12 core services, 28 vehicle brand hubs, pricing estimator, reviews, and online appointment booking.
+- [About Us](https://hypertunegarage.pk/about/): Workshop story, technical expertise across European, Japanese, Korean, Chinese, and American vehicles, inspection rigor, and quality standards.
+- [Services Directory](https://hypertunegarage.pk/services/): Complete directory of all 12 automotive protection, mechanical, diagnostic, electrical, and bodyshop services.
+- [Car Brand Specialists](https://hypertunegarage.pk/brands/): Main directory of dedicated specialist pages covering 28 vehicle brands.
+- [Workshop Locations](https://hypertunegarage.pk/locations/): Addresses, hours, directions, and Rawalpindi valet coverage information.
+- [Book Service Appointment](https://hypertunegarage.pk/book-appointment/): Online booking for diagnostics, pre-purchase inspections, PPF, detailing, periodic maintenance, and repairs.
+- [Contact Us](https://hypertunegarage.pk/contact/): Phone, WhatsApp, email, and quote inquiries for Islamabad and Rawalpindi vehicle owners.
+- [Frequently Asked Questions (FAQ)](https://hypertunegarage.pk/faq/): Technical answers on diagnostics, hybrid batteries, PPF, ceramic coating, transmissions, and pricing.
+- [Transformation Gallery](https://hypertunegarage.pk/gallery/): Completed PPF installations, detailing, engine overhauls, body kits, and paintwork showcase.
+- [Customer Reviews & Testimonials](https://hypertunegarage.pk/testimonials/): Verified customer reviews and workshop feedback.
+- [Automotive Guides & Blog](https://hypertunegarage.pk/blog/): Climate-specific car care, fault troubleshooting, and maintenance guides for Pakistan.
+- [Warranty & Specifications](https://hypertunegarage.pk/warranty-specs/): Warranty terms covering mechanical work, OEM spare parts, TPU PPF, and ceramic coating.
+- [Privacy Policy](https://hypertunegarage.pk/privacy-policy/): Website privacy practices and customer data handling.
+- [Terms & Conditions](https://hypertunegarage.pk/terms-conditions/): Terms governing website use, appointments, and workshop services.
+- [HTML Sitemap](https://hypertunegarage.pk/sitemap/): Browse all 75 pages by category.
+- [XML Sitemap](https://hypertunegarage.pk/sitemap.xml): Machine-readable canonical URL index.
 
-## Featured Brand Specialist Hubs
+## Core Automotive Services
 
-- [BMW Repair & Service Islamabad](https://hypertunegarage.pk/brands/bmw-repair-islamabad/)
-- [Mercedes-Benz Service & Repair Islamabad](https://hypertunegarage.pk/brands/mercedes-service-islamabad/)
-- [Audi Repair & Service Islamabad](https://hypertunegarage.pk/brands/audi-repair-islamabad/)
-- [Porsche Repair & Service Islamabad](https://hypertunegarage.pk/brands/porsche-repair-islamabad/)
-- [Toyota Repair & Service Islamabad](https://hypertunegarage.pk/brands/toyota-repair-islamabad/)
-- [Honda Repair & Service Islamabad](https://hypertunegarage.pk/brands/honda-service-islamabad/)
-- [BYD EV & Hybrid Service Islamabad](https://hypertunegarage.pk/brands/byd-ev-service-islamabad/)
-- [Range Rover Repair & Service Islamabad](https://hypertunegarage.pk/brands/range-rover-service-islamabad/)
+- [Paint Protection Film (PPF)](https://hypertunegarage.pk/services/paint-protection-film-ppf/): CAD plotter pre-cut self-healing TPU PPF in dust-free bays with up to 10-year manufacturer warranty.
+- [Car Detailing](https://hypertunegarage.pk/services/car-detailing/): Multi-stage dual-action paint correction, 9H nano-ceramic coating, interior steam extraction, and leather care.
+- [Engine Services & Overhaul](https://hypertunegarage.pk/services/engine-services/): Complete petrol, turbo, hybrid, and diesel diagnostics, cylinder head repair, timing kits, and master rebuilds.
+- [Inspection & Diagnostics](https://hypertunegarage.pk/services/inspection-diagnostics/): Brand-level computerized fault scanning, 200-point pre-purchase inspections, odometer cross-checks, and paint-depth micron audits.
+- [Maintenance & Servicing](https://hypertunegarage.pk/services/maintenance-servicing/): Scheduled full-synthetic oil changes, genuine OEM filters, fluid checks, and 50-point health reports.
+- [Brake, Suspension & Steering](https://hypertunegarage.pk/services/brake-suspension-steering/): Brake pad/rotor servicing, air and coil suspension rebuilds, steering rack repairs, and 3D laser wheel alignment.
+- [Transmission & Drivetrain](https://hypertunegarage.pk/services/transmission-drivetrain/): Automatic, CVT, DSG/DCT/PDK gearbox diagnostics, mechatronic repairs, fluid flushes, and 4x4 drivetrain service.
+- [Vehicle Wrap](https://hypertunegarage.pk/services/vehicle-wrap/): Cast vinyl color-change wraps in gloss, satin, matte, metallic, and carbon finishes with tucked edges.
+- [Body Repair & Paint](https://hypertunegarage.pk/services/body-repair-paint/): Paintless Dent Repair (PDR), frame alignment, spectrophotometer color matching, and downdraft heated paint booth refinishing.
+- [Body Modification](https://hypertunegarage.pk/services/body-modification/): Custom body kits, wide-body fitment, splitters, diffusers, spoilers, and carbon fiber styling parts.
+- [AC Repair & Electrical Specialist](https://hypertunegarage.pk/services/car-ac-repair/): Automated R134a/R1234yf AC service, compressor and cooling coil repair, parasitic drain tracing, and auto-electrical diagnostics.
+- [Cooling System, Fuel Injection & Exhaust](https://hypertunegarage.pk/services/cooling-fuel-exhaust/): Closed-loop radiator flushing, OAT coolant service, ultrasonic injector cleaning, water pumps, and catalytic converter care.
 
-## Automotive Guides & Knowledge Base
+## Vehicle Brands and Specialist Services
 
-- [PPF vs Ceramic Coating in Pakistan](https://hypertunegarage.pk/blog/ceramic-coating-vs-ppf-pakistan-guide/): In-depth comparison of TPU Paint Protection Film vs 9H ceramic coating for Pakistani driving conditions.
-- [Ceramic Coating Maintenance Guide](https://hypertunegarage.pk/blog/ceramic-coating-maintenance-guide-pakistan/): Proper wash techniques, multi-stage paint correction levels, and water-spot prevention.
-- [P0A80 Hybrid Battery Repair Guide](https://hypertunegarage.pk/blog/p0a80-hybrid-battery-repair-guide-pakistan/): Causes, diagnostic steps, and module balancing vs replacement for Toyota and Honda hybrids.
-- [BMW Drivetrain Malfunction & Check Engine Guide](https://hypertunegarage.pk/blog/bmw-check-engine-light-drivetrain-malfunction-guide/): ISTA fault diagnostics and common drivetrain repairs for BMW vehicles in Pakistan.
-- [Engine Overhaul vs Replacement Guide](https://hypertunegarage.pk/blog/engine-overhaul-vs-engine-replacement-pakistan-guide/): Cost, reliability, and engineering comparison of rebuilding vs swapping an engine.
-- [Car AC Cooling Troubleshooting in Summer](https://hypertunegarage.pk/blog/car-ac-cooling-troubleshooting-pakistan-summer/): Diagnosing weak AC airflow, compressor clutch faults, condenser heat soak, and refrigerant leaks.
-- [Pre-Purchase Car Inspection Checklist](https://hypertunegarage.pk/blog/pre-purchase-car-inspection-checklist-pakistan/): Step-by-step mechanical, OBD, and paint-thickness inspection before buying a car.
-- [Porsche Maintenance & Servicing Guide](https://hypertunegarage.pk/blog/porsche-maintenance-servicing-guide-pakistan/): Servicing intervals, PIWIS diagnostics, and PDK/PASM maintenance in Pakistan.
+HyperTune Garage operates as an independent specialist workshop supporting 28 automotive brands across Islamabad and Rawalpindi:
 
-## Full Documentation & Specifications
+- **[BMW](https://hypertunegarage.pk/brands/bmw-repair-islamabad/):** Independent BMW repair and diagnostics using ISTA-D, ISTA-P, and ICOM Next for 3, 5, 7, X, and M Series—covering B48/B58/N20/N55 engines, VANOS, Valvetronic, ZF 8HP transmissions, oil leak repairs, and PPF.
+- **[Mercedes-Benz](https://hypertunegarage.pk/brands/mercedes-service-islamabad/):** Independent Mercedes-Benz and AMG servicing using Xentry Diagnosis and Star Diagnosis C4/C6 DoIP for C, E, S, G63 AMG, and SUVs—covering Airmatic air suspension, 7G/9G-Tronic gearboxes, M274/M264 timing, and EQ hybrids.
+- **[Audi](https://hypertunegarage.pk/brands/audi-repair-islamabad/):** Independent Audi and VAG servicing using ODIS, VAS 6154 DoIP, and VCDS for A3–A8, Q2–Q8, and RS models—covering S-Tronic/DSG mechatronics, EA888 TFSI oil consumption and carbon walnut blasting, and Quattro maintenance.
+- **[Porsche](https://hypertunegarage.pk/brands/porsche-repair-islamabad/):** Independent Porsche engineering care using PIWIS Tester III for 911, 718, Cayenne, Panamera, Macan, and Taycan—covering PDK dual-clutch servicing, PASM air suspension, coolant pipe upgrades, PCCB/Brembo brakes, and PPF.
+- **[Toyota](https://hypertunegarage.pk/brands/toyota-repair-islamabad/):** Independent Toyota maintenance using Techstream and hybrid load benches for Corolla, Yaris, Fortuner, Hilux Revo, Prado, Land Cruiser LC200/LC300, Prius, and Aqua—covering P0A80 hybrid batteries, 1VD/1GD diesel injectors, KDSS, and CVT-FE fluid service.
+- **[Honda](https://hypertunegarage.pk/brands/honda-service-islamabad/):** Independent Honda servicing using HDS and i-HDS for Civic (including 1.5L Turbo), Vezel Hybrid, City, HR-V, BR-V, Accord, CR-V, and Fit/Grace—covering i-DCD dual-clutch actuator repairs, intake walnut blasting, HCF-2 CVTs, and EPS steering racks.
+- **[Suzuki](https://hypertunegarage.pk/brands/suzuki-repair-islamabad/):** Independent Suzuki servicing using SDT-II for Alto, Cultus, Swift, Wagon R, Jimny, Every, and JDM Kei hybrids—covering AGS actuator calibration, K-Series engine overhauls, EPS column rattles, AC cooling, and suspension rebuilds.
+- **[Hyundai](https://hypertunegarage.pk/brands/hyundai-repair-islamabad/):** Independent Hyundai servicing using GDS-Mobile and VCI-II for Tucson, Elantra, Sonata, Santa Fe Hybrid, Staria, Ioniq, and H-100—covering DCT and 6/8-speed transmissions, Smartstream/Nu engines, EPB calibration, and AWD couplings.
+- **[Kia](https://hypertunegarage.pk/brands/kia-repair-islamabad/):** Independent Kia maintenance using KDS and VCI-II for Sportage, Sorento, Grand Carnival, Stonic, Picanto, Stinger, and EV6—covering Sportage AWD couplings, MDPS steering couplers, V6/CRDi engines, and panoramic sunroof servicing.
+- **[Changan](https://hypertunegarage.pk/brands/changan-repair-islamabad/):** Independent Changan servicing using OEM CAN diagnostic rigs for Oshan X7, Alsvin, Karvaan, Deepal S07/L07, and UNI models—covering 5-speed and 7-speed wet DCT transmissions, Blue Core 1.5T engines, ADAS calibration, and EV checks.
+- **[Haval](https://hypertunegarage.pk/brands/haval-service-islamabad/):** Independent Haval and GWM servicing using GWM factory-grade diagnostic rigs for H6, H6 HEV, Jolion, Tank 500, and Ora 03—covering Dedicated Hybrid Transmission (DHT) diagnostics, 7-speed wet DCTs, AWD systems, and ADAS calibration.
+- **[MG](https://hypertunegarage.pk/brands/mg-repair-islamabad/):** Independent MG maintenance using MG VDS diagnostics for MG HS (1.5T, Trophy AWD, PHEV), MG ZS, MG ZS EV, MG 4/5 EV, and MG GT—covering 7-speed DCT calibration, turbo diagnostics, cooling bleeding, and EV battery health checks.
+- **[BYD](https://hypertunegarage.pk/brands/byd-ev-service-islamabad/):** Independent BYD electric and hybrid servicing using BYD VDS3.0 and insulation testers for Atto 3, Seal, Sealion 6, Song Plus DM-i, Dolphin, Han, and Tang—covering Blade Battery SOH analysis, DM-i powertrains, and DiPilot ADAS calibration.
+- **[Chery](https://hypertunegarage.pk/brands/chery-repair-islamabad/):** Independent Chery and Omoda servicing using ACTECO diagnostic rigs for Tiggo 8 Pro, Tiggo 8 Pro e+ PHEV, Tiggo 4 Pro, Omoda 5, and Arrizo—covering TGDI intake de-coking, 7-speed wet DCTs, CVTs, and climate control repairs.
+- **[Isuzu](https://hypertunegarage.pk/brands/isuzu-dmax-repair-islamabad/):** Independent Isuzu 4x4 and diesel servicing using G-IDSS and Tech 2 for D-Max V-Cross, Hi-Lander, MU-X, and N-Series trucks—covering 4JJ1/4JJ3/RZ4E common-rail diesels, VGT turbos, DPF cleaning, and leaf spring suspensions.
+- **[FAW](https://hypertunegarage.pk/brands/faw-repair-islamabad/):** Independent FAW passenger and light commercial servicing using FAW OBD-II scanners for V2, X-PV, Carrier, Sirius S80, and J5P/J6—covering 1.3L VCT-i engine rebuilds, manual gearboxes, radiator cooling upgrades, and fleet maintenance.
+- **[Daihatsu](https://hypertunegarage.pk/brands/daihatsu-service-islamabad/):** Independent Daihatsu JDM Kei and classic servicing using DS-II and DST-i for Mira, Move, Cast, Tanto, Hijet, Coure, Terios, and Rocky—covering Eco-Idle battery calibration, Amix CVT service, KF-VE/KF-DET engines, and Smart Assist alignment.
+- **[Nissan](https://hypertunegarage.pk/brands/nissan-repair-islamabad/):** Independent Nissan servicing using Consult-III Plus for Note e-Power, X-Trail, Dayz, Juke, Sunny, Navara, Patrol Y62 V8, and GT-R—covering Xtronic CVT repairs with NS-3 fluid, e-Power inverter cooling, and HBMC suspension.
+- **[Mitsubishi](https://hypertunegarage.pk/brands/mitsubishi-repair-islamabad/):** Independent Mitsubishi 4x4 and JDM servicing using MUT-III SE for Pajero, Outlander PHEV, Lancer/Evo, Ek Wagon, Mirage, and L200—covering Super Select 4WD-II actuators, 4M41 diesel injection, PHEV high-voltage care, and INVECS-III CVTs.
+- **[Mazda](https://hypertunegarage.pk/brands/mazda-service-islamabad/):** Independent Mazda SkyActiv servicing using IDS and M-MDS for Mazda 3, Mazda 6, CX-3, CX-5, CX-9, Demio, and MX-5—covering SkyActiv-G walnut intake cleaning, SkyActiv-Drive ATF-FZ transmission service, i-ELOOP, and i-ActivSense calibration.
+- **[Subaru](https://hypertunegarage.pk/brands/subaru-boxer-repair-islamabad/):** Independent Subaru Boxer and AWD care using SSM4 for Forester, Outback, Legacy, XV/Crosstrek, Impreza, WRX/STI, and BRZ—covering Boxer head gaskets, Lineartronic CVTs, Symmetrical AWD transfer clutches, and EyeSight camera calibration.
+- **[Lexus](https://hypertunegarage.pk/brands/lexus-hybrid-repair-islamabad/):** Independent Lexus luxury and hybrid care using Lexus Techstream for LX570, LX600, RX, NX, ES, GX, and LS—covering P0A80 hybrid battery balancing, AHC hydraulic suspension bleeding, V8/Twin-Turbo V6 engines, and Mark Levinson audio repair.
+- **[Land Rover](https://hypertunegarage.pk/brands/land-rover-repair-islamabad/):** Independent Land Rover servicing using JLR Pathfinder DoIP and SDD for Defender (L663 and Classic), Discovery 3/4/5, and Freelander—covering air suspension rebuilds, Ingenium timing chains, Terrain Response 4x4, and ZF 8HP gearboxes.
+- **[Range Rover](https://hypertunegarage.pk/brands/range-rover-service-islamabad/):** Independent Range Rover luxury SUV care using JLR Pathfinder DoIP and SDD for Vogue, Sport, Velar, Evoque, and PHEVs—covering Dynamic Air Suspension, ARC hydraulics, 5.0L Supercharged V8 cooling upgrades, and deployable side steps.
+- **[Jeep](https://hypertunegarage.pk/brands/jeep-repair-islamabad/):** Independent Jeep 4x4 servicing using Chrysler/Stellantis wiTECH 2.0 and MicroPod II for Wrangler, Grand Cherokee, Gladiator, Cherokee, and Compass—covering death wobble fixes, Pentastar V6 oil coolers, Quadra-Lift suspension, and Dana axles.
+- **[Ford](https://hypertunegarage.pk/brands/ford-service-islamabad/):** Independent Ford servicing using FDRS, IDS, and VCM-3 for F-150/Raptor, Ranger/Raptor, Everest, Mustang, and Explorer—covering EcoBoost carbon cleaning, 10R80 10-speed Mercon ULV servicing, wet timing belts, and Fox Live Valve suspension.
+- **[Chevrolet](https://hypertunegarage.pk/brands/chevrolet-repair-islamabad/):** Independent Chevrolet and GM servicing using GDS2, MDI-2, and Tech2 for Tahoe, Suburban, Silverado, Corvette C7/C8, Camaro, Captiva, Cruze, and Joy—covering V8 AFM/DFM lifter repairs, 8L90/10L80 transmissions, and MagneRide dampers.
+- **[Volvo](https://hypertunegarage.pk/brands/volvo-repair-islamabad/):** Independent Volvo servicing using VIDA and DiCE/VOE DoIP for XC90, XC60, XC40 Recharge, S90, S60, V90, and C40—covering T8 Twin-Engine PHEV and ERAD servicing, Drive-E twin-charged engines, Four-C air suspension, and IntelliSafe calibration.
 
-- [LLMs Full Reference Document](https://hypertunegarage.pk/llms-full.txt): Complete in-depth knowledge base, all 12 service specifications, and direct resource links for AI systems.
+## Full Machine-Readable Reference
+
+- [LLMs Full Reference Document](https://hypertunegarage.pk/llms-full.txt): Detailed business specifications, all 12 core services, full 28-brand model coverage, diagnostic equipment, specialist repairs, and pre-purchase inspection protocols.

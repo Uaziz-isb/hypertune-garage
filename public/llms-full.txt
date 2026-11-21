@@ -1,105 +1,393 @@
-# HyperTune Garage - Full Automotive Technical Knowledge Base & Service Specifications
+# HyperTune Garage — Performance • Protection • Perfection (Full Technical Reference)
 
-> HyperTune Garage is Pakistan's premier specialized automotive workshop, computerized diagnostics studio, Paint Protection Film (PPF) application center, and European/Japanese luxury car care facility located in Islamabad (with Rawalpindi coverage via insured valet pickup while our Rawalpindi branch is under development).
+> HyperTune Garage is an independent automotive workshop, computerized diagnostics studio, Paint Protection Film (PPF) center, detailing facility, and multi-brand mechanical repair garage in Islamabad serving Islamabad and Rawalpindi. Official website: https://hypertunegarage.pk/
 
-## Business Profile & Metadata
+---
+
+## Business Profile & Independent Workshop Identity
 
 - **Name:** HyperTune Garage
-- **Industry:** Automotive Repair, Car Detailing, Paint Protection Film (PPF), German & Hybrid Vehicle Diagnostics, Body Modification
-- **Hotline / Phone:** +92 333 0177717 (WhatsApp & Call)
+- **Status:** Independent Multi-Brand Automotive Workshop & Protection Studio (not an authorized manufacturer dealership or OEM-affiliated facility)
+- **Official Website:** https://hypertunegarage.pk/
+- **Official Slogan:** Performance • Protection • Perfection
+- **Service Coverage:** Islamabad and Rawalpindi (in-workshop service at Islamabad Flagship Hub; insured valet vehicle collection and delivery across Islamabad, Rawalpindi, DHA, and Bahria Town)
+- **Hotline / WhatsApp / Phone:** +92 333 0177717
 - **Email:** info@hypertunegarage.pk
-- **Operating Hours:** Saturday - Thursday: 10:00 AM - 10:00 PM (Friday Closed - applies to Islamabad Flagship Hub)
-- **Locations:**
-  - **Islamabad Flagship Hub (Open & Operating):** Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan — https://hypertunegarage.pk/locations/islamabad-workshop/
-  - **Rawalpindi Hub (Coming Soon):** Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup — https://hypertunegarage.pk/locations/rawalpindi-workshop/
-- **Primary Website:** https://hypertunegarage.pk/
+- **Operating Hours:** Saturday – Thursday: 10:00 AM – 10:00 PM (Friday Closed — applies to Islamabad Flagship Hub)
 - **Google Rating:** 4.8 / 5.0 Stars
+
+### Workshop Locations & Facilities
+- **Islamabad Flagship Hub (Open & Operating):** Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan — https://hypertunegarage.pk/locations/islamabad-workshop/
+  - **Facility Specifications:** Computerized PPF CAD plotter & dust-free wrap studio, 8 hydraulic vehicle lifts with low-profile ramps, Italian 3D laser wheel alignment station, dust-free 9H ceramic coating & PPF clean room, dedicated automotive electronics & computerized diagnostics lab, and air-conditioned VIP customer lounge with Wi-Fi & espresso.
+- **Rawalpindi Hub (Coming Soon):** Currently serving Rawalpindi customers through the Islamabad Flagship Hub with insured valet pickup — https://hypertunegarage.pk/locations/rawalpindi-workshop/
+
+### General Workshop Quality & Pre-Purchase Standards
+- **Spare Parts & Lubricants:** Verifiable OEM boxed parts or Tier-1 German/Japanese supplier components paired with factory-spec synthetic oils, coolants, and transmission fluids.
+- **Transparency & Approvals:** Computerized diagnostic scan, itemized quote approval, and WhatsApp video inspection reports before major repair work proceeds.
+- **Warranty:** Up to 12-month / 15,000 km written warranty on qualifying mechanical overhauls and parts, plus 5 to 10-year manufacturer warranty on imported aliphatic TPU Paint Protection Film (PPF) packages (full terms at https://hypertunegarage.pk/warranty-specs/).
+- **General Pre-Purchase Inspection Protocol (https://hypertunegarage.pk/services/inspection-diagnostics/):** Used across vehicles inspected at the workshop, combining a full-system ECU fault and shadow-code scan, odometer mileage cross-checking across TCM/ABS/airbag/immobilizer modules, digital paint-thickness micrometer inspection for body filler or repaints, hydraulic undercarriage lift structural audit, fluid and cooling pressure checks, and a digital PDF report delivered with photos.
 
 ---
 
 ## Detailed Service Catalog (All 12 Core Services)
 
-### 1. Paint Protection Film (PPF) Installation
-- **URL:** https://hypertunegarage.pk/services/paint-protection-film-ppf/
-- **Description:** High-grade optical TPU (Thermoplastic Polyurethane) film application offering heat-activated scratch self-healing, stain resistance, and UV rejection.
-- **Technology:** Computer-aided design (CAD) plotter pre-cut film to ensure blade-free installation on vehicle paintwork.
-- **Warranty:** Written warranty coverage against bubbling, cracking, and yellowing.
-- **Packages:**
-  - Front Package (Bumper, Hood, Fenders, Side Mirrors, Headlights)
-  - Full Vehicle Wrap (Gloss or Stealth Satin Matte Finish)
-  - Interior Screen & Piano Black Trim Protection
+### 1. Paint Protection Film (PPF)
+- **Canonical URL:** https://hypertunegarage.pk/services/paint-protection-film-ppf/
+- **Estimated Price Range & Time:** PKR 10,000 – PKR 250,000 | 2 – 4 Days
+- **Overview:** Optical aliphatic self-healing TPU Paint Protection Film installed in a dust-free climate-controlled clean room using CAD plotter pre-cut vehicle templates (blade-free on paintwork), seamless edge wrapping, and infrared thermal curing. Backed by up to 10-year manufacturer warranty against yellowing, cracking, bubbling, and peeling.
 
 ### 2. Car Detailing & 9H Ceramic Coating
-- **URL:** https://hypertunegarage.pk/services/car-detailing/
-- **Description:** Multi-stage rotary and dual-action paint correction followed by liquid quartz / graphene 9H ceramic coating, interior leather conditioning, steam sanitization, and engine bay detailing.
-- **Features:** Swirl & oxidation removal, high-angle hydrophobic water beading, UV protection, and deep cabin restoration.
+- **Canonical URL:** https://hypertunegarage.pk/services/car-detailing/
+- **Estimated Price Range & Time:** PKR 10,000 – PKR 45,000 | 1 – 2 Days
+- **Overview:** Snow foam decontamination wash, iron fallout removal, clay-bar treatment, digital paint micron audit, multi-stage dual-action paint correction (eliminating 95%+ swirl marks), 9H nano-ceramic coating (2–5 years durability), 140°C interior dry steam extraction, leather conditioning, ozone odor sterilization, engine bay detailing, and headlight UV restoration.
 
-### 3. Engine Repair & Mechanical Overhauls
-- **URL:** https://hypertunegarage.pk/services/engine-services/
-- **Description:** Complete rebuilds and repairs for petrol, turbocharged, hybrid, and diesel engines to factory torque specs with OEM pistons, rings, bearings, timing kits, and gaskets.
-- **Precision Equipment:** Cylinder honing, micrometer crank inspection, compression & leak-down testing, and cylinder head resurfacing.
+### 3. Engine Services & Overhaul
+- **Canonical URL:** https://hypertunegarage.pk/services/engine-services/
+- **Estimated Price Range & Time:** PKR 8,000 – PKR 180,000 | 1 – 5 Days
+- **Overview:** Petrol, turbocharged, hybrid, and diesel engine diagnostics, cylinder compression and leak-down testing, borescope checks, ultrasonic block/head cleaning, 0.001mm precision block honing and deck resurfacing, timing belt/chain replacement, head gasket repair, and full rebuilds using genuine OEM internal parts with a 12-month / 15,000 km written warranty.
 
-### 4. Computerized Diagnostics & Pre-Purchase Inspection
-- **URL:** https://hypertunegarage.pk/services/inspection-diagnostics/
-- **OEM Diagnostic Systems:**
-  - BMW ISTA+ & INPA
-  - Mercedes-Benz XENTRY & DAS
-  - Audi / Porsche / VW VAG ODIS & PIWIS
-  - Toyota / Lexus Techstream
-- **Capabilities:** ECU coding, module programming, paint-thickness micrometer inspection, and digital pre-purchase vehicle health reports.
+### 4. Inspection & Diagnostics
+- **Canonical URL:** https://hypertunegarage.pk/services/inspection-diagnostics/
+- **Estimated Price Range & Time:** PKR 1,500 – PKR 10,000 | 1 – 3 Hours
+- **Overview:** Brand-level computerized diagnostics (using BMW ISTA, Mercedes Xentry, Audi ODIS, Porsche PIWIS III, Toyota Techstream, Autel MaxiSys Elite, and brand-specific platforms listed below) plus 200-point pre-purchase inspections with digital paint-depth micron audits, odometer tampering cross-checks, hydraulic lift chassis inspection, cylinder scope options, hybrid battery cell load analysis, mobile on-site inspection options, and digital PDF reporting.
 
-### 5. Periodic Maintenance & Lube Service
-- **URL:** https://hypertunegarage.pk/services/maintenance-servicing/
-- **Description:** Factory-scheduled periodic servicing using genuine synthetic motor oils, OEM oil/air/cabin filters, spark plugs, brake fluid flushes, and multi-point mechanical inspections.
+### 5. Maintenance & Servicing
+- **Canonical URL:** https://hypertunegarage.pk/services/maintenance-servicing/
+- **Estimated Price Range & Time:** PKR 1,000 – PKR 20,000 | 45 Mins – 2 Hours
+- **Overview:** Express periodic servicing using imported API SP / ACEA synthetic oils (0W-20, 5W-30, 5W-40 from Liqui Moly, Mobil 1, Shell Helix Ultra, Total Quartz), OEM oil/air/cabin/fuel filters, spark plug replacement, 50/50 OAT coolant top-ups, maintenance light resets, and a 50-point digital vehicle health report.
 
-### 6. Brakes, Suspension & 3D Wheel Alignment
-- **URL:** https://hypertunegarage.pk/services/brake-suspension-steering/
-- **Features:** High-definition 3D camera wheel alignment, brake pad & rotor servicing, AIRMATIC / hydraulic air suspension diagnostics, steering rack repair, and control-arm bushing overhauls.
+### 6. Brake, Suspension & Steering
+- **Canonical URL:** https://hypertunegarage.pk/services/brake-suspension-steering/
+- **Estimated Price Range & Time:** PKR 1,000 – PKR 50,000 | 2 – 5 Hours
+- **Overview:** Ceramic brake pad upgrades, on/off-car precision brake lathe rotor resurfacing, hydraulic bushing presses, control arm/ball joint/shock absorber replacements, electronic air suspension compressor and strut rebuilding, EPS/steering rack repair, and Italian 3D laser wheel alignment with before-and-after angle reports.
 
-### 7. Transmission & Automatic Gearbox Services
-- **URL:** https://hypertunegarage.pk/services/transmission-drivetrain/
-- **Gearbox Types:** CVT, Dual-Clutch Transmission (DSG / S-Tronic / DCT / PDK / i-DCD), Traditional Torque Converter, and AWD/4x4 drivetrains.
-- **Services:** Solenoid testing, valve body repair, mechatronics adaptation & programming, clutch pack replacement, and full fluid servicing.
+### 7. Transmission & Drivetrain
+- **Canonical URL:** https://hypertunegarage.pk/services/transmission-drivetrain/
+- **Estimated Price Range & Time:** PKR 8,000 – PKR 85,000 | 1 – 4 Days
+- **Overview:** Diagnostics, fluid exchanges, valve body solenoid repair, mechatronic calibration, clutch adaptation relearns, and complete rebuilds for CVT, dry/wet Dual-Clutch (DSG, S-Tronic, DCT, PDK, Honda i-DCD), AGS, and torque-converter automatic gearboxes, plus 4x4 transfer case and differential servicing.
 
-### 8. Vehicle Wrap & Vinyl Color Change
-- **URL:** https://hypertunegarage.pk/services/vehicle-wrap/
-- **Capabilities:** Cast vinyl color-change wraps in gloss, satin, matte, and metallic finishes, roof wraps, de-chrome / chrome-delete trims, and partial accent styling.
+### 8. Vehicle Wrap
+- **Canonical URL:** https://hypertunegarage.pk/services/vehicle-wrap/
+- **Estimated Price Range & Time:** PKR 1,000 – PKR 250,000 | 2 – 4 Days
+- **Overview:** Reversible cast vinyl color-change wraps (gloss, satin, matte, metallic, chrome, carbon fiber) using Avery Dennison, 3M, KPMF, and Inozetek films, roof wraps, chrome-delete trims, trim disassembly, deep edge tucking, and 90°C post-heating.
 
-### 9. Denting, Painting & Accident Body Repair
-- **URL:** https://hypertunegarage.pk/services/body-repair-paint/
-- **Capabilities:** Downdraft thermal-bake spray booth, computerized spectrophotometer OEM paint color matching, Paintless Dent Repair (PDR), panel beating, and structural frame realignment.
+### 9. Body Repair & Paint
+- **Canonical URL:** https://hypertunegarage.pk/services/body-repair-paint/
+- **Estimated Price Range & Time:** PKR 5,000 – PKR 100,000 | 2 – 5 Days
+- **Overview:** Hydraulic chassis alignment, Paintless Dent Repair (PDR), rust treatment, digital spectrophotometer color matching with European Standox/PPG/Glasurit systems, pressurized downdraft 65°C–70°C thermal bake spray booth painting, wet sanding, and insurance claim repair support.
 
-### 10. Body Modification & Custom Body Kits
-- **URL:** https://hypertunegarage.pk/services/body-modification/
-- **Modifications:** OEM and aftermarket ABS, PP, and carbon fiber body kits, front splitters, rear diffusers, side skirts, spoilers, and custom facelift conversions.
+### 10. Body Modification
+- **Canonical URL:** https://hypertunegarage.pk/services/body-modification/
+- **Estimated Price Range & Time:** PKR 5,000 – PKR 300,000 | 2 – 7 Days
+- **Overview:** Custom fitment and paint-matched installation of wide-body kits, front splitters, side skirts, rear diffusers, spoilers, carbon fiber hoods, grilles, LED projector lighting upgrades, and exhaust tip/heat-shield integration.
 
-### 11. Car AC Repair & Auto Electrical Specialist
-- **URL:** https://hypertunegarage.pk/services/car-ac-repair/
-- **Vehicles Serviced:** All German, European, Japanese, Korean, Chinese, and hybrid/EV market vehicles.
-- **Services:** Automated R134a / R1234yf refrigerant recovery and recharge, compressor overhaul, cooling coil leak detection, climate-control flap repair, and computerized auto-electrical wiring diagnostics.
+### 11. AC Repair & Electrical Specialist
+- **Canonical URL:** https://hypertunegarage.pk/services/car-ac-repair/
+- **Estimated Price Range & Time:** PKR 5,000 – PKR 65,000 | 2 – 8 Hours
+- **Overview:** Automated R134a and R1234yf recovery/recharge with pure virgin refrigerant and PAG/POE oils, dry nitrogen pressure leak testing, compressor/cooling coil overhauls, ozone vent sterilization, oscilloscope auto-electrical fault tracing, parasitic battery drain diagnosis, alternator/starter rebuilds, and ECU/BCM coding.
 
-### 12. Cooling, Fuel Injection & Exhaust Systems
-- **URL:** https://hypertunegarage.pk/services/cooling-fuel-exhaust/
-- **Services:** Radiator flushing and OAT coolant conversion, thermostat & water pump replacement, ultrasonic fuel injector testing & cleaning, catalytic converter care, and exhaust repair.
+### 12. Cooling System, Fuel Injection & Exhaust
+- **Canonical URL:** https://hypertunegarage.pk/services/cooling-fuel-exhaust/
+- **Estimated Price Range & Time:** PKR 8,000 – PKR 55,000 | 2 – 6 Hours
+- **Overview:** Closed-loop chemical radiator flushing, OAT coolant conversion, water pump and thermostat replacement, combustion leak testing, heated ultrasonic fuel injector cleaning and flow-bench balancing, oxygen sensor diagnostics, and pressurized catalytic converter decarbonizing washes.
+
+---
+
+## Vehicle Brands and Specialist Services (All 28 Published Brands)
+
+### 1. BMW
+- **Canonical URL:** https://hypertunegarage.pk/brands/bmw-repair-islamabad/
+- **Supported Vehicle Models:** BMW 3 Series (E46, E90, F30, G20 — 318i, 320i, 328i, 330e Hybrid, M340i); BMW 5 Series (E60, F10, G30 — 520i, 528i, 530e, 535i, 540i, M550i); BMW 7 Series (F01/F02, G11/G12 — 730Li, 740Li, 750Li, ActiveHybrid 7); BMW X-Series (X1, X3, X5 E70/F15/G05, X6, X7 xDrive); BMW M Performance (M2, M3, M4, M5, X5M with S55/S58/S63 V8 Biturbo); BMW 4 Series & 6 Series Gran Coupé.
+- **Specialist Maintenance & Repair Services:** BMW ECU module coding and DME diagnostics; B38, B48, B58, N20, N55, and S58 engine rebuilding and timing calibration; VANOS camshaft solenoid and Valvetronic eccentric shaft servo motor replacement and limit learning; oil filter housing, valve cover, oil pan, and turbo oil-line leak remediation; ZF 6HP and 8HP transmission fluid flushes (ZF Lifeguard Fluid 8), pan filter changes, and mechatronic adaptation; Dynamic Drive and Adaptive M suspension servicing; high-pressure fuel pump (HPFP) and injector testing.
+- **Diagnostic Capabilities & Equipment:** BMW ISTA-D (Integrated Service Technical Application - Diagnostics), BMW ISTA-P (Programming), ICOM Next Optical Diagnostic Rig.
+- **Relevant Vehicle Systems:** Turbocharged petrol and plug-in hybrid engines (B38, B48, B58, N20, N55, S55, S58, S63), VANOS/Valvetronic valvetrain, cooling/thermostat circuits, HPFP and piezo/solenoid fuel injection, ZF 6HP/8HP transmissions, xDrive AWD, Dynamic Drive active anti-roll bars, and Adaptive M suspension.
+- **Pre-Purchase Inspection & Diagnostics:** Uses BMW ISTA-D/ISTA-P and ICOM Next for full control-unit fault scans, DME shadow-code retrieval, wastegate and HPFP testing, plus video inspection reporting, alongside HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol (paint-depth audit, hydraulic lift chassis check, mileage verification, and PDF report).
+- **Other Capabilities:** CAD pre-cut self-healing TPU Paint Protection Film (PPF) for BMW M and X Series; OEM BMW and Tier-1 German supplier parts (Bosch, Lemförder, ZF, Mahle, Victor Reinz, Elring); insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 6,000 – PKR 350,000.
+
+### 2. Mercedes-Benz
+- **Canonical URL:** https://hypertunegarage.pk/brands/mercedes-service-islamabad/
+- **Supported Vehicle Models:** Mercedes-Benz C-Class (W203, W204, W205, W206 — C180, C200, C250, C300, C43 AMG); E-Class (W211, W212, W213 — E200, E220d, E250, E300, E350e Hybrid, E63s); S-Class (W221, W222, W223 — S350, S400 Hybrid, S500, S560, S580, Maybach); SUV Family (GLA, GLB, GLC, GLE, GLS, ML350, GL500); Mercedes-AMG Performance Line (A45, C63s, E63s, G63 AMG 4.0L V8 Biturbo); CLA & CLS 4-Door Coupé; Mercedes EQ (EQA, EQB, EQC, EQS) and plug-in hybrids noted in workshop FAQs.
+- **Specialist Maintenance & Repair Services:** M270, M271, M274, M264, M276, M157, and M177/M178 AMG V8 Biturbo engine overhauls; camshaft adjuster sprocket and hydraulic timing chain tensioner replacement; 7G-Tronic (722.9) and 9G-Tronic (725.0) ATF 134 FE / ATF 9134 fluid flushes, conductor plate sensor repair, and valve body cleaning; Airmatic and ABC suspension leak detection, air bellow replacement, compressor rebuilds, and 4-corner calibration; auxiliary battery/SAM resets; ME9/MED17 ECU and EIS electronic key diagnostics; EQ/hybrid cooling loop and charging diagnostics; Distronic Plus, 360-camera, and Active Brake Assist calibration; genuine 229.5 / 229.51 engine oil servicing.
+- **Diagnostic Capabilities & Equipment:** Mercedes-Benz Xentry Diagnosis, DAS (Diagnostic Assistance System), Star Diagnosis C4/C6 DoIP Rig, ultrasonic air-leak detectors.
+- **Relevant Vehicle Systems:** Petrol, diesel, plug-in hybrid, EQ electric, and AMG Biturbo powertrains; camshaft timing assemblies; 7G-Tronic and 9G-Tronic automatic transmissions; Airmatic and ABC hydraulic/pneumatic suspension; Brembo carbon/steel brakes; SAM, ME9/MED17, EIS, and ADAS radar/camera systems.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Mercedes-Benz Xentry / Star Diagnosis C4/C6 DoIP for deep control-unit fault scanning, pneumatic pressure test routines, SCN/module verification, and video inspection reports, supported by HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for Mercedes G63, S-Class, and luxury models; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 6,000 – PKR 380,000.
+
+### 3. Audi
+- **Canonical URL:** https://hypertunegarage.pk/brands/audi-repair-islamabad/
+- **Supported Vehicle Models:** Audi A3 & S3 (1.4L TFSI, 1.8L TFSI, 2.0L TFSI S-Tronic); A4 & S4 (B7, B8, B9 — 1.8T, 2.0 TFSI, 3.0T V6 Supercharged/Turbo); A5 & S5 Sportback/Coupé; A6 & A7 (C6, C7, C8 — 2.0 TFSI, 3.0 TFSI V6 Quattro); A8 & A8L (Matrix LED, Quattro); Q-Series (Q2, Q3, Q5, Q7 3.0T/TDI, Q8); Audi RS Performance (RS3, RS5, RS6 Avant, RS7, Audi R8 V10).
+- **Specialist Maintenance & Repair Services:** Component protection removal and module flashing; EA888 Gen 2/Gen 3/Gen 4 TFSI engine rebuilding, timing chain/tensioner replacement, PCV separator upgrades, and piston ring oil-consumption rectification; intake port/valve carbon removal via walnut shell blasting; S-Tronic / DSG (DQ200, DQ250, DQ381, DQ500, DL501) mechatronic circuit repair, solenoid pressure calibration, dual-clutch servicing, and kiss-point relearn; Adaptive Air Suspension compressor and strut calibration; Quattro Torsen/Haldex/Ultra AWD differential and transfer case fluid service (Audi G055/G060).
+- **Diagnostic Capabilities & Equipment:** Audi ODIS (Offboard Diagnostic Information System), VAS 6154 DoIP Interface, and Ross-Tech VCDS Hex-V2.
+- **Relevant Vehicle Systems:** TFSI direct-injection and TDI engines, timing and PCV systems, S-Tronic/DSG dual-clutch transmissions and mechatronics, Quattro AWD differentials and Haldex couplings, Adaptive Air Suspension, Matrix LED and VAG electronic modules.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Audi ODIS and VCDS for guided fault finding, mechatronic/TFSI live-data auditing, and video inspection reports, integrated with HyperTune Garage's general 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for Audi A5, A7, Q8, and lineup; 6 to 12-month written warranty on mechatronic/module repairs; insured valet pickup. Estimated price range: PKR 5,000 – PKR 360,000.
+
+### 4. Porsche
+- **Canonical URL:** https://hypertunegarage.pk/brands/porsche-repair-islamabad/
+- **Supported Vehicle Models:** Porsche 911 (996, 997, 991, 992 — Carrera, Carrera S, 4S, Turbo, Turbo S, GT3); 718 Cayman & Boxster (2.0T, 2.5T, GTS 4.0); Cayenne (958/9PA, 92A, 9YA — 3.0 V6, 3.6 V6, 4.8 V8, 4.0TT V8, E-Hybrid); Panamera (Panamera 4, 4S, GTS, Turbo, Turbo S E-Hybrid); Macan (2.0T, Macan S 3.0T, GTS, Turbo); Porsche Taycan 100% Electric (4S, Turbo, Turbo S).
+- **Specialist Maintenance & Repair Services:** Flat-6 (3.0T, 3.8L, 4.0L) and V6/V8 twin-turbo engine overhauls; Cayenne/Panamera aluminum coolant valley pipe upgrades, GT3/Turbo coolant pipe pinning/welding, and IMS bearing inspection/ceramic retrofits on naturally aspirated 996/997/Boxster engines; PDK 7-speed and 8-speed dual-chamber clutch/gear oil service (Mobilube/Pentosin FFL) and calibration; Cayenne/Macan transfer case servicing; PASM air suspension repair, nitrogen charging, and corner height calibration; PCCB ceramic and 6-piston Brembo brake servicing; DFI spark plug/coil service; Porsche A40/C40 Mobil 1 oil servicing.
+- **Diagnostic Capabilities & Equipment:** Porsche PIWIS Tester III (Porsche Integrated Workshop Information System) & PT3G VCI Diagnostic Rig.
+- **Relevant Vehicle Systems:** Flat-6 and twin-turbo V6/V8/E-Hybrid engines, Taycan high-voltage EV powertrain, PDK dual-clutch transmission, multi-plate AWD transfer cases, PASM active air suspension, Sport Chrono, and PCCB/Brembo braking systems.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Porsche PIWIS Tester III for full DME, PDK, PASM, PDCC, and PTV live telemetry, module handshakes, and video inspection reports, combined with HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Custom CAD pattern self-healing TPU Paint Protection Film (PPF) for 911, GT3, 718, Taycan, Macan, and Cayenne with wrapped aerodynamic edges; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 10,000 – PKR 500,000.
+
+### 5. Toyota
+- **Canonical URL:** https://hypertunegarage.pk/brands/toyota-repair-islamabad/
+- **Supported Vehicle Models:** Toyota Corolla (Gli, Altis 1.6, Grande 1.8, Cross Hybrid); Yaris (1.3L & 1.5L ATIV X CVT); Fortuner (2.7L Petrol, 2.8L 1GD-FTV Sigma 4 Diesel, Legender); Hilux (Revo, Rocco, GR-Sport 1GD-FTV); Land Cruiser (LC70, LC100, LC200 V8 1VD-FTV, LC300 V35A 3.5TT); Prado (1KZ, 1KD, 2TR, 1GD-FTV TX/TZ-G); Prius & Aqua Hybrid (NHW20, ZVW30, ZVW50, NHP10); Camry Hybrid & Crown Hybrid (2.5L THS-II Dynamic Force).
+- **Specialist Maintenance & Repair Services:** P0A80 NiMH and lithium-ion hybrid battery cell load analysis, weak-module replacement, rebalancing, and cooling blower cleaning; 1GD/2GD/1VD/1KD turbo diesel engine overhauls, common rail injector bench testing and ECU compensation coding, turbo actuator calibration, and EGR decoking; Super CVT-i (Toyota CVT Fluid FE/TC) and 6/8/10-speed automatic transmission flushes; brake booster assembly overhaul and ABS actuator coding; KDSS hydraulic pressure equalization and air suspension service; 4WD transfer case actuator repairs and GL-5 differential oil service; Super Long Life Coolant flushes.
+- **Diagnostic Capabilities & Equipment:** Toyota Techstream OEM Diagnostic Suite, Denso Intelligent Tester II & High-Voltage Battery Load Bench.
+- **Relevant Vehicle Systems:** Petrol, hybrid (THS-II), twin-turbo V6 (V35A), and common-rail turbo diesel (1GD, 2GD, 1KD, 1VD) engines; high-voltage NiMH/Li-ion hybrid batteries; Super CVT-i and automatic transmissions; KDSS hydraulic and air suspension; 4WD transfer cases and ABS actuators.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Toyota Techstream and the High-Voltage Battery Load Bench for hybrid cell impedance/load evaluation, diesel injector pilot-learning diagnostics, full ECU fault checks, and video inspection reports, paired with HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for Fortuner, Revo, and Land Cruiser; genuine Toyota OEM parts and fluids; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 3,500 – PKR 180,000.
+
+### 6. Honda
+- **Canonical URL:** https://hypertunegarage.pk/brands/honda-service-islamabad/
+- **Supported Vehicle Models:** Honda Civic (Reborn, Rebirth, Turbo RS Gen 10 1.5T, Gen 11 1.5T Oriel/RS, e:HEV); Vezel Hybrid (RU3/RU4 1.5L i-DCD Dual-Clutch); City (i-DSI, i-VTEC 1.3L/1.5L, GM6, GN2 Aspire); HR-V (1.5L VTEC, VTEC Turbo, e:HEV); BR-V (1.5L i-VTEC 7-Seater); Accord (CL9, CU2, CR2, CV1 1.5T Turbo / 2.0 Hybrid); CR-V (2.0L, 2.4L & 1.5T AWD); Fit & Grace Hybrid (GP5, GM4 Sport Hybrid i-DCD); Shuttle (referenced in i-DCD FAQ).
+- **Specialist Maintenance & Repair Services:** Honda Vezel/Grace/Fit/Shuttle i-DCD dry dual-clutch actuator DOT 4 hydraulic fluid flush, bleeding, and clutch kiss-point/stroke relearn; Civic 1.5L VTEC Turbo intake valve walnut blasting, GDI injector ultrasonic cleaning, and intercooler/blow-off valve inspection; Honda CVT fluid flush (Genuine HCF-2 / Ultra ATF-DW1) with dual filters and solenoid learning; Electronic Power Steering (EPS) rack bushing rebuilds and torque sensor zero-point calibration; Earth Dreams timing chain service, valve clearance adjustment, and e:HEV IPU lithium battery/inverter cooling servicing.
+- **Diagnostic Capabilities & Equipment:** Honda HDS (Honda Diagnostic System), GNA600 & i-HDS Diagnostic Rig.
+- **Relevant Vehicle Systems:** i-VTEC, VTEC Turbo (Earth Dreams L15B7), and e:HEV dual-motor hybrid engines; i-DCD dual-clutch and Honda CVT transmissions; GDI direct injection; Electronic Power Steering (EPS) racks; Intelligent Power Unit (IPU) and hybrid cooling loops.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Honda HDS / i-HDS for i-DCD clutch stroke telemetry, fuel-trim/misfire auditing, EPS/module fault scanning, and video inspection reports, combined with HyperTune Garage's general 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for Civic RS and Vezel; genuine Honda HCF-2 fluids and NGK Laser Iridium plugs; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 3,500 – PKR 160,000.
+
+### 7. Suzuki
+- **Canonical URL:** https://hypertunegarage.pk/brands/suzuki-repair-islamabad/
+- **Supported Vehicle Models:** Suzuki Alto (660cc Japanese & PKDM VXR/VXL/AGS); Cultus (VXL & AGS 1.0L K10B); Swift (1.3L M13A, 1.2L DualJet K12M, 1.0L/1.4L Boosterjet Turbo); Wagon R (1.0L K10B PKDM & JDM Stingray Turbo Hybrid); Jimny / Sierra (660cc Turbo & 1.5L K15B 4x4); Every & Bolan (DA64V, DA17V JDM Van & PKDM); Hustler, Spacia & Lapin (JDM Mild Hybrid S-ENE Charge).
+- **Specialist Maintenance & Repair Services:** AGS Auto Gear Shift hydraulic pump diagnostics, actuator solenoid cleaning, clutch pack replacement, and clutch stroke calibration; K-Series (K6A, R06A, K10B, K10C, K12M) engine overhauls, tappet adjustment, throttle/injector cleaning, and catalytic converter decarbonizing washes; manual/auto/JDM CVT (Suzuki Green-2) fluid service; JDM Ene-Charge auxiliary lithium battery testing and turbocharger inspection; EPS steering column polyurethane coupler rebuilds; heavy-duty suspension bushing and 3D alignment service; sub-5°C AC condenser/clutch/R134a overhaul.
+- **Diagnostic Capabilities & Equipment:** Suzuki Diagnostic Tester II (SDT-II) & Global OBD-II High-Speed CAN Interface.
+- **Relevant Vehicle Systems:** K-Series and JDM 660cc naturally aspirated, turbo, and S-ENE Charge mild-hybrid engines; AGS automated manual, CVT, and manual transmissions; EPS steering columns; catalytic converters and O2 sensors; AC and suspension systems.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Suzuki SDT-II for full-system health scans, AGS/CVT parameter audits, DTC checks, and video inspection reports, supported by HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Paint correction, ceramic coating, and front-end PPF for Suzuki Swift and Jimny; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 2,500 – PKR 75,000.
+
+### 8. Hyundai
+- **Canonical URL:** https://hypertunegarage.pk/brands/hyundai-repair-islamabad/
+- **Supported Vehicle Models:** Hyundai Tucson (2.0L MPI Petrol AWD/FWD & 1.6T DCT & Hybrid); Elantra (1.6L GL & 2.0L GLS 6-Speed Auto); Sonata (2.0L & 2.5L Smartstream Luxury Sedan); Santa Fe (1.6L Turbo Hybrid AWD & 2.4L/3.5L Petrol); Staria (3.5L V6 Petrol & 2.2L CRDi Diesel 11-Seater); Ioniq Hybrid & Ioniq 5 Electric (EV Diagnostics); Grand Starex & H-100 Porter Commercial Fleet.
+- **Specialist Maintenance & Repair Services:** Hyundai ECU firmware updates and bi-directional diagnostics; Tucson and Sonata dry/wet 7-speed and 8-speed DCT clearance measurement, actuator rod adjustment, gear oil service, and touch-point adaptation; 6/8-speed automatic transmission servicing; Smartstream, Theta II, Nu, and CRDi turbo diesel maintenance and borescope oil-consumption diagnostics; Santa Fe/Tucson Hybrid and Ioniq EV high-voltage checks, HSG, and low-conductivity coolant flushes; Magna electronic AWD coupling oil/pump seal repair; Electronic Parking Brake (EPB) calibration; EPS, 3D alignment, and brake servicing.
+- **Diagnostic Capabilities & Equipment:** Hyundai Global Diagnostic System (GDS-Mobile) & VCI-II Diagnostic Rig.
+- **Relevant Vehicle Systems:** Smartstream, Nu, Theta II, CRDi diesel, 1.6T Hybrid, and Ioniq EV powertrains; 7/8-speed DCT and 6/8-speed automatic gearboxes; Magna electronic AWD couplings; EPB, EPS, and ADAS radar/module systems.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Hyundai GDS-Mobile and VCI-II for Smartstream ECU, transmission, hybrid/EV, and ADAS diagnostics with video inspection reports, paired with HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** CAD pre-cut TPU Paint Protection Film (PPF) for Sonata and Tucson; API SP / ILSAC GF-6 synthetic oil servicing; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 4,000 – PKR 150,000.
+
+### 9. Kia
+- **Canonical URL:** https://hypertunegarage.pk/brands/kia-repair-islamabad/
+- **Supported Vehicle Models:** Kia Sportage (Alpha, FWD, AWD 2.0L Nu MPI & 1.6T); Sorento (2.4L Theta-II, 3.5L Lambda-II V6 AWD & 1.6T Hybrid); Grand Carnival (3.3L/3.5L V6 Petrol & 2.2L CRDi Diesel 11-Seater); Stonic (1.4L MPI EX & EX+ 6-Speed Auto); Picanto (1.0L MPI Manual & 4-Speed Auto); EV6 & Niro EV (High-Voltage Diagnostics); Stinger GT (3.3L Twin-Turbo V6 AWD).
+- **Specialist Maintenance & Repair Services:** Sportage electro-hydraulic AWD coupling servicing and 75W-90 differential flushes; 6-speed and 8-speed automatic transmission ATF (SP-IV / SP-IV-RR) fluid service; Lambda 3.5L V6, Theta 2.4L, and Nu engine overhauls, timing chains, and cooling repairs; Carnival 2.2L CRDi diesel injector cleaning and DPF regeneration; Sportage MDPS steering star-coupler replacement; panoramic sunroof ultrasonic track cleaning and anti-pinch calibration; EV6/Niro EV and Sorento Hybrid diagnostics; ceramic brakes and 3D wheel alignment.
+- **Diagnostic Capabilities & Equipment:** Kia Diagnostic System (KDS) & Global VCI-II Diagnostic Suite.
+- **Relevant Vehicle Systems:** Nu, Theta-II, Lambda V6, 3.3L Twin-Turbo V6, CRDi diesel, hybrid, and EV6/Niro high-voltage systems; 4/6/8-speed automatic gearboxes; electro-hydraulic AWD couplings; MDPS electric steering; panoramic sunroof mechanisms.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Kia KDS and VCI-II for full module scans, sensor calibration verification, and video inspection reports, alongside HyperTune Garage's general 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for Sportage and Carnival; computerized maintenance log records; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 3,500 – PKR 150,000.
+
+### 10. Changan
+- **Canonical URL:** https://hypertunegarage.pk/brands/changan-repair-islamabad/
+- **Supported Vehicle Models:** Changan Oshan X7 (1.5L Blue Core Turbo 7-Speed Wet DCT FutureSense/Comfort); Alsvin (1.37L Manual, 1.5L 5-Speed Dual-Clutch DCT Lumiere); Karvaan & Karvaan Plus (1.0L C10 Engine Family Van); Deepal S07 & L07 (EV & EREV Intelligent SUV/Sedan); Changan M9 Commercial Pick-up Truck; UNI-T & UNI-K (Imported Crossover SUV Series).
+- **Specialist Maintenance & Repair Services:** Alsvin 5-speed DCT and Oshan X7 7-speed wet DCT transmission fluid flushes (40,000 km interval), solenoid pressure calibration, and clutch adaptation cycles; Blue Core 1.5L TGDI engine maintenance, HPFP checks, boost smoke tests, wastegate solenoid testing, and intake decoking; Deepal S07/L07 EV traction battery health evaluation, drive-axle fluid service, and inverter diagnostics; FutureSense ADAS laser radar, 360-camera, and steering angle calibration; Karvaan leaf spring bushing and 80W-90 differential service; AC recharge and 3D alignment.
+- **Diagnostic Capabilities & Equipment:** Changan OEM Diagnostic Rig & Blue Core Engine CAN Telemetry Interface.
+- **Relevant Vehicle Systems:** Blue Core 1.5T direct-injection turbo, C10 petrol, and Deepal EV/EREV powertrains; 5-speed DCT and 7-speed wet DCT gearboxes; FutureSense ADAS radar and 360-degree camera systems; Karvaan/M9 rear axles and leaf springs.
+- **Pre-Purchase Inspection & Diagnostics:** Uses the Changan OEM Diagnostic Rig and Blue Core CAN telemetry interface for ECU, DCT, ADAS, and Deepal EV diagnostics with video inspection reports, integrated with HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for Oshan X7 and Deepal S07; genuine Changan OEM filters and parts; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 3,000 – PKR 135,000.
+
+### 11. Haval
+- **Canonical URL:** https://hypertunegarage.pk/brands/haval-service-islamabad/
+- **Supported Vehicle Models:** Haval H6 (1.5L Turbo Petrol, 2.0L Turbo AWD 7-Speed DCT); Haval H6 HEV (1.5L Turbo Hybrid Dedicated Hybrid Transmission DHT); Haval Jolion (1.5L Turbo Petrol & Jolion HEV Hybrid); GWM Tank 500 (3.0L Twin-Turbo V6 HEV Luxury Off-Roader); GWM Ora 03 / Good Cat (100% Electric EV); GWM Poer Pick-up Truck (2.0L Diesel / Petrol 4x4).
+- **Specialist Maintenance & Repair Services:** H6 HEV and Jolion HEV Dedicated Hybrid Transmission (DHT) synchronizer calibration, high-voltage lithium battery checks, and hybrid cooling bleeding; H6 and Jolion 7-speed wet DCT fluid flushes and clutch kiss-point adaptation; 2.0L AWD BorgWarner transfer case and differential servicing; Level 2 ADAS millimeter-wave radar, lane camera, 360-camera, and blind-spot monitor calibration; infotainment firmware updates and CAN-bus checks; Tank 500 off-road suspension and 4x4 service; ceramic brake pads and rotor skimming.
+- **Diagnostic Capabilities & Equipment:** GWM / Haval Factory Diagnostic Rig & DHT Hybrid Telemetry Scanner.
+- **Relevant Vehicle Systems:** GWM direct-injection 1.5T/2.0T/3.0TT V6, HEV Dedicated Hybrid Transmission (DHT), and Ora EV systems; 7-speed wet DCT transmissions; BorgWarner AWD transfer cases; Level 2 ADAS radar/cameras and 360-degree optics.
+- **Pre-Purchase Inspection & Diagnostics:** Uses the GWM / Haval Diagnostic Rig and DHT Hybrid Telemetry Scanner for hybrid battery, DCT, and ADAS diagnostics with video inspection reports, backed by HyperTune Garage's general 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Full-body self-healing TPU Paint Protection Film (PPF) for Haval H6 and Jolion; API SP / ACEA C2/C5 0W-20 and 5W-30 synthetic oil service; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 4,500 – PKR 165,000.
+
+### 12. MG
+- **Canonical URL:** https://hypertunegarage.pk/brands/mg-repair-islamabad/
+- **Supported Vehicle Models:** MG HS (1.5L Turbo Petrol, 2.0L Turbo Trophy AWD); MG HS PHEV (Plug-in Hybrid 10-Speed EDU Transmission); MG ZS (1.5L VTi-Tech Petrol 4-Speed Auto / CVT); MG ZS EV (100% Electric SUV High-Voltage Diagnostics); MG 4 EV & MG 5 EV (Pure Electric Hatchback / Sedan); MG GT (1.5T Fastback Sedan with 7-Speed Wet DCT).
+- **Specialist Maintenance & Repair Services:** MG HS 7-speed dry/wet DCT TCM firmware updates, hydraulic fluid flushes, and clutch bite-point adaptation; MG HS 1.5T boost pressure diagnostics, wastegate solenoid repair, intercooler smoke tests, and dual cooling circuit vacuum bleeding with radiator fan threshold calibration; MG ZS EV and MG 4/5 EV high-voltage battery SOH reports, cell balancing, insulation checks, and reduction gearbox oil changes; MG HS PHEV inverter and 10-speed EDU transmission service; panoramic sunroof dry Teflon service and electric tailgate struts; EPS and ADAS windscreen camera alignment.
+- **Diagnostic Capabilities & Equipment:** MG VDS (Vehicle Diagnostic Suite) & High-Voltage EV Safety Rig.
+- **Relevant Vehicle Systems:** SAIC turbo petrol, PHEV 10-speed EDU hybrid, and pure electric EV high-voltage drivetrains; 7-speed DCT and CVT/automatic gearboxes; dual cooling circuits; EPS steering and ADAS cameras.
+- **Pre-Purchase Inspection & Diagnostics:** Uses MG VDS and the High-Voltage EV Safety Rig for proprietary DTC retrieval, EV battery SOH checks, and video inspection reports, combined with HyperTune Garage's general 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for MG HS and MG GT; heavy EV/SUV suspension bushing overhauls; genuine SAIC MG consumables; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 4,000 – PKR 160,000.
+
+### 13. BYD
+- **Canonical URL:** https://hypertunegarage.pk/brands/byd-ev-service-islamabad/
+- **Supported Vehicle Models:** BYD Atto 3 (e-Platform 3.0 Blade Battery Crossover); BYD Seal (CTB Technology Performance Sedan 530HP Dual Motor AWD); BYD Sealion 6 & Song Plus (DM-i Super Hybrid Crossover); BYD Dolphin & Seagull (Compact Urban EV Series); BYD Han EV & Tang EV (Flagship Luxury Sedan & SUV); BYD Shark PHEV Pick-up Truck (DMO Super Hybrid Off-Roader).
+- **Specialist Maintenance & Repair Services:** Blade Battery (LFP) individual cell voltage, internal resistance, temperature, and State-of-Health (SOH) evaluation plus BMS software adaptation; 1,000V megohmmeter high-voltage cable insulation resistance testing and GB/T or CCS2 charging port diagnostics; DM-i / DM-p / DMO super hybrid powertrain servicing and Xiaoyun 1.5L engine tune-ups; thermal management heat pump servicing, low-conductivity dielectric EV coolant flushes, and synthetic reduction gear oil replacement; brake-by-wire regenerative actuator calibration; DiPilot millimeter-wave radar and 360-camera optical calibration.
+- **Diagnostic Capabilities & Equipment:** BYD VDS3.0 EV Diagnostic Suite, Blade Battery Cell Load Analyzer, High-Voltage Insulation Rig (1,000V megohmmeter), optical ADAS calibration targets.
+- **Relevant Vehicle Systems:** e-Platform 3.0 and Cell-to-Body (CTB) electric architectures, LFP Blade Battery packs and BMS, DM-i / DM-p / DMO super hybrid powertrains, heat-pump thermal loops, electric reduction gearboxes, brake-by-wire systems, and DiPilot ADAS.
+- **Pre-Purchase Inspection & Diagnostics:** Uses BYD VDS3.0, the Blade Battery Cell Load Analyzer, and high-voltage insulation testing to verify battery SOH, range calibration, and cell balance with video inspection reports, paired with HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** CAD pre-cut self-healing TPU Paint Protection Film (PPF) for BYD Seal, Atto 3, and Dolphin; heavy EV subframe/suspension and 3D laser wheel alignment; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 4,500 – PKR 175,000.
+
+### 14. Chery
+- **Canonical URL:** https://hypertunegarage.pk/brands/chery-repair-islamabad/
+- **Supported Vehicle Models:** Chery Tiggo 8 Pro (1.6L TGDI Direct Injection 7-Speed Wet DCT 7-Seater); Tiggo 8 Pro Max (2.0L TGDI AWD 250HP Flagship); Tiggo 8 Pro e+ (Plug-in Hybrid DHT Powertrain); Tiggo 4 Pro (1.5L Turbo CVT Compact SUV); Chery Omoda 5 / Omoda E5 (1.5T Turbo & 100% Electric Crossover); Chery Arrizo 6 Pro & Arrizo 8 Luxury Sedans.
+- **Specialist Maintenance & Repair Services:** ACTECO 1.5T, 1.6T, and 2.0T TGDI direct-injection maintenance, walnut shell intake valve de-coking, intercooler piping inspection, ultrasonic injector cleaning, and API SP synthetic oil servicing; Tiggo 8 Pro 7-speed wet DCT fluid replacement (40,000 km interval) and TCU adaptation; Tiggo 4 Pro CVT fluid flush and line pressure reset; Tiggo 8 Pro e+ PHEV Dedicated Hybrid Transmission (DHT) servicing; EPB caliper motor and auto-hold calibration; dual-zone HVAC blend-door actuator and R134a repair; brake lathe skimming and 3D alignment.
+- **Diagnostic Capabilities & Equipment:** Chery ACTECO Factory Diagnostic Rig & Dedicated Hybrid DHT Telemetry Suite.
+- **Relevant Vehicle Systems:** ACTECO TGDI direct-injection turbo engines, Tiggo 8 Pro e+ DHT plug-in hybrid and Omoda E5 EV systems, 7-speed wet DCT and CVT transmissions, Electronic Parking Brake (EPB)/auto-hold, and dual-zone HVAC systems.
+- **Pre-Purchase Inspection & Diagnostics:** Uses the Chery ACTECO Diagnostic Rig and DHT Telemetry Suite for engine, transmission, EPB, and hybrid scans with video inspection reports, supported by HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for Tiggo 8 Pro and Omoda 5; genuine Chery OEM filters, spark plugs, and ceramic brake pads; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 3,500 – PKR 150,000.
+
+### 15. Isuzu
+- **Canonical URL:** https://hypertunegarage.pk/brands/isuzu-dmax-repair-islamabad/
+- **Supported Vehicle Models:** Isuzu D-Max V-Cross (3.0L 4JJ1-TCX & 4JJ3-TCX 4x4 AT/MT); D-Max Hi-Lander & Hi-Spark (2.5L 4JK1-TC & 1.9L RZ4E-TC BluePower); Isuzu MU-X 7-Seater 4x4 SUV; Isuzu N-Series / NPR / NQR Commercial Trucks (4HG1, 4HK1 Diesel Engines); Isuzu Trooper & Bighorn 4x4 (Classic Series).
+- **Specialist Maintenance & Repair Services:** 4JJ1, 4JJ3 3.0L, and RZ4E 1.9L BluePower turbo diesel engine overhauls to 0.001mm tolerance; common-rail fuel injector and high-pressure pump calibration on test benches; VGT turbocharger vane cleaning and electronic actuator calibration; on/off-car chemical DPF cleaning, EGR cooler decoking, and forced regeneration; water separator draining and fuel filter replacement; Aisin 6-speed automatic (Isuzu ATF-WS) and 6-speed manual 4x4 transmission, Terrain Command shift-on-the-fly transfer case, and front vacuum actuator servicing; heavy-duty leaf spring, polyurethane shackle, Old Man Emu/Ironman 4x4/Bilstein suspension upgrades, and commercial fleet service.
+- **Diagnostic Capabilities & Equipment:** Isuzu G-IDSS (Global Isuzu Diagnostic Service System), Tech 2 & Diesel Common Rail Flow Bench.
+- **Relevant Vehicle Systems:** 4JJ1/4JJ3/4JK1/RZ4E/4HG1/4HK1 turbo diesel engines, common-rail injection, VGT turbos, DPF and EGR emissions systems, Aisin automatic and manual 4x4 gearboxes, Terrain Command transfer cases, and leaf-spring/IFS off-road suspensions.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Isuzu G-IDSS, Tech 2, and the common-rail flow bench for diesel injector coding, boost/DPF evaluation, and 4x4 checks with video inspection reports, combined with HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Heavy-duty self-healing TPU Paint Protection Film (PPF) for Isuzu D-Max V-Cross; API CK-4 / CJ-4 15W-40 and 5W-40 diesel motor oil service; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 4,000 – PKR 220,000.
+
+### 16. FAW
+- **Canonical URL:** https://hypertunegarage.pk/brands/faw-repair-islamabad/
+- **Supported Vehicle Models:** FAW V2 (1.3L 16-Valve VCT-i Petrol Hatchback); FAW X-PV & X-PV Dual AC (1.0L Family Van); FAW Carrier 1.0L Mini Pick-up Truck; FAW Sirius S80 (1.5L 7-Seater MPV); FAW J5P / J6 Heavy Prime Movers & Dump Trucks.
+- **Specialist Maintenance & Repair Services:** FAW V2 1.3L VCT-i engine tuning and overhauls; manual gearbox rebuilding, clutch pressure plate, and release bearing replacement; electronic throttle body cleaning, MAP sensor testing, and idle air control calibration; X-PV and Carrier summer overheating fixes including ultrasonic radiator descaling, high-flow aluminum radiator upgrades, thermostats, water pumps, and fan relay repairs; dual-evaporator R134a AC servicing; suspension control arm bushings, tie-rod ends, 3D alignment, and commercial fleet preventive maintenance.
+- **Diagnostic Capabilities & Equipment:** FAW Factory Diagnostic Scanner & OBD-II High-Speed Multiplexer.
+- **Relevant Vehicle Systems:** FAW 1.3L VCT-i, 1.0L under-seat, 1.5L, and commercial diesel engines; manual transmissions and clutches; cooling and radiator circuits; EFI throttle/IAC sensors; front/rear AC evaporators and commercial fleet suspensions.
+- **Pre-Purchase Inspection & Diagnostics:** Uses the FAW Diagnostic Scanner and OBD-II High-Speed Multiplexer for ECU/sensor health checks and idle/cooling diagnostics with video inspection reports, alongside HyperTune Garage's general 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Direct access to genuine FAW OEM suspension, brake, and engine mounting components; commercial fleet maintenance packages; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 2,500 – PKR 65,000.
+
+### 17. Daihatsu
+- **Canonical URL:** https://hypertunegarage.pk/brands/daihatsu-service-islamabad/
+- **Supported Vehicle Models:** Daihatsu Mira (ES, Custom, Gino, Cocoa 660cc KF-VE Engine); Move & Move Custom (660cc KF-DET Turbo & Eco-Idle); Cast (Style, Activa, Sport 660cc Turbo); Tanto & Tanto Custom (Slide Door Kei Van); Hijet (S321V / S331V Cargo Van & 4x4 Mini Truck); Coure (850cc Classic PKDM); Terios & Terios Kid (4x4 Mini SUV); Daihatsu Rocky & Taft (1.0L Turbo / 1.2L New Generation).
+- **Specialist Maintenance & Repair Services:** Eco-Idle secondary EFB battery conductance testing, current sensor recalibration, and replacement; Daihatsu Amix CVT Fluid-DC flushes (25,000–30,000 km interval), pan magnet cleaning, strainer replacement, and adaptation reset; KF-VE and KF-DET 660cc 3-cylinder engine overhauls, piston ring chemical decarbonizing, valve stem seals, PCV renewal, and timing chain service; Smart Assist stereo forward camera calibration; hydraulic right-hand engine mount and polyurethane lower arm bushing replacement; sub-5°C JDM AC restoration.
+- **Diagnostic Capabilities & Equipment:** Daihatsu DS-II, DST-i Diagnostic Tool, Global OBD-II JDM CAN Multiplexer, and optical camera alignment targets.
+- **Relevant Vehicle Systems:** KF-VE and KF-DET 660cc, 850cc, and 1.0T/1.2L engines; Eco-Idle start-stop dual-battery systems; Daihatsu Amix CVT transmissions; Smart Assist stereo camera ADAS; JDM AC and compact Kei suspension/mounting systems.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Daihatsu DS-II / DST-i for full JDM system scans, Eco-Idle/CVT telemetry checks, and video inspection reports, integrated with HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** 9H ceramic coating and Paint Protection Film (PPF) for Daihatsu Rocky and Mira; stocked genuine Japan filters, NGK bi-hex iridium plugs, and brake components; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 2,500 – PKR 75,000.
+
+### 18. Nissan
+- **Canonical URL:** https://hypertunegarage.pk/brands/nissan-repair-islamabad/
+- **Supported Vehicle Models:** Nissan Note e-Power (HE12 / E13 1.2L Range-Extender Series Hybrid); X-Trail (T31, T32, T33 e-Power Hybrid & 2.0L/2.5L AWD); Dayz & Roox (660cc BR06 / 3B20 Engine JDM Kei Car); Juke (1.5L HR15DE & 1.6L MR16DDT Turbo DIG-T); Sunny & Latio (1.3L, 1.5L & 1.6L Sedans); Patrol (Y61 TB48 & Y62 VK56VD 5.6L V8 Luxury 4x4); Navara & NP300 (2.3L / 2.5L YD25 Turbo Diesel 4x4); Nissan GT-R R35 (VR38DETT Master Performance Care & GR6 Gearbox).
+- **Specialist Maintenance & Repair Services:** Nissan Xtronic CVT repair, stepper motor/flow-control valve servicing, internal pan/paper filter replacement, Genuine Nissan NS-2 / NS-3 fluid flushes (35,000–40,000 km interval), transmission cooler upgrades, and TCM deterioration count reset; Note & X-Trail e-Power HR12DE generator service, inverter coolant vacuum bleeding, lithium pack checks, and 12V battery calibration; MR16DDT/HR15DE intake valve walnut blasting; Patrol Y62 VK56VD V8 timing/engine service, 4WD transfer case rebuilding, and HBMC hydraulic suspension pressure balancing; Idle Air Volume Learn (IAVL) and key programming.
+- **Diagnostic Capabilities & Equipment:** Nissan Consult-III Plus, VI2 Interface & e-Power High-Voltage Inverter Analyzer.
+- **Relevant Vehicle Systems:** Petrol, DIG-T turbo, YD25 diesel, VR38DETT, VK56VD V8, and e-Power series-hybrid powertrains; Xtronic CVT and GT-R GR6 transmissions; HBMC hydraulic suspension; electronic throttle/MAF and BCM electronics.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Nissan Consult-III Plus and the e-Power Inverter Analyzer for CVT degradation counts, hybrid inverter telemetry, and BCM/ECU fault scans with video inspection reports, paired with HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for Nissan Patrol and Note e-Power; ceramic brake upgrades and 3D alignment; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 3,500 – PKR 250,000.
+
+### 19. Mitsubishi
+- **Canonical URL:** https://hypertunegarage.pk/brands/mitsubishi-repair-islamabad/
+- **Supported Vehicle Models:** Mitsubishi Pajero (V60, V70, V80, V90 — 3.0L, 3.5L, 3.8L V6 & 3.2L Di-D Diesel); Outlander & Outlander PHEV (Plug-in Hybrid Twin-Motor 4WD); Lancer & Lancer Evolution (CS3, CY4, Evo 7/8/9/10 4B11T); Ek Wagon, Ek Custom & Ek Space (660cc 3B20 / BR06 Engine); Mirage & Attrage (1.0L & 1.2L 3A92 Engine CVT); Triton / L200 (2.4L MIVEC 4N15 Turbo Diesel 4x4); Galant & Eclipse Cross (1.5T MIVEC Turbo).
+- **Specialist Maintenance & Repair Services:** Pajero Super Select 4WD-II transfer case rebuilding, vacuum actuator switch replacement, front axle freewheel actuator service, and synthetic GL-5 differential flushes; Outlander PHEV twin-motor inverter cooling flushes, lithium battery cell capacity scans, BMU resets, and regenerative brake service; 4M41 3.2L / 4N15 2.4L diesel common-rail injector cleaning, SCV renewal, and 6G72/6G74/6G75 V6 engine rebuilds with OEM timing belt/water pump kits; Ek Wagon / Mirage / INVECS-III CVT fluid flush (DiaQueen CVTF-J4) and cooler filter replacement; torsion bar/multi-link suspension rebuilding.
+- **Diagnostic Capabilities & Equipment:** Mitsubishi MUT-III SE Diagnostic Suite, VCI Interface & PHEV High-Voltage Bench.
+- **Relevant Vehicle Systems:** MIVEC V6, 4B11T Evo, 4M41/4N15 turbo diesel, 660cc/3A92 petrol, and Outlander PHEV twin-motor plug-in hybrid systems; Super Select 4WD-II transfer cases and diffs; INVECS-III CVT gearboxes; torsion-bar/coil 4x4 suspensions.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Mitsubishi MUT-III SE and the PHEV High-Voltage Bench for 4WD actuator diagnostics, PHEV battery/inverter telemetry, and sensor calibration audits with video inspection reports, combined with HyperTune Garage's general 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for Mitsubishi Pajero and Outlander; genuine Mitsubishi timing kits with Japanese GMB/Aisin water pumps; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 3,500 – PKR 220,000.
+
+### 20. Mazda
+- **Canonical URL:** https://hypertunegarage.pk/brands/mazda-service-islamabad/
+- **Supported Vehicle Models:** Mazda 3 / Axela (1.5L, 2.0L, 2.5L SkyActiv-G & SkyActiv-X); Mazda 6 / Atenza (2.0L & 2.5L SkyActiv-G Sedan / Estate); CX-3 & CX-30 (1.5L & 2.0L SkyActiv-G Crossover); CX-5 (2.0L, 2.5L & 2.5L Turbo AWD); CX-9 (2.5L SkyActiv-G Turbo 7-Seater Luxury SUV); Demio / Mazda 2 (1.3L & 1.5L SkyActiv-G / SkyActiv-D); Mazda MX-5 Miata & RX-8 (Rotary & SkyActiv Sports Performance).
+- **Specialist Maintenance & Repair Services:** SkyActiv-G, SkyActiv-X, and SkyActiv-D engine maintenance, non-abrasive walnut shell intake valve blasting, and GDI fuel injector flow testing; SkyActiv-Drive 6-speed automatic transmission servicing with genuine ultra-low-viscosity blue Mazda ATF-FZ fluid, filter replacement, and solenoid/line-pressure relearn; i-Stop Q85 EFB battery calibration and i-ELOOP capacitor/DC-DC converter diagnostics; i-ActivSense radar cruise, front camera, and blind-spot monitor target alignment; front lower control arm hydraulic bushing and EPS rack repairs.
+- **Diagnostic Capabilities & Equipment:** Mazda IDS (Integrated Diagnostic System), M-MDS, VCM-II Diagnostic Interface, and optical ADAS calibration targets.
+- **Relevant Vehicle Systems:** High-compression SkyActiv-G, SkyActiv-X, SkyActiv-D, and RX-8 rotary powertrains; 6-speed SkyActiv-Drive automatic gearboxes; i-ELOOP/i-Stop regenerative dual-battery energy storage; i-ActivSense ADAS; EPS and suspension bushings.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Mazda IDS / M-MDS with VCM-II for PCM calibration checks, i-ELOOP/SkyActiv live data, and full module scans with video inspection reports, paired with HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for Mazda 3, CX-5, and Soul Red Crystal finishes; ceramic brake pads and 3D laser alignment; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 3,500 – PKR 160,000.
+
+### 21. Subaru
+- **Canonical URL:** https://hypertunegarage.pk/brands/subaru-boxer-repair-islamabad/
+- **Supported Vehicle Models:** Subaru Forester (SJ, SK — 2.0L, 2.5L FB20/FB25 & 2.0T FA20 DIT AWD); Outback & Legacy (2.5L FB25, 3.6L EZ36 Flat-6 & 2.4T FA24); XV / Crosstrek (2.0L FB20 Boxer e-Boxer Hybrid AWD); WRX & WRX STI (EJ20, EJ257, FA20F 2.0T/2.5T Turbo AWD); Impreza & Levorg (1.6T & 2.0T DIT Sport Tourer); Subaru BRZ (2.0L FA20 & 2.4L FA24 Boxer RWD Coupe).
+- **Specialist Maintenance & Repair Services:** Boxer 4-cylinder and Flat-6 (EJ20, FA20, FB20, FB25, FA24, EZ36) engine overhauls, multi-layer steel (MLS Six-Star/Cometic) head gasket replacement with surface grinding, valve cover/cam carrier reseals, Gates/Aisin timing belt kits, and spark plug/oil separator service; Lineartronic CVT fluid flush (Genuine Subaru High-Torque CVTF-II / Lineartronic II) and TCM relearn; Symmetrical AWD center transfer clutch (MP-T), viscous coupling, and 75W-90 front/rear differential servicing; WRX/STI turbo and intercooler pressure testing; EyeSight stereo camera optical calibration.
+- **Diagnostic Capabilities & Equipment:** Subaru Select Monitor 4 (SSM4), DST-i Interface, Symmetrical AWD Computer Telemetry & EyeSight optical alignment charts.
+- **Relevant Vehicle Systems:** Horizontally-opposed Boxer petrol, turbo, and e-Boxer hybrid engines; Lineartronic CVT chains; Symmetrical AWD center transfer clutches and diffs; EyeSight stereo driver-assistance cameras.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Subaru Select Monitor 4 (SSM4) for AWD, Lineartronic CVT, EyeSight, and Boxer engine telemetry scans with video inspection reports, supported by HyperTune Garage's general 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for Subaru Forester and WRX; non-amine phosphate Subaru Super Coolant and high-temp API SP synthetic oils; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 4,500 – PKR 240,000.
+
+### 22. Lexus
+- **Canonical URL:** https://hypertunegarage.pk/brands/lexus-hybrid-repair-islamabad/
+- **Supported Vehicle Models:** Lexus LX Series (LX470, LX570 5.7L V8 3UR-FE, LX600 3.5L Twin-Turbo V35A, LX500d); RX Series (RX350, RX450h Hybrid, RX500h F-Sport Performance); NX Series (NX200t, NX300h Hybrid, NX350h Turbo); ES Series (ES250, ES300h Hybrid, ES350 3.5L V6 Sedan); GX Series (GX460 4.6L V8 & GX550 Twin-Turbo); LS Series (LS460, LS500 Twin-Turbo & LS600h V8 Hybrid Flagship); IS & RC F-Sport (IS200t, IS300, IS350, RC-F 5.0L V8).
+- **Specialist Maintenance & Repair Services:** P0A80 hybrid battery module load-impedance analysis, weak-cell replacement, busbar cleaning, pack balancing, inverter cooling servicing, and blower fan cleaning for RX/NX/ES/LS hybrids; LX570/LX470/LX600 Active Height Control (AHC) hydraulic fluid flushing, accumulator globe testing, pressure-step bleeding, and height sensor calibration; 3UR-FE 5.7L V8 and V35A 3.5L Twin-Turbo engine overhauls and wastegate/boost smoke diagnostics; 8/10-speed Direct Shift ATF-WS flushes; Mark Levinson DSP audio amplifier circuit board repair.
+- **Diagnostic Capabilities & Equipment:** Lexus Techstream Professional Diagnostic Rig, Denso VIM, Mongoose VCI & High-Voltage Battery Load Bench.
+- **Relevant Vehicle Systems:** Lexus hybrid transaxles and high-voltage battery packs, 3UR-FE V8 and V35A twin-turbo engines, AHC hydraulic air suspension, Direct Shift 8/10-speed automatics, regenerative brakes, and Mark Levinson/BCM body electronics.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Lexus Techstream and the High-Voltage Battery Load Bench for module-by-module hybrid load testing, live data graphing, AHC pressure checks, and video inspection reports, combined with HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** CAD pre-cut self-healing TPU Paint Protection Film (PPF) for intricate Lexus spindle grilles and bodywork plus 9H ceramic coating; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 5,000 – PKR 260,000.
+
+### 23. Land Rover
+- **Canonical URL:** https://hypertunegarage.pk/brands/land-rover-repair-islamabad/
+- **Supported Vehicle Models:** Land Rover Defender (New L663 — P300, P400 MHEV, D250, D300, V8 5.0L Supercharged); Defender Classic (90, 110, 130 — 300Tdi, Td5, 2.4/2.2 Puma TDCi); Discovery 3 & 4 (2.7L TDV6, 3.0L SDV6, 4.4L/5.0L V8 Petrol); Discovery 5 (3.0L Si6, SDV6 & 2.0L Ingenium); Discovery Sport & Freelander 2 (2.0L Turbo & 2.2L SD4).
+- **Specialist Maintenance & Repair Services:** CCF module configuration and DoIP module programming; air suspension compressor dryer desiccant renewal, valve block O-ring overhauls, air spring bellow leak repairs, and 4-corner ride height calibration; Ingenium 2.0T/3.0T cam-crank phase elongation diagnostics and timing chain/guide replacement; 3.0L TDV6/SDV6 timing and engine service; Terrain Response 4x4 twin-speed transfer case, TCCM, and rear electronic differential motor overhauls; Dynamic Response active anti-roll bar hydraulic servicing (Pentosin CHF 11S); ZF 6HP/8HP/9HP transmission fluid flushes and mechatronic sleeve repairs.
+- **Diagnostic Capabilities & Equipment:** JLR Pathfinder (DoIP Interface / Topix Cloud), JLR SDD (Symptom Driven Diagnostics) & Air Suspension Pressure Test Rig.
+- **Relevant Vehicle Systems:** Ingenium petrol/diesel/MHEV, TDV6/SDV6, Puma/Td5, and V8 engines; air suspension and Dynamic Response hydraulic roll systems; Terrain Response 4x4 transfer cases and electronic diffs; ZF 6HP/8HP/9HP transmissions.
+- **Pre-Purchase Inspection & Diagnostics:** Uses JLR Pathfinder and SDD for live telemetry scans, timing-chain elongation correlation, air suspension leak testing, and video inspection reports, paired with HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for New Defender 90/110; heavy-duty off-road brake upgrades and 3D wheel alignment; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 6,000 – PKR 320,000.
+
+### 24. Range Rover
+- **Canonical URL:** https://hypertunegarage.pk/brands/range-rover-service-islamabad/
+- **Supported Vehicle Models:** Range Rover Vogue / Autobiography (L322, L405, L460 — 3.0L D/P, 4.4L SDV8, 5.0L V8 Supercharged, 4.4L Twin-Turbo V8); Range Rover Sport (L320, L494, L461 — HSE, Dynamic, SVR 575HP 5.0L Supercharged); Range Rover Velar (P250, P380 Supercharged, D200); Range Rover Evoque (L538, L551 — 2.0L Si4 & 2.0L D180/D200); Range Rover PHEV Plug-in Hybrid (P400e, P440e, P510e).
+- **Specialist Maintenance & Repair Services:** CCF module programming and key learning; Dynamic Air Suspension ultrasonic leak detection, air strut replacement, central valve block rebuilds, and heavy-duty AMK compressor overhauls; Active Roll Control (ARC) valve block resealing and Pentosin CHF 11S cold-climate fluid flushes; AJ133 5.0L Supercharged V8 timing chain, supercharger isolator coupler, and upgraded aluminum crossover coolant pipe installations plus Ingenium 3.0L I6 MHEV servicing; ZF 8HP transmission servicing; P400e/P510e PHEV high-voltage health checks; InControl Touch Pro / Pivi Pro MOST bus diagnostics; deployable side-step gear cleaning and door-module calibration; 6-piston Brembo brake servicing.
+- **Diagnostic Capabilities & Equipment:** JLR Pathfinder DoIP Professional Rig / Topix Cloud, JLR SDD, Ultrasonic Acoustic Leak Detectors & High-Pressure Air Suspension Test Rig.
+- **Relevant Vehicle Systems:** 5.0L Supercharged V8, 4.4L SDV8/Twin-Turbo V8, 3.0L MHEV/TDV6, 2.0L Ingenium, and P400e/P440e/P510e PHEV powertrains; Dynamic Air Suspension and ARC hydraulics; ZF 8HP gearboxes; Brembo brakes; InControl/Pivi Pro optical MOST and deployable side-step electronics.
+- **Pre-Purchase Inspection & Diagnostics:** Uses JLR Pathfinder DoIP and SDD with air-suspension and optical-bus testing plus video inspection reports, supported by HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for Range Rover Vogue and Sport SVR; flatbed and insured valet vehicle pickup across Islamabad, Rawalpindi, DHA, and Bahria Town; up to 12-month written warranty. Estimated price range: PKR 6,500 – PKR 350,000.
+
+### 25. Jeep
+- **Canonical URL:** https://hypertunegarage.pk/brands/jeep-repair-islamabad/
+- **Supported Vehicle Models:** Jeep Wrangler (TJ, JK, JL — 3.6L Pentastar V6, 2.0L Turbo & 392 Hemi V8 Rubicon / Sahara); Grand Cherokee (WK, WK2, WL — 3.6L Pentastar, 5.7L Hemi V8, 6.4L SRT-8 & 6.2L Trackhawk); Gladiator (JT — 3.6L Pentastar 4x4 Pick-up Truck); Cherokee & Compass (2.4L Tigershark & 2.0T MultiAir 4x4); Renegade (1.4T & 2.4L Trailhawk); Classic Jeep CJ-5, CJ-7 & Cherokee XJ 4.0L Straight-6.
+- **Specialist Maintenance & Repair Services:** Wrangler front solid-axle "Death Wobble" elimination (track bar bushings/bracket inspection, drag links, tie rod ends, Fox steering stabilizers, ball joints, caster laser alignment); Pentastar 3.6L V6 rocker arm/camshaft repairs and upgraded aluminum oil cooler housing installation plus 5.7L Hemi V8 overhauls; Grand Cherokee Quadra-Lift closed-loop 99.9% nitrogen air suspension recharging (14 bar) and valve manifold repairs; Quadra-Trac II / Quadra-Drive II transfer case servicing (Mopar NV245/NV247); Dana 30, 44, and 60 axle regearing, Timken bearings, and Tru-Lok electronic locker repair (75W-140 synthetic); TorqueFlite 8HP70/850RE 8-speed transmission servicing; off-road lift kit, winch, steel bumper, and snorkel installation.
+- **Diagnostic Capabilities & Equipment:** Chrysler / Stellantis wiTECH 2.0 Diagnostic Suite & MicroPod II Interface.
+- **Relevant Vehicle Systems:** Pentastar 3.6L V6, Hemi V8 (5.7L/6.2L/6.4L), 2.0T, Tigershark, and 4.0L Straight-6 engines; TorqueFlite 8-speed gearboxes; Quadra-Trac/Quadra-Drive 4x4 and Dana 30/44/60 locking axles; solid-axle steering geometry and Quadra-Lift nitrogen air suspension.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Chrysler/Stellantis wiTECH 2.0 and MicroPod II for module flashing/fault scans, Quadra-Lift pressure diagnostics, and 4x4 drivetrain checks with video inspection reports, combined with HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Heavy-duty self-healing TPU Paint Protection Film (PPF) for Jeep Wrangler Rubicon; aftermarket off-road upgrades (Rubicon Express, Fox, Falcon lift kits, winches, bumpers); insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 4,500 – PKR 250,000.
+
+### 26. Ford
+- **Canonical URL:** https://hypertunegarage.pk/brands/ford-service-islamabad/
+- **Supported Vehicle Models:** Ford F-150 & F-150 Raptor (3.5L High-Output EcoBoost TT & 5.2L Supercharged V8 Raptor R); Ranger & Ranger Raptor (2.2L TDCi, 3.2L 5-Cylinder, 2.0L Bi-Turbo & 3.0L V6 TT); Everest / Endeavour (2.0L Bi-Turbo & 3.2L 4x4 7-Seater SUV); Mustang (2.3L EcoBoost Turbo & 5.0L Coyote V8 GT / Mach 1); Explorer (2.3L EcoBoost & 3.5L/3.0L Twin-Turbo AWD); Taurus, Fusion & Edge Crossover Sedans.
+- **Specialist Maintenance & Repair Services:** EcoBoost (2.0L, 2.3L, 2.7L, 3.5L) and 5.0L Coyote V8 engine rebuilding, turbocharger/wastegate inspection, HPFP/direct injector cleaning, and intake valve walnut blasting; 2.0L Bi-Turbo diesel wet timing belt-in-oil inspection and oil pump strainer cleaning; 10-speed (10R80) and 6-speed (6R80) automatic transmission solenoid strategy updates, Motorcraft Mercon ULV fluid flushes, and adaptive table resets; Ranger Raptor / F-150 Fox Racing Live Valve shock servicing, nitrogen recharging, and damper sensor calibration; electronic 4x4 transfer case and differential service; PATS key coding; Brembo brake overhauls.
+- **Diagnostic Capabilities & Equipment:** Ford FDRS (Ford Diagnostic & Repair System), Ford IDS (Integrated Diagnostic Software) & VCM-II / VCM-III Diagnostic Interfaces.
+- **Relevant Vehicle Systems:** EcoBoost turbocharged petrol, 5.0L Coyote / 5.2L Supercharged V8, and 2.0L Bi-Turbo / 3.2L diesel engines; 10R80 10-speed and 6R80 6-speed automatic transmissions; Fox Racing Live Valve active off-road suspension; 4x4 transfer cases and PATS security modules.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Ford FDRS and IDS with VCM-II/III for PCM/TCM live telemetry, PATS checks, and Fox suspension calibration scans with video inspection reports, integrated with HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for Ford Mustang and Ranger Raptor; authentic Ford Motorcraft synthetic oils, Mercon fluids, and filters; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 4,500 – PKR 260,000.
+
+### 27. Chevrolet
+- **Canonical URL:** https://hypertunegarage.pk/brands/chevrolet-repair-islamabad/
+- **Supported Vehicle Models:** Chevrolet Tahoe & Suburban (5.3L & 6.2L EcoTec3 V8 Luxury SUV); Silverado & Colorado (5.3L, 6.2L V8 & 2.8L Duramax Diesel 4x4); Corvette (C7 LT1/LT4 & C8 Mid-Engine LT2 6.2L V8 / Z06); Camaro (2.0L Turbo, 3.6L V6, 6.2L V8 SS & 6.2L Supercharged ZL1); Captiva & Trailblazer (1.5T Turbo & 2.8L Diesel SUV); Optra, Cruze & Aveo (1.6L & 1.8L E-TEC II / Ecotec); Chevrolet Joy / Exclusive (800cc & 1.0L Classic PKDM).
+- **Specialist Maintenance & Repair Services:** GM Small Block V8 (5.3L, 6.2L LT1/LT2/LT4/L86) engine overhauls, Active Fuel Management (AFM/DFM) lifter and VLOM manifold repair/software calibration; Captiva/Cruze aluminum thermostat housing and oil cooler heat exchanger reseals; GM 6-speed, 8-speed (8L90), and 10-speed (10L80) automatic transmission triple-flushes (Mobil 1 Synthetic LV ATF HP / Dexron HP/VI), torque converter clutch tests, and TCM adaptation; Magnetic Ride Control (MagneRide) damper coil testing and ride-height trim calibration; Brembo brake overhauls, AC recharge, and 3D laser alignment.
+- **Diagnostic Capabilities & Equipment:** GM Global Diagnostic System 2 (GDS2), MDI-2 Interface & GM Tech2 Scanner.
+- **Relevant Vehicle Systems:** Small Block V8 (AFM/DFM), Duramax diesel, 1.5T/2.0T turbo, Ecotec, and Joy/Exclusive petrol engines; GM 6/8/10-speed automatic gearboxes; Magnetic Ride Control (MagneRide) magnetorheological suspension; Brembo brakes and GM body/electrical modules.
+- **Pre-Purchase Inspection & Diagnostics:** Uses GM GDS2 and Tech2 with MDI-2 for full engine, transmission, MagneRide, and body-module scans with video inspection reports, supported by HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for Corvette C8, Camaro, and Tahoe; ACDelco Gold and GM Genuine replacement parts; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 3,500 – PKR 260,000.
+
+### 28. Volvo
+- **Canonical URL:** https://hypertunegarage.pk/brands/volvo-repair-islamabad/
+- **Supported Vehicle Models:** Volvo XC90 (T6 Supercharged+Turbo, T8 Twin-Engine Recharge PHEV, D5 AWD 7-Seater); XC60 (T5, T6, T8 Recharge Luxury Crossover); XC40 & XC40 Recharge (T4, T5 & 100% Pure Electric EV); S90 & S60 (T5, T6 & T8 Recharge Luxury Sedans); V90 & V60 Cross Country (All-Road Luxury Wagons); Volvo C40 Recharge (100% Electric Compact Crossover).
+- **Specialist Maintenance & Repair Services:** VIDA diagnostics and software module downloads; XC90/XC60/S90 T8 Twin-Engine Recharge PHEV and XC40/C40 EV high-voltage battery cell telemetry, ERAD (Electric Rear Axle Drive) motor servicing, and hybrid cooling flushes; Drive-E 2.0L twin-charged (supercharger + turbo) engine rebuilding, supercharger magnetic clutch gap adjustment, and intake smoke leak testing; Four-C active air suspension compressor duty-cycle testing, air bladder leak repairs, valve block resealing, and VIDA height calibration; Aisin 8-speed (AWF8F45) automatic transmission fluid flushes (Volvo AW-1 ATF) and solenoid adaptation; IntelliSafe / City Safety / Pilot Assist radar and windscreen camera alignment.
+- **Diagnostic Capabilities & Equipment:** Volvo VIDA (Vehicle Information & Diagnostics for Aftersales) & DiCE / VOE DoIP Interface.
+- **Relevant Vehicle Systems:** Drive-E twin-charged petrol, D5 diesel, T8 Twin-Engine PHEV + ERAD rear electric axle, and Recharge pure electric EV systems; Aisin 8-speed automatic gearboxes; Four-C active air suspension; IntelliSafe, City Safety, and Pilot Assist radar/camera systems.
+- **Pre-Purchase Inspection & Diagnostics:** Uses Volvo VIDA with DiCE / VOE DoIP hardware for fault isolation, T8 hybrid battery/ERAD telemetry, air-suspension testing, and City Safety calibration checks with video inspection reports, paired with HyperTune Garage's workshop-wide 200-point pre-purchase inspection protocol.
+- **Other Capabilities:** Self-healing TPU Paint Protection Film (PPF) for Volvo XC90 and XC60; Volvo OEM service kits and CleanZone cabin pollen filters; insured valet pickup; up to 12-month written warranty. Estimated price range: PKR 6,000 – PKR 320,000.
 
 ---
 
 ## Direct Links & Resource Map
 
+### Primary & Business Pages
 - **Home:** https://hypertunegarage.pk/
-- **About:** https://hypertunegarage.pk/about/
+- **About Us:** https://hypertunegarage.pk/about/
 - **Services Directory:** https://hypertunegarage.pk/services/
-- **Brand Specialists:** https://hypertunegarage.pk/brands/
-- **Locations:** https://hypertunegarage.pk/locations/
+- **Car Brand Specialists Directory:** https://hypertunegarage.pk/brands/
+- **Workshop Locations:** https://hypertunegarage.pk/locations/
+- **Islamabad Flagship Hub:** https://hypertunegarage.pk/locations/islamabad-workshop/
+- **Rawalpindi Coverage Hub:** https://hypertunegarage.pk/locations/rawalpindi-workshop/
 - **Transformation Gallery:** https://hypertunegarage.pk/gallery/
 - **Customer Testimonials:** https://hypertunegarage.pk/testimonials/
 - **FAQ Knowledge Hub:** https://hypertunegarage.pk/faq/
-- **Contact:** https://hypertunegarage.pk/contact/
+- **Contact Us:** https://hypertunegarage.pk/contact/
 - **Book Appointment:** https://hypertunegarage.pk/book-appointment/
 - **Automotive Blog & Guides:** https://hypertunegarage.pk/blog/
-- **Warranty Specs:** https://hypertunegarage.pk/warranty-specs/
+- **Warranty & Specifications:** https://hypertunegarage.pk/warranty-specs/
 - **Privacy Policy:** https://hypertunegarage.pk/privacy-policy/
 - **Terms & Conditions:** https://hypertunegarage.pk/terms-conditions/
 - **HTML Sitemap:** https://hypertunegarage.pk/sitemap/
 - **XML Sitemap:** https://hypertunegarage.pk/sitemap.xml
-- **LLMs Summary:** https://hypertunegarage.pk/llms.txt
+- **LLMs Concise Summary:** https://hypertunegarage.pk/llms.txt
+
+### Published Technical Guides & Blog Articles (18)
+- https://hypertunegarage.pk/blog/p0a80-hybrid-battery-repair-guide-pakistan/
+- https://hypertunegarage.pk/blog/bmw-check-engine-light-drivetrain-malfunction-guide/
+- https://hypertunegarage.pk/blog/mercedes-airmatic-suspension-leak-repair-guide/
+- https://hypertunegarage.pk/blog/audi-dsg-stronic-transmission-shudder-repair-guide/
+- https://hypertunegarage.pk/blog/ceramic-coating-vs-ppf-pakistan-guide/
+- https://hypertunegarage.pk/blog/car-ac-cooling-troubleshooting-pakistan-summer/
+- https://hypertunegarage.pk/blog/engine-overhaul-vs-engine-replacement-pakistan-guide/
+- https://hypertunegarage.pk/blog/synthetic-engine-oil-viscosity-guide-pakistan-heat/
+- https://hypertunegarage.pk/blog/pre-purchase-car-inspection-checklist-pakistan/
+- https://hypertunegarage.pk/blog/3d-laser-wheel-alignment-suspension-guide/
+- https://hypertunegarage.pk/blog/honda-vezel-dual-clutch-transmission-error-guide/
+- https://hypertunegarage.pk/blog/porsche-maintenance-servicing-guide-pakistan/
+- https://hypertunegarage.pk/blog/toyota-land-cruiser-prado-v8-maintenance-guide/
+- https://hypertunegarage.pk/blog/car-vinyl-wrap-guide-pakistan-cost-care/
+- https://hypertunegarage.pk/blog/car-paint-booth-denting-repair-guide-pakistan/
+- https://hypertunegarage.pk/blog/car-body-kit-modification-guide-pakistan/
+- https://hypertunegarage.pk/blog/ceramic-coating-maintenance-guide-pakistan/
+- https://hypertunegarage.pk/blog/car-overheating-radiator-flush-coolant-guide-pakistan/

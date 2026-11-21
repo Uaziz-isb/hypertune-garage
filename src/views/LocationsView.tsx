@@ -97,7 +97,7 @@ export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate }) => {
                         <Clock className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
                         <div>
                           <p className="font-semibold text-slate-200">{loc.hours.weekdays}</p>
-                          <p className="text-amber-400 font-bold">{loc.hours.friday}</p>
+                          <p className="text-amber-400 font-bold">Friday: {loc.hours.friday}</p>
                         </div>
                       </div>
                     )}

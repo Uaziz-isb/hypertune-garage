@@ -28,12 +28,14 @@ User-agent: PerplexityBot
 Allow: /
 Disallow: /api/
 
-# AI Model Training & Data Scrapers (Disallowed per policy)
+# AI Model Training & Grounding Crawlers (Allowed)
 User-agent: GPTBot
-Disallow: /
+Allow: /
+Disallow: /api/
 
 User-agent: Google-Extended
-Disallow: /
+Allow: /
+Disallow: /api/
 
 # Sitemap Location
 Sitemap: https://hypertunegarage.pk/sitemap.xml

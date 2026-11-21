@@ -144,7 +144,7 @@ export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavi
                   <div className="p-4 bg-[#0b121e] border border-slate-800 rounded-2xl space-y-1">
                     <span className="text-[11px] font-bold text-slate-400 uppercase">Working Hours:</span>
                     <span className="text-xs font-bold text-white block">{loc.hours.weekdays}</span>
-                    <span className="text-[11px] font-bold text-amber-400 block">{loc.hours.friday}</span>
+                    <span className="text-[11px] font-bold text-amber-400 block">Friday: {loc.hours.friday}</span>
                   </div>
                 )}
               </div>
