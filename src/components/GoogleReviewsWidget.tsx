@@ -146,7 +146,7 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
               </div>
 
               {/* Review Text */}
-              <p className="text-slate-300 text-xs leading-relaxed italic">
+              <p className={`text-slate-300 text-xs leading-relaxed italic${compact ? ' text-justify' : ''}`}>
                 "{review.text}"
               </p>
             </div>
@@ -163,7 +163,7 @@ export const GoogleReviewsWidget: React.FC<GoogleReviewsWidgetProps> = ({
                     Official Reply
                   </span>
                 </div>
-                <p className="text-slate-200 text-xs leading-relaxed italic pl-1">
+                <p className={`text-slate-200 text-xs leading-relaxed italic pl-1${compact ? ' text-justify' : ''}`}>
                   "{review.ownerResponse}"
                 </p>
               </div>

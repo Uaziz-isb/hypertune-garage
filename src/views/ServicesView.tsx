@@ -180,7 +180,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate, onOpenBo
                     </div>
 
                     {/* 40-60 Words SEO Description */}
-                    <p className="text-slate-300 text-xs leading-relaxed">
+                    <p className="text-slate-300 text-xs leading-relaxed text-justify">
                       {service.shortDesc}
                     </p>
 

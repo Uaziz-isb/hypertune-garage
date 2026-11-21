@@ -34,12 +34,15 @@ interface AboutViewProps {
 
 const WRAP = 'max-w-7xl mx-auto px-4';
 const PANEL = 'bg-[#0b121e] border border-slate-800 rounded-3xl';
-const CARD_CLS = `p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3`;
+const CARD_CLS = `p-6 ${PANEL} space-y-3`;
 const ICON_BOX_CLS = 'w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center border border-cyan-500/20';
 const EYE_CLS = 'text-cyan-400 font-bold text-xs uppercase tracking-widest';
 const H2_CLS = 'text-3xl font-black text-white';
 const P_BODY = 'text-slate-300 text-sm leading-relaxed';
+const P_J = `${P_BODY} text-justify`;
+const P_STORY = `${P_BODY} w-[1150px] max-w-full text-justify`;
 const P_XS = 'text-slate-400 text-xs leading-relaxed';
+const P_XSJ = `${P_XS} text-justify`;
 const IC4 = 'w-4 h-4 text-cyan-400';
 const IC4S = `${IC4} shrink-0`;
 const IFLEX = 'inline-flex items-center gap-1.5';
@@ -122,7 +125,7 @@ const renderFeatureGrid = (items: CardTuple[], useBorderedIcon?: boolean) => (
           <IconC className="w-5 h-5" />
         </div>
         <h3 className="font-bold text-base text-white">{title}</h3>
-        <p className={P_XS}>{desc}</p>
+        <p className={P_XSJ}>{desc}</p>
       </div>
     ))}
   </div>
@@ -144,7 +147,7 @@ const listCard = (IconL: typeof Cpu, title: string, items: [string, string][], e
       </div>
       <h3 className="font-extrabold text-lg text-white">{title}</h3>
     </div>
-    <ul className="space-y-3 text-xs text-slate-300 leading-relaxed">
+    <ul className="space-y-3 text-xs text-slate-300 leading-relaxed text-justify">
       {renderChecklist(items)}
       {extra}
     </ul>
@@ -184,13 +187,13 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
             Performance • Protection • Perfection
           </span>
           <h2 className={H2_CLS}>Who We Are</h2>
-          <p className={P_BODY}>
-            HyperTune Garage is an independent automotive workshop serving drivers across Islamabad and Rawalpindi from Shop 1-G, Ground Floor, Central Avenue, Block E Police Foundation, Sector O-9, Islamabad. Rawalpindi owners also access our flagship hub through insured valet pickup.
+          <p className={P_J}>
+            HyperTune Garage is an independently owned and operated automotive workshop based in Islamabad, Pakistan. Serving drivers across Islamabad and Rawalpindi from Shop 1-G, Ground Floor, Central Avenue, Block E Police Foundation, Sector O-9, Islamabad. Rawalpindi owners also access our flagship hub through insured valet pickup.
           </p>
-          <p className={P_BODY}>
-            We focus on Japanese, German, and luxury vehicles—including Toyota, Honda, Suzuki, Lexus, BMW, Mercedes-Benz, Audi, Porsche, and Land Rover, plus modern hybrids. Rather than guesswork part swapping, our technicians diagnose faults with platform-specific computer scanners, compression testing, and digital micron meters.
+          <p className={P_J}>
+            We are not a franchise or dealership-affiliated service center, we focus on Japanese, German, and luxury vehicles—including Toyota, Honda, Suzuki, Lexus, BMW, Mercedes-Benz, Audi, Porsche, and Land Rover, plus modern hybrids. Rather than guesswork part swapping, our technicians diagnose faults with platform-specific computer scanners, compression testing, and digital micron meters.
           </p>
-          <p className={P_XS}>
+          <p className={P_J}>
             Specialist teams handle engine overhauls, automatic and CVT transmissions, electrical diagnostics, bodywork, and blade-free PPF installation. Before starting repairs, we send digital inspection reports, HD WhatsApp teardown videos, and clear itemized quotes for your approval.
           </p>
 
@@ -237,10 +240,10 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
               About Our Workshop
             </span>
             <h2 className={H2_CLS}>Our Story</h2>
-            <p className={`${P_BODY} w-[1150px] max-w-full`}>
+            <p className={P_STORY}>
               HyperTune Garage was built around a simple belief: every vehicle deserves professional care, honest advice and attention to detail. Serving Islamabad and Rawalpindi, we bring mechanical expertise, modern diagnostic practices and vehicle protection services together under one roof.
             </p>
-            <p className={`${P_BODY} w-[1150px] max-w-full`}>
+            <p className={P_STORY}>
               From routine maintenance and complex repairs to pre-purchase inspections and premium vehicle protection, our focus is on understanding each vehicle&apos;s needs and recommending practical solutions. We believe in transparent communication, quality workmanship and helping customers make informed decisions at every stage.
             </p>
             <p className="text-cyan-400 font-extrabold text-sm tracking-wide pt-1">
@@ -281,7 +284,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
                   <h3 className="font-extrabold text-lg text-white group-hover:text-cyan-400 transition-colors">
                     {title}
                   </h3>
-                  <p className={P_XS}>{desc}</p>
+                  <p className={P_XSJ}>{desc}</p>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-2">
@@ -378,7 +381,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
             <h2 className="text-2xl md:text-3xl font-black text-white">
               Police Foundation Sector O-9 Flagship Hub
             </h2>
-            <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
+            <p className="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
               Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan. Relax in our air-conditioned lounge with Wi-Fi or book insured valet pickup from Rawalpindi.
             </p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-300 pt-1">
@@ -413,8 +416,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
                   key={label}
                   href={href}
                   onClick={click}
-                  target={ext ? '_blank' : undefined}
-                  rel={ext ? 'noopener noreferrer' : undefined}
+                  {...(ext ? EXT_PROPS : {})}
                   className={`${BTN_DARK} ${cls}`}
                 >
                   {ext && <MapPin className="w-3.5 h-3.5 text-cyan-400" />}
@@ -429,7 +431,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
             <h3 className="font-extrabold text-sm text-white uppercase tracking-wider">
               Official HyperTune Garage Channels
             </h3>
-            <p className={P_XS}>
+            <p className={P_XSJ}>
               Follow our verified workshop channels for PPF installations, teardown inspections, and detailing builds.
             </p>
             <div className="grid grid-cols-2 gap-3">

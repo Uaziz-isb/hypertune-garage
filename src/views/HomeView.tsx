@@ -70,6 +70,8 @@ const heroSlides = [
   },
 ];
 
+const P_XSJ = 'text-slate-400 text-xs leading-relaxed text-justify';
+
 export const HomeView: React.FC<HomeViewProps> = ({
   onNavigate,
   onOpenBooking,
@@ -126,7 +128,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </h1>
 
             {/* Subhead */}
-            <p className="text-slate-300 text-sm sm:text-base lg:text-lg font-normal leading-relaxed mx-auto lg:mx-0 max-w-2xl">
+            <p className="text-slate-300 text-sm sm:text-base lg:text-lg font-normal leading-relaxed mx-auto lg:mx-0 max-w-2xl text-justify">
               Get PPF, Ceramic Coating, Car Detailing, Vehicle Diagnostics, Engine Tune-up, Auto Repair &amp; Maintenance Services at our <strong>Islamabad</strong> hub serving <strong>Rawalpindi</strong>. We care for Honda, Toyota, Suzuki, Hyundai, Kia, Haval, MG, Changan, and European cars.
             </p>
 
@@ -308,7 +310,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
                   {pillar.title}
                 </h3>
-                <p className="text-slate-400 text-xs leading-relaxed">{pillar.desc}</p>
+                <p className={P_XSJ}>{pillar.desc}</p>
               </div>
             );
           })}
@@ -392,7 +394,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   <h3 className="text-base font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2">
                     {service.title}
                   </h3>
-                  <p className="text-slate-400 text-xs line-clamp-2 leading-relaxed">
+                  <p className="text-slate-400 text-xs line-clamp-2 leading-relaxed text-justify">
                     {service.shortDesc}
                   </p>
 
@@ -510,27 +512,22 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <p className="text-xs text-cyan-400 font-semibold mt-0.5">HyperTune Garage - Islamabad Flagship Hub</p>
             </div>
 
-            <p className="text-slate-300 text-sm leading-relaxed">
+            <p className="text-slate-300 text-sm leading-relaxed text-justify">
               HyperTune Garage follows strict workshop standards and measures every repair. Our diagnostic bays run dealer-grade German scan tools that read OEM fault codes down to the millivolt. This gives us hard data before we touch a bolt. We handle engine diagnostics, AC and auto electrical repairs, and blade-free PPF in a dust-free cleanroom. You also get clear, itemized pricing on every bill. We build every service for real, lasting vehicle performance.
             </p>
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
-              <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800">
-                <span className="text-3xl font-black text-cyan-400 block">15,000+</span>
-                <span className="text-xs font-semibold text-slate-300">Vehicles Serviced</span>
-              </div>
-              <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800">
-                <span className="text-3xl font-black text-cyan-400 block">99.4%</span>
-                <span className="text-xs font-semibold text-slate-300">Client Satisfaction</span>
-              </div>
-              <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800">
-                <span className="text-3xl font-black text-cyan-400 block">15+</span>
-                <span className="text-xs font-semibold text-slate-300">Certified Master Techs</span>
-              </div>
-              <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800">
-                <span className="text-3xl font-black text-cyan-400 block">2</span>
-                <span className="text-xs font-semibold text-slate-300">Mega Workshop Hubs</span>
-              </div>
+              {[
+                ['15,000+', 'Vehicles Serviced'],
+                ['99.4%', 'Client Satisfaction'],
+                ['15+', 'Certified Master Techs'],
+                ['2', 'Mega Workshop Hubs'],
+              ].map(([v, l]) => (
+                <div key={v} className="p-4 rounded-2xl bg-[#070c14] border border-slate-800">
+                  <span className="text-3xl font-black text-cyan-400 block">{v}</span>
+                  <span className="text-xs font-semibold text-slate-300">{l}</span>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -577,7 +574,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <div key={s.step} className="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 relative shadow-lg">
               <span className="text-4xl font-black text-cyan-500/30 block">{s.step}</span>
               <h3 className="text-base font-bold text-white">{s.title}</h3>
-              <p className="text-slate-400 text-xs leading-relaxed">{s.desc}</p>
+              <p className={P_XSJ}>{s.desc}</p>
             </div>
           ))}
         </div>
@@ -664,7 +661,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                       {loc.address && (
                         <p className="text-slate-300 text-xs flex items-start gap-1.5 leading-relaxed font-medium">
                           <MapPin className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                          <span>{loc.address}</span>
+                          <span className="text-justify">{loc.address}</span>
                         </p>
                       )}
                       {loc.hours && (
@@ -679,7 +676,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                       )}
                     </>
                   ) : (
-                    <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-200 text-xs leading-relaxed italic">
+                    <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-200 text-xs leading-relaxed italic text-justify">
                       &ldquo;{loc.statusNotice}&rdquo;
                     </div>
                   )}

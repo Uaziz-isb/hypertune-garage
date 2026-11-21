@@ -632,7 +632,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
     <div class="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
       <div class="space-y-4">
         <a href="/" class="text-white font-extrabold text-lg tracking-tight inline-block">HyperTune Garage</a>
-        <p class="text-slate-400 text-xs leading-relaxed max-w-sm">
+        <p class="text-slate-400 text-xs leading-relaxed max-w-sm text-justify">
           HyperTune Garage is Pakistan's precision automotive workshop for Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Lexus, and Land Rover. We provide Paint Protection Film (PPF), engine rebuilding, ceramic detailing, diagnostics, and scheduled maintenance.
         </p>
         <div class="text-xs text-slate-300 font-semibold bg-[#09101d] border border-cyan-500/20 p-3 rounded-xl max-w-sm">
@@ -678,7 +678,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         <div class="space-y-4 text-xs">
           <div class="space-y-2">
             <a href="/locations/islamabad-workshop/" class="font-bold text-white hover:text-cyan-400 block">Islamabad Flagship Hub</a>
-            <p class="text-slate-300 leading-relaxed font-medium">
+            <p class="text-slate-300 leading-relaxed font-medium text-justify">
               <span class="text-slate-400 font-semibold">Address:</span> Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
             </p>
             <div class="pt-1 flex flex-col gap-1.5">
@@ -690,7 +690,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           </div>
           <div class="pt-3 border-t border-slate-800 space-y-1">
             <a href="/locations/rawalpindi-workshop/" class="font-bold text-white hover:text-cyan-400 block">Rawalpindi Hub (Coming Soon)</a>
-            <p class="text-amber-200/80 leading-relaxed text-[11px]">
+            <p class="text-amber-200/80 leading-relaxed text-[11px] text-justify">
               Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.
             </p>
           </div>
@@ -979,7 +979,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
             <div>
               <span style="font-size:11px;font-weight:700;color:#06b6d4;text-transform:uppercase;letter-spacing:1px;">${escapeHtml(s.category)}</span>
               <h2 style="font-size:20px;font-weight:800;color:#ffffff;margin:8px 0 12px;">${escapeHtml(s.title)}</h2>
-              <p style="font-size:14px;color:#94a3b8;line-height:1.6;margin-bottom:16px;">${escapeHtml(s.shortDesc)}</p>
+              <p style="font-size:14px;color:#94a3b8;line-height:1.6;margin-bottom:16px;text-align:justify;">${escapeHtml(s.shortDesc)}</p>
               <div style="font-size:13px;color:#cbd5e1;margin-bottom:16px;">
                 <strong>Est Range:</strong> <span style="color:#06b6d4;">${escapeHtml(s.priceRange)}</span>
               </div>
@@ -1628,7 +1628,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
             </h1>
 
             <!-- Subhead -->
-            <p class="text-slate-300 text-sm sm:text-base lg:text-lg font-normal leading-relaxed mx-auto lg:mx-0 max-w-2xl">
+            <p class="text-slate-300 text-sm sm:text-base lg:text-lg font-normal leading-relaxed mx-auto lg:mx-0 max-w-2xl text-justify">
               Get PPF, Ceramic Coating, Car Detailing, Vehicle Diagnostics, Engine Tune-up, Auto Repair &amp; Maintenance Services at our <strong>Islamabad</strong> hub serving <strong>Rawalpindi</strong>. We care for Honda, Toyota, Suzuki, Hyundai, Kia, Haval, MG, Changan, and European cars.
             </p>
 
@@ -1720,27 +1720,27 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
             <h3 class="text-lg font-bold text-white">Official Dealer-Level Diagnostics</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">Our team uses Toyota Techstream, Honda HDS, Suzuki SDT-II, Hyundai GDS, Kia KDS, JLR Pathfinder, and OEM scan tools.</p>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">Our team uses Toyota Techstream, Honda HDS, Suzuki SDT-II, Hyundai GDS, Kia KDS, JLR Pathfinder, and OEM scan tools.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
             <h3 class="text-lg font-bold text-white">100% Genuine Barcode Sourced Parts</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">We source Bosch, Lemförder, Sachs, Bilstein, and genuine OEM parts with full barcode trace safety.</p>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">We source Bosch, Lemförder, Sachs, Bilstein, and genuine OEM parts with full barcode trace safety.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
             <h3 class="text-lg font-bold text-white">12-Month / 15,000 km Warranty</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">Every engine overhaul, suspension job, and electrical repair includes our written warranty.</p>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">Every engine overhaul, suspension job, and electrical repair includes our written warranty.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
             <h3 class="text-lg font-bold text-white">Master Certified Engineers</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">Trained mechanical engineers and ECU software specialists handle every job to European workshop standards.</p>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">Trained mechanical engineers and ECU software specialists handle every job to European workshop standards.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
             <h3 class="text-lg font-bold text-white">Live Video Inspection Reports</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">You receive HD video proof of worn parts before you approve any repair work.</p>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">You receive HD video proof of worn parts before you approve any repair work.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
             <h3 class="text-lg font-bold text-white">State-of-the-Art Diagnostics &amp; Alignment</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">Our bays feature OEM diagnostic scanners, 3D laser wheel alignment rigs, and ultrasonic cleaners.</p>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">Our bays feature OEM diagnostic scanners, 3D laser wheel alignment rigs, and ultrasonic cleaners.</p>
           </div>
         </div>
       </section>
@@ -1759,7 +1759,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
             <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
               <span class="text-cyan-400 font-bold text-xs uppercase">${escapeHtml(s.category)}</span>
               <h3 class="text-lg font-bold text-white">${escapeHtml(s.title)}</h3>
-              <p class="text-slate-400 text-xs leading-relaxed">${escapeHtml(s.shortDesc)}</p>
+              <p class="text-slate-400 text-xs leading-relaxed text-justify">${escapeHtml(s.shortDesc)}</p>
               <a href="/services/${s.slug}/" class="text-cyan-400 font-bold text-xs hover:underline inline-block pt-1">Read Technical Specs &rarr;</a>
             </div>
           `).join('')}
@@ -1851,7 +1851,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
               <h2 class="text-2xl font-black text-white mt-1">HyperTune Performance Metrics</h2>
               <p class="text-xs text-cyan-400 font-semibold mt-0.5">HyperTune Garage - Islamabad Flagship Hub</p>
             </div>
-            <p class="text-slate-300 text-sm leading-relaxed">
+            <p class="text-slate-300 text-sm leading-relaxed text-justify">
               HyperTune Garage follows strict workshop standards and measures every repair. Our diagnostic bays run dealer-grade German scan tools that read OEM fault codes down to the millivolt. This gives us hard data before we touch a bolt. We handle engine diagnostics, AC and auto electrical repairs, and blade-free PPF in a dust-free cleanroom. You also get clear, itemized pricing on every bill. We build every service for real, lasting vehicle performance.
             </p>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
@@ -1878,12 +1878,12 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
                       <h3 class="font-extrabold text-white text-sm">${escapeHtml(review.authorName)}</h3>
                       <span class="text-[11px] text-slate-400 block">${escapeHtml(review.relativeTimeText || 'Verified Customer')}</span>
                     </div>
-                    <p class="text-slate-300 text-xs leading-relaxed italic">"${escapeHtml(review.text)}"</p>
+                    <p class="text-slate-300 text-xs leading-relaxed italic text-justify">"${escapeHtml(review.text)}"</p>
                   </div>
                   ${review.ownerResponse ? `
                     <div class="mt-4 pt-3 border-t border-slate-800/80 bg-slate-900/90 p-4 rounded-2xl space-y-1.5 border-l-4 border-l-cyan-400">
                       <span class="font-extrabold text-cyan-400 text-xs block">HyperTune Garage — Owner (Official Reply)</span>
-                      <p class="text-slate-200 text-xs leading-relaxed italic">"${escapeHtml(review.ownerResponse)}"</p>
+                      <p class="text-slate-200 text-xs leading-relaxed italic text-justify">"${escapeHtml(review.ownerResponse)}"</p>
                     </div>
                   ` : ''}
                 </div>
@@ -1903,22 +1903,22 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
             <span class="text-4xl font-black text-cyan-500/30 block">01</span>
             <h3 class="text-base font-bold text-white">Book Appointment</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">Book online or on WhatsApp. Pick a slot that fits your schedule in Islamabad or Rawalpindi.</p>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">Book online or on WhatsApp. Pick a slot that fits your schedule in Islamabad or Rawalpindi.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
             <span class="text-4xl font-black text-cyan-500/30 block">02</span>
             <h3 class="text-base font-bold text-white">Computer Diagnostic</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">Our master techs run an OEM scanner audit and share a clear, itemized quote.</p>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">Our master techs run an OEM scanner audit and share a clear, itemized quote.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
             <span class="text-4xl font-black text-cyan-500/30 block">03</span>
             <h3 class="text-base font-bold text-white">Video Approval</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">Watch HD video proof of worn parts. We start work only after you approve.</p>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">Watch HD video proof of worn parts. We start work only after you approve.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
             <span class="text-4xl font-black text-cyan-500/30 block">04</span>
             <h3 class="text-base font-bold text-white">Road Test &amp; Warranty</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">We complete a road test, wash your car, and hand over a 12-month written warranty.</p>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">We complete a road test, wash your car, and hand over a 12-month written warranty.</p>
           </div>
         </div>
         <div class="bg-[#0b121e] border border-slate-800 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
@@ -1945,7 +1945,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
             <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-4 shadow-xl">
               <span class="inline-block bg-cyan-950/70 border border-cyan-500/30 text-cyan-400 px-3 py-1 rounded-full text-xs font-bold uppercase">${escapeHtml(loc.city)} Hub</span>
               <h3 class="text-xl font-bold text-white">${escapeHtml(loc.branchName)}</h3>
-              <p class="text-slate-400 text-xs leading-relaxed">${escapeHtml(loc.address)}</p>
+              <p class="text-slate-400 text-xs leading-relaxed text-justify">${escapeHtml(loc.address)}</p>
               <div class="flex gap-3 pt-2">
                 <a href="tel:${loc.phone.replace(/[^0-9+]/g, '')}" class="px-4 py-2 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs">Call: ${loc.phone}</a>
                 <a href="/locations/${loc.slug}/" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white font-bold text-xs">Branch Details &rarr;</a>

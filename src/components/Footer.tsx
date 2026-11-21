@@ -85,7 +85,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
           >
             <Logo variant="dark" scale={1.05} />
           </a>
-          <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
+          <p className="text-slate-400 text-xs leading-relaxed max-w-sm text-justify">
             HyperTune Garage is Pakistan's precision automotive workshop for Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Lexus, and Land Rover. We provide Paint Protection Film (PPF), engine rebuilding, ceramic detailing, diagnostics, and scheduled maintenance.
           </p>
           <div className="flex items-center gap-2 text-xs text-slate-300 font-semibold bg-[#09101d] border border-cyan-500/20 p-3 rounded-xl max-w-sm">
@@ -250,7 +250,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
                 <MapPin className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
                 <span>Islamabad Flagship Hub</span>
               </a>
-              <p className="text-slate-300 leading-relaxed font-medium">
+              <p className="text-slate-300 leading-relaxed font-medium text-justify">
                 <span className="text-slate-400 font-semibold">Address:</span> Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
               </p>
               <div className="pt-1 flex flex-col gap-1.5">
@@ -297,7 +297,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
                   Coming Soon
                 </span>
               </a>
-              <p className="text-amber-200/80 leading-relaxed text-[11px]">
+              <p className="text-amber-200/80 leading-relaxed text-[11px] text-justify">
                 Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.
               </p>
             </div>
