@@ -94,7 +94,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
                   aria-labelledby={faqId}
                   className="px-5 sm:px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 animate-in fade-in duration-150"
                 >
-                  <p className="pt-2">{faq.answer}</p>
+                  <p className={pageType === 'service' ? 'pt-2 text-justify' : 'pt-2'}>{faq.answer}</p>
                 </div>
               )}
             </div>

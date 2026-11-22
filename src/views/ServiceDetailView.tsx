@@ -162,12 +162,12 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
           </h1>
 
           <div className="p-4 bg-cyan-950/20 border border-cyan-500/20 rounded-2xl">
-            <p className="text-cyan-200 text-sm font-semibold leading-relaxed">
+            <p className="text-cyan-200 text-sm font-semibold leading-relaxed text-justify">
               {service.shortDesc}
             </p>
           </div>
 
-          <p className="text-slate-300 text-sm leading-relaxed">
+          <p className="text-slate-300 text-sm leading-relaxed text-justify">
             {service.fullDesc}
           </p>
 
@@ -357,7 +357,7 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
                 <h3 className="font-bold text-sm text-white group-hover:text-cyan-400 transition-colors">
                   {step.title}
                 </h3>
-                <p className="text-xs text-slate-400 leading-relaxed">{step.desc}</p>
+                <p className="text-xs text-slate-400 leading-relaxed text-justify">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -375,7 +375,7 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
           {service.seo.keywordParagraph && (
             <div className="bg-[#0b121e] p-5 rounded-2xl border border-slate-800 space-y-2">
               <h3 className="text-xs font-bold text-slate-300 uppercase tracking-wider">SEO Overview & Key Services Paragraph</h3>
-              <p className="text-slate-200 text-xs sm:text-sm leading-relaxed">
+              <p className="text-slate-200 text-xs sm:text-sm leading-relaxed text-justify">
                 {service.seo.keywordParagraph}
               </p>
             </div>
@@ -492,7 +492,7 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
               <h3 className="font-bold text-sm text-white group-hover:text-cyan-400 transition-colors">
                 {rel.title}
               </h3>
-              <p className="text-xs text-slate-400 line-clamp-2">{rel.shortDesc}</p>
+              <p className="text-xs text-slate-400 line-clamp-2 text-justify">{rel.shortDesc}</p>
               <div className="pt-2 flex items-center justify-between text-xs font-bold text-cyan-400">
                 <span>Learn More</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
