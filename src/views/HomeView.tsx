@@ -227,26 +227,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     {activeHero.badge}
                   </span>
                 </div>
-
-                {/* Dots & Auto-rotation Progress Bar */}
-                <div className="flex items-center justify-between pt-1 border-t border-slate-800 text-[10px]">
-                  <div className="flex items-center gap-1.5">
-                    {heroSlides.map((_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setCurrentSlide(idx)}
-                        className={`h-1.5 sm:h-2 rounded-full transition-all ${
-                          idx === currentSlide ? 'w-5 sm:w-6 bg-cyan-400' : 'w-1.5 sm:w-2 bg-slate-700 hover:bg-slate-500'
-                        }`}
-                        aria-label={`Go to slide ${idx + 1}`}
-                      />
-                    ))}
-                  </div>
-                  <span className="text-[9px] sm:text-[10px] text-cyan-400 font-extrabold tracking-wider uppercase flex items-center gap-1">
-                    <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3 animate-spin" style={{ animationDuration: '5s' }} />
-                    Auto-Rotating
-                  </span>
-                </div>
               </div>
             </div>
           </div>
