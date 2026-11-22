@@ -1005,9 +1005,9 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <div style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;">
             <div>
               <span style="font-size:11px;font-weight:700;color:#06b6d4;text-transform:uppercase;letter-spacing:1px;">${escapeHtml(b.logoBadge)}</span>
-              <h2 style="font-size:20px;font-weight:800;color:#ffffff;margin:8px 0 12px;text-align:justify;">${escapeHtml(b.name)}</h2>
+              <h2 style="font-size:20px;font-weight:800;color:#ffffff;margin:8px 0 12px;text-align:left;">${escapeHtml(b.name)}</h2>
               <p style="font-size:14px;color:#94a3b8;line-height:1.6;margin-bottom:16px;text-align:justify;">${escapeHtml(b.tagline)}</p>
-              <p style="font-size:12px;color:#06b6d4;font-family:monospace;margin-bottom:16px;text-align:justify;">${escapeHtml(b.diagnosticSoftware)}</p>
+              <p style="font-size:12px;color:#06b6d4;font-family:monospace;margin-bottom:16px;text-align:left;">${escapeHtml(b.diagnosticSoftware)}</p>
             </div>
             <a href="/brands/${b.slug}/" style="background:#06b6d4;color:#030712;padding:10px 16px;border-radius:8px;font-weight:800;text-decoration:none;text-align:center;display:block;">
               Explore ${escapeHtml(b.name.split(' ')[0])} Hub &rarr;
@@ -1100,7 +1100,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
                   </a>
                   <span style="font-size:10px;color:#64748b;font-family:monospace;text-transform:uppercase;">Service Guide</span>
                 </div>
-                <h3 style="font-size:18px;font-weight:800;color:#ffffff;margin:0 0 12px;line-height:1.4;text-align:justify;">
+                <h3 style="font-size:18px;font-weight:800;color:#ffffff;margin:0 0 12px;line-height:1.4;text-align:left;">
                   <a href="/blog/${guide.slug}/" style="color:#ffffff;text-decoration:none;">
                     ${escapeHtml(guide.title)}
                   </a>
@@ -1144,7 +1144,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
                   <span style="font-size:11px;font-weight:700;color:#06b6d4;text-transform:uppercase;">${escapeHtml(b.category)}</span>
                   <span style="font-size:11px;color:#64748b;">${escapeHtml(b.readTime)}</span>
                 </div>
-                <h3 style="font-size:18px;font-weight:800;color:#ffffff;margin:0 0 12px;line-height:1.4;text-align:justify;">
+                <h3 style="font-size:18px;font-weight:800;color:#ffffff;margin:0 0 12px;line-height:1.4;text-align:left;">
                   <a href="/blog/${b.slug}/" style="color:#ffffff;text-decoration:none;">
                     ${escapeHtml(b.title)}
                   </a>

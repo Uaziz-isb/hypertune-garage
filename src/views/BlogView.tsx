@@ -136,7 +136,7 @@ export const BlogView: React.FC<BlogViewProps> = ({ onNavigate }) => {
                     </a>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 text-justify">
+                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 text-left">
                     <a
                       href={`/blog/${guide.slug}/`}
                       onClick={(e) => {
@@ -258,7 +258,7 @@ export const BlogView: React.FC<BlogViewProps> = ({ onNavigate }) => {
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 text-justify">
+                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 text-left">
                     <a
                       href={`/blog/${post.slug}/`}
                       onClick={(e) => {

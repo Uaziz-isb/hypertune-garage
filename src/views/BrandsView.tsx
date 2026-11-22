@@ -54,7 +54,7 @@ export const BrandsView: React.FC<BrandsViewProps> = ({ onNavigate }) => {
 
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <h2 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors text-justify">
+                  <h2 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors text-left">
                     {brand.name}
                   </h2>
                   <p className="text-xs text-cyan-400/90 font-medium mt-1 mb-3 text-justify">
@@ -78,7 +78,7 @@ export const BrandsView: React.FC<BrandsViewProps> = ({ onNavigate }) => {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
-                  <span className="text-xs text-slate-400 font-medium text-justify">
+                  <span className="text-xs text-slate-400 font-medium text-left">
                     Diagnostics: <span className="text-slate-200">{brand.diagnosticSoftware.split(',')[0]}</span>
                   </span>
                   <span className="text-cyan-400 text-xs font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
