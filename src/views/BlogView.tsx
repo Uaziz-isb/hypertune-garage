@@ -136,7 +136,7 @@ export const BlogView: React.FC<BlogViewProps> = ({ onNavigate }) => {
                     </a>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2">
+                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 text-justify">
                     <a
                       href={`/blog/${guide.slug}/`}
                       onClick={(e) => {
@@ -148,7 +148,7 @@ export const BlogView: React.FC<BlogViewProps> = ({ onNavigate }) => {
                     </a>
                   </h3>
 
-                  <p className="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+                  <p className="text-slate-400 text-xs line-clamp-3 leading-relaxed text-justify">
                     {guide.desc}
                   </p>
                 </div>
@@ -258,7 +258,7 @@ export const BlogView: React.FC<BlogViewProps> = ({ onNavigate }) => {
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2">
+                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 text-justify">
                     <a
                       href={`/blog/${post.slug}/`}
                       onClick={(e) => {
@@ -270,7 +270,7 @@ export const BlogView: React.FC<BlogViewProps> = ({ onNavigate }) => {
                     </a>
                   </h3>
 
-                  <p className="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+                  <p className="text-slate-400 text-xs line-clamp-3 leading-relaxed text-justify">
                     {post.excerpt}
                   </p>
                 </div>

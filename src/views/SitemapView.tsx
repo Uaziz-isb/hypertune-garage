@@ -507,7 +507,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
           >
             <div className="flex items-center gap-2">
               <Phone className="w-4 h-4 text-cyan-400" />
-              <span>Helpline: 0333-0177717</span>
+              <span>Helpline: +92 333 0177717</span>
             </div>
             <ExternalLink className="w-4 h-4" />
           </a>

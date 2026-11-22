@@ -30,9 +30,9 @@ export const faqData: FAQItem[] = [
     id: 'faq-gen-1',
     category: 'General & Workshop',
     question: 'Where is HyperTune Garage located, and what areas of Islamabad and Rawalpindi do you serve?',
-    answer: 'Our operational Islamabad Flagship Hub is located at Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad (near PWD, DHA Phases 1–5, and Bahria Town). We serve clients across all Islamabad sectors (F-6 to F-11, E-11, G-11) and Rawalpindi (via our Islamabad Flagship Hub with insured valet pickup), offering dedicated customer lounges with live workshop video feeds.',
+    answer: 'Our operational Islamabad Flagship Hub is located at Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad (near PWD, DHA Phases 1–5, and Bahria Town). We serve clients across all Islamabad sectors (F-6 to F-11, E-11, G-11) and Rawalpindi (via our Islamabad Flagship Hub with insured valet pickup), offering dedicated customer lounges with live workshop video feeds.',
     keyHighlights: [
-      'Islamabad Flagship Hub — Open & Operating: Block E Police Foundation, Sector O-9, Islamabad (accessible via Islamabad Expressway)',
+      'Islamabad Flagship Hub — Open & Operating: O-9 Block E Police Foundation, Islamabad (accessible via Islamabad Expressway)',
       'Rawalpindi Hub — Coming Soon: Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup',
       'Operating Hours: Saturday – Thursday: 10:00 AM – 10:00 PM | Friday: CLOSED (Weekly Maintenance)',
     ],
@@ -318,7 +318,7 @@ export const faqData: FAQItem[] = [
     id: 'faq-prc-2',
     category: 'Pricing & Booking',
     question: 'How do I book an appointment, and what payment methods do you accept?',
-    answer: 'Booking is simple: reserve online via our interactive website booking portal, call our workshop helpline at 0333-0177717, or message us on WhatsApp. Booking in advance reserves a dedicated lift bay and assigns a master technician to your car. We accept cash, major credit/debit cards (Visa, Mastercard), PayPak, online bank transfers, and corporate account invoicing.',
+    answer: 'Booking is simple: reserve online via our interactive website booking portal, call our workshop helpline at +92 333 0177717, or message us on WhatsApp. Booking in advance reserves a dedicated lift bay and assigns a master technician to your car. We accept cash, major credit/debit cards (Visa, Mastercard), PayPak, online bank transfers, and corporate account invoicing.',
     keyHighlights: [
       'Online & WhatsApp Reservation: Instant booking confirmation with preferred time slot and technician assignment',
       'Multiple Payment Methods: Cash, debit/credit cards, direct 1Link bank transfer, and corporate invoicing',

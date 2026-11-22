@@ -670,7 +670,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                         className="flex-1 py-2.5 px-3 rounded-xl bg-[#070c14] hover:bg-slate-800 text-white font-bold text-xs border border-slate-800 flex items-center justify-center gap-1.5 transition-colors"
                       >
                         <Phone className="w-3.5 h-3.5 text-cyan-400" />
-                        <span>0333-0177717</span>
+                        <span>+92 333 0177717</span>
                       </a>
                       {loc.googleMapsDirectionsUrl && (
                         <a
@@ -716,7 +716,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </span>
             <h2 className="text-2xl md:text-3xl font-black text-white">Find HyperTune Garage on Google Maps</h2>
             <p className="text-xs text-slate-400 max-w-xl">
-              Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan.
+              Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000, Pakistan.
             </p>
           </div>
           <a
@@ -735,7 +735,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           title="HyperTune Garage Google Map Location"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.215!2d73.1345365!3d33.5622113!2m3!1f0!1f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfede5eabd2d83%3A0xf3b2d99386f26b69!2sHyperTune%20Garage!5e1!3m2!1sen!2spk!4v1710000000000!5m2!1sen!2spk&maptype=satellite"
           containerHeight="h-[400px]"
-          address="Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000"
+          address="Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000"
         />
       </section>
     </div>

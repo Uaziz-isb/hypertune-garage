@@ -8,7 +8,7 @@ const baseServicesData: ServiceItem[] = [
     slug: 'paint-protection-film-ppf',
     title: 'Paint Protection Film (PPF)',
     shortDesc: 'We install self-healing TPU Paint Protection Film (PPF) in Islamabad & Rawalpindi. Shield factory paint from stone chips, UV rays, and scratches with up to 10-year coverage.',
-    fullDesc: 'HyperTune Garage is Pakistan’s leading studio for self-healing TPU Paint Protection Film (PPF). Located at our Flagship Studio in Block E Police Foundation, Sector O-9, Islamabad and Rawalpindi, our clean, climate-controlled detailing bay utilizes CAD computer digital plotter pre-cut TPU self-healing films. PPF forms an invisible, ultra-durable hydrophobic armor over your vehicle’s paint, self-healing swirl marks under heat or sunlight while preserving original factory paint and high resale value.',
+    fullDesc: 'HyperTune Garage is Pakistan’s leading studio for self-healing TPU Paint Protection Film (PPF). Located at our Flagship Studio in O-9 Block E Police Foundation, Islamabad and Rawalpindi, our clean, climate-controlled detailing bay utilizes CAD computer digital plotter pre-cut TPU self-healing films. PPF forms an invisible, ultra-durable hydrophobic armor over your vehicle’s paint, self-healing swirl marks under heat or sunlight while preserving original factory paint and high resale value.',
     subServices: ['Paint Protection Film (PPF)', 'Self-Healing TPU Film', 'Clear Bra Armor', 'Luxury Vehicle Armor'],
     subServicePrices: [
       { name: 'PPF (Paint Protection Film)', price: 'PKR 10,000 to 250,000' }

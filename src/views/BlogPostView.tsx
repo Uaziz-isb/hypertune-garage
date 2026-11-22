@@ -159,7 +159,7 @@ export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpen
 
         {/* Article Content */}
         <div
-          className="prose prose-invert max-w-none text-slate-300 text-sm leading-relaxed space-y-6"
+          className="prose prose-invert max-w-none text-slate-300 text-sm leading-relaxed space-y-6 [&_p]:text-justify [&_li]:text-justify"
           dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
 

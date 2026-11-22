@@ -39,8 +39,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
             <h2 className="text-2xl md:text-3xl font-black text-white">
               Ready to Experience Peak Automotive Performance?
             </h2>
-            <p className="text-slate-400 text-sm max-w-xl">
-              Book your diagnostic scan, detailing, or oil service today. We use 100% genuine OEM parts with a 12-month / 15,000 km warranty.
+            <p className="text-slate-400 text-sm w-[830px] max-w-full">
+              Book your diagnostic scan, PPF, detailing or oil service today. We use 100% genuine OEM parts with a 12-month / 15,000 km warranty.
             </p>
           </div>
 
@@ -251,7 +251,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
                 <span>Islamabad Flagship Hub</span>
               </a>
               <p className="text-slate-300 leading-relaxed font-medium text-justify">
-                <span className="text-slate-400 font-semibold">Address:</span> Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
+                <span className="text-slate-400 font-semibold">Address:</span> Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000, Pakistan
               </p>
               <div className="pt-1 flex flex-col gap-1.5">
                 <a
@@ -260,7 +260,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
                   className="text-cyan-400 hover:text-cyan-300 font-bold inline-flex items-center gap-1.5 hover:underline"
                 >
                   <Phone className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-                  <span>Contact: 0333-0177717</span>
+                  <span>Contact: +92 333 0177717</span>
                 </a>
                 <a
                   href="mailto:info@hypertunegarage.pk"
@@ -308,7 +308,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
       {/* Bottom Bar & Copyright */}
       <div className="bg-[#030509] border-t border-slate-900 py-6 px-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p><a href="https://hypertunegarage.pk/" className="hover:text-cyan-400 no-underline transition-colors">HyperTuneGarage.Pk</a> | Performance • Protection • Perfection | All Rights Reserved © 2026-28 | Developed by Umair Aziz – <a href="https://gridlockit.com/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 no-underline transition-colors">Gridlockit.com</a></p>
+          <p><a href="https://hypertunegarage.pk/" className="hover:text-cyan-400 no-underline transition-colors">HyperTuneGarage.Pk</a> | All Rights Reserved © 2026-28 | Developed by Umair Aziz – <a href="https://gridlockit.com/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 no-underline transition-colors">Gridlockit.com</a></p>
           <div className="flex items-center gap-4">
             <a
               href="/sitemap/"

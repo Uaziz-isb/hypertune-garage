@@ -94,7 +94,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
                   aria-labelledby={faqId}
                   className="px-5 sm:px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 animate-in fade-in duration-150"
                 >
-                  <p className={pageType === 'service' ? 'pt-2 text-justify' : 'pt-2'}>{faq.answer}</p>
+                  <p className="pt-2 text-justify">{faq.answer}</p>
                 </div>
               )}
             </div>
@@ -108,7 +108,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
           <span className="text-slate-400 text-xs font-semibold block">
             Have additional repair, warranty, or scheduling questions?
           </span>
-          <p className="text-white text-xs sm:text-sm font-bold">
+          <p className={`text-white text-xs sm:text-sm font-bold${pageType === 'service' ? ' text-justify' : ''}`}>
             Browse our centralized knowledge library covering warranty terms, booking, and all workshop procedures.
           </p>
         </div>

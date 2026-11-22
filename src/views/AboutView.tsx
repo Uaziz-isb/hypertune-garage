@@ -188,7 +188,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
           </span>
           <h2 className={H2_CLS}>Who We Are</h2>
           <p className={P_J}>
-            HyperTune Garage is an independently owned and operated automotive workshop based in Islamabad, Pakistan. Serving drivers across Islamabad and Rawalpindi from Shop 1-G, Ground Floor, Central Avenue, Block E Police Foundation, Sector O-9, Islamabad. Rawalpindi owners also access our flagship hub through insured valet pickup.
+            HyperTune Garage is an independently owned and operated automotive workshop based in Islamabad, Pakistan. Serving drivers across Islamabad and Rawalpindi from Shop 1-G, Ground Floor, Central Avenue, O-9 Block E Police Foundation, Islamabad. Rawalpindi owners also access our flagship hub through insured valet pickup.
           </p>
           <p className={P_J}>
             We are not a franchise or dealership-affiliated service center, we focus on Japanese, German, and luxury vehicles—including Toyota, Honda, Suzuki, Lexus, BMW, Mercedes-Benz, Audi, Porsche, and Land Rover, plus modern hybrids. Rather than guesswork part swapping, our technicians diagnose faults with platform-specific computer scanners, compression testing, and digital micron meters.
@@ -382,7 +382,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
               Police Foundation Sector O-9 Flagship Hub
             </h2>
             <p className="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
-              Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan. Relax in our air-conditioned lounge with Wi-Fi or book insured valet pickup from Rawalpindi.
+              Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000, Pakistan. Relax in our air-conditioned lounge with Wi-Fi or book insured valet pickup from Rawalpindi.
             </p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-300 pt-1">
               <span className={IFLEX}>

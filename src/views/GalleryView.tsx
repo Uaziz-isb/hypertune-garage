@@ -51,7 +51,7 @@ export const GalleryView: React.FC<GalleryViewProps> = ({ onNavigate, onOpenBook
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((item) => (
+          {filtered.map((item, idx) => (
             <div
               key={item.id}
               onClick={() => setActiveModalImage(item.image)}
@@ -83,7 +83,7 @@ export const GalleryView: React.FC<GalleryViewProps> = ({ onNavigate, onOpenBook
               <div className="p-5 space-y-1">
                 <span className="text-[11px] font-bold text-cyan-400">{item.vehicle}</span>
                 <h3 className="font-bold text-base text-white">{item.title}</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">{item.description}</p>
+                <p className={`text-xs text-slate-400 leading-relaxed${idx === 0 ? ' text-justify' : ''}`}>{item.description}</p>
               </div>
             </div>
           ))}

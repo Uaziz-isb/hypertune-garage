@@ -91,13 +91,13 @@ export const Header: React.FC<HeaderProps> = ({
               href="tel:+923330177717"
               onClick={() => trackPhoneClick('header_topbar')}
               className="flex items-center gap-1 sm:gap-1.5 hover:text-cyan-400 transition-colors font-semibold shrink-0"
-              title="Call HyperTune Garage at 0333-0177717"
+              title="Call HyperTune Garage at +92 333 0177717"
             >
               <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-cyan-400 shrink-0" />
               <span className="truncate">
                 Call Now:{' '}
                 <strong className="text-white font-extrabold tracking-wide">
-                  0333-0177717
+                  +92 333 0177717
                 </strong>
               </span>
             </a>
@@ -111,18 +111,6 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Right: Social Media Links */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <span className="hidden sm:inline text-[11px] text-slate-400 font-semibold mr-0.5">Follow us:</span>
-            <a
-              href="https://wa.me/923330177717"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackWhatsAppClick('header_topbar')}
-              className="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-md sm:rounded-lg bg-slate-900 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/30 transition-all flex items-center gap-1 text-[10px] sm:text-[11px] font-bold"
-              title="WhatsApp +92 333 0177717"
-              aria-label="WhatsApp"
-            >
-              <MessageCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-              <span className="hidden xs:inline">WhatsApp</span>
-            </a>
             <a
               href="https://www.facebook.com/profile.php?id=61589327521589"
               target="_blank"

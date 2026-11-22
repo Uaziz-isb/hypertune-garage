@@ -404,7 +404,7 @@ export async function runPerformanceRegressionGuard(): Promise<boolean> {
   const hasDetailedOverviews = faqData.every((f) => f.comprehensiveOverview && f.comprehensiveOverview.length > 200);
   const locationVerified = faqData.some((f) => 
     f.answer.includes('Police Foundation') && 
-    f.answer.includes('Sector O-9') && 
+    f.answer.includes('O-9') && 
     f.answer.includes('Islamabad')
   );
 
@@ -413,12 +413,12 @@ export async function runPerformanceRegressionGuard(): Promise<boolean> {
       level: 'CRITICAL',
       category: 'Master Prompt Audit',
       metric: 'Technical Depth & Location Grounding',
-      expected: 'Comprehensive technical overviews (>200 chars) and verified workshop location in Islamabad Sector O-9',
+      expected: 'Comprehensive technical overviews (>200 chars) and verified workshop location in Islamabad O-9 Block E Police Foundation',
       actual: 'Substance check failed',
       details: 'FAQ answers must be authoritatively grounded in actual workshop procedures and physical location.',
     });
   } else {
-    console.log('   ✅ Point 2: Technical depth & verified physical workshop location (Police Foundation, Sector O-9) confirmed.');
+    console.log('   ✅ Point 2: Technical depth & verified physical workshop location (O-9 Block E Police Foundation) confirmed.');
   }
 
   // Point 3: Two-Way Topical Internal Linking
@@ -568,7 +568,7 @@ export async function runPerformanceRegressionGuard(): Promise<boolean> {
   console.log('📋 PRODUCTION VERIFICATION & INTEGRITY AUDIT: ALL POINTS EXECUTED & VERIFIED');
   console.log('======================================================================');
   console.log('   [✔] Point 1: Central FAQ Knowledge Hub Architecture (9 categories, 45+ questions)');
-  console.log('   [✔] Point 2: Technical Depth & Physical Workshop Location Grounding (Police Foundation, Sector O-9)');
+  console.log('   [✔] Point 2: Technical Depth & Physical Workshop Location Grounding (O-9 Block E Police Foundation)');
   console.log('   [✔] Point 3: Two-Way Topical Internal Linking (Services, Brands, Locations, 0 broken links)');
   console.log('   [✔] Point 4: Search Console & Real Search Intent Grounding (Zero fabricated queries)');
   console.log('   [✔] Point 5: Google Structured Data Policy Compliance (0 deprecated commercial FAQPage, compliant WebPage)');

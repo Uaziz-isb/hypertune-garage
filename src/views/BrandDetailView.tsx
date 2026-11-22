@@ -39,7 +39,7 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
         priceRange: '$$$',
         address: {
           '@type': 'PostalAddress',
-          streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
+          streetAddress: 'Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation',
           addressLocality: 'Islamabad',
           addressRegion: 'PK-IS',
           postalCode: '44000',
@@ -106,7 +106,7 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
             <p className="mt-3 text-lg text-cyan-400 font-medium">
               {brand.tagline}
             </p>
-            <p className="mt-4 text-base text-slate-300 leading-relaxed">
+            <p className="mt-4 text-base text-slate-300 leading-relaxed text-justify">
               {brand.overview}
             </p>
 
@@ -168,7 +168,7 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
                 {brand.modelsCovered.map((model, idx) => (
                   <div key={idx} className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-950/60 border border-slate-800/80">
                     <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                    <span className="text-xs sm:text-sm text-slate-200 font-medium">{model}</span>
+                    <span className="text-xs sm:text-sm text-slate-200 font-medium text-justify">{model}</span>
                   </div>
                 ))}
               </div>
@@ -192,7 +192,7 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
                       </span>
                       {item.issue}
                     </h3>
-                    <p className="mt-2 text-sm text-slate-300 leading-relaxed pl-7">
+                    <p className="mt-2 text-sm text-slate-300 leading-relaxed pl-7 text-justify">
                       <span className="text-cyan-400 font-semibold">HyperTune Solution: </span>
                       {item.solution}
                     </p>
@@ -211,7 +211,7 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
                 {brand.specializedServices.map((srv, idx) => (
                   <div key={idx} className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-950/60 border border-slate-800">
                     <ShieldCheck className="w-5 h-5 text-cyan-400 shrink-0" />
-                    <span className="text-sm font-semibold text-slate-200">{srv}</span>
+                    <span className="text-sm font-semibold text-slate-200 text-justify">{srv}</span>
                   </div>
                 ))}
               </div>
@@ -237,8 +237,8 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
             <div className="sticky top-28 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 p-6 border border-slate-800 shadow-xl space-y-6">
               <div>
                 <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider">Estimated Price Range</span>
-                <p className="text-xl font-extrabold text-white mt-1">{brand.pricingRange}</p>
-                <p className="text-xs text-slate-400 mt-1">Includes diagnostic scan, quote approval & video inspection report.</p>
+                <p className="text-xl font-extrabold text-white mt-1 text-justify">{brand.pricingRange}</p>
+                <p className="text-xs text-slate-400 mt-1 text-justify">Includes diagnostic scan, quote approval & video inspection report.</p>
               </div>
 
               <div className="border-t border-slate-800 pt-4 space-y-3">
@@ -271,13 +271,13 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
                   href="tel:+923330177717"
                   className="w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors text-sm flex items-center justify-center gap-2 border border-slate-700"
                 >
-                  <Phone className="w-4 h-4 text-cyan-400" /> Call Hotline (0333-0177717)
+                  <Phone className="w-4 h-4 text-cyan-400" /> Call Hotline (+92 333 0177717)
                 </a>
               </div>
 
               <div className="p-4 rounded-xl bg-cyan-950/40 border border-cyan-500/20 text-xs text-cyan-200">
                 <p className="font-semibold text-cyan-300 mb-1">Islamabad Flagship Hub:</p>
-                <p className="text-slate-300">Block E Police Foundation, Sector O-9, Islamabad. 8 bays, cleanroom PPF studio & customer lounge.</p>
+                <p className="text-slate-300">O-9 Block E Police Foundation, Islamabad. 8 bays, cleanroom PPF studio & customer lounge.</p>
               </div>
             </div>
           </div>

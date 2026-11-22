@@ -398,7 +398,7 @@ export const FAQView: React.FC<FAQViewProps> = ({ onNavigate, onOpenBooking }) =
               className="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white border border-slate-700 font-bold text-xs sm:text-sm inline-flex items-center gap-2 transition-colors"
             >
               <Phone className="w-4 h-4 text-cyan-400" />
-              <span>Call 0333-0177717</span>
+              <span>Call +92 333 0177717</span>
             </a>
           </div>
         </div>

@@ -36,7 +36,7 @@ export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavi
         priceRange: '$$$',
         address: {
           '@type': 'PostalAddress',
-          streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
+          streetAddress: 'Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation',
           addressLocality: 'Islamabad',
           addressRegion: 'PK-IS',
           postalCode: '44000',

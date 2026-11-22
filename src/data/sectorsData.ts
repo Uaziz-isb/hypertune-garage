@@ -7,14 +7,14 @@ export const sectorsData: SectorItem[] = [
     name: 'Sector O-9 & Police Foundation',
     areaName: 'Police Foundation Sector O-9 Islamabad',
     city: 'Islamabad',
-    description: 'HyperTune Garage Flagship Hub is centrally located on Central Avenue, Block E Police Foundation, Sector O-9, Islamabad. Serving clients from PWD, Police Foundation, Media Town, CBR Town, and Bahria Town with climate-controlled PPF cleanrooms, 8 hydraulic service bays, 3D laser alignment, and computerized diagnostic labs.',
+    description: 'HyperTune Garage Flagship Hub is centrally located on Central Avenue, O-9 Block E Police Foundation, Islamabad. Serving clients from PWD, Police Foundation, Media Town, CBR Town, and Bahria Town with climate-controlled PPF cleanrooms, 8 hydraulic service bays, 3D laser alignment, and computerized diagnostic labs.',
     travelTimeFromHub: '0 mins (Flagship Hub Location)',
     valetServiceAvailable: true,
     popularVehiclesInArea: ['Toyota Land Cruiser', 'BMW 5-Series', 'Audi A4', 'Honda Civic RS', 'Mercedes C-Class', 'Toyota Fortuner'],
     landmarks: ['Central Avenue', 'Block E Police Foundation', 'Sector O-9 Islamabad', 'PWD Housing Society', 'Media Town'],
     seo: {
       title: 'Car Workshop in Police Foundation Sector O-9 Islamabad | HyperTune',
-      description: 'Visit HyperTune Garage Flagship Hub in Block E Police Foundation, Sector O-9 Islamabad. Complete PPF cleanroom, engine rebuilds, diagnostics & car detailing.',
+      description: 'Visit HyperTune Garage Flagship Hub in O-9 Block E Police Foundation, Islamabad. Complete PPF cleanroom, engine rebuilds, diagnostics & car detailing.',
       keywords: [
         'car workshop police foundation islamabad',
         'auto repair sector o9 islamabad',

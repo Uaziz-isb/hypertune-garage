@@ -54,7 +54,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
                 Islamabad Flagship Hub:
               </span>
               <p className="text-xs text-slate-300 leading-relaxed font-medium">
-                Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
+                Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000, Pakistan
               </p>
               <a
                 href="tel:+923330177717"
@@ -183,7 +183,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
             </span>
             <h2 className="text-2xl md:text-3xl font-black text-white">HyperTune Garage Location Map</h2>
             <p className="text-xs text-slate-400 max-w-xl">
-              Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan.
+              Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000, Pakistan.
             </p>
           </div>
           <a
@@ -202,7 +202,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
           title="HyperTune Garage Google Map Location"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.215!2d73.1345365!3d33.5622113!2m3!1f0!1f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfede5eabd2d83%3A0xf3b2d99386f26b69!2sHyperTune%20Garage!5e1!3m2!1sen!2spk!4v1710000000000!5m2!1sen!2spk&maptype=satellite"
           containerHeight="h-[420px]"
-          address="Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000"
+          address="Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000"
         />
       </section>
     </div>

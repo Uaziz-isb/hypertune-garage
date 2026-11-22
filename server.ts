@@ -224,7 +224,7 @@ function createRateLimiter(bucket: string, maxRequests: number, windowMs: number
     if (!verdict.allowed) {
       res.setHeader("Retry-After", String(verdict.retryAfterSeconds));
       return res.status(429).json({
-        error: "Too many requests. Please wait before retrying or contact HyperTune Garage directly at 0333-0177717.",
+        error: "Too many requests. Please wait before retrying or contact HyperTune Garage directly at +92 333 0177717.",
       });
     }
 
@@ -625,7 +625,7 @@ app.post("/api/ai-diagnostic", createRateLimiter("aiDiagnostic", 10, 60000), asy
   } catch (error: any) {
     console.error("AI Diagnostic Error:", error);
     return res.status(500).json({
-      error: "Unable to process diagnostic request. Please contact HyperTune Garage directly at 0333-0177717.",
+      error: "Unable to process diagnostic request. Please contact HyperTune Garage directly at +92 333 0177717.",
     });
   }
 });
@@ -882,7 +882,7 @@ app.get(["/llms.txt", "/.well-known/llms.txt"], (req, res) => {
 
 ## Workshop Branches & Contact Info
 
-- [Islamabad Flagship Hub](${baseUrl}/locations/islamabad-workshop/): Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan. Phone: +92 333 0177717 (Open & Operating).
+- [Islamabad Flagship Hub](${baseUrl}/locations/islamabad-workshop/): Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000, Pakistan. Phone: +92 333 0177717 (Open & Operating).
 - [Rawalpindi Coverage Hub](${baseUrl}/locations/rawalpindi-workshop/): Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.
 `;
 
@@ -914,7 +914,7 @@ app.get(["/llms-full.txt", "/.well-known/llms-full.txt"], (req, res) => {
 - **Email:** info@hypertunegarage.pk
 - **Operating Hours:** Saturday - Thursday: 10:00 AM - 10:00 PM (Friday Closed - applies to Islamabad Flagship Hub)
 - **Locations:**
-  - **Islamabad Flagship Hub (Open & Operating):** Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan — ${baseUrl}/locations/islamabad-workshop/
+  - **Islamabad Flagship Hub (Open & Operating):** Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000, Pakistan — ${baseUrl}/locations/islamabad-workshop/
   - **Rawalpindi Hub (Coming Soon):** Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup — ${baseUrl}/locations/rawalpindi-workshop/
 - **Primary Website:** ${baseUrl}/
 - **Google Rating:** 4.8 / 5.0 Stars

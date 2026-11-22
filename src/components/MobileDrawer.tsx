@@ -125,7 +125,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
               className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-slate-900 border border-slate-800 text-cyan-400 font-bold text-xs hover:bg-slate-800 active:scale-95 transition-all"
             >
               <Phone className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-              <span>0333-0177717</span>
+              <span>+92 333 0177717</span>
             </a>
             <a
               href="https://wa.me/923330177717"

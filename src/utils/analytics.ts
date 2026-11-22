@@ -197,7 +197,7 @@ export const trackWhatsAppClick = (source: string, service?: string) => {
 /**
  * Track Phone Call Inquiries
  */
-export const trackPhoneClick = (source: string, phoneNumber: string = '0333-0177717') => {
+export const trackPhoneClick = (source: string, phoneNumber: string = '+92 333 0177717') => {
   trackEvent('contact_phone', {
     event_category: 'Engagement',
     click_source: source,

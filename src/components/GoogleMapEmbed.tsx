@@ -16,7 +16,7 @@ export const GoogleMapEmbed: React.FC<GoogleMapEmbedProps> = ({
   className = '',
   containerHeight = 'h-[400px]',
   googleMapsUrl = 'https://www.google.com/maps?cid=17560337124718439273&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en&gl=PK&source=embed',
-  address = 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000',
+  address = 'Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000',
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);

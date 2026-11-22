@@ -53,7 +53,7 @@ const BASE_BUSINESS_SCHEMA = (ogImage: string) => ({
   ],
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
+    streetAddress: 'Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation',
     addressLocality: 'Islamabad',
     addressRegion: 'PK-IS',
     postalCode: '44000',
@@ -194,7 +194,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
             telephone: '+923330177717',
             address: {
               '@type': 'PostalAddress',
-              streetAddress: 'Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9',
+              streetAddress: 'Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation',
               addressLocality: 'Islamabad',
               addressRegion: 'PK-IS',
               postalCode: '44000',
@@ -328,7 +328,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       }
     } else {
       title = 'Workshop Locations in Islamabad & Rawalpindi | HyperTune Garage';
-      description = 'Discover HyperTune Garage Flagship Hub in Block E Police Foundation, Sector O-9, Islamabad, and our upcoming Rawalpindi Hub.';
+      description = 'Discover HyperTune Garage Flagship Hub in O-9 Block E Police Foundation, Islamabad, and our upcoming Rawalpindi Hub.';
       keywords = 'workshop locations islamabad, rawalpindi car garage, police foundation sector o9';
       breadcrumbItems.push({
         '@type': 'ListItem',
@@ -457,7 +457,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
     });
   } else if (root === 'contact' || root === 'contact-us') {
     title = 'Contact Us & Book Service | HyperTune Garage Islamabad';
-    description = 'Get in touch with HyperTune Garage. Call 0333-0177717, chat on WhatsApp, or send an inquiry for vehicle repairs and PPF quotes.';
+    description = 'Get in touch with HyperTune Garage. Call +92 333 0177717, chat on WhatsApp, or send an inquiry for vehicle repairs and PPF quotes.';
     breadcrumbItems.push({
       '@type': 'ListItem',
       position: 2,
@@ -559,8 +559,8 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
     <div class="bg-[#05080e] text-slate-300 text-[11px] sm:text-xs py-1 sm:py-1.5 px-2.5 sm:px-4 border-b border-cyan-500/20">
       <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
         <div class="flex items-center gap-3 sm:gap-4 min-w-0">
-          <a href="tel:+923330177717" class="flex items-center gap-1 sm:gap-1.5 hover:text-cyan-400 transition-colors font-semibold shrink-0" title="Call HyperTune Garage at 0333-0177717">
-            <span>Call Now: <strong class="text-white font-extrabold tracking-wide">0333-0177717</strong></span>
+          <a href="tel:+923330177717" class="flex items-center gap-1 sm:gap-1.5 hover:text-cyan-400 transition-colors font-semibold shrink-0" title="Call HyperTune Garage at +92 333 0177717">
+            <span>Call Now: <strong class="text-white font-extrabold tracking-wide">+92 333 0177717</strong></span>
           </a>
           <div class="hidden lg:flex items-center gap-1.5 text-slate-400 shrink-0">
             <span>Sat - Thu: 10:00 AM - 10:00 PM <strong class="text-amber-400 font-bold ml-1">(Friday Off)</strong></span>
@@ -568,7 +568,6 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         </div>
         <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <span class="hidden sm:inline text-[11px] text-slate-400 font-semibold mr-0.5">Follow us:</span>
-          <a href="https://wa.me/923330177717" target="_blank" rel="noopener noreferrer" class="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-md sm:rounded-lg bg-slate-900 text-[#25D366] border border-[#25D366]/30 text-[10px] sm:text-[11px] font-bold">WhatsApp</a>
         </div>
       </div>
     </div>
@@ -594,7 +593,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         </div>
         <div class="flex items-center gap-2 sm:gap-3">
           <a href="tel:+923330177717" class="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-xs font-bold">
-            <span>0333-0177717</span>
+            <span>+92 333 0177717</span>
           </a>
           <a href="/book-appointment/" class="px-3.5 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-extrabold text-xs sm:text-sm">
             Book Appointment
@@ -615,8 +614,8 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <h2 class="text-2xl md:text-3xl font-black text-white">
             Ready to Experience Peak Automotive Performance?
           </h2>
-          <p class="text-slate-400 text-sm max-w-xl">
-            Book your diagnostic scan, detailing, or oil service today. We use 100% genuine OEM parts with a 12-month / 15,000 km warranty.
+          <p class="text-slate-400 text-sm w-[830px] max-w-full">
+            Book your diagnostic scan, PPF, detailing or oil service today. We use 100% genuine OEM parts with a 12-month / 15,000 km warranty.
           </p>
         </div>
         <div class="flex flex-wrap items-center gap-3">
@@ -679,10 +678,10 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <div class="space-y-2">
             <a href="/locations/islamabad-workshop/" class="font-bold text-white hover:text-cyan-400 block">Islamabad Flagship Hub</a>
             <p class="text-slate-300 leading-relaxed font-medium text-justify">
-              <span class="text-slate-400 font-semibold">Address:</span> Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan
+              <span class="text-slate-400 font-semibold">Address:</span> Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000, Pakistan
             </p>
             <div class="pt-1 flex flex-col gap-1.5">
-              <a href="tel:+923330177717" class="text-cyan-400 font-bold">Contact: 0333-0177717</a>
+              <a href="tel:+923330177717" class="text-cyan-400 font-bold">Contact: +92 333 0177717</a>
               <a href="mailto:info@hypertunegarage.pk" class="text-slate-300 font-medium">Email: info@hypertunegarage.pk</a>
               <span class="text-slate-300 text-[11px]">Timing: Sat - Thu: 10:00 AM - 10:00 PM</span>
               <span class="text-amber-400 font-bold text-[11px]">Friday: CLOSED (Weekly Holiday)</span>
@@ -699,7 +698,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
     </div>
     <div class="bg-[#030509] border-t border-slate-900 py-6 px-4">
       <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-        <p><a href="https://hypertunegarage.pk/" class="hover:text-cyan-400 no-underline transition-colors">HyperTuneGarage.Pk</a> | Performance • Protection • Perfection | All Rights Reserved © 2026-28 | Developed by Umair Aziz – <a href="https://gridlockit.com/" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 no-underline transition-colors">Gridlockit.com</a></p>
+        <p><a href="https://hypertunegarage.pk/" class="hover:text-cyan-400 no-underline transition-colors">HyperTuneGarage.Pk</a> | All Rights Reserved © 2026-28 | Developed by Umair Aziz – <a href="https://gridlockit.com/" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 no-underline transition-colors">Gridlockit.com</a></p>
         <div class="flex items-center gap-4">
           <a href="/sitemap/" class="text-cyan-400 font-semibold">Site Map</a>
           <span>•</span>
@@ -819,7 +818,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         <h1 style="font-size:36px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;">
           ${escapeHtml(brand.name)}
         </h1>
-        <p style="font-size:16px;color:#94a3b8;line-height:1.6;margin-bottom:24px;max-width:900px;">
+        <p style="font-size:16px;color:#94a3b8;line-height:1.6;margin-bottom:24px;max-width:900px;text-align:justify;">
           ${escapeHtml(brand.overview)}
         </p>
 
@@ -845,7 +844,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           ${brand.commonIssuesAndFixes.map((item) => `
             <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:16px;">
               <h3 style="font-size:15px;font-weight:700;color:#f87171;margin-bottom:6px;">⚠️ ${escapeHtml(item.issue)}</h3>
-              <p style="font-size:13px;color:#cbd5e1;line-height:1.5;"><strong>HyperTune Fix:</strong> ${escapeHtml(item.solution)}</p>
+              <p style="font-size:13px;color:#cbd5e1;line-height:1.5;text-align:justify;"><strong>HyperTune Fix:</strong> ${escapeHtml(item.solution)}</p>
             </div>
           `).join('')}
         </div>
@@ -856,7 +855,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           ${brand.faqs.map((faq) => `
             <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:16px;">
               <h3 style="font-size:15px;font-weight:700;color:#ffffff;margin-bottom:6px;">${escapeHtml(faq.question)}</h3>
-              <p style="font-size:13px;color:#94a3b8;line-height:1.5;">${escapeHtml(faq.answer)}</p>
+              <p style="font-size:13px;color:#94a3b8;line-height:1.5;text-align:justify;">${escapeHtml(faq.answer)}</p>
             </div>
           `).join('')}
         </div>
@@ -1006,9 +1005,9 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <div style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;">
             <div>
               <span style="font-size:11px;font-weight:700;color:#06b6d4;text-transform:uppercase;letter-spacing:1px;">${escapeHtml(b.logoBadge)}</span>
-              <h2 style="font-size:20px;font-weight:800;color:#ffffff;margin:8px 0 12px;">${escapeHtml(b.name)}</h2>
-              <p style="font-size:14px;color:#94a3b8;line-height:1.6;margin-bottom:16px;">${escapeHtml(b.tagline)}</p>
-              <p style="font-size:12px;color:#06b6d4;font-family:monospace;margin-bottom:16px;">${escapeHtml(b.diagnosticSoftware)}</p>
+              <h2 style="font-size:20px;font-weight:800;color:#ffffff;margin:8px 0 12px;text-align:justify;">${escapeHtml(b.name)}</h2>
+              <p style="font-size:14px;color:#94a3b8;line-height:1.6;margin-bottom:16px;text-align:justify;">${escapeHtml(b.tagline)}</p>
+              <p style="font-size:12px;color:#06b6d4;font-family:monospace;margin-bottom:16px;text-align:justify;">${escapeHtml(b.diagnosticSoftware)}</p>
             </div>
             <a href="/brands/${b.slug}/" style="background:#06b6d4;color:#030712;padding:10px 16px;border-radius:8px;font-weight:800;text-decoration:none;text-align:center;display:block;">
               Explore ${escapeHtml(b.name.split(' ')[0])} Hub &rarr;
@@ -1101,12 +1100,12 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
                   </a>
                   <span style="font-size:10px;color:#64748b;font-family:monospace;text-transform:uppercase;">Service Guide</span>
                 </div>
-                <h3 style="font-size:18px;font-weight:800;color:#ffffff;margin:0 0 12px;line-height:1.4;">
+                <h3 style="font-size:18px;font-weight:800;color:#ffffff;margin:0 0 12px;line-height:1.4;text-align:justify;">
                   <a href="/blog/${guide.slug}/" style="color:#ffffff;text-decoration:none;">
                     ${escapeHtml(guide.title)}
                   </a>
                 </h3>
-                <p style="font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:16px;">
+                <p style="font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:16px;text-align:justify;">
                   ${escapeHtml(guide.desc)}
                 </p>
               </div>
@@ -1145,12 +1144,12 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
                   <span style="font-size:11px;font-weight:700;color:#06b6d4;text-transform:uppercase;">${escapeHtml(b.category)}</span>
                   <span style="font-size:11px;color:#64748b;">${escapeHtml(b.readTime)}</span>
                 </div>
-                <h3 style="font-size:18px;font-weight:800;color:#ffffff;margin:0 0 12px;line-height:1.4;">
+                <h3 style="font-size:18px;font-weight:800;color:#ffffff;margin:0 0 12px;line-height:1.4;text-align:justify;">
                   <a href="/blog/${b.slug}/" style="color:#ffffff;text-decoration:none;">
                     ${escapeHtml(b.title)}
                   </a>
                 </h3>
-                <p style="font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:16px;">${escapeHtml(b.excerpt)}</p>
+                <p style="font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:16px;text-align:justify;">${escapeHtml(b.excerpt)}</p>
               </div>
               <div>
                 <div style="font-size:11px;color:#64748b;margin-bottom:12px;">
@@ -1173,7 +1172,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           About HyperTune Garage
         </h1>
         <p style="font-size:16px;color:#cbd5e1;line-height:1.8;max-width:900px;">
-          HyperTune Garage delivers precision mechanical engineering, computerized diagnostics, and cleanroom paint protection for drivers across Islamabad and Rawalpindi. Operating from Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad (44000), our workshop brings every automotive discipline together under one roof—built around Performance • Protection • Perfection.
+          HyperTune Garage delivers precision mechanical engineering, computerized diagnostics, and cleanroom paint protection for drivers across Islamabad and Rawalpindi. Operating from Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad (44000), our workshop brings every automotive discipline together under one roof—built around Performance • Protection • Perfection.
         </p>
       </section>
 
@@ -1311,7 +1310,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
       <section style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;">
         <h2 style="font-size:22px;font-weight:900;color:#ffffff;margin-bottom:10px;">Police Foundation Sector O-9 Flagship Hub</h2>
         <p style="color:#cbd5e1;font-size:14px;line-height:1.6;margin-bottom:14px;">
-          Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan • Sat – Thu: 10:00 AM – 10:00 PM (Friday Closed)
+          Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000, Pakistan • Sat – Thu: 10:00 AM – 10:00 PM (Friday Closed)
         </p>
         <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
           <a href="tel:+923330177717" style="color:#22d3ee;font-weight:700;text-decoration:none;">+92 333 0177717</a>
@@ -1339,7 +1338,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:24px;margin-bottom:32px;">
         <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
           <h2 style="font-size:18px;font-weight:800;color:#06b6d4;margin-bottom:12px;">📍 Workshop Address</h2>
-          <p style="color:#cbd5e1;line-height:1.6;font-size:14px;">Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000</p>
+          <p style="color:#cbd5e1;line-height:1.6;font-size:14px;">Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000</p>
         </div>
         <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
           <h2 style="font-size:18px;font-weight:800;color:#06b6d4;margin-bottom:12px;">📞 Phone &amp; WhatsApp</h2>
@@ -1961,13 +1960,13 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <div class="space-y-2">
             <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Workshop Navigation &amp; Pin</span>
             <h2 class="text-2xl md:text-3xl font-black text-white">Find HyperTune Garage on Google Maps</h2>
-            <p class="text-xs text-slate-400 max-w-xl">Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000, Pakistan.</p>
+            <p class="text-xs text-slate-400 max-w-xl">Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000, Pakistan.</p>
           </div>
           <a href="https://www.google.com/maps?cid=17560337124718439273&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&amp;hl=en&amp;gl=PK&amp;source=embed" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-extrabold text-xs shrink-0">Open in Google Maps</a>
         </div>
         <div class="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl h-[400px] w-full bg-[#070c14] flex flex-col items-center justify-center p-6 text-center space-y-4">
           <p class="text-white font-black text-base">HyperTune Garage Google Map Location</p>
-          <p class="text-slate-400 text-xs">Shop 1-G, Ground Floor, Central Ave, Block E Police Foundation, Sector O-9, Islamabad, 44000</p>
+          <p class="text-slate-400 text-xs">Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000</p>
           <a href="https://www.google.com/maps?cid=17560337124718439273&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&amp;hl=en&amp;gl=PK&amp;source=embed" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 font-bold text-xs">Open Google Maps App</a>
         </div>
       </section>
