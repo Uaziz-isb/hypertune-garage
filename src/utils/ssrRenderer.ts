@@ -699,7 +699,8 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
     <div class="bg-[#030509] border-t border-slate-900 py-6 px-4">
       <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
         <p><a href="https://hypertunegarage.pk/" class="hover:text-cyan-400 no-underline transition-colors">HyperTuneGarage.Pk</a> | All Rights Reserved © 2026-28 | Developed by Umair Aziz – <a href="https://gridlockit.com/" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 no-underline transition-colors">Gridlockit.com</a></p>
-        <div class="flex items-center gap-4">
+        <div class="flex flex-wrap items-center justify-center sm:justify-end gap-x-4 gap-y-2">
+          <a href="//www.dmca.com/Protection/Status.aspx?ID=5ca8472d-289c-4e23-acff-18bd6e933b65" title="DMCA.com Protection Status" target="_blank" rel="noopener noreferrer" class="dmca-badge inline-flex items-center shrink-0 hover:opacity-90 transition-opacity"><img src="https://images.dmca.com/Badges/dmca-badge-w150-5x1-10.png?ID=5ca8472d-289c-4e23-acff-18bd6e933b65" alt="DMCA.com Protection Status" width="150" height="30" loading="lazy" decoding="async" class="h-5 sm:h-6 w-auto block" /></a>
           <a href="/sitemap/" class="text-cyan-400 font-semibold">Site Map</a>
           <span>•</span>
           <a href="/privacy-policy/">Privacy Policy</a>
