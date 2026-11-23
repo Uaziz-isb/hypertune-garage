@@ -433,17 +433,6 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="hidden sm:inline ml-1.5">WhatsApp</span>
             </a>
 
-            {/* Mobile Quick Call CTA */}
-            <a
-              href="tel:+923330177717"
-              onClick={() => trackPhoneClick('header_mobile_cta')}
-              className="flex sm:hidden items-center justify-center p-2 rounded-xl bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 active:scale-95 transition-all"
-              aria-label="Call HyperTune Garage"
-              title="Call HyperTune Garage"
-            >
-              <Phone className="w-4 h-4 text-cyan-400" />
-            </a>
-
             {/* Book Appointment CTA (Tablet/Desktop) */}
             <a
               href="/book-appointment/"

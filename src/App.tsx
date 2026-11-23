@@ -4,6 +4,7 @@ import { SEOHead } from './components/SEOHead';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { BackToTopButton } from './components/BackToTopButton';
+import { FloatingCallButton } from './components/FloatingCallButton';
 import { getRouteMetadata } from './data/metadataRegistry';
 
 import { HomeView } from './views/HomeView';
@@ -449,7 +450,10 @@ export function App() {
       />
 
       {/* Floating Action Buttons */}
-      <BackToTopButton />
+      <div className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] sm:bottom-[max(1.5rem,env(safe-area-inset-bottom))] sm:right-[max(1.5rem,env(safe-area-inset-right))] z-40 flex flex-col items-end gap-3 pointer-events-none">
+        <FloatingCallButton />
+        <BackToTopButton />
+      </div>
 
       {/* Overlays / Modals with Lazy Load */}
       <Suspense fallback={null}>
