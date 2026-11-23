@@ -320,7 +320,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
       {/* Bottom Bar & Copyright */}
       <div className="bg-[#030509] border-t border-slate-900 py-6 px-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p><a href="https://hypertunegarage.pk/" className="hover:text-cyan-400 no-underline transition-colors">HyperTuneGarage.Pk</a> | All Rights Reserved © 2026-28 | Developed by Umair Aziz – <a href="https://gridlockit.com/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 no-underline transition-colors">Gridlockit.com</a></p>
+          <p className="text-center sm:text-left leading-relaxed"><a href="https://hypertunegarage.pk/" className="hover:text-cyan-400 no-underline transition-colors">Hypertunegarage.pk</a> | All Rights Reserved © 2026-28 | Developed by Umair Aziz – <a href="https://gridlockit.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-cyan-400 no-underline transition-colors align-middle"><span>Gridlockit.com</span><img src="/images/gridlock_it_logo.webp" alt="Gridlock IT" width={123} height={23} loading="lazy" decoding="async" className="h-[23px] w-auto block shrink-0" /></a></p>
           <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-4 gap-y-2">
             <a
               href="/sitemap/"
