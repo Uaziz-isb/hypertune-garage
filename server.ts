@@ -8,7 +8,6 @@ import path from "path";
 import fs from "fs";
 import crypto from "crypto";
 import compression from "compression";
-import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
 import { getRouteMetadataAndSchema, renderSSRBody, injectSSRHtml } from "./src/utils/ssrRenderer";
 import { getSiteRoutes } from "./src/utils/routes";
@@ -1087,6 +1086,7 @@ function injectSSRMeta(htmlTemplate: string, reqUrl: string, host: string, proto
 async function startServer() {
   // Vite middleware in dev mode
   if (process.env.NODE_ENV !== "production") {
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "custom",

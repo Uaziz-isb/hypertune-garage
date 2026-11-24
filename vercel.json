@@ -1,6 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "trailingSlash": true,
+  "functions": {
+    "api/index.ts": {
+      "includeFiles": "{.server/server.cjs,dist/index.html,public/robots.txt,public/llms.txt,public/llms-full.txt}"
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",
