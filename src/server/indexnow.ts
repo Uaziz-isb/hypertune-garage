@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { getSiteRoutes } from "../src/utils/routes";
+import { getSiteRoutes } from "../utils/routes";
 
 export const INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow";
 export const INDEXNOW_CANONICAL_HOST = "hypertunegarage.pk";

@@ -1,4 +1,9 @@
-import express from "express";
+import express, {
+  type NextFunction,
+  type Request,
+  type RequestHandler,
+  type Response,
+} from "express";
 import path from "path";
 import fs from "fs";
 import crypto from "crypto";
@@ -12,7 +17,7 @@ import {
   submitToIndexNow,
   timingSafeBearerMatch,
   validateIndexNowUrls,
-} from "./server/indexnow";
+} from "./src/server/indexnow";
 
 const app = express();
 app.disable("x-powered-by");
@@ -31,7 +36,7 @@ app.use(
       if (req.headers && req.headers["x-no-compression"]) return false;
       return (compression as any).filter ? (compression as any).filter(req, res) : true;
     },
-  }) as unknown) as express.RequestHandler
+  }) as unknown) as RequestHandler
 );
 
 // Performance & Security Headers
@@ -203,7 +208,7 @@ function checkInMemoryRateLimit(
 }
 
 function createRateLimiter(bucket: string, maxRequests: number, windowMs: number) {
-  return async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  return async (req: Request, res: Response, next: NextFunction) => {
     const rawIp = (req.ip || req.socket.remoteAddress || "127.0.0.1").toString();
     const clientIp = rawIp.replace(/[^a-zA-Z0-9.:_-]/g, "").slice(0, 64) || "unknown";
     const sharedConfig = getSharedRateLimitConfig();
@@ -313,7 +318,7 @@ function isValidEmailAddress(email: string): boolean {
 
 const PRODUCTION_CANONICAL_ORIGIN = "https://hypertunegarage.pk";
 
-function getCanonicalBaseUrl(req: express.Request): string {
+function getCanonicalBaseUrl(req: Request): string {
   if (process.env.NODE_ENV === "production" || Boolean(process.env.VERCEL)) {
     return PRODUCTION_CANONICAL_ORIGIN;
   }
