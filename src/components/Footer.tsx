@@ -366,7 +366,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               Warranty Specs
             </a>
             <a
-              href="//www.dmca.com/Protection/Status.aspx?ID=5ca8472d-289c-4e23-acff-18bd6e933b65"
+              href="//www.dmca.com/site-report/hypertunegarage.pk"
               title="DMCA.com Protection Status"
               target="_blank"
               rel="noopener noreferrer"
