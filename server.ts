@@ -7,6 +7,12 @@ import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
 import { getRouteMetadataAndSchema, renderSSRBody, injectSSRHtml } from "./src/utils/ssrRenderer";
 import { getSiteRoutes } from "./src/utils/routes";
+import {
+  isIndexNowConfigured,
+  submitToIndexNow,
+  timingSafeBearerMatch,
+  validateIndexNowUrls,
+} from "./server/indexnow";
 
 const app = express();
 app.disable("x-powered-by");
@@ -75,6 +81,7 @@ const MAX_RATE_LIMIT_ENTRIES = 10000;
 const rateLimitStores: Record<string, Map<string, RateLimitEntry>> = {
   aiDiagnostic: new Map(),
   booking: new Map(),
+  indexnow: new Map(),
 };
 
 function getSharedRateLimitConfig(): { url: string; token: string } | null {
@@ -800,6 +807,93 @@ app.post("/api/booking", createRateLimiter("booking", 15, 60000), (req, res) => 
       error: "Unable to process booking. Please reach us via WhatsApp at +92 333 0177717.",
     });
   }
+});
+
+// Controlled Server-Side IndexNow Submission Endpoint (Authenticated, Rate-Limited, Canonical Allowlist)
+app.post("/api/indexnow", createRateLimiter("indexnow", 10, 60000), async (req, res) => {
+  res.setHeader("Cache-Control", "no-store");
+
+  try {
+    const adminToken = process.env.INDEXNOW_ADMIN_TOKEN?.trim();
+    if (!adminToken || !isIndexNowConfigured()) {
+      return res.status(503).json({
+        success: false,
+        error: "IndexNow submission endpoint is not configured.",
+      });
+    }
+
+    if (!timingSafeBearerMatch(req.headers.authorization, adminToken)) {
+      res.setHeader("WWW-Authenticate", "Bearer");
+      return res.status(401).json({
+        success: false,
+        error: "Unauthorized.",
+      });
+    }
+
+    if (!isPlainObject(req.body)) {
+      return res.status(400).json({
+        success: false,
+        error: "Invalid request payload. Expected JSON object with 'urls' array.",
+      });
+    }
+
+    const validation = validateIndexNowUrls(req.body.urls);
+    if (!validation.ok) {
+      return res.status(400).json({
+        success: false,
+        error: validation.error,
+        rejected: validation.rejected,
+      });
+    }
+
+    const requestId = `inw-${crypto.randomUUID()}`;
+    const result = await submitToIndexNow(validation.urls, { requestId });
+
+    if (!result.ok) {
+      if (result.retryAfterSeconds !== undefined) {
+        res.setHeader("Retry-After", String(result.retryAfterSeconds));
+      }
+      return res.status(result.status).json({
+        success: false,
+        requestId,
+        error: result.error,
+        attempts: result.attempts,
+        durationMs: result.durationMs,
+      });
+    }
+
+    return res.status(result.status).json({
+      success: true,
+      requestId,
+      submittedCount: result.submittedCount,
+      urls: result.urls,
+      upstreamStatus: result.upstreamStatus,
+      attempts: result.attempts,
+      durationMs: result.durationMs,
+    });
+  } catch (error) {
+    console.error(
+      JSON.stringify({
+        timestamp: new Date().toISOString(),
+        service: "indexnow",
+        event: "indexnow_endpoint_error",
+        errorType: error instanceof Error ? error.name : "UnknownError",
+      })
+    );
+    return res.status(500).json({
+      success: false,
+      error: "Unable to process IndexNow submission.",
+    });
+  }
+});
+
+app.all("/api/indexnow", (_req, res) => {
+  res.setHeader("Cache-Control", "no-store");
+  res.setHeader("Allow", "POST");
+  return res.status(405).json({
+    success: false,
+    error: "Method not allowed. Use POST.",
+  });
 });
 
 // XML Sitemap Endpoint for Google Search Console & Webmasters
