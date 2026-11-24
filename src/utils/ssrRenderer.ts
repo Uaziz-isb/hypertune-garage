@@ -634,8 +634,8 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         <p class="text-slate-400 text-xs leading-relaxed max-w-sm text-justify">
           HyperTune Garage is Pakistan's precision automotive workshop for Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Lexus, and Land Rover. We provide Paint Protection Film (PPF), engine rebuilding, ceramic detailing, diagnostics, and scheduled maintenance.
         </p>
-        <div class="text-xs text-slate-300 font-semibold bg-[#09101d] border border-cyan-500/20 p-3 rounded-xl max-w-sm">
-          100% Genuine OEM Spare Parts • 12-Month Warranty
+        <div class="text-xs text-slate-300 font-semibold bg-[#09101d] border border-cyan-500/20 p-3 rounded-xl max-w-sm leading-snug">
+          100% Genuine OEM Spare Parts<br />12-Month Warranty
         </div>
         <div class="pt-2 flex flex-col items-start gap-3 text-xs font-semibold">
           <div class="flex items-center gap-2">
@@ -1333,8 +1333,9 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
       <h1 style="font-size:36px;font-weight:900;color:#ffffff;margin-bottom:16px;">
         Contact HyperTune Garage
       </h1>
-      <p style="font-size:16px;color:#94a3b8;margin-bottom:32px;">
-        Get in touch with our service advisors for bookings, repair estimates, or PPF quotes.
+      <p style="font-size:16px;color:#94a3b8;margin-bottom:32px;line-height:1.6;">
+        <strong style="color:#e2e8f0;display:block;margin-bottom:6px;">Precision Care Starts With a Conversation.</strong>
+        Reach out directly to our master engineering team for service bookings, PPF consultations, or vehicle health inquiries at our Islamabad Flagship Hub. Whether you’re scheduling routine diagnostics, planning full-body paint protection, or seeking a second opinion on a complex mechanical issue, our specialists provide transparent assessments and tailored maintenance roadmaps—no middlemen, no guesswork.
       </p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:24px;margin-bottom:32px;">
         <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">

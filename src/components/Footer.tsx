@@ -102,7 +102,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
           </p>
           <div className="flex items-center gap-2 text-xs text-slate-300 font-semibold bg-[#09101d] border border-cyan-500/20 p-3 rounded-xl max-w-sm">
             <ShieldCheck className="w-5 h-5 text-cyan-400 shrink-0" />
-            <span>100% Genuine OEM Spare Parts • 12-Month Warranty</span>
+            <span className="leading-snug">
+              100% Genuine OEM Spare Parts
+              <br />
+              12-Month Warranty
+            </span>
           </div>
           <div className="pt-2 flex flex-col items-start gap-3 text-xs font-semibold">
             <div className="flex items-center gap-2">

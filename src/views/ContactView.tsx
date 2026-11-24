@@ -36,8 +36,11 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
           <h1 className="text-3xl md:text-[48px] md:leading-[48px] font-black text-white">
             Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">HyperTune Garage</span>
           </h1>
-          <p className="text-slate-400 text-sm max-w-2xl mx-auto">
-            Reach out directly to our master engineering team for service bookings, PPF consultations, or vehicle health inquiries at our Islamabad Flagship Hub.
+          <p className="text-slate-400 text-sm max-w-2xl mx-auto leading-relaxed">
+            <span className="block text-slate-200 font-semibold mb-1.5">
+              Precision Care Starts With a Conversation.
+            </span>
+            Reach out directly to our master engineering team for service bookings, PPF consultations, or vehicle health inquiries at our Islamabad Flagship Hub. Whether you’re scheduling routine diagnostics, planning full-body paint protection, or seeking a second opinion on a complex mechanical issue, our specialists provide transparent assessments and tailored maintenance roadmaps—no middlemen, no guesswork.
           </p>
         </div>
       </section>
