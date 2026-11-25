@@ -1,0 +1,129 @@
+name: HyperTune Garage — Production IndexNow Automation
+
+on:
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Validate live production sitemap without calling /api/indexnow/"
+        required: false
+        type: boolean
+        default: false
+      force_resubmit:
+        description: "Bypass duplicate-deployment idempotency cache for manual testing"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  deployments: read
+
+concurrency:
+  group: indexnow-production-${{ github.event.deployment.id || github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  submit-indexnow:
+    name: Submit Production Sitemap to IndexNow
+    runs-on: ubuntu-latest
+    # Fail-closed job filter:
+    # - Automatic runs require deployment_status.state == 'success' and a Production environment without 'Preview'.
+    # - Manual workflow_dispatch runs require refs/heads/main.
+    if: |
+      (
+        github.event_name == 'workflow_dispatch' &&
+        github.ref == 'refs/heads/main'
+      ) ||
+      (
+        github.event_name == 'deployment_status' &&
+        github.event.deployment_status.state == 'success' &&
+        (
+          startsWith(github.event.deployment.environment, 'Production') ||
+          startsWith(github.event.deployment_status.environment, 'Production')
+        ) &&
+        !contains(github.event.deployment.environment, 'Preview') &&
+        !contains(github.event.deployment_status.environment, 'Preview')
+      )
+
+    steps:
+      - name: Checkout repository on main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Verify production deployment metadata and main branch ancestry (fail-closed)
+        id: verify_deployment
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          GITHUB_REF_INPUT: ${{ github.ref }}
+          GITHUB_SHA_INPUT: ${{ github.sha }}
+          GITHUB_RUN_ID_INPUT: ${{ github.run_id }}
+          DEPLOY_ID: ${{ github.event.deployment.id }}
+          DEPLOY_REF: ${{ github.event.deployment.ref }}
+          DEPLOY_SHA: ${{ github.event.deployment.sha }}
+          DEPLOY_ENV: ${{ github.event.deployment.environment || github.event.deployment_status.environment }}
+          DEPLOY_STATE: ${{ github.event.deployment_status.state }}
+          DEPLOY_URL: ${{ github.event.deployment_status.environment_url }}
+        run: node .github/scripts/indexnow-submit.mjs --verify-deployment
+
+      # Note: GitHub Actions cache entries are subject to retention/eviction limits;
+      # cache-based idempotency prevents normal duplicate deliveries, not permanent state.
+      - name: Restore deployment idempotency marker
+        id: idempotency_cache
+        if: |
+          steps.verify_deployment.outputs.should_run == 'true' &&
+          github.event_name == 'deployment_status' &&
+          inputs.force_resubmit != true
+        uses: actions/cache/restore@v4
+        with:
+          path: /tmp/indexnow-idempotency
+          key: ${{ steps.verify_deployment.outputs.cache_key }}
+
+      - name: Skip duplicate deployment submission
+        if: |
+          steps.verify_deployment.outputs.should_run == 'true' &&
+          steps.idempotency_cache.outputs.cache-hit == 'true'
+        env:
+          AUTOMATION_TRIGGER: ${{ steps.verify_deployment.outputs.trigger_label }}
+          AUTOMATION_BRANCH: ${{ steps.verify_deployment.outputs.branch_name }}
+          AUTOMATION_DEPLOYMENT: ${{ steps.verify_deployment.outputs.deployment_label }}
+          AUTOMATION_DEPLOYMENT_STATUS: ${{ steps.verify_deployment.outputs.deployment_status }}
+        run: node .github/scripts/indexnow-submit.mjs --skip-duplicate
+
+      - name: Fetch sitemap, validate canonical URLs, and submit to IndexNow
+        id: submit_indexnow
+        if: |
+          steps.verify_deployment.outputs.should_run == 'true' &&
+          steps.idempotency_cache.outputs.cache-hit != 'true'
+        env:
+          INDEXNOW_ADMIN_TOKEN: ${{ secrets.INDEXNOW_ADMIN_TOKEN }}
+          AUTOMATION_TRIGGER: ${{ steps.verify_deployment.outputs.trigger_label }}
+          AUTOMATION_BRANCH: ${{ steps.verify_deployment.outputs.branch_name }}
+          AUTOMATION_DEPLOYMENT: ${{ steps.verify_deployment.outputs.deployment_label }}
+          AUTOMATION_DEPLOYMENT_STATUS: ${{ steps.verify_deployment.outputs.deployment_status }}
+          AUTOMATION_DEPLOYMENT_ID: ${{ steps.verify_deployment.outputs.deployment_id }}
+          AUTOMATION_DEPLOYMENT_SHA: ${{ steps.verify_deployment.outputs.deployment_sha }}
+          IDEMPOTENCY_MARKER_PATH: /tmp/indexnow-idempotency/marker.json
+          DRY_RUN: ${{ inputs.dry_run || false }}
+        run: node .github/scripts/indexnow-submit.mjs
+
+      # Best-effort idempotency: GitHub Actions cache eviction can permit a later duplicate submission.
+      - name: Persist deployment idempotency cache (only after verified marker creation)
+        if: |
+          steps.verify_deployment.outputs.should_run == 'true' &&
+          github.event_name == 'deployment_status' &&
+          steps.idempotency_cache.outputs.cache-hit != 'true' &&
+          inputs.dry_run != true &&
+          steps.submit_indexnow.outcome == 'success' &&
+          steps.submit_indexnow.outputs.marker_created == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: /tmp/indexnow-idempotency
+          key: ${{ steps.verify_deployment.outputs.cache_key }}
