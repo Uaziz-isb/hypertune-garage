@@ -808,11 +808,24 @@ async function startServer() {
       const protocol = req.headers["x-forwarded-proto"] || "https";
       const baseUrl = `${protocol}://${host}`;
 
-      // 301 Permanent Redirect: /booking/ -> /book-appointment/
+      // 301 Permanent Redirects: legacy routes (executed before trailing-slash normalization for 1-hop)
       const parsedPath = url.split("?")[0];
-      if (parsedPath === "/booking" || parsedPath === "/booking/") {
+      const normalizedLegacyPath = parsedPath.toLowerCase();
+      const legacyRedirects: Record<string, string> = {
+        "/booking": "/book-appointment/",
+        "/booking/": "/book-appointment/",
+        "/services/electrical-electronics": "/services/car-ac-repair/",
+        "/services/electrical-electronics/": "/services/car-ac-repair/",
+        "/services/car-ac-electrical": "/services/car-ac-repair/",
+        "/services/car-ac-electrical/": "/services/car-ac-repair/",
+        "/services/detailing-ceramic-coating": "/services/car-detailing/",
+        "/services/detailing-ceramic-coating/": "/services/car-detailing/",
+        "/services/periodic-maintenance": "/services/maintenance-servicing/",
+        "/services/periodic-maintenance/": "/services/maintenance-servicing/",
+      };
+      if (legacyRedirects[normalizedLegacyPath]) {
         const query = url.includes("?") ? `?${url.split("?")[1]}` : "";
-        return res.redirect(301, `/book-appointment/${query}`);
+        return res.redirect(301, `${legacyRedirects[normalizedLegacyPath]}${query}`);
       }
 
       // Trailing-slash redirect for clean SEO URLs (excluding files with extensions)
@@ -866,11 +879,24 @@ async function startServer() {
       const protocol = req.headers["x-forwarded-proto"] || "https";
       const baseUrl = `${protocol}://${host}`;
 
-      // 301 Permanent Redirect: /booking/ -> /book-appointment/
+      // 301 Permanent Redirects: legacy routes (executed before trailing-slash normalization for 1-hop)
       const parsedPath = url.split("?")[0];
-      if (parsedPath === "/booking" || parsedPath === "/booking/") {
+      const normalizedLegacyPath = parsedPath.toLowerCase();
+      const legacyRedirects: Record<string, string> = {
+        "/booking": "/book-appointment/",
+        "/booking/": "/book-appointment/",
+        "/services/electrical-electronics": "/services/car-ac-repair/",
+        "/services/electrical-electronics/": "/services/car-ac-repair/",
+        "/services/car-ac-electrical": "/services/car-ac-repair/",
+        "/services/car-ac-electrical/": "/services/car-ac-repair/",
+        "/services/detailing-ceramic-coating": "/services/car-detailing/",
+        "/services/detailing-ceramic-coating/": "/services/car-detailing/",
+        "/services/periodic-maintenance": "/services/maintenance-servicing/",
+        "/services/periodic-maintenance/": "/services/maintenance-servicing/",
+      };
+      if (legacyRedirects[normalizedLegacyPath]) {
         const query = url.includes("?") ? `?${url.split("?")[1]}` : "";
-        return res.redirect(301, `/book-appointment/${query}`);
+        return res.redirect(301, `${legacyRedirects[normalizedLegacyPath]}${query}`);
       }
 
       // Trailing-slash redirect for clean SEO URLs (excluding files with extensions)
@@ -879,16 +905,59 @@ async function startServer() {
         return res.redirect(301, `${parsedPath}/${query}`);
       }
 
+      const ssrTemplatePath = path.join(process.cwd(), ".server", "ssr-template.html");
       const indexPath = path.join(distPath, "index.html");
+      const notFoundHtmlPath = path.join(distPath, "404.html");
+      const meta = getRouteMetadataAndSchema(url, baseUrl);
+
+      const sendSafeFallback = (reason: string) => {
+        console.error(`[SSR] ${reason} (path=${parsedPath})`);
+        if (meta.isNotFound) {
+          if (fs.existsSync(notFoundHtmlPath)) {
+            return res.status(404).set({ "Content-Type": "text/html; charset=utf-8" }).sendFile(notFoundHtmlPath);
+          }
+          return res
+            .status(404)
+            .set({ "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" })
+            .end(
+              '<!doctype html><html lang="en"><head><meta charset="utf-8" /><meta name="robots" content="noindex, follow" /><title>404 - Page Not Found | HyperTune Garage</title></head><body><main><h1>404 - Page Not Found</h1><p>The requested page could not be found.</p><p><a href="/">Return to Homepage</a></p></main></body></html>'
+            );
+        }
+
+        const cleanSubPath = parsedPath.replace(/^\/+|\/+$/g, "");
+        const prerenderedPath = cleanSubPath ? path.join(distPath, cleanSubPath, "index.html") : indexPath;
+        if (fs.existsSync(prerenderedPath)) {
+          return res.status(200).set({ "Content-Type": "text/html; charset=utf-8" }).sendFile(prerenderedPath);
+        }
+
+        return res
+          .status(503)
+          .set({ "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" })
+          .end(
+            '<!doctype html><html lang="en"><head><meta charset="utf-8" /><meta name="robots" content="noindex, nofollow" /><title>503 - Service Temporarily Unavailable | HyperTune Garage</title></head><body><main><h1>Service Temporarily Unavailable</h1><p>Please try again shortly or visit the <a href="/">homepage</a>.</p></main></body></html>'
+          );
+      };
 
       try {
-        const rawHtml = fs.readFileSync(indexPath, "utf-8");
-        const meta = getRouteMetadataAndSchema(url, baseUrl);
-        const finalHtml = injectSSRMeta(rawHtml, url, host, protocol as string);
+        let rawTemplate: string | null = null;
+        if (fs.existsSync(ssrTemplatePath)) {
+          rawTemplate = fs.readFileSync(ssrTemplatePath, "utf-8");
+        } else if (fs.existsSync(indexPath)) {
+          const candidateHtml = fs.readFileSync(indexPath, "utf-8");
+          if (/<div id=["']root["']>\s*<\/div>/i.test(candidateHtml)) {
+            rawTemplate = candidateHtml;
+          }
+        }
+
+        if (!rawTemplate) {
+          return sendSafeFallback("Isolated SSR template .server/ssr-template.html missing and dist/index.html is populated");
+        }
+
+        const finalHtml = injectSSRMeta(rawTemplate, url, host, protocol as string);
         const statusCode = meta.isNotFound ? 404 : 200;
         res.status(statusCode).set({ "Content-Type": "text/html; charset=utf-8" }).end(finalHtml);
-      } catch (e) {
-        res.sendFile(indexPath);
+      } catch (e: any) {
+        return sendSafeFallback(`SSR injection failed: ${e?.message || "Unknown error"}`);
       }
     });
   }

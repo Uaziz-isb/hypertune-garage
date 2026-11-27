@@ -3,7 +3,7 @@
   "trailingSlash": true,
   "functions": {
     "api/index.ts": {
-      "includeFiles": "{.server/server.cjs,dist/index.html,public/robots.txt,public/llms.txt,public/llms-full.txt}"
+      "includeFiles": "{.server/server.cjs,.server/ssr-template.html,dist/index.html,public/robots.txt,public/llms.txt,public/llms-full.txt}"
     }
   },
   "headers": [
@@ -174,6 +174,46 @@
     {
       "source": "/booking/",
       "destination": "/book-appointment/",
+      "permanent": true
+    },
+    {
+      "source": "/services/electrical-electronics",
+      "destination": "/services/car-ac-repair/",
+      "permanent": true
+    },
+    {
+      "source": "/services/electrical-electronics/",
+      "destination": "/services/car-ac-repair/",
+      "permanent": true
+    },
+    {
+      "source": "/services/car-ac-electrical",
+      "destination": "/services/car-ac-repair/",
+      "permanent": true
+    },
+    {
+      "source": "/services/car-ac-electrical/",
+      "destination": "/services/car-ac-repair/",
+      "permanent": true
+    },
+    {
+      "source": "/services/detailing-ceramic-coating",
+      "destination": "/services/car-detailing/",
+      "permanent": true
+    },
+    {
+      "source": "/services/detailing-ceramic-coating/",
+      "destination": "/services/car-detailing/",
+      "permanent": true
+    },
+    {
+      "source": "/services/periodic-maintenance",
+      "destination": "/services/maintenance-servicing/",
+      "permanent": true
+    },
+    {
+      "source": "/services/periodic-maintenance/",
+      "destination": "/services/maintenance-servicing/",
       "permanent": true
     }
   ],

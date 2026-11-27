@@ -13,6 +13,14 @@ async function prerender() {
   }
 
   const baseTemplate = fs.readFileSync(templatePath, 'utf-8');
+  const serverTemplateDir = path.resolve(process.cwd(), '.server');
+  if (!fs.existsSync(serverTemplateDir)) {
+    fs.mkdirSync(serverTemplateDir, { recursive: true });
+  }
+  const ssrTemplatePath = path.join(serverTemplateDir, 'ssr-template.html');
+  fs.writeFileSync(ssrTemplatePath, baseTemplate, 'utf-8');
+  console.log(`✅ Preserved clean SSR shell at ${ssrTemplatePath}`);
+
   const routes = getSiteRoutes();
   const baseUrl = 'https://hypertunegarage.pk';
 

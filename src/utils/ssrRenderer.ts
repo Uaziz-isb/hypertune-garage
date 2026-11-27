@@ -436,11 +436,15 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
     description = registryMeta.description;
   }
 
-  schemas.push({
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: breadcrumbItems,
-  });
+  if (isNotFound) {
+    schemas.length = 0;
+  } else {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbItems,
+    });
+  }
 
   return {
     title,
@@ -1951,7 +1955,9 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         </div>
       </section>
     </div>`;
-  } else {
+  }
+
+  if (!mainContentHtml) {
     // 404 NOT FOUND PAGE
     mainContentHtml = `
     <main style="max-width:900px;margin:48px auto;padding:0 16px;text-align:center;">
@@ -2013,19 +2019,21 @@ export function injectSSRHtml(
   // Ensure NO meta keywords tag exists in rendered HTML (Google does not use it)
   updatedHtml = updatedHtml.replace(/<meta\s+name=["']keywords["'][^>]*>\s*/gi, '');
 
-  // Robots meta tag: If 404 / Not Found, inject noindex to prevent indexing of error pages
-  if (metaInfo.isNotFound || cleanPath === '/404' || cleanPath === '/404.html') {
+  const isNotFoundPage = Boolean(metaInfo.isNotFound || cleanPath === '/404' || cleanPath === '/404.html');
+
+  // Robots & Canonical tags: If 404 / Not Found, inject noindex, follow and omit self-referencing canonical
+  if (isNotFoundPage) {
     updatedHtml = updatedHtml.replace(
       /<meta\s+name=["']robots["'][^>]*>/i,
       '<meta name="robots" content="noindex, follow" />'
     );
+    updatedHtml = updatedHtml.replace(/<link\s+rel=["']canonical["'][^>]*>\s*/i, '');
+  } else {
+    updatedHtml = updatedHtml.replace(
+      /<link\s+rel=["']canonical["'][^>]*>/i,
+      `<link rel="canonical" href="${metaInfo.canonicalUrl}" />`
+    );
   }
-
-  // Replace Canonical
-  updatedHtml = updatedHtml.replace(
-    /<link\s+rel=["']canonical["'][^>]*>/i,
-    `<link rel="canonical" href="${metaInfo.canonicalUrl}" />`
-  );
 
   // Replace OpenGraph Title & Desc & Url
   updatedHtml = updatedHtml.replace(
@@ -2065,12 +2073,24 @@ export function injectSSRHtml(
     `<meta name="twitter:image" content="${metaInfo.ogImage}" />`
   );
 
-  // Inject Schemas before </head> (use function replacement so '$$$' in priceRange is not mangled)
-  updatedHtml = updatedHtml.replace('</head>', () => `${schemaScripts}\n  </head>`);
-
-  // Inject Full SSR Pre-Rendered Semantic HTML inside <div id="root">
+  // Defensively strip any pre-existing SSR JSON-LD schema scripts to prevent duplication
   updatedHtml = updatedHtml.replace(
-    /<div id=["']root["']>\s*<\/div>/i,
+    /<script[^>]*id=["']server-schema-[^"']*["'][^>]*>[\s\S]*?<\/script>\s*/gi,
+    ''
+  );
+
+  // Inject Schemas before </head> (use function replacement so '$$$' in priceRange is not mangled)
+  if (schemaScripts) {
+    updatedHtml = updatedHtml.replace('</head>', () => `${schemaScripts}\n  </head>`);
+  }
+
+  // Inject Full SSR Pre-Rendered Semantic HTML inside empty <div id="root"></div> (fail fast if template is populated)
+  const rootSlotRegex = /<div id=["']root["']>\s*<\/div>/i;
+  if (!rootSlotRegex.test(updatedHtml)) {
+    throw new Error(`SSR template root slot missing or already populated for path "${cleanPath}"`);
+  }
+  updatedHtml = updatedHtml.replace(
+    rootSlotRegex,
     () => `<div id="root">${ssrBodyHtml}</div>`
   );
 

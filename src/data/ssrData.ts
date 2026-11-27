@@ -951,68 +951,7 @@ export const servicesDataSSR: ServiceItemSSR[] = [
 export function findServiceSSR(slug?: string): ServiceItemSSR | undefined {
   if (!slug) return undefined;
   const normalized = slug.toLowerCase().trim();
-  const direct = servicesDataSSR.find((s) => s.slug === normalized);
-  if (direct) return direct;
-
-  // Slug aliases
-  const aliasMap: Record<string, string> = {
-    'oil-filter-maintenance': 'maintenance-servicing',
-    'transmission-clutch-gearbox': 'transmission-drivetrain',
-    'car-wrapping-styling': 'vehicle-wrap',
-    'denting-painting-bodywork': 'body-repair-paint',
-    'body-kits-facelifts-modifications': 'body-modification',
-    'cooling-radiator-climate-control': 'cooling-fuel-exhaust',
-    'air-conditioning-heating-hvac': 'car-ac-repair',
-    'car-ac-electrical': 'car-ac-repair',
-    'electrical-electronics': 'car-ac-repair',
-    'car-ac-repair': 'car-ac-repair',
-    'pre-purchase-inspection': 'inspection-diagnostics',
-  };
-
-  if (aliasMap[normalized]) {
-    const aliased = servicesDataSSR.find((s) => s.slug === aliasMap[normalized]);
-    if (aliased) return aliased;
-  }
-
-  // Keyword / Substring match
-  if (normalized.includes('ppf') || normalized.includes('paint-protection')) {
-    return servicesDataSSR.find((s) => s.slug === 'paint-protection-film-ppf');
-  }
-  if (normalized.includes('detail') || normalized.includes('ceramic')) {
-    return servicesDataSSR.find((s) => s.slug === 'car-detailing');
-  }
-  if (normalized.includes('wrap') || normalized.includes('vinyl')) {
-    return servicesDataSSR.find((s) => s.slug === 'vehicle-wrap');
-  }
-  if (normalized.includes('dent') || normalized.includes('paint') || normalized.includes('body-repair')) {
-    return servicesDataSSR.find((s) => s.slug === 'body-repair-paint');
-  }
-  if (normalized.includes('mod') || normalized.includes('body-kit')) {
-    return servicesDataSSR.find((s) => s.slug === 'body-modification');
-  }
-  if (normalized.includes('engine')) {
-    return servicesDataSSR.find((s) => s.slug === 'engine-services');
-  }
-  if (normalized.includes('maint') || normalized.includes('oil')) {
-    return servicesDataSSR.find((s) => s.slug === 'maintenance-servicing');
-  }
-  if (normalized.includes('brake') || normalized.includes('suspension')) {
-    return servicesDataSSR.find((s) => s.slug === 'brake-suspension-steering');
-  }
-  if (normalized.includes('trans') || normalized.includes('gear') || normalized.includes('clutch')) {
-    return servicesDataSSR.find((s) => s.slug === 'transmission-drivetrain');
-  }
-  if (normalized.includes('ac') || normalized.includes('air-condition') || normalized.includes('hvac')) {
-    return servicesDataSSR.find((s) => s.slug === 'car-ac-repair');
-  }
-  if (normalized.includes('cool') || normalized.includes('radiator')) {
-    return servicesDataSSR.find((s) => s.slug === 'cooling-fuel-exhaust');
-  }
-  if (normalized.includes('inspect') || normalized.includes('diagnos') || normalized.includes('pre-purchase')) {
-    return servicesDataSSR.find((s) => s.slug === 'inspection-diagnostics');
-  }
-
-  return undefined;
+  return servicesDataSSR.find((s) => s.slug === normalized);
 }
 
 export const brandsDataSSR: BrandItemSSR[] = [
