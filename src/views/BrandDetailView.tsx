@@ -47,8 +47,8 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
         },
         geo: {
           '@type': 'GeoCoordinates',
-          latitude: 33.5651,
-          longitude: 73.1362,
+          latitude: 33.5622113,
+          longitude: 73.1345365,
         },
         openingHoursSpecification: [
           {
@@ -141,7 +141,7 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-slate-900/90 backdrop-blur-md border border-slate-800">
-                <p className="text-xs text-cyan-400 font-bold uppercase tracking-wider">OEM Diagnostic Hardware</p>
+                <p className="text-xs text-cyan-400 font-bold uppercase tracking-wider">Platform Diagnostic Systems</p>
                 <p className="text-sm font-semibold text-white mt-0.5">{brand.diagnosticSoftware}</p>
               </div>
             </div>
@@ -162,7 +162,7 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
                 Chassis & Engine Models Serviced
               </h2>
               <p className="text-slate-400 text-sm mt-1 mb-6">
-                Our technicians are factory-trained with dedicated tooling for all generation variants:
+                Our experienced technicians work with compatible diagnostic tooling for these model generations:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {brand.modelsCovered.map((model, idx) => (
@@ -178,10 +178,10 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
             <div className="bg-slate-900/50 rounded-2xl p-6 sm:p-8 border border-slate-800">
               <h2 className="text-2xl font-bold text-white flex items-center gap-3 mb-2">
                 <AlertTriangle className="w-6 h-6 text-amber-400" />
-                Common Faults & Guaranteed Technical Fixes
+                Common Faults &amp; Technical Repair Solutions
               </h2>
               <p className="text-slate-400 text-sm mb-6">
-                Tested engineering protocols designed for extreme Pakistani summer temperatures and fuel conditions:
+                Workshop inspection and repair approaches tailored for local summer temperatures, road conditions, and fuel quality:
               </p>
               <div className="space-y-4">
                 {brand.commonIssuesAndFixes.map((item, idx) => (
@@ -232,31 +232,31 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
             </div>
           </div>
 
-          {/* Right Column: Sticky Quick Book & Valet Card */}
+          {/* Right Column: Sticky Quick Book Card */}
           <div className="lg:col-span-4 space-y-6">
             <div className="sticky top-28 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 p-6 border border-slate-800 shadow-xl space-y-6">
               <div>
                 <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider">Estimated Price Range</span>
                 <p className="text-xl font-extrabold text-white mt-1 text-justify">{brand.pricingRange}</p>
-                <p className="text-xs text-slate-400 mt-1 text-justify">Includes diagnostic scan, quote approval & video inspection report.</p>
+                <p className="text-xs text-slate-400 mt-1 text-justify">Includes diagnostic scan, quote approval &amp; inspection updates.</p>
               </div>
 
               <div className="border-t border-slate-800 pt-4 space-y-3">
                 <div className="flex items-center gap-2 text-xs text-slate-300">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>100% Genuine OEM Spare Parts</span>
+                  <span>Vehicle-Matched Replacement Parts</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Dealer-Grade Diagnostic Hardware</span>
+                  <span>Multi-Brand Diagnostic Systems</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Insured Valet Vehicle Collection</span>
+                  <span>Islamabad Flagship Hub Service</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Up to 12-Month Written Warranty</span>
+                  <span>Written Terms Confirmed Per Job</span>
                 </div>
               </div>
 
@@ -277,7 +277,7 @@ export const BrandDetailView: React.FC<BrandDetailViewProps> = ({ slug, onNaviga
 
               <div className="p-4 rounded-xl bg-cyan-950/40 border border-cyan-500/20 text-xs text-cyan-200">
                 <p className="font-semibold text-cyan-300 mb-1">Islamabad Flagship Hub:</p>
-                <p className="text-slate-300">O-9 Block E Police Foundation, Islamabad. 8 bays, cleanroom PPF studio & customer lounge.</p>
+                <p className="text-slate-300">Shop 1-G, Central Ave, O-9 Block E Police Foundation, Islamabad — Multi-brand diagnostics, mechanical bays, and indoor PPF studio.</p>
               </div>
             </div>
           </div>

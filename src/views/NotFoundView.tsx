@@ -89,7 +89,7 @@ export const NotFoundView: React.FC<NotFoundViewProps> = ({ onNavigate }) => {
             Brand Specialists
           </h2>
           <p className="text-xs text-slate-400 leading-relaxed">
-            Specialist maintenance & OEM diagnostic rigs for BMW, Mercedes, Audi, Porsche, Toyota, and all major vehicle brands.
+            Specialist maintenance & multi-brand computerized diagnostics for BMW, Mercedes, Audi, Porsche, Toyota, and major vehicle brands.
           </p>
         </div>
 

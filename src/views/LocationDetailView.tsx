@@ -42,7 +42,7 @@ export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavi
           postalCode: '44000',
           addressCountry: 'PK',
         },
-        geo: { '@type': 'GeoCoordinates', latitude: 33.5651, longitude: 73.1362 },
+        geo: { '@type': 'GeoCoordinates', latitude: 33.5622113, longitude: 73.1345365 },
       }
     : {
         '@type': 'WebPage',
@@ -51,7 +51,7 @@ export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavi
         url: locUrl,
         description:
           loc.statusNotice ||
-          'Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.',
+          'Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with workshop support confirmed on booking.',
         publisher: {
           '@type': 'AutoRepair',
           '@id': 'https://hypertunegarage.pk/#business',
@@ -159,7 +159,7 @@ export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavi
                 {loc.statusNotice || 'Opening soon — our new Rawalpindi Hub is currently under development. Stay tuned for the official opening announcement.'}
               </p>
               <p className="text-xs text-slate-300">
-                Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup across all sectors of Rawalpindi (Saddar, Cantt, Bahria Town, DHA, Chaklala, Westridge).
+                Currently serving Rawalpindi customers through our Islamabad Flagship Hub across all sectors of Rawalpindi (Saddar, Cantt, Bahria Town, DHA, Chaklala, Westridge), with any pickup inquiries confirmed on booking.
               </p>
             </div>
           )}
@@ -251,7 +251,7 @@ export const LocationDetailView: React.FC<LocationDetailProps> = ({ slug, onNavi
                 </span>
                 <h4 className="text-xl font-black text-white">{loc.branchName}</h4>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Our engineering team is setting up cutting-edge PPF Clean Rooms, 3D laser alignment bays, and master diagnostics workstations for our upcoming Rawalpindi Hub.
+                  Our team is preparing indoor PPF studio bays, computerized wheel alignment bays, and diagnostic workstations for our upcoming Rawalpindi Hub.
                 </p>
               </div>
             </div>

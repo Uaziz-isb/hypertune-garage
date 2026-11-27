@@ -9,7 +9,7 @@ export const serviceGuideMap: Record<string, ServiceGuideInfo> = {
   'paint-protection-film-ppf': {
     slug: 'ceramic-coating-vs-ppf-pakistan-guide',
     title: 'PPF vs Ceramic Coating in Pakistan: Complete Comparison',
-    desc: 'Engineering breakdown of motorway gravel defense, 45°C UV heat resistance, self-healing TPU, and hybrid package setups.',
+    desc: 'Practical comparison of stone-chip impact defense, sun exposure durability, and combined PPF and ceramic protection setups.',
     buttonText: 'Read Full Paint Protection Guide',
   },
   'car-detailing': {
@@ -21,13 +21,13 @@ export const serviceGuideMap: Record<string, ServiceGuideInfo> = {
   'vehicle-wrap': {
     slug: 'car-vinyl-wrap-guide-pakistan-cost-care',
     title: 'Car Vinyl Wrap Guide Pakistan: Cost, Care & Longevity',
-    desc: 'Expert guide to cast vs calendered vinyl films, color change options, seamless edge tucking, 90°C post-heating, and paint preservation.',
+    desc: 'Expert guide to cast vs calendered vinyl films, color change options, seamless edge tucking, post-heating care, and paint preservation.',
     buttonText: 'Read Vehicle Wrap Guide',
   },
   'body-repair-paint': {
     slug: 'car-paint-booth-denting-repair-guide-pakistan',
-    title: 'Car Paint Booth & Denting Repair Guide Pakistan',
-    desc: 'Discover why dust-free 60°C to 70°C thermal bake spray booths and digital spectrophotometer scanning are vital for factory-standard finishes.',
+    title: 'Car Denting & Paint Repair Guide Pakistan',
+    desc: 'Learn how structured dent repair, surface preparation, paint matching, and clear-coat refinishing restore damaged exterior panels.',
     buttonText: 'Read Bodyshop & Paint Guide',
   },
   'body-modification': {
@@ -39,31 +39,31 @@ export const serviceGuideMap: Record<string, ServiceGuideInfo> = {
   'cooling-fuel-exhaust': {
     slug: 'car-overheating-radiator-flush-coolant-guide-pakistan',
     title: 'Car Overheating & Radiator Flush Guide Pakistan',
-    desc: 'Prevent summer engine overheating: genuine 50/50 OAT coolant vs tap water, ultrasonic fuel injector spray balancing, and radiator pressure testing.',
+    desc: 'Prevent summer engine overheating by comparing proper coolant mixtures against tap water, injector cleaning, and radiator pressure testing.',
     buttonText: 'Read Cooling & Fuel Guide',
   },
   'engine-services': {
     slug: 'engine-overhaul-vs-engine-replacement-pakistan-guide',
     title: 'Engine Overhaul vs Engine Replacement in Pakistan',
-    desc: 'Compare precision engine overhauls with imported kabli replacement engines, warranty considerations, machine tolerances, and costs.',
+    desc: 'Compare engine overhauls with imported kabli replacement engines, warranty coverage, repair scope, and costs.',
     buttonText: 'Read Engine Overhaul Guide',
   },
   'inspection-diagnostics': {
     slug: 'pre-purchase-car-inspection-checklist-pakistan',
     title: 'Pre-Purchase Car Inspection Checklist Pakistan',
-    desc: '200-point inspection guide covering digital paint depth scanning, live OBD data stream audits, chassis frame alignment, and hybrid battery health.',
+    desc: 'Structured inspection guide covering digital paint depth scanning, live OBD data stream audits, chassis checks, and hybrid battery health.',
     buttonText: 'Read Car Inspection Guide',
   },
   'maintenance-servicing': {
     slug: 'synthetic-engine-oil-viscosity-guide-pakistan-heat',
     title: 'Synthetic Engine Oil Viscosity Guide for Pakistan Heat',
-    desc: 'Choosing the right oil viscosity (0W-20, 5W-30, 5W-40) under 45°C summer heat, shear stability ratings, and engine wear prevention.',
+    desc: 'Learn how oil viscosity grades affect engine protection in warm climates and how to match fluid specs to manufacturer requirements.',
     buttonText: 'Read Oil Viscosity Guide',
   },
   'brake-suspension-steering': {
     slug: '3d-laser-wheel-alignment-suspension-guide',
-    title: '3D Laser Wheel Alignment & Suspension Guide',
-    desc: 'Learn how high-precision 3D optical camera alignment measures camber, caster, and toe to 0.01 degrees to eliminate tire wear and highway wander.',
+    title: 'Wheel Alignment & Suspension Guide',
+    desc: 'Learn how computerized wheel alignment measures camber, caster, and toe angles to reduce uneven tire wear and highway wander.',
     buttonText: 'Read Suspension & Alignment Guide',
   },
   'transmission-drivetrain': {
@@ -75,7 +75,7 @@ export const serviceGuideMap: Record<string, ServiceGuideInfo> = {
   'car-ac-repair': {
     slug: 'car-ac-cooling-troubleshooting-pakistan-summer',
     title: 'Car AC Cooling Troubleshooting Guide Pakistan',
-    desc: 'Troubleshooting AC compressor solenoid valves, condenser fin cleaning, R134a refrigerant micro-leaks, and cabin airflow restrictions in summer heat.',
+    desc: 'Troubleshooting AC compressor control valves, condenser fin cleaning, refrigerant leaks, and cabin airflow restrictions in summer heat.',
     buttonText: 'Read Car AC Guide',
   },
 };

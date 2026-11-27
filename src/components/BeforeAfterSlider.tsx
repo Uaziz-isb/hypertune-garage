@@ -15,8 +15,8 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = ({
   beforeImage,
   afterImage,
   title,
-  beforeLabel = 'Before Repair / Tuning',
-  afterLabel = 'After HyperTune Restoration',
+  beforeLabel = 'Before Service',
+  afterLabel = 'After Studio Finish',
   topBeforeTag = 'Before PPF',
   topAfterTag = 'After PPF',
 }) => {

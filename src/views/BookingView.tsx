@@ -100,11 +100,11 @@ const SYMPTOM_TAGS = [
   'AC Not Cooling / Weak Airflow',
   'Paint Protection Film (PPF) Quote',
   'Ceramic Coating & Detailing',
-  'Engine Oil & 50-Point Audit',
+  'Engine Oil & Preventive Check',
   'Suspension Thump / Knocking Noise',
   'Hybrid Battery Warning / P0A80',
   'Transmission Jerk / Delay',
-  '3D Laser Wheel Alignment',
+  'Computerized Wheel Alignment',
   'Computer Diagnostic Health Scan',
 ];
 
@@ -121,7 +121,7 @@ const TIME_SLOTS = [
 const APPOINTMENT_FAQS = [
   {
     q: 'Do I need an appointment, or can I walk in directly?',
-    a: 'While walk-in customers are warmly welcome at our Islamabad Flagship Hub, booking your service appointment online guarantees a reserved repair bay, dedicated diagnostic engineer, and zero waiting time upon arrival.',
+    a: 'While walk-in customers are warmly welcome at our Islamabad Flagship Hub, booking your service appointment online guarantees a reserved repair bay, dedicated technician slot, and minimal waiting time upon arrival.',
   },
   {
     q: 'Which branch is the active workshop location for service appointments?',
@@ -129,11 +129,11 @@ const APPOINTMENT_FAQS = [
   },
   {
     q: 'Will I be informed of costs before any work begins?',
-    a: 'Absolutely. We practice 100% transparent pricing. Following our comprehensive computerized scan and physical inspection, our technical team provides a detailed estimate for your approval via WhatsApp before any repairs or parts replacements commence.',
+    a: 'Yes. We provide transparent itemized pricing. Following our computerized scan and physical inspection, our team shares a detailed estimate for your approval via WhatsApp before any repairs or parts replacements commence.',
   },
   {
     q: 'What warranty is provided on parts and repair labor?',
-    a: 'All mechanical repairs, engine overhauls, and replacement OEM components come with our signature 12-Month / 15,000 km Written Warranty. Paint Protection Film (PPF) installations include up to 10-year manufacturer warranties against yellowing or peeling.',
+    a: 'Applicable workmanship or parts warranty terms depend on the selected repair service, component tier, or protective product line and are confirmed in writing on your itemized estimate and invoice before work begins.',
   },
   {
     q: 'What payment methods do you accept at the workshop?',
@@ -185,6 +185,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
   const [email, setEmail] = useState<string>('');
   const [preferredContact, setPreferredContact] = useState<'whatsapp' | 'call'>('whatsapp');
   const [isUrgent, setIsUrgent] = useState<boolean>(false);
+  const [needsTransport, setNeedsTransport] = useState<boolean>(false);
 
   // Submission State
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -344,6 +345,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
           date,
           time,
           isUrgent,
+          pickup: needsTransport,
           priority,
           notes: fullNotes,
         }),
@@ -393,6 +395,8 @@ export const BookingView: React.FC<BookingViewProps> = ({
     setPhone('');
     setEmail('');
     setSymptoms('');
+    setIsUrgent(false);
+    setNeedsTransport(false);
   };
 
   const errorBanner = formError ? (
@@ -437,7 +441,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
                 Book Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500">Service Appointment</span>
               </h1>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                Reserve your dedicated repair bay at our primary workshop: <strong>HyperTune Garage - Islamabad Flagship Hub</strong> (Block E Police Foundation). Zero waiting time, certified diagnostic engineers, and 100% genuine OEM parts. (Our Rawalpindi facility is currently under development).
+                Reserve your dedicated repair bay at our primary workshop: <strong>HyperTune Garage - Islamabad Flagship Hub</strong> (Block E Police Foundation). Reserved scheduling, clear diagnostic assessments, and itemized quotes before work starts. (Our Rawalpindi facility is currently under development).
               </p>
             </div>
 
@@ -465,11 +469,11 @@ export const BookingView: React.FC<BookingViewProps> = ({
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-800/80 text-xs">
             <div className="flex items-center gap-2 text-slate-300 bg-[#070d17] p-2.5 rounded-xl border border-slate-800">
               <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" />
-              <span className="font-semibold">12-Month Written Warranty</span>
+              <span className="font-semibold">Itemized Written Estimates</span>
             </div>
             <div className="flex items-center gap-2 text-slate-300 bg-[#070d17] p-2.5 rounded-xl border border-slate-800">
               <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span className="font-semibold">100% Genuine OEM Parts</span>
+              <span className="font-semibold">Transparent Parts Options</span>
             </div>
             <div className="flex items-center gap-2 text-slate-300 bg-[#070d17] p-2.5 rounded-xl border border-slate-800">
               <Wrench className="w-4 h-4 text-cyan-400 shrink-0" />
@@ -477,7 +481,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
             </div>
             <div className="flex items-center gap-2 text-slate-300 bg-[#070d17] p-2.5 rounded-xl border border-slate-800">
               <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span className="font-semibold">Live WhatsApp Video Updates</span>
+              <span className="font-semibold">WhatsApp Estimate &amp; Updates</span>
             </div>
           </div>
         </div>
@@ -1042,22 +1046,43 @@ export const BookingView: React.FC<BookingViewProps> = ({
                     </div>
                   </div>
 
-                  {/* Urgent / Express Checkbox */}
-                  <div className="p-4 bg-[#070c14] border border-slate-800 rounded-2xl flex items-center justify-between">
-                    <div className="text-xs space-y-0.5">
-                      <span className="font-bold text-white block">
-                        Mark as Urgent / Same-Day Express Service?
-                      </span>
-                      <span className="text-slate-400">
-                        For critical breakdowns, overheating, or emergency diagnostic scans.
-                      </span>
+                  {/* Urgent & Transport Assistance Checkboxes */}
+                  <div className="space-y-3">
+                    <div className="p-4 bg-[#070c14] border border-slate-800 rounded-2xl flex items-center justify-between gap-4">
+                      <label htmlFor="booking-urgent" className="text-xs space-y-0.5 cursor-pointer">
+                        <span className="font-bold text-white block">
+                          Mark as Urgent / Same-Day Express Service?
+                        </span>
+                        <span className="text-slate-400">
+                          For critical breakdowns, overheating, or emergency diagnostic scans.
+                        </span>
+                      </label>
+                      <input
+                        id="booking-urgent"
+                        type="checkbox"
+                        checked={isUrgent}
+                        onChange={(e) => setIsUrgent(e.target.checked)}
+                        className="w-5 h-5 accent-cyan-500 rounded cursor-pointer shrink-0"
+                      />
                     </div>
-                    <input
-                      type="checkbox"
-                      checked={isUrgent}
-                      onChange={(e) => setIsUrgent(e.target.checked)}
-                      className="w-5 h-5 accent-cyan-500 rounded cursor-pointer"
-                    />
+
+                    <div className="p-4 bg-[#070c14] border border-slate-800 rounded-2xl flex items-center justify-between gap-4">
+                      <label htmlFor="booking-transport" className="text-xs space-y-0.5 cursor-pointer">
+                        <span className="font-bold text-white block">
+                          Request Vehicle Transport Assistance? (Subject to confirmation)
+                        </span>
+                        <span className="text-slate-400">
+                          Workshop vehicle transport assistance is available subject to confirmation of applicable arrangements upon booking.
+                        </span>
+                      </label>
+                      <input
+                        id="booking-transport"
+                        type="checkbox"
+                        checked={needsTransport}
+                        onChange={(e) => setNeedsTransport(e.target.checked)}
+                        className="w-5 h-5 accent-cyan-500 rounded cursor-pointer shrink-0"
+                      />
+                    </div>
                   </div>
 
                   {errorBanner}
@@ -1176,9 +1201,9 @@ export const BookingView: React.FC<BookingViewProps> = ({
                     <span>HyperTune Service Promise</span>
                   </div>
                   <ul className="space-y-1 text-slate-300 text-[11px]">
-                    <li>• Free multi-point computerized diagnostic scan</li>
+                    <li>• Upfront assessment before repairs start</li>
                     <li>• Zero hidden charges with prior price approval</li>
-                    <li>• 12-Month / 15,000 km warranty certificate</li>
+                    <li>• Service-specific terms confirmed on invoice</li>
                   </ul>
                 </div>
 
@@ -1218,7 +1243,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
                 Booking Confirmed!
               </h2>
               <p className="text-slate-300 text-sm max-w-md mx-auto">
-                Thank you, <strong>{customerName}</strong>. Your workshop service slot has been logged into our master scheduling system.
+                Thank you, <strong>{customerName}</strong>. Your workshop service slot has been logged into our workshop scheduling queue.
               </p>
             </div>
 

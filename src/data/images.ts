@@ -27,7 +27,7 @@ const serviceMaintenance = '/images/hypertune_banner_dyno_1787965778539.webp';
 const serviceSuspension = '/images/car_suspension_brakes_1787164569835.webp';
 const serviceTransmission = '/images/car_transmission_gearbox_1787164584141.webp';
 const serviceWrap = '/images/car_vinyl_wrap_1787965685845.webp';
-const servicePaint = '/images/car_paint_booth_1787965665925.webp';
+const servicePaint = '/images/service_body_repair_paint.webp';
 const serviceBodyMod = '/images/service_body_kit_1787240237280.webp';
 const serviceCooling = '/images/service_hybrid_battery_1787965698487.webp';
 const serviceElectrical = '/images/service_ac_electrical_1787240223565.webp';
@@ -36,7 +36,7 @@ const serviceElectrical = '/images/service_ac_electrical_1787240223565.webp';
 const galleryPorscheGt3 = '/images/gallery_porsche_gt3_1787240250876.webp';
 const galleryCayenneEngine = '/images/gallery_cayenne_engine_1787240264648.webp';
 const galleryAmgDetailing = '/images/gallery_amg_detailing_1787240277953.webp';
-const galleryLc300Lift = '/images/gallery_lc300_lift_1787965916877.webp';
+const galleryLc300Alignment = '/images/gallery_lc300_alignment.webp';
 const galleryAudiService = '/images/gallery_audi_service_1788387931168.webp';
 const galleryHybridBench = '/images/gallery_hybrid_bench_1787965901266.webp';
 const galleryBmwBrakes = '/images/gallery_bmw_brakes_1787164674953.webp';
@@ -44,7 +44,7 @@ const galleryFortunerArmor = '/images/gallery_fortuner_armor_1787965879388.webp'
 const galleryStronicBox = '/images/gallery_stronic_box_1787240309146.webp';
 const galleryPradoEngine = '/images/gallery_prado_engine_1787965930368.webp';
 const gallerySatinWrap = '/images/gallery_satin_wrap_1787240338557.webp';
-const galleryBakeBooth = '/images/gallery_bake_booth_1787240352785.webp';
+const galleryMercedesPaintFinish = '/images/gallery_mercedes_paint_finish.webp';
 
 // 4 Dedicated Distinct Blog Featured Articles (Zero repetition across whole app)
 const blogPpfGuide = '/images/blog_ppf_guide_1787240365277.webp';
@@ -54,7 +54,7 @@ const blogEngineOil = '/images/blog_engine_oil_1787240407575.webp';
 
 // Locations & About Feature (Zero repetition)
 const workshopIslamabad = '/images/about_cleanroom_studio_1787241321616.webp';
-const workshopRawalpindi = '/images/rawalpindi_hub_bay_1787965865804.webp';
+const workshopRawalpindi = '/images/rawalpindi_upcoming_studio.webp';
 const aboutPpfStudio = '/images/about_cleanroom_studio_1787241321616.webp';
 
 // 4 Before & After Project Showcases (Zero repetition)
@@ -66,7 +66,7 @@ const toyotaStudioAfter = '/images/toyota_grey_after_1788042164355.webp';
 // Optimized Responsive Variants for High-Traffic Landing Sections
 const heroPorscheStudio800w = '/images/hero_porsche_studio_1787240154464_800w.webp';
 const workshopIslamabad500w = '/images/about_cleanroom_studio_1787241321616_500w.webp';
-const workshopRawalpindi500w = '/images/rawalpindi_hub_bay_1787965865804_500w.webp';
+const workshopRawalpindi500w = '/images/rawalpindi_upcoming_studio_500w.webp';
 const toyotaStudioBefore600w = '/images/toyota_grey_before_1788042150340_600w.webp';
 const toyotaStudioAfter600w = '/images/toyota_grey_after_1788042164355_600w.webp';
 
@@ -132,7 +132,7 @@ export const images = {
   galleryPorscheGt3,
   galleryCayenneEngine,
   galleryAmgDetailing,
-  galleryLc300Lift,
+  galleryLc300Alignment,
   galleryAudiService,
   galleryHybridBench,
   galleryBmwBrakes,
@@ -140,7 +140,7 @@ export const images = {
   galleryStronicBox,
   galleryPradoEngine,
   gallerySatinWrap,
-  galleryBakeBooth,
+  galleryMercedesPaintFinish,
 
   // 4 Unique Blog Articles
   blogPpfGuide,
@@ -161,7 +161,6 @@ export const images = {
   ecuTuning: heroEcuTuning,
   ceramicDetailing: serviceDetailing,
   engineOverhaul: heroEngineOverhaul,
-  bannerDyno: serviceMaintenance,
   bannerEngine: serviceEngine,
 
   // Before & After Showcases
@@ -255,10 +254,10 @@ export const serviceImageVariants: Record<string, { small: string; medium: strin
     srcSet: '/images/car_vinyl_wrap_1787965685845_450w.webp 450w, /images/car_vinyl_wrap_1787965685845_800w.webp 800w, /images/car_vinyl_wrap_1787965685845.webp 1000w',
   },
   [servicePaint]: {
-    small: '/images/car_paint_booth_1787965665925_450w.webp',
-    medium: '/images/car_paint_booth_1787965665925_800w.webp',
+    small: '/images/service_body_repair_paint_450w.webp',
+    medium: '/images/service_body_repair_paint_800w.webp',
     original: servicePaint,
-    srcSet: '/images/car_paint_booth_1787965665925_450w.webp 450w, /images/car_paint_booth_1787965665925_800w.webp 800w, /images/car_paint_booth_1787965665925.webp 1280w',
+    srcSet: '/images/service_body_repair_paint_450w.webp 450w, /images/service_body_repair_paint_800w.webp 800w, /images/service_body_repair_paint.webp 1280w',
   },
   [serviceBodyMod]: {
     small: '/images/service_body_kit_1787240237280_450w.webp',

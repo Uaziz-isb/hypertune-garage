@@ -4,7 +4,7 @@ import { blogData } from '../data/blogData';
 import { images } from '../data/images';
 import { SEOHead } from '../components/SEOHead';
 import { toIsoDate, toAbsoluteImageUrl } from '../utils/canonical';
-import { ArrowLeft, Clock, Calendar, User, Share2, Wrench, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, Share2, Wrench, ChevronRight } from 'lucide-react';
 
 interface BlogPostProps {
   slug?: string;
@@ -112,15 +112,8 @@ export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpen
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full overflow-hidden border border-cyan-500/40 shrink-0 bg-slate-900">
-                <img
-                  src={post.author.avatar}
-                  alt={post.author.name}
-                  width={32}
-                  height={32}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
-                />
+              <div className="w-8 h-8 rounded-full bg-cyan-500/15 border border-cyan-500/40 text-cyan-400 flex items-center justify-center shrink-0">
+                <Wrench className="w-4 h-4" />
               </div>
               <div className="text-left">
                 <span className="text-white font-bold block">{post.author.name}</span>
@@ -193,7 +186,7 @@ export const BlogPostView: React.FC<BlogPostProps> = ({ slug, onNavigate, onOpen
         <div className="bg-[#0b121e] border border-slate-800 rounded-3xl p-8 text-center space-y-4 shadow-xl">
           <h3 className="text-xl font-black text-white">Need Expert Diagnostic Care for Your Vehicle?</h3>
           <p className="text-xs text-slate-400 max-w-md mx-auto">
-            Schedule a diagnostic check at our Islamabad Flagship Hub or Rawalpindi workshop.
+            Schedule a diagnostic check at our Islamabad Flagship Hub serving Islamabad &amp; Rawalpindi.
           </p>
           <button
             onClick={onOpenBooking}

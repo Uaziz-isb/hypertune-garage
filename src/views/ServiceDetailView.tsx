@@ -4,6 +4,7 @@ import { getServiceBySlug, servicesData } from '../data/servicesData';
 import { serviceGuideMap } from '../data/guideData';
 import { images } from '../data/images';
 import { SEOHead } from '../components/SEOHead';
+import { buildServiceDetailSchemas } from '../utils/serviceSchema';
 import { FAQSection } from '../components/FAQSection';
 import {
   Wrench,
@@ -25,86 +26,33 @@ interface ServiceDetailProps {
   onOpenBooking: (serviceId?: string) => void;
 }
 
+const VERIFIED_REPAIR_WARRANTY_SLUGS = new Set([
+  'engine-services',
+  'brake-suspension-steering',
+  'transmission-drivetrain',
+  'car-ac-repair',
+]);
+
 export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
   slug,
   onNavigate,
   onOpenBooking,
 }) => {
   const service = getServiceBySlug(slug);
+  const hasVerifiedWarranty = VERIFIED_REPAIR_WARRANTY_SLUGS.has(service.slug);
 
-  // Filter 3 related services for internal linking
-  const relatedServices = servicesData
-    .filter((s) => s.id !== service.id)
-    .slice(0, 3);
+  // Filter 3 related services for internal linking (allow targeted service-level overrides)
+  const relatedServices = service.relatedServiceSlugs?.length
+    ? service.relatedServiceSlugs
+        .map((relSlug) => servicesData.find((s) => s.slug === relSlug))
+        .filter((s): s is NonNullable<typeof s> => Boolean(s))
+    : servicesData
+        .filter((s) => s.id !== service.id)
+        .slice(0, 3);
 
-  // Generate JSON-LD Schema (LocalBusiness + Service + Breadcrumb)
+  // Generate JSON-LD Schema (AutoRepair + Service with image + BreadcrumbList)
   const serviceUrl = `https://hypertunegarage.pk/services/${service.slug}/`;
-  const priceNums = service.priceRange.replace(/,/g, '').match(/\d+/g)?.map(Number) || [];
-  const priceSpecification =
-    priceNums.length >= 2
-      ? { '@type': 'PriceSpecification', priceCurrency: 'PKR', minPrice: priceNums[0], maxPrice: priceNums[1] }
-      : priceNums.length === 1
-        ? { '@type': 'PriceSpecification', priceCurrency: 'PKR', price: priceNums[0] }
-        : undefined;
-
-  const customSchema = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          {
-            '@type': 'ListItem',
-            position: 1,
-            name: 'Home',
-            item: 'https://hypertunegarage.pk/',
-          },
-          {
-            '@type': 'ListItem',
-            position: 2,
-            name: 'Services',
-            item: 'https://hypertunegarage.pk/services/',
-          },
-          {
-            '@type': 'ListItem',
-            position: 3,
-            name: service.title,
-            item: serviceUrl,
-          },
-        ],
-      },
-      {
-        '@type': 'Service',
-        name: service.title,
-        serviceType: service.subServices.join(', '),
-        provider: {
-          '@type': 'AutoRepair',
-          '@id': 'https://hypertunegarage.pk/#business',
-          name: 'HyperTune Garage',
-          url: 'https://hypertunegarage.pk/',
-          telephone: '+923330177717',
-          address: {
-            '@type': 'PostalAddress',
-            streetAddress: 'Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation',
-            addressLocality: 'Islamabad',
-            addressRegion: 'PK-IS',
-            postalCode: '44000',
-            addressCountry: 'PK',
-          },
-        },
-        areaServed: [
-          { '@type': 'City', name: 'Islamabad' },
-          { '@type': 'City', name: 'Rawalpindi' },
-        ],
-        description: service.shortDesc,
-        offers: {
-          '@type': 'Offer',
-          priceCurrency: 'PKR',
-          ...(priceSpecification ? { priceSpecification } : {}),
-        },
-      },
-    ],
-  };
+  const customSchema = buildServiceDetailSchemas(service);
 
   return (
     <div className="pt-32 md:pt-36 pb-16 space-y-12">
@@ -154,7 +102,11 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
         <div className="lg:col-span-7 space-y-6">
           <div className="inline-flex items-center gap-2 bg-cyan-950/60 border border-cyan-500/30 px-3.5 py-1.5 rounded-full text-cyan-400 font-bold text-xs uppercase tracking-wider">
             <ShieldCheck className="w-4 h-4 text-cyan-400" />
-            <span>Certified Service • Written Guarantee • Islamabad & Rawalpindi</span>
+            <span>
+              {hasVerifiedWarranty
+                ? 'HyperTune Garage • Parts Warranty Available • Islamabad & Rawalpindi'
+                : 'HyperTune Garage • Islamabad & Rawalpindi'}
+            </span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
@@ -208,20 +160,33 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
           </div>
 
           {/* Quick Specs Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+          <div className={`grid grid-cols-2 ${hasVerifiedWarranty ? 'sm:grid-cols-3' : 'sm:grid-cols-2'} gap-3 pt-2`}>
             <div className="p-3.5 bg-[#0b121e] border border-slate-800 rounded-2xl">
               <span className="text-[11px] text-slate-400 block font-semibold">Estimated Investment</span>
               <strong className="text-sm font-black text-cyan-400">{service.priceRange}</strong>
             </div>
             <div className="p-3.5 bg-[#0b121e] border border-slate-800 rounded-2xl">
-              <span className="text-[11px] text-slate-400 block font-semibold">Turnaround Time</span>
+              <span className="text-[11px] text-slate-400 block font-semibold">Estimated Turnaround</span>
               <strong className="text-sm font-black text-white">{service.estimatedTime}</strong>
             </div>
-            <div className="p-3.5 bg-[#0b121e] border border-slate-800 rounded-2xl col-span-2 sm:col-span-1">
-              <span className="text-[11px] text-slate-400 block font-semibold">Service Warranty</span>
-              <strong className="text-sm font-black text-cyan-400">12 Months Written</strong>
-            </div>
+            {hasVerifiedWarranty && (
+              <div className="p-3.5 bg-[#0b121e] border border-slate-800 rounded-2xl col-span-2 sm:col-span-1">
+                <span className="text-[11px] text-slate-400 block font-semibold">Parts Warranty</span>
+                <strong className="text-sm font-black text-cyan-400">Up to 12 Months</strong>
+              </div>
+            )}
           </div>
+
+          {hasVerifiedWarranty && (
+            <div className="p-4 bg-[#0b121e] border border-cyan-500/30 rounded-2xl space-y-1.5">
+              <h3 className="text-xs font-extrabold text-cyan-400 uppercase tracking-wider">
+                12-Month Written Parts Warranty
+              </h3>
+              <p className="text-xs text-slate-300 leading-relaxed">
+                Eligible replacement parts may carry a written warranty of up to 12 months, subject to the individual manufacturer&apos;s or supplier&apos;s warranty terms, component eligibility and applicable conditions. Exact coverage is confirmed on the service estimate and final invoice. Labour, consumables and unrelated components are not automatically covered.
+              </p>
+            </div>
+          )}
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap items-center gap-3 pt-4">
@@ -493,10 +458,18 @@ export const ServiceDetailView: React.FC<ServiceDetailProps> = ({
                 {rel.title}
               </h3>
               <p className="text-xs text-slate-400 line-clamp-2 text-justify">{rel.shortDesc}</p>
-              <div className="pt-2 flex items-center justify-between text-xs font-bold text-cyan-400">
+              <a
+                href={`/services/${rel.slug}/`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onNavigate('service-detail', rel.slug);
+                }}
+                className="pt-2 flex items-center justify-between text-xs font-bold text-cyan-400"
+              >
                 <span>Learn More</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </div>
+              </a>
             </div>
           ))}
         </div>

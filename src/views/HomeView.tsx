@@ -16,7 +16,6 @@ import {
   MapPin,
   Phone,
   MessageCircle,
-  Star,
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
@@ -41,32 +40,32 @@ const heroSlides = [
   {
     image: images.heroPorscheStudio,
     title: "HyperTune Garage Precision PPF Studio",
-    tagline: "Ultra-Clear Self-Healing TPU • 10-Year Yellowing & Scratch Defense",
+    tagline: "Custom CAD-Cut Film Studio • Indoor PPF Bay Application",
     badge: "HyperTune Garage Paint Protection",
   },
   {
     image: images.heroFortuner,
     title: "HyperTune Garage SUV & Sedan Armor Center",
-    tagline: "Dust-Free Studio Wrapping • High-Impact Gravel & Stone Chip Protection",
+    tagline: "Indoor Studio Wrapping • Gravel & Stone Chip Protection",
     badge: "HyperTune Garage Vehicle Armor",
   },
   {
     image: images.heroEcuTuning,
-    title: "HyperTune Garage Master OEM Diagnostics & Electrical Lab",
-    tagline: "Live Sensor Telemetry • Computerized OEM Scanner Health Audits",
+    title: "HyperTune Garage Multi-Brand Diagnostics & Electrical Lab",
+    tagline: "Live Sensor Telemetry • Computerized Diagnostic Health Audits",
     badge: "HyperTune Garage Diagnostic Lab",
   },
   {
     image: images.heroG63Ceramic,
     title: "HyperTune Garage Hydrophobic Ceramic Shielding",
-    tagline: "9H Nano-Ceramic Barrier • Paint Correction & Mirror Gloss Finish",
+    tagline: "Multi-Stage Paint Correction • Ceramic Protection & Deep Gloss Finish",
     badge: "HyperTune Garage Ceramic Studio",
   },
   {
     image: images.heroEngineOverhaul,
-    title: "HyperTune Garage Precision Mechanical & Overhaul Lab",
-    tagline: "0.001mm Tolerance Measuring • Dust-Free Overhaul & Transmission Restorations",
-    badge: "HyperTune Garage Engine Lab",
+    title: "HyperTune Garage Mechanical & Overhaul Bay",
+    tagline: "Precision Engine Measuring • Overhauls & Transmission Restorations",
+    badge: "HyperTune Garage Engine Bay",
   },
 ];
 
@@ -119,7 +118,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             {/* Trust Badge */}
             <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-cyan-950/70 border border-cyan-500/30 px-3 py-1 sm:py-1.5 rounded-full text-cyan-400 font-bold text-[11px] sm:text-xs uppercase tracking-wider max-w-full text-left">
               <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 shrink-0" />
-              <span className="truncate sm:whitespace-normal">Pakistan’s Premier PPF & Precision Automotive Workshop</span>
+              <span className="truncate sm:whitespace-normal">Islamabad’s PPF, Detailing & Automotive Workshop</span>
             </div>
 
             {/* Main Headline */}
@@ -157,15 +156,15 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <div className="pt-3 sm:pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-6 text-xs text-slate-400 border-t border-slate-800/80">
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>Self-Healing TPU (10-Yr Warranty)</span>
+                <span>Blade-Free CAD Plotter PPF</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>100% Dust-Free Studio Installation</span>
+                <span>Indoor PPF Studio Bay</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <Star className="w-4 h-4 text-amber-400 fill-amber-400 shrink-0" />
-                <span>4.8 / 5.0 Star Rating</span>
+                <Clock className="w-4 h-4 text-cyan-400 shrink-0" />
+                <span>Itemized Pre-Work Quotes</span>
               </div>
             </div>
           </div>
@@ -241,40 +240,40 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </span>
           <h2 className="text-3xl font-black text-white">Why Vehicle Owners Trust HyperTune Garage</h2>
           <p className="text-slate-400 text-sm">
-            We deliver dealer-grade precision without high dealership costs or guesswork.
+            We deliver structured workshop diagnostics and multi-brand care without guesswork.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             {
-              title: 'Official Dealer-Level Diagnostics',
-              desc: 'Our team uses Toyota Techstream, Honda HDS, Suzuki SDT-II, Hyundai GDS, Kia KDS, JLR Pathfinder, and OEM scan tools.',
+              title: 'Multi-Brand Computerized Diagnostics',
+              desc: 'Our team uses multi-brand computerized diagnostic scanners and compatible interfaces to inspect engine, transmission, ABS, hybrid, and body control systems.',
               icon: Cpu,
             },
             {
-              title: '100% Genuine Barcode Sourced Parts',
-              desc: 'We source Bosch, Lemförder, Sachs, Bilstein, and genuine OEM parts with full barcode trace safety.',
+              title: 'Vehicle-Matched Parts Sourcing',
+              desc: 'We source Bosch, Lemförder, Sachs, Bilstein, and vehicle-matched replacement parts confirmed on your estimate.',
               icon: ShieldCheck,
             },
             {
-              title: '12-Month / 15,000 km Warranty',
-              desc: 'Every engine overhaul, suspension job, and electrical repair includes our written warranty.',
+              title: 'Written Service Terms',
+              desc: 'Every approved job includes clear, service-specific invoice terms, with eligible replacement parts on major repair scopes covered up to 12 months.',
               icon: Shield,
             },
             {
-              title: 'Master Certified Engineers',
-              desc: 'Trained mechanical engineers and ECU software specialists handle every job to European workshop standards.',
+              title: 'Experienced Multi-Brand Technicians',
+              desc: 'Dedicated mechanics, auto-electricians, and PPF installers handle inspections, repairs, and bodywork with documented care.',
               icon: Settings,
             },
             {
-              title: 'Live Video Inspection Reports',
-              desc: 'You receive HD video proof of worn parts before you approve any repair work.',
+              title: 'Inspection Updates & Itemized Quotes',
+              desc: 'You receive clear inspection photos and diagnostic updates via WhatsApp before approving any repair work.',
               icon: Video,
             },
             {
-              title: 'State-of-the-Art Diagnostics & Alignment',
-              desc: 'Our bays feature OEM diagnostic scanners, 3D laser wheel alignment rigs, and ultrasonic cleaners.',
+              title: 'Diagnostics, Alignment & Machining',
+              desc: 'Our Islamabad workshop features computerized diagnostic scanners, computerized wheel alignment rigs, a CAD PPF plotter, and machining support.',
               icon: Zap,
             },
           ].map((pillar, idx) => {
@@ -448,33 +447,33 @@ export const HomeView: React.FC<HomeViewProps> = ({
       <section className="max-w-7xl mx-auto px-4 space-y-8">
         <div className="text-center space-y-2 max-w-xl mx-auto">
           <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
-            Craftsmanship Proof
+            Service Showcase
           </span>
-          <h2 className="text-3xl font-black text-white">Real Restoration & Tuning Work</h2>
+          <h2 className="text-3xl font-black text-white">Illustrative Finish &amp; Coating Examples</h2>
           <p className="text-slate-400 text-sm">
-            Drag the slider to compare each car before and after HyperTune Garage treatment.
+            Drag the slider to compare visual examples representing paint preparation and studio finishing.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <BeforeAfterSlider
-            title="Haval H6 GT Full Body TPU Paint Protection Film (PPF)"
+            title="Haval H6 GT Full Body Paint Protection Film (PPF)"
             beforeImage={images.havalStudioBefore}
             afterImage={images.havalStudioAfter}
             topBeforeTag="Before PPF"
             topAfterTag="After PPF"
             beforeLabel="Factory Maroon Finish"
-            afterLabel="Self-Healing Mirror Armor"
+            afterLabel="Indoor PPF Finish"
           />
 
           <BeforeAfterSlider
-            title="Toyota Land Cruiser TPU PPF & Ceramic Coating"
+            title="Toyota Land Cruiser PPF & Ceramic Coating"
             beforeImage={images.toyotaStudioBefore600w || images.toyotaStudioBefore}
             afterImage={images.toyotaStudioAfter600w || images.toyotaStudioAfter}
             topBeforeTag="Before PPF"
             topAfterTag="After PPF"
             beforeLabel="Factory Metallic Grey"
-            afterLabel="9H Hydrophobic Mirror Gloss"
+            afterLabel="PPF & Ceramic Gloss Finish"
           />
         </div>
       </section>
@@ -486,45 +485,45 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <div className="bg-[#0b121e] border border-cyan-500/20 rounded-3xl p-6 md:p-8 backdrop-blur-md shadow-2xl space-y-6">
             <div className="border-b border-slate-800 pb-4">
               <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
-                Proven Operations & Track Record
+                Workshop Standards &amp; Capabilities
               </span>
-              <h2 className="text-2xl font-black text-white mt-1">HyperTune Performance Metrics</h2>
+              <h2 className="text-2xl font-black text-white mt-1">HyperTune Workshop Standards</h2>
               <p className="text-xs text-cyan-400 font-semibold mt-0.5">HyperTune Garage - Islamabad Flagship Hub</p>
             </div>
 
             <p className="text-slate-300 text-sm leading-relaxed text-justify">
-              HyperTune Garage follows strict workshop standards and measures every repair. Our diagnostic bays run dealer-grade German scan tools that read OEM fault codes down to the millivolt. This gives us hard data before we touch a bolt. We handle engine diagnostics, AC and auto electrical repairs, and blade-free PPF in a dust-free cleanroom. You also get clear, itemized pricing on every bill. We build every service for real, lasting vehicle performance.
+              HyperTune Garage follows structured inspection workflows before quoting repairs. Our Sector O-9, Police Foundation workshop runs multi-brand diagnostic scan tools alongside computerized wheel alignment, machining support, and an indoor CAD-cut PPF studio bay. You receive clear inspection findings and itemized pricing before any repair work begins.
             </p>
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
               {[
-                ['15,000+', 'Vehicles Serviced'],
-                ['99.4%', 'Client Satisfaction'],
-                ['15+', 'Certified Master Techs'],
-                ['2', 'Mega Workshop Hubs'],
+                ['Sector O-9', 'Active Islamabad Flagship Hub'],
+                ['CAD Plotter', 'Blade-Free PPF Pattern Prep'],
+                ['Written Quote', 'Itemized Approval Before Work'],
+                ['Up to 12 Mo*', 'Eligible Repair Parts Warranty'],
               ].map(([v, l]) => (
                 <div key={v} className="p-4 rounded-2xl bg-[#070c14] border border-slate-800">
-                  <span className="text-3xl font-black text-cyan-400 block">{v}</span>
+                  <span className="text-2xl font-black text-cyan-400 block">{v}</span>
                   <span className="text-xs font-semibold text-slate-300">{l}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Verified Customer Reviews */}
+          {/* Customer Testimonials */}
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
-                  Customer Reviews
+                  Customer Testimonials
                 </span>
-                <h2 className="text-3xl font-black text-white">Verified Customer Reviews (4.8 / 5.0)</h2>
+                <h2 className="text-3xl font-black text-white">Selected Customer Testimonials</h2>
               </div>
               <button
                 onClick={() => onNavigate('testimonials')}
                 className="px-4 py-2 rounded-xl bg-[#0b121e] border border-slate-800 text-slate-300 font-bold text-xs hover:text-white transition-colors flex items-center gap-1.5"
               >
-                <span>Read All Customer Reviews</span>
+                <span>Read Customer Testimonials</span>
                 <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
               </button>
             </div>
@@ -546,10 +545,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { step: '01', title: 'Book Appointment', desc: 'Book online or on WhatsApp. Pick a slot that fits your schedule in Islamabad or Rawalpindi.' },
-            { step: '02', title: 'Computer Diagnostic', desc: 'Our master techs run an OEM scanner audit and share a clear, itemized quote.' },
-            { step: '03', title: 'Video Approval', desc: 'Watch HD video proof of worn parts. We start work only after you approve.' },
-            { step: '04', title: 'Road Test & Warranty', desc: 'We complete a road test, wash your car, and hand over a 12-month written warranty.' },
+            { step: '01', title: 'Book Appointment', desc: 'Book online or on WhatsApp. Pick a slot that fits your schedule at our Islamabad Flagship Hub.' },
+            { step: '02', title: 'Computer Diagnostic', desc: 'Our technicians run a diagnostic scanner audit and physical check, then share a clear, itemized quote.' },
+            { step: '03', title: 'Inspection & Approval', desc: 'Review inspection photos and worn-part updates via WhatsApp. Work begins only after your approval.' },
+            { step: '04', title: 'Road Test & Handover', desc: 'We complete post-service checks, confirm written invoice terms, and review applicable parts warranty details.' },
           ].map((s) => (
             <div key={s.step} className="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 relative shadow-lg">
               <span className="text-4xl font-black text-cyan-500/30 block">{s.step}</span>
@@ -568,7 +567,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </span>
             <h3 className="text-white text-base sm:text-lg font-bold">Workshop Repair, Warranty &amp; Booking FAQs</h3>
             <p className="text-slate-400 text-xs">
-              Read clear answers on genuine OEM parts, 12-month warranty terms, turnaround times, and booking.
+              Read clear answers on parts options, warranty terms, turnaround times, and booking.
             </p>
           </div>
           <a

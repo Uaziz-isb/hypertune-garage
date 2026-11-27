@@ -52,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               Ready to Experience Peak Automotive Performance?
             </h2>
             <p className="text-slate-400 text-sm w-[830px] max-w-full">
-              Book your diagnostic scan, PPF, detailing or oil service today. We use 100% genuine OEM parts with a 12-month / 15,000 km warranty.
+              Book diagnostics, PPF, detailing, or scheduled maintenance today. Part options, itemized estimates, and service-specific warranty terms are confirmed before work begins.
             </p>
           </div>
 
@@ -103,17 +103,24 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
           <div className="flex items-center gap-2 text-xs text-slate-300 font-semibold bg-[#09101d] border border-cyan-500/20 p-3 rounded-xl max-w-sm">
             <ShieldCheck className="w-5 h-5 text-cyan-400 shrink-0" />
             <span className="leading-snug">
-              100% Genuine OEM Spare Parts
+              Itemized Workshop Estimates
               <br />
-              12-Month Warranty
+              Service-Specific Written Terms
             </span>
           </div>
           <div className="pt-2 flex flex-col items-start gap-3 text-xs font-semibold">
             <div className="flex items-center gap-2">
-              <span className="text-slate-300">Google Rating:</span>
-              <div className="flex items-center gap-1 text-amber-400">
-                ★★★★★ <span className="text-white font-bold">4.8 / 5.0</span>
-              </div>
+              <span className="text-slate-300">Customer Feedback:</span>
+              <a
+                href="/testimonials/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('testimonials');
+                }}
+                className="text-cyan-400 hover:text-cyan-300 font-bold hover:underline"
+              >
+                Read Customer Testimonials →
+              </a>
             </div>
 
             {/* Social Media Links aligned on left under Google Rating */}
@@ -215,7 +222,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               { label: 'Brand Specialists Directory', page: 'brands' as PageId, path: '/brands/' },
               { label: 'Workshop Locations', page: 'locations' as PageId, path: '/locations/' },
               { label: 'Work Gallery & Restorations', page: 'gallery' as PageId, path: '/gallery/' },
-              { label: 'Customer Reviews & Ratings', page: 'testimonials' as PageId, path: '/testimonials/' },
+              { label: 'Customer Testimonials', page: 'testimonials' as PageId, path: '/testimonials/' },
               { label: 'Car Care Blog & Guides', page: 'blog' as PageId, path: '/blog/' },
               { label: 'Frequently Asked Questions (FAQ)', page: 'faq' as PageId, path: '/faq/' },
               { label: 'About HyperTune Garage', page: 'about' as PageId, path: '/about/' },
@@ -314,7 +321,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
                 </span>
               </a>
               <p className="text-amber-200/80 leading-relaxed text-[11px] text-justify">
-                Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.
+                Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub, with transport assistance subject to confirmation upon booking.
               </p>
             </div>
           </div>
@@ -367,7 +374,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               }}
               className="hover:text-slate-300 transition-colors"
             >
-              Warranty Specs
+              Warranty &amp; Terms
             </a>
             <a
               href="//www.dmca.com/site-report/hypertunegarage.pk"

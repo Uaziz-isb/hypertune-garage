@@ -22,20 +22,20 @@ export const GalleryView: React.FC<GalleryViewProps> = ({ onNavigate, onOpenBook
       <section className="bg-[#05080e] border-b border-slate-800 py-16 px-4">
         <div className="max-w-7xl mx-auto space-y-4 text-center">
           <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
-            Visual Proof of Craftsmanship
+            Illustrative Service Showcase
           </span>
           <h1 className="text-3xl md:text-[48px] md:leading-[48px] font-black text-white">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">HyperTune Garage</span> Workshop Gallery
           </h1>
           <p className="text-slate-400 text-sm max-w-2xl mx-auto">
-            High-resolution photography from our Islamabad & Rawalpindi workshops featuring precision engine overhauls, transmission repairs on popular brands, and 9H ceramic PPF detailing.
+            Visual examples representing PPF, detailing, mechanical overhaul, transmission, suspension, and refinishing scopes offered at HyperTune Garage.
           </p>
         </div>
       </section>
 
       <section className="max-w-7xl mx-auto px-4 space-y-8">
         <div className="flex flex-wrap items-center justify-center gap-2">
-          {['all', 'Engine Overhaul', 'Transmission & Gearbox', 'Popular Brands Repair', 'Ceramic & PPF', 'Suspension & Brakes'].map((cat) => (
+          {['all', 'Engine Overhaul', 'Transmission & Gearbox', 'Popular Brands Repair', 'Ceramic & PPF', 'Body & Wrap', 'Suspension & Brakes'].map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCat(cat)}

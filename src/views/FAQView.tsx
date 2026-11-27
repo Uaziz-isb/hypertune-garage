@@ -81,7 +81,7 @@ export const FAQView: React.FC<FAQViewProps> = ({ onNavigate, onOpenBooking }) =
             Frequently Asked Questions
           </h1>
           <p className="text-slate-400 text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-            Detailed technical procedures, warranty guarantees, diagnostic protocols, and workshop guidelines for car owners across Islamabad and Rawalpindi.
+            Detailed procedures, parts warranty terms, diagnostic steps, and workshop guidelines for car owners across Islamabad and Rawalpindi.
           </p>
 
           {/* Search Bar Input */}
@@ -166,7 +166,7 @@ export const FAQView: React.FC<FAQViewProps> = ({ onNavigate, onOpenBooking }) =
                   className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs inline-flex items-center gap-1.5 transition-colors"
                 >
                   <MessageSquare className="w-3.5 h-3.5" />
-                  <span>Ask Master Tech on WhatsApp</span>
+                  <span>Ask Technician on WhatsApp</span>
                 </a>
                 <button
                   onClick={onOpenBooking}
@@ -383,7 +383,7 @@ export const FAQView: React.FC<FAQViewProps> = ({ onNavigate, onOpenBooking }) =
             Have a Complex Mechanical or Diagnostic Question?
           </h2>
           <p className="text-slate-400 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
-            Our certified master technicians in Sector O-9, Police Foundation, Islamabad offer free initial consultations and computerized system health checks.
+            Our experienced technicians in Sector O-9, Police Foundation, Islamabad assist with diagnostics, repair estimates, and scheduled inspections.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <button

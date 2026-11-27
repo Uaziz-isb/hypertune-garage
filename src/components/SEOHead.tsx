@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { trackPageView, initGA } from '../utils/analytics';
 import { normalizeCanonicalUrl, toAbsoluteImageUrl } from '../utils/canonical';
-import { staticCustomerReviews, googleBusinessData } from '../data/reviewsData';
+import { buildAutoRepairSchema } from '../utils/serviceSchema';
 
 declare global {
   interface Window {
@@ -19,7 +19,7 @@ interface SEOProps {
   path?: string;
   ogImage?: string;
   robots?: string;
-  schema?: object;
+  schema?: object | object[];
 }
 
 export const SEOHead: React.FC<SEOProps> = ({
@@ -118,82 +118,23 @@ export const SEOHead: React.FC<SEOProps> = ({
       tag.setAttribute('content', tagInfo.content || '');
     });
 
-    const defaultSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'AutoRepair',
-      name: 'HyperTune Garage',
-      description:
-        'HyperTune Garage provides PPF, Ceramic Coating, Car Detailing, Vehicle Diagnostics, Engine Tune-up, Auto Repair & Maintenance Services in Islamabad and serving Rawalpindi.',
-      image: resolvedOgImage,
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://hypertunegarage.pk/images/hypertune_logo.webp',
-      },
-      '@id': 'https://hypertunegarage.pk/#business',
-      url: 'https://hypertunegarage.pk/',
-      telephone: '+923330177717',
-      priceRange: '$$$',
-      areaServed: [
-        { '@type': 'City', name: 'Islamabad' },
-        { '@type': 'City', name: 'Rawalpindi' },
-      ],
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.8',
-        reviewCount: String(googleBusinessData.totalReviews),
-        bestRating: '5',
-        worstRating: '1',
-      },
-      review: staticCustomerReviews.map((r) => ({
-        '@type': 'Review',
-        author: {
-          '@type': 'Person',
-          name: r.authorName,
-        },
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: String(r.rating),
-          bestRating: '5',
-          worstRating: '1',
-        },
-        reviewBody: r.text,
-      })),
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation',
-        addressLocality: 'Islamabad',
-        addressRegion: 'PK-IS',
-        postalCode: '44000',
-        addressCountry: 'PK',
-      },
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: 33.5651,
-        longitude: 73.1362,
-      },
-      openingHoursSpecification: [
-        {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-          opens: '10:00',
-          closes: '22:00',
-        },
-      ],
-    };
+    const defaultSchema = buildAutoRepairSchema(resolvedOgImage);
 
-    // Remove static SSR schema script tags before writing hydrated schema on SPA route change
-    document.querySelectorAll('script[id^="server-schema-"]').forEach((el) => el.remove());
+    // Remove static SSR schema tags and previous client schema tags before writing updated schema on SPA route change
+    document
+      .querySelectorAll('script[id^="server-schema-"], script[id^="json-ld-schema"]')
+      .forEach((el) => el.remove());
 
     const finalSchema = schema || defaultSchema;
+    const schemaList = Array.isArray(finalSchema) ? finalSchema : [finalSchema];
 
-    let scriptTag = document.getElementById('json-ld-schema') as HTMLScriptElement | null;
-    if (!scriptTag) {
-      scriptTag = document.createElement('script');
-      scriptTag.id = 'json-ld-schema';
+    schemaList.forEach((schemaItem, idx) => {
+      const scriptTag = document.createElement('script');
+      scriptTag.id = schemaList.length === 1 ? 'json-ld-schema' : `json-ld-schema-${idx}`;
       scriptTag.type = 'application/ld+json';
+      scriptTag.text = JSON.stringify(schemaItem);
       document.head.appendChild(scriptTag);
-    }
-    scriptTag.text = JSON.stringify(finalSchema);
+    });
   }, [title, description, keywords, canonicalUrl, path, ogImage, robots, schema]);
 
   return null;

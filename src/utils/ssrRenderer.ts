@@ -8,6 +8,7 @@ import { googleBusinessData } from '../data/reviewsData';
 import { faqData } from '../data/faqData';
 import { getRouteMetadata } from '../data/metadataRegistry';
 import { normalizeCanonicalUrl, toIsoDate, toAbsoluteImageUrl } from './canonical';
+import { buildAutoRepairSchema, buildServiceSchema } from './serviceSchema';
 
 export { normalizeCanonicalUrl };
 
@@ -21,79 +22,8 @@ export interface RouteMetaInfo {
   isNotFound?: boolean;
 }
 
-const BASE_BUSINESS_SCHEMA = (ogImage: string) => ({
-  '@context': 'https://schema.org',
-  '@type': 'AutoRepair',
-  name: 'HyperTune Garage',
-  description:
-    'HyperTune Garage provides PPF, Ceramic Coating, Car Detailing, Vehicle Diagnostics, Engine Tune-up, Auto Repair & Maintenance Services in Islamabad and serving Rawalpindi.',
-  image: ogImage || 'https://hypertunegarage.pk/images/hypertune_logo.webp',
-  logo: {
-    '@type': 'ImageObject',
-    url: 'https://hypertunegarage.pk/images/hypertune_logo.webp',
-  },
-  '@id': 'https://hypertunegarage.pk/#business',
-  url: 'https://hypertunegarage.pk/',
-  telephone: '+923330177717',
-  priceRange: '$$$',
-  areaServed: [
-    { '@type': 'City', name: 'Islamabad' },
-    { '@type': 'City', name: 'Rawalpindi' },
-  ],
-  knowsAbout: [
-    'PPF Islamabad',
-    'Ceramic Coating Islamabad',
-    'Car Detailing Islamabad',
-    'Vehicle Diagnostics Islamabad',
-    'Auto Workshop Islamabad',
-    'Engine Tune-up Islamabad',
-    'Auto Repair Islamabad',
-    'PPF Rawalpindi',
-    'Auto Workshop Rawalpindi',
-  ],
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation',
-    addressLocality: 'Islamabad',
-    addressRegion: 'PK-IS',
-    postalCode: '44000',
-    addressCountry: 'PK',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 33.5651,
-    longitude: 73.1362,
-  },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-      opens: '10:00',
-      closes: '22:00',
-    },
-  ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.8',
-    reviewCount: String(googleBusinessData.totalReviews),
-    bestRating: '5',
-    worstRating: '1',
-  },
-  review: googleBusinessData.reviews.map((r) => ({
-    '@type': 'Review',
-    author: {
-      '@type': 'Person',
-      name: r.authorName,
-    },
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: String(r.rating),
-      bestRating: '5',
-      worstRating: '1',
-    },
-    reviewBody: r.text,
-  })),
-});
+const BASE_BUSINESS_SCHEMA = (ogImage: string, baseUrl: string = 'https://hypertunegarage.pk') =>
+  buildAutoRepairSchema(ogImage, baseUrl);
 
 function escapeHtml(str: string): string {
   if (!str) return '';
@@ -114,8 +44,8 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
   const root = pathParts[0] || '';
   const sub = pathParts[1] || '';
 
-  let title = 'HyperTune Garage - Specialized Automotive Workshop in Islamabad & Rawalpindi';
-  let description = 'Pakistan’s premier automotive workshop for Japanese, European & German vehicles. Precision engine overhauls, hybrid repairs & PPF at HyperTune Garage Islamabad.';
+  let title = 'HyperTune Garage - Independent Automotive Workshop in Islamabad';
+  let description = 'HyperTune Garage is an independent automotive workshop in Islamabad serving Islamabad and Rawalpindi. Engine overhauls, hybrid repairs, diagnostics, and PPF.';
   let keywords = 'car workshop islamabad, auto repair rawalpindi, toyota repair islamabad, honda service rawalpindi, suzuki garage, haval specialist, byd ev service, hybrid battery repair, engine overhaul islamabad';
   const schemas: object[] = [BASE_BUSINESS_SCHEMA(ogImage)];
   let isNotFound = false;
@@ -163,55 +93,30 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
           'brake-suspension-steering': '/images/car_suspension_brakes_1787164569835.webp',
           'transmission-drivetrain': '/images/car_transmission_gearbox_1787164584141.webp',
           'vehicle-wrap': '/images/car_vinyl_wrap_1787965685845.webp',
-          'body-repair-paint': '/images/car_paint_booth_1787965665925.webp',
+          'body-repair-paint': '/images/service_body_repair_paint.webp',
           'body-modification': '/images/service_body_kit_1787240237280.webp',
           'car-ac-repair': '/images/service_ac_electrical_1787240223565.webp',
           'cooling-fuel-exhaust': '/images/service_hybrid_battery_1787965698487.webp',
         };
         const serviceImage = toAbsoluteImageUrl(SERVICE_IMAGE_MAP[service.slug] || ogImage, baseUrl);
         ogImage = serviceImage;
+        schemas[0] = BASE_BUSINESS_SCHEMA(serviceImage, baseUrl);
         title = `${service.title} in Islamabad & Rawalpindi | HyperTune Garage`;
         description = service.seo?.metaDescription || (service.shortDesc.length > 155 ? service.shortDesc.slice(0, 152).trim().replace(/[.,;:\s]+$/, '') + '...' : service.shortDesc);
         keywords = `${service.title.toLowerCase()}, car repair islamabad, ${service.subServices.join(', ')}`;
-        const priceNums = service.priceRange.replace(/,/g, '').match(/\d+/g)?.map(Number) || [];
-        const priceSpecification =
-          priceNums.length >= 2
-            ? { '@type': 'PriceSpecification', priceCurrency: 'PKR', minPrice: priceNums[0], maxPrice: priceNums[1] }
-            : priceNums.length === 1
-              ? { '@type': 'PriceSpecification', priceCurrency: 'PKR', price: priceNums[0] }
-              : undefined;
-        schemas.push({
-          '@context': 'https://schema.org',
-          '@type': 'Service',
-          name: service.title,
-          serviceType: service.subServices.join(', '),
-          image: serviceImage,
-          provider: {
-            '@type': 'AutoRepair',
-            '@id': 'https://hypertunegarage.pk/#business',
-            name: 'HyperTune Garage',
-            url: 'https://hypertunegarage.pk/',
-            telephone: '+923330177717',
-            address: {
-              '@type': 'PostalAddress',
-              streetAddress: 'Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation',
-              addressLocality: 'Islamabad',
-              addressRegion: 'PK-IS',
-              postalCode: '44000',
-              addressCountry: 'PK',
+        schemas.push(
+          buildServiceSchema(
+            {
+              slug: service.slug,
+              title: service.title,
+              shortDesc: service.shortDesc,
+              priceRange: service.priceRange,
+              subServices: service.subServices,
+              image: serviceImage,
             },
-          },
-          areaServed: [
-            { '@type': 'City', name: 'Islamabad' },
-            { '@type': 'City', name: 'Rawalpindi' },
-          ],
-          description: service.shortDesc,
-          offers: {
-            '@type': 'Offer',
-            priceCurrency: 'PKR',
-            ...(priceSpecification ? { priceSpecification } : {}),
-          },
-        });
+            baseUrl
+          )
+        );
         breadcrumbItems.push({
           '@type': 'ListItem',
           position: 2,
@@ -231,7 +136,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       }
     } else {
       title = 'Automotive Services & Maintenance Packages | HyperTune Garage';
-      description = 'Complete automotive services catalog including PPF, ceramic detailing, engine overhaul, suspension, transmission, AC repair, and 3D wheel alignment.';
+      description = 'Complete automotive services catalog including PPF, ceramic detailing, engine overhaul, suspension, transmission, AC repair, and computerized wheel alignment.';
       keywords = 'car services islamabad, ppf coating rawalpindi, engine repair, transmission service';
       breadcrumbItems.push({
         '@type': 'ListItem',
@@ -269,7 +174,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       }
     } else {
       title = 'Vehicle Brand Specialists in Islamabad & Rawalpindi | HyperTune Garage';
-      description = 'Certified specialist repair for Japanese, German, European & American brands including Toyota, Honda, BMW, Mercedes, Porsche, Haval & BYD in Islamabad.';
+      description = 'Independent multi-brand repair for Japanese, German, European & American brands including Toyota, Honda, BMW, Mercedes, Porsche, Haval & BYD in Islamabad.';
       keywords = 'toyota repair islamabad, honda specialist rawalpindi, suzuki maintenance, hyundai tucson repair, kia sportage service, changan workshop, haval specialist, byd ev service, lexus hybrid repair, land rover workshop islamabad';
       breadcrumbItems.push({
         '@type': 'ListItem',
@@ -293,7 +198,7 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
             name: 'HyperTune Garage - Rawalpindi Hub (Coming Soon)',
             image: ogImage,
             url: canonicalUrl,
-            description: 'Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.',
+            description: 'Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with workshop support confirmed on booking.',
             publisher: {
               '@type': 'AutoRepair',
               '@id': 'https://hypertunegarage.pk/#business',
@@ -395,9 +300,9 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
         description = 'The requested technical automotive article could not be found. Browse our car care and repair guides.';
       }
     } else {
-      title = 'Technical Blog | HyperTune Garage — Car Care Guides for Islamabad & Rawalpindi';
-      description = 'Authoritative automotive repair guides: P0A80 hybrid battery repair, BMW ISTA diagnostics, Audi DSG transmission fixes, PPF care & engine overhauls.';
-      keywords = 'car repair blog, hybrid battery repair guide, bmw ista diagnostics, audi dsg repair, ppf guide pakistan, automotive maintenance islamabad';
+      title = 'Automotive Repair & Car Care Guides | HyperTune Garage';
+      description = 'Read technical car care guides, diagnostic advice, maintenance tips, PPF comparisons and vehicle repair insights from HyperTune Garage in Islamabad.';
+      keywords = 'car repair blog, hybrid battery repair guide, audi dsg repair, ppf guide pakistan, automotive maintenance islamabad';
       breadcrumbItems.push({
         '@type': 'ListItem',
         position: 2,
@@ -406,8 +311,8 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       });
     }
   } else if (root === 'about' || root === 'about-us') {
-    title = 'About HyperTune Garage | Master Auto Repair & PPF Specialists';
-    description = 'Learn about HyperTune Garage, certified master automotive technicians, climate-controlled PPF bays, and state-of-the-art diagnostic facilities in Islamabad.';
+    title = 'About HyperTune Garage | Multi-Brand Auto Repair & PPF Studio';
+    description = 'Learn about HyperTune Garage, experienced automotive technicians, our indoor PPF studio bay, and multi-system diagnostic tools in Islamabad.';
     breadcrumbItems.push({
       '@type': 'ListItem',
       position: 2,
@@ -415,15 +320,15 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       item: canonicalUrl,
     });
   } else if (root === 'testimonials' || root === 'reviews') {
-    title = 'Customer Reviews & Google Ratings (4.8 / 5.0) | HyperTune Garage';
-    description = 'Read verified customer reviews and 4.8-star Google ratings for HyperTune Garage Islamabad & Rawalpindi automotive workshop.';
+    title = 'Customer Testimonials | HyperTune Garage';
+    description = 'Read selected customer testimonials and workshop feedback for HyperTune Garage in Islamabad & Rawalpindi.';
     breadcrumbItems.push({
       '@type': 'ListItem',
       position: 2,
-      name: 'Customer Reviews',
+      name: 'Customer Testimonials',
       item: canonicalUrl,
     });
-    // Retain canonical BASE_BUSINESS_SCHEMA with @id, logo, aggregateRating, and reviews
+    // Retain canonical BASE_BUSINESS_SCHEMA with @id and logo
     schemas[0] = BASE_BUSINESS_SCHEMA(ogImage);
   } else if (root === 'faq' || root === 'faqs') {
     title = 'Frequently Asked Questions (FAQ) | HyperTune Garage';
@@ -492,8 +397,8 @@ export function getRouteMetadataAndSchema(rawPath: string, baseUrl: string): Rou
       item: canonicalUrl,
     });
   } else if (root === 'warranty-specs' || root === 'warranty') {
-    title = '12-Month Repair Warranty Specs | HyperTune Garage';
-    description = 'Comprehensive details on HyperTune Garage 12-month / 15,000 km automotive repair warranty.';
+    title = 'Warranty & Service Terms | HyperTune Garage';
+    description = 'Review HyperTune Garage warranty coverage, service terms and protection details for automotive repairs, maintenance and selected vehicle services.';
     breadcrumbItems.push({
       '@type': 'ListItem',
       position: 2,
@@ -586,7 +491,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <a href="/brands/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Brand Specialists</a>
           <a href="/locations/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Locations</a>
           <a href="/gallery/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Gallery</a>
-          <a href="/testimonials/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Reviews (4.8★)</a>
+          <a href="/testimonials/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Testimonials</a>
           <a href="/blog/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Blog</a>
           <a href="/about/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">About Us</a>
           <a href="/contact/" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm font-semibold text-slate-300 hover:text-white">Contact</a>
@@ -615,7 +520,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
             Ready to Experience Peak Automotive Performance?
           </h2>
           <p class="text-slate-400 text-sm w-[830px] max-w-full">
-            Book your diagnostic scan, PPF, detailing or oil service today. We use 100% genuine OEM parts with a 12-month / 15,000 km warranty.
+            Book diagnostics, PPF, detailing, or scheduled maintenance today. Part options, itemized estimates, and service-specific warranty terms are confirmed before work begins.
           </p>
         </div>
         <div class="flex flex-wrap items-center gap-3">
@@ -632,15 +537,15 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
       <div class="space-y-4">
         <a href="/" class="text-white font-extrabold text-lg tracking-tight inline-block">HyperTune Garage</a>
         <p class="text-slate-400 text-xs leading-relaxed max-w-sm text-justify">
-          HyperTune Garage is Pakistan's precision automotive workshop for Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Lexus, and Land Rover. We provide Paint Protection Film (PPF), engine rebuilding, ceramic detailing, diagnostics, and scheduled maintenance.
+          HyperTune Garage is an independent automotive workshop in Islamabad serving Toyota, Honda, Suzuki, Hyundai, Kia, Changan, Haval, MG, BYD, Lexus, and Land Rover vehicles. We provide Paint Protection Film (PPF), engine rebuilding, ceramic detailing, diagnostics, and scheduled maintenance.
         </p>
         <div class="text-xs text-slate-300 font-semibold bg-[#09101d] border border-cyan-500/20 p-3 rounded-xl max-w-sm leading-snug">
-          100% Genuine OEM Spare Parts<br />12-Month Warranty
+          Itemized Workshop Estimates<br />Service-Specific Written Terms
         </div>
         <div class="pt-2 flex flex-col items-start gap-3 text-xs font-semibold">
           <div class="flex items-center gap-2">
-            <span class="text-slate-300">Google Rating:</span>
-            <span class="text-amber-400">★★★★★ <span class="text-white font-bold">4.8 / 5.0</span></span>
+            <span class="text-slate-300">Customer Feedback:</span>
+            <a href="/testimonials/" class="text-cyan-400 hover:text-cyan-300 transition-colors">Read Customer Testimonials &rarr;</a>
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <span class="text-slate-300">Social Links:</span>
@@ -664,7 +569,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <li><a href="/brands/" class="text-slate-400 hover:text-cyan-400 transition-colors">Brand Specialists Directory</a></li>
           <li><a href="/locations/" class="text-slate-400 hover:text-cyan-400 transition-colors">Workshop Locations</a></li>
           <li><a href="/gallery/" class="text-slate-400 hover:text-cyan-400 transition-colors">Work Gallery &amp; Restorations</a></li>
-          <li><a href="/testimonials/" class="text-slate-400 hover:text-cyan-400 transition-colors">Customer Reviews &amp; Ratings</a></li>
+          <li><a href="/testimonials/" class="text-slate-400 hover:text-cyan-400 transition-colors">Customer Testimonials</a></li>
           <li><a href="/blog/" class="text-slate-400 hover:text-cyan-400 transition-colors">Car Care Blog &amp; Guides</a></li>
           <li><a href="/faq/" class="text-slate-400 hover:text-cyan-400 transition-colors">Frequently Asked Questions (FAQ)</a></li>
           <li><a href="/about/" class="text-slate-400 hover:text-cyan-400 transition-colors">About HyperTune Garage</a></li>
@@ -690,7 +595,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <div class="pt-3 border-t border-slate-800 space-y-1">
             <a href="/locations/rawalpindi-workshop/" class="font-bold text-white hover:text-cyan-400 block">Rawalpindi Hub (Coming Soon)</a>
             <p class="text-amber-200/80 leading-relaxed text-[11px] text-justify">
-              Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.
+              Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with workshop support confirmed on booking.
             </p>
           </div>
         </div>
@@ -706,7 +611,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <span>•</span>
           <a href="/terms-conditions/">Terms &amp; Conditions</a>
           <span>•</span>
-          <a href="/warranty-specs/">Warranty Specs</a>
+          <a href="/warranty-specs/">Warranty &amp; Terms</a>
           <a href="//www.dmca.com/Protection/Status.aspx?ID=5ca8472d-289c-4e23-acff-18bd6e933b65" title="DMCA.com Protection Status" target="_blank" rel="noopener noreferrer" class="dmca-badge inline-flex items-center shrink-0 hover:opacity-90 transition-opacity"><img src="https://images.dmca.com/Badges/dmca-badge-w150-5x1-10.png?ID=5ca8472d-289c-4e23-acff-18bd6e933b65" alt="DMCA.com Protection Status" width="150" height="30" loading="lazy" decoding="async" class="h-5 sm:h-6 w-auto block" /></a>
         </div>
       </div>
@@ -718,6 +623,21 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
   if (root === 'services' && sub) {
     const service = findServiceSSR(sub);
     if (service) {
+      const verifiedRepairWarrantySlugs = new Set([
+        'engine-services',
+        'brake-suspension-steering',
+        'transmission-drivetrain',
+        'car-ac-repair',
+      ]);
+      const hasVerifiedWarranty = verifiedRepairWarrantySlugs.has(service.slug);
+      const clientService = servicesData.find((s) => s.slug === service.slug);
+      const keywordParagraph = clientService?.seo?.keywordParagraph;
+      const relatedSsrServices = service.relatedServiceSlugs?.length
+        ? service.relatedServiceSlugs
+            .map((relSlug) => servicesDataSSR.find((s) => s.slug === relSlug))
+            .filter((s): s is NonNullable<typeof s> => Boolean(s))
+        : [];
+
       mainContentHtml = `
       <main style="max-width:1280px;margin:32px auto;padding:0 16px;">
         <nav style="font-size:12px;color:#64748b;margin-bottom:16px;">
@@ -730,32 +650,71 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           ${escapeHtml(service.category.toUpperCase())}
         </span>
         <h1 style="font-size:36px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:16px;">
-          ${escapeHtml(service.title)} in Islamabad &amp; Rawalpindi
+          ${escapeHtml(service.h1Heading || `${service.title} in Islamabad & Rawalpindi`)}
         </h1>
+        <p style="font-size:15px;font-weight:600;color:#a5f3fc;line-height:1.6;margin-bottom:16px;max-width:900px;">
+          ${escapeHtml(service.shortDesc)}
+        </p>
         <p style="font-size:16px;color:#94a3b8;line-height:1.6;margin-bottom:24px;max-width:900px;text-align:justify;">
           ${escapeHtml(service.fullDesc)}
         </p>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:24px;margin-bottom:32px;">
           <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
-            <h3 style="font-size:16px;font-weight:700;color:#06b6d4;margin-bottom:8px;">Pricing &amp; Turnaround</h3>
+            <h3 style="font-size:16px;font-weight:700;color:#06b6d4;margin-bottom:8px;">Estimated Pricing &amp; Turnaround</h3>
             <p style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:4px;">${escapeHtml(service.priceRange)}</p>
-            <p style="font-size:13px;color:#94a3b8;">Estimated Time: ${escapeHtml(service.estimatedTime)}</p>
+            <p style="font-size:13px;color:#94a3b8;">Estimated Turnaround: ${escapeHtml(service.estimatedTime)}</p>
           </div>
+          ${hasVerifiedWarranty ? `
           <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
-            <h3 style="font-size:16px;font-weight:700;color:#06b6d4;margin-bottom:8px;">Warranty Coverage</h3>
-            <p style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:4px;">12-Month Guarantee</p>
-            <p style="font-size:13px;color:#94a3b8;">100% genuine OEM parts and precision workmanship warranty.</p>
+            <h3 style="font-size:16px;font-weight:700;color:#06b6d4;margin-bottom:8px;">12-Month Written Parts Warranty</h3>
+            <p style="font-size:15px;font-weight:800;color:#ffffff;margin-bottom:6px;">Up to 12 Months on Eligible Parts</p>
+            <p style="font-size:13px;color:#cbd5e1;line-height:1.6;">Eligible replacement parts may carry a written warranty of up to 12 months, subject to the individual manufacturer&#39;s or supplier&#39;s warranty terms, component eligibility and applicable conditions. Exact coverage is confirmed on the service estimate and final invoice. Labour, consumables and unrelated components are not automatically covered.</p>
           </div>
+          ` : ''}
         </div>
 
-        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Included Service Packages</h2>
+        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">${service.subServicePrices?.length ? 'Service &amp; Sub-Service Price Breakdown' : 'Included Service Packages'}</h2>
+        ${service.subServicePrices?.length ? `
+        <ul style="color:#cbd5e1;font-size:14px;line-height:2;padding-left:24px;margin-bottom:32px;">
+          ${service.subServicePrices.map((subItem) => `<li><strong>${escapeHtml(subItem.name)}</strong>: ${escapeHtml(subItem.price)}</li>`).join('')}
+        </ul>
+        ` : `
         <ul style="color:#cbd5e1;font-size:14px;line-height:2;padding-left:24px;margin-bottom:32px;">
           ${service.subServices.map((subItem) => `<li>${escapeHtml(subItem)}</li>`).join('')}
         </ul>
+        `}
+
+        ${service.symptoms && service.symptoms.length > 0 ? `
+        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">When Does Your Vehicle Need ${escapeHtml(service.title)}?</h2>
+        <ul style="color:#cbd5e1;font-size:14px;line-height:1.8;padding-left:24px;margin-bottom:32px;">
+          ${service.symptoms.map((sym) => `<li>${escapeHtml(sym)}</li>`).join('')}
+        </ul>
+        ` : ''}
+
+        ${(service.keyBenefits?.length || service.whyChooseUs?.length) ? `
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:24px;margin-bottom:32px;">
+          ${service.keyBenefits && service.keyBenefits.length > 0 ? `
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h2 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:12px;">Key Engineering Benefits</h2>
+            <ul style="color:#cbd5e1;font-size:13px;line-height:1.7;padding-left:20px;margin:0;">
+              ${service.keyBenefits.map((benefit) => `<li style="margin-bottom:6px;">${escapeHtml(benefit)}</li>`).join('')}
+            </ul>
+          </div>
+          ` : ''}
+          ${service.whyChooseUs && service.whyChooseUs.length > 0 ? `
+          <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+            <h2 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:12px;">Why Choose HyperTune Garage</h2>
+            <ul style="color:#cbd5e1;font-size:13px;line-height:1.7;padding-left:20px;margin:0;">
+              ${service.whyChooseUs.map((reason) => `<li style="margin-bottom:6px;">${escapeHtml(reason)}</li>`).join('')}
+            </ul>
+          </div>
+          ` : ''}
+        </div>
+        ` : ''}
 
         ${service.processSteps && service.processSteps.length > 0 ? `
-        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Precision Engineering Process</h2>
+        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Service Workflow</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:16px;margin-bottom:32px;">
           ${service.processSteps.map((step, idx) => `
             <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:16px;">
@@ -764,6 +723,13 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
               <p style="font-size:13px;color:#94a3b8;line-height:1.5;text-align:justify;">${escapeHtml(step.desc)}</p>
             </div>
           `).join('')}
+        </div>
+        ` : ''}
+
+        ${keywordParagraph ? `
+        <div style="background:#070c14;border:1px solid rgba(6,182,212,0.2);border-radius:16px;padding:24px;margin-bottom:32px;">
+          <h2 style="font-size:18px;font-weight:800;color:#ffffff;margin:0 0 10px 0;">Service Overview &amp; Scope</h2>
+          <p style="font-size:14px;color:#cbd5e1;line-height:1.65;margin:0;text-align:justify;">${escapeHtml(keywordParagraph)}</p>
         </div>
         ` : ''}
 
@@ -794,6 +760,23 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
             <a href="/blog/${guide.slug}/" style="color:#06b6d4;font-size:13px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">${escapeHtml(guide.buttonText)} &rarr;</a>
           </div>`;
         })()}
+
+        ${relatedSsrServices.length > 0 ? `
+        <div style="margin-bottom:32px;">
+          <h2 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:14px;">Related Automotive Services</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:16px;">
+            ${relatedSsrServices.map((rel) => `
+              <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:16px;">
+                <h3 style="font-size:15px;font-weight:700;color:#ffffff;margin:0 0 6px 0;">
+                  <a href="/services/${escapeHtml(rel.slug)}/" style="color:#ffffff;text-decoration:none;">${escapeHtml(rel.title)}</a>
+                </h3>
+                <p style="font-size:12px;color:#94a3b8;line-height:1.5;margin:0 0 10px 0;">${escapeHtml(rel.shortDesc)}</p>
+                <a href="/services/${escapeHtml(rel.slug)}/" style="color:#06b6d4;font-size:12px;font-weight:700;text-decoration:none;">Learn More &rarr;</a>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        ` : ''}
 
         <div style="background:#0b121e;border:1px solid #06b6d4;border-radius:16px;padding:24px;text-align:center;">
           <h3 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:8px;">Ready to Book Your Service?</h3>
@@ -840,7 +823,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           ${brand.specializedServices.map((s) => `<li>${escapeHtml(s)}</li>`).join('')}
         </ul>
 
-        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Common Issues &amp; Factory Solutions</h2>
+        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:16px;">Common Issues &amp; Technical Repair Solutions</h2>
         <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
           ${brand.commonIssuesAndFixes.map((item) => `
             <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:16px;">
@@ -867,7 +850,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
 
         <div style="background:#0b121e;border:1px solid #06b6d4;border-radius:16px;padding:24px;text-align:center;">
           <h3 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:8px;">Schedule ${escapeHtml(brand.name.split(' ')[0])} Service</h3>
-          <p style="font-size:14px;color:#94a3b8;margin-bottom:16px;">Book your appointment with our master specialist technicians.</p>
+          <p style="font-size:14px;color:#94a3b8;margin-bottom:16px;">Book your appointment with our experienced technicians.</p>
           <a href="/book-appointment/" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;display:inline-block;">Book Specialist Slot</a>
         </div>
       </main>`;
@@ -958,7 +941,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
 
         <div style="background:#070c14;border:1px solid #06b6d4;border-radius:16px;padding:24px;text-align:center;">
           <h3 style="font-size:20px;font-weight:800;color:#ffffff;margin-bottom:8px;">${post.category.includes('PPF') || post.category.includes('Paint') ? 'Need Expert Paint Protection Advice?' : 'Need Expert Diagnostic Help?'}</h3>
-          <p style="font-size:14px;color:#94a3b8;margin-bottom:16px;">${post.category.includes('PPF') || post.category.includes('Paint') ? 'Schedule an in-person paint inspection and digital thickness audit at HyperTune Garage Islamabad.' : 'Schedule a live scanner evaluation at HyperTune Garage Islamabad.'}</p>
+          <p style="font-size:14px;color:#94a3b8;margin-bottom:16px;">${post.category.includes('PPF') || post.category.includes('Paint') ? 'Schedule an in-person paint inspection and thickness check at HyperTune Garage Islamabad.' : 'Schedule a live scanner evaluation at HyperTune Garage Islamabad.'}</p>
           <a href="/book-appointment/" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;display:inline-block;">${post.category.includes('PPF') || post.category.includes('Paint') ? 'Book Paint Protection Consultation' : 'Book Diagnostic Scan'}</a>
         </div>
       </main>`;
@@ -970,7 +953,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         Automotive Services &amp; Maintenance Packages
       </h1>
       <p style="font-size:16px;color:#94a3b8;text-align:center;max-width:800px;margin:0 auto 40px;line-height:1.6;">
-        HyperTune Garage delivers PPF, Ceramic Coating, Car Detailing, Vehicle Diagnostics, Engine Tune-up, Auto Repair &amp; Maintenance Services across Islamabad &amp; Rawalpindi. Certified engineers handle every job with OEM diagnostics and genuine parts.
+        HyperTune Garage delivers PPF, Ceramic Coating, Car Detailing, Vehicle Diagnostics, Engine Tune-up, Auto Repair &amp; Maintenance Services across Islamabad &amp; Rawalpindi. Experienced technicians handle every job with multi-system diagnostics and vehicle-matched parts.
       </p>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
@@ -998,7 +981,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         Vehicle Brand Specialists in Islamabad &amp; Rawalpindi
       </h1>
       <p style="font-size:16px;color:#94a3b8;text-align:center;max-width:800px;margin:0 auto 40px;line-height:1.6;">
-        Factory dealer-grade diagnostics (BMW ISTA, Mercedes Xentry, Audi ODIS, Porsche PIWIS, Toyota Techstream, Honda HDS), specialized mechanical toolsets, and 100% genuine OEM parts.
+        Multi-brand computerized diagnostic scanners, specialized mechanical toolsets, and vehicle-matched OEM or Tier-1 parts.
       </p>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
@@ -1024,7 +1007,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         HyperTune Garage Workshop Locations
       </h1>
       <p style="font-size:16px;color:#94a3b8;text-align:center;max-width:800px;margin:0 auto 40px;line-height:1.6;">
-        Visit our state-of-the-art HyperTune Garage - Islamabad Flagship Hub or learn about our upcoming Rawalpindi Hub.
+        Visit HyperTune Garage - Islamabad Flagship Hub or view updates on our upcoming Rawalpindi Hub.
       </p>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
@@ -1066,7 +1049,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           Technical Blog | HyperTune Garage — Car Care Guides
         </h1>
         <p style="font-size:16px;color:#94a3b8;max-width:800px;margin:0 auto;line-height:1.6;">
-          Authoritative automotive engineering guides, OBD2 fault code analysis, hybrid battery restoration protocols, and climate maintenance for drivers across Islamabad and Rawalpindi.
+          Technical automotive guides, OBD2 fault code analysis, hybrid battery restoration protocols, and climate maintenance for drivers across Islamabad and Rawalpindi.
         </p>
       </div>
 
@@ -1080,7 +1063,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
             Service Guides
           </h2>
           <p style="font-size:14px;color:#94a3b8;max-width:800px;margin:0 0 16px 0;line-height:1.6;">
-            Every HyperTune Garage service features a dedicated technical diagnostic &amp; maintenance guide covering Pakistani climate adaptations, OEM tolerances, and troubleshooting.
+            Every HyperTune Garage service features a dedicated technical diagnostic &amp; maintenance guide covering Pakistani climate adaptations, manufacturer specifications, and troubleshooting.
           </p>
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-top:4px;">
             ${serviceGuidesSSR.map(({ service: s, guide }) => `
@@ -1173,24 +1156,24 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           About HyperTune Garage
         </h1>
         <p style="font-size:16px;color:#cbd5e1;line-height:1.8;max-width:900px;">
-          HyperTune Garage delivers precision mechanical engineering, computerized diagnostics, and cleanroom paint protection for drivers across Islamabad and Rawalpindi. Operating from Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad (44000), our workshop brings every automotive discipline together under one roof—built around Performance • Protection • Perfection.
+          HyperTune Garage delivers mechanical repairs, computerized diagnostics, and indoor PPF installation for drivers across Islamabad and Rawalpindi. Operating from Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad (44000), our workshop brings multiple automotive disciplines together under one roof—built around Performance • Protection • Perfection.
         </p>
       </section>
 
       <section style="margin-bottom:40px;">
         <h2 style="font-size:28px;font-weight:900;color:#ffffff;margin-bottom:12px;">Who We Are</h2>
         <p style="font-size:15px;color:#cbd5e1;line-height:1.75;max-width:900px;margin-bottom:12px;">
-          HyperTune Garage is an independent automotive workshop serving car owners in Islamabad and Rawalpindi—including Rawalpindi drivers using insured valet pickup—from our Police Foundation Sector O-9 hub in Islamabad. We run an engineering-led workshop focused on Japanese, German, and luxury vehicles, pairing multi-system diagnostic interfaces and precision measurement tools with transparent itemized pricing and HD WhatsApp inspection proof before any repair proceeds.
+          HyperTune Garage is an independent automotive workshop serving car owners in Islamabad and Rawalpindi from our Police Foundation Sector O-9 hub in Islamabad. We focus on Japanese, German, and luxury vehicles, pairing multi-system diagnostic interfaces and workshop inspection tools with itemized pricing and WhatsApp inspection photos before repair work proceeds.
         </p>
       </section>
 
       <section style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:24px;margin-bottom:40px;">
         <h2 style="font-size:28px;font-weight:900;color:#ffffff;margin-bottom:12px;">Our Story</h2>
         <p style="font-size:15px;color:#cbd5e1;line-height:1.75;max-width:900px;margin-bottom:12px;">
-          HyperTune Garage was built around a simple belief: every vehicle deserves professional care, honest advice and attention to detail. Serving Islamabad and Rawalpindi, we bring mechanical expertise, modern diagnostic practices and vehicle protection services together under one roof.
+          HyperTune Garage was built around a simple belief: every vehicle deserves attentive care, honest advice, and thorough workmanship. Serving Islamabad and Rawalpindi, we bring mechanical expertise, modern diagnostic practices, and vehicle protection services together under one roof.
         </p>
         <p style="font-size:15px;color:#cbd5e1;line-height:1.75;max-width:900px;margin-bottom:12px;">
-          From routine maintenance and complex repairs to pre-purchase inspections and premium vehicle protection, our focus is on understanding each vehicle's needs and recommending practical solutions. We believe in transparent communication, quality workmanship and helping customers make informed decisions at every stage.
+          From routine maintenance and complex repairs to pre-purchase inspections and paint protection, our focus is on understanding each vehicle's condition and recommending practical solutions. We believe in transparent communication, careful workmanship, and helping customers make informed decisions at every stage.
         </p>
         <p style="font-size:14px;font-weight:800;color:#22d3ee;margin:0;">
           Performance • Protection • Perfection
@@ -1202,52 +1185,52 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:20px;">
           <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
             <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">1. Automotive Diagnostics and Inspection</h3>
-            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Full-system ECU scans and 200-point pre-purchase inspections with digital paint-depth micron audits and cylinder scope checks.</p>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Full-system ECU scans and structured pre-purchase inspections with paint thickness checks and mechanical condition checks.</p>
             <a href="/services/inspection-diagnostics/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Diagnostics &amp; Inspections</a>
           </div>
           <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
             <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">2. Engine Repair and Overhaul</h3>
-            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Complete cylinder head work, timing chains, cooling system flushes, ultrasonic injector cleaning, and 0.001 mm micrometer rebuilds.</p>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Complete cylinder head work, timing chains, cooling system flushes, fuel injector servicing, and engine overhauls with vehicle-matched parts.</p>
             <a href="/services/engine-services/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Engine Services</a>
           </div>
           <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
             <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">3. Transmission and Drivetrain Services</h3>
-            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Automatic, CVT, manual, and dual-clutch (DCT/DSG) diagnostics, pressurized fluid exchanges, solenoid rebuilds, and clutch adaptation.</p>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Automatic, CVT, manual, and dual-clutch (DCT/DSG) diagnostics, transmission fluid exchanges, solenoid rebuilds, and clutch adaptation.</p>
             <a href="/services/transmission-drivetrain/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Transmission Services</a>
           </div>
           <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
             <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">4. Preventive Maintenance and Mechanical Repair</h3>
-            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Imported synthetic oil changes, genuine OEM filters, spark plug replacement, and a documented 50-point vehicle safety check.</p>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Imported synthetic oil changes, vehicle-matched filters, spark plug replacement, and a documented vehicle safety check.</p>
             <a href="/services/maintenance-servicing/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Maintenance Packages</a>
           </div>
           <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
             <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">5. Brake, Suspension and Steering Services</h3>
-            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Ceramic brake pads, rotor resurfacing, shock and air-suspension repair, steering rack service, and Italian 3D laser wheel alignment.</p>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Ceramic brake pads, rotor resurfacing, shock and air-suspension repair, steering rack service, and computerized wheel alignment.</p>
             <a href="/services/brake-suspension-steering/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Brake &amp; Suspension Care</a>
           </div>
           <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
             <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">6. Automotive AC and Electrical Diagnostics</h3>
-            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Automated R134a/R1234yf recovery, dry nitrogen leak testing, compressor rebuilds, battery drain tracing, oscilloscope testing, and ECU coding.</p>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">AC servicing, refrigerant pressure leak testing, compressor rebuilds, battery drain tracing, electrical testing, and ECU coding.</p>
             <a href="/services/car-ac-repair/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore AC &amp; Electrical Services</a>
           </div>
           <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
             <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">7. Paint Protection Film (PPF)</h3>
-            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Blade-free self-healing TPU Paint Protection Film cut via CAD digital plotter and installed inside a dust-free cleanroom studio.</p>
-            <a href="/services/paint-protection-film-ppf/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore PPF Cleanroom Studio</a>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Blade-free Paint Protection Film cut via computerized CAD plotter and installed inside our indoor PPF studio bay.</p>
+            <a href="/services/paint-protection-film-ppf/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore PPF Studio</a>
           </div>
           <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
             <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">8. Ceramic Coating and Detailing</h3>
-            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Multi-stage dual-action paint correction guided by micron gauges, 9H nano-ceramic coating, and 140°C interior steam sanitation.</p>
-            <a href="/services/car-detailing/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Detailing &amp; 9H Ceramic</a>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Multi-stage dual-action paint correction guided by paint thickness checks, ceramic coating, and interior deep cleaning.</p>
+            <a href="/services/car-detailing/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Detailing &amp; Ceramic</a>
           </div>
           <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
             <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">9. Vinyl Wrapping and Vehicle Protection</h3>
-            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Reversible cast vinyl color-change wraps in matte, satin, gloss, and carbon finishes with edge tucking and 90°C post-heating.</p>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Reversible cast vinyl color-change wraps in matte, satin, gloss, and carbon finishes with edge tucking and post-heat curing.</p>
             <a href="/services/vehicle-wrap/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Vinyl Wrapping</a>
           </div>
           <div style="background:#070c14;border:1px solid #1e293b;border-radius:12px;padding:20px;">
             <h3 style="font-size:17px;font-weight:800;color:#ffffff;margin-bottom:8px;">10. Body Repair, Paint and Restoration</h3>
-            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Paintless Dent Repair (PDR), collision frame alignment, spectrophotometer paint matching, paint booth refinishing, and body kit fitment.</p>
+            <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:10px;">Exterior dent repair, collision bodywork, panel preparation, paint matching, refinishing, and custom body kit fitment.</p>
             <a href="/services/body-repair-paint/" style="color:#22d3ee;font-size:13px;font-weight:700;text-decoration:none;">Explore Body Repair &amp; Paint</a>
           </div>
         </div>
@@ -1261,17 +1244,17 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
             <ul style="color:#cbd5e1;font-size:13px;line-height:1.6;padding-left:18px;margin:0;">
               <li style="margin-bottom:6px;"><strong style="color:#ffffff;">Vehicle Inspections &amp; Pre-Purchase Diagnostics:</strong> Comprehensive vehicle health checks, clear diagnostic findings, and itemized repair recommendations to help customers make informed buying and maintenance decisions.</li>
               <li style="margin-bottom:6px;"><strong style="color:#ffffff;">Catalytic Cleaning:</strong> Specialized cleaning removes carbon deposits and contaminants to support exhaust flow and engine efficiency.</li>
-              <li style="margin-bottom:6px;"><strong style="color:#ffffff;">PPF &amp; Ceramic Cleanroom:</strong> Computerized CAD plotters cut TPU patterns off the vehicle—keeping blades off clear coat—paired with infrared curing lamps.</li>
-              <li><strong style="color:#ffffff;">Vehicle Tuning Service:</strong> Precision ECU diagnostics and calibration optimize engine response, drivability, and vehicle performance.</li>
+              <li style="margin-bottom:6px;"><strong style="color:#ffffff;">Indoor PPF &amp; Ceramic Studio Bay:</strong> Computerized CAD plotters cut protective film patterns off the vehicle—keeping blades off clear coat—inside our dedicated indoor application bay.</li>
+              <li><strong style="color:#ffffff;">Computerized Wheel Alignment &amp; Machining Support:</strong> Dedicated alignment bay paired with workshop machining equipment and multi-system diagnostics.</li>
             </ul>
           </div>
           <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
-            <h3 style="font-size:18px;font-weight:800;color:#22d3ee;margin-bottom:8px;">HD Video Proof &amp; Itemized Quotes</h3>
-            <p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Technicians share diagnostic findings, teardown videos, and line-by-line parts and labor quotes for owner approval before repair work proceeds.</p>
+            <h3 style="font-size:18px;font-weight:800;color:#22d3ee;margin-bottom:8px;">Inspection Photos &amp; Itemized Quotes</h3>
+            <p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Technicians share diagnostic findings, inspection photos, and line-by-line parts and labor quotes for owner approval before repair work proceeds.</p>
           </div>
           <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
-            <h3 style="font-size:18px;font-weight:800;color:#22d3ee;margin-bottom:8px;">Written Warranty Coverage</h3>
-            <p style="color:#cbd5e1;font-size:14px;line-height:1.6;">12-month or 15,000 km warranty on engine and transmission rebuilds plus up to 10-year manufacturer film coverage on self-healing TPU PPF.</p>
+            <h3 style="font-size:18px;font-weight:800;color:#22d3ee;margin-bottom:8px;">Written Warranty Terms</h3>
+            <p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Service-specific warranty coverage and parts terms are confirmed in writing on your itemized estimate and final invoice.</p>
           </div>
         </div>
       </section>
@@ -1334,8 +1317,8 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         Contact HyperTune Garage
       </h1>
       <p style="font-size:16px;color:#94a3b8;margin-bottom:32px;line-height:1.6;">
-        <strong style="color:#e2e8f0;display:block;margin-bottom:6px;">Precision Care Starts With a Conversation.</strong>
-        Reach out directly to our master engineering team for service bookings, PPF consultations, or vehicle health inquiries at our Islamabad Flagship Hub. Whether you’re scheduling routine diagnostics, planning full-body paint protection, or seeking a second opinion on a complex mechanical issue, our specialists provide transparent assessments and tailored maintenance roadmaps—no middlemen, no guesswork.
+        <strong style="color:#e2e8f0;display:block;margin-bottom:6px;">Clear Answers Before Any Work Begins.</strong>
+        Reach out directly to our workshop team for service bookings, PPF consultations, or vehicle health inquiries at our Islamabad Flagship Hub. Whether you’re scheduling routine diagnostics, planning paint protection, or seeking a second opinion on a mechanical issue, our technicians provide itemized estimates and practical maintenance guidance.
       </p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:24px;margin-bottom:32px;">
         <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;">
@@ -1358,14 +1341,14 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
     mainContentHtml = `
     <main style="max-width:1280px;margin:32px auto;padding:0 16px;">
       <h1 style="font-size:36px;font-weight:900;color:#ffffff;text-align:center;margin-bottom:12px;">
-        Workshop Portfolio &amp; Project Gallery
+        HyperTune Garage Workshop Gallery
       </h1>
       <p style="font-size:16px;color:#94a3b8;text-align:center;max-width:800px;margin:0 auto 40px;">
-        High-resolution before &amp; after showcases of TPU Paint Protection Film (PPF), 9H Ceramic Coatings, Master Engine Overhauls, and Body Mod projects at HyperTune Garage.
+        Visual examples representing PPF, detailing, mechanical overhaul, transmission, suspension, and refinishing scopes offered at HyperTune Garage.
       </p>
       <div style="background:#0b121e;border:1px solid #1e293b;border-radius:16px;padding:32px;text-align:center;">
-        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:12px;">Explore Our Live Work on Instagram</h2>
-        <p style="color:#94a3b8;font-size:14px;margin-bottom:20px;">Follow our daily automotive transformations and master workshop projects.</p>
+        <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:12px;">Explore Our Work on Instagram</h2>
+        <p style="color:#94a3b8;font-size:14px;margin-bottom:20px;">Follow workshop updates and service highlights on Instagram.</p>
         <a href="https://www.instagram.com/hyper.tunegarage" target="_blank" rel="noopener noreferrer" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;display:inline-block;">View Instagram Gallery</a>
       </div>
     </main>`;
@@ -1374,18 +1357,14 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
     <main style="max-width:1280px;margin:32px auto;padding:0 16px;">
       <div style="text-align:center;margin-bottom:32px;">
         <span style="display:inline-block;background:rgba(6,182,212,0.1);color:#06b6d4;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:12px;">
-          VERIFIED GOOGLE BUSINESS PROFILE
+          SELECTED CUSTOMER FEEDBACK
         </span>
         <h1 style="font-size:36px;font-weight:900;color:#ffffff;margin-bottom:12px;">
-          Customer Reviews &amp; 4.8★ Google Ratings
+          Customer Testimonials
         </h1>
         <p style="font-size:16px;color:#94a3b8;max-width:800px;margin:0 auto 24px;line-height:1.6;">
-          Authentic, verified customer reviews and 4.8-star ratings directly from Google Business Profile submitted by vehicle owners across Islamabad and Rawalpindi.
+          Read selected customer testimonials and workshop feedback shared by vehicle owners across Islamabad and Rawalpindi.
         </p>
-        <div style="display:inline-flex;align-items:center;gap:12px;background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:10px 20px;">
-          <span style="font-size:24px;font-weight:900;color:#f59e0b;">4.8 / 5.0</span>
-          <span style="color:#cbd5e1;font-size:14px;">★★★★★</span>
-        </div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
         ${googleBusinessData.reviews.map((r) => `
@@ -1393,7 +1372,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
             <div>
               <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
                 <h2 style="font-size:16px;font-weight:800;color:#ffffff;margin:0;">${escapeHtml(r.authorName)}</h2>
-                <span style="background:#030712;color:#06b6d4;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;border:1px solid rgba(6,182,212,0.3);">✓ Verified Google Review</span>
+                <span style="background:#030712;color:#06b6d4;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;border:1px solid rgba(6,182,212,0.3);">Customer Testimonial</span>
               </div>
               <div style="color:#f59e0b;font-size:14px;margin-bottom:8px;">${'★'.repeat(r.rating)}</div>
               <p style="color:#cbd5e1;font-size:13px;line-height:1.6;font-style:italic;margin-bottom:12px;">"${escapeHtml(r.text)}"</p>
@@ -1423,7 +1402,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           Frequently Asked Questions (FAQ)
         </h1>
         <p style="font-size:15px;color:#94a3b8;max-width:700px;margin:0 auto;line-height:1.6;">
-          Detailed technical procedures, warranty guarantees, diagnostic protocols, and workshop guidelines for car owners across Islamabad and Rawalpindi.
+          Detailed technical procedures, warranty terms, diagnostic protocols, and workshop guidelines for car owners across Islamabad and Rawalpindi.
         </p>
       </div>
 
@@ -1483,9 +1462,9 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
 
       <div style="text-align:center;margin-top:40px;background:#0b121e;border:1px solid rgba(6,182,212,0.3);border-radius:16px;padding:32px;">
         <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin:0 0 10px 0;">Need a Workshop Diagnosis or Custom Quote?</h2>
-        <p style="font-size:14px;color:#94a3b8;margin:0 0 20px 0;">Our certified master technicians at Police Foundation, Sector O-9, Islamabad are ready to inspect your vehicle.</p>
-        <a href="/book-appointment/" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;font-size:14px;display:inline-block;margin-right:12px;">Book Inspection Bay</a>
-        <a href="https://wa.me/923330177717?text=Hi%20HyperTune%20Garage,%20I%20have%20a%20technical%20question" target="_blank" rel="noopener noreferrer" style="background:#10b981;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;font-size:14px;display:inline-block;">WhatsApp Master Tech</a>
+        <p style="font-size:14px;color:#94a3b8;margin:0 0 20px 0;">Our experienced technicians at Police Foundation, Sector O-9, Islamabad are ready to inspect your vehicle.</p>
+        <a href="/book-appointment/" style="background:#06b6d4;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;font-size:14px;display:inline-block;margin-right:12px;">Book Workshop Slot</a>
+        <a href="https://wa.me/923330177717?text=Hi%20HyperTune%20Garage,%20I%20have%20a%20technical%20question" target="_blank" rel="noopener noreferrer" style="background:#10b981;color:#030712;padding:12px 24px;border-radius:8px;font-weight:800;text-decoration:none;font-size:14px;display:inline-block;">WhatsApp Workshop Team</a>
       </div>
     </main>`;
   } else if (root === 'book-appointment' || root === 'booking') {
@@ -1495,7 +1474,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         Book Your Service Appointment
       </h1>
       <p style="font-size:16px;color:#94a3b8;margin-bottom:32px;">
-        Schedule dealer-level diagnostic scans, periodic maintenance, PPF quotes, or mechanical repairs at HyperTune Garage Islamabad.
+        Schedule multi-brand diagnostic scans, periodic maintenance, PPF quotes, or mechanical repairs at HyperTune Garage Islamabad.
       </p>
       <div style="background:#0b121e;border:1px solid #06b6d4;border-radius:16px;padding:32px;max-width:600px;margin:0 auto;">
         <h2 style="font-size:22px;font-weight:800;color:#ffffff;margin-bottom:12px;">Instant WhatsApp Confirmation</h2>
@@ -1509,18 +1488,17 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
     mainContentHtml = `
     <main style="max-width:1000px;margin:32px auto;padding:0 16px;">
       <h1 style="font-size:36px;font-weight:900;color:#ffffff;margin-bottom:16px;">
-        12-Month Automotive Repair Warranty Policy
+        Warranty &amp; Service Terms
       </h1>
       <p style="font-size:16px;color:#94a3b8;line-height:1.8;margin-bottom:24px;">
-        HyperTune Garage stands behind the engineering precision of its work. Every major mechanical overhaul and genuine part installed at our facility is backed by our transparent warranty policy.
+        Review how workmanship coverage, parts options, and product terms are confirmed on your HyperTune Garage estimate and final service invoice.
       </p>
       <div style="background:#0b121e;border:1px solid #1e293b;border-radius:12px;padding:24px;margin-bottom:24px;">
-        <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:12px;">Warranty Coverage Highlights</h2>
+        <h2 style="font-size:20px;font-weight:800;color:#06b6d4;margin-bottom:12px;">12-Month Written Parts Warranty &amp; Service Terms</h2>
         <ul style="color:#cbd5e1;font-size:14px;line-height:2;padding-left:20px;">
-          <li>Engine Rebuilds: 12-Month / 15,000 km warranty on internal mechanical components.</li>
-          <li>Automatic &amp; CVT Transmissions: 6-Month warranty on rebuilt valve bodies and clutches.</li>
-          <li>Hybrid Battery Packs: Up to 12-Month warranty on reconditioned cell modules.</li>
-          <li>TPU Paint Protection Film: 5 to 10-Year manufacturer warranty against yellowing and bubbling.</li>
+          <li>Eligible Parts (Engine Services, Transmission &amp; Drivetrain, Brake/Suspension/Steering, Car AC Repair): Eligible replacement parts may carry a written warranty of up to 12 months, subject to the individual manufacturer&#39;s or supplier&#39;s warranty terms, component eligibility and applicable conditions.</li>
+          <li>PPF Film &amp; Ceramic Coating: Coverage follows the specific film or product line chosen at booking and recommended wash care.</li>
+          <li>Other Mechanical, Diagnostic &amp; Body Services: Exact invoice terms and parts selections are confirmed in writing on your estimate.</li>
         </ul>
       </div>
     </main>`;
@@ -1567,14 +1545,14 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <a href="/services/" style="color:#cbd5e1;text-decoration:none;">🔧 All Services Directory</a>
           <a href="/brands/" style="color:#cbd5e1;text-decoration:none;">🏎️ Brand Specialists</a>
           <a href="/locations/" style="color:#cbd5e1;text-decoration:none;">📍 Workshop Locations</a>
-          <a href="/testimonials/" style="color:#cbd5e1;text-decoration:none;">⭐ Customer Reviews (4.8★)</a>
+          <a href="/testimonials/" style="color:#cbd5e1;text-decoration:none;">⭐ Customer Testimonials</a>
           <a href="/gallery/" style="color:#cbd5e1;text-decoration:none;">📸 Project Gallery</a>
           <a href="/blog/" style="color:#cbd5e1;text-decoration:none;">📝 Technical Blog</a>
           <a href="/about/" style="color:#cbd5e1;text-decoration:none;">ℹ️ About HyperTune</a>
           <a href="/contact/" style="color:#cbd5e1;text-decoration:none;">📞 Contact Us</a>
           <a href="/faq/" style="color:#cbd5e1;text-decoration:none;">❓ Frequently Asked Questions</a>
           <a href="/book-appointment/" style="color:#cbd5e1;text-decoration:none;">📅 Book Appointment</a>
-          <a href="/warranty-specs/" style="color:#cbd5e1;text-decoration:none;">🛡️ Warranty Policy</a>
+          <a href="/warranty-specs/" style="color:#cbd5e1;text-decoration:none;">🛡️ Warranty &amp; Service Terms</a>
         </div>
       </section>
 
@@ -1620,7 +1598,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <div class="lg:col-span-6 space-y-5 sm:space-y-6 text-center lg:text-left">
             <!-- Trust Badge -->
             <div class="inline-flex items-center gap-1.5 sm:gap-2 bg-cyan-950/70 border border-cyan-500/30 px-3 py-1 sm:py-1.5 rounded-full text-cyan-400 font-bold text-[11px] sm:text-xs uppercase tracking-wider max-w-full text-left">
-              <span>★ Pakistan’s Premier PPF &amp; Precision Automotive Workshop</span>
+              <span>★ Independent Multi-Brand Automotive Workshop &amp; PPF Studio</span>
             </div>
 
             <!-- Main Headline -->
@@ -1656,15 +1634,15 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
             <div class="pt-3 sm:pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-6 text-xs text-slate-400 border-t border-slate-800/80">
               <div class="flex items-center gap-1.5">
                 <span class="text-cyan-400 font-bold">✔</span>
-                <span>Self-Healing TPU (10-Yr Warranty)</span>
+                <span>Blade-Free CAD Plotter PPF</span>
               </div>
               <div class="flex items-center gap-1.5">
                 <span class="text-cyan-400 font-bold">🛡</span>
-                <span>100% Dust-Free Studio Installation</span>
+                <span>Indoor PPF Studio Bay</span>
               </div>
               <div class="flex items-center gap-1.5">
                 <span class="text-amber-400 font-bold">★</span>
-                <span>4.8 / 5.0 Star Rating</span>
+                <span>Itemized Pre-Work Quotes</span>
               </div>
             </div>
           </div>
@@ -1698,7 +1676,7 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
                     </div>
                     <div class="min-w-0">
                       <p class="text-white font-extrabold text-xs sm:text-sm leading-tight truncate">HyperTune Garage Precision PPF Studio</p>
-                      <p class="text-slate-300 text-[11px] sm:text-xs mt-0.5 line-clamp-1">Ultra-Clear Self-Healing TPU • 10-Year Yellowing &amp; Scratch Defense</p>
+                      <p class="text-slate-300 text-[11px] sm:text-xs mt-0.5 line-clamp-1">Computerized CAD-Cut Patterns • Indoor PPF Studio Bay</p>
                     </div>
                   </div>
                   <span class="hidden xs:inline-flex bg-cyan-500 text-slate-950 font-extrabold text-[9px] sm:text-[10px] uppercase px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg shrink-0">
@@ -1716,32 +1694,32 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
         <div class="text-center space-y-3 max-w-2xl mx-auto">
           <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Uncompromising Standards</span>
           <h2 class="text-3xl font-black text-white">Why Vehicle Owners Trust HyperTune Garage</h2>
-          <p class="text-slate-400 text-sm">We deliver dealer-grade precision without high dealership costs or guesswork.</p>
+          <p class="text-slate-400 text-sm">Independent multi-brand diagnostics, itemized estimates, and dedicated workshop care.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
-            <h3 class="text-lg font-bold text-white">Official Dealer-Level Diagnostics</h3>
-            <p class="text-slate-400 text-xs leading-relaxed text-justify">Our team uses Toyota Techstream, Honda HDS, Suzuki SDT-II, Hyundai GDS, Kia KDS, JLR Pathfinder, and OEM scan tools.</p>
+            <h3 class="text-lg font-bold text-white">Multi-Brand Computerized Diagnostics</h3>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">Our team uses multi-brand computerized diagnostic scanners and compatible interfaces to inspect engine, transmission, ABS, hybrid, and body control systems.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
-            <h3 class="text-lg font-bold text-white">100% Genuine Barcode Sourced Parts</h3>
-            <p class="text-slate-400 text-xs leading-relaxed text-justify">We source Bosch, Lemförder, Sachs, Bilstein, and genuine OEM parts with full barcode trace safety.</p>
+            <h3 class="text-lg font-bold text-white">Vehicle-Matched Parts Sourcing</h3>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">We source Bosch, Lemförder, Sachs, Bilstein, and vehicle-matched replacement parts confirmed on your estimate.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
-            <h3 class="text-lg font-bold text-white">12-Month / 15,000 km Warranty</h3>
-            <p class="text-slate-400 text-xs leading-relaxed text-justify">Every engine overhaul, suspension job, and electrical repair includes our written warranty.</p>
+            <h3 class="text-lg font-bold text-white">Written Service Terms</h3>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">Every approved repair and protection job includes clear, service-specific written terms on your invoice.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
-            <h3 class="text-lg font-bold text-white">Master Certified Engineers</h3>
-            <p class="text-slate-400 text-xs leading-relaxed text-justify">Trained mechanical engineers and ECU software specialists handle every job to European workshop standards.</p>
+            <h3 class="text-lg font-bold text-white">Experienced Multi-Brand Technicians</h3>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">Experienced mechanical and electrical technicians inspect every fault systematically before starting repairs.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
-            <h3 class="text-lg font-bold text-white">Live Video Inspection Reports</h3>
-            <p class="text-slate-400 text-xs leading-relaxed text-justify">You receive HD video proof of worn parts before you approve any repair work.</p>
+            <h3 class="text-lg font-bold text-white">Inspection Photos &amp; Updates</h3>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">You receive clear inspection photos and diagnostic updates before approving any repair work.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
-            <h3 class="text-lg font-bold text-white">State-of-the-Art Diagnostics &amp; Alignment</h3>
-            <p class="text-slate-400 text-xs leading-relaxed text-justify">Our bays feature OEM diagnostic scanners, 3D laser wheel alignment rigs, and ultrasonic cleaners.</p>
+            <h3 class="text-lg font-bold text-white">Modern Diagnostics &amp; Alignment</h3>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">Our workshop operates multi-system diagnostic platforms, computerized wheel alignment equipment, and a CAD plotter.</p>
           </div>
         </div>
       </section>
@@ -1799,8 +1777,8 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
                 </div>
               </div>
               <p class="text-xs text-slate-300">Estimated Time Required: <strong class="text-white">${escapeHtml(defaultService.estimatedTime)}</strong></p>
-              <p class="text-xs text-slate-300">Included Protection: <strong class="text-white">12-Month / 15,000km Warranty</strong></p>
-              <p class="text-xs text-slate-300">Parts Guarantee: <strong class="text-white">100% Genuine OEM Barcode Sourced</strong></p>
+              <p class="text-xs text-slate-300">Service Terms: <strong class="text-white">Confirmed in writing per job</strong></p>
+              <p class="text-xs text-slate-300">Parts &amp; Materials: <strong class="text-white">Options confirmed on final quote</strong></p>
               ${defaultService.subServicePrices && defaultService.subServicePrices.length > 0 ? `
               <div class="pt-3 border-t border-slate-800 space-y-1.5">
                 <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Sub-Service Price List:</span>
@@ -1827,49 +1805,49 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
       <!-- Before & After Repair Restorations -->
       <section class="max-w-7xl mx-auto px-4 space-y-8">
         <div class="text-center space-y-2 max-w-xl mx-auto">
-          <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Craftsmanship Proof</span>
-          <h2 class="text-3xl font-black text-white">Real Restoration &amp; Tuning Work</h2>
-          <p class="text-slate-400 text-sm">Drag the slider to compare each car before and after HyperTune Garage treatment.</p>
+          <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Service Showcase</span>
+          <h2 class="text-3xl font-black text-white">Illustrative Finish &amp; Coating Examples</h2>
+          <p class="text-slate-400 text-sm">Drag the slider to compare visual examples representing paint preparation and studio finishing.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div class="space-y-3">
-            <h3 class="font-bold text-white text-base md:text-lg">Haval H6 GT Full Body TPU Paint Protection Film (PPF)</h3>
-            <p class="text-xs text-slate-400">Before PPF: Factory Maroon Finish &bull; After PPF: Self-Healing Mirror Armor</p>
+            <h3 class="font-bold text-white text-base md:text-lg">Haval H6 GT Full Body Paint Protection Film (PPF)</h3>
+            <p class="text-xs text-slate-400">Before PPF: Factory Maroon Finish &bull; After PPF: Indoor PPF Finish</p>
           </div>
           <div class="space-y-3">
-            <h3 class="font-bold text-white text-base md:text-lg">Toyota Land Cruiser TPU PPF &amp; Ceramic Coating</h3>
-            <p class="text-xs text-slate-400">Before PPF: Factory Metallic Grey &bull; After PPF: 9H Hydrophobic Mirror Gloss</p>
+            <h3 class="font-bold text-white text-base md:text-lg">Toyota Land Cruiser PPF &amp; Ceramic Coating</h3>
+            <p class="text-xs text-slate-400">Before PPF: Factory Metallic Grey &bull; After PPF: PPF &amp; Ceramic Gloss Finish</p>
           </div>
         </div>
       </section>
 
-      <!-- Customer Reviews & Google Ratings + HyperTune Performance Metrics -->
+      <!-- Customer Testimonials + Workshop Commitments -->
       <section class="bg-[#070c14] border-y border-slate-800/80 py-16 px-4">
         <div class="max-w-7xl mx-auto space-y-12">
           <div class="bg-[#0b121e] border border-cyan-500/20 rounded-3xl p-6 md:p-8 space-y-6">
             <div class="border-b border-slate-800 pb-4">
-              <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Proven Operations &amp; Track Record</span>
-              <h2 class="text-2xl font-black text-white mt-1">HyperTune Performance Metrics</h2>
+              <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Independent Workshop Standards</span>
+              <h2 class="text-2xl font-black text-white mt-1">HyperTune Workshop Commitments</h2>
               <p class="text-xs text-cyan-400 font-semibold mt-0.5">HyperTune Garage - Islamabad Flagship Hub</p>
             </div>
             <p class="text-slate-300 text-sm leading-relaxed text-justify">
-              HyperTune Garage follows strict workshop standards and measures every repair. Our diagnostic bays run dealer-grade German scan tools that read OEM fault codes down to the millivolt. This gives us hard data before we touch a bolt. We handle engine diagnostics, AC and auto electrical repairs, and blade-free PPF in a dust-free cleanroom. You also get clear, itemized pricing on every bill. We build every service for real, lasting vehicle performance.
+              HyperTune Garage follows structured inspection and approval standards on every job. Our diagnostic bays run multi-brand computerized diagnostic scanners to verify fault data before mechanical work starts. We handle engine diagnostics, AC and auto-electrical repairs, machining support, computerized wheel alignment, and CAD-cut PPF inside our indoor studio bay—with itemized pricing confirmed before work proceeds.
             </p>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
-              <div class="p-4 rounded-2xl bg-[#070c14] border border-slate-800"><span class="text-3xl font-black text-cyan-400 block">15,000+</span><span class="text-xs font-semibold text-slate-300">Vehicles Serviced</span></div>
-              <div class="p-4 rounded-2xl bg-[#070c14] border border-slate-800"><span class="text-3xl font-black text-cyan-400 block">99.4%</span><span class="text-xs font-semibold text-slate-300">Client Satisfaction</span></div>
-              <div class="p-4 rounded-2xl bg-[#070c14] border border-slate-800"><span class="text-3xl font-black text-cyan-400 block">15+</span><span class="text-xs font-semibold text-slate-300">Certified Master Techs</span></div>
-              <div class="p-4 rounded-2xl bg-[#070c14] border border-slate-800"><span class="text-3xl font-black text-cyan-400 block">2</span><span class="text-xs font-semibold text-slate-300">Mega Workshop Hubs</span></div>
+              <div class="p-4 rounded-2xl bg-[#070c14] border border-slate-800"><span class="text-xl font-black text-cyan-400 block">Sector O-9</span><span class="text-xs font-semibold text-slate-300">Islamabad Flagship Hub</span></div>
+              <div class="p-4 rounded-2xl bg-[#070c14] border border-slate-800"><span class="text-xl font-black text-cyan-400 block">CAD Plotter</span><span class="text-xs font-semibold text-slate-300">Indoor PPF Studio Bay</span></div>
+              <div class="p-4 rounded-2xl bg-[#070c14] border border-slate-800"><span class="text-xl font-black text-cyan-400 block">Written Quote</span><span class="text-xs font-semibold text-slate-300">Itemized Pre-Work Approval</span></div>
+              <div class="p-4 rounded-2xl bg-[#070c14] border border-slate-800"><span class="text-xl font-black text-cyan-400 block">Up to 12 Mo*</span><span class="text-xs font-semibold text-slate-300">Written Parts Warranty</span></div>
             </div>
           </div>
 
           <div class="space-y-6">
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
-                <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Customer Reviews</span>
-                <h2 class="text-3xl font-black text-white">Verified Customer Reviews (4.8 / 5.0)</h2>
+                <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Customer Feedback</span>
+                <h2 class="text-3xl font-black text-white">Selected Customer Testimonials</h2>
               </div>
-              <a href="/testimonials/" class="px-4 py-2 rounded-xl bg-[#0b121e] border border-slate-800 text-slate-300 font-bold text-xs">Read All Customer Reviews &rarr;</a>
+              <a href="/testimonials/" class="px-4 py-2 rounded-xl bg-[#0b121e] border border-slate-800 text-slate-300 font-bold text-xs">Read All Customer Testimonials &rarr;</a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
               ${googleBusinessData.reviews.slice(0, 3).map((review) => `
@@ -1877,13 +1855,13 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
                   <div class="space-y-3">
                     <div>
                       <h3 class="font-extrabold text-white text-sm">${escapeHtml(review.authorName)}</h3>
-                      <span class="text-[11px] text-slate-400 block">${escapeHtml(review.relativeTimeText || 'Verified Customer')}</span>
+                      <span class="text-[11px] text-slate-400 block">${escapeHtml(review.relativeTimeText || 'Customer')}</span>
                     </div>
                     <p class="text-slate-300 text-xs leading-relaxed italic text-justify">"${escapeHtml(review.text)}"</p>
                   </div>
                   ${review.ownerResponse ? `
                     <div class="mt-4 pt-3 border-t border-slate-800/80 bg-slate-900/90 p-4 rounded-2xl space-y-1.5 border-l-4 border-l-cyan-400">
-                      <span class="font-extrabold text-cyan-400 text-xs block">HyperTune Garage — Owner (Official Reply)</span>
+                      <span class="font-extrabold text-cyan-400 text-xs block">HyperTune Garage — Owner</span>
                       <p class="text-slate-200 text-xs leading-relaxed italic text-justify">"${escapeHtml(review.ownerResponse)}"</p>
                     </div>
                   ` : ''}
@@ -1909,24 +1887,24 @@ export function renderSSRBody(rawPath: string, _baseUrl: string): string {
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
             <span class="text-4xl font-black text-cyan-500/30 block">02</span>
             <h3 class="text-base font-bold text-white">Computer Diagnostic</h3>
-            <p class="text-slate-400 text-xs leading-relaxed text-justify">Our master techs run an OEM scanner audit and share a clear, itemized quote.</p>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">Our technicians run a computerized diagnostic scan and share a clear, itemized quote.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
             <span class="text-4xl font-black text-cyan-500/30 block">03</span>
-            <h3 class="text-base font-bold text-white">Video Approval</h3>
-            <p class="text-slate-400 text-xs leading-relaxed text-justify">Watch HD video proof of worn parts. We start work only after you approve.</p>
+            <h3 class="text-base font-bold text-white">Inspection Approval</h3>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">Review inspection photos and diagnostic updates. We start work only after you approve.</p>
           </div>
           <div class="p-6 rounded-3xl bg-[#0b121e] border border-slate-800 space-y-3 shadow-lg">
             <span class="text-4xl font-black text-cyan-500/30 block">04</span>
-            <h3 class="text-base font-bold text-white">Road Test &amp; Warranty</h3>
-            <p class="text-slate-400 text-xs leading-relaxed text-justify">We complete a road test, wash your car, and hand over a 12-month written warranty.</p>
+            <h3 class="text-base font-bold text-white">Road Test &amp; Handover</h3>
+            <p class="text-slate-400 text-xs leading-relaxed text-justify">We complete post-service checks, confirm written invoice terms, and review applicable parts warranty details.</p>
           </div>
         </div>
         <div class="bg-[#0b121e] border border-slate-800 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
           <div>
             <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest block">Got Questions?</span>
             <h3 class="text-white text-lg font-bold mt-1">Workshop Repair, Warranty &amp; Booking FAQs</h3>
-            <p class="text-slate-400 text-xs mt-1">Read clear answers on genuine OEM parts, 12-month warranty terms, turnaround times, and booking.</p>
+            <p class="text-slate-400 text-xs mt-1">Read clear answers on parts options, warranty terms, turnaround times, and booking.</p>
           </div>
           <a href="/faq/" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-cyan-500/30 text-cyan-400 font-bold text-xs hover:bg-slate-800 shrink-0 transition-colors">
             Browse Workshop FAQs &rarr;
@@ -2087,13 +2065,13 @@ export function injectSSRHtml(
     `<meta name="twitter:image" content="${metaInfo.ogImage}" />`
   );
 
-  // Inject Schemas before </head>
-  updatedHtml = updatedHtml.replace('</head>', `${schemaScripts}\n  </head>`);
+  // Inject Schemas before </head> (use function replacement so '$$$' in priceRange is not mangled)
+  updatedHtml = updatedHtml.replace('</head>', () => `${schemaScripts}\n  </head>`);
 
   // Inject Full SSR Pre-Rendered Semantic HTML inside <div id="root">
   updatedHtml = updatedHtml.replace(
     /<div id=["']root["']>\s*<\/div>/i,
-    `<div id="root">${ssrBodyHtml}</div>`
+    () => `<div id="root">${ssrBodyHtml}</div>`
   );
 
   return updatedHtml;

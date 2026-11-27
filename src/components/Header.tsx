@@ -67,16 +67,16 @@ export const Header: React.FC<HeaderProps> = ({
 
   const serviceCategories = [
     { id: 'engine-services', title: 'Engine Services', icon: Cpu, desc: 'Engine Repair & Performance Tuning' },
-    { id: 'maintenance-servicing', title: 'Maintenance & Servicing', icon: Activity, desc: 'Synthetic Oil & 50-Point Health Audit' },
-    { id: 'brake-suspension-steering', title: 'Brake, Suspension & Steering', icon: Disc, desc: 'Brakes, Air Suspension & 3D Alignment' },
+    { id: 'maintenance-servicing', title: 'Maintenance & Servicing', icon: Activity, desc: 'Oil, Filter & Preventive Check' },
+    { id: 'brake-suspension-steering', title: 'Brake, Suspension & Steering', icon: Disc, desc: 'Brakes, Air Suspension & Alignment' },
     { id: 'transmission-drivetrain', title: 'Transmission & Drivetrain', icon: Wrench, desc: 'Automatic & CVT Gearbox Overhaul' },
     { id: 'car-ac-repair', title: 'AC Repair & Electrical Specialist', icon: Wind, desc: 'AC Gas, Electrical & ECU Diagnostics' },
     { id: 'cooling-fuel-exhaust', title: 'Cooling, Fuel & Exhaust', icon: Cpu, desc: 'Radiator Flush, Injectors & Exhaust' },
     { id: 'inspection-diagnostics', title: 'Inspection & Diagnostics', icon: Search, desc: 'OBD2 Diagnostics & Pre-Purchase Audit' },
-    { id: 'paint-protection-film-ppf', title: 'Paint Protection Film (PPF)', icon: ShieldCheck, desc: 'Self-Healing TPU Film (PKR 10k-250k)' },
-    { id: 'car-detailing', title: 'Car Detailing', icon: Sparkles, desc: '9H Ceramic & Steam Clean (PKR 10k-45k)' },
+    { id: 'paint-protection-film-ppf', title: 'Paint Protection Film (PPF)', icon: ShieldCheck, desc: 'Paint Protection Film (PKR 10k-250k)' },
+    { id: 'car-detailing', title: 'Car Detailing', icon: Sparkles, desc: 'Ceramic & Detailing (PKR 10k-45k)' },
     { id: 'vehicle-wrap', title: 'Vehicle Wrap', icon: Shield, desc: 'Custom Color Vinyl Wrap (PKR 1k-250k)' },
-    { id: 'body-repair-paint', title: 'Body Repair & Paint', icon: Palette, desc: 'Paint Booth & Color Match (PKR 5k-100k)' },
+    { id: 'body-repair-paint', title: 'Body Repair & Paint', icon: Palette, desc: 'Denting, Paint & Color Match (PKR 5k-100k)' },
     { id: 'body-modification', title: 'Body Modification', icon: Wrench, desc: 'Body Kits, Spoilers & Lips (PKR 5k-300k)' },
   ];
 
@@ -312,7 +312,7 @@ export const Header: React.FC<HeaderProps> = ({
                         <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-800 px-1">
                           <div>
                             <span className="text-[10px] font-extrabold tracking-wider text-cyan-400 uppercase bg-cyan-950/60 px-2 py-0.5 rounded border border-cyan-500/30">
-                              OEM DIAGNOSTIC RIGS &amp; CERTIFIED TECHNICIANS
+                              MULTI-BRAND DIAGNOSTICS &amp; SPECIALIST CARE
                             </span>
                             <p className="text-sm font-bold text-white mt-1">
                               {brandsData.length} Dedicated Vehicle Brand Specialist Hubs
@@ -367,7 +367,7 @@ export const Header: React.FC<HeaderProps> = ({
                         <div className="mt-3 pt-3 border-t border-slate-800 flex items-center justify-between px-2 text-xs text-slate-400">
                           <div className="flex items-center gap-1.5 text-slate-300">
                             <Award className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-                            <span>100% Genuine OEM Replacement Parts &amp; Dealer-Grade Scanners</span>
+                            <span>Vehicle-Matched Parts &amp; Multi-System Diagnostic Scanners</span>
                           </div>
                           <a
                             href="/brands/"

@@ -57,39 +57,39 @@ const fallbackImg = (e: React.SyntheticEvent<HTMLImageElement>) => {
 
 type CapItem = [typeof Cpu, string, string, string, string, boolean?, [string, string]?];
 const CAPABILITIES: CapItem[] = [
-  [Cpu, '1. Automotive Diagnostics and Inspection', 'Full-system ECU scans across engine, transmission, ABS, airbag, and hybrid battery modules, plus 200-point pre-purchase inspections with paint micron audits and cylinder scope checks.', 'inspection-diagnostics', 'Diagnostics & Inspection'],
-  [Wrench, '2. Engine Repair and Overhaul', 'Cylinder head repairs, timing chain replacements, cooling flushes, ultrasonic fuel injector cleaning, and complete engine overhauls built to 0.001 mm tolerances with OEM parts.', 'engine-services', 'Engine Services', true, ['Cooling, Fuel & Exhaust', 'cooling-fuel-exhaust']],
-  [Settings, '3. Transmission and Drivetrain Services', 'Automatic, CVT, manual, and dual-clutch (DCT/DSG) repairs covering TCU scanning, pressurized fluid exchanges, valve body solenoids, clutch adaptation, and 4x4 differentials.', 'transmission-drivetrain', 'Transmission Services'],
-  [Wrench, '4. Preventive Maintenance and Mechanical Repair', 'Scheduled synthetic oil changes (0W-20, 5W-30, 5W-40), genuine OEM oil, air, cabin, and fuel filter replacements, spark plug service, and a 50-point vehicle safety check.', 'maintenance-servicing', 'Maintenance & Servicing'],
-  [Gauge, '5. Brake, Suspension and Steering Services', 'Low-dust ceramic brake pads, rotor resurfacing, shock and suspension bushing replacement, air-suspension repair, steering rack service, and Italian 3D laser wheel alignment.', 'brake-suspension-steering', 'Brake & Suspension'],
-  [Wind, '6. Automotive AC and Electrical Diagnostics', 'Automated R134a and R1234yf servicing, dry nitrogen leak testing, compressor rebuilds, parasitic battery drain tracing, oscilloscope testing, and ECU/BCM coding.', 'car-ac-repair', 'AC & Electrical'],
-  [Shield, '7. Paint Protection Film (PPF)', 'Blade-free installation of self-healing aliphatic TPU film using computerized CAD pre-cut templates inside our dust-free cleanroom studio.', 'paint-protection-film-ppf', 'PPF Cleanroom Studio', true],
-  [Sparkles, '8. Ceramic Coating and Detailing', 'Micron-measured clear coat polishing removing swirl marks safely, followed by 9H nano-ceramic coating, 140°C interior steam extraction, and leather care.', 'car-detailing', 'Detailing & 9H Ceramic', true],
-  [Car, '9. Vinyl Wrapping and Vehicle Protection', 'Reversible cast vinyl color-change wraps in matte, satin, gloss, and carbon fiber finishes with trim disassembly, edge tucking, and 90°C post-heat curing.', 'vehicle-wrap', 'Vehicle Wrapping'],
-  [Award, '10. Body Repair, Paint and Restoration', 'Paintless Dent Repair (PDR), collision frame alignment, spectrophotometer paint matching, paint booth refinishing, and custom body kit fitment.', 'body-repair-paint', 'Body Repair & Paint', false, ['Body Modification', 'body-modification']],
+  [Cpu, '1. Automotive Diagnostics and Inspection', 'Full-system ECU scans across engine, transmission, ABS, airbag, and hybrid modules, plus structured pre-purchase inspections with paint thickness checks and mechanical condition assessments.', 'inspection-diagnostics', 'Diagnostics & Inspection'],
+  [Wrench, '2. Engine Repair and Overhaul', 'Cylinder head repairs, timing chain replacements, cooling flushes, fuel injector servicing, and complete engine overhauls with vehicle-matched parts and machining support.', 'engine-services', 'Engine Services', true, ['Cooling, Fuel & Exhaust', 'cooling-fuel-exhaust']],
+  [Settings, '3. Transmission and Drivetrain Services', 'Automatic, CVT, manual, and dual-clutch (DCT/DSG) repairs covering TCU scanning, fluid exchanges, valve body repairs, clutch adaptation, and 4x4 differentials.', 'transmission-drivetrain', 'Transmission Services'],
+  [Wrench, '4. Preventive Maintenance and Mechanical Repair', 'Scheduled synthetic oil changes, OEM or approved oil, air, cabin, and fuel filter replacements, spark plug service, and a documented safety inspection.', 'maintenance-servicing', 'Maintenance & Servicing'],
+  [Gauge, '5. Brake, Suspension and Steering Services', 'Ceramic brake pads, rotor machining, shock and suspension bushing replacement, air-suspension repair, steering rack service, and computerized wheel alignment.', 'brake-suspension-steering', 'Brake & Suspension'],
+  [Wind, '6. Automotive AC and Electrical Diagnostics', 'AC servicing, pressure leak testing, compressor rebuilds, parasitic battery drain tracing, circuit testing, and module diagnostics.', 'car-ac-repair', 'AC & Electrical'],
+  [Shield, '7. Paint Protection Film (PPF)', 'Blade-free installation of Paint Protection Film using computerized CAD pre-cut templates inside our indoor PPF studio bay.', 'paint-protection-film-ppf', 'Indoor PPF Studio', true],
+  [Sparkles, '8. Ceramic Coating and Detailing', 'Multi-stage clear coat polishing to reduce swirl marks safely, followed by ceramic coating, interior extraction, and leather care.', 'car-detailing', 'Detailing & Ceramic', true],
+  [Car, '9. Vinyl Wrapping and Vehicle Protection', 'Reversible cast vinyl color-change wraps in matte, satin, gloss, and carbon fiber finishes with trim disassembly, edge tucking, and post-heat curing.', 'vehicle-wrap', 'Vehicle Wrapping'],
+  [Award, '10. Body Repair, Paint and Restoration', 'Conventional dent repair, collision bodywork, panel preparation, paint matching, refinishing, and custom body kit fitment.', 'body-repair-paint', 'Body Repair & Paint', false, ['Body Modification', 'body-modification']],
 ];
 
 const FACILITY_ITEMS: [string, string][] = [
   ['Vehicle Inspections & Pre-Purchase Diagnostics:', 'Comprehensive vehicle health checks, clear diagnostic findings, and itemized repair recommendations to help customers make informed buying and maintenance decisions.'],
-  ['Catalytic Cleaning:', 'Specialized cleaning removes carbon deposits and contaminants to support exhaust flow and engine efficiency.'],
-  ['PPF & Ceramic Cleanroom:', 'Computerized CAD plotters cut TPU patterns off the vehicle—keeping blades off clear coat—paired with infrared curing lamps.'],
-  ['Vehicle Tuning Service:', 'Precision ECU diagnostics and calibration optimize engine response, drivability, and vehicle performance.'],
+  ['Catalytic Cleaning:', 'Targeted cleaning removes carbon deposits and contaminants to support exhaust flow and engine efficiency.'],
+  ['Indoor PPF & Ceramic Studio:', 'Computerized CAD plotters cut protective film patterns off the vehicle—keeping blades off clear coat—inside an enclosed indoor bay.'],
+  ['Vehicle Tuning Service:', 'Diagnostic checks and vehicle tuning to support throttle response, drivability, and engine performance.'],
 ];
 
 const PROCESS_ITEMS: [string, string][] = [
-  ['Measurement Before Repair:', 'Technicians perform ECU fault scans, compression/leak-down tests, dry nitrogen AC pressure tests, or paint-depth micron audits before quoting labor.'],
-  ['HD WhatsApp Proof & Itemized Quotes:', 'We send clear photos and teardown videos to your WhatsApp alongside a line-by-line quote for approval prior to work.'],
-  ['Barcode-Verified OEM Parts & Fluids:', 'Repairs use genuine OEM spare parts, pure R134a/R1234yf refrigerants, and imported full-synthetic oils matched to factory viscosity.'],
+  ['Inspection Before Repair:', 'Technicians perform ECU fault scans, mechanical condition checks, AC pressure leak tests, or paint thickness checks before quoting labor.'],
+  ['Inspection Photos & Itemized Quotes:', 'We send clear photos and inspection updates to your WhatsApp alongside a line-by-line quote for approval prior to work.'],
+  ['Vehicle-Matched Parts & Fluids:', 'Repairs use OEM or approved aftermarket parts, factory-spec refrigerants, and synthetic oils matched to manufacturer requirements.'],
 ];
 
 type CardTuple = [typeof Cpu, string, string];
 const TRUST_PILLARS: CardTuple[] = [
-  [Users, 'Specialist Technicians', 'Dedicated mechanics, auto-electricians, transmission specialists, painters, and PPF installers follow documented torque and inspection tolerances.'],
-  [Cpu, 'Precision Instrumentation', 'We verify engine tolerances with 0.001 mm micrometers, paint depth with micron gauges, and electrical circuits with oscilloscopes.'],
+  [Users, 'Specialist Technicians', 'Dedicated mechanics, auto-electricians, transmission technicians, painters, and PPF installers follow structured inspection and assembly procedures.'],
+  [Cpu, 'Diagnostic & Measuring Equipment', 'We verify fault codes with multi-brand diagnostic scanners, suspension angles on computerized alignment rigs, and paint thickness with gauges.'],
   [ShieldCheck, 'Transparent Pricing', 'Itemized quotes explain every component and labor step up front—zero hidden fees at vehicle delivery.'],
-  [CheckCircle2, 'Customer-First Updates', 'Receive live inspection reports, diagnostic printouts, and practical maintenance guidance tailored to your car.'],
-  [Award, 'Twin-City Reputation', 'Drivers across Islamabad and Rawalpindi rate HyperTune Garage 4.8 out of 5.0 for accurate diagnostics and clean bay execution.'],
-  [ShieldCheck, 'Performance • Protection • Perfection', 'Mechanical reliability, cleanroom paint protection, and written warranty coverage come together under one Sector O-9 roof.'],
+  [CheckCircle2, 'Customer-First Updates', 'Receive inspection updates, diagnostic findings, and practical maintenance guidance tailored to your car.'],
+  [Award, 'Twin-City Focus', 'Drivers across Islamabad and Rawalpindi visit our Sector O-9 workshop for systematic diagnostics, mechanical repair, and surface protection.'],
+  [ShieldCheck, 'Performance • Protection • Perfection', 'Mechanical reliability, indoor paint protection, and service-specific invoice terms come together under one Sector O-9 roof.'],
 ];
 
 const EXPERIENCE_CATEGORIES: CardTuple[] = [
@@ -168,13 +168,13 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
         <div className="max-w-7xl mx-auto space-y-4 text-center relative z-10">
           <span className={`${EYE_CLS} ${IFLEX} bg-cyan-950/70 border border-cyan-500/30 px-3 py-1 rounded-full`}>
             <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-            Islamabad & Rawalpindi Automotive Service Center
+            Islamabad Flagship Hub Serving Islamabad & Rawalpindi
           </span>
           <h1 className="text-3xl md:text-[48px] md:leading-[48px] font-black text-white tracking-tight">
             About <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 inline-block">HyperTune Garage</span>
           </h1>
           <p className="text-slate-300 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
-            HyperTune Garage delivers precision mechanical engineering, computerized diagnostics, and cleanroom paint protection for drivers across Islamabad and Rawalpindi—built around Performance • Protection • Perfection.
+            HyperTune Garage delivers multi-brand mechanical repair, computerized diagnostics, and indoor paint protection for drivers across Islamabad and Rawalpindi—built around Performance • Protection • Perfection.
           </p>
         </div>
       </section>
@@ -188,19 +188,19 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
           </span>
           <h2 className={H2_CLS}>Who We Are</h2>
           <p className={P_J}>
-            HyperTune Garage is an independently owned and operated automotive workshop based in Islamabad, Pakistan. Serving drivers across Islamabad and Rawalpindi from Shop 1-G, Ground Floor, Central Avenue, O-9 Block E Police Foundation, Islamabad. Rawalpindi owners also access our flagship hub through insured valet pickup.
+            HyperTune Garage is an independently owned and operated automotive workshop based in Islamabad, Pakistan, serving drivers across Islamabad and Rawalpindi from Shop 1-G, Ground Floor, Central Avenue, O-9 Block E Police Foundation, Islamabad.
           </p>
           <p className={P_J}>
-            We are not a franchise or dealership-affiliated service center, we focus on Japanese, German, and luxury vehicles—including Toyota, Honda, Suzuki, Lexus, BMW, Mercedes-Benz, Audi, Porsche, and Land Rover, plus modern hybrids. Rather than guesswork part swapping, our technicians diagnose faults with platform-specific computer scanners, compression testing, and digital micron meters.
+            We are not a franchise or dealership-affiliated service center, we focus on Japanese, German, and luxury vehicles—including Toyota, Honda, Suzuki, Lexus, BMW, Mercedes-Benz, Audi, Porsche, and Land Rover, plus modern hybrids. Rather than guesswork part swapping, our technicians diagnose faults with multi-brand computer scanners, compression checks, and paint thickness gauges.
           </p>
           <p className={P_J}>
-            Specialist teams handle engine overhauls, automatic and CVT transmissions, electrical diagnostics, bodywork, and blade-free PPF installation. Before starting repairs, we send digital inspection reports, HD WhatsApp teardown videos, and clear itemized quotes for your approval.
+            Dedicated workshop teams handle engine overhauls, automatic and CVT transmissions, electrical diagnostics, bodywork, and blade-free CAD-cut PPF installation. Before starting repairs, we share diagnostic findings, inspection photos, and clear itemized quotes for your approval.
           </p>
 
           <div className="grid grid-cols-2 gap-4 pt-2">
             {[
-              ['15,000+', 'Vehicles Serviced & Inspected'],
-              ['100%', 'OEM Genuine Parts & Oils'],
+              ['Multi-Brand', 'Japanese, German & Hybrid Care'],
+              ['Written Quote', 'Itemized Approval Before Work'],
             ].map(([val, lbl]) => (
               <div key={val} className="p-4 rounded-2xl bg-[#0b121e] border border-slate-800 space-y-1">
                 <span className="text-2xl font-black text-cyan-400 block">{val}</span>
@@ -214,7 +214,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
           <div className="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl relative group">
             <img
               src={images.aboutPpfStudio}
-              alt="HyperTune Garage Precision Workshop & PPF Cleanroom Studio Islamabad"
+              alt="HyperTune Garage Workshop & Indoor PPF Studio Islamabad"
               width={600}
               height={400}
               loading="lazy"
@@ -318,7 +318,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
         {headBox(
           <span className={EYE_CLS}>Experience, Expertise & Trust</span>,
           'Workshop Facilities, Inspection Rigor & Quality Standards',
-          <p className={P_XS}>Every vehicle follows a documented inspection workflow built on accurate measurement, genuine parts, and written warranty coverage.</p>
+          <p className={P_XS}>Every vehicle follows a documented inspection workflow built on accurate measurement, transparent parts options, and written invoice terms.</p>
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -330,7 +330,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
             <li className={LI_CLS}>
               <CheckCircle2 className={`${IC4S} mt-0.5`} />
               <span>
-                <strong className="text-white">Written Warranty Protection:</strong> Engine and transmission rebuilds carry a written 12-month or 15,000 km warranty (plus a 1,000 km checkup), and TPU PPF includes up to a 10-year manufacturer film warranty.{' '}
+                <strong className="text-white">Written Warranty Terms:</strong> Service-specific warranty coverage and parts terms are confirmed in writing on your itemized estimate and final invoice.{' '}
                 <a
                   href="/warranty-specs/"
                   onClick={go('warranty')}
@@ -382,7 +382,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
               Police Foundation Sector O-9 Flagship Hub
             </h2>
             <p className="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
-              Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000, Pakistan. Relax in our air-conditioned lounge with Wi-Fi or book insured valet pickup from Rawalpindi.
+              Shop 1-G, Ground Floor, Central Ave, O-9 Block E Police Foundation, Islamabad, 44000, Pakistan. Wait comfortably in our dedicated customer waiting area while our technicians inspect your vehicle.
             </p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-300 pt-1">
               <span className={IFLEX}>
@@ -429,10 +429,10 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
 
           <div className="lg:col-span-5 bg-[#070c14] border border-slate-800 rounded-2xl p-6 space-y-4">
             <h3 className="font-extrabold text-sm text-white uppercase tracking-wider">
-              Official HyperTune Garage Channels
+              HyperTune Garage Channels
             </h3>
             <p className={P_XSJ}>
-              Follow our verified workshop channels for PPF installations, teardown inspections, and detailing builds.
+              Follow our official social channels for PPF installations, mechanical work, and detailing updates.
             </p>
             <div className="grid grid-cols-2 gap-3">
               {SOCIALS.map(([name, href, SIcon, color]) => (
@@ -487,7 +487,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenBooking 
           </h2>
 
           <p className="text-slate-300 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
-            Our workshop pairs technical diagnostics with genuine care for your vehicle—whether you need engine repair, a 200-point inspection, or self-healing TPU Paint Protection Film in Islamabad and Rawalpindi.
+            Our workshop pairs technical diagnostics with genuine care for your vehicle—whether you need engine repair, a pre-purchase inspection, or Paint Protection Film in Islamabad and Rawalpindi.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">

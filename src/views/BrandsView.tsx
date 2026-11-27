@@ -19,10 +19,10 @@ export const BrandsView: React.FC<BrandsViewProps> = ({ onNavigate }) => {
             Specialized Brand Divisions
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
-            Factory-Grade Specialist Care for <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">{brandsData.length} Vehicle Brands</span>
+            Dedicated Multi-Brand Care for <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">{brandsData.length} Vehicle Brands</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-base sm:text-lg text-slate-300">
-            Dedicated master technicians, genuine OEM diagnostic scanners (Toyota Techstream, Honda HDS, Suzuki SDT-II, Hyundai GDS, Kia KDS, JLR Pathfinder, BYD VDS3.0, Nissan Consult, Subaru SSM4), and cleanroom overhaul bays in Islamabad and Rawalpindi.
+            Experienced technicians, multi-brand computerized diagnostic scanners, and dedicated service bays at our Islamabad Flagship Hub serving Islamabad and Rawalpindi.
           </p>
         </div>
       </section>
@@ -95,8 +95,8 @@ export const BrandsView: React.FC<BrandsViewProps> = ({ onNavigate }) => {
       <section className="py-12 bg-slate-900/80 border-t border-slate-800 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div>
-            <h3 className="text-xl sm:text-2xl font-bold text-white">Need a Dealer-Grade Diagnostic Health Scan?</h3>
-            <p className="text-slate-300 text-sm mt-1">Book your vehicle inspection at our Islamabad Flagship Hub or request insured valet pickup.</p>
+            <h3 className="text-xl sm:text-2xl font-bold text-white">Need a Multi-Brand Diagnostic Health Scan?</h3>
+            <p className="text-slate-300 text-sm mt-1">Book your vehicle inspection online or message our Islamabad Flagship Hub team on WhatsApp.</p>
           </div>
           <div className="flex flex-wrap gap-3">
             <a

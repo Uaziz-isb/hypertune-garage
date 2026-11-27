@@ -55,7 +55,7 @@ export const TermsView: React.FC<TermsViewProps> = ({ onNavigate, onOpenBooking 
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-2xl bg-cyan-950/30 border border-cyan-500/20 text-xs">
           <div>
             <span className="text-white font-bold block">Document Reference: HPG-TOS-2025</span>
-            <span className="text-slate-400">Effective Date: January 1, 2025 • Applies to all Islamabad & Rawalpindi branches</span>
+            <span className="text-slate-400">Effective Date: January 1, 2025 • Applies to HyperTune Garage Islamabad Flagship Hub (serving Islamabad &amp; Rawalpindi)</span>
           </div>
           <span className="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-extrabold text-[11px]">
             ● Standard Customer Agreement
@@ -80,7 +80,7 @@ export const TermsView: React.FC<TermsViewProps> = ({ onNavigate, onOpenBooking 
             </li>
             <li className="flex items-start gap-2">
               <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-              <span>If additional hidden damage (e.g., cracked cylinder block, worn clutch plate, metal filings in transmission pan) is discovered during teardown, work is paused and immediate video evidence is sent before proceeding with additional repair costs.</span>
+              <span>If additional hidden damage (e.g., cracked cylinder block, worn clutch plate, metal filings in transmission pan) is discovered during teardown, work is paused and inspection photos and diagnostic updates are sent before proceeding with additional repair costs.</span>
             </li>
           </ul>
         </section>
@@ -91,10 +91,10 @@ export const TermsView: React.FC<TermsViewProps> = ({ onNavigate, onOpenBooking 
             <div className="w-8 h-8 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center font-bold text-sm">
               2
             </div>
-            <h2 className="text-xl font-extrabold text-white">Genuine OEM Parts & Client-Supplied Components</h2>
+            <h2 className="text-xl font-extrabold text-white">Workshop-Sourced &amp; Client-Supplied Components</h2>
           </div>
           <p className="text-sm text-slate-300 leading-relaxed pl-11">
-            To uphold our high quality standards and back repairs with a 12-Month warranty, HyperTune Garage exclusively installs 100% genuine OEM spare parts with verifiable barcodes.
+            HyperTune Garage confirms part origin and grade options (OEM or approved aftermarket equivalents) on your itemized estimate prior to fitting.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pl-11 text-xs">
             <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
@@ -103,7 +103,7 @@ export const TermsView: React.FC<TermsViewProps> = ({ onNavigate, onOpenBooking 
                 <span>HyperTune Sourced Parts</span>
               </div>
               <p className="text-slate-400 leading-normal">
-                Covered by our comprehensive 12-Month / 15,000 km warranty including both part replacement cost and workshop labor.
+                Covered strictly according to the written warranty terms stated on your approved job card and final service invoice.
               </p>
             </div>
             <div className="p-4 rounded-2xl bg-amber-950/20 border border-amber-500/30 space-y-2">
@@ -127,7 +127,7 @@ export const TermsView: React.FC<TermsViewProps> = ({ onNavigate, onOpenBooking 
             <h2 className="text-xl font-extrabold text-white">Diagnostic Road Testing & Vehicle Handling</h2>
           </div>
           <p className="text-sm text-slate-300 leading-relaxed pl-11">
-            By dropping off your vehicle at our Islamabad or Rawalpindi workshop, you authorize certified master engineers to operate the vehicle on public roads strictly for road testing, pre-repair fault reproduction, diagnostic sensor logging, and post-repair quality verification.
+            By dropping off your vehicle at our Islamabad Flagship Hub, you authorize experienced workshop technicians to operate the vehicle on public roads strictly for road testing, pre-repair fault reproduction, diagnostic sensor logging, and post-repair quality verification.
           </p>
           <div className="pl-11 text-xs text-slate-400 space-y-2">
             <p className="flex items-center gap-2 text-slate-200 font-semibold">
@@ -158,8 +158,8 @@ export const TermsView: React.FC<TermsViewProps> = ({ onNavigate, onOpenBooking 
       {/* CTA Box */}
       <div className="p-8 rounded-3xl bg-gradient-to-r from-[#0a1526] via-[#0e1e36] to-cyan-950/40 border border-cyan-500/30 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="space-y-2 text-center md:text-left">
-          <h3 className="text-xl font-extrabold text-white">Need to check our 12-Month warranty coverage?</h3>
-          <p className="text-slate-400 text-xs">Review full details on covered components, claim procedures, and warranty specs.</p>
+          <h3 className="text-xl font-extrabold text-white">Need to review how warranty terms apply?</h3>
+          <p className="text-slate-400 text-xs">Review full details on service-specific coverage, verification procedures, and exclusions.</p>
         </div>
         <div className="flex items-center gap-3">
           <button
@@ -167,7 +167,7 @@ export const TermsView: React.FC<TermsViewProps> = ({ onNavigate, onOpenBooking 
             className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-xs flex items-center gap-2 shadow-lg shadow-cyan-500/20"
           >
             <ShieldCheck className="w-4 h-4" />
-            <span>Read 12-Month Warranty Specs</span>
+            <span>Read Warranty &amp; Service Terms</span>
           </button>
         </div>
       </div>

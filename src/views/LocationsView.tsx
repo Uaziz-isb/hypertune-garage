@@ -69,8 +69,8 @@ export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate }) => {
                   <h3 className="text-2xl font-black text-white">{loc.branchName}</h3>
                   <p className="text-xs text-cyan-400 font-bold mt-1">
                     {loc.isOperational
-                      ? 'Official Automotive Detailing, PPF Cleanroom Studio & Precision Mechanical Center'
-                      : 'Upcoming State-of-the-Art Automotive Facility'}
+                      ? 'Islamabad Automotive Detailing, Indoor PPF Studio & Mechanical Workshop'
+                      : 'Upcoming Automotive Service Facility'}
                   </p>
                 </div>
 
@@ -112,7 +112,7 @@ export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate }) => {
                       {loc.statusNotice || 'Opening soon — our new Rawalpindi facility is currently under development. Stay tuned for the official opening announcement.'}
                     </div>
                     <p className="text-xs text-slate-400">
-                      In the meantime, all customer vehicle services, PPF applications, and diagnostics are fulfilled at our fully operational <span className="text-cyan-400 font-bold">Islamabad Flagship Hub</span> with concierge pick-up & drop-off available.
+                      In the meantime, all customer vehicle services, PPF applications, and diagnostics are fulfilled at our fully operational <span className="text-cyan-400 font-bold">Islamabad Flagship Hub</span> with scheduled workshop support confirmed on booking.
                     </p>
                   </div>
                 )}
@@ -191,16 +191,16 @@ export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate }) => {
         ))}
       </section>
 
-      {/* Local Sector Coverage & Doorstep Valet Area Guide */}
+      {/* Local Sector Coverage & Service Area Guide */}
       <section className="max-w-7xl mx-auto px-4 pt-6 pb-8">
         <div className="bg-[#0b121e] border border-slate-800 rounded-3xl p-6 sm:p-10 space-y-6">
           <div className="max-w-3xl">
             <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">Islamabad & Rawalpindi Service Zones</span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
-              Local Area Coverage & Insured Valet Pickup
+              Local Area Coverage & Workshop Access
             </h2>
             <p className="text-slate-400 text-xs sm:text-sm mt-2">
-              Whether you are located in Sector O-9, DHA, Bahria Town, or central Islamabad F/G Sectors, we provide comprehensive workshop access with insured flatbed concierge pickup for major jobs.
+              Whether you are located in Sector O-9, DHA, Bahria Town, or central Islamabad F/G Sectors, you can schedule diagnostics, maintenance, and detailing at our Islamabad Flagship Hub—confirm any transport arrangements at booking.
             </p>
           </div>
 
@@ -210,7 +210,7 @@ export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate }) => {
                 <h3 className="text-sm font-bold text-white">Sector O-9 & Police Foundation</h3>
                 <span className="text-[10px] bg-cyan-950 text-cyan-400 px-2 py-0.5 rounded border border-cyan-800/50 font-bold">Flagship Hub</span>
               </div>
-              <p className="text-xs text-slate-400 mb-3">Central Avenue Block E. Full 8-bay facility, PPF clean room, 3D laser alignment & diagnostic lab.</p>
+              <p className="text-xs text-slate-400 mb-3">Central Avenue Block E. Mechanical bays, indoor PPF studio bay, computerized wheel alignment &amp; diagnostic testing.</p>
               <div className="text-[11px] text-cyan-300 font-medium">Areas: PWD, Media Town, CBR Town, Police Foundation</div>
             </div>
 
@@ -219,16 +219,16 @@ export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate }) => {
                 <h3 className="text-sm font-bold text-white">DHA & Bahria Town</h3>
                 <span className="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-bold">8–12 mins</span>
               </div>
-              <p className="text-xs text-slate-400 mb-3">Concierge valet vehicle pickup for luxury European sports cars, SUVs, PPF and engine overhauls.</p>
+              <p className="text-xs text-slate-400 mb-3">Direct workshop scheduling for luxury European sports cars, SUVs, PPF, detailing, and engine overhauls.</p>
               <div className="text-[11px] text-cyan-300 font-medium">Areas: DHA Phase 1, 2, 3, 5 & Bahria Phases 1–8</div>
             </div>
 
             <div className="p-4 rounded-2xl bg-[#070c14] border border-slate-800/80">
               <div className="flex items-center justify-between mb-2">
                 <h3 className="text-sm font-bold text-white">Sectors F-6, F-7, F-8, F-10, F-11</h3>
-                <span className="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-bold">Valet Available</span>
+                <span className="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-bold">Islamabad Hub</span>
               </div>
-              <p className="text-xs text-slate-400 mb-3">Executive diagnostics, periodic maintenance, and ceramic detailing with insured vehicle transport.</p>
+              <p className="text-xs text-slate-400 mb-3">Diagnostics, periodic maintenance, and ceramic detailing at our Islamabad Flagship Hub, with transport inquiries confirmed on booking.</p>
               <div className="text-[11px] text-cyan-300 font-medium">Areas: F-6 Super, F-7 Jinnah, F-10/F-11 Markaz</div>
             </div>
 
@@ -237,7 +237,7 @@ export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate }) => {
                 <h3 className="text-sm font-bold text-white">Sectors G-8, G-9, G-10, G-11, I-8</h3>
                 <span className="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-bold">Full Maintenance</span>
               </div>
-              <p className="text-xs text-slate-400 mb-3">Computerized scanning, 3D laser alignment, synthetic oil packages, and brake overhauls.</p>
+              <p className="text-xs text-slate-400 mb-3">Computerized scanning, computerized wheel alignment, synthetic oil packages, and brake overhauls.</p>
               <div className="text-[11px] text-cyan-300 font-medium">Areas: G-8, G-9, G-10, G-11, G-13 & I-8 Markaz</div>
             </div>
 
@@ -255,7 +255,7 @@ export const LocationsView: React.FC<LocationsViewProps> = ({ onNavigate }) => {
                 <h3 className="text-sm font-bold text-white">Rawalpindi Cantt, Saddar & Chaklala</h3>
                 <span className="text-[10px] bg-amber-950 text-amber-300 px-2 py-0.5 rounded border border-amber-800/50 font-bold">Coming Soon</span>
               </div>
-              <p className="text-xs text-slate-400 mb-3">Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with insured valet pickup.</p>
+              <p className="text-xs text-slate-400 mb-3">Rawalpindi Hub — Coming Soon. Currently serving Rawalpindi customers through our Islamabad Flagship Hub with workshop support confirmed on booking.</p>
               <div className="text-[11px] text-cyan-300 font-medium">Areas: Saddar, Mall Road, Chaklala 3, Westridge</div>
             </div>
           </div>

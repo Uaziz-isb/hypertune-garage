@@ -109,11 +109,11 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ onBookService }) =
               </div>
               <div className="flex items-center gap-2 text-slate-300">
                 <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Included Protection: <strong className="text-white">12-Month / 15,000km Warranty</strong></span>
+                <span>Service Terms: <strong className="text-white">Confirmed in writing per job</strong></span>
               </div>
               <div className="flex items-center gap-2 text-slate-300">
                 <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>Parts Guarantee: <strong className="text-white">100% Genuine OEM Barcode Sourced</strong></span>
+                <span>Parts &amp; Materials: <strong className="text-white">Options confirmed on final quote</strong></span>
               </div>
 
               {activeService.subServicePrices && activeService.subServicePrices.length > 0 && (

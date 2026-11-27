@@ -60,7 +60,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate, onOpenBo
     { id: 'suspension', label: 'Brake, Suspension & Steering' },
     { id: 'transmission', label: 'Transmission & Drivetrain' },
     { id: 'wrap', label: 'Vehicle Wrap & Color' },
-    { id: 'body', label: 'Body Repair & Oven Paint' },
+    { id: 'body', label: 'Body Repair & Paint' },
     { id: 'modification', label: 'Body Kit & Modification' },
     { id: 'electrical', label: 'AC Repair & Electrical Specialist' },
   ];
@@ -74,13 +74,13 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate, onOpenBo
         <div className="max-w-7xl mx-auto space-y-4 text-center relative z-10">
           <div className="inline-flex items-center gap-2 bg-cyan-950/60 border border-cyan-500/30 px-3.5 py-1.5 rounded-full text-cyan-400 font-bold text-xs uppercase tracking-wider">
             <ShieldCheck className="w-4 h-4 text-cyan-400" />
-            <span>Precision Automotive Service Categories • Dealer-Level Standards</span>
+            <span>Automotive Service Categories • Multi-Brand Workshop Standards</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-black text-white">
             Automotive Services & Specializations
           </h1>
           <p className="text-slate-300 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
-            HyperTune Garage delivers PPF, Ceramic Coating, Car Detailing, Vehicle Diagnostics, Engine Tune-up, Auto Repair &amp; Maintenance Services across Islamabad &amp; Rawalpindi. Certified engineers handle every job with OEM diagnostics and genuine parts.
+            HyperTune Garage delivers PPF, Ceramic Coating, Car Detailing, Vehicle Diagnostics, Engine Tune-up, Auto Repair &amp; Maintenance Services for drivers across Islamabad &amp; Rawalpindi. Experienced technicians handle diagnostics, maintenance, and repairs with vehicle-matched parts.
           </p>
         </div>
       </section>

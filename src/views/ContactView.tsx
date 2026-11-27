@@ -40,7 +40,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenBook
             <span className="block text-slate-200 font-semibold mb-1.5">
               Precision Care Starts With a Conversation.
             </span>
-            Reach out directly to our master engineering team for service bookings, PPF consultations, or vehicle health inquiries at our Islamabad Flagship Hub. Whether you’re scheduling routine diagnostics, planning full-body paint protection, or seeking a second opinion on a complex mechanical issue, our specialists provide transparent assessments and tailored maintenance roadmaps—no middlemen, no guesswork.
+            Reach out directly to our workshop team for service bookings, PPF consultations, or vehicle health inquiries at our Islamabad Flagship Hub. Whether you’re scheduling routine diagnostics, planning full-body paint protection, or seeking a second opinion on a complex mechanical issue, our technicians provide transparent assessments and clear estimates—no middlemen, no guesswork.
           </p>
         </div>
       </section>

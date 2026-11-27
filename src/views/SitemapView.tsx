@@ -46,17 +46,17 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
   // Main high-level site pages
   const mainPages: { label: string; page: PageId; path: string; desc: string; icon: React.ElementType }[] = [
     { label: 'Home Page', page: 'home', path: '/', desc: 'Main workshop overview, hero service highlights, and instant booking.', icon: Globe },
-    { label: 'Brand Specialists Directory', page: 'brands', path: '/brands/', desc: `Dedicated engineering hubs and factory diagnostic scan facilities for ${brandsData.length} vehicle brands.`, icon: Award },
+    { label: 'Brand Specialists Directory', page: 'brands', path: '/brands/', desc: `Multi-brand diagnostic and service coverage for ${brandsData.length} vehicle brands.`, icon: Award },
     { label: 'Book Service Appointment', page: 'booking', path: '/book-appointment/', desc: 'Online workshop appointment scheduling at our Islamabad Flagship Hub with instant time slot reservation.', icon: Calendar },
-    { label: 'Services Catalogue', page: 'services', path: '/services/', desc: 'Full catalogue of precision repair, protection, and overhaul services.', icon: Wrench },
+    { label: 'Services Catalogue', page: 'services', path: '/services/', desc: 'Full catalogue of repair, protection, and maintenance services.', icon: Wrench },
     { label: 'Workshop Locations', page: 'locations', path: '/locations/', desc: 'HyperTune Garage - Islamabad Flagship Hub directions, facilities and contacts.', icon: MapPin },
-    { label: 'Work Gallery & Restorations', page: 'gallery', path: '/gallery/', desc: 'Before & after high-resolution portfolio of PPF, paint & engine rebuilds.', icon: Sparkles },
-    { label: 'Car Care Blog & Guides', page: 'blog', path: '/blog/', desc: 'Technical guides, engine care tips, and maintenance articles by engineers.', icon: BookOpen },
-    { label: 'Customer Reviews & Rating', page: 'testimonials', path: '/testimonials/', desc: 'Genuine 4.8-star Google reviews from verified vehicle owners across Islamabad & Rawalpindi.', icon: ShieldCheck },
-    { label: 'Frequently Asked Questions', page: 'faq', path: '/faq/', desc: 'Detailed answers on repair warranties, pricing, turnaround, and parts.', icon: FileText },
-    { label: 'About HyperTune Garage', page: 'about', path: '/about/', desc: 'Company history, master technician credentials, and workshop specs.', icon: Layers },
+    { label: 'Work Gallery & Restorations', page: 'gallery', path: '/gallery/', desc: 'Before & after portfolio of PPF, detailing & mechanical work.', icon: Sparkles },
+    { label: 'Car Care Blog & Guides', page: 'blog', path: '/blog/', desc: 'Technical guides, engine care tips, and maintenance articles.', icon: BookOpen },
+    { label: 'Customer Testimonials', page: 'testimonials', path: '/testimonials/', desc: 'Selected customer testimonials from vehicle owners across Islamabad & Rawalpindi.', icon: ShieldCheck },
+    { label: 'Frequently Asked Questions', page: 'faq', path: '/faq/', desc: 'Detailed answers on parts warranty terms, pricing, turnaround, and parts.', icon: FileText },
+    { label: 'About HyperTune Garage', page: 'about', path: '/about/', desc: 'Company history, workshop capabilities, and Sector O-9 facility details.', icon: Layers },
     { label: 'Contact Us', page: 'contact', path: '/contact/', desc: 'Direct phone lines, WhatsApp links, email, and location maps.', icon: Phone },
-    { label: '12-Month Warranty Specs', page: 'warranty', path: '/warranty-specs/', desc: 'Bumper-to-bumper 12-month / 15,000 km warranty coverage details.', icon: ShieldCheck },
+    { label: 'Warranty & Service Terms', page: 'warranty', path: '/warranty-specs/', desc: 'Service-specific warranty terms, parts options, and product coverage details.', icon: ShieldCheck },
     { label: 'Privacy Policy', page: 'privacy', path: '/privacy-policy/', desc: 'Customer data privacy standards, security, and cookie policies.', icon: FileText },
     { label: 'Terms & Conditions', page: 'terms', path: '/terms-conditions/', desc: 'Service agreements, estimate terms, and workshop repair policies.', icon: FileText },
   ];
@@ -292,7 +292,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
           </div>
           <div>
             <h2 className="text-xl font-extrabold text-white">Vehicle Brand Specialists</h2>
-            <p className="text-xs text-slate-400">OEM diagnostics, specialized toolsets & expert maintenance for luxury and hybrid vehicles ({filteredBrands.length} brands)</p>
+            <p className="text-xs text-slate-400">Multi-brand diagnostics, specialized toolsets &amp; maintenance for luxury and hybrid vehicles ({filteredBrands.length} brands)</p>
           </div>
         </div>
 
@@ -472,7 +472,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
           </div>
           <div>
             <h2 className="text-xl font-extrabold text-white">Direct Booking & Quick Utility Portals</h2>
-            <p className="text-xs text-slate-400">Instant shortcuts to book repairs, request estimates, or contact workshop engineers</p>
+            <p className="text-xs text-slate-400">Instant shortcuts to book repairs, request estimates, or contact our workshop team</p>
           </div>
         </div>
 
@@ -522,7 +522,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({ onNavigate, onOpenBook
           >
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4" />
-              <span>12-Mo Warranty Specs</span>
+              <span>Warranty &amp; Terms</span>
             </div>
             <ChevronRight className="w-4 h-4" />
           </a>

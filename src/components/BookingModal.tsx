@@ -107,6 +107,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
           date,
           time,
           notes: customNotes,
+          pickup,
         }),
       });
 
@@ -132,7 +133,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
       const chosenBranchName = matchedLocation ? matchedLocation.branchName : 'HyperTune Garage - Islamabad Flagship Hub';
       const fallbackRef = `HTG-${Math.floor(100000 + Math.random() * 900000)}`;
       const msg = encodeURIComponent(
-        `*New Service Booking - HyperTune Garage*\n*Booking Ref:* #${fallbackRef}\n*Customer:* ${name} (${phone})\n*Vehicle:* ${year} ${make} ${model}\n*Services:* ${selectedServiceTitles || 'Diagnostic Audit'}\n*Branch:* ${chosenBranchName}\n*Scheduled:* ${date} at ${time}${customNotes ? `\n*Notes:* ${customNotes}` : ''}`
+        `*New Service Booking - HyperTune Garage*\n*Booking Ref:* #${fallbackRef}\n*Customer:* ${name} (${phone})\n*Vehicle:* ${year} ${make} ${model}\n*Services:* ${selectedServiceTitles || 'Diagnostic Audit'}\n*Branch:* ${chosenBranchName}\n*Scheduled:* ${date} at ${time}${pickup ? '\n*Transport Request:* Requested (subject to confirmation)' : ''}${customNotes ? `\n*Notes:* ${customNotes}` : ''}`
       );
       const waUrl = `https://wa.me/923330177717?text=${msg}`;
       setBookingResult({
@@ -157,7 +158,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
             </div>
             <div>
               <h3 className="text-lg font-bold text-white">Book Workshop Service</h3>
-              <p className="text-xs text-slate-400">HyperTune Garage • Certified Diagnostic & Repair</p>
+              <p className="text-xs text-slate-400">HyperTune Garage • Multi-Brand Diagnostics & Repair</p>
             </div>
           </div>
 
@@ -474,13 +475,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
 
                 <div className="p-3 bg-[#070c14] border border-slate-800 rounded-xl flex items-center justify-between">
                   <div className="text-xs">
-                    <p className="font-bold text-white">Request Vehicle Pick-up & Drop-off Service?</p>
-                    <p className="text-slate-400">Available across Islamabad & Rawalpindi city limits.</p>
+                    <p className="font-bold text-white">Request Vehicle Transport Assistance?</p>
+                    <p className="text-slate-400">Available in Islamabad & Rawalpindi, subject to confirmation of applicable arrangements upon booking.</p>
                   </div>
                   <input
                     type="checkbox"
                     checked={pickup}
                     onChange={(e) => setPickup(e.target.checked)}
+                    aria-label="Request Vehicle Transport Assistance"
                     className="w-5 h-5 accent-cyan-500 rounded"
                   />
                 </div>

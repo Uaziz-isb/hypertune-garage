@@ -531,7 +531,8 @@ export async function runPerformanceRegressionGuard(): Promise<boolean> {
       }
       const expectedMeta = METADATA_REGISTRY[route.path];
       if (expectedMeta) {
-        if (!html.includes(expectedMeta.title)) {
+        const escapedDescription = expectedMeta.description.replace(/"/g, '&quot;');
+        if (!html.includes(expectedMeta.title) || !html.includes(escapedDescription)) {
           metadataMismatchCount++;
         }
       }

@@ -49,7 +49,6 @@ export interface SectorItem {
   city: 'Islamabad' | 'Rawalpindi';
   description: string;
   travelTimeFromHub: string;
-  valetServiceAvailable: boolean;
   popularVehiclesInArea: string[];
   landmarks: string[];
   seo: {
@@ -79,6 +78,7 @@ export interface ServiceItem {
   whyChooseUs: string[];
   processSteps: { title: string; desc: string }[];
   faqs: { question: string; answer: string }[];
+  relatedServiceSlugs?: string[];
   isFeatured?: boolean;
   seo: {
     seoTitle: string;
@@ -159,7 +159,7 @@ export interface ReviewItem {
 export interface GalleryItem {
   id: string;
   title: string;
-  category: 'Engine Overhaul' | 'PPF & PPS Studio' | 'German Repair' | 'Ceramic & PPF' | 'Suspension & Brakes' | 'Popular Brands Repair' | 'Transmission & Gearbox';
+  category: 'Engine Overhaul' | 'PPF & PPS Studio' | 'German Repair' | 'Ceramic & PPF' | 'Suspension & Brakes' | 'Popular Brands Repair' | 'Transmission & Gearbox' | 'Body & Wrap';
   image: string;
   vehicle: string;
   description: string;

@@ -20,7 +20,7 @@ export const PrivacyView: React.FC<PrivacyViewProps> = ({ onNavigate, onOpenBook
           Privacy Policy
         </h1>
         <p className="text-slate-400 text-sm max-w-2xl mx-auto">
-          At <span className="text-cyan-400 font-bold">HyperTune Garage</span>, we prioritize client confidentiality, vehicle data security, and total operational transparency across our Islamabad and Rawalpindi workshops.
+          At <span className="text-cyan-400 font-bold">HyperTune Garage</span>, we prioritize client confidentiality, vehicle data security, and total operational transparency at our Islamabad Flagship Hub serving Islamabad and Rawalpindi.
         </p>
       </div>
 
@@ -55,7 +55,7 @@ export const PrivacyView: React.FC<PrivacyViewProps> = ({ onNavigate, onOpenBook
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-2xl bg-cyan-950/30 border border-cyan-500/20 text-xs">
           <div>
             <span className="text-white font-bold block">Document Reference: HPG-PRIV-2025</span>
-            <span className="text-slate-400">Effective Date: January 1, 2025 • Applies to all Islamabad & Rawalpindi branches</span>
+            <span className="text-slate-400">Effective Date: January 1, 2025 • Applies to HyperTune Garage Islamabad Flagship Hub (serving Islamabad &amp; Rawalpindi)</span>
           </div>
           <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-extrabold text-[11px]">
             ● Active Policy
@@ -71,7 +71,7 @@ export const PrivacyView: React.FC<PrivacyViewProps> = ({ onNavigate, onOpenBook
             <h2 className="text-xl font-extrabold text-white">Information We Collect</h2>
           </div>
           <p className="text-sm text-slate-300 leading-relaxed pl-11">
-            HyperTune Garage collects essential operational details to manage your vehicle maintenance lifecycle, generate digital diagnostic reports, and issue valid warranty certificates.
+            HyperTune Garage collects essential operational details to manage your vehicle maintenance lifecycle, generate diagnostic reports, and maintain applicable invoice and parts warranty records.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pl-11 text-xs">
             <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
@@ -89,7 +89,7 @@ export const PrivacyView: React.FC<PrivacyViewProps> = ({ onNavigate, onOpenBook
                 <span>Customer Contact Information</span>
               </div>
               <p className="text-slate-400 leading-normal">
-                Name, mobile phone number, WhatsApp contact, and email address used strictly for job card updates, video inspection proofs, and invoicing.
+                Name, mobile phone number, WhatsApp contact, and email address used strictly for job card updates, inspection updates, and invoicing.
               </p>
             </div>
           </div>
@@ -101,15 +101,15 @@ export const PrivacyView: React.FC<PrivacyViewProps> = ({ onNavigate, onOpenBook
             <div className="w-8 h-8 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center font-bold text-sm">
               2
             </div>
-            <h2 className="text-xl font-extrabold text-white">Digital Health Inspection Videos & Media</h2>
+            <h2 className="text-xl font-extrabold text-white">Inspection Photos, Diagnostic Logs &amp; Media</h2>
           </div>
           <p className="text-sm text-slate-300 leading-relaxed pl-11">
-            As part of our standard operating procedure, master mechanics capture high-definition photos and video footage of worn components, oil condition, subframe bushings, and live OBD-II scanner readings.
+            As part of our standard operating procedure, workshop technicians may capture inspection photos and diagnostic records of worn components, fluid condition, suspension parts, and OBD-II scanner readings.
           </p>
           <ul className="space-y-2.5 pl-11 text-xs text-slate-400">
             <li className="flex items-start gap-2">
               <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-              <span>Diagnostic video clips are shared directly with you over secure WhatsApp threads for transparent job estimates.</span>
+              <span>Inspection updates and photos are shared directly with you over WhatsApp for transparent job estimates.</span>
             </li>
             <li className="flex items-start gap-2">
               <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
@@ -170,7 +170,7 @@ export const PrivacyView: React.FC<PrivacyViewProps> = ({ onNavigate, onOpenBook
       <div className="p-8 rounded-3xl bg-gradient-to-r from-[#0a1526] via-[#0e1e36] to-cyan-950/40 border border-cyan-500/30 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="space-y-2 text-center md:text-left">
           <h3 className="text-xl font-extrabold text-white">Have questions about workshop terms or warranty?</h3>
-          <p className="text-slate-400 text-xs">Review our detailed Terms & Conditions or check full 12-Month Warranty Specs.</p>
+          <p className="text-slate-400 text-xs">Review our detailed Terms & Conditions or check our Warranty & Service Terms.</p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
           <button
