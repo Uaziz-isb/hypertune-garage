@@ -1,4 +1,3 @@
-import { googleBusinessData } from '../data/reviewsData';
 import { normalizeCanonicalUrl, toAbsoluteImageUrl } from './canonical';
 
 export interface ServiceSchemaInput {
@@ -69,20 +68,6 @@ export function buildAutoRepairSchema(
         closes: '22:00',
       },
     ],
-    review: googleBusinessData.reviews.map((r) => ({
-      '@type': 'Review',
-      author: {
-        '@type': 'Person',
-        name: r.authorName,
-      },
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: String(r.rating),
-        bestRating: '5',
-        worstRating: '1',
-      },
-      reviewBody: r.text,
-    })),
   };
 }
 
